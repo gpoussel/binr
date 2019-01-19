@@ -1,8 +1,20 @@
 "use strict";
 
-// eslint-disable-next-line no-unused-vars
-const configurationParser = require("..");
+const ConfigurationParser = require("..");
+
+function createAndCallParser(input) {
+  return () => {
+    const parser = new ConfigurationParser();
+    parser.parse(input);
+  };
+}
 
 describe("configuration-parser", () => {
-  it("needs tests", () => undefined);
+  test("throws an error on invalid input", () => {
+    expect(createAndCallParser(null)).toThrow(/input/);
+  });
+
+  test("accepts minimal input", () => {
+    expect(createAndCallParser("#define ")()).toBeUndefined();
+  });
 });

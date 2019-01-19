@@ -13,7 +13,8 @@
   "scripts": {
     "lint": "eslint . --ignore-path=.gitignore",
     "lint:fix": "eslint . --ignore-path=.gitignore --fix",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
