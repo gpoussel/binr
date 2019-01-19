@@ -20,7 +20,7 @@ describe("ConfigurationParser", () => {
   });
 
   test("accepts minimal input", () => {
-    expect(createAndCallParser("#set foo bar")()).toBeUndefined();
+    expect(createAndCallParser('#set "foo"')()).toBeUndefined();
   });
   _.each(["gif"], file => {
     test(`parses ${file} format`, () => {

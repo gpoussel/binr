@@ -7,90 +7,90 @@ function ConfigurationParser() {
   // TODO
 }
 
-function buildParser() {
-  const { createToken, Lexer } = chevrotain;
+function buildLexerParser() {
+  const { createToken, Lexer, Parser } = chevrotain;
 
   const WhitespaceToken = createToken({
-    name: "whitespace",
+    name: "WhitespaceToken",
     pattern: /[ \t\r\n]+/,
     group: Lexer.SKIPPED,
   });
 
   const SingleLineCommentToken = createToken({
-    name: "Single-Line Comment",
+    name: "SingleLineCommentToken",
     pattern: /\/\/.+/,
     group: "comments",
   });
 
   const MultiLineCommentToken = createToken({
-    name: "Multi-Line Comment",
-    pattern: /\/\*[\s\S]+\*\//,
+    name: "MultiLineCommentToken",
+    pattern: /\/\*[\s\S]+?\*\//,
     group: "comments",
   });
 
   const IdentifierToken = createToken({
-    name: "Identifier",
+    name: "IdentifierToken",
     pattern: /[a-z_][a-z0-9_]+/i,
   });
 
   const StringLiteralToken = createToken({
-    name: "StringLiteral",
+    name: "StringLiteralToken",
     pattern: /"(:?[^\\"\n\r]+|\\(:?[bfnrtv"\\/]|u[0-9a-fA-F]{4}))*"/,
   });
 
   const NumberLiteralToken = createToken({
-    name: "NumberLiteral",
+    name: "NumberLiteralToken",
     pattern: /-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?/,
   });
 
   const SemiColonToken = createToken({
+    name: "SemiColonToken",
     pattern: /;/,
-    name: "SemiColon",
   });
 
   const ColonToken = createToken({
+    name: "ColonToken",
     pattern: /:/,
-    name: "Colon",
   });
 
   const DirectiveStartToken = createToken({
+    name: "DirectiveStartToken",
     pattern: /#/,
-    name: "DirectiveStart",
   });
 
   const EqualsToken = createToken({
+    name: "EqualsToken",
     pattern: /=/,
-    name: "Equals",
   });
 
   const CurlyBraceOpenToken = createToken({
+    name: "CurlyBraceOpenToken",
     pattern: /{/,
-    name: "CurlyBraceOpen",
   });
 
   const CurlyBraceCloseToken = createToken({
+    name: "CurlyBraceCloseToken",
     pattern: /}/,
-    name: "CurlyBraceClose",
   });
 
   const TrueToken = createToken({
+    name: "TrueToken",
     pattern: /true/,
-    name: "True",
   });
 
   const FalseToken = createToken({
+    name: "FalseToken",
     pattern: /false/,
-    name: "False",
   });
 
   const StructToken = createToken({
+    name: "StructToken",
     pattern: /struct/,
-    name: "Struct",
   });
 
   const ExportToken = createToken({
+    name: "ExportToken",
     pattern: /export/,
-    name: "Export",
   });
 
   const allTokens = [
@@ -121,10 +121,76 @@ function buildParser() {
     NumberLiteralToken,
   ];
 
+  class MyParser extends Parser {
+    constructor() {
+      super(allTokens, {
+        recoveryEnabled: true,
+      });
+
+      const $ = this;
+
+      $.RULE("definition", () => {
+        $.MANY(() => {
+          $.SUBRULE($.headerClause);
+        });
+        $.MANY1(() => {
+          $.SUBRULE($.structureClause);
+        });
+      });
+
+      $.RULE("headerClause", () => {
+        $.CONSUME(DirectiveStartToken);
+        $.CONSUME(IdentifierToken);
+        $.SUBRULE($.valueClause);
+      });
+
+      $.RULE("structureClause", () => {
+        $.OPTION(() => {
+          $.CONSUME(ExportToken);
+        });
+        $.CONSUME(StructToken);
+        $.CONSUME(IdentifierToken);
+        $.CONSUME(CurlyBraceOpenToken);
+        $.MANY(() => {
+          $.SUBRULE($.fieldClause);
+        });
+        $.CONSUME(CurlyBraceCloseToken);
+      });
+
+      $.RULE("valueClause", () => {
+        $.OR([
+          {
+            ALT: () => $.CONSUME(StringLiteralToken),
+          },
+          {
+            ALT: () => $.CONSUME(NumberLiteralToken),
+          },
+        ]);
+      });
+
+      $.RULE("fieldClause", () => {
+        $.CONSUME(IdentifierToken);
+        $.OPTION(() => {
+          $.CONSUME(ColonToken);
+          $.CONSUME(NumberLiteralToken);
+        });
+        $.CONSUME1(IdentifierToken);
+        $.OPTION1(() => {
+          $.CONSUME(EqualsToken);
+          $.SUBRULE($.valueClause);
+        });
+        $.CONSUME(SemiColonToken);
+      });
+
+      this.performSelfAnalysis();
+    }
+  }
+
   return {
     lexer: new Lexer(allTokens, {
       ensureOptimizations: true,
     }),
+    Parser: MyParser,
   };
 }
 
@@ -133,14 +199,21 @@ ConfigurationParser.prototype.parse = input => {
     throw new Error("input must be a string");
   }
 
-  const parser = buildParser();
-  const tokenizeResult = parser.lexer.tokenize(input);
-  if (!_.isEmpty(tokenizeResult.errors)) {
-    throw new Error(`Got an error while parsing input: ${_.first(tokenizeResult.errors).message}`);
+  const lexerParser = buildLexerParser();
+  const lexingResult = lexerParser.lexer.tokenize(input);
+  if (!_.isEmpty(lexingResult.errors)) {
+    throw new Error(`Got an error while lexing input: ${_.first(lexingResult.errors).message}`);
   }
-  console.log(tokenizeResult);
 
-  return undefined;
+  const parser = new lexerParser.Parser();
+  parser.input = lexingResult.tokens;
+  const parsingResult = parser.definition();
+
+  if (!_.isEmpty(parser.errors)) {
+    throw new Error(`Got an error while parsing input: ${_.first(parser.errors).message}`);
+  }
+
+  return parsingResult;
 };
 
 module.exports = ConfigurationParser;

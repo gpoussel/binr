@@ -10,8 +10,8 @@
  */
 
 struct header {
-    magic: string = "GIF";
-    version: uint:24;
+    string magic = "GIF";
+    uint:24 version;
 }
 
 struct logical_screen {
