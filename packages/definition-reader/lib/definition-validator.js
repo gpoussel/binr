@@ -3,6 +3,10 @@
 const _ = require("lodash");
 _.mixin(require("lodash-inflection"));
 
+const types = require("./types");
+
+const typeNames = _.map(types, Type => new Type().name);
+
 class DefinitionValidator {
   validate(ast) {
     const errors = [];
@@ -21,19 +25,27 @@ class DefinitionValidator {
     if (_.isEmpty(structures)) {
       errors.push("No structure defined");
     }
-    const names = [];
+
+    // First iterate to get all structure names
+    // That will help to validate field types
+    const structureNames = [];
     _.each(structures, structure => {
-      if (_.includes(names, structure.name)) {
+      if (_.includes(structureNames, structure.name)) {
         errors.push(`Duplicate structure name '${structure.name}'`);
         return;
       }
-      names.push(structure.name);
-
-      this.validateStructure(structure, errors);
+      if (_.includes(typeNames, structure.name)) {
+        errors.push(`Structure ${structure.name} has invalid name: reserved type`);
+        return;
+      }
+      structureNames.push(structure.name);
+    });
+    _.each(structures, structure => {
+      this.validateStructure(structure, errors, structureNames);
     });
   }
 
-  validateStructure(structure, errors) {
+  validateStructure(structure, errors, structureNames) {
     const fieldNames = [];
     _.each(structure.fields, field => {
       if (_.includes(fieldNames, field.name)) {
@@ -41,6 +53,12 @@ class DefinitionValidator {
         return;
       }
       fieldNames.push(field.name);
+
+      const builtInType = _.includes(typeNames, field.type);
+      const structureType = _.includes(structureNames, field.type);
+      if (!builtInType && !structureType) {
+        errors.push(`Unknown type '${field.type}' for field '${field.name}`);
+      }
     });
   }
 }

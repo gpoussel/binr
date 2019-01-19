@@ -8,12 +8,10 @@
   "main": "lib/definition-parser.js",
   "directories": {
     "lib": "lib",
-    "model": "model",
     "test": "__tests__"
   },
   "files": [
-    "lib",
-    "model"
+    "lib"
   ],
   "repository": {
     "type": "git",
