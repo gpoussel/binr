@@ -1,7 +1,8 @@
-'use strict';
+"use strict";
 
-const configurationParser = require('..');
+// eslint-disable-next-line no-unused-vars
+const configurationParser = require("..");
 
-describe('configuration-parser', () => {
-  it('needs tests', () => undefined);
+describe("configuration-parser", () => {
+  it("needs tests", () => undefined);
 });
