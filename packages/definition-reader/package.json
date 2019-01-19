@@ -8,10 +8,12 @@
   "main": "lib/definition-parser.js",
   "directories": {
     "lib": "lib",
+    "model": "model",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "model"
   ],
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   },
   "dependencies": {
     "chevrotain": "^4.1.1",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "lodash-inflection": "^1.5.0"
   }
 }

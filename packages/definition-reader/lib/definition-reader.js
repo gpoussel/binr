@@ -3,14 +3,28 @@
 const _ = require("lodash");
 const { DefinitionLexer } = require("./definition-lexer");
 const DefinitionParser = require("./definition-parser");
+const DefinitionValidator = require("./definition-validator");
+const DefinitionBuilder = require("./definition-builder");
 
 class DefinitionReader {
+  constructor() {
+    this.lexer = new DefinitionLexer();
+    this.validator = new DefinitionValidator();
+    this.builder = new DefinitionBuilder();
+  }
+
   readInput(input) {
+    const ast = this.readAst(input);
+    this.validator.validate(ast);
+    return this.builder.build(ast);
+  }
+
+  readAst(input) {
     if (!_.isString(input)) {
       throw new Error("input must be a string");
     }
 
-    const lexingResult = new DefinitionLexer().tokenize(input);
+    const lexingResult = this.lexer.tokenize(input);
     if (!_.isEmpty(lexingResult.errors)) {
       throw new Error(`Got an error while lexing input: ${_.first(lexingResult.errors).message}`);
     }

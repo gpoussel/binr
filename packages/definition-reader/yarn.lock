@@ -9,6 +9,11 @@ chevrotain@^4.1.1:
   dependencies:
     regexp-to-ast "0.3.5"
 
+lodash-inflection@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/lodash-inflection/-/lodash-inflection-1.5.0.tgz#344e5a8030882d51af98e0d613bb0547c8b7ddc7"
+  integrity sha1-NE5agDCILVGvmODWE7sFR8i33cc=
+
 lodash@^4.17.11:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"

@@ -1,8 +1,9 @@
 "use strict";
 
-const DefinitionReader = require("../lib/definition-reader");
-const _ = require("lodash");
 const fs = require("fs");
+const _ = require("lodash");
+const DefinitionReader = require("../lib/definition-reader");
+const Definition = require("../model/definition");
 
 const pathToFixtures = `${__dirname}/../__fixtures__/`;
 
@@ -15,8 +16,9 @@ function createAndCallParser(input) {
 
 describe("DefinitionReader", () => {
   test("throws an error on invalid input type", () => {
-    expect(createAndCallParser(null)).toThrow(/input/);
-    expect(createAndCallParser(123)).toThrow(/input/);
+    _.each([null, 123, a => a], value => {
+      expect(createAndCallParser(value)).toThrow(/input/);
+    });
   });
 
   test("throws an error when lexing invalid input", () => {
@@ -24,26 +26,26 @@ describe("DefinitionReader", () => {
   });
 
   test("throws an error when parsing invalid input", () => {
-    expect(createAndCallParser("#bar")).toThrow(/parsing/);
-    expect(createAndCallParser("struct {}")).toThrow(/parsing/);
-    expect(createAndCallParser("123")).toThrow(/parsing/);
-    expect(createAndCallParser("beep")).toThrow(/parsing/);
+    _.each(["#bar", "struct {}", "123", "beep", "##"], value => {
+      expect(createAndCallParser(value)).toThrow(/parsing/);
+    });
   });
 
-  test("accepts empty input", () => {
-    expect(createAndCallParser("")()).toBeDefined();
+  test("throws an error on invalid content", () => {
+    _.each(["struct a {} struct a {}", "struct a {int a; int a;}", ""], value => {
+      expect(createAndCallParser(value)).toThrow(/validation/i);
+    });
   });
 
   test("accepts minimal input", () => {
-    expect(createAndCallParser('#set "foo"')()).toBeDefined();
-    expect(createAndCallParser("#set 32")()).toBeDefined();
-    expect(createAndCallParser("struct a {}")()).toBeDefined();
+    _.each(['#set "foo" struct a {}', "#set 32 struct b {}", "struct a {}"], value => {
+      expect(createAndCallParser(value)()).toBeDefined();
+    });
   });
 
-  _.each(["gif"], file => {
-    test(`parses ${file} format`, () => {
-      const structure = fs.readFileSync(`${pathToFixtures}/${file}.binr`, "utf-8");
-      expect(createAndCallParser(structure)()).toBeDefined();
-    });
+  test(`parses GIF format definition`, () => {
+    const structure = fs.readFileSync(`${pathToFixtures}/gif.binr`, "utf-8");
+    const result = createAndCallParser(structure)();
+    expect(result).toBeInstanceOf(Definition);
   });
 });
