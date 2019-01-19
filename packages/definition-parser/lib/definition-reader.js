@@ -48,7 +48,7 @@ class DefinitionReader {
       structureClause(ctx) {
         const exported = _.has(ctx, "ExportToken");
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-        const fields = ctx.fieldClause.map(clause => this.visit(clause));
+        const fields = _.map(ctx.fieldClause, clause => this.visit(clause));
         return {
           name,
           exported,
@@ -74,6 +74,9 @@ class DefinitionReader {
       valueClause(ctx) {
         if (_.has(ctx, "StringLiteralToken")) {
           return JSON.parse(_.first(ctx.StringLiteralToken).image);
+        }
+        if (_.has(ctx, "NumberLiteralToken")) {
+          return parseInt(_.first(ctx.NumberLiteralToken).image, 10);
         }
         throw new Error("Unhandled value type: ", _.keys(ctx));
       }

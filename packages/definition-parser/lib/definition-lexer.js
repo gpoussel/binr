@@ -25,7 +25,7 @@ const MultiLineCommentToken = createToken({
 
 const IdentifierToken = createToken({
   name: "IdentifierToken",
-  pattern: /[a-z_][a-z0-9_]+/i,
+  pattern: /[a-z_][a-z0-9_]*/i,
 });
 
 const StringLiteralToken = createToken({

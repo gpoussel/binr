@@ -1,5 +1,5 @@
 #name "GIF Format"
-#comment "This structure is an example of the GIF format"
+#comment "This structure is an example of the \"GIF\" format"
 #extension ".gif"
 
 // This is a single-line comment
