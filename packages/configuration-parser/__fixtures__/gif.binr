@@ -1,0 +1,29 @@
+#name "GIF Format"
+#comment "This structure is an example of the GIF format"
+#extension ".gif"
+
+// This is a single-line comment
+
+/*
+ * This is a multi-line comment
+ * WOW!
+ */
+
+struct header {
+    magic: string = "GIF";
+    version: uint:24;
+}
+
+struct logical_screen {
+    uint:16 image_width;
+    uint:16 image_height;
+    uint:8 flags;
+    uint:8 bg_color_index;
+    uint:8 pixel_aspect_ratio;
+}
+
+/* Main Structure */
+export struct gif_file {
+    header header;
+    logical_screen logical_screen;
+}
