@@ -1,11 +1,11 @@
 {
-  "name": "configuration-parser",
+  "name": "definition-parser",
   "version": "1.0.0",
-  "description": "Configuration Parser for Binr",
+  "description": "Definition Parser for Binr",
   "author": "Guillaume Poussel <gpoussel@gmail.com>",
   "homepage": "https://github.com/gpoussel/binr#readme",
   "license": "MIT",
-  "main": "lib/configuration-parser.js",
+  "main": "lib/definition-parser.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
