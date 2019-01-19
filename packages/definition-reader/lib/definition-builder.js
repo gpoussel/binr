@@ -1,7 +1,7 @@
 "use strict";
 
-const Definition = require("../model/definition");
-const Structure = require("../model/structure");
+const Definition = require("model/definition");
+const Structure = require("model/structure");
 
 class DefinitionBuilder {
   build(ast) {

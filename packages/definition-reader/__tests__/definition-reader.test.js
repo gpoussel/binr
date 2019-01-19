@@ -3,7 +3,7 @@
 const fs = require("fs");
 const _ = require("lodash");
 const DefinitionReader = require("../lib/definition-reader");
-const Definition = require("../model/definition");
+const Definition = require("model/definition");
 
 const pathToFixtures = `${__dirname}/../__fixtures__/`;
 

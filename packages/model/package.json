@@ -1,0 +1,22 @@
+{
+  "name": "model",
+  "version": "1.0.0",
+  "description": "Model classes for Binr application",
+  "author": "Guillaume Poussel <gpoussel@gmail.com>",
+  "homepage": "https://github.com/gpoussel/binr/tree/master/packages/model#readme",
+  "license": "MIT",
+  "directories": {
+    "src": "src"
+  },
+  "files": ["src"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gpoussel/binr.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/gpoussel/binr/issues"
+  }
+}
