@@ -24,6 +24,7 @@
     "url": "https://github.com/gpoussel/binr/issues"
   },
   "dependencies": {
-    "@binr/model": "^1.0.0"
+    "@binr/model": "^1.0.0",
+    "lodash": "^4.17.11"
   }
 }
