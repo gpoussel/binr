@@ -10,7 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/gpoussel/binr.git"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
   }
 }

@@ -3,5 +3,5 @@
 module.exports = configurationParser;
 
 function configurationParser() {
-    // TODO
+  // TODO
 }
