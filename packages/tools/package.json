@@ -1,0 +1,19 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "Tools for building Binr mono-repo",
+  "author": "Guillaume Poussel <gpoussel@gmail.com>",
+  "homepage": "https://github.com/gpoussel/binr/tree/master/packages/tools#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gpoussel/binr.git"
+  },
+  "files": [
+    "jest.config.js",
+    "prettier.config.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/gpoussel/binr/issues"
+  }
+}
