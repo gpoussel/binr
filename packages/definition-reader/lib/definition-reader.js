@@ -45,8 +45,8 @@ class DefinitionReader {
 
       definition(ctx) {
         return {
-          headers: _.map(ctx.headerClause, clause => this.visit(clause)),
-          structures: _.map(ctx.structureClause, clause => this.visit(clause)),
+          headers: _.map(ctx.headerClause, this.visit.bind(this)),
+          structures: _.map(ctx.structureClause, this.visit.bind(this)),
         };
       }
 
@@ -62,7 +62,7 @@ class DefinitionReader {
       structureClause(ctx) {
         const exported = _.has(ctx, "ExportToken");
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-        const fields = _.map(ctx.fieldClause, clause => this.visit(clause));
+        const fields = _.map(ctx.fieldClause, this.visit.bind(this));
         return {
           name,
           exported,
@@ -89,10 +89,8 @@ class DefinitionReader {
         if (_.has(ctx, "StringLiteralToken")) {
           return JSON.parse(_.first(ctx.StringLiteralToken).image);
         }
-        if (_.has(ctx, "NumberLiteralToken")) {
-          return parseInt(_.first(ctx.NumberLiteralToken).image, 10);
-        }
-        throw new Error("Unhandled value type: ", _.keys(ctx));
+        // That's a NumberLiteralToken
+        return parseInt(_.first(ctx.NumberLiteralToken).image, 10);
       }
 
       getIdentifierName(identifier) {
