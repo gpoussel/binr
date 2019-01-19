@@ -19,6 +19,10 @@ describe("DefinitionReader", () => {
     expect(createAndCallParser(123)).toThrow(/input/);
   });
 
+  test("throws an error when lexing invalid input", () => {
+    expect(createAndCallParser("👍")).toThrow(/lexing/);
+  });
+
   test("throws an error when parsing invalid input", () => {
     expect(createAndCallParser("#bar")).toThrow(/parsing/);
     expect(createAndCallParser("struct {}")).toThrow(/parsing/);
