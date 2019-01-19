@@ -1,7 +1,6 @@
 "use strict";
 
-const Definition = require("model/definition");
-const Structure = require("model/structure");
+const { Definition, Structure } = require("@binr/model");
 
 class DefinitionBuilder {
   build(ast) {

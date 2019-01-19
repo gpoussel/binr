@@ -1,5 +1,5 @@
 {
-  "name": "binr",
+  "name": "@binr/binr",
   "version": "1.0.0",
   "description": "Binary editor in NodeJS",
   "author": "Guillaume Poussel <gpoussel@gmail.com>",

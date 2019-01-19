@@ -1,5 +1,5 @@
 {
-  "name": "definition-parser",
+  "name": "@binr/definition-parser",
   "version": "1.0.0",
   "description": "Definition Parser for Binr",
   "author": "Guillaume Poussel <gpoussel@gmail.com>",
@@ -26,6 +26,7 @@
     "url": "https://github.com/gpoussel/binr/issues"
   },
   "dependencies": {
+    "@binr/model": "^1.0.0",
     "chevrotain": "^4.1.1",
     "lodash": "^4.17.11",
     "lodash-inflection": "^1.5.0"

@@ -1,5 +1,5 @@
 {
-  "name": "binary-reader",
+  "name": "@binr/binary-reader",
   "version": "1.0.0",
   "description": "Binary reading library",
   "author": "Guillaume Poussel <gpoussel@gmail.com>",
@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
+  },
+  "dependencies": {
+    "@binr/model": "^1.0.0"
   }
 }

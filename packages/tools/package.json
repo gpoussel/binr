@@ -1,5 +1,5 @@
 {
-  "name": "tools",
+  "name": "@binr/tools",
   "version": "1.0.0",
   "description": "Tools for building Binr mono-repo",
   "author": "Guillaume Poussel <gpoussel@gmail.com>",
@@ -15,5 +15,6 @@
   ],
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
-  }
+  },
+  "dependencies": {}
 }

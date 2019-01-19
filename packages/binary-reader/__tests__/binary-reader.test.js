@@ -2,4 +2,8 @@
 
 const BinaryReader = require("..");
 
-describe("BinaryReader", () => {});
+const { Definition, Structure } = require("@binr/model");
+
+describe("BinaryReader", () => {
+  it("has no tests", () => undefined);
+});
