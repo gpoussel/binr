@@ -11,7 +11,11 @@ const reader = new BinaryReader();
 const gifDefinition = getGifDefinition();
 
 function getGifDefinition() {
-  const structures = [new Structure("header"), new Structure("logical_screen"), new Structure("gif_file")];
+  const structures = [
+    new Structure("header", []),
+    new Structure("logical_screen", []),
+    new Structure("gif_file", []),
+  ];
   return new Definition(structures);
   // struct header {
   //   string magic = "GIF";
@@ -45,7 +49,7 @@ describe("BinaryReader", () => {
   const treeFile = `${pathToFixtures}tree.gif`;
   const treeBuffer = fs.readFileSync(treeFile);
   test("reads file with empty definition", () => {
-    reader.read(treeBuffer, new Definition([new Structure("foo")]));
+    reader.read(treeBuffer, new Definition([new Structure("foo", [])]));
   });
 
   test("reads GIF file with GIF definition", () => {

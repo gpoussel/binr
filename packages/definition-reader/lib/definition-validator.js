@@ -3,9 +3,9 @@
 const _ = require("lodash");
 _.mixin(require("lodash-inflection"));
 
-const types = require("./types");
+const { builtInTypes } = require("./types");
 
-const typeNames = _.map(types, Type => new Type().name);
+const typeNames = _.map(builtInTypes, Type => new Type().name);
 
 class DefinitionValidator {
   validate(ast) {

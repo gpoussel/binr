@@ -1,8 +1,9 @@
 "use strict";
 
 class Structure {
-  constructor(name) {
+  constructor(name, fields) {
     this.name = name;
+    this.fields = fields;
   }
 }
 
