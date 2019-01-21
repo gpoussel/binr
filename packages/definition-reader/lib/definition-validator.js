@@ -61,12 +61,27 @@ class DefinitionValidator {
       }
       fieldNames.push(field.name);
 
-      const builtInType = _.has(builtInTypes, field.type);
-      const structureType = _.includes(structureNames, field.type);
-      if (!builtInType && !structureType) {
-        errors.push(`Unknown type '${field.type}' for field '${field.name}`);
-      }
+      this.validateField(field, errors, structureNames);
     });
+  }
+
+  validateField(field, errors, structureNames) {
+    const builtInType = _.has(builtInTypes, field.type);
+    const structureType = _.includes(structureNames, field.type);
+    if (!builtInType && !structureType) {
+      errors.push(`Unknown type '${field.type}' for field '${field.name}`);
+    }
+
+    const hasTypeRestriction = _.has(field, "typeRestriction");
+    if (hasTypeRestriction) {
+      if (field.typeRestriction <= 0 || field.typeRestriction > 64) {
+        errors.push(`Field ${field.name} size must be between 0 and 64`);
+      }
+    }
+
+    if (field.type === "string" && !hasTypeRestriction) {
+      errors.push(`Field ${field.name} must have type restriction`);
+    }
   }
 }
 

@@ -8,9 +8,7 @@ class StringType extends Type {
     this.size = size;
   }
 
-  read(buffer) {
-    console.log(`Reading string`);
-  }
+  read(buffer) {}
 }
 
 module.exports = StringType;

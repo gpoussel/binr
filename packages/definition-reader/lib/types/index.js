@@ -6,7 +6,7 @@ const IntType = require("./int");
 const StructureType = require("./structure");
 
 const builtInTypes = {
-  string: () => new StringType(),
+  string: field => new StringType(field.typeRestriction),
   uint: () => new UintType(),
   int: () => new IntType(),
 };

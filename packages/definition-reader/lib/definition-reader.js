@@ -72,17 +72,17 @@ class DefinitionReader {
 
       fieldClause(ctx) {
         const type = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
-        const typeRestriction = _.has(ctx, "ColonToken")
-          ? this.getNumberValue(_.first(ctx.NumberLiteralToken))
-          : undefined;
         const value = _.has(ctx, "EqualsToken") ? this.visit(_.first(ctx.valueClause)) : undefined;
         const name = this.getIdentifierName(_.get(ctx.IdentifierToken, 1));
-        return {
+        const fieldResult = {
           type,
-          typeRestriction,
           name,
           value,
         };
+        if (_.has(ctx, "ColonToken")) {
+          fieldResult.typeRestriction = this.getNumberValue(_.first(ctx.NumberLiteralToken));
+        }
+        return fieldResult;
       }
 
       valueClause(ctx) {

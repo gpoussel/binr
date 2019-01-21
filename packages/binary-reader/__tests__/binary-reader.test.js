@@ -20,7 +20,7 @@ function getGifDefinition() {
     new Field("pixel_aspect_ratio", new UintType(8)),
   ]);
   const headerStructure = new Structure("header", [
-    new Field("magic", new StringType()),
+    new Field("magic", new StringType(3)),
     new Field("version", new UintType(24)),
   ]);
   const gifFileStructure = new Structure("gif_file", [
