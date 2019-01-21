@@ -3,8 +3,9 @@
 const Type = require("./type");
 
 class StructureType extends Type {
-  constructor() {
+  constructor(structure) {
     super();
+    this.structure = structure;
   }
 }
 

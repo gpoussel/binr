@@ -2,10 +2,6 @@
 
 const Type = require("./type");
 
-class StringType extends Type {
-  constructor() {
-    super("string");
-  }
-}
+class StringType extends Type {}
 
 module.exports = StringType;

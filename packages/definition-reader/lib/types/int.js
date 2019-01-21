@@ -2,11 +2,11 @@
 
 const Type = require("./type");
 
-class UintType extends Type {
+class IntType extends Type {
   constructor(size) {
     super();
     this.size = size;
   }
 }
 
-module.exports = UintType;
+module.exports = IntType;

@@ -1,9 +1,5 @@
 "use strict";
 
-class Type {
-  constructor(name) {
-    this.name = name;
-  }
-}
+class Type {}
 
 module.exports = Type;

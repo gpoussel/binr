@@ -23,8 +23,14 @@ class BinaryReader {
 
     const mainStructure = _.find(definition.structures, s => s.name === mainStructureName);
     assert(!_.isUndefined(mainStructure), `Main structure '${mainStructureName} not found`);
-    console.log(mainStructure);
-    return undefined;
+
+    return this.readStructure(binaryBuffer, definition, mainStructure);
+  }
+
+  readStructure(binaryBuffer, definition, structure) {
+    _.each(structure.fields, field => {
+      console.log("Reading field: ", field);
+    });
   }
 }
 

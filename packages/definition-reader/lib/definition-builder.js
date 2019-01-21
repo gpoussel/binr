@@ -6,17 +6,24 @@ const { builtInTypes, StructureType } = require("./types");
 
 class DefinitionBuilder {
   build(ast) {
-    const structures = _.map(ast.structures, this.buildStructure.bind(this));
+    const structures = _.map(ast.structures, s => this.buildStructure(ast.structures, s));
     return new Definition(structures);
   }
 
-  buildStructure(structure) {
-    console.log(structure);
-    return new Structure(structure.name, _.map(structure.fields, this.buildField.bind(this)));
+  buildStructure(structures, structure) {
+    return new Structure(structure.name, _.map(structure.fields, f => this.buildField(structures, f)));
   }
 
-  buildField(field) {
-    return new Field(field.name);
+  buildField(structures, field) {
+    let type;
+    if (_.has(builtInTypes, field.type)) {
+      // Built-in type
+      type = builtInTypes[field.type](field);
+    } else {
+      // Must be structure in the current definition
+      type = new StructureType(_.first(structures, s => s.name === field.type));
+    }
+    return new Field(field.name, type);
   }
 }
 

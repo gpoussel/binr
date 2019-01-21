@@ -5,8 +5,6 @@ _.mixin(require("lodash-inflection"));
 
 const { builtInTypes } = require("./types");
 
-const typeNames = _.map(builtInTypes, Type => new Type().name);
-
 class DefinitionValidator {
   validate(ast) {
     const errors = [];
@@ -19,7 +17,16 @@ class DefinitionValidator {
     }
   }
 
-  validateHeaders(headers, errors) {}
+  validateHeaders(headers, errors) {
+    const headerNames = [];
+    _.each(headers, h => {
+      if (_.includes(headerNames, h.name)) {
+        errors.push(`Header ${h.name} is defined twice.`);
+        return;
+      }
+      headerNames.push(h.name);
+    });
+  }
 
   validateStructures(structures, errors) {
     if (_.isEmpty(structures)) {
@@ -34,7 +41,7 @@ class DefinitionValidator {
         errors.push(`Duplicate structure name '${structure.name}'`);
         return;
       }
-      if (_.includes(typeNames, structure.name)) {
+      if (_.has(builtInTypes, structure.name)) {
         errors.push(`Structure ${structure.name} has invalid name: reserved type`);
         return;
       }
@@ -54,7 +61,7 @@ class DefinitionValidator {
       }
       fieldNames.push(field.name);
 
-      const builtInType = _.includes(typeNames, field.type);
+      const builtInType = _.has(builtInTypes, field.type);
       const structureType = _.includes(structureNames, field.type);
       if (!builtInType && !structureType) {
         errors.push(`Unknown type '${field.type}' for field '${field.name}`);

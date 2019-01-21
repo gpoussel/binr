@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const BinaryReader = require("..");
-const { Definition, Structure } = require("@binr/model");
+const { Definition, Structure, Field } = require("@binr/model");
 
 const pathToFixtures = `${__dirname}/../__fixtures__/`;
 
@@ -12,27 +12,17 @@ const gifDefinition = getGifDefinition();
 
 function getGifDefinition() {
   const structures = [
-    new Structure("header", []),
-    new Structure("logical_screen", []),
-    new Structure("gif_file", []),
+    new Structure("header", [new Field("magic", "string"), new Field("version", "uint:24")]),
+    new Structure("logical_screen", [
+      new Field("image_width", "uint:16"),
+      new Field("image_height", "uint:16"),
+      new Field("flags", "uint:8"),
+      new Field("bg_color_index", "uint:8"),
+      new Field("pixel_aspect_ratio", "uint:8"),
+    ]),
+    new Structure("gif_file", [new Field("header", "header"), new Field("logical_screen", "logical_screen")]),
   ];
   return new Definition(structures);
-  // struct header {
-  //   string magic = "GIF";
-  //   uint: 24 version;
-  // }
-  // struct logical_screen {
-  //   uint: 16 image_width;
-  //   uint: 16 image_height;
-  //   uint: 8 flags;
-  //   uint: 8 bg_color_index;
-  //   uint: 8 pixel_aspect_ratio;
-  // }
-  // /* Main Structure */
-  // export struct gif_file {
-  //   header header;
-  //   logical_screen logical_screen;
-  // }
 }
 
 describe("BinaryReader", () => {
