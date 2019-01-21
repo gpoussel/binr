@@ -3,6 +3,8 @@
 const _ = require("lodash");
 const assert = require("assert");
 
+const { StructureType } = require("@binr/definition-reader");
+
 class BinaryReader {
   read(binaryBuffer, definition, providedStructureName = undefined) {
     assert(_.isObject(definition), "definition must be an object");
@@ -24,13 +26,8 @@ class BinaryReader {
     const mainStructure = _.find(definition.structures, s => s.name === mainStructureName);
     assert(!_.isUndefined(mainStructure), `Main structure '${mainStructureName} not found`);
 
-    return this.readStructure(binaryBuffer, definition, mainStructure);
-  }
-
-  readStructure(binaryBuffer, definition, structure) {
-    _.each(structure.fields, field => {
-      console.log("Reading field: ", field);
-    });
+    const structureType = new StructureType(mainStructure);
+    return structureType.read(binaryBuffer);
   }
 }
 

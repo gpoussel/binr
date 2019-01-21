@@ -1,11 +1,11 @@
 {
-  "name": "@binr/definition-parser",
+  "name": "@binr/definition-reader",
   "version": "1.0.0",
   "description": "Definition Parser for Binr",
   "author": "Guillaume Poussel <gpoussel@gmail.com>",
   "homepage": "https://github.com/gpoussel/binr#readme",
   "license": "MIT",
-  "main": "lib/definition-parser.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"

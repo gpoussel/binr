@@ -10,7 +10,7 @@
  */
 
 struct header {
-    string magic = "GIF";
+    string:3 magic;
     uint:24 version;
 }
 

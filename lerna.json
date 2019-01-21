@@ -1,6 +1,5 @@
 {
   "lerna": "3.10.6",
-  "hoist": true,
   "packages": [
     "packages/*"
   ],

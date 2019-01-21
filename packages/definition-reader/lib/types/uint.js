@@ -7,6 +7,10 @@ class UintType extends Type {
     super();
     this.size = size;
   }
+
+  read(buffer) {
+    console.log(`Reading UInt of size ${this.size}`);
+  }
 }
 
 module.exports = UintType;
