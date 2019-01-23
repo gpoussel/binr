@@ -13,19 +13,16 @@ const gifDefinition = getGifDefinition();
 
 function getGifDefinition() {
   const logicalScreenStructure = new Structure("logical_screen", [
-    new Field("image_width", new UintType(16)),
-    new Field("image_height", new UintType(16)),
-    new Field("flags", new UintType(8)),
-    new Field("bg_color_index", new UintType(8)),
-    new Field("pixel_aspect_ratio", new UintType(8)),
+    new Field("imageWidth", new UintType(16)),
+    new Field("imageHeight", new UintType(16)),
   ]);
   const headerStructure = new Structure("header", [
     new Field("magic", new StringType(3)),
-    new Field("version", new UintType(24)),
+    new Field("version", new StringType(3)),
   ]);
   const gifFileStructure = new Structure("gif_file", [
     new Field("header", new StructureType(headerStructure)),
-    new Field("logical_screen", new StructureType(logicalScreenStructure)),
+    new Field("logicalScreen", new StructureType(logicalScreenStructure)),
   ]);
   const structures = [logicalScreenStructure, headerStructure, gifFileStructure];
   return new Definition(structures);
@@ -49,6 +46,13 @@ describe("BinaryReader", () => {
   });
 
   test("reads GIF file with GIF definition", () => {
-    reader.read(treeBuffer, gifDefinition, "gif_file");
+    const gifValue = reader.read(treeBuffer, gifDefinition, "gif_file");
+    expect(gifValue).toBeDefined();
+    expect(gifValue.header).toBeDefined();
+    expect(gifValue.header.magic).toBe("GIF");
+    expect(gifValue.header.version).toBe("89a");
+    expect(gifValue.logicalScreen).toBeDefined();
+    expect(gifValue.logicalScreen.imageWidth).toBe(150);
+    expect(gifValue.logicalScreen.imageHeight).toBe(189);
   });
 });

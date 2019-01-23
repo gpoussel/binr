@@ -7,6 +7,10 @@ class IntType extends Type {
     super();
     this.size = size;
   }
+
+  read(buffer) {
+    return buffer.readInt(this.size);
+  }
 }
 
 module.exports = IntType;

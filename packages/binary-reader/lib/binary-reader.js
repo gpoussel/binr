@@ -4,6 +4,7 @@ const _ = require("lodash");
 const assert = require("assert");
 
 const { StructureType } = require("@binr/definition-reader");
+const BufferWrapper = require("./buffer-wrapper");
 
 class BinaryReader {
   read(binaryBuffer, definition, providedStructureName = undefined) {
@@ -27,7 +28,8 @@ class BinaryReader {
     assert(!_.isUndefined(mainStructure), `Main structure '${mainStructureName} not found`);
 
     const structureType = new StructureType(mainStructure);
-    return structureType.read(binaryBuffer);
+    const bufferWrapper = new BufferWrapper(binaryBuffer);
+    return structureType.read(bufferWrapper);
   }
 }
 

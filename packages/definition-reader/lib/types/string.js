@@ -8,7 +8,9 @@ class StringType extends Type {
     this.size = size;
   }
 
-  read(buffer) {}
+  read(buffer) {
+    return buffer.readAsciiString(this.size);
+  }
 }
 
 module.exports = StringType;

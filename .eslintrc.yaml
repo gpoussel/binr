@@ -32,6 +32,7 @@ rules:
     - WithStatement
   import/no-unresolved: off
   node/no-missing-require: off
+  no-bitwise: off
   no-underscore-dangle:
     - error
     - allowAfterThis: true
