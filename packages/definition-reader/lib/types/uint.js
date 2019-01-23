@@ -1,8 +1,5 @@
 "use strict";
 
-const _ = require("lodash");
-const assert = require("assert");
-
 const Type = require("./type");
 
 class UintType extends Type {
