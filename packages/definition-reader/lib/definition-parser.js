@@ -58,10 +58,6 @@ class DefinitionParser extends chevrotain.Parser {
         $.CONSUME(tokens.NumberLiteralToken);
       });
       $.CONSUME1(tokens.IdentifierToken);
-      $.OPTION1(() => {
-        $.CONSUME(tokens.EqualsToken);
-        $.SUBRULE($.valueClause);
-      });
       $.CONSUME(tokens.SemiColonToken);
     });
 
