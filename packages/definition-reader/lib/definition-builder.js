@@ -21,7 +21,7 @@ class DefinitionBuilder {
       type = builtInTypes[field.type](field);
     } else {
       // Must be structure in the current definition
-      type = new StructureType(_.first(structures, s => s.name === field.type));
+      type = new StructureType(_.find(structures, s => s.name === field.type));
     }
     return new Field(field.name, type);
   }
