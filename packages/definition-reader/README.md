@@ -1,11 +1,11 @@
-# `definition-parser`
+# `definition-reader`
 
 > TODO: description
 
 ## Usage
 
 ```
-const definitionParser = require('definition-parser');
+const definitionReader = require('definition-reader');
 
 // TODO: DEMONSTRATE API
 ```
