@@ -4,11 +4,16 @@ const _ = require("lodash");
 const assert = require("assert");
 
 class BufferWrapper {
-  constructor(buffer) {
+  constructor(buffer, endianness) {
     assert(_.isBuffer(buffer), "'buffer' argument must be a buffer");
+    assert(
+      _.includes(["big", "little"], endianness),
+      `'endianness' must be either 'big' or 'little', found: ${endianness}`
+    );
+
     this.buffer = buffer;
     this.cursor = 0;
-    this.endianness = "big";
+    this.endianness = endianness;
   }
 
   readAsciiString(length) {
@@ -22,7 +27,7 @@ class BufferWrapper {
       return this.readByte();
     }
     if (_.includes([16, 32], length)) {
-      return this.readAndIncrementOffset(length / 8, "readUInt");
+      return this.readAndIncrementOffset(length, "readUInt");
     }
     if (length === 24) {
       const bytes = this.readBytes(3);
@@ -36,7 +41,7 @@ class BufferWrapper {
       return this.readByte();
     }
     if (_.includes([16, 32], length)) {
-      return this.readAndIncrementOffset(length / 8, "readInt");
+      return this.readAndIncrementOffset(length, "readInt");
     }
     if (length === 24) {
       const uintValue = this.readUint(length);
@@ -69,8 +74,8 @@ class BufferWrapper {
   }
 
   readAndIncrementOffset(size, method) {
-    const value = this.buffer[method + (this.isBigEndian() ? "BE" : "LE")](this.cursor);
-    this.cursor += size;
+    const value = this.buffer[method + size + (this.isBigEndian() ? "BE" : "LE")](this.cursor);
+    this.cursor += size / 8;
     return value;
   }
 }

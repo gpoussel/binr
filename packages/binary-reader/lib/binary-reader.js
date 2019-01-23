@@ -28,7 +28,7 @@ class BinaryReader {
     assert(!_.isUndefined(mainStructure), `Main structure '${mainStructureName} not found`);
 
     const structureType = new StructureType(mainStructure);
-    const bufferWrapper = new BufferWrapper(binaryBuffer);
+    const bufferWrapper = new BufferWrapper(binaryBuffer, mainStructure.getEndianness());
     return structureType.read(bufferWrapper);
   }
 }
