@@ -32,9 +32,22 @@ describe("DefinitionReader", () => {
   });
 
   test("throws an error on invalid content", () => {
-    _.each(["struct a {} struct a {}", "struct a {int a; int a;}", ""], value => {
-      expect(createAndCallParser(value)).toThrow(/validation/i);
-    });
+    _.each(
+      [
+        "struct a {} struct a {}",
+        "struct a {int a; int a;}",
+        "",
+        '#set "b" #set "b" struct a {}',
+        "struct int {}",
+        "struct a { b b; }",
+        "struct c { int:0 a; }",
+        "struct c { int:255 a; }",
+        "struct c { string a; }",
+      ],
+      value => {
+        expect(createAndCallParser(value)).toThrow(/validation/i);
+      }
+    );
   });
 
   test("accepts minimal input", () => {
