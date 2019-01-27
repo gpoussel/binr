@@ -20,7 +20,5 @@
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
   },
-  "dependencies": {
-    "@binr/definition-reader": "^1.0.0"
-  }
+  "dependencies": {}
 }

@@ -4,8 +4,7 @@ const _ = require("lodash");
 const assert = require("assert");
 
 const { StructureType } = require("@binr/definition-reader");
-const BufferWrapper = require("./buffer-wrapper");
-const VariableScope = require("./variable-scope");
+const { BufferWrapper, VariableScope } = require("@binr/shared");
 
 class BinaryReader {
   read(binaryBuffer, definition, providedStructureName = undefined) {

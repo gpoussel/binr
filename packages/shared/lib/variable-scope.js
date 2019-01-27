@@ -23,8 +23,7 @@ class VariableScope {
   }
 
   put(name, value) {
-    // TODO: Until nested scopes are implemented, cannot do that!
-    // assert(!_.has(this.variables, name), `Variable named '${name}' is already present in current scope`);
+    assert(!_.has(this.variables, name), `Variable named '${name}' is already present in current scope`);
     this.variables[name] = value;
   }
 }

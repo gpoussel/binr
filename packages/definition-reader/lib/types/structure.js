@@ -1,6 +1,7 @@
 "use strict";
 
 const _ = require("lodash");
+const { VariableScope } = require("@binr/shared");
 
 const Type = require("./type");
 
@@ -13,7 +14,8 @@ class StructureType extends Type {
   read(buffer, scope) {
     const value = {};
     _.each(this.structure.fields, field => {
-      const readValue = field.type.read(buffer, scope);
+      const nestedScope = new VariableScope(scope);
+      const readValue = field.type.read(buffer, nestedScope);
       value[field.name] = readValue;
       scope.put(field.name, readValue);
     });

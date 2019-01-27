@@ -1,0 +1,26 @@
+{
+  "name": "@binr/shared",
+  "version": "1.0.0",
+  "description": "Shared classes used in various components",
+  "author": "Guillaume Poussel <gpoussel@gmail.com>",
+  "homepage": "https://github.com/gpoussel/binr/tree/master/packages/shared#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "repository": "git+https://github.com/gpoussel/binr.git",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/gpoussel/binr/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}

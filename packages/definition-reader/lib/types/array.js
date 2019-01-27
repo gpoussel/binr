@@ -3,6 +3,8 @@
 const _ = require("lodash");
 const assert = require("assert");
 
+const { VariableScope } = require("@binr/shared");
+
 const Type = require("./type");
 
 class ArrayType extends Type {
@@ -23,7 +25,10 @@ class ArrayType extends Type {
       assert(false, `Invalid type for array size:${this.size}`);
       return;
     }
-    return _.times(numericSize, () => this.innerType.read(buffer));
+    return _.times(numericSize, () => {
+      const nestedScope = new VariableScope(scope);
+      return this.innerType.read(buffer, nestedScope);
+    });
   }
 }
 

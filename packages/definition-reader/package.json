@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@binr/model": "^1.0.0",
+    "@binr/shared": "^1.0.0",
     "chevrotain": "^4.1.1",
     "lodash": "^4.17.11",
     "lodash-inflection": "^1.5.0"
