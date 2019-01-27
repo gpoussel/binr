@@ -2,7 +2,7 @@
 
 const Type = require("./type");
 
-class StringType extends Type {
+class CStringType extends Type {
   read(buffer) {
     let str = "";
     let byte = buffer.readByte();
@@ -14,4 +14,4 @@ class StringType extends Type {
   }
 }
 
-module.exports = StringType;
+module.exports = CStringType;
