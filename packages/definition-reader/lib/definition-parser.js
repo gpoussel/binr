@@ -58,7 +58,16 @@ class DefinitionParser extends chevrotain.Parser {
         $.CONSUME(tokens.NumberLiteralToken);
       });
       $.CONSUME1(tokens.IdentifierToken);
+      $.OPTION1(() => {
+        $.SUBRULE($.arrayDefinitionClause);
+      });
       $.CONSUME(tokens.SemiColonToken);
+    });
+
+    $.RULE("arrayDefinitionClause", () => {
+      $.CONSUME(tokens.BracketOpenToken);
+      $.CONSUME1(tokens.NumberLiteralToken);
+      $.CONSUME(tokens.BracketCloseToken);
     });
 
     this.performSelfAnalysis();

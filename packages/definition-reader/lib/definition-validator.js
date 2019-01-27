@@ -79,8 +79,9 @@ class DefinitionValidator {
       }
     }
 
-    if (field.type === "string" && !hasTypeRestriction) {
-      errors.push(`Field ${field.name} must have type restriction`);
+    const fieldsWithoutTypeRestriction = ["string", "char"];
+    if (_.includes(fieldsWithoutTypeRestriction, field.type) && hasTypeRestriction) {
+      errors.push(`Field ${field.name} (type: ${field.type}) must not have type restriction`);
     }
   }
 }

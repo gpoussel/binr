@@ -80,6 +80,9 @@ class DefinitionReader {
         if (_.has(ctx, "ColonToken")) {
           fieldResult.typeRestriction = this.getNumberValue(_.first(ctx.NumberLiteralToken));
         }
+        if (_.has(ctx, "arrayDefinitionClause")) {
+          fieldResult.arrayDefinition = this.visit(ctx.arrayDefinitionClause);
+        }
         return fieldResult;
       }
 
@@ -89,6 +92,14 @@ class DefinitionReader {
         }
         // That's a NumberLiteralToken
         return parseInt(_.first(ctx.NumberLiteralToken).image, 10);
+      }
+
+      arrayDefinitionClause(ctx) {
+        // Number represents the array size
+        const size = _.get(ctx, "NumberLiteralToken");
+        return {
+          size,
+        };
       }
 
       getIdentifierName(identifier) {

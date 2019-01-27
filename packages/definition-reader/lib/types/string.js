@@ -3,13 +3,14 @@
 const Type = require("./type");
 
 class StringType extends Type {
-  constructor(size) {
-    super();
-    this.size = size;
-  }
-
   read(buffer) {
-    return buffer.readAsciiString(this.size);
+    let str = "";
+    let byte = buffer.readByte();
+    while (byte !== 0) {
+      str += String.fromCharCode(byte);
+      byte = buffer.readByte();
+    }
+    return str;
   }
 }
 

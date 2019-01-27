@@ -3,7 +3,7 @@
 const fs = require("fs");
 const BinaryReader = require("..");
 const { Definition, Structure, Field } = require("@binr/model");
-const { UintType, StringType, StructureType } = require("@binr/definition-reader");
+const { UintType, ArrayType, CharType, StructureType } = require("@binr/definition-reader");
 
 const pathToFixtures = `${__dirname}/../__fixtures__/`;
 
@@ -24,8 +24,8 @@ function getGifDefinition() {
   ]);
   logicalScreenStructure.setEndianness("little");
   const headerStructure = new Structure("header", [
-    new Field("signature", new StringType(3)),
-    new Field("version", new StringType(3)),
+    new Field("signature", new ArrayType(new CharType(), 3)),
+    new Field("version", new ArrayType(new CharType(), 3)),
   ]);
   headerStructure.setEndianness("little");
   const gifFileStructure = new Structure("gif_file", [
@@ -41,7 +41,7 @@ function getRmDefinition() {
   // Source: https://www.sweetscape.com/010editor/repository/files/RM.bt
 
   const headerStructure = new Structure("header", [
-    new Field("type", new StringType(4)),
+    new Field("type", new ArrayType(new CharType(), 4)),
     new Field("size", new UintType(32)),
     new Field("version", new UintType(16)),
     new Field("fileVersion", new UintType(32)),
@@ -49,7 +49,7 @@ function getRmDefinition() {
   ]);
   headerStructure.setEndianness("big");
   const propertiesStructure = new Structure("properties", [
-    new Field("type", new StringType(4)),
+    new Field("type", new ArrayType(new CharType(), 4)),
     new Field("size", new UintType(32)),
     new Field("version", new UintType(16)),
     new Field("maxBitRate", new UintType(32)),
@@ -66,7 +66,7 @@ function getRmDefinition() {
   ]);
   propertiesStructure.setEndianness("big");
   const mediaDescriptionStructure = new Structure("content_description", [
-    new Field("type", new StringType(4)),
+    new Field("type", new ArrayType(new CharType(), 4)),
     new Field("size", new UintType(32)),
     new Field("version", new UintType(16)),
     new Field("numOfStream", new UintType(16)),
@@ -115,8 +115,8 @@ describe("BinaryReader", () => {
     const gifValue = reader.read(treeGifBuffer, gifDefinition, "gif_file");
     expect(gifValue).toBeDefined();
     expect(gifValue.header).toBeDefined();
-    expect(gifValue.header.signature).toBe("GIF");
-    expect(gifValue.header.version).toBe("89a");
+    expect(gifValue.header.signature).toEqual(["G", "I", "F"]);
+    expect(gifValue.header.version).toEqual(["8", "9", "a"]);
     expect(gifValue.logicalScreen).toBeDefined();
     expect(gifValue.logicalScreen.imageWidth).toBe(150);
     expect(gifValue.logicalScreen.imageHeight).toBe(189);
@@ -129,14 +129,14 @@ describe("BinaryReader", () => {
     const videoValue = reader.read(videoRmBuffer, rmDefinition, "rm_file");
     expect(videoValue).toBeDefined();
     expect(videoValue.header).toEqual({
-      type: ".RMF",
+      type: [".", "R", "M", "F"],
       size: 18,
       version: 1,
       fileVersion: 0,
       numberOfHeaders: 7,
     });
     expect(videoValue.properties).toEqual({
-      type: "PROP",
+      type: ["P", "R", "O", "P"],
       size: 50,
       version: 0,
       maxBitRate: 40000,
@@ -152,7 +152,7 @@ describe("BinaryReader", () => {
       flags: 11,
     });
     expect(videoValue.mediaDescription).toEqual({
-      type: "MDPR",
+      type: ["M", "D", "P", "R"],
       size: 164,
       version: 0,
       numOfStream: 0,

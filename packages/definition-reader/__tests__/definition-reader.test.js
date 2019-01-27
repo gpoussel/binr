@@ -42,7 +42,6 @@ describe("DefinitionReader", () => {
         "struct a { b b; }",
         "struct c { int:0 a; }",
         "struct c { int:255 a; }",
-        "struct c { string a; }",
       ],
       value => {
         expect(createAndCallParser(value)).toThrow(/validation/i);

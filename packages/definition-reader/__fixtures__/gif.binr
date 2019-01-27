@@ -10,7 +10,7 @@
  */
 
 struct header {
-    string:3 magic;
+    char magic[3];
     uint:24 version;
 }
 

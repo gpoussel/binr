@@ -68,6 +68,16 @@ const CurlyBraceCloseToken = createToken({
   pattern: /}/,
 });
 
+const BracketOpenToken = createToken({
+  name: "BracketOpenToken",
+  pattern: /\[/,
+});
+
+const BracketCloseToken = createToken({
+  name: "BracketCloseToken",
+  pattern: /\]/,
+});
+
 const TrueToken = createToken({
   name: "TrueToken",
   pattern: /true/,
@@ -103,6 +113,8 @@ const tokens = {
   EqualsToken,
   CurlyBraceOpenToken,
   CurlyBraceCloseToken,
+  BracketOpenToken,
+  BracketCloseToken,
 
   // Keywords
   TrueToken,
