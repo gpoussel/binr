@@ -50,13 +50,14 @@ const symbolTokens = _.fromPairs(
       CurlyBraceClose: "}",
       BracketOpen: "[",
       BracketClose: "]",
+      ParenthesisOpen: "(",
+      ParenthesisClose: ")",
     },
     (keyword, name) => [
       `${name}Token`,
       createToken({
         name: `${name}Token`,
         pattern: new RegExp(escapeRegexp(keyword)),
-        group: "symbol",
       }),
     ]
   )
@@ -75,7 +76,6 @@ const keywordTokens = _.fromPairs(
       createToken({
         name: `${name}Token`,
         pattern: new RegExp(escapeRegexp(keyword)),
-        group: "keyword",
       }),
     ]
   )
