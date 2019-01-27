@@ -83,7 +83,7 @@ class DefinitionReader {
           fieldResult.typeRestriction = this.getNumberValue(_.first(ctx.NumberLiteralToken));
         }
         if (_.has(ctx, "BoxMemberExpression")) {
-          fieldResult.arrayDefinition = this.visit(ctx.BoxMemberExpression);
+          fieldResult.arrayDefinition = this.visit(_.first(ctx.BoxMemberExpression));
         }
         return fieldResult;
       }
@@ -103,44 +103,67 @@ class DefinitionReader {
 
       Expression(ctx) {
         if (_.has(ctx, "AssignmentExpression")) {
-          return this.visit(ctx.AssignmentExpression);
+          return _.join(_.map(ctx.AssignmentExpression, this.visit.bind(this)), ", ");
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       AssignmentExpression(ctx) {
+        if (_.has(ctx, "QuestionToken")) {
+          return `${this.visit(ctx.BinaryExpression)} ? ${this.visit(
+            ctx.AssignmentExpression[0]
+          )} : ${this.visit(ctx.AssignmentExpression[1])}`;
+        }
         if (_.has(ctx, "BinaryExpression")) {
           return this.visit(ctx.BinaryExpression);
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       BinaryExpression(ctx) {
         if (_.has(ctx, "UnaryExpression")) {
-          return this.visit(ctx.UnaryExpression);
+          return _.join(
+            _.map(ctx.UnaryExpression, this.visit.bind(this)),
+            _.get(ctx[_.first(_.keys(ctx).filter(key => key !== "UnaryExpression"))], "image")
+          );
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       UnaryExpression(ctx) {
         if (_.has(ctx, "PostfixExpression")) {
           return this.visit(ctx.PostfixExpression);
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+        if (_.has(ctx, "DoublePlusToken") && _.has(ctx, "UnaryExpression")) {
+          return `++${this.visit(ctx.UnaryExpression)}`;
+        }
+        if (_.has(ctx, "DoubleMinusToken") && _.has(ctx, "UnaryExpression")) {
+          return `--${this.visit(ctx.UnaryExpression)}`;
+        }
+        if (_.has(ctx, "MinusToken") && _.has(ctx, "UnaryExpression")) {
+          return `-${this.visit(ctx.UnaryExpression)}`;
+        }
+        if (_.has(ctx, "TildaToken") && _.has(ctx, "UnaryExpression")) {
+          return `~${this.visit(ctx.UnaryExpression)}`;
+        }
+        if (_.has(ctx, "ExclamationToken") && _.has(ctx, "UnaryExpression")) {
+          return `!${this.visit(ctx.UnaryExpression)}`;
+        }
+        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       PostfixExpression(ctx) {
         if (_.has(ctx, "MemberCallNewExpression")) {
           return this.visit(ctx.MemberCallNewExpression);
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       MemberCallNewExpression(ctx) {
         if (_.has(ctx, "PrimaryExpression")) {
           return this.visit(ctx.PrimaryExpression);
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       PrimaryExpression(ctx) {
@@ -153,11 +176,27 @@ class DefinitionReader {
         if (_.has(ctx, "ParenthesisExpression")) {
           return this.visit(ctx.ParenthesisExpression);
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+        if (_.has(ctx, "ArrayLiteral")) {
+          return this.visit(ctx.ArrayLiteral);
+        }
+        if (_.has(ctx, "ObjectLiteral")) {
+          return this.visit(ctx.ObjectLiteral);
+        }
+        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
+      }
+
+      ArrayLiteral() {
+        // TODO: Improve?
+        return "[]";
+      }
+
+      ObjectLiteral() {
+        // TODO: Improve?
+        return "{}";
       }
 
       ParenthesisExpression(ctx) {
-        return this.visit(ctx.Expression);
+        return `(${this.visit(ctx.Expression)})`;
       }
 
       getIdentifierName(identifier) {

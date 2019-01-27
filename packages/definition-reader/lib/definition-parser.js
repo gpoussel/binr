@@ -99,7 +99,14 @@ class DefinitionParser extends chevrotain.Parser {
     $.RULE("ArrayLiteral", () => {
       $.CONSUME(tokens.BracketOpenToken);
       $.MANY(() => {
-        $.SUBRULE($.Elision);
+        $.OR([
+          {
+            ALT: () => $.SUBRULE($.ElementList),
+          },
+          {
+            ALT: () => $.SUBRULE($.Elision),
+          },
+        ]);
       });
       $.CONSUME(tokens.BracketCloseToken);
     });
@@ -188,7 +195,6 @@ class DefinitionParser extends chevrotain.Parser {
     $.RULE("PostfixExpression", () => {
       $.SUBRULE($.MemberCallNewExpression);
       $.OPTION({
-        GATE: this.noLineTerminatorHere,
         DEF: () => {
           $.OR([
             {
@@ -265,7 +271,16 @@ class DefinitionParser extends chevrotain.Parser {
                 ALT: () => $.CONSUME(tokens.TripleEqualsToken),
               },
               {
+                ALT: () => $.CONSUME(tokens.DifferentToken),
+              },
+              {
+                ALT: () => $.CONSUME(tokens.DoubleDifferentToken),
+              },
+              {
                 ALT: () => $.CONSUME(tokens.ShiftRightToken),
+              },
+              {
+                ALT: () => $.CONSUME(tokens.UnsignedShiftRightToken),
               },
               {
                 ALT: () => $.CONSUME(tokens.MultiplicationToken),
@@ -273,46 +288,8 @@ class DefinitionParser extends chevrotain.Parser {
               {
                 ALT: () => $.CONSUME(tokens.PlusToken),
               },
-            ])
-        );
-        $.SUBRULE2($.UnaryExpression);
-      });
-    });
-    $.RULE("BinaryExpressionNoIn", () => {
-      $.SUBRULE($.UnaryExpression);
-      $.MANY(() => {
-        $.OR(
-          $.c4 ||
-            ($.c4 = [
               {
-                ALT: () => $.CONSUME(tokens.BooleanOrToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.BooleanAndToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.BinaryOrToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.BinaryXorToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.BinaryAndToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.DoubleEqualsToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.TripleEqualsToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.ShiftRightToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.MultiplicationToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.PlusToken),
+                ALT: () => $.CONSUME(tokens.MinusToken),
               },
             ])
         );
@@ -320,7 +297,6 @@ class DefinitionParser extends chevrotain.Parser {
       });
     });
 
-    // See 11.13
     $.RULE("AssignmentExpression", () => {
       $.SUBRULE($.BinaryExpression);
       $.OPTION(() => {
@@ -331,18 +307,6 @@ class DefinitionParser extends chevrotain.Parser {
       });
     });
 
-    // See 11.13
-    $.RULE("AssignmentExpressionNoIn", () => {
-      $.SUBRULE($.BinaryExpressionNoIn);
-      $.OPTION(() => {
-        $.CONSUME(tokens.QuestionToken);
-        $.SUBRULE($.AssignmentExpression);
-        $.CONSUME(tokens.ColonToken);
-        $.SUBRULE2($.AssignmentExpressionNoIn);
-      });
-    });
-
-    // See 11.14
     $.RULE("Expression", () => {
       $.SUBRULE($.AssignmentExpression);
       $.MANY(() => {
@@ -351,14 +315,6 @@ class DefinitionParser extends chevrotain.Parser {
       });
     });
 
-    // See 11.14
-    $.RULE("ExpressionNoIn", () => {
-      $.SUBRULE($.AssignmentExpressionNoIn);
-      $.MANY(() => {
-        $.CONSUME(tokens.CommaToken);
-        $.SUBRULE2($.AssignmentExpressionNoIn);
-      });
-    });
     this.performSelfAnalysis();
   }
 }

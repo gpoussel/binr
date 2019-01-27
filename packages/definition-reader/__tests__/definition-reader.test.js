@@ -60,9 +60,9 @@ describe("DefinitionReader", () => {
     _.each(
       [
         "2+3",
-        "a",
+        "a, b",
         "b[0]",
-        "(1+2)*3",
+        "(1-2)*3",
         "a ? b : c",
         "(a && b) || 5",
         "((a && b) || c) ^ d",
@@ -70,9 +70,27 @@ describe("DefinitionReader", () => {
         "a & b",
         "a.b",
         "a(b,c)",
+        "a === b ? 1 : 0",
+        "a == b ? 1 : 0",
+        "a != b ? 1 : 0",
+        "a !== b ? 1 : 0",
+        "a++",
+        "a--",
+        "++a",
+        "--a",
+        "~1",
+        "!a",
+        "a>>1",
+        "a>>>b",
+        "-4",
+        "[][0]",
+        "[,a, c ]",
+        '{a:5, b:6,0:c,"_":1, }.a',
       ],
       value => {
-        expect(createAndCallParser(`struct a { int foo[${value}]; }`)()).toBeDefined();
+        const result = createAndCallParser(`struct a { int foo[${value}]; }`)();
+        expect(result).toBeDefined();
+        console.log(`${value}: ${_.first(_.first(result.structures).fields).type.size}`);
       }
     );
   });
