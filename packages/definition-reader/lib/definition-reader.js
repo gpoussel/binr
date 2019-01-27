@@ -1,6 +1,8 @@
 "use strict";
 
 const _ = require("lodash");
+const assert = require("assert");
+
 const { DefinitionLexer } = require("./definition-lexer");
 const DefinitionParser = require("./definition-parser");
 const DefinitionValidator = require("./definition-validator");
@@ -80,8 +82,8 @@ class DefinitionReader {
         if (_.has(ctx, "ColonToken")) {
           fieldResult.typeRestriction = this.getNumberValue(_.first(ctx.NumberLiteralToken));
         }
-        if (_.has(ctx, "arrayDefinitionClause")) {
-          fieldResult.arrayDefinition = this.visit(ctx.arrayDefinitionClause);
+        if (_.has(ctx, "BoxMemberExpression")) {
+          fieldResult.arrayDefinition = this.visit(ctx.BoxMemberExpression);
         }
         return fieldResult;
       }
@@ -94,12 +96,68 @@ class DefinitionReader {
         return parseInt(_.first(ctx.NumberLiteralToken).image, 10);
       }
 
-      arrayDefinitionClause(ctx) {
+      BoxMemberExpression(ctx) {
         // Number represents the array size
-        const size = _.get(ctx, "NumberLiteralToken");
-        return {
-          size,
-        };
+        return this.visit(ctx.Expression);
+      }
+
+      Expression(ctx) {
+        if (_.has(ctx, "AssignmentExpression")) {
+          return this.visit(ctx.AssignmentExpression);
+        }
+        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+      }
+
+      AssignmentExpression(ctx) {
+        if (_.has(ctx, "BinaryExpression")) {
+          return this.visit(ctx.BinaryExpression);
+        }
+        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+      }
+
+      BinaryExpression(ctx) {
+        if (_.has(ctx, "UnaryExpression")) {
+          return this.visit(ctx.UnaryExpression);
+        }
+        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+      }
+
+      UnaryExpression(ctx) {
+        if (_.has(ctx, "PostfixExpression")) {
+          return this.visit(ctx.PostfixExpression);
+        }
+        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+      }
+
+      PostfixExpression(ctx) {
+        if (_.has(ctx, "MemberCallNewExpression")) {
+          return this.visit(ctx.MemberCallNewExpression);
+        }
+        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+      }
+
+      MemberCallNewExpression(ctx) {
+        if (_.has(ctx, "PrimaryExpression")) {
+          return this.visit(ctx.PrimaryExpression);
+        }
+        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+      }
+
+      PrimaryExpression(ctx) {
+        if (_.has(ctx, "NumberLiteralToken")) {
+          return this.getNumberValue(_.first(ctx.NumberLiteralToken));
+        }
+        if (_.has(ctx, "IdentifierToken")) {
+          return this.getIdentifierName(_.first(ctx.IdentifierToken));
+        }
+        if (_.has(ctx, "ParenthesisExpression")) {
+          return this.visit(ctx.ParenthesisExpression);
+        }
+        assert(false, `Unexpected context: ${_.keys(ctx)}`);
+      }
+
+      ParenthesisExpression(ctx) {
+        return this.visit(ctx.Expression);
       }
 
       getIdentifierName(identifier) {

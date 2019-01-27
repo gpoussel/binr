@@ -56,6 +56,31 @@ describe("DefinitionReader", () => {
     });
   });
 
+  test("accepts expression", () => {
+    _.each(
+      [
+        "2+3",
+        "a",
+        "b[0]",
+        "(1+2)*3",
+        "a ? b : c",
+        "(a && b) || 5",
+        "((a && b) || c) ^ d",
+        "a | b",
+        "a & b",
+        "a.b",
+        "a(b,c)",
+      ],
+      value => {
+        expect(createAndCallParser(`struct a { int foo[${value}]; }`)()).toBeDefined();
+      }
+    );
+  });
+  test("rejects invalid expression", () => {
+    _.each(["+", "())"], value => {
+      expect(createAndCallParser(`struct a { int foo[${value}]; }`)).toThrow(/parsing/);
+    });
+  });
   test(`parses GIF format definition`, () => {
     const structure = fs.readFileSync(`${pathToFixtures}/gif.binr`, "utf-8");
     const result = createAndCallParser(structure)();

@@ -73,7 +73,7 @@ const symbolTokens = _.fromPairs(
       // Boolean operations
       BooleanAnd: "&&",
       BooleanOr: "||",
-      ExclamationMark: "!",
+      Exclamation: "!",
 
       // Bit-wise manipulation
       BinaryAnd: "&",
@@ -102,11 +102,12 @@ const symbolTokens = _.fromPairs(
 
       // Others
       Equals: "=",
-      QuestionMark: "?",
+      Question: "?",
       Period: ".",
       SemiColon: ";",
       Colon: ":",
       Hash: "#",
+      Comma: ",",
     },
     (keyword, name) => [
       `${name}Token`,
