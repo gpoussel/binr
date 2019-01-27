@@ -5,11 +5,14 @@ const assert = require("assert");
 
 const { StructureType } = require("@binr/definition-reader");
 const BufferWrapper = require("./buffer-wrapper");
+const VariableScope = require("./variable-scope");
 
 class BinaryReader {
   read(binaryBuffer, definition, providedStructureName = undefined) {
     assert(_.isObject(definition), "definition must be an object");
     assert(_.isBuffer(binaryBuffer), "binaryBuffer must be a buffer");
+
+    const globalScope = new VariableScope();
 
     let mainStructureName;
     if (_.isUndefined(providedStructureName)) {
@@ -29,7 +32,7 @@ class BinaryReader {
 
     const structureType = new StructureType(mainStructure);
     const bufferWrapper = new BufferWrapper(binaryBuffer, mainStructure.getEndianness());
-    return structureType.read(bufferWrapper);
+    return structureType.read(bufferWrapper, globalScope);
   }
 }
 

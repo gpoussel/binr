@@ -10,10 +10,12 @@ class StructureType extends Type {
     this.structure = structure;
   }
 
-  read(buffer) {
+  read(buffer, scope) {
     const value = {};
     _.each(this.structure.fields, field => {
-      value[field.name] = field.type.read(buffer);
+      const readValue = field.type.read(buffer, scope);
+      value[field.name] = readValue;
+      scope.put(field.name, readValue);
     });
     return value;
   }
