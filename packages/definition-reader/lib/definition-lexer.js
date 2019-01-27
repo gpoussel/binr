@@ -42,19 +42,19 @@ const NumberLiteralToken = createToken({
 const symbolTokens = _.fromPairs(
   _.map(
     {
-      SemiColonToken: ";",
-      ColonToken: ":",
-      DirectiveStartToken: "#",
-      EqualsToken: "=",
-      CurlyBraceOpenToken: "{",
-      CurlyBraceCloseToken: "}",
-      BracketOpenToken: "[",
-      BracketCloseToken: "]",
+      SemiColon: ";",
+      Colon: ":",
+      DirectiveStart: "#",
+      Equals: "=",
+      CurlyBraceOpen: "{",
+      CurlyBraceClose: "}",
+      BracketOpen: "[",
+      BracketClose: "]",
     },
     (keyword, name) => [
-      name,
+      `${name}Token`,
       createToken({
-        name,
+        name: `${name}Token`,
         pattern: new RegExp(escapeRegexp(keyword)),
         group: "symbol",
       }),
@@ -65,15 +65,15 @@ const symbolTokens = _.fromPairs(
 const keywordTokens = _.fromPairs(
   _.map(
     {
-      TrueToken: "true",
-      FalseToken: "false",
-      StructToken: "struct",
-      ExportToken: "export",
+      True: "true",
+      False: "false",
+      Struct: "struct",
+      Export: "export",
     },
     (keyword, name) => [
-      name,
+      `${name}Token`,
       createToken({
-        name,
+        name: `${name}Token`,
         pattern: new RegExp(escapeRegexp(keyword)),
         group: "keyword",
       }),
