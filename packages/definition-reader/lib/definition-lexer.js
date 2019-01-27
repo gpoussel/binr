@@ -2,6 +2,7 @@
 
 const _ = require("lodash");
 const chevrotain = require("chevrotain");
+const escapeRegexp = require("escape-string-regexp");
 
 const { createToken, Lexer } = chevrotain;
 
@@ -38,65 +39,47 @@ const NumberLiteralToken = createToken({
   pattern: /-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?/,
 });
 
-const SemiColonToken = createToken({
-  name: "SemiColonToken",
-  pattern: /;/,
-});
+const symbolTokens = _.fromPairs(
+  _.map(
+    {
+      SemiColonToken: ";",
+      ColonToken: ":",
+      DirectiveStartToken: "#",
+      EqualsToken: "=",
+      CurlyBraceOpenToken: "{",
+      CurlyBraceCloseToken: "}",
+      BracketOpenToken: "[",
+      BracketCloseToken: "]",
+    },
+    (keyword, name) => [
+      name,
+      createToken({
+        name,
+        pattern: new RegExp(escapeRegexp(keyword)),
+        group: "symbol",
+      }),
+    ]
+  )
+);
 
-const ColonToken = createToken({
-  name: "ColonToken",
-  pattern: /:/,
-});
-
-const DirectiveStartToken = createToken({
-  name: "DirectiveStartToken",
-  pattern: /#/,
-});
-
-const EqualsToken = createToken({
-  name: "EqualsToken",
-  pattern: /=/,
-});
-
-const CurlyBraceOpenToken = createToken({
-  name: "CurlyBraceOpenToken",
-  pattern: /{/,
-});
-
-const CurlyBraceCloseToken = createToken({
-  name: "CurlyBraceCloseToken",
-  pattern: /}/,
-});
-
-const BracketOpenToken = createToken({
-  name: "BracketOpenToken",
-  pattern: /\[/,
-});
-
-const BracketCloseToken = createToken({
-  name: "BracketCloseToken",
-  pattern: /\]/,
-});
-
-const TrueToken = createToken({
-  name: "TrueToken",
-  pattern: /true/,
-});
-
-const FalseToken = createToken({
-  name: "FalseToken",
-  pattern: /false/,
-});
-
-const StructToken = createToken({
-  name: "StructToken",
-  pattern: /struct/,
-});
-
-const ExportToken = createToken({
-  name: "ExportToken",
-  pattern: /export/,
-});
+const keywordTokens = _.fromPairs(
+  _.map(
+    {
+      TrueToken: "true",
+      FalseToken: "false",
+      StructToken: "struct",
+      ExportToken: "export",
+    },
+    (keyword, name) => [
+      name,
+      createToken({
+        name,
+        pattern: new RegExp(escapeRegexp(keyword)),
+        group: "keyword",
+      }),
+    ]
+  )
+);
 
 const tokens = {
   // Whitespaces
@@ -107,20 +90,10 @@ const tokens = {
   MultiLineCommentToken,
 
   // Symbols
-  SemiColonToken,
-  ColonToken,
-  DirectiveStartToken,
-  EqualsToken,
-  CurlyBraceOpenToken,
-  CurlyBraceCloseToken,
-  BracketOpenToken,
-  BracketCloseToken,
+  ...symbolTokens,
 
   // Keywords
-  TrueToken,
-  FalseToken,
-  StructToken,
-  ExportToken,
+  ...keywordTokens,
 
   // Identifiers
   IdentifierToken,
