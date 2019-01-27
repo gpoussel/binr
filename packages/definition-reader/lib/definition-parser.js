@@ -22,7 +22,7 @@ class DefinitionParser extends chevrotain.Parser {
     });
 
     $.RULE("headerClause", () => {
-      $.CONSUME(tokens.DirectiveStartToken);
+      $.CONSUME(tokens.HashToken);
       $.CONSUME(tokens.IdentifierToken);
       $.SUBRULE($.valueClause);
     });

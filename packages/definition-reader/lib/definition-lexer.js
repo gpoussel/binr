@@ -42,16 +42,71 @@ const NumberLiteralToken = createToken({
 const symbolTokens = _.fromPairs(
   _.map(
     {
-      SemiColon: ";",
-      Colon: ":",
-      DirectiveStart: "#",
-      Equals: "=",
+      // Assignment operators
+      MultiplicationEquals: "*=",
+      DivisionEquals: "/=",
+      ModuloEquals: "%=",
+      PlusEquals: "+=",
+      MinusEquals: "-=",
+      ShiftLeftEquals: "<<=",
+      ShiftRightEquals: ">>=",
+      UnsignedShiftRightEquals: ">>>=",
+      BinaryAndEquals: "&=",
+      BinaryXorEquals: "^=",
+      BinaryOrEquals: "|=",
+
+      // Bit-wise shift operations
+      UnsignedShiftRight: ">>>",
+      ShiftLeft: "<<",
+      ShiftRight: ">>",
+
+      // Comparison token
+      TripleEquals: "===",
+      DoubleEquals: "==",
+      DoubleDifferent: "!==",
+      Different: "!=",
+      GreaterOrEqual: ">=",
+      LessOrEqual: "<=",
+      Greater: ">",
+      Less: "<",
+
+      // Boolean operations
+      BooleanAnd: "&&",
+      BooleanOr: "||",
+      ExclamationMark: "!",
+
+      // Bit-wise manipulation
+      BinaryAnd: "&",
+      BinaryOr: "|",
+      BinaryXor: "^",
+      Tilda: "~",
+
+      // Parenthesis, brackets, etc.
       CurlyBraceOpen: "{",
       CurlyBraceClose: "}",
       BracketOpen: "[",
       BracketClose: "]",
       ParenthesisOpen: "(",
       ParenthesisClose: ")",
+
+      // Increment and decrement
+      DoublePlus: "++",
+      DoubleMinus: "--",
+
+      // Math operators
+      Plus: "+",
+      Minus: "-",
+      Multiplication: "*",
+      Division: "/",
+      Modulo: "%",
+
+      // Others
+      Equals: "=",
+      QuestionMark: "?",
+      Period: ".",
+      SemiColon: ";",
+      Colon: ":",
+      Hash: "#",
     },
     (keyword, name) => [
       `${name}Token`,
