@@ -16,6 +16,7 @@ class ArrayType extends Type {
 
   read(buffer, scope) {
     let numericSize;
+    console.log(this.size);
     if (_.isNumber(this.size)) {
       numericSize = this.size;
     } else if (_.isString(this.size)) {

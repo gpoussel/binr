@@ -4,6 +4,7 @@ const fs = require("fs");
 const _ = require("lodash");
 const DefinitionReader = require("../lib/definition-reader");
 const { Definition } = require("@binr/model");
+const { VariableScope } = require("@binr/shared");
 
 const pathToFixtures = `${__dirname}/../__fixtures__/`;
 
@@ -60,24 +61,19 @@ describe("DefinitionReader", () => {
     _.each(
       [
         "2+3",
-        "a, b",
-        "b[0].c",
+        "ar[0].c",
         "(1-2)*3",
         "a ? b : c",
         "(a && b) || 5",
         "((a && b) || c) ^ d",
         "a | b",
         "a & b",
-        "a.b",
-        "a(b,c)",
+        "ob.b",
+        "f(b,c)",
         "a === b ? 1 : 0",
         "a == b ? 1 : 0",
         "a != b ? 1 : 0",
         "a !== b ? 1 : 0",
-        "a++",
-        "a--",
-        "++a",
-        "--a",
         "~1",
         "!a",
         "a>>1",
@@ -85,15 +81,24 @@ describe("DefinitionReader", () => {
         "-4",
         "[][0]",
         "[,a, c ]",
-        '{a:5, b:6,0:c,"_":1, }.a',
       ],
       value => {
         const result = createAndCallParser(`struct a { int foo[${value}]; }`)();
         expect(result).toBeDefined();
-        const resultSize = _.first(_.first(result.structures).fields).type.size;
-        if (_.replace(value, / /g, "") !== _.replace(resultSize, / /g, "")) {
-          console.log(`${value}: ${resultSize}`);
-        }
+        const resultFn = _.first(_.first(result.structures).fields).type.size;
+        const scope = new VariableScope();
+        scope.put("a", 1);
+        scope.put("b", 11);
+        scope.put("c", 5);
+        scope.put("d", 3);
+        scope.put("ar", [{ c: 1 }]);
+        scope.put("ob", { b: 4 });
+        scope.put("f", () => 1);
+        expect(resultFn).toBeInstanceOf(Function);
+
+        const size = resultFn(scope);
+        console.log(`size = ${size}`);
+        expect(size).toBeDefined();
       }
     );
   });

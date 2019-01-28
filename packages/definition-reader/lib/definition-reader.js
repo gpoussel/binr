@@ -1,7 +1,6 @@
 "use strict";
 
 const _ = require("lodash");
-const assert = require("assert");
 
 const { DefinitionLexer } = require("./definition-lexer");
 const DefinitionParser = require("./definition-parser");

@@ -2,9 +2,14 @@
 
 const _ = require("lodash");
 const { Definition, Field, Structure } = require("@binr/model");
+const ExpressionConverter = require("./expression-converter");
 const { builtInTypes, StructureType, ArrayType } = require("./types");
 
 class DefinitionBuilder {
+  constructor() {
+    this.converter = new ExpressionConverter();
+  }
+
   build(ast) {
     const structures = _.map(ast.structures, s => this.buildStructure(ast.structures, s));
     return new Definition(structures);
@@ -24,7 +29,12 @@ class DefinitionBuilder {
       type = new StructureType(_.find(structures, s => s.name === field.type));
     }
     if (_.has(field, "arrayDefinition")) {
-      type = new ArrayType(type, field.arrayDefinition);
+      const definitionCode = `(function(variableScope) { return ${this.converter.convert(
+        field.arrayDefinition
+      )} })`;
+      console.log(definitionCode);
+      // eslint-disable-next-line no-eval
+      type = new ArrayType(type, eval(definitionCode));
     }
     return new Field(field.name, type);
   }

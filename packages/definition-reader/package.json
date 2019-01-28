@@ -31,6 +31,9 @@
     "@binr/shared": "^1.0.0",
     "chevrotain": "^4.1.1",
     "escape-string-regexp": "^1.0.5",
+    "escodegen": "^1.11.0",
+    "esprima": "^4.0.1",
+    "estraverse": "^4.2.0",
     "lodash": "^4.17.11",
     "lodash-inflection": "^1.5.0"
   }
