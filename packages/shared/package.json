@@ -7,7 +7,8 @@
   "license": "MIT",
   "main": "index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "test": "__tests__"
   },
   "files": [
     "index.js",

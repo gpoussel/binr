@@ -29,10 +29,6 @@ class BufferWrapper {
     if (_.includes([16, 32], length)) {
       return this.readAndIncrementOffset(length, "readUInt");
     }
-    if (length === 24) {
-      const bytes = this.readBytes(3);
-      return (bytes[this.isBigEndian() ? 0 : 2] << 16) | (bytes[1] << 8) | bytes[this.isBigEndian() ? 2 : 0];
-    }
     assert(false, `length = ${length} not supported`);
   }
 
@@ -42,14 +38,6 @@ class BufferWrapper {
     }
     if (_.includes([16, 32], length)) {
       return this.readAndIncrementOffset(length, "readInt");
-    }
-    if (length === 24) {
-      const uintValue = this.readUint(length);
-      const negative = uintValue & 0x800000;
-      if (!negative) {
-        return uintValue;
-      }
-      return -(0xffffff - uintValue + 1);
     }
     assert(false, `length = ${length} not supported`);
   }
