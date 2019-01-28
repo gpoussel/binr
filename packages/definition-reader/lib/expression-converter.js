@@ -15,48 +15,51 @@ class ExpressionConverter {
         if (node.generated === true) {
           return estraverse.VisitorOption.Skip;
         }
-        if (node.type === "MemberExpression") {
+        if (node.type === esprima.Syntax.MemberExpression) {
           const leftPart = node.object;
-          if (leftPart.type === "Identifier") {
+          if (leftPart.type === esprima.Syntax.Identifier) {
             node.object = this.generateVariableScopeGetNode(leftPart.name);
           }
-        } else if (node.type === "ConditionalExpression") {
-          if (node.test.type === "Identifier") {
+        } else if (node.type === esprima.Syntax.ConditionalExpression) {
+          if (node.test.type === esprima.Syntax.Identifier) {
             node.test = this.generateVariableScopeGetNode(node.test.name);
           }
-          if (node.consequent.type === "Identifier") {
+          if (node.consequent.type === esprima.Syntax.Identifier) {
             node.consequent = this.generateVariableScopeGetNode(node.consequent.name);
           }
-          if (node.alternate.type === "Identifier") {
+          if (node.alternate.type === esprima.Syntax.Identifier) {
             node.alternate = this.generateVariableScopeGetNode(node.alternate.name);
           }
-        } else if (node.type === "LogicalExpression" || node.type === "BinaryExpression") {
-          if (node.left.type === "Identifier") {
+        } else if (
+          node.type === esprima.Syntax.LogicalExpression ||
+          node.type === esprima.Syntax.BinaryExpression
+        ) {
+          if (node.left.type === esprima.Syntax.Identifier) {
             node.left = this.generateVariableScopeGetNode(node.left.name);
           }
-          if (node.right.type === "Identifier") {
+          if (node.right.type === esprima.Syntax.Identifier) {
             node.right = this.generateVariableScopeGetNode(node.right.name);
           }
-        } else if (node.type === "UnaryExpression") {
-          if (node.argument.type === "Identifier") {
+        } else if (node.type === esprima.Syntax.UnaryExpression) {
+          if (node.argument.type === esprima.Syntax.Identifier) {
             node.argument = this.generateVariableScopeGetNode(node.argument.name);
           }
-        } else if (node.type === "CallExpression") {
-          if (node.callee.type === "Identifier") {
+        } else if (node.type === esprima.Syntax.CallExpression) {
+          if (node.callee.type === esprima.Syntax.Identifier) {
             node.callee = this.generateVariableScopeGetNode(node.callee.name);
           }
           _.times(_.size(node.arguments), i => {
-            if (node.arguments[i].type === "Identifier") {
+            if (node.arguments[i].type === esprima.Syntax.Identifier) {
               node.arguments[i] = this.generateVariableScopeGetNode(node.arguments[i].name);
             }
           });
-        } else if (node.type === "ArrayExpression") {
+        } else if (node.type === esprima.Syntax.ArrayExpression) {
           _.times(_.size(node.elements), i => {
-            if (node.elements[i] && node.elements[i].type === "Identifier") {
+            if (node.elements[i] && node.elements[i].type === esprima.Syntax.Identifier) {
               node.elements[i] = this.generateVariableScopeGetNode(node.elements[i].name);
             }
           });
-        } else if (node.type === "UpdateExpression") {
+        } else if (node.type === esprima.Syntax.UpdateExpression) {
           throw new Error("UpdateExpression are not supported");
         }
       },
@@ -71,22 +74,22 @@ class ExpressionConverter {
 
   generateGetNode(objectName, propertyName) {
     return {
-      type: "CallExpression",
+      type: esprima.Syntax.CallExpression,
       callee: {
-        type: "MemberExpression",
+        type: esprima.Syntax.MemberExpression,
         generated: true,
         object: {
-          type: "Identifier",
+          type: esprima.Syntax.Identifier,
           name: objectName,
         },
         property: {
-          type: "Identifier",
+          type: esprima.Syntax.Identifier,
           name: "get",
         },
       },
       arguments: [
         {
-          type: "Literal",
+          type: esprima.Syntax.Literal,
           value: propertyName,
         },
       ],
