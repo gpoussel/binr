@@ -98,24 +98,26 @@ class DefinitionParser extends chevrotain.Parser {
     });
     $.RULE("ArrayLiteral", () => {
       $.CONSUME(tokens.BracketOpenToken);
-      $.MANY(() => {
-        $.OR([
-          {
-            ALT: () => $.SUBRULE($.ElementList),
-          },
-          {
-            ALT: () => $.SUBRULE($.Elision),
-          },
-        ]);
-      });
+      $.MANY(() => $.SUBRULE($.ArrayLiteralContent));
       $.CONSUME(tokens.BracketCloseToken);
+    });
+    $.RULE("ArrayLiteralContent", () => {
+      $.OR([
+        {
+          ALT: () => $.SUBRULE($.ElementList),
+        },
+        {
+          ALT: () => $.SUBRULE($.Elision),
+        },
+      ]);
     });
     $.RULE("ElementList", () => {
       $.SUBRULE($.AssignmentExpression);
-      $.MANY(() => {
-        $.SUBRULE2($.Elision);
-        $.SUBRULE2($.AssignmentExpression);
-      });
+      $.MANY(() => $.SUBRULE($.ElementListEntry));
+    });
+    $.RULE("ElementListEntry", () => {
+      $.SUBRULE2($.Elision);
+      $.SUBRULE2($.AssignmentExpression);
     });
     $.RULE("Elision", () => {
       $.AT_LEAST_ONE(() => {

@@ -216,9 +216,34 @@ class DefinitionReader {
         assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
-      ArrayLiteral() {
-        // TODO: Improve?
-        return "[]";
+      ArrayLiteral(ctx) {
+        return `[${_.join(_.map(ctx.ArrayLiteralContent, this.visit.bind(this)), "")}]`;
+      }
+
+      ArrayLiteralContent(ctx) {
+        if (_.has(ctx, "ElementList")) {
+          return this.visit(ctx.ElementList);
+        }
+        if (_.has(ctx, "Elision")) {
+          return this.visit(ctx.Elision);
+        }
+        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
+      }
+
+      ElementList(ctx) {
+        const firstElement = this.visit(ctx.AssignmentExpression);
+        const otherElements = _.join(_.map(ctx.ElementListEntry, this.visit.bind(this)), "");
+        return firstElement + otherElements;
+      }
+
+      ElementListEntry(ctx) {
+        const elision = this.visit(ctx.Elision);
+        const entry = this.visit(ctx.AssignmentExpression);
+        return elision + entry;
+      }
+
+      Elision(ctx) {
+        return _.repeat(",", _.size(ctx.CommaToken));
       }
 
       ObjectLiteral() {
