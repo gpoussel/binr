@@ -83,9 +83,6 @@ class DefinitionParser extends chevrotain.Parser {
               ALT: () => $.SUBRULE($.ArrayLiteral),
             },
             {
-              ALT: () => $.SUBRULE($.ObjectLiteral),
-            },
-            {
               ALT: () => $.SUBRULE($.ParenthesisExpression),
             },
           ])
@@ -124,42 +121,6 @@ class DefinitionParser extends chevrotain.Parser {
         $.CONSUME(tokens.CommaToken);
       });
     });
-    $.RULE("ObjectLiteral", () => {
-      $.CONSUME(tokens.CurlyBraceOpenToken);
-      $.OPTION(() => {
-        $.SUBRULE($.PropertyAssignment);
-        $.MANY(() => {
-          $.SUBRULE($.ObjectLiteralContent);
-        });
-        $.OPTION2(() => {
-          $.CONSUME2(tokens.CommaToken);
-        });
-      });
-      $.CONSUME(tokens.CurlyBraceCloseToken);
-    });
-    $.RULE("ObjectLiteralContent", () => {
-      $.CONSUME(tokens.CommaToken);
-      $.SUBRULE2($.PropertyAssignment);
-    });
-    $.RULE("PropertyAssignment", () => {
-      $.SUBRULE($.PropertyName);
-      $.CONSUME(tokens.ColonToken);
-      $.SUBRULE($.AssignmentExpression);
-    });
-    $.RULE("PropertyName", () => {
-      $.OR([
-        {
-          ALT: () => $.CONSUME(tokens.IdentifierToken),
-        },
-        {
-          ALT: () => $.CONSUME(tokens.StringLiteralToken),
-        },
-        {
-          ALT: () => $.CONSUME(tokens.NumberLiteralToken),
-        },
-      ]);
-    });
-
     $.RULE("MemberCallNewExpression", () => {
       $.SUBRULE($.PrimaryExpression);
       $.MANY2(() => {

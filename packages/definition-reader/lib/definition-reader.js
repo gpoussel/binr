@@ -131,22 +131,22 @@ class DefinitionReader {
         if (_.has(ctx, "PostfixExpression")) {
           return this.visit(ctx.PostfixExpression);
         }
-        if (_.has(ctx, "DoublePlusToken") && _.has(ctx, "UnaryExpression")) {
+        if (_.has(ctx, "DoublePlusToken")) {
           return `++${this.visit(ctx.UnaryExpression)}`;
         }
-        if (_.has(ctx, "DoubleMinusToken") && _.has(ctx, "UnaryExpression")) {
+        if (_.has(ctx, "DoubleMinusToken")) {
           return `--${this.visit(ctx.UnaryExpression)}`;
         }
-        if (_.has(ctx, "PlusToken") && _.has(ctx, "UnaryExpression")) {
+        if (_.has(ctx, "PlusToken")) {
           return `+${this.visit(ctx.UnaryExpression)}`;
         }
-        if (_.has(ctx, "MinusToken") && _.has(ctx, "UnaryExpression")) {
+        if (_.has(ctx, "MinusToken")) {
           return `-${this.visit(ctx.UnaryExpression)}`;
         }
-        if (_.has(ctx, "TildaToken") && _.has(ctx, "UnaryExpression")) {
+        if (_.has(ctx, "TildaToken")) {
           return `~${this.visit(ctx.UnaryExpression)}`;
         }
-        if (_.has(ctx, "ExclamationToken") && _.has(ctx, "UnaryExpression")) {
+        if (_.has(ctx, "ExclamationToken")) {
           return `!${this.visit(ctx.UnaryExpression)}`;
         }
       }
@@ -203,9 +203,6 @@ class DefinitionReader {
         if (_.has(ctx, "ArrayLiteral")) {
           return this.visit(ctx.ArrayLiteral);
         }
-        if (_.has(ctx, "ObjectLiteral")) {
-          return this.visit(ctx.ObjectLiteral);
-        }
       }
 
       ArrayLiteral(ctx) {
@@ -235,39 +232,6 @@ class DefinitionReader {
 
       Elision(ctx) {
         return _.repeat(",", _.size(ctx.CommaToken));
-      }
-
-      ObjectLiteral(ctx) {
-        if (!_.has(ctx, "PropertyAssignment")) {
-          // Object is empty
-          return "{}";
-        }
-        const firstValue = this.visit(ctx.PropertyAssignment);
-        const otherValues = _.join(_.map(ctx.ObjectLiteralContent, this.visit.bind(this)), "");
-        const trailingComma = _.has(ctx, "CommaToken") ? "," : "";
-        return `{${firstValue}${otherValues}${trailingComma}}`;
-      }
-
-      ObjectLiteralContent(ctx) {
-        return `,${this.visit(ctx.PropertyAssignment)}`;
-      }
-
-      PropertyAssignment(ctx) {
-        const name = this.visit(ctx.PropertyName);
-        const expression = this.visit(ctx.AssignmentExpression);
-        return `${name}:${expression}`;
-      }
-
-      PropertyName(ctx) {
-        if (_.has(ctx, "IdentifierToken")) {
-          return this.getIdentifierName(_.first(ctx.IdentifierToken));
-        }
-        if (_.has(ctx, "StringLiteralToken")) {
-          return _.first(ctx.StringLiteralToken).image;
-        }
-        if (_.has(ctx, "NumberLiteralToken")) {
-          return this.getNumberValue(_.first(ctx.NumberLiteralToken));
-        }
       }
 
       ParenthesisExpression(ctx) {
