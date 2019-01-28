@@ -158,18 +158,21 @@ class DefinitionParser extends chevrotain.Parser {
     $.RULE("MemberCallNewExpression", () => {
       $.SUBRULE($.PrimaryExpression);
       $.MANY2(() => {
-        $.OR2([
-          {
-            ALT: () => $.SUBRULE($.BoxMemberExpression),
-          },
-          {
-            ALT: () => $.SUBRULE($.DotMemberExpression),
-          },
-          {
-            ALT: () => $.SUBRULE($.Arguments),
-          },
-        ]);
+        $.SUBRULE($.MemberCallNewExpressionExtension);
       });
+    });
+    $.RULE("MemberCallNewExpressionExtension", () => {
+      $.OR2([
+        {
+          ALT: () => $.SUBRULE($.BoxMemberExpression),
+        },
+        {
+          ALT: () => $.SUBRULE($.DotMemberExpression),
+        },
+        {
+          ALT: () => $.SUBRULE($.Arguments),
+        },
+      ]);
     });
     $.RULE("BoxMemberExpression", () => {
       $.CONSUME(tokens.BracketOpenToken);

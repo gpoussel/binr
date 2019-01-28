@@ -61,7 +61,7 @@ describe("DefinitionReader", () => {
       [
         "2+3",
         "a, b",
-        "b[0]",
+        "b[0].c",
         "(1-2)*3",
         "a ? b : c",
         "(a && b) || 5",
@@ -90,7 +90,10 @@ describe("DefinitionReader", () => {
       value => {
         const result = createAndCallParser(`struct a { int foo[${value}]; }`)();
         expect(result).toBeDefined();
-        console.log(`${value}: ${_.first(_.first(result.structures).fields).type.size}`);
+        const resultSize = _.first(_.first(result.structures).fields).type.size;
+        if (_.replace(value, / /g, "") !== _.replace(resultSize, / /g, "")) {
+          console.log(`${value}: ${resultSize}`);
+        }
       }
     );
   });

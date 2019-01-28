@@ -83,7 +83,8 @@ class DefinitionReader {
           fieldResult.typeRestriction = this.getNumberValue(_.first(ctx.NumberLiteralToken));
         }
         if (_.has(ctx, "BoxMemberExpression")) {
-          fieldResult.arrayDefinition = this.visit(_.first(ctx.BoxMemberExpression));
+          const boxMemberDefinition = this.visit(_.first(ctx.BoxMemberExpression));
+          fieldResult.arrayDefinition = boxMemberDefinition.substr(1, boxMemberDefinition.length - 2);
         }
         return fieldResult;
       }
@@ -97,8 +98,7 @@ class DefinitionReader {
       }
 
       BoxMemberExpression(ctx) {
-        // Number represents the array size
-        return this.visit(ctx.Expression);
+        return `[${this.visit(ctx.Expression)}]`;
       }
 
       Expression(ctx) {
@@ -110,9 +110,8 @@ class DefinitionReader {
 
       AssignmentExpression(ctx) {
         if (_.has(ctx, "QuestionToken")) {
-          return `${this.visit(ctx.BinaryExpression)} ? ${this.visit(
-            ctx.AssignmentExpression[0]
-          )} : ${this.visit(ctx.AssignmentExpression[1])}`;
+          const ifElseClause = _.map(ctx.AssignmentExpression, this.visit.bind(this)).join(" : ");
+          return `${this.visit(ctx.BinaryExpression)} ? ${ifElseClause}`;
         }
         if (_.has(ctx, "BinaryExpression")) {
           return this.visit(ctx.BinaryExpression);
@@ -122,10 +121,12 @@ class DefinitionReader {
 
       BinaryExpression(ctx) {
         if (_.has(ctx, "UnaryExpression")) {
-          return _.join(
-            _.map(ctx.UnaryExpression, this.visit.bind(this)),
-            _.get(ctx[_.first(_.keys(ctx).filter(key => key !== "UnaryExpression"))], "image")
-          );
+          const operator = _.first(_.keys(ctx).filter(key => key !== "UnaryExpression"));
+          const expressions = _.map(ctx.UnaryExpression, this.visit.bind(this));
+          if (_.isUndefined(operator)) {
+            return expressions;
+          }
+          return _.join(expressions, _.get(_.first(ctx[operator]), "image"));
         }
         assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
@@ -139,6 +140,9 @@ class DefinitionReader {
         }
         if (_.has(ctx, "DoubleMinusToken") && _.has(ctx, "UnaryExpression")) {
           return `--${this.visit(ctx.UnaryExpression)}`;
+        }
+        if (_.has(ctx, "PlusToken") && _.has(ctx, "UnaryExpression")) {
+          return `+${this.visit(ctx.UnaryExpression)}`;
         }
         if (_.has(ctx, "MinusToken") && _.has(ctx, "UnaryExpression")) {
           return `-${this.visit(ctx.UnaryExpression)}`;
@@ -154,16 +158,43 @@ class DefinitionReader {
 
       PostfixExpression(ctx) {
         if (_.has(ctx, "MemberCallNewExpression")) {
-          return this.visit(ctx.MemberCallNewExpression);
+          const plusPlusSuffix = _.has(ctx, "DoublePlusToken") ? "++" : "";
+          const minusMinusSuffix = _.has(ctx, "DoubleMinusToken") ? "--" : "";
+          return this.visit(ctx.MemberCallNewExpression) + plusPlusSuffix + minusMinusSuffix;
         }
         assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       MemberCallNewExpression(ctx) {
         if (_.has(ctx, "PrimaryExpression")) {
-          return this.visit(ctx.PrimaryExpression);
+          return (
+            this.visit(ctx.PrimaryExpression) +
+            _.join(_.map(ctx.MemberCallNewExpressionExtension, this.visit.bind(this)), "")
+          );
         }
         assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
+      }
+
+      MemberCallNewExpressionExtension(ctx) {
+        if (_.has(ctx, "BoxMemberExpression")) {
+          return this.visit(ctx.BoxMemberExpression);
+        }
+        if (_.has(ctx, "DotMemberExpression")) {
+          return this.visit(ctx.DotMemberExpression);
+        }
+        if (_.has(ctx, "Arguments")) {
+          return this.visit(ctx.Arguments);
+        }
+      }
+
+      Arguments(ctx) {
+        return `(${_.join(_.map(ctx.AssignmentExpression, this.visit.bind(this)))})`;
+      }
+
+      DotMemberExpression(ctx) {
+        if (_.has(ctx, "IdentifierToken")) {
+          return `.${this.getIdentifierName(_.first(ctx.IdentifierToken))}`;
+        }
       }
 
       PrimaryExpression(ctx) {
