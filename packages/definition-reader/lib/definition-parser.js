@@ -129,14 +129,17 @@ class DefinitionParser extends chevrotain.Parser {
       $.OPTION(() => {
         $.SUBRULE($.PropertyAssignment);
         $.MANY(() => {
-          $.CONSUME(tokens.CommaToken);
-          $.SUBRULE2($.PropertyAssignment);
+          $.SUBRULE($.ObjectLiteralContent);
         });
         $.OPTION2(() => {
           $.CONSUME2(tokens.CommaToken);
         });
       });
       $.CONSUME(tokens.CurlyBraceCloseToken);
+    });
+    $.RULE("ObjectLiteralContent", () => {
+      $.CONSUME(tokens.CommaToken);
+      $.SUBRULE2($.PropertyAssignment);
     });
     $.RULE("PropertyAssignment", () => {
       $.SUBRULE($.PropertyName);

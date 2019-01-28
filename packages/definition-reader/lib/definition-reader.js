@@ -246,9 +246,37 @@ class DefinitionReader {
         return _.repeat(",", _.size(ctx.CommaToken));
       }
 
-      ObjectLiteral() {
-        // TODO: Improve?
-        return "{}";
+      ObjectLiteral(ctx) {
+        if (!_.has(ctx, "PropertyAssignment")) {
+          // Object is empty
+          return "{}";
+        }
+        const firstValue = this.visit(ctx.PropertyAssignment);
+        const otherValues = _.join(_.map(ctx.ObjectLiteralContent, this.visit.bind(this)), "");
+        const trailingComma = _.has(ctx, "CommaToken") ? "," : "";
+        return `{${firstValue}${otherValues}${trailingComma}}`;
+      }
+
+      ObjectLiteralContent(ctx) {
+        return `,${this.visit(ctx.PropertyAssignment)}`;
+      }
+
+      PropertyAssignment(ctx) {
+        const name = this.visit(ctx.PropertyName);
+        const expression = this.visit(ctx.AssignmentExpression);
+        return `${name}:${expression}`;
+      }
+
+      PropertyName(ctx) {
+        if (_.has(ctx, "IdentifierToken")) {
+          return this.getIdentifierName(_.first(ctx.IdentifierToken));
+        }
+        if (_.has(ctx, "StringLiteralToken")) {
+          return _.first(ctx.StringLiteralToken).image;
+        }
+        if (_.has(ctx, "NumberLiteralToken")) {
+          return this.getNumberValue(_.first(ctx.NumberLiteralToken));
+        }
       }
 
       ParenthesisExpression(ctx) {
