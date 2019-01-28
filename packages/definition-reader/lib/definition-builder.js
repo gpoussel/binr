@@ -32,7 +32,8 @@ class DefinitionBuilder {
       const definitionCode = `(function(variableScope) { return ${this.converter.convert(
         field.arrayDefinition
       )} })`;
-      console.log(definitionCode);
+      // TODO: Find a better way of evaluating expressions
+      // I think eval() raises some security concerns, but that's fine for now
       // eslint-disable-next-line no-eval
       type = new ArrayType(type, eval(definitionCode));
     }

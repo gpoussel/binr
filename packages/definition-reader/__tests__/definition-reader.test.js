@@ -79,8 +79,8 @@ describe("DefinitionReader", () => {
         "a>>1",
         "a>>>b",
         "-4",
-        "[][0]",
-        "[,a, c ]",
+        "[1][0]",
+        "[,a, c ][1]",
       ],
       value => {
         const result = createAndCallParser(`struct a { int foo[${value}]; }`)();
@@ -91,13 +91,18 @@ describe("DefinitionReader", () => {
         scope.put("b", 11);
         scope.put("c", 5);
         scope.put("d", 3);
-        scope.put("ar", [{ c: 1 }]);
-        scope.put("ob", { b: 4 });
+        scope.put("ar", [
+          {
+            c: 1,
+          },
+        ]);
+        scope.put("ob", {
+          b: 4,
+        });
         scope.put("f", () => 1);
         expect(resultFn).toBeInstanceOf(Function);
 
         const size = resultFn(scope);
-        console.log(`size = ${size}`);
         expect(size).toBeDefined();
       }
     );

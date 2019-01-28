@@ -29,14 +29,12 @@ describe("ExpressionConverter", () => {
         "a>>1",
         "a>>>b",
         "-4",
-        "[][0]",
-        "[,a, c ]",
+        "[1][0]",
+        "[,a, c ][1]",
       ],
       entry => {
         const result = converter.convert(entry);
         expect(result).toBeDefined();
-        // console.log(`before: ${entry}`);
-        // console.log(`after: ${converter.convert(entry)}`);
       }
     );
   });
