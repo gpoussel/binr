@@ -85,7 +85,7 @@ describe("DefinitionReader", () => {
       value => {
         const result = createAndCallParser(`struct a { int foo[${value}]; }`)();
         expect(result).toBeDefined();
-        const resultFn = _.first(_.first(result.structures).fields).type.size;
+        const resultFn = _.first(_.first(result.structures).fields).type.sizeExpression;
         const scope = new VariableScope();
         scope.put("a", 1);
         scope.put("b", 11);
@@ -100,9 +100,10 @@ describe("DefinitionReader", () => {
           b: 4,
         });
         scope.put("f", () => 1);
-        expect(resultFn).toBeInstanceOf(Function);
+        expect(resultFn).toBeDefined();
 
-        const size = resultFn(scope);
+        // eslint-disable-next-line no-eval
+        const size = eval(resultFn)(scope);
         expect(size).toBeDefined();
       }
     );

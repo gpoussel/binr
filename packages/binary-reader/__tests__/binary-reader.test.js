@@ -24,8 +24,8 @@ function getGifDefinition() {
   ]);
   logicalScreenStructure.setEndianness("little");
   const headerStructure = new Structure("header", [
-    new Field("signature", new ArrayType(new CharType(), 3)),
-    new Field("version", new ArrayType(new CharType(), 3)),
+    new Field("signature", new ArrayType(new CharType(), "(function() { return 3; })")),
+    new Field("version", new ArrayType(new CharType(), "(function() { return 3; })")),
   ]);
   headerStructure.setEndianness("little");
   const gifFileStructure = new Structure("gif_file", [
@@ -41,7 +41,7 @@ function getRmDefinition() {
   // Source: https://www.sweetscape.com/010editor/repository/files/RM.bt
 
   const headerStructure = new Structure("header", [
-    new Field("type", new ArrayType(new CharType(), 4)),
+    new Field("type", new ArrayType(new CharType(), "(function() { return 4; })")),
     new Field("size", new UintType(32)),
     new Field("version", new UintType(16)),
     new Field("fileVersion", new UintType(32)),
@@ -49,7 +49,7 @@ function getRmDefinition() {
   ]);
   headerStructure.setEndianness("big");
   const propertiesStructure = new Structure("properties", [
-    new Field("type", new ArrayType(new CharType(), 4)),
+    new Field("type", new ArrayType(new CharType(), "(function() { return 4; })")),
     new Field("size", new UintType(32)),
     new Field("version", new UintType(16)),
     new Field("maxBitRate", new UintType(32)),
@@ -66,7 +66,7 @@ function getRmDefinition() {
   ]);
   propertiesStructure.setEndianness("big");
   const mediaDescriptionStructure = new Structure("content_description", [
-    new Field("type", new ArrayType(new CharType(), 4)),
+    new Field("type", new ArrayType(new CharType(), "(function() { return 4; })")),
     new Field("size", new UintType(32)),
     new Field("version", new UintType(16)),
     new Field("numOfStream", new UintType(16)),
@@ -78,11 +78,20 @@ function getRmDefinition() {
     new Field("preroll", new UintType(32)),
     new Field("duration", new UintType(32)),
     new Field("descriptionSize", new UintType(8)),
-    new Field("description", new ArrayType(new UintType(8), "descriptionSize")),
+    new Field(
+      "description",
+      new ArrayType(new UintType(8), "(function(scope) { return scope.get('descriptionSize'); })")
+    ),
     new Field("streamMimeTypeSize", new UintType(8)),
-    new Field("streamMimeType", new ArrayType(new UintType(8), "streamMimeTypeSize")),
+    new Field(
+      "streamMimeType",
+      new ArrayType(new UintType(8), "(function(scope) { return scope.get('streamMimeTypeSize'); })")
+    ),
     new Field("specificTypeDataSize", new UintType(32)),
-    new Field("specificTypeData", new ArrayType(new UintType(8), "specificTypeDataSize")),
+    new Field(
+      "specificTypeData",
+      new ArrayType(new UintType(8), "(function(scope) { return scope.get('specificTypeDataSize'); })")
+    ),
   ]);
   mediaDescriptionStructure.setEndianness("big");
   const fileStructure = new Structure("rm_file", [
