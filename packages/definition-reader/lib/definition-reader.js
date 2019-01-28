@@ -105,7 +105,6 @@ class DefinitionReader {
         if (_.has(ctx, "AssignmentExpression")) {
           return _.join(_.map(ctx.AssignmentExpression, this.visit.bind(this)), ", ");
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       AssignmentExpression(ctx) {
@@ -116,7 +115,6 @@ class DefinitionReader {
         if (_.has(ctx, "BinaryExpression")) {
           return this.visit(ctx.BinaryExpression);
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       BinaryExpression(ctx) {
@@ -128,7 +126,6 @@ class DefinitionReader {
           }
           return _.join(expressions, _.get(_.first(ctx[operator]), "image"));
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       UnaryExpression(ctx) {
@@ -153,7 +150,6 @@ class DefinitionReader {
         if (_.has(ctx, "ExclamationToken") && _.has(ctx, "UnaryExpression")) {
           return `!${this.visit(ctx.UnaryExpression)}`;
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       PostfixExpression(ctx) {
@@ -162,7 +158,6 @@ class DefinitionReader {
           const minusMinusSuffix = _.has(ctx, "DoubleMinusToken") ? "--" : "";
           return this.visit(ctx.MemberCallNewExpression) + plusPlusSuffix + minusMinusSuffix;
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       MemberCallNewExpression(ctx) {
@@ -172,7 +167,6 @@ class DefinitionReader {
             _.join(_.map(ctx.MemberCallNewExpressionExtension, this.visit.bind(this)), "")
           );
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       MemberCallNewExpressionExtension(ctx) {
@@ -213,7 +207,6 @@ class DefinitionReader {
         if (_.has(ctx, "ObjectLiteral")) {
           return this.visit(ctx.ObjectLiteral);
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       ArrayLiteral(ctx) {
@@ -227,7 +220,6 @@ class DefinitionReader {
         if (_.has(ctx, "Elision")) {
           return this.visit(ctx.Elision);
         }
-        assert(false, `Unexpected context: ${_.keys(ctx)} - ${JSON.stringify(ctx)}`);
       }
 
       ElementList(ctx) {
