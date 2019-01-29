@@ -22,7 +22,14 @@ class DefinitionParser extends chevrotain.Parser {
         $.SUBRULE($.headerClause);
       });
       $.MANY1(() => {
-        $.SUBRULE($.structureClause);
+        $.OR([
+          {
+            ALT: () => $.SUBRULE($.structureClause),
+          },
+          {
+            ALT: () => $.SUBRULE($.enumClause),
+          },
+        ]);
       });
     });
 
@@ -41,6 +48,21 @@ class DefinitionParser extends chevrotain.Parser {
       $.CONSUME(tokens.CurlyBraceOpenToken);
       $.MANY(() => {
         $.SUBRULE($.fieldClause);
+      });
+      $.CONSUME(tokens.CurlyBraceCloseToken);
+    });
+
+    $.RULE("enumClause", () => {
+      $.CONSUME(tokens.EnumToken);
+      $.CONSUME(tokens.IdentifierToken);
+      $.CONSUME(tokens.CurlyBraceOpenToken);
+      $.MANY_SEP({
+        SEP: tokens.CommaToken,
+        DEF: () => {
+          $.CONSUME1(tokens.IdentifierToken);
+          $.CONSUME1(tokens.EqualsToken);
+          $.CONSUME1(tokens.NumberLiteralToken);
+        },
       });
       $.CONSUME(tokens.CurlyBraceCloseToken);
     });

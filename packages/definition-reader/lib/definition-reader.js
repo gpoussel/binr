@@ -48,6 +48,7 @@ class DefinitionReader {
         return {
           headers: _.map(ctx.headerClause, this.visit.bind(this)),
           structures: _.map(ctx.structureClause, this.visit.bind(this)),
+          enumerations: _.map(ctx.enumClause, this.visit.bind(this)),
         };
       }
 
@@ -57,6 +58,18 @@ class DefinitionReader {
         return {
           name,
           value,
+        };
+      }
+
+      enumClause(ctx) {
+        const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
+        const entries = _.times(ctx.IdentifierToken.length - 1, i => ({
+          key: ctx.IdentifierToken[i + 1],
+          value: ctx.NumberLiteralToken[i],
+        }));
+        return {
+          name,
+          entries,
         };
       }
 

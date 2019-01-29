@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const _ = require("lodash");
+const assert = require("assert");
 const DefinitionReader = require("../lib/definition-reader");
 const { Definition } = require("@binr/model");
 const { VariableScope } = require("@binr/shared");
@@ -113,9 +114,11 @@ describe("DefinitionReader", () => {
       expect(createAndCallParser(`struct a { int foo[${value}]; }`)).toThrow(/parsing/);
     });
   });
-  test(`parses GIF format definition`, () => {
-    const structure = fs.readFileSync(`${pathToFixtures}/gif.binr`, "utf-8");
-    const result = createAndCallParser(structure)();
-    expect(result).toBeInstanceOf(Definition);
+  test(`parses complete format definition`, () => {
+    _.each(["gif.binr", "class.binr"], filename => {
+      const structure = fs.readFileSync(`${pathToFixtures}/${filename}`, "utf-8");
+      const result = createAndCallParser(structure)();
+      expect(result).toBeInstanceOf(Definition);
+    });
   });
 });

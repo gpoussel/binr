@@ -9,7 +9,9 @@ class DefinitionValidator {
   validate(ast) {
     const errors = [];
     this.validateHeaders(ast.headers, errors);
-    this.validateStructures(ast.structures, errors);
+    this.validateEnumerations(ast.enumerations, errors);
+    const enumerationNames = _.map(ast.enumerations, "name");
+    this.validateStructures(ast.structures, enumerationNames, errors);
     if (!_.isEmpty(errors)) {
       const errorCount = _("error").pluralize(errors.length, true);
       const errorContent = errors.map(s => `\t${s}`).join("\n");
@@ -28,7 +30,7 @@ class DefinitionValidator {
     });
   }
 
-  validateStructures(structures, errors) {
+  validateStructures(structures, enumerationNames, errors) {
     if (_.isEmpty(structures)) {
       errors.push("No structure defined");
     }
@@ -41,18 +43,30 @@ class DefinitionValidator {
         errors.push(`Duplicate structure name '${structure.name}'`);
         return;
       }
+      if (_.includes(enumerationNames, structure.name)) {
+        errors.push(`Structure name '${structure.name}' is already defined as an enumeration`);
+        return;
+      }
       if (_.has(builtInTypes, structure.name)) {
         errors.push(`Structure ${structure.name} has invalid name: reserved type`);
         return;
       }
       structureNames.push(structure.name);
     });
+    const definedNames = _.union(structureNames, enumerationNames);
     _.each(structures, structure => {
-      this.validateStructure(structure, errors, structureNames);
+      this.validateStructure(structure, errors, definedNames);
     });
   }
 
-  validateStructure(structure, errors, structureNames) {
+  validateEnumerations(enumerations, errors) {
+    // TODO: Perform enumeration validation
+    // 1. Check name is unique among all enumerations
+    // 2. Check no duplicated value (numeric) in an enumeration
+    // 3. Check no duplicated key (string) in an enumeration
+  }
+
+  validateStructure(structure, errors, definedNames) {
     const fieldNames = [];
     _.each(structure.fields, field => {
       if (_.includes(fieldNames, field.name)) {
@@ -61,15 +75,15 @@ class DefinitionValidator {
       }
       fieldNames.push(field.name);
 
-      this.validateField(field, errors, structureNames);
+      this.validateField(field, errors, definedNames);
     });
   }
 
-  validateField(field, errors, structureNames) {
+  validateField(field, errors, definedNames) {
     const builtInType = _.has(builtInTypes, field.type);
-    const structureType = _.includes(structureNames, field.type);
-    if (!builtInType && !structureType) {
-      errors.push(`Unknown type '${field.type}' for field '${field.name}`);
+    const definedType = _.includes(definedNames, field.type);
+    if (!builtInType && !definedType) {
+      errors.push(`Unknown type '${field.type}' for field '${field.name}'`);
     }
 
     const hasTypeRestriction = _.has(field, "typeRestriction");
