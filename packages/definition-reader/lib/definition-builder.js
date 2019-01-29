@@ -1,7 +1,7 @@
 "use strict";
 
 const _ = require("lodash");
-const { Definition, Field, Structure } = require("@binr/model");
+const { Definition, Field, Structure, Enumeration, EnumEntry } = require("@binr/model");
 const ExpressionConverter = require("./expression-converter");
 const { builtInTypes, StructureType, ArrayType } = require("./types");
 
@@ -12,7 +12,8 @@ class DefinitionBuilder {
 
   build(ast) {
     const structures = _.map(ast.structures, s => this.buildStructure(ast.structures, s));
-    return new Definition(structures);
+    const enumerations = _.map(ast.enumerations, e => this.buildEnumeration(e));
+    return new Definition(structures, enumerations);
   }
 
   buildStructure(structures, structure) {
@@ -35,6 +36,15 @@ class DefinitionBuilder {
       type = new ArrayType(type, definitionCode);
     }
     return new Field(field.name, type);
+  }
+
+  buildEnumeration(enumeration) {
+    const entries = _.map(enumeration.entries, this.buildEnumEntry.bind(this));
+    return new Enumeration(enumeration.name, entries);
+  }
+
+  buildEnumEntry(entry) {
+    return new EnumEntry(entry.key, entry.value);
   }
 }
 
