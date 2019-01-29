@@ -61,7 +61,7 @@ class DefinitionParser extends chevrotain.Parser {
         DEF: () => {
           $.CONSUME1(tokens.IdentifierToken);
           $.CONSUME1(tokens.EqualsToken);
-          $.CONSUME1(tokens.NumberLiteralToken);
+          $.SUBRULE($.numberClause);
         },
       });
       $.CONSUME(tokens.CurlyBraceCloseToken);
@@ -73,7 +73,7 @@ class DefinitionParser extends chevrotain.Parser {
           ALT: () => $.CONSUME(tokens.StringLiteralToken),
         },
         {
-          ALT: () => $.CONSUME(tokens.NumberLiteralToken),
+          ALT: () => $.SUBRULE($.numberClause),
         },
       ]);
     });
@@ -82,13 +82,24 @@ class DefinitionParser extends chevrotain.Parser {
       $.CONSUME(tokens.IdentifierToken);
       $.OPTION(() => {
         $.CONSUME(tokens.ColonToken);
-        $.CONSUME(tokens.NumberLiteralToken);
+        $.SUBRULE($.numberClause);
       });
       $.CONSUME1(tokens.IdentifierToken);
       $.OPTION1(() => {
         $.SUBRULE($.BoxMemberExpression);
       });
       $.CONSUME(tokens.SemiColonToken);
+    });
+
+    $.RULE("numberClause", () => {
+      $.OR([
+        {
+          ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteralToken),
+        },
+        {
+          ALT: () => $.CONSUME(tokens.NumberDecimalLiteralToken),
+        },
+      ]);
     });
 
     $.RULE("PrimaryExpression", () => {
@@ -99,7 +110,7 @@ class DefinitionParser extends chevrotain.Parser {
               ALT: () => $.CONSUME(tokens.IdentifierToken),
             },
             {
-              ALT: () => $.CONSUME(tokens.NumberLiteralToken),
+              ALT: () => $.SUBRULE($.numberClause),
             },
             {
               ALT: () => $.SUBRULE($.ArrayLiteral),

@@ -65,7 +65,7 @@ class DefinitionReader {
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
         const entries = _.times(ctx.IdentifierToken.length - 1, i => ({
           key: ctx.IdentifierToken[i + 1],
-          value: ctx.NumberLiteralToken[i],
+          value: this.visit(ctx.numberClause[i]),
         }));
         return {
           name,
@@ -92,7 +92,7 @@ class DefinitionReader {
           name,
         };
         if (_.has(ctx, "ColonToken")) {
-          fieldResult.typeRestriction = this.getNumberValue(_.first(ctx.NumberLiteralToken));
+          fieldResult.typeRestriction = this.visit(_.first(ctx.numberClause));
         }
         if (_.has(ctx, "BoxMemberExpression")) {
           const boxMemberDefinition = this.visit(_.first(ctx.BoxMemberExpression));
@@ -105,8 +105,8 @@ class DefinitionReader {
         if (_.has(ctx, "StringLiteralToken")) {
           return JSON.parse(_.first(ctx.StringLiteralToken).image);
         }
-        // That's a NumberLiteralToken
-        return parseInt(_.first(ctx.NumberLiteralToken).image, 10);
+        // That's a number
+        return this.visit(_.first(ctx.numberClause));
       }
 
       BoxMemberExpression(ctx) {
@@ -204,8 +204,8 @@ class DefinitionReader {
       }
 
       PrimaryExpression(ctx) {
-        if (_.has(ctx, "NumberLiteralToken")) {
-          return this.getNumberValue(_.first(ctx.NumberLiteralToken));
+        if (_.has(ctx, "numberClause")) {
+          return this.visit(_.first(ctx.numberClause));
         }
         if (_.has(ctx, "IdentifierToken")) {
           return this.getIdentifierName(_.first(ctx.IdentifierToken));
@@ -251,12 +251,17 @@ class DefinitionReader {
         return `(${this.visit(ctx.Expression)})`;
       }
 
-      getIdentifierName(identifier) {
-        return identifier.image;
+      numberClause(ctx) {
+        if (_.has(ctx, "NumberDecimalLiteralToken")) {
+          return parseInt(_.first(ctx.NumberDecimalLiteralToken).image, 10);
+        }
+        if (_.has(ctx, "NumberHexadecimalLiteralToken")) {
+          return parseInt(_.first(ctx.NumberHexadecimalLiteralToken).image, 16);
+        }
       }
 
-      getNumberValue(literal) {
-        return parseInt(literal.image, 10);
+      getIdentifierName(identifier) {
+        return identifier.image;
       }
     }
 

@@ -1,6 +1,10 @@
 #name "CLASS Format (Java Bytecode)"
 #extension ".class"
 
+// Note: this is *inspired* by the CLASS format
+// But this definition cannot read a CLASS file
+// It is definitely missing some important parts.
+
 enum ConstantPoolTag {
     TAG_UTF8                = 1,
     TAG_INTEGER             = 3,
@@ -18,8 +22,23 @@ enum ConstantPoolTag {
     TAG_INVOKEDYNAMIC       = 18
 }
 
+enum AccessFlag {
+    ACC_PUBLIC              = 0x001,     // Declared public; may be accessed from outside its package.
+    ACC_PRIVATE             = 0x002,     // Declared private; usable only within the defining class.
+    ACC_PROTECTED           = 0x004,     // Declared protected; may be accessed within subclasses.
+    ACC_STATIC              = 0x008,     // Declared static.
+    ACC_FINAL               = 0x010,     // Declared final; no subclasses allowed.
+    ACC_SUPER               = 0x020,     // Treat superclass methods specially when invoked by the invokespecial instruction.
+    ACC_VOLATILE            = 0x040,     // Declared volatile; cannot be cached.
+    ACC_TRANSIENT           = 0x080,     // Declared transient; not written or read by a persistent object manager.
+    ACC_NATIVE              = 0x100,     // Declared native; implemented in a language other than Java.
+    ACC_INTERFACE           = 0x200,     // Is an interface, not a class.
+    ACC_ABSTRACT            = 0x400,     // Declared abstract; may not be instantiated.
+    ACC_STRICT              = 0x800      // Declared strictfp; floating-point mode is FP-strict
+}
+
 struct ConstantPoolInfo {
-    ConstantPoolTag tag; // TODO: Shall be an enumeration
+    ConstantPoolTag tag;
 }
 
 struct JVMClass {
@@ -28,37 +47,6 @@ struct JVMClass {
     uint:16 major_version;
     uint:16 constantPoolSize;
     ConstantPoolInfo constantPool[constantPoolSize];
+    AccessFlag accessFlags;
+    uint:16 thisClass;
 }
-
-/*
-typedef struct {
-    u2 minor_version;
-    u2 major_version;
-    u2 constant_pool_count;
-    cp_info constant_pool[constant_pool_count-1];
-    AF access_flags;
-    u2 this_class;              // Reference into constant_pool table
-    if (this_class < 1 || this_class > constant_pool_count-1) {
-        local string s;
-        SPrintf(s,"Bad 'this_class' reference (%d).  It should be in the range [1..%d]", this_class, constant_pool_count-1);
-        Warning(s);
-        return -2;
-    }
-    u2 super_class;             // Reference into constant_pool table
-    if (super_class < 1 || super_class > constant_pool_count-1) {
-        local string s;
-        SPrintf(s,"Bad 'super_class' reference (%d).  It should be in the range [1..%d]", super_class, constant_pool_count-1);
-        Warning(s);
-        return -2;
-    }
-    u2 interfaces_count;
-    u2 interfaces[interfaces_count];
-    u2 fields_count;
-    field_info fields[fields_count];
-    u2 methods_count;
-    method_info methods[methods_count];
-    u2 attributes_count;
-    attribute_info attributes[attributes_count];
-} JVMClass <read=read_JVMClass, optimize=false>;
-
-*/

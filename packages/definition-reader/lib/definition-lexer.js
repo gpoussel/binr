@@ -34,9 +34,14 @@ const StringLiteralToken = createToken({
   pattern: /"(:?[^\\"\n\r]+|\\(:?[bfnrtv"\\/]|u[0-9a-fA-F]{4}))*"/,
 });
 
-const NumberLiteralToken = createToken({
-  name: "NumberLiteralToken",
+const NumberDecimalLiteralToken = createToken({
+  name: "NumberDecimalLiteralToken",
   pattern: /-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?/,
+});
+
+const NumberHexadecimalLiteralToken = createToken({
+  name: "NumberHexadecimalLiteralToken",
+  pattern: /0x[A-F0-9]*/i,
 });
 
 const symbolTokens = _.fromPairs(
@@ -155,7 +160,8 @@ const tokens = {
   // Identifiers
   IdentifierToken,
   StringLiteralToken,
-  NumberLiteralToken,
+  NumberHexadecimalLiteralToken,
+  NumberDecimalLiteralToken,
 };
 
 class DefinitionLexer extends Lexer {
