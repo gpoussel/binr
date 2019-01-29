@@ -1,9 +1,8 @@
 #name "CLASS Format (Java Bytecode)"
 #extension ".class"
 
-// Note: this is *inspired* by the CLASS format
-// But this definition cannot read a CLASS file
-// It is definitely missing some important parts.
+// Note: this is *inspired* by the CLASS format, but this definition cannot read
+// a CLASS file. It is definitely missing some important parts.
 
 enum ConstantPoolTag {
     TAG_UTF8                = 1,
