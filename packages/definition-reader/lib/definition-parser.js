@@ -55,6 +55,8 @@ class DefinitionParser extends chevrotain.Parser {
     $.RULE("enumClause", () => {
       $.CONSUME(tokens.EnumToken);
       $.CONSUME(tokens.IdentifierToken);
+      $.CONSUME(tokens.ExtendsToken);
+      $.SUBRULE($.typeReferenceClause);
       $.CONSUME(tokens.CurlyBraceOpenToken);
       $.MANY_SEP({
         SEP: tokens.CommaToken,
@@ -79,16 +81,20 @@ class DefinitionParser extends chevrotain.Parser {
     });
 
     $.RULE("fieldClause", () => {
-      $.CONSUME(tokens.IdentifierToken);
-      $.OPTION(() => {
-        $.CONSUME(tokens.ColonToken);
-        $.SUBRULE($.numberClause);
-      });
+      $.SUBRULE($.typeReferenceClause);
       $.CONSUME1(tokens.IdentifierToken);
       $.OPTION1(() => {
         $.SUBRULE($.BoxMemberExpression);
       });
       $.CONSUME(tokens.SemiColonToken);
+    });
+
+    $.RULE("typeReferenceClause", () => {
+      $.CONSUME(tokens.IdentifierToken);
+      $.OPTION(() => {
+        $.CONSUME(tokens.ColonToken);
+        $.SUBRULE($.numberClause);
+      });
     });
 
     $.RULE("numberClause", () => {

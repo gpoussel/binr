@@ -67,9 +67,11 @@ class DefinitionReader {
           key: ctx.IdentifierToken[i + 1],
           value: this.visit(ctx.numberClause[i]),
         }));
+        const parentType = this.visit(ctx.typeReferenceClause);
         return {
           name,
           entries,
+          parentType,
         };
       }
 
@@ -85,20 +87,31 @@ class DefinitionReader {
       }
 
       fieldClause(ctx) {
-        const type = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
-        const name = this.getIdentifierName(_.get(ctx.IdentifierToken, 1));
+        const type = this.visit(ctx.typeReferenceClause);
+        const name = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
         const fieldResult = {
           type,
           name,
         };
-        if (_.has(ctx, "ColonToken")) {
-          fieldResult.typeRestriction = this.visit(_.first(ctx.numberClause));
-        }
         if (_.has(ctx, "BoxMemberExpression")) {
           const boxMemberDefinition = this.visit(_.first(ctx.BoxMemberExpression));
           fieldResult.arrayDefinition = boxMemberDefinition.substr(1, boxMemberDefinition.length - 2);
         }
         return fieldResult;
+      }
+
+      typeReferenceClause(ctx) {
+        const type = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
+        if (_.has(ctx, "ColonToken")) {
+          const typeRestriction = this.visit(_.first(ctx.numberClause));
+          return {
+            type,
+            typeRestriction,
+          };
+        }
+        return {
+          type,
+        };
       }
 
       valueClause(ctx) {

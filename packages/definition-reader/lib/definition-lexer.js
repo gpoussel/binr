@@ -132,6 +132,7 @@ const keywordTokens = _.fromPairs(
       Struct: "struct",
       Export: "export",
       Enum: "enum",
+      Extends: "extends",
     },
     (keyword, name) => [
       `${name}Token`,

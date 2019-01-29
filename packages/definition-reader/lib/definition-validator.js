@@ -80,22 +80,23 @@ class DefinitionValidator {
   }
 
   validateField(field, errors, definedNames) {
-    const builtInType = _.has(builtInTypes, field.type);
-    const definedType = _.includes(definedNames, field.type);
+    const { type } = field;
+    const builtInType = _.has(builtInTypes, type.type);
+    const definedType = _.includes(definedNames, type.type);
     if (!builtInType && !definedType) {
-      errors.push(`Unknown type '${field.type}' for field '${field.name}'`);
+      errors.push(`Unknown type '${type.type}' for field '${field.name}'`);
     }
 
-    const hasTypeRestriction = _.has(field, "typeRestriction");
+    const hasTypeRestriction = _.has(type, "typeRestriction");
     if (hasTypeRestriction) {
-      if (field.typeRestriction <= 0 || field.typeRestriction > 64) {
+      if (type.typeRestriction <= 0 || type.typeRestriction > 64) {
         errors.push(`Field ${field.name} size must be between 0 and 64`);
       }
     }
 
     const fieldsWithoutTypeRestriction = ["string", "char"];
-    if (_.includes(fieldsWithoutTypeRestriction, field.type) && hasTypeRestriction) {
-      errors.push(`Field ${field.name} (type: ${field.type}) must not have type restriction`);
+    if (_.includes(fieldsWithoutTypeRestriction, type.type) && hasTypeRestriction) {
+      errors.push(`Field ${field.name} (type: ${type.type}) must not have type restriction`);
     }
   }
 }

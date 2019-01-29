@@ -4,7 +4,7 @@
 // Note: this is *inspired* by the CLASS format, but this definition cannot read
 // a CLASS file. It is definitely missing some important parts.
 
-enum ConstantPoolTag {
+enum ConstantPoolTag extends uint:8 {
     TAG_UTF8                = 1,
     TAG_INTEGER             = 3,
     TAG_FLOAT               = 4,
@@ -21,7 +21,7 @@ enum ConstantPoolTag {
     TAG_INVOKEDYNAMIC       = 18
 }
 
-enum AccessFlag {
+enum AccessFlag extends uint:16 {
     ACC_PUBLIC              = 0x001,     // Declared public; may be accessed from outside its package.
     ACC_PRIVATE             = 0x002,     // Declared private; usable only within the defining class.
     ACC_PROTECTED           = 0x004,     // Declared protected; may be accessed within subclasses.
