@@ -1,0 +1,13 @@
+#name "NTFS MFT FILE records"
+#extension ".bin"
+
+enum FileNameType extends uint:8 {
+    Posix = 0x0,
+    Windows = 0x1,
+    Dos = 0x2,
+    DosWindows = 0x3
+}
+
+struct FileEntry {
+    FileNameType type;
+}

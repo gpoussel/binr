@@ -21,19 +21,19 @@ enum ConstantPoolTag extends uint:8 {
     TAG_INVOKEDYNAMIC       = 18
 }
 
-enum AccessFlag extends uint:16 {
-    ACC_PUBLIC              = 0x001,     // Declared public; may be accessed from outside its package.
-    ACC_PRIVATE             = 0x002,     // Declared private; usable only within the defining class.
-    ACC_PROTECTED           = 0x004,     // Declared protected; may be accessed within subclasses.
-    ACC_STATIC              = 0x008,     // Declared static.
-    ACC_FINAL               = 0x010,     // Declared final; no subclasses allowed.
-    ACC_SUPER               = 0x020,     // Treat superclass methods specially when invoked by the invokespecial instruction.
-    ACC_VOLATILE            = 0x040,     // Declared volatile; cannot be cached.
-    ACC_TRANSIENT           = 0x080,     // Declared transient; not written or read by a persistent object manager.
-    ACC_NATIVE              = 0x100,     // Declared native; implemented in a language other than Java.
-    ACC_INTERFACE           = 0x200,     // Is an interface, not a class.
-    ACC_ABSTRACT            = 0x400,     // Declared abstract; may not be instantiated.
-    ACC_STRICT              = 0x800      // Declared strictfp; floating-point mode is FP-strict
+bitmask AccessFlag extends uint:16 {
+    ACC_PUBLIC              = 0b000000000001,     // Declared public; may be accessed from outside its package.
+    ACC_PRIVATE             = 0b000000000010,     // Declared private; usable only within the defining class.
+    ACC_PROTECTED           = 0b000000000100,     // Declared protected; may be accessed within subclasses.
+    ACC_STATIC              = 0b000000001000,     // Declared static.
+    ACC_FINAL               = 0x000000010000,     // Declared final; no subclasses allowed.
+    ACC_SUPER               = 0x000000100000,     // Treat superclass methods specially when invoked by the invokespecial instruction.
+    ACC_VOLATILE            = 0x000001000000,     // Declared volatile; cannot be cached.
+    ACC_TRANSIENT           = 0x000010000000,     // Declared transient; not written or read by a persistent object manager.
+    ACC_NATIVE              = 0x000100000000,     // Declared native; implemented in a language other than Java.
+    ACC_INTERFACE           = 0x001000000000,     // Is an interface, not a class.
+    ACC_ABSTRACT            = 0x010000000000,     // Declared abstract; may not be instantiated.
+    ACC_STRICT              = 0x100000000000      // Declared strictfp; floating-point mode is FP-strict
 }
 
 struct ConstantPoolInfo {

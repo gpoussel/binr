@@ -1,7 +1,15 @@
 "use strict";
 
 const _ = require("lodash");
-const { Definition, Field, Structure, Enumeration, EnumEntry } = require("@binr/model");
+const {
+  Definition,
+  Field,
+  Structure,
+  Enumeration,
+  EnumEntry,
+  Bitmask,
+  BitmaskEntry,
+} = require("@binr/model");
 const ExpressionConverter = require("./expression-converter");
 const { builtInTypes, StructureType, ArrayType } = require("./types");
 
@@ -13,7 +21,8 @@ class DefinitionBuilder {
   build(ast) {
     const structures = _.map(ast.structures, s => this.buildStructure(ast.structures, s));
     const enumerations = _.map(ast.enumerations, e => this.buildEnumeration(e));
-    return new Definition(structures, enumerations);
+    const bitmasks = _.map(ast.bitmasks, e => this.buildBitmask(e));
+    return new Definition(structures, enumerations, bitmasks);
   }
 
   buildStructure(structures, structure) {
@@ -26,6 +35,7 @@ class DefinitionBuilder {
       // Built-in type
       type = builtInTypes[field.type](field);
     } else {
+      // TODO: the field can be an enumeration or a bitmask as well
       // Must be structure in the current definition
       type = new StructureType(_.find(structures, s => s.name === field.type));
     }
@@ -43,8 +53,17 @@ class DefinitionBuilder {
     return new Enumeration(enumeration.name, entries);
   }
 
+  buildBitmask(bitmask) {
+    const entries = _.map(bitmask.entries, this.buildBitmaskEntry.bind(this));
+    return new Bitmask(bitmask.name, entries);
+  }
+
   buildEnumEntry(entry) {
     return new EnumEntry(entry.key, entry.value);
+  }
+
+  buildBitmaskEntry(entry) {
+    return new BitmaskEntry(entry.key, entry.value);
   }
 }
 

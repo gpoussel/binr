@@ -10,8 +10,10 @@ class DefinitionValidator {
     const errors = [];
     this.validateHeaders(ast.headers, errors);
     this.validateEnumerations(ast.enumerations, errors);
+    this.validateBitmasks(ast.bitmasks, errors);
     const enumerationNames = _.map(ast.enumerations, "name");
-    this.validateStructures(ast.structures, enumerationNames, errors);
+    const bitmaskNames = _.map(ast.bitmasks, "name");
+    this.validateStructures(ast.structures, _.union(enumerationNames, bitmaskNames), errors);
     if (!_.isEmpty(errors)) {
       const errorCount = _("error").pluralize(errors.length, true);
       const errorContent = errors.map(s => `\t${s}`).join("\n");
@@ -30,7 +32,7 @@ class DefinitionValidator {
     });
   }
 
-  validateStructures(structures, enumerationNames, errors) {
+  validateStructures(structures, definedNames, errors) {
     if (_.isEmpty(structures)) {
       errors.push("No structure defined");
     }
@@ -43,8 +45,8 @@ class DefinitionValidator {
         errors.push(`Duplicate structure name '${structure.name}'`);
         return;
       }
-      if (_.includes(enumerationNames, structure.name)) {
-        errors.push(`Structure name '${structure.name}' is already defined as an enumeration`);
+      if (_.includes(definedNames, structure.name)) {
+        errors.push(`Structure name '${structure.name}' is already defined`);
         return;
       }
       if (_.has(builtInTypes, structure.name)) {
@@ -53,9 +55,9 @@ class DefinitionValidator {
       }
       structureNames.push(structure.name);
     });
-    const definedNames = _.union(structureNames, enumerationNames);
+    const typeNames = _.union(structureNames, definedNames);
     _.each(structures, structure => {
-      this.validateStructure(structure, errors, definedNames);
+      this.validateStructure(structure, errors, typeNames);
     });
   }
 
@@ -66,7 +68,14 @@ class DefinitionValidator {
     // 3. Check no duplicated key (string) in an enumeration
   }
 
-  validateStructure(structure, errors, definedNames) {
+  validateBitmasks(bitmasks, errors) {
+    // TODO: Perform bitmask validation
+    // 1. Check name is unique among all bitmasks
+    // 2. Check no overlapping value in the bitmask
+    // 3. Check no duplicated key  in the bitmask
+  }
+
+  validateStructure(structure, errors, typeNames) {
     const fieldNames = [];
     _.each(structure.fields, field => {
       if (_.includes(fieldNames, field.name)) {
@@ -75,14 +84,14 @@ class DefinitionValidator {
       }
       fieldNames.push(field.name);
 
-      this.validateField(field, errors, definedNames);
+      this.validateField(field, errors, typeNames);
     });
   }
 
-  validateField(field, errors, definedNames) {
+  validateField(field, errors, typeNames) {
     const { type } = field;
     const builtInType = _.has(builtInTypes, type.type);
-    const definedType = _.includes(definedNames, type.type);
+    const definedType = _.includes(typeNames, type.type);
     if (!builtInType && !definedType) {
       errors.push(`Unknown type '${type.type}' for field '${field.name}'`);
     }

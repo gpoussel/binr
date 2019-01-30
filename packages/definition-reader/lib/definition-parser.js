@@ -29,6 +29,9 @@ class DefinitionParser extends chevrotain.Parser {
           {
             ALT: () => $.SUBRULE($.enumClause),
           },
+          {
+            ALT: () => $.SUBRULE($.bitmaskClause),
+          },
         ]);
       });
     });
@@ -54,6 +57,23 @@ class DefinitionParser extends chevrotain.Parser {
 
     $.RULE("enumClause", () => {
       $.CONSUME(tokens.EnumToken);
+      $.CONSUME(tokens.IdentifierToken);
+      $.CONSUME(tokens.ExtendsToken);
+      $.SUBRULE($.typeReferenceClause);
+      $.CONSUME(tokens.CurlyBraceOpenToken);
+      $.MANY_SEP({
+        SEP: tokens.CommaToken,
+        DEF: () => {
+          $.CONSUME1(tokens.IdentifierToken);
+          $.CONSUME1(tokens.EqualsToken);
+          $.SUBRULE($.numberClause);
+        },
+      });
+      $.CONSUME(tokens.CurlyBraceCloseToken);
+    });
+
+    $.RULE("bitmaskClause", () => {
+      $.CONSUME(tokens.BitmaskToken);
       $.CONSUME(tokens.IdentifierToken);
       $.CONSUME(tokens.ExtendsToken);
       $.SUBRULE($.typeReferenceClause);
@@ -101,6 +121,9 @@ class DefinitionParser extends chevrotain.Parser {
       $.OR([
         {
           ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteralToken),
+        },
+        {
+          ALT: () => $.CONSUME(tokens.NumberBinaryLiteralToken),
         },
         {
           ALT: () => $.CONSUME(tokens.NumberDecimalLiteralToken),
