@@ -118,7 +118,7 @@ describe("DefinitionReader", () => {
   // Note: these definitions are not complete at all. They are often inspired by
   // a real-world format but they are never fully implemented.
   test(`parses example format definition`, () => {
-    _.each(["gif.binr", "class.binr"], filename => {
+    _.each(["gif.binr", "class.binr", "bmp.binr"], filename => {
       const structure = fs.readFileSync(`${pathToFixtures}/${filename}`, "utf-8");
       const result = createAndCallParser(structure)();
       expect(result).toBeInstanceOf(Definition);
