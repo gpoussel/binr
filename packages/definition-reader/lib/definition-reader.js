@@ -49,6 +49,7 @@ class DefinitionReader {
           headers: _.map(ctx.headerClause, this.visit.bind(this)),
           structures: _.map(ctx.structureClause, this.visit.bind(this)),
           enumerations: _.map(ctx.enumClause, this.visit.bind(this)),
+          bitmasks: _.map(ctx.bitmaskClause, this.visit.bind(this)),
         };
       }
 
@@ -62,6 +63,20 @@ class DefinitionReader {
       }
 
       enumClause(ctx) {
+        const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
+        const entries = _.times(ctx.IdentifierToken.length - 1, i => ({
+          key: ctx.IdentifierToken[i + 1],
+          value: this.visit(ctx.numberClause[i]),
+        }));
+        const parentType = this.visit(ctx.typeReferenceClause);
+        return {
+          name,
+          entries,
+          parentType,
+        };
+      }
+
+      bitmaskClause(ctx) {
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
         const entries = _.times(ctx.IdentifierToken.length - 1, i => ({
           key: ctx.IdentifierToken[i + 1],
@@ -269,7 +284,10 @@ class DefinitionReader {
           return parseInt(_.first(ctx.NumberDecimalLiteralToken).image, 10);
         }
         if (_.has(ctx, "NumberHexadecimalLiteralToken")) {
-          return parseInt(_.first(ctx.NumberHexadecimalLiteralToken).image, 16);
+          return parseInt(_.first(ctx.NumberHexadecimalLiteralToken).image.substring(2), 16);
+        }
+        if (_.has(ctx, "NumberBinaryLiteralToken")) {
+          return parseInt(_.first(ctx.NumberBinaryLiteralToken).image.substring(2), 2);
         }
       }
 

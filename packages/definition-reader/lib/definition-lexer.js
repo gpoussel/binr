@@ -34,14 +34,19 @@ const StringLiteralToken = createToken({
   pattern: /"(:?[^\\"\n\r]+|\\(:?[bfnrtv"\\/]|u[0-9a-fA-F]{4}))*"/,
 });
 
+const NumberHexadecimalLiteralToken = createToken({
+  name: "NumberHexadecimalLiteralToken",
+  pattern: /0x[A-F0-9]+/i,
+});
+
+const NumberBinaryLiteralToken = createToken({
+  name: "NumberBinaryLiteralToken",
+  pattern: /0b[01]+/i,
+});
+
 const NumberDecimalLiteralToken = createToken({
   name: "NumberDecimalLiteralToken",
   pattern: /-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?/,
-});
-
-const NumberHexadecimalLiteralToken = createToken({
-  name: "NumberHexadecimalLiteralToken",
-  pattern: /0x[A-F0-9]*/i,
 });
 
 const symbolTokens = _.fromPairs(
@@ -133,6 +138,7 @@ const keywordTokens = _.fromPairs(
       Export: "export",
       Enum: "enum",
       Extends: "extends",
+      Bitmask: "bitmask",
     },
     (keyword, name) => [
       `${name}Token`,
@@ -161,7 +167,10 @@ const tokens = {
   // Identifiers
   IdentifierToken,
   StringLiteralToken,
+
+  // Number literals
   NumberHexadecimalLiteralToken,
+  NumberBinaryLiteralToken,
   NumberDecimalLiteralToken,
 };
 
