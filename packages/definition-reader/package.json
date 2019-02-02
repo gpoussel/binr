@@ -29,7 +29,7 @@
   "dependencies": {
     "@binr/model": "^1.0.0",
     "@binr/shared": "^1.0.0",
-    "chevrotain": "^4.1.1",
+    "chevrotain": "^4.2.0",
     "escape-string-regexp": "^1.0.5",
     "escodegen": "^1.11.0",
     "esprima": "^4.0.1",
