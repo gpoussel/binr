@@ -1,12 +1,8 @@
 "use strict";
 
-const fs = require("fs");
 const _ = require("lodash");
 const DefinitionReader = require("../lib/definition-reader");
-const { Definition } = require("@binr/model");
 const { VariableScope } = require("@binr/shared");
-
-const pathToFixtures = `${__dirname}/../__fixtures__/`;
 
 function createAndCallParser(input) {
   return () => {
@@ -111,16 +107,6 @@ describe("DefinitionReader", () => {
   test("rejects invalid expression", () => {
     _.each(["+", "())"], value => {
       expect(createAndCallParser(`struct a { int foo[${value}]; }`)).toThrow(/parsing/);
-    });
-  });
-
-  // Note: these definitions are not complete at all. They are often inspired by
-  // a real-world format but they are never fully implemented.
-  test(`parses example format definition`, () => {
-    _.each(["gif.binr", "class.binr", "bmp.binr", "mft.binr"], filename => {
-      const structure = fs.readFileSync(`${pathToFixtures}/${filename}`, "utf-8");
-      const result = createAndCallParser(structure)();
-      expect(result).toBeInstanceOf(Definition);
     });
   });
 });
