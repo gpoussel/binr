@@ -1,5 +1,6 @@
 "use strict";
 
+const assert = require("assert");
 const _ = require("lodash");
 const { VariableScope } = require("@binr/shared");
 
@@ -8,6 +9,7 @@ const Type = require("./type");
 class StructureType extends Type {
   constructor(structure) {
     super();
+    assert(!_.isUndefined(structure));
     this.structure = structure;
   }
 
