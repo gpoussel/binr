@@ -1,5 +1,6 @@
 #name "RM Format"
 #extension ".rm"
+#endianness "big"
 
 // Source: https://www.sweetscape.com/010editor/repository/files/RM.bt
 
@@ -32,7 +33,7 @@ struct MediaDescription {
     char type[4];
     uint:32 size;
     uint:16 version;
-    uint:32 numOfStream;
+    uint:16 numberOfStreams;
     uint:32 maxBitRate;
     uint:32 averageBitRate;
     uint:32 maxDataPacketSize;
@@ -42,7 +43,9 @@ struct MediaDescription {
     uint:32 duration;
     uint:8 descriptionSize;
     uint:8 description[descriptionSize];
+    uint:8 streamMimeTypeSize;
     uint:8 streamMimeType[streamMimeTypeSize];
+    uint:32 specificTypeDataSize;
     uint:8 specificTypeData[specificTypeDataSize];
 }
 

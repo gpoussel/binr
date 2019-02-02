@@ -1,51 +1,24 @@
 "use strict";
 
 const fs = require("fs");
-const BinaryReader = require("..");
-const { Definition, Structure, Field } = require("@binr/model");
-const { UintType, ArrayType, CharType, StructureType } = require("@binr/definition-reader");
+const { BinaryReader } = require("@binr/binary-reader");
+const { DefinitionReader } = require("@binr/definition-reader");
 
-const pathToBinaryFixtures = `${__dirname}/../__fixtures__/binaries/`;
-const pathToDefinitionFixtures = `${__dirname}/../__fixtures__/definitions/`;
+const pathToBinaryFixtures = `${__dirname}/../__fixtures__/binaries`;
+const pathToDefinitionFixtures = `${__dirname}/../__fixtures__/definitions`;
 
-const adescribe = () => 1;
-adescribe("BinaryReader", () => {
-  test("throws an error on invalid arguments", () => {
-    expect(() => {
-      reader.read(null, new Definition());
-    }).toThrow();
+describe("RM reading", () => {
+  const definitionReader = new DefinitionReader();
 
-    expect(() => {
-      reader.read(Buffer.from([]), "a");
-    }).toThrow();
-  });
+  const rmDefinitionFile = fs.readFileSync(`${pathToDefinitionFixtures}/rm.binr`);
+  const rmDefinition = definitionReader.readInput(rmDefinitionFile.toString());
 
-  const treeGifFile = `${pathToBinaryFixtures}tree.gif`;
-  const treeGifBuffer = fs.readFileSync(treeGifFile);
-
-  const videoRmFile = `${pathToBinaryFixtures}video.rm`;
+  const videoRmFile = `${pathToBinaryFixtures}/video.rm`;
   const videoRmBuffer = fs.readFileSync(videoRmFile);
 
-  test("reads file with empty definition", () => {
-    reader.read(treeGifBuffer, new Definition([new Structure("foo", [])]));
-  });
-
-  test("reads GIF file with GIF definition", () => {
-    const gifValue = reader.read(treeGifBuffer, gifDefinition, "gif_file");
-    expect(gifValue).toBeDefined();
-    expect(gifValue.header).toBeDefined();
-    expect(gifValue.header.signature).toEqual(["G", "I", "F"]);
-    expect(gifValue.header.version).toEqual(["8", "9", "a"]);
-    expect(gifValue.logicalScreen).toBeDefined();
-    expect(gifValue.logicalScreen.imageWidth).toBe(150);
-    expect(gifValue.logicalScreen.imageHeight).toBe(189);
-    expect(gifValue.logicalScreen.flags).toBeDefined();
-    expect(gifValue.logicalScreen.backgroundColorIndex).toBe(1);
-    expect(gifValue.logicalScreen.pixelAspectRatio).toBe(0);
-  });
-
   test("reads RM file with RM definition", () => {
-    const videoValue = reader.read(videoRmBuffer, rmDefinition, "rm_file");
+    const binaryReader = new BinaryReader();
+    const videoValue = binaryReader.read(videoRmBuffer, rmDefinition, "RmFile");
     expect(videoValue).toBeDefined();
     expect(videoValue.header).toEqual({
       type: [".", "R", "M", "F"],
@@ -74,7 +47,7 @@ adescribe("BinaryReader", () => {
       type: ["M", "D", "P", "R"],
       size: 164,
       version: 0,
-      numOfStream: 0,
+      numberOfStreams: 0,
       maxBitRate: 6000,
       averageBitRate: 6000,
       maxDataPacketSize: 288,

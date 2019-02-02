@@ -26,7 +26,15 @@ class DefinitionBuilder {
   }
 
   buildStructure(ast, structure) {
-    return new Structure(structure.name, _.map(structure.fields, f => this.buildField(ast, f)));
+    const endiannessHeader = ast.headers.find(h => h.name === "endianness");
+    const structureObject = new Structure(
+      structure.name,
+      _.map(structure.fields, f => this.buildField(ast, f))
+    );
+    if (!_.isUndefined(endiannessHeader)) {
+      structureObject.setEndianness(endiannessHeader.value);
+    }
+    return structureObject;
   }
 
   buildField(ast, field) {

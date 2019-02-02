@@ -10,62 +10,27 @@ const estraverse = require("estraverse");
 class ExpressionConverter {
   convert(source) {
     const ast = esprima.parseScript(source);
-    estraverse.replace(ast, {
-      enter: node => {
-        if (node.generated === true) {
-          return estraverse.VisitorOption.Skip;
-        }
-        if (node.type === esprima.Syntax.MemberExpression) {
-          const leftPart = node.object;
-          if (leftPart.type === esprima.Syntax.Identifier) {
-            node.object = this.generateVariableScopeGetNode(leftPart.name);
-          }
-        } else if (node.type === esprima.Syntax.ConditionalExpression) {
-          if (node.test.type === esprima.Syntax.Identifier) {
-            node.test = this.generateVariableScopeGetNode(node.test.name);
-          }
-          if (node.consequent.type === esprima.Syntax.Identifier) {
-            node.consequent = this.generateVariableScopeGetNode(node.consequent.name);
-          }
-          if (node.alternate.type === esprima.Syntax.Identifier) {
-            node.alternate = this.generateVariableScopeGetNode(node.alternate.name);
-          }
-        } else if (
-          node.type === esprima.Syntax.LogicalExpression ||
-          node.type === esprima.Syntax.BinaryExpression
-        ) {
-          if (node.left.type === esprima.Syntax.Identifier) {
-            node.left = this.generateVariableScopeGetNode(node.left.name);
-          }
-          if (node.right.type === esprima.Syntax.Identifier) {
-            node.right = this.generateVariableScopeGetNode(node.right.name);
-          }
-        } else if (node.type === esprima.Syntax.UnaryExpression) {
-          if (node.argument.type === esprima.Syntax.Identifier) {
-            node.argument = this.generateVariableScopeGetNode(node.argument.name);
-          }
-        } else if (node.type === esprima.Syntax.CallExpression) {
-          if (node.callee.type === esprima.Syntax.Identifier) {
-            node.callee = this.generateVariableScopeGetNode(node.callee.name);
-          }
-          _.times(_.size(node.arguments), i => {
-            if (node.arguments[i].type === esprima.Syntax.Identifier) {
-              node.arguments[i] = this.generateVariableScopeGetNode(node.arguments[i].name);
-            }
-          });
-        } else if (node.type === esprima.Syntax.ArrayExpression) {
-          _.times(_.size(node.elements), i => {
-            if (node.elements[i] && node.elements[i].type === esprima.Syntax.Identifier) {
-              node.elements[i] = this.generateVariableScopeGetNode(node.elements[i].name);
-            }
-          });
-        } else if (node.type === esprima.Syntax.UpdateExpression) {
-          throw new Error("UpdateExpression are not supported");
-        }
-      },
-    });
+    if (!_.isArray(ast.body)) {
+      throw new Error(`AST body is not an array`);
+    }
+    if (_.size(ast.body) !== 1) {
+      throw new Error(`AST body size shall be 1`);
+    }
+    const bodyExpression = ast.body[0];
+    if (bodyExpression.type !== esprima.Syntax.ExpressionStatement) {
+      throw new Error(`body shall be an expression`);
+    }
+    this.processExpression(bodyExpression);
     const generatedSource = escodegen.generate(ast);
     return generatedSource;
+  }
+
+  processExpression(expression) {
+    if (expression.expression.type === esprima.Syntax.Identifier) {
+      expression.expression = this.generateVariableScopeGetNode(expression.expression.name);
+    } else if (expression.expression.type === esprima.Syntax.UpdateExpression) {
+      throw new Error(`UpdateExpression not supported`);
+    }
   }
 
   generateVariableScopeGetNode(name) {
