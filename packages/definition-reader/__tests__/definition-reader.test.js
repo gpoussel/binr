@@ -97,7 +97,6 @@ describe("DefinitionReader", () => {
         });
         scope.put("f", () => 1);
         expect(resultFn).toBeDefined();
-        console.log(resultFn);
 
         // eslint-disable-next-line no-eval
         const size = eval(resultFn)(scope);
