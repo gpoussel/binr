@@ -61,14 +61,14 @@ class DefinitionValidator {
     });
   }
 
-  validateEnumerations(enumerations, errors) {
+  validateEnumerations(/* enumerations, errors */) {
     // TODO: Perform enumeration validation
     // 1. Check name is unique among all enumerations
     // 2. Check no duplicated value (numeric) in an enumeration
     // 3. Check no duplicated key (string) in an enumeration
   }
 
-  validateBitmasks(bitmasks, errors) {
+  validateBitmasks(/* bitmasks, errors */) {
     // TODO: Perform bitmask validation
     // 1. Check name is unique among all bitmasks
     // 2. Check no overlapping value in the bitmask

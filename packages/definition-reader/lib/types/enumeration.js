@@ -2,7 +2,6 @@
 
 const assert = require("assert");
 const _ = require("lodash");
-const { VariableScope } = require("@binr/shared");
 
 const Type = require("./type");
 
@@ -13,7 +12,7 @@ class EnumerationType extends Type {
     this.enumeration = enumeration;
   }
 
-  read(buffer, scope) {
+  read(/* buffer, scope */) {
     // TODO: Read enumeration
     return undefined;
   }

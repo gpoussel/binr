@@ -5,7 +5,6 @@
 const _ = require("lodash");
 const esprima = require("esprima");
 const escodegen = require("escodegen");
-const estraverse = require("estraverse");
 
 class ExpressionConverter {
   convert(source) {
