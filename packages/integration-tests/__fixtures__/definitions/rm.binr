@@ -1,0 +1,53 @@
+#name "RM Format"
+#extension ".rm"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/RM.bt
+
+struct Header {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:32 fileVersion;
+    uint:32 numberOfHeaders;
+}
+
+struct Properties {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:32 maxBitRate;
+    uint:32 averageBitRate;
+    uint:32 maxDataPacketSize;
+    uint:32 averageDataPacketSize;
+    uint:32 numOfPackets;
+    uint:32 durationInMS;
+    uint:32 playbackSuggestedInMS;
+    uint:32 firstINDXOffset;
+    uint:32 firstDATAOffset;
+    uint:16 numberOfStreams;
+    uint:16 flags;
+}
+
+struct MediaDescription {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:32 numOfStream;
+    uint:32 maxBitRate;
+    uint:32 averageBitRate;
+    uint:32 maxDataPacketSize;
+    uint:32 averageDataPacketSize;
+    uint:32 startOffset;
+    uint:32 preroll;
+    uint:32 duration;
+    uint:8 descriptionSize;
+    uint:8 description[descriptionSize];
+    uint:8 streamMimeType[streamMimeTypeSize];
+    uint:8 specificTypeData[specificTypeDataSize];
+}
+
+struct RmFile {
+    Header header;
+    Properties properties;
+    MediaDescription mediaDescription;
+}
