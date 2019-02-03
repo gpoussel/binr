@@ -19,8 +19,8 @@
     "lint:fix": "eslint . --ignore-path=.gitignore --fix",
     "test": "jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:watch": "jest --watch --no-cache",
+    "test:coverage": "jest --coverage --no-cache --runInBand"
   },
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
