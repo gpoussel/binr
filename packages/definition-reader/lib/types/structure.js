@@ -19,8 +19,11 @@ class StructureType extends Type {
       buffer.setEndianness(this.structure.endianness);
       const nestedScope = new VariableScope(scope);
       const readValue = field.type.read(buffer, nestedScope);
-      value[field.name] = readValue;
-      scope.put(field.name, readValue);
+      const ignore = _.get(field.meta, "ignore", false);
+      if (!ignore) {
+        value[field.name] = readValue;
+        scope.put(field.name, readValue);
+      }
     });
     return value;
   }

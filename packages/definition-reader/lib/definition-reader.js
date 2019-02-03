@@ -153,9 +153,11 @@ class DefinitionReader {
       fieldClause(ctx) {
         const type = this.visit(ctx.typeReferenceClause);
         const name = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
+        const annotations = _.map(ctx.annotationClause, this.visit.bind(this));
         const fieldResult = {
           type,
           name,
+          annotations,
         };
         if (_.has(ctx, "BoxMemberExpression")) {
           const boxMemberDefinition = this.visit(_.first(ctx.BoxMemberExpression));
@@ -181,6 +183,12 @@ class DefinitionReader {
       valueClause(ctx) {
         if (_.has(ctx, "StringLiteralToken")) {
           return JSON.parse(_.first(ctx.StringLiteralToken).image);
+        }
+        if (_.has(ctx, "TrueToken")) {
+          return true;
+        }
+        if (_.has(ctx, "FalseToken")) {
+          return false;
         }
         // That's a number
         return this.visit(_.first(ctx.numberClause));

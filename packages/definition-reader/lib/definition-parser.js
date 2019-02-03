@@ -112,10 +112,19 @@ class DefinitionParser extends chevrotain.Parser {
         {
           ALT: () => $.SUBRULE($.numberClause),
         },
+        {
+          ALT: () => $.CONSUME(tokens.TrueToken),
+        },
+        {
+          ALT: () => $.CONSUME(tokens.FalseToken),
+        },
       ]);
     });
 
     $.RULE("fieldClause", () => {
+      $.MANY(() => {
+        $.SUBRULE($.annotationClause);
+      });
       $.SUBRULE($.typeReferenceClause);
       $.CONSUME1(tokens.IdentifierToken);
       $.OPTION1(() => {

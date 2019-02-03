@@ -135,7 +135,17 @@ class DefinitionBuilder {
       )} })`;
       type = new ArrayType(type, definitionCode);
     }
-    return new Field(field.name, type);
+    return new Field(
+      field.name,
+      type,
+      _.fromPairs(
+        _.map(field.annotations, annotation => {
+          if (annotation.name === "ignore") {
+            return ["ignore", annotation.value];
+          }
+        }).filter(pair => pair[0])
+      )
+    );
   }
 
   getBuiltInType(type) {

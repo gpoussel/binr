@@ -30,33 +30,31 @@ struct EotFile {
     uint:32 codePageRange1;
     uint:32 codePageRange2;
     uint:32 checkSumAdjustment;
-    uint:32 reserved1; // must be 0
-    uint:32 reserved2; // must be 0
-    uint:32 reserved3; // must be 0
-    uint:32 reserved4; // must be 0
-    uint:16 padding1; // always 0x0000
+    uint:32 reserved[4];
+
+    @ignore(true) uint:16 padding1;
     uint:16 familyNameSize;
     wchar familyName[familyNameSize / 2];
 
-    uint:16 padding2; // always 0x0000
+    @ignore(true) uint:16 padding2;
     uint:16 styleNameSize;
     wchar styleName[styleNameSize / 2];
     
-    uint:16 padding3; // always 0x0000
+    @ignore(true) uint:16 padding3;
     uint:16 versionNameSize;
     wchar versionName[versionNameSize / 2];
 
-    uint:16 padding4; // always 0x0000
+    @ignore(true) uint:16 padding4;
     uint:16 fullNameSize;
     wchar fullName[fullNameSize / 2];
 
-    uint:16 padding5; // always 0x0000
+    @ignore(true) uint:16 padding5;
     uint:16 rootStringSize;
     wchar rootString[rootStringSize / 2];
 
     uint:32 rootStringCheckSum;
     uint:32 eudcCodePage;
-    uint:16 padding6;
+    @ignore(true) uint:16 padding6;
     uint:16 signatureSize;
     wchar signature[signatureSize / 2];
     uint:32 eudcFlags;
