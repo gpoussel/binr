@@ -61,5 +61,4 @@ struct EotFile {
     uint:32 eudcFontSize;
     uint:8 eudcFontData[eudcFontSize];
     uint:8 fontData[fontDataSize];
-    
 }

@@ -19,7 +19,7 @@ class VariableScope {
     if (!_.isUndefined(this.parentScope)) {
       return this.parentScope.get(name);
     }
-    assert(false, `Undefined variable ${name} in the current scope`);
+    throw new Error(`Undefined variable ${name} in the current scope`);
   }
 
   put(name, value) {
