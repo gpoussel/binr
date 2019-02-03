@@ -20,6 +20,7 @@ describe("EOT reading", () => {
     const binaryReader = new BinaryReader();
     const eotValue = binaryReader.read(fontEotBuffer, eotDefinition, "EotFile");
     expect(eotValue).toBeDefined();
+    expect(eotValue.version).toBe(131074);
     console.log(eotValue);
   });
 });

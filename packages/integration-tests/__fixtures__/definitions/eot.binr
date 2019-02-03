@@ -39,28 +39,34 @@ struct EotFile {
     uint:32 reserved4; // must be 0
     uint:16 padding1; // always 0x0000
     uint:16 familyNameSize;
+    // TODO: UTF-16
     char FamilyName[familyNameSize];
 
     uint:16 padding2; // always 0x0000
     uint:16 styleNameSize;
+    // TODO: UTF-16
     char styleName[styleNameSize];
     
     uint:16 padding3; // always 0x0000
     uint:16 versionNameSize;
+    // TODO: UTF-16
     char versionName[versionNameSize];
 
     uint:16 padding4; // always 0x0000
     uint:16 fullNameSize;
+    // TODO: UTF-16
     char fullName[fullNameSize];
 
     uint:16 padding5; // always 0x0000
     uint:16 rootStringSize;
-    uint:8 rootString[rootStringSize];
+    // TODO: UTF-16
+    char rootString[rootStringSize];
     uint:32 rootStringCheckSum;
     uint:32 eudcCodePage;
     uint:16 padding6;
     uint:16 signatureSize;
-    uint:8 signature[signatureSize];
+    // TODO: UTF-16
+    char signature[signatureSize];
     uint:32 eudcFlags;
     uint:32 eudcFontSize;
     uint:8 eudcFontData[eudcFontSize];
