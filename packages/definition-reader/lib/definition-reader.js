@@ -114,7 +114,7 @@ class DefinitionReader {
       enumClause(ctx) {
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
         const entries = _.times(ctx.IdentifierToken.length - 1, i => ({
-          key: ctx.IdentifierToken[i + 1],
+          key: this.getIdentifierName(ctx.IdentifierToken[i + 1]),
           value: this.visit(ctx.numberClause[i]),
         }));
         const parentType = this.visit(ctx.typeReferenceClause);
