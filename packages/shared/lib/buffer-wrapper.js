@@ -6,14 +6,10 @@ const assert = require("assert");
 class BufferWrapper {
   constructor(buffer, endianness) {
     assert(_.isBuffer(buffer), "'buffer' argument must be a buffer");
-    assert(
-      _.includes(["big", "little"], endianness),
-      `'endianness' must be either 'big' or 'little', found: ${endianness}`
-    );
 
     this.buffer = buffer;
     this.cursor = 0;
-    this.endianness = endianness;
+    this.setEndianness(endianness);
   }
 
   readAsciiString(length) {
@@ -71,6 +67,14 @@ class BufferWrapper {
     const value = this.buffer[method + size + (this.isBigEndian() ? "BE" : "LE")](this.cursor);
     this.cursor += size / 8;
     return value;
+  }
+
+  setEndianness(endianness) {
+    assert(
+      _.includes(["big", "little"], endianness),
+      `'endianness' must be either 'big' or 'little', found: ${endianness}`
+    );
+    this.endianness = endianness;
   }
 }
 
