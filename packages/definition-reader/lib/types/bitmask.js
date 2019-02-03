@@ -6,15 +6,21 @@ const _ = require("lodash");
 const Type = require("./type");
 
 class BitmaskType extends Type {
-  constructor(bitmask) {
+  constructor(parentType, bitmask) {
     super();
-    assert(!_.isUndefined(bitmask));
+    this.parentType = parentType;
     this.bitmask = bitmask;
   }
 
-  read(/* buffer, scope */) {
-    // TODO: Read bitmask
-    return undefined;
+  read(buffer, scope) {
+    const value = this.parentType.read(buffer, scope);
+    const matchedItems = [];
+    _.each(this.bitmask.entries, entry => {
+      if ((value & entry.value) !== 0) {
+        matchedItems.push(entry.key);
+      }
+    });
+    return matchedItems;
   }
 }
 

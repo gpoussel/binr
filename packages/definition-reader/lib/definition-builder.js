@@ -109,20 +109,21 @@ class DefinitionBuilder {
 
   buildBitmask(bitmask) {
     const entries = _.map(bitmask.entries, this.buildBitmaskEntry.bind(this));
-    return new Bitmask(bitmask.name, entries);
+    return new Bitmask(bitmask.name, bitmask.parentType, entries);
   }
 
   buildField(builtElements, field) {
     const typeName = field.type.type;
     let type;
     if (_.has(builtInTypes, typeName)) {
-      type = builtInTypes[typeName](field.type);
+      type = this.getBuiltInType(field.type);
     } else if (_.has(builtElements.structures, typeName)) {
       type = new StructureType(_.get(builtElements.structures, typeName));
     } else if (_.has(builtElements.enumerations, typeName)) {
       type = new EnumerationType(_.get(builtElements.enumerations, typeName));
     } else if (_.has(builtElements.bitmasks, typeName)) {
-      type = new BitmaskType(_.get(builtElements.bitmasks, typeName));
+      const bitmask = _.get(builtElements.bitmasks, typeName);
+      type = new BitmaskType(this.getBuiltInType(bitmask.parentType), bitmask);
     } else {
       throw new Error(`Unable to find referenced type ${typeName}`);
     }
@@ -133,6 +134,10 @@ class DefinitionBuilder {
       type = new ArrayType(type, definitionCode);
     }
     return new Field(field.name, type);
+  }
+
+  getBuiltInType(type) {
+    return builtInTypes[type.type](type);
   }
 
   buildEnumEntry(entry) {
