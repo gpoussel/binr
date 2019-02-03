@@ -20,8 +20,8 @@ class ArrayType extends Type {
     // I think eval() raises some security concerns, but that's fine for now
     // eslint-disable-next-line no-eval
     const size = eval(this.sizeExpression)(scope);
-    assert(_.isInteger(size), "evaluated size must be an integer");
-    assert(size >= 0, "evaluated size must be positive");
+    assert(_.isInteger(size), `evaluated size must be an integer and got: ${size}`);
+    assert(size >= 0, `evaluated size must be positive and got ${size}`);
     return _.times(size, () => {
       const nestedScope = new VariableScope(scope);
       return this.innerType.read(buffer, nestedScope);
