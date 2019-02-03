@@ -6,15 +6,16 @@ const _ = require("lodash");
 const Type = require("./type");
 
 class EnumerationType extends Type {
-  constructor(enumeration) {
+  constructor(parentType, enumeration) {
     super();
-    assert(!_.isUndefined(enumeration));
+    this.parentType = parentType;
     this.enumeration = enumeration;
   }
 
-  read(/* buffer, scope */) {
-    // TODO: Read enumeration
-    return undefined;
+  read(buffer, scope) {
+    const value = this.parentType.read(buffer, scope);
+    const matchingEntry = _.find(this.enumeration.entries, entry => entry.value === value);
+    return _.get(matchingEntry, "key");
   }
 }
 

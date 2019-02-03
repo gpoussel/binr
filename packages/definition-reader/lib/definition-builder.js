@@ -105,7 +105,7 @@ class DefinitionBuilder {
 
   buildEnumeration(enumeration) {
     const entries = _.map(enumeration.entries, this.buildEnumEntry.bind(this));
-    return new Enumeration(enumeration.name, entries);
+    return new Enumeration(enumeration.name, enumeration.parentType, entries);
   }
 
   buildBitmask(bitmask) {
@@ -121,7 +121,8 @@ class DefinitionBuilder {
     } else if (_.has(builtElements.structures, typeName)) {
       type = new StructureType(_.get(builtElements.structures, typeName));
     } else if (_.has(builtElements.enumerations, typeName)) {
-      type = new EnumerationType(_.get(builtElements.enumerations, typeName));
+      const enumeration = _.get(builtElements.enumerations, typeName);
+      type = new EnumerationType(this.getBuiltInType(enumeration.parentType), enumeration);
     } else if (_.has(builtElements.bitmasks, typeName)) {
       const bitmask = _.get(builtElements.bitmasks, typeName);
       type = new BitmaskType(this.getBuiltInType(bitmask.parentType), bitmask);
