@@ -49,8 +49,62 @@ struct MediaDescription {
     uint:8 specificTypeData[specificTypeDataSize];
 }
 
+struct IndexEntry {
+    uint:16 version;
+    uint:32 timestampInMs;
+    uint:32 offset;
+    uint:32 number;
+}
+
+struct DataHeader {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:32 numberOfEntries;
+    uint:16 numberOfStreams;
+    uint:32 nextIndexOffset;
+    DataPacket entries[/* numberOfEntries */ 1];
+}
+
+struct ContentDescription {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:16 titleLength;
+    char title[titleLength];
+    uint:16 authorLength;
+    char author[authorLength];
+    uint:16 copyrightLength;
+    char copyright[copyrightLength];
+    uint:16 commentLength;
+    char comment[commentLength];
+}
+
+struct IndexHeader {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:32 numberOfEntries;
+    uint:16 numberOfStreams;
+    uint:32 nextIndexOffset;
+    IndexEntry entries[numberOfEntries];
+}
+
+struct DataPacket {
+    uint:16 version;
+    uint:16 size;
+    uint:16 streamNumber;
+    uint:32 timestamp;
+    uint:16 rule;
+    uint:8 flags;
+    // uint:8 specificData[size - 12];
+}
+
 struct RmFile {
     Header header;
     Properties properties;
-    MediaDescription mediaDescription;
+    MediaDescription mediaDescription[properties.numberOfStreams];
+    ContentDescription contentDescription;
+    DataHeader dataHeader;
+    // IndexHeader indexHeaders[properties.numberOfStreams];
 }
