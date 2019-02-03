@@ -6,6 +6,7 @@ const DefinitionValidator = require("./lib/definition-validator");
 const {
   CStringType,
   CharType,
+  DoubleType,
   UintType,
   IntType,
   StructureType,
@@ -22,6 +23,7 @@ module.exports = {
   DefinitionValidator,
   CStringType,
   CharType,
+  DoubleType,
   UintType,
   IntType,
   StructureType,

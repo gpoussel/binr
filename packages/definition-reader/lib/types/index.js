@@ -3,6 +3,7 @@
 const CStringType = require("./cstring");
 const CharType = require("./char");
 const WCharType = require("./wchar");
+const DoubleType = require("./double");
 const UintType = require("./uint");
 const IntType = require("./int");
 const StructureType = require("./structure");
@@ -16,12 +17,14 @@ const builtInTypes = {
   int: type => new IntType(type.typeRestriction),
   char: type => new CharType(type.typeRestriction),
   wchar: type => new WCharType(type.typeRestriction),
+  double: () => new DoubleType(),
 };
 
 module.exports = {
   CStringType,
   CharType,
   WCharType,
+  DoubleType,
   UintType,
   IntType,
   StructureType,

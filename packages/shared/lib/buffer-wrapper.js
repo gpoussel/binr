@@ -44,8 +44,10 @@ class BufferWrapper {
     assert(false, `length = ${length} not supported`);
   }
 
-  isBigEndian() {
-    return this.endianness === "big";
+  readDouble() {
+    const value = this.buffer[`readDouble${this.isBigEndian() ? "BE" : "LE"}`](this.cursor);
+    this.cursor += 8;
+    return value;
   }
 
   readByte() {
@@ -67,6 +69,10 @@ class BufferWrapper {
     const value = this.buffer[method + size + (this.isBigEndian() ? "BE" : "LE")](this.cursor);
     this.cursor += size / 8;
     return value;
+  }
+
+  isBigEndian() {
+    return this.endianness === "big";
   }
 
   setEndianness(endianness) {
