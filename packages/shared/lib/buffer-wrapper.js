@@ -28,7 +28,7 @@ class BufferWrapper {
 
   readUint(length) {
     if (length === 8) {
-      return this.readSignedByte();
+      return this.readUnsignedByte();
     }
     if (_.includes([16, 32], length)) {
       return this.readAndIncrementOffset(length, "readUInt");
