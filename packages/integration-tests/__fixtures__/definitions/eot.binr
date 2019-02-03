@@ -26,10 +26,7 @@ struct EotFile {
     uint:32 weight;
     uint:16 fsType;
     uint:16 magicNumber; // Magic number for EOT file - 0x504C
-    uint:32 unicodeRange1;
-    uint:32 unicodeRange2;
-    uint:32 unicodeRange3;
-    uint:32 unicodeRange4;
+    uint:32 unicodeRange[4];
     uint:32 codePageRange1;
     uint:32 codePageRange2;
     uint:32 checkSumAdjustment;
