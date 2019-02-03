@@ -20,14 +20,22 @@ describe("GIF reading", () => {
     const binaryReader = new BinaryReader();
     const gifValue = binaryReader.read(treeGifBuffer, gifDefinition, "GifFile");
     expect(gifValue).toBeDefined();
-    expect(gifValue.header).toBeDefined();
-    expect(gifValue.header.magic).toEqual(["G", "I", "F"]);
-    expect(gifValue.header.version).toEqual(["8", "9", "a"]);
-    expect(gifValue.logicalScreen).toBeDefined();
-    expect(gifValue.logicalScreen.imageWidth).toBe(150);
-    expect(gifValue.logicalScreen.imageHeight).toBe(189);
-    expect(gifValue.logicalScreen.flags).toBeDefined();
-    expect(gifValue.logicalScreen.backgroundColorIndex).toBe(1);
-    expect(gifValue.logicalScreen.pixelAspectRatio).toBe(0);
+
+    const { logicalScreen, header, globalColorTable } = gifValue;
+    expect(header).toBeDefined();
+    expect(header.magic).toEqual(["G", "I", "F"]);
+    expect(header.version).toEqual(["8", "9", "a"]);
+
+    expect(logicalScreen).toBeDefined();
+    expect(logicalScreen.imageWidth).toBe(150);
+    expect(logicalScreen.imageHeight).toBe(189);
+    expect(logicalScreen.globalColorTable).toBe(1);
+    expect(logicalScreen.colorResolution).toBe(7);
+    expect(logicalScreen.sort).toBe(1);
+    expect(logicalScreen.globalColorTableSize).toBe(7);
+    expect(logicalScreen.backgroundColorIndex).toBe(1);
+    expect(logicalScreen.pixelAspectRatio).toBe(0);
+
+    expect(globalColorTable).toHaveLength(256);
   });
 });

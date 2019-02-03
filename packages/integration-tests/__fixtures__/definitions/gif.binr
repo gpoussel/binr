@@ -13,12 +13,30 @@ struct Header {
 struct LogicalScreen {
     uint:16 imageWidth;
     uint:16 imageHeight;
-    uint:8 flags; // TODO: Use bit fields
+    uint:1 globalColorTable;
+    uint:3 colorResolution;
+    uint:1 sort;
+    uint:3 globalColorTableSize;
     uint:8 backgroundColorIndex;
     uint:8 pixelAspectRatio;
+}
+
+struct RgbEntry {
+    uint:8 red;
+    uint:8 green;
+    uint:8 blue;
+}
+
+struct Data {
+
 }
 
 export struct GifFile {
     Header header;
     LogicalScreen logicalScreen;
+    
+    // Global Color table is only present if header.globalColorTable === 1
+    RgbEntry globalColorTable[logicalScreen.globalColorTable === 1 ? (1 << (logicalScreen.globalColorTableSize + 1)) : 0];
+    
+    Data data;
 }
