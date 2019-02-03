@@ -1,0 +1,68 @@
+#name "EOT Format"
+#comment "This structure is an example of the \"EOT\" format"
+#extension ".eot"
+#endianness "little"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/EOT.bt
+
+bitmask TTEMBED extends uint:32 {
+    TTEMBED_SUBSET = 0x1, 
+    TTEMBED_TTCOMPRESSED = 0x4, 
+    TTEMBED_FAILIFVARIATIONSIMULATED = 0x10,
+    TTMBED_EMBEDEUDC = 0x00000020,
+    TTEMBED_VALIDATIONTESTS = 0x00000040,
+    TTEMBED_WEBOBJECT = 0x00000080,
+    TTEMBED_XORENCRYPTDATA = 0x10000000
+}
+
+struct EotFile {
+    uint:32  size;
+    uint:32  fontDataSize;
+    uint:32  version;
+    TTEMBED  flags;
+    uint:8 fontPANOSE[10];
+    uint:8 charset;
+    uint:8 italic;
+    uint:32 weight;
+    uint:16 fsType;
+    uint:16 magicNumber; // Magic number for EOT file - 0x504C
+    uint:32 unicodeRange1;
+    uint:32 unicodeRange2;
+    uint:32 unicodeRange3;
+    uint:32 unicodeRange4;
+    uint:32 codePageRange1;
+    uint:32 codePageRange2;
+    uint:32 checkSumAdjustment;
+    uint:32 reserved1; // must be 0
+    uint:32 reserved2; // must be 0
+    uint:32 reserved3; // must be 0
+    uint:32 reserved4; // must be 0
+    uint:16 padding1; // always 0x0000
+    uint:16 familyNameSize;
+    char FamilyName[familyNameSize];
+
+    uint:16 padding2; // always 0x0000
+    uint:16 styleNameSize;
+    char styleName[styleNameSize];
+    
+    uint:16 padding3; // always 0x0000
+    uint:16 versionNameSize;
+    char versionName[versionNameSize];
+
+    uint:16 padding4; // always 0x0000
+    uint:16 fullNameSize;
+    char fullName[fullNameSize];
+
+    uint:16 padding5; // always 0x0000
+    uint:16 rootStringSize;
+    uint:8 rootString[rootStringSize];
+    uint:32 rootStringCheckSum;
+    uint:32 eudcCodePage;
+    uint:16 padding6;
+    uint:16 signatureSize;
+    uint:8 signature[signatureSize];
+    uint:32 eudcFlags;
+    uint:32 eudcFontSize;
+    uint:8 eudcFontData[eudcFontSize];
+    uint:8 fontData[fontDataSize];
+}
