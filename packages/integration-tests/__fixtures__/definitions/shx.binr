@@ -1,0 +1,81 @@
+#name "SHX Format (Shape)"
+#extension ".shx"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/SHX.bt
+
+@endianness("big")
+struct FileHeader {
+    int:32 code;
+    int:32 unused[5];
+    uint:32 length;
+}
+
+enum ShapeType extends int:32 {
+    NULL = 0,
+    POINT = 1,
+    POLYLINE = 3,
+    POLYGON = 5,
+    MULTI_POINT = 8,
+    POINT_Z = 11,
+    POLYLINE_Z = 13,
+    POLYGON_Z = 15,
+    MULTI_POINT_Z = 18,
+    POINT_M = 21,
+    POLYLINE_M = 23,
+    POLYGON_M = 25,
+    MULTI_POINT_M = 28,
+    MULTI_PATCH = 31
+}
+
+@endianness("little")
+struct Header {
+    int:32 version;
+    ShapeType shapeType;
+}
+
+struct ShxFile {
+    FileHeader fileHeader;
+    Header header;
+}
+
+/*
+typedef struct point_s {double X; double Y;} POINT;
+
+string GetByteSize(int wordSize)
+{
+string s;
+SPrintf(s, "%d", 2*wordSize);
+return s;
+}
+
+struct ESRI_INDEX {
+	SetBackColor(cLtGreen);
+	struct HEADER {
+		LittleEndian();
+		int	version;
+		enum ShapeEnum {
+			NullShape,
+			Point,
+			PolyLine=3,
+			Polygon=5,
+			MultiPoint=5,
+			PointZ=11,
+			PolyLineZ=13,
+			PolygonZ=15} shapeType;
+		double	Xmin;
+		double	Ymin;
+		double	Xmax;
+		double	Ymax;
+		double	Zmin;
+		double	Zmax;
+		double	Mmin;
+		double	Mmax;
+	} header;
+	SetBackColor(cLtGray);
+	struct INDEX_RECORD {
+		BigEndian();
+		int	offset <read=GetByteSize>;
+		int	contentLength <read=GetByteSize>;
+	} record [(FileSize() - 100)/8];
+		
+} esri_index;*/
