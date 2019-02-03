@@ -42,28 +42,20 @@ struct MediaDescription {
     uint:32 preroll;
     uint:32 duration;
     uint:8 descriptionSize;
-    uint:8 description[descriptionSize];
+    char description[descriptionSize];
     uint:8 streamMimeTypeSize;
-    uint:8 streamMimeType[streamMimeTypeSize];
+    char streamMimeType[streamMimeTypeSize];
     uint:32 specificTypeDataSize;
     uint:8 specificTypeData[specificTypeDataSize];
-}
-
-struct IndexEntry {
-    uint:16 version;
-    uint:32 timestampInMs;
-    uint:32 offset;
-    uint:32 number;
 }
 
 struct DataHeader {
     char type[4];
     uint:32 size;
     uint:16 version;
-    uint:32 numberOfEntries;
-    uint:16 numberOfStreams;
-    uint:32 nextIndexOffset;
-    DataPacket entries[/* numberOfEntries */ 1];
+    uint:32 numOfDataPackets;
+    uint:32 nextDataOffset;
+    DataPacket dataPackets[numOfDataPackets];
 }
 
 struct ContentDescription {
@@ -78,6 +70,13 @@ struct ContentDescription {
     char copyright[copyrightLength];
     uint:16 commentLength;
     char comment[commentLength];
+}
+
+struct IndexEntry {
+    uint:16 version;
+    uint:32 timestampInMs;
+    uint:32 offset;
+    uint:32 number;
 }
 
 struct IndexHeader {
@@ -95,9 +94,8 @@ struct DataPacket {
     uint:16 size;
     uint:16 streamNumber;
     uint:32 timestamp;
-    uint:16 rule;
-    uint:8 flags;
-    // uint:8 specificData[size - 12];
+    // TODO: Conditional fields
+    uint:8 specificData[size - 10];
 }
 
 struct RmFile {
@@ -106,5 +104,5 @@ struct RmFile {
     MediaDescription mediaDescription[properties.numberOfStreams];
     ContentDescription contentDescription;
     DataHeader dataHeader;
-    // IndexHeader indexHeaders[properties.numberOfStreams];
+    IndexHeader indexHeaders[properties.numberOfStreams];
 }
