@@ -19,7 +19,7 @@
     "lint:fix": "eslint . --ignore-path=.gitignore --fix",
     "test": "jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
-    "test:watch": "jest --watch --no-cache",
+    "test:watch": "jest --watch --no-cache --runInBand",
     "test:coverage": "jest --coverage --no-cache --runInBand"
   },
   "bugs": {
