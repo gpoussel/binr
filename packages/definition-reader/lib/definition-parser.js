@@ -22,24 +22,39 @@ class DefinitionParser extends chevrotain.Parser {
         $.SUBRULE($.headerClause);
       });
       $.MANY1(() => {
-        $.OR([
-          {
-            ALT: () => $.SUBRULE($.structureClause),
-          },
-          {
-            ALT: () => $.SUBRULE($.enumClause),
-          },
-          {
-            ALT: () => $.SUBRULE($.bitmaskClause),
-          },
-        ]);
+        $.SUBRULE($.topLevelClause);
       });
+    });
+
+    $.RULE("topLevelClause", () => {
+      $.MANY2(() => {
+        $.SUBRULE($.annotationClause);
+      });
+      $.OR([
+        {
+          ALT: () => $.SUBRULE($.structureClause),
+        },
+        {
+          ALT: () => $.SUBRULE($.enumClause),
+        },
+        {
+          ALT: () => $.SUBRULE($.bitmaskClause),
+        },
+      ]);
     });
 
     $.RULE("headerClause", () => {
       $.CONSUME(tokens.HashToken);
       $.CONSUME(tokens.IdentifierToken);
       $.SUBRULE($.valueClause);
+    });
+
+    $.RULE("annotationClause", () => {
+      $.CONSUME(tokens.AtToken);
+      $.CONSUME(tokens.IdentifierToken);
+      $.CONSUME(tokens.ParenthesisOpenToken);
+      $.SUBRULE($.valueClause);
+      $.CONSUME(tokens.ParenthesisCloseToken);
     });
 
     $.RULE("structureClause", () => {
@@ -49,7 +64,7 @@ class DefinitionParser extends chevrotain.Parser {
       $.CONSUME(tokens.StructToken);
       $.CONSUME(tokens.IdentifierToken);
       $.CONSUME(tokens.CurlyBraceOpenToken);
-      $.MANY(() => {
+      $.MANY2(() => {
         $.SUBRULE($.fieldClause);
       });
       $.CONSUME(tokens.CurlyBraceCloseToken);

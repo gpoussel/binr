@@ -47,13 +47,62 @@ class DefinitionReader {
       definition(ctx) {
         return {
           headers: _.map(ctx.headerClause, this.visit.bind(this)),
-          structures: _.map(ctx.structureClause, this.visit.bind(this)),
-          enumerations: _.map(ctx.enumClause, this.visit.bind(this)),
-          bitmasks: _.map(ctx.bitmaskClause, this.visit.bind(this)),
+          structures: _.map(
+            _.filter(ctx.topLevelClause, c => _.has(c, "children.structureClause")),
+            this.visit.bind(this)
+          ),
+          enumerations: _.map(
+            _.filter(ctx.topLevelClause, c => _.has(c, "children.enumClause")),
+            this.visit.bind(this)
+          ),
+          bitmasks: _.map(
+            _.filter(ctx.topLevelClause, c => _.has(c, "children.bitmaskClause")),
+            this.visit.bind(this)
+          ),
         };
       }
 
+      topLevelClause(ctx) {
+        const annotations = _.map(ctx.annotationClause, this.visit.bind(this));
+        if (_.has(ctx, "structureClause")) {
+          const { name, exported, fields } = this.visit(ctx.structureClause);
+          return {
+            name,
+            exported,
+            fields,
+            annotations,
+          };
+        }
+        if (_.has(ctx, "enumClause")) {
+          const { name, entries, parentType } = this.visit(ctx.enumClause);
+          return {
+            name,
+            entries,
+            parentType,
+            annotations,
+          };
+        }
+        if (_.has(ctx, "bitmaskClause")) {
+          const { name, entries, parentType } = this.visit(ctx.bitmaskClause);
+          return {
+            name,
+            entries,
+            parentType,
+            annotations,
+          };
+        }
+      }
+
       headerClause(ctx) {
+        const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
+        const value = this.visit(_.first(ctx.valueClause));
+        return {
+          name,
+          value,
+        };
+      }
+
+      annotationClause(ctx) {
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
         const value = this.visit(_.first(ctx.valueClause));
         return {

@@ -6,7 +6,6 @@ class Structure {
   constructor(name, fields) {
     this.name = name;
     this.fields = fields;
-    this.setEndianness("big");
   }
 
   setEndianness(endianness) {

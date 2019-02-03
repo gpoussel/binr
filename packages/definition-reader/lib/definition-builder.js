@@ -25,7 +25,9 @@ class DefinitionBuilder {
       enumerations,
       bitmasks,
     };
-    const structures = _.values(this.buildAllStructures(ast, ast.structures, builtElements));
+    const endiannessHeader = ast.headers.find(h => h.name === "endianness");
+    const globalEndianness = _.get(endiannessHeader, "value", "big");
+    const structures = _.values(this.buildAllStructures(globalEndianness, ast.structures, builtElements));
     return new Definition(structures, enumerations, bitmasks);
   }
 
@@ -34,7 +36,7 @@ class DefinitionBuilder {
    * between them. Some structures need to be built before other ones.
    * @param {array} structures AST structures
    */
-  buildAllStructures(ast, structures, builtElements) {
+  buildAllStructures(globalEndianness, structures, builtElements) {
     const builtStructures = {};
     const structuresToProcess = _.clone(structures);
     while (structuresToProcess.length > 0) {
@@ -68,7 +70,7 @@ class DefinitionBuilder {
         if (readyToBuild) {
           builtStructuresDuringThisTurn.push(structureToProcess);
           builtStructures[structureToProcess.name] = this.buildStructure(
-            ast,
+            globalEndianness,
             {
               structures: builtStructures,
               enumerations: builtElements.enumerations,
@@ -90,15 +92,14 @@ class DefinitionBuilder {
     return builtStructures;
   }
 
-  buildStructure(ast, builtElements, structure) {
-    const endiannessHeader = ast.headers.find(h => h.name === "endianness");
+  buildStructure(globalEndianness, builtElements, structure) {
     const structureObject = new Structure(
       structure.name,
       _.map(structure.fields, f => this.buildField(builtElements, f))
     );
-    if (!_.isUndefined(endiannessHeader)) {
-      structureObject.setEndianness(endiannessHeader.value);
-    }
+    const endiannessAnnotation = _.find(structure.annotations, h => h.name === "endianness");
+    const structureEndianness = _.get(endiannessAnnotation, "value", globalEndianness);
+    structureObject.setEndianness(_.defaultTo(structureEndianness));
     return structureObject;
   }
 

@@ -118,6 +118,7 @@ const symbolTokens = _.fromPairs(
       Colon: ":",
       Hash: "#",
       Comma: ",",
+      At: "@",
     },
     (keyword, name) => [
       `${name}Token`,
