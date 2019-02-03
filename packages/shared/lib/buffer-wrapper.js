@@ -22,6 +22,12 @@ class BufferWrapper {
     return stringValue;
   }
 
+  readUtf16String(length) {
+    const stringValue = this.buffer.toString("utf16le", this.cursor, this.cursor + length);
+    this.cursor += length;
+    return stringValue;
+  }
+
   readUint(length) {
     if (length === 8) {
       return this.readByte();
