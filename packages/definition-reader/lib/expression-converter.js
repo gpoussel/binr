@@ -42,7 +42,7 @@ class ExpressionConverter {
     if (expression.type === esprima.Syntax.ConditionalExpression) {
       expression.test = this.processExpression(expression.test);
       expression.consequent = this.processExpression(expression.consequent);
-      expression.alternate = this.processExpression(expression.test);
+      expression.alternate = this.processExpression(expression.alternate);
     }
     if (
       expression.type === esprima.Syntax.LogicalExpression ||
