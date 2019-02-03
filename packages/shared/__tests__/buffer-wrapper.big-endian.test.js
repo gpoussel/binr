@@ -7,8 +7,8 @@ describe("BufferWrapper, big endian", () => {
     const bufferWrapper = new BufferWrapper(Buffer.from([65, 4, 1, 2]), "big");
     expect(bufferWrapper.isBigEndian()).toBeTruthy();
     expect(bufferWrapper.readAsciiString(1)).toEqual("A");
-    expect(bufferWrapper.readByte()).toEqual(4);
-    expect(bufferWrapper.readBytes(2)).toEqual([1, 2]);
+    expect(bufferWrapper.readUnsignedByte()).toEqual(4);
+    expect(bufferWrapper.readUnsignedBytes(2)).toEqual([1, 2]);
   });
 
   test("read int types on big-endian buffer", () => {

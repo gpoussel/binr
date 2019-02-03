@@ -5,10 +5,10 @@ const Type = require("./type");
 class CStringType extends Type {
   read(buffer) {
     let str = "";
-    let byte = buffer.readByte();
+    let byte = buffer.readUnsignedByte();
     while (byte !== 0) {
       str += String.fromCharCode(byte);
-      byte = buffer.readByte();
+      byte = buffer.readUnsignedByte();
     }
     return str;
   }

@@ -9,6 +9,8 @@ class BufferWrapper {
 
     this.buffer = buffer;
     this.cursor = 0;
+    this.currentByte = undefined;
+    this.positionInCurrentByte = 0;
     this.setEndianness(endianness);
   }
 
@@ -26,22 +28,36 @@ class BufferWrapper {
 
   readUint(length) {
     if (length === 8) {
-      return this.readByte();
+      return this.readSignedByte();
     }
     if (_.includes([16, 32], length)) {
       return this.readAndIncrementOffset(length, "readUInt");
     }
-    assert(false, `length = ${length} not supported`);
+    if (length < 8) {
+      this.readByteForBitsetIfNecessary(this.readUnsignedByte.bind(this));
+      if (this.positionInCurrentByte + length >= 8) {
+        throw new Error(`Invalid byte offset position = ${this.positionInCurrentByte}, length = ${length}`);
+      }
+      return (this.currentByte >> (8 - length - this.positionInCurrentByte)) & ((1 << length) - 1);
+    }
+    throw new Error(`length = ${length} not supported`);
   }
 
   readInt(length) {
     if (length === 8) {
-      return this.readByte();
+      return this.readSignedByte();
     }
     if (_.includes([16, 32], length)) {
       return this.readAndIncrementOffset(length, "readInt");
     }
-    assert(false, `length = ${length} not supported`);
+    if (length < 8) {
+      this.readByteForBitsetIfNecessary(this.readSignedByte.bind(this));
+      if (this.positionInCurrentByte + length >= 8) {
+        throw new Error(`Invalid byte offset position = ${this.positionInCurrentByte}, length = ${length}`);
+      }
+      return (this.currentByte >> (8 - length - this.positionInCurrentByte)) & ((1 << length) - 1);
+    }
+    throw new Error(`length = ${length} not supported`);
   }
 
   readDouble() {
@@ -50,17 +66,31 @@ class BufferWrapper {
     return value;
   }
 
-  readByte() {
+  readSignedByte() {
     const value = this.buffer.readInt8(this.cursor);
     this.cursor += 1;
     return value;
   }
 
-  readBytes(count) {
+  readUnsignedByte() {
+    const value = this.buffer.readUInt8(this.cursor);
+    this.cursor += 1;
+    return value;
+  }
+
+  readSignedBytes(count) {
+    return this.readBytes(count, this.readSignedByte.bind(this));
+  }
+
+  readUnsignedBytes(count) {
+    return this.readBytes(count, this.readUnsignedByte.bind(this));
+  }
+
+  readBytes(count, fn) {
     assert(count > 0, "count must be > 0");
     const bytes = [];
     _.times(count, () => {
-      bytes.push(this.readByte());
+      bytes.push(fn());
     });
     return bytes;
   }
@@ -69,6 +99,13 @@ class BufferWrapper {
     const value = this.buffer[method + size + (this.isBigEndian() ? "BE" : "LE")](this.cursor);
     this.cursor += size / 8;
     return value;
+  }
+
+  readByteForBitsetIfNecessary(fn) {
+    if (_.isUndefined(this.currentByte)) {
+      this.currentByte = fn();
+      this.positionInCurrentByte = 0;
+    }
   }
 
   isBigEndian() {

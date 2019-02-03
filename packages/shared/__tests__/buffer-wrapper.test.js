@@ -14,10 +14,4 @@ describe("BufferWrapper", () => {
   test("accepts a Buffer as argument", () => {
     expect(new BufferWrapper(Buffer.from([]), "big")).toBeDefined();
   });
-
-  test("throws error on invalid types", () => {
-    const bufferWrapper = new BufferWrapper(Buffer.from([65, 4, 1, 2]), "big");
-    expect(() => bufferWrapper.readUint(3)).toThrow();
-    expect(() => bufferWrapper.readInt(3)).toThrow();
-  });
 });
