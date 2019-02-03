@@ -19,17 +19,21 @@ class DefinitionBuilder {
   }
 
   build(ast) {
-    const structures = _.map(ast.structures, s => this.buildStructure(ast, s));
     const enumerations = _.map(ast.enumerations, e => this.buildEnumeration(ast, e));
     const bitmasks = _.map(ast.bitmasks, e => this.buildBitmask(ast, e));
+    const builtElements = {
+      enumerations,
+      bitmasks,
+    };
+    const structures = _.map(ast.structures, s => this.buildStructure(ast, builtElements, s));
     return new Definition(structures, enumerations, bitmasks);
   }
 
-  buildStructure(ast, structure) {
+  buildStructure(ast, builtElements, structure) {
     const endiannessHeader = ast.headers.find(h => h.name === "endianness");
     const structureObject = new Structure(
       structure.name,
-      _.map(structure.fields, f => this.buildField(ast, f))
+      _.map(structure.fields, f => this.buildField(ast, builtElements, f))
     );
     if (!_.isUndefined(endiannessHeader)) {
       structureObject.setEndianness(endiannessHeader.value);
@@ -37,26 +41,35 @@ class DefinitionBuilder {
     return structureObject;
   }
 
-  buildField(ast, field) {
+  buildEnumeration(ast, enumeration) {
+    const entries = _.map(enumeration.entries, this.buildEnumEntry.bind(this));
+    return new Enumeration(enumeration.name, entries);
+  }
+
+  buildBitmask(ast, bitmask) {
+    const entries = _.map(bitmask.entries, this.buildBitmaskEntry.bind(this));
+    return new Bitmask(bitmask.name, entries);
+  }
+
+  buildField(ast, builtElements, field) {
     const typeName = field.type.type;
     let type;
     if (_.has(builtInTypes, typeName)) {
       // Built-in type
       type = builtInTypes[typeName](field.type);
     } else {
-      // TODO: Cache the "buildXXX" calls, otherwise each
-      // structure/bitmask/enumeration will be built several times
+      // TODO: Cache the "buildStructure" calls, otherwise each structure will be built several times
       const foundStructure = _.find(ast.structures, s => s.name === typeName);
       if (!_.isUndefined(foundStructure)) {
-        type = new StructureType(this.buildStructure(ast, foundStructure));
+        type = new StructureType(this.buildStructure(ast, builtElements, foundStructure));
       } else {
-        const foundEnumeration = _.find(ast.enumerations, e => e.name === typeName);
+        const foundEnumeration = _.find(builtElements.enumerations, e => e.name === typeName);
         if (!_.isUndefined(foundEnumeration)) {
-          type = new EnumerationType(this.buildEnumeration(ast, foundEnumeration));
+          type = new EnumerationType(foundEnumeration);
         } else {
-          const foundBitmask = _.find(ast.bitmasks, b => b.name === typeName);
+          const foundBitmask = _.find(builtElements.bitmasks, b => b.name === typeName);
           if (!_.isUndefined(foundBitmask)) {
-            type = new BitmaskType(this.buildBitmask(ast, foundBitmask));
+            type = new BitmaskType(foundBitmask);
           } else {
             throw new Error(`Unable to find referenced type ${typeName}`);
           }
@@ -70,16 +83,6 @@ class DefinitionBuilder {
       type = new ArrayType(type, definitionCode);
     }
     return new Field(field.name, type);
-  }
-
-  buildEnumeration(ast, enumeration) {
-    const entries = _.map(enumeration.entries, this.buildEnumEntry.bind(this));
-    return new Enumeration(enumeration.name, entries);
-  }
-
-  buildBitmask(ast, bitmask) {
-    const entries = _.map(bitmask.entries, this.buildBitmaskEntry.bind(this));
-    return new Bitmask(bitmask.name, entries);
   }
 
   buildEnumEntry(entry) {
