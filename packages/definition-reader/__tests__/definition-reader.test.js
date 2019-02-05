@@ -53,6 +53,12 @@ describe("DefinitionReader", () => {
     });
   });
 
+  test("accepts field annotations", () => {
+    _.each(["struct a { @ignore(false) int b; @ignore(true) int c; }"], value => {
+      expect(createAndCallParser(value)()).toBeDefined();
+    });
+  });
+
   test("accepts expression", () => {
     _.each(
       [
@@ -103,6 +109,11 @@ describe("DefinitionReader", () => {
         expect(size).toBeDefined();
       }
     );
+  });
+  test("rejects unsupported expression", () => {
+    _.each(["a++", "a--", "++a", "--a"], value => {
+      expect(createAndCallParser(`struct a { int foo[${value}]; }`)).toThrow(/supported/);
+    });
   });
   test("rejects invalid expression", () => {
     _.each(["+", "())"], value => {
