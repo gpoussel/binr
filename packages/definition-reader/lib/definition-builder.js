@@ -85,8 +85,9 @@ class DefinitionBuilder {
 
       if (builtStructuresDuringThisTurn.length === 0) {
         // We have just met a circular dependency, since we have just performed
-        // a rotation without changes.
-        throw new Error("Circular dependencies detected between structures");
+        // a rotation without changes.  Or, we have a field with an unknwon
+        // type. Either way, that's a good reason to stop the processing now.
+        throw new Error("Unable to build Definition: invalid structures");
       }
     }
     return builtStructures;
@@ -123,11 +124,9 @@ class DefinitionBuilder {
     } else if (_.has(builtElements.enumerations, typeName)) {
       const enumeration = _.get(builtElements.enumerations, typeName);
       type = new EnumerationType(this.getBuiltInType(enumeration.parentType), enumeration);
-    } else if (_.has(builtElements.bitmasks, typeName)) {
+    } else {
       const bitmask = _.get(builtElements.bitmasks, typeName);
       type = new BitmaskType(this.getBuiltInType(bitmask.parentType), bitmask);
-    } else {
-      throw new Error(`Unable to find referenced type ${typeName}`);
     }
     if (_.has(field, "arrayDefinition")) {
       const definitionCode = `(function(variableScope) { return ${this.converter.convert(
