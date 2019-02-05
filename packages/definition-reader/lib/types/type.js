@@ -1,9 +1,5 @@
 "use strict";
 
-class Type {
-  read() {
-    throw new Error(`Method read() is not implemented on ${this.constructor.name}`);
-  }
-}
+class Type {}
 
 module.exports = Type;
