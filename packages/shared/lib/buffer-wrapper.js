@@ -35,10 +35,13 @@ class BufferWrapper {
     }
     if (length < 8) {
       this.readByteForBitsetIfNecessary(this.readUnsignedByte.bind(this));
-      if (this.positionInCurrentByte + length >= 8) {
+      if (this.positionInCurrentByte + length > 8) {
         throw new Error(`Invalid byte offset position = ${this.positionInCurrentByte}, length = ${length}`);
       }
-      return (this.currentByte >> (8 - length - this.positionInCurrentByte)) & ((1 << length) - 1);
+      const value = (this.currentByte >> (8 - length - this.positionInCurrentByte)) & ((1 << length) - 1);
+      this.positionInCurrentByte += length;
+      this.resetBitsetIfNecessary();
+      return value;
     }
     throw new Error(`length = ${length} not supported`);
   }
@@ -52,10 +55,13 @@ class BufferWrapper {
     }
     if (length < 8) {
       this.readByteForBitsetIfNecessary(this.readSignedByte.bind(this));
-      if (this.positionInCurrentByte + length >= 8) {
+      if (this.positionInCurrentByte + length > 8) {
         throw new Error(`Invalid byte offset position = ${this.positionInCurrentByte}, length = ${length}`);
       }
-      return (this.currentByte >> (8 - length - this.positionInCurrentByte)) & ((1 << length) - 1);
+      const value = (this.currentByte >> (8 - length - this.positionInCurrentByte)) & ((1 << length) - 1);
+      this.positionInCurrentByte += length;
+      this.resetBitsetIfNecessary();
+      return value;
     }
     throw new Error(`length = ${length} not supported`);
   }
@@ -99,6 +105,14 @@ class BufferWrapper {
     const value = this.buffer[method + size + (this.isBigEndian() ? "BE" : "LE")](this.cursor);
     this.cursor += size / 8;
     return value;
+  }
+
+  resetBitsetIfNecessary() {
+    if (this.positionInCurrentByte === 8) {
+      // We have just stopped at the end of the byte => reset
+      this.currentByte = undefined;
+      this.positionInCurrentByte = 0;
+    }
   }
 
   readByteForBitsetIfNecessary(fn) {
