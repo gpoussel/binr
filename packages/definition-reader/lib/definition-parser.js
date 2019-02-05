@@ -370,10 +370,6 @@ class DefinitionParser extends chevrotain.Parser {
 
     $.RULE("Expression", () => {
       $.SUBRULE($.AssignmentExpression);
-      $.MANY(() => {
-        $.CONSUME(tokens.CommaToken);
-        $.SUBRULE2($.AssignmentExpression);
-      });
     });
 
     this.performSelfAnalysis();
