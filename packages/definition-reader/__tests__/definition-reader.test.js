@@ -78,6 +78,7 @@ describe("DefinitionReader", () => {
         "a !== b ? 1 : 0",
         "~1",
         "!a",
+        "+a",
         "a>>1",
         "a>>>b",
         "-4",

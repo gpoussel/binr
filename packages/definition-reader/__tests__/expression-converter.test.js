@@ -45,4 +45,11 @@ describe("ExpressionConverter", () => {
       expect(() => converter.convert(entry)).toThrow(/supported/);
     });
   });
+
+  test("rejects invalid input", () => {
+    const converter = new ExpressionConverter();
+    expect(() => converter.convert("function a() {}")).toThrow(/expression/);
+    expect(() => converter.convert("const a = require('fs'); a();")).toThrow(/body size/);
+    expect(() => converter.convert("")).toThrow(/body size/);
+  });
 });
