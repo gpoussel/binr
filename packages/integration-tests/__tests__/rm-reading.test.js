@@ -817,12 +817,16 @@ describe("RM reading", () => {
     expect(videoValue.dataHeader.dataPackets[0].streamNumber).toBe(0);
     expect(videoValue.dataHeader.dataPackets[0].timestamp).toBe(0);
     expect(videoValue.dataHeader.dataPackets[0].version).toBe(0);
-    expect(videoValue.dataHeader.dataPackets[0].specificData.length).toBe(290);
+    expect(videoValue.dataHeader.dataPackets[0].packetGroup).toBe(0);
+    expect(videoValue.dataHeader.dataPackets[0].flags).toBe(2);
+    expect(videoValue.dataHeader.dataPackets[0].specificData.length).toBe(288);
     expect(videoValue.dataHeader.dataPackets[131].size).toBe(302);
     expect(videoValue.dataHeader.dataPackets[131].streamNumber).toBe(1);
     expect(videoValue.dataHeader.dataPackets[131].timestamp).toBe(8500);
     expect(videoValue.dataHeader.dataPackets[131].version).toBe(0);
-    expect(videoValue.dataHeader.dataPackets[131].specificData.length).toBe(292);
+    expect(videoValue.dataHeader.dataPackets[131].packetGroup).toBe(0);
+    expect(videoValue.dataHeader.dataPackets[131].flags).toBe(0);
+    expect(videoValue.dataHeader.dataPackets[131].specificData.length).toBe(290);
     expect(videoValue.indexHeaders).toEqual([
       {
         type: "INDX".split(""),
