@@ -52,4 +52,12 @@ describe("ExpressionConverter", () => {
     expect(() => converter.convert("const a = require('fs'); a();")).toThrow(/body size/);
     expect(() => converter.convert("")).toThrow(/body size/);
   });
+
+  test("OR with === expressions", () => {
+    const converter = new ExpressionConverter();
+    const test1 = "a === b || a === d || c === e";
+    const result1 = converter.convert(test1);
+    expect(result1).toContain("||");
+    expect(result1).toContain("===");
+  });
 });
