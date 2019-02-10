@@ -185,7 +185,12 @@ class DefinitionBuilder {
 
   buildIfStatement(builtElements, statement) {
     const testCode = this.transformCodeToFunction(statement.test);
-    return new IfStatement(testCode, this.buildStatement(builtElements, statement.consequent));
+    const consequentStatement = this.buildStatement(builtElements, statement.consequent);
+    const alternateStatement =
+      _.has(statement, "alternate") && !_.isUndefined(statement.alternate)
+        ? this.buildStatement(builtElements, statement.alternate)
+        : undefined;
+    return new IfStatement(testCode, consequentStatement, alternateStatement);
   }
 
   buildBlockStatement(builtElements, statement) {

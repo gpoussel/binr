@@ -168,6 +168,7 @@ class DefinitionReader {
           statementType: "if",
           test: this.visit(_.first(ctx.Expression)),
           consequent: this.visit(_.first(ctx.statementClause)),
+          alternate: _.size(ctx.statementClause) > 1 ? this.visit(_.get(ctx.statementClause, 1)) : undefined,
         };
       }
 

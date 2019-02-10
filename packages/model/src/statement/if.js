@@ -5,10 +5,11 @@ const _ = require("lodash");
 const Statement = require("./statement");
 
 class IfStatement extends Statement {
-  constructor(testCode, consequentStatement) {
+  constructor(testCode, consequentStatement, alternateStatement) {
     super();
     this.testCode = testCode;
     this.consequentStatement = consequentStatement;
+    this.alternateStatement = alternateStatement;
   }
 
   read(buffer, parentScope, scope, value) {
