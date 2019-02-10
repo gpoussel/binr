@@ -6,7 +6,8 @@
 // Source: https://www.sweetscape.com/010editor/repository/files/GIF.bt
 
 struct Header {
-    char magic[3];
+    // Just using min and max functions, to test them
+    char magic[max(3, min(2, 5))];
     char version[3];
 }
 

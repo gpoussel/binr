@@ -17,6 +17,8 @@ class BinaryReader {
       globalFunctions: new FunctionScope(),
     };
 
+    this.setupFunctionScope(scopes.functions);
+
     let mainStructureName;
     if (_.isUndefined(providedStructureName)) {
       // No structure provided: assume there is only one in the definition
@@ -36,6 +38,11 @@ class BinaryReader {
     const structureType = new StructureType(mainStructure);
     const bufferWrapper = new BufferWrapper(binaryBuffer, mainStructure.getEndianness());
     return structureType.read(bufferWrapper, scopes);
+  }
+
+  setupFunctionScope(functionScope) {
+    functionScope.put("min", (...args) => _.min(args));
+    functionScope.put("max", (...args) => _.max(args));
   }
 }
 
