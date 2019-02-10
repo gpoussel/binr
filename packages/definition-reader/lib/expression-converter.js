@@ -6,6 +6,9 @@ const _ = require("lodash");
 const esprima = require("esprima");
 const escodegen = require("escodegen");
 
+const MODE_VARIABLE = 1;
+const MODE_FUNCTION = 2;
+
 class ExpressionConverter {
   convert(source) {
     const ast = esprima.parseScript(source);
@@ -32,9 +35,7 @@ class ExpressionConverter {
       throw new Error(`UpdateExpression not supported`);
     }
     if (expression.type === esprima.Syntax.Identifier) {
-      const generatedNode = this.generateVariableScopeGetNode(expression.name);
-      generatedNode.generated = true;
-      return generatedNode;
+      return this.generateVariableScopeGetNode(expression.name);
     }
     if (expression.type === esprima.Syntax.MemberExpression) {
       expression.object = this.processExpression(expression.object);
@@ -55,11 +56,29 @@ class ExpressionConverter {
       expression.argument = this.processExpression(expression.argument);
     }
     if (expression.type === esprima.Syntax.CallExpression) {
-      expression.callee = this.processExpression(expression.callee);
-      expression.arguments = _.map(expression.arguments, this.processExpression.bind(this));
+      const { callee } = expression;
+      if (callee.type === esprima.Syntax.Identifier) {
+        // Top-level functions: that's fine
+        expression.callee = this.generateFunctionScopeGetNode(expression.callee.name);
+      } else if (callee.type === esprima.Syntax.MemberExpression) {
+        const { object, property } = callee;
+        if (
+          object.type === esprima.Syntax.Identifier &&
+          object.name === "_" &&
+          property.type === esprima.Syntax.Identifier
+        ) {
+          // Function on _ object: that's a global function
+          expression.callee = this.generateTopLevelFunctionScopeGetNode(property.name);
+        } else {
+          throw new Error(`Only top-level functions are supported, received ${callee.type}`);
+        }
+      } else {
+        throw new Error(`Only top-level functions are supported, received ${callee.type}`);
+      }
+      expression.arguments = _.map(expression.arguments, arg => this.processExpression(arg));
     }
     if (expression.type === esprima.Syntax.ArrayExpression) {
-      expression.elements = _.map(expression.elements, this.processExpression.bind(this));
+      expression.elements = _.map(expression.elements, el => this.processExpression(el));
     }
     return expression;
   }
@@ -68,9 +87,18 @@ class ExpressionConverter {
     return this.generateGetNode("variableScope", name);
   }
 
+  generateFunctionScopeGetNode(name) {
+    return this.generateGetNode("functionScope", name);
+  }
+
+  generateTopLevelFunctionScopeGetNode(name) {
+    return this.generateGetNode("globalFunctionScope", name);
+  }
+
   generateGetNode(objectName, propertyName) {
     return {
       type: esprima.Syntax.CallExpression,
+      generated: true,
       callee: {
         type: esprima.Syntax.MemberExpression,
         generated: true,

@@ -53,11 +53,35 @@ describe("ExpressionConverter", () => {
     expect(() => converter.convert("")).toThrow(/body size/);
   });
 
-  test("OR with === expressions", () => {
+  test("converts properly OR with === expressions", () => {
     const converter = new ExpressionConverter();
-    const test1 = "a === b || a === d || c === e";
-    const result1 = converter.convert(test1);
-    expect(result1).toContain("||");
-    expect(result1).toContain("===");
+    const test = "a === b || a === d || c === e";
+    const result = converter.convert(test);
+    expect(result).toContain("||");
+    expect(result).toContain("===");
+  });
+
+  test("processes correctly nested function calls", () => {
+    const converter = new ExpressionConverter();
+    const test = "foo(1, bar(2, foo, baz(3), baz(4)))";
+    const result = converter.convert(test);
+    expect(result).toContain("variableScope");
+    expect(result).toContain("functionScope");
+  });
+
+  test("processes correctly global function calls", () => {
+    const converter = new ExpressionConverter();
+    const test = "_.foo(1, 2, _.bar(a), baz(5))";
+    const result = converter.convert(test);
+    expect(result).toContain("globalFunctionScope");
+    expect(result).toContain("functionScope");
+    expect(result).toContain("variableScope");
+  });
+
+  test("rejects non top-level functions", () => {
+    const converter = new ExpressionConverter();
+    expect(() => converter.convert("foo().bar(1).baz()")).toThrow(/top-level/);
+    expect(() => converter.convert("[a]()")).toThrow(/top-level/);
+    expect(() => converter.convert("_.constructor.prototype()")).toThrow(/top-level/);
   });
 });

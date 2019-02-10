@@ -103,10 +103,13 @@ describe("DefinitionReader", () => {
         scope.put("ob", {
           b: 4,
         });
-        scope.put("f", () => 1);
+
+        // TODO: Use a FunctionScope? Or maybe rename the VariableScope class
+        const functionScope = new VariableScope();
+        functionScope.put("f", () => 1);
 
         // eslint-disable-next-line no-eval
-        const size = eval(resultFn)(scope);
+        const size = eval(resultFn)(scope, functionScope);
         expect(size).toBeDefined();
       }
     );

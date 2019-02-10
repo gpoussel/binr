@@ -180,7 +180,9 @@ class DefinitionBuilder {
   }
 
   transformCodeToFunction(code) {
-    return `(function(variableScope) { return ${this.converter.convert(code)} })`;
+    return `(function(variableScope, functionScope) { "use strict"; return ${this.converter.convert(
+      code
+    )} })`;
   }
 
   buildIfStatement(builtElements, statement) {
