@@ -4,13 +4,22 @@
 struct FileHeader {
     uint:16    type; 
     uint:32    size; 
-    uint:16    reserved1;
-    uint:16    reserved2;    
+    uint:16    reserved[2];
     uint:32    offBits;
 }
 
 struct InfoHeader {
-    uint:16          biSize;
+    uint:32 size;
+    uint:32 width;
+    uint:32 height;
+    uint:16 planes;
+    uint:16 bitCount;
+    uint:32 compression;
+    uint:32 sizeImage;
+    uint:32 xPelsPerMeter;
+    uint:32 yPelsPerMeter;
+    uint:32 clrUsed;
+    uint:32 clrImportant;
 }
 
 struct BmpFile {
