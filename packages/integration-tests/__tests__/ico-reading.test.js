@@ -54,6 +54,5 @@ describe("ICO reading", () => {
       clrUsed: 0,
       clrImportant: 0,
     });
-    console.log(firstImage);
   });
 });
