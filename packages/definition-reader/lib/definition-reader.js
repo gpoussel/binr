@@ -16,6 +16,7 @@ class DefinitionReader {
 
   readInput(input) {
     const ast = this.readAst(input);
+
     this.validator.validate(ast);
     return this.builder.build(ast);
   }
@@ -142,11 +143,38 @@ class DefinitionReader {
       structureClause(ctx) {
         const exported = _.has(ctx, "ExportToken");
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-        const fields = _.map(ctx.fieldClause, this.visit.bind(this));
+        const fields = _.map(ctx.statementClause, this.visit.bind(this));
         return {
           name,
           exported,
           fields,
+        };
+      }
+
+      statementClause(ctx) {
+        if (_.has(ctx, "fieldClause")) {
+          return this.visit(ctx.fieldClause);
+        }
+        if (_.has(ctx, "IfStatement")) {
+          return this.visit(ctx.IfStatement);
+        }
+        if (_.has(ctx, "BlockStatement")) {
+          return this.visit(ctx.BlockStatement);
+        }
+      }
+
+      IfStatement(ctx) {
+        return {
+          statementType: "if",
+          test: this.visit(_.first(ctx.Expression)),
+          consequent: this.visit(_.first(ctx.statementClause)),
+        };
+      }
+
+      BlockStatement(ctx) {
+        return {
+          statementType: "block",
+          statements: _.map(ctx.statementClause, this.visit.bind(this)),
         };
       }
 
@@ -155,6 +183,7 @@ class DefinitionReader {
         const name = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
         const annotations = _.map(ctx.annotationClause, this.visit.bind(this));
         const fieldResult = {
+          statementType: "field",
           type,
           name,
           annotations,
@@ -215,14 +244,15 @@ class DefinitionReader {
       }
 
       BinaryExpression(ctx) {
-        if (_.has(ctx, "UnaryExpression")) {
-          const operator = _.first(_.keys(ctx).filter(key => key !== "UnaryExpression"));
-          const expressions = _.map(ctx.UnaryExpression, this.visit.bind(this));
-          if (_.isUndefined(operator)) {
-            return expressions;
-          }
-          return _.join(expressions, _.get(_.first(ctx[operator]), "image"));
-        }
+        const result = [this.visit(_.first(ctx.UnaryExpression))];
+        _.each(ctx.ExpressionToken, (token, i) => {
+          const tokenName = _.first(_.keys(token.children));
+          const tokenSymbol = _.first(token.children[tokenName]).image;
+          const childExpression = this.visit(ctx.UnaryExpression[i + 1]);
+          result.push(tokenSymbol);
+          result.push(childExpression);
+        });
+        return _.join(result, " ");
       }
 
       UnaryExpression(ctx) {
@@ -300,6 +330,9 @@ class DefinitionReader {
         }
         if (_.has(ctx, "ArrayLiteral")) {
           return this.visit(ctx.ArrayLiteral);
+        }
+        if (_.has(ctx, "StringLiteralToken")) {
+          return _.first(ctx.StringLiteralToken).image;
         }
       }
 

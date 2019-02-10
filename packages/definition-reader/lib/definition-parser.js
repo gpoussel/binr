@@ -65,7 +65,7 @@ class DefinitionParser extends chevrotain.Parser {
       $.CONSUME(tokens.IdentifierToken);
       $.CONSUME(tokens.CurlyBraceOpenToken);
       $.MANY2(() => {
-        $.SUBRULE($.fieldClause);
+        $.SUBRULE($.statementClause);
       });
       $.CONSUME(tokens.CurlyBraceCloseToken);
     });
@@ -121,6 +121,43 @@ class DefinitionParser extends chevrotain.Parser {
       ]);
     });
 
+    $.RULE("statementClause", () => {
+      $.OR(
+        $.c2 ||
+          ($.c2 = [
+            {
+              ALT: () => $.SUBRULE($.BlockStatement),
+            },
+            {
+              ALT: () => $.SUBRULE($.IfStatement),
+            },
+            {
+              ALT: () => $.SUBRULE($.fieldClause),
+            },
+          ])
+      );
+    });
+
+    $.RULE("BlockStatement", () => {
+      $.CONSUME(tokens.CurlyBraceOpenToken);
+      $.MANY(() => {
+        $.SUBRULE($.statementClause);
+      });
+      $.CONSUME(tokens.CurlyBraceCloseToken);
+    });
+
+    $.RULE("IfStatement", () => {
+      $.CONSUME(tokens.IfToken);
+      $.CONSUME(tokens.ParenthesisOpenToken);
+      $.SUBRULE($.Expression);
+      $.CONSUME(tokens.ParenthesisCloseToken);
+      $.SUBRULE($.statementClause);
+      $.OPTION(() => {
+        $.CONSUME(tokens.ElseToken);
+        $.SUBRULE2($.statementClause);
+      });
+    });
+
     $.RULE("fieldClause", () => {
       $.MANY(() => {
         $.SUBRULE($.annotationClause);
@@ -164,6 +201,9 @@ class DefinitionParser extends chevrotain.Parser {
             },
             {
               ALT: () => $.SUBRULE($.numberClause),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.StringLiteralToken),
             },
             {
               ALT: () => $.SUBRULE($.ArrayLiteral),
@@ -301,61 +341,65 @@ class DefinitionParser extends chevrotain.Parser {
     $.RULE("BinaryExpression", () => {
       $.SUBRULE($.UnaryExpression);
       $.MANY(() => {
-        $.OR(
-          $.c3 ||
-            ($.c3 = [
-              {
-                ALT: () => $.CONSUME(tokens.BooleanOrToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.BooleanAndToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.BinaryOrToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.BinaryXorToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.BinaryAndToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.DoubleEqualsToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.TripleEqualsToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.DifferentToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.DoubleDifferentToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.ShiftRightToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.ShiftLeftToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.UnsignedShiftRightToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.MultiplicationToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.DivisionToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.PlusToken),
-              },
-              {
-                ALT: () => $.CONSUME(tokens.MinusToken),
-              },
-            ])
-        );
-        $.SUBRULE2($.UnaryExpression);
+        $.SUBRULE2($.ExpressionToken);
+        $.SUBRULE3($.UnaryExpression);
       });
+    });
+
+    $.RULE("ExpressionToken", () => {
+      $.OR(
+        $.c3 ||
+          ($.c3 = [
+            {
+              ALT: () => $.CONSUME(tokens.BooleanOrToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.BooleanAndToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.BinaryOrToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.BinaryXorToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.BinaryAndToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.DoubleEqualsToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.TripleEqualsToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.DifferentToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.DoubleDifferentToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.ShiftRightToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.ShiftLeftToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.UnsignedShiftRightToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.MultiplicationToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.DivisionToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.PlusToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.MinusToken),
+            },
+          ])
+      );
     });
 
     $.RULE("AssignmentExpression", () => {

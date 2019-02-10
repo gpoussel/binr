@@ -3,7 +3,9 @@
 const _ = require("lodash");
 const {
   Definition,
-  Field,
+  FieldStatement,
+  IfStatement,
+  BlockStatement,
   Structure,
   Enumeration,
   EnumEntry,
@@ -46,25 +48,30 @@ class DefinitionBuilder {
       _.each(structuresToProcess, structureToProcess => {
         let readyToBuild = true;
         _.each(structureToProcess.fields, field => {
-          const typeName = field.type.type;
-          if (_.has(builtInTypes, typeName)) {
-            // Built-in type
-            return;
+          _.each(this.getTypes(field), type => {
+            const typeName = type.type;
+            if (_.has(builtInTypes, typeName)) {
+              // Built-in type
+              return;
+            }
+            if (_.has(builtElements.bitmasks, typeName)) {
+              // Bitmask
+              return;
+            }
+            if (_.has(builtElements.enumerations, typeName)) {
+              // Enumeration
+              return;
+            }
+            if (_.has(builtStructures, typeName)) {
+              // Structure already built
+              return;
+            }
+            readyToBuild = false;
+            return false;
+          });
+          if (!readyToBuild) {
+            return false;
           }
-          if (_.has(builtElements.bitmasks, typeName)) {
-            // Bitmask
-            return;
-          }
-          if (_.has(builtElements.enumerations, typeName)) {
-            // Enumeration
-            return;
-          }
-          if (_.has(builtStructures, typeName)) {
-            // Structure already built
-            return;
-          }
-          readyToBuild = false;
-          return false;
         });
 
         if (readyToBuild) {
@@ -96,12 +103,25 @@ class DefinitionBuilder {
   buildStructure(globalEndianness, builtElements, structure) {
     const structureObject = new Structure(
       structure.name,
-      _.map(structure.fields, f => this.buildField(builtElements, f))
+      _.map(structure.fields, s => this.buildStatement(builtElements, s))
     );
     const endiannessAnnotation = _.find(structure.annotations, h => h.name === "endianness");
     const structureEndianness = _.get(endiannessAnnotation, "value", globalEndianness);
     structureObject.setEndianness(_.defaultTo(structureEndianness));
     return structureObject;
+  }
+
+  buildStatement(builtElements, statement) {
+    const { statementType } = statement;
+    if (statementType === "field") {
+      return this.buildField(builtElements, statement);
+    }
+    if (statementType === "if") {
+      return this.buildIfStatement(builtElements, statement);
+    }
+    if (statementType === "block") {
+      return this.buildBlockStatement(builtElements, statement);
+    }
   }
 
   buildEnumeration(enumeration) {
@@ -129,12 +149,10 @@ class DefinitionBuilder {
       type = new BitmaskType(this.getBuiltInType(bitmask.parentType), bitmask);
     }
     if (_.has(field, "arrayDefinition")) {
-      const definitionCode = `(function(variableScope) { return ${this.converter.convert(
-        field.arrayDefinition
-      )} })`;
+      const definitionCode = this.transformCodeToFunction(field.arrayDefinition);
       type = new ArrayType(type, definitionCode);
     }
-    return new Field(
+    return new FieldStatement(
       field.name,
       type,
       _.fromPairs(
@@ -144,6 +162,21 @@ class DefinitionBuilder {
           }
         }).filter(pair => pair[0])
       )
+    );
+  }
+
+  transformCodeToFunction(code) {
+    return `(function(variableScope) { return ${this.converter.convert(code)} })`;
+  }
+
+  buildIfStatement(builtElements, statement) {
+    const testCode = this.transformCodeToFunction(statement.test);
+    return new IfStatement(testCode, this.buildStatement(builtElements, statement.consequent));
+  }
+
+  buildBlockStatement(builtElements, statement) {
+    return new BlockStatement(
+      _.map(statement.statements, innerStatement => this.buildStatement(builtElements, innerStatement))
     );
   }
 
@@ -157,6 +190,20 @@ class DefinitionBuilder {
 
   buildBitmaskEntry(entry) {
     return new BitmaskEntry(entry.key, entry.value);
+  }
+
+  getTypes(statement) {
+    const { statementType } = statement;
+    if (statementType === "field") {
+      return [statement.type];
+    }
+    if (statementType === "if") {
+      return _.concat(this.getTypes(statement.consequent));
+    }
+    if (statementType === "block") {
+      return _.flatMap(statement.innerStatements, this.getTypes.bind(this));
+    }
+    throw new Error(`Unsupported statement type: ${statementType}`);
   }
 }
 

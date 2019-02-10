@@ -1,6 +1,6 @@
 "use strict";
 
-class Field {
+class FieldStatement {
   constructor(name, type, meta) {
     this.name = name;
     this.type = type;
@@ -8,4 +8,4 @@ class Field {
   }
 }
 
-module.exports = Field;
+module.exports = FieldStatement;

@@ -9,6 +9,7 @@ describe("DefinitionBuilder", () => {
       name: "Structure1",
       fields: [
         {
+          statementType: "field",
           name: "s2",
           type: {
             type: "Structure2",
@@ -20,6 +21,7 @@ describe("DefinitionBuilder", () => {
       name: "Structure2",
       fields: [
         {
+          statementType: "field",
           name: "s1",
           type: {
             type: "Structure1",
@@ -42,6 +44,7 @@ describe("DefinitionBuilder", () => {
       name: "Structure1",
       fields: [
         {
+          statementType: "field",
           name: "s2",
           type: {
             type: "WTF",

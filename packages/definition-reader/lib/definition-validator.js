@@ -78,6 +78,12 @@ class DefinitionValidator {
   validateStructure(structure, errors, typeNames) {
     const fieldNames = [];
     _.each(structure.fields, field => {
+      if (field.statementType !== "field") {
+        // FIXME: Ignore non-fields for the validation step.
+        // This not-implemented validation slows down development of new
+        // features. It shall be postponed later.
+        return;
+      }
       if (_.includes(fieldNames, field.name)) {
         errors.push(`Duplicate field name '${field.name}' in structure '${structure.name}'`);
         return;

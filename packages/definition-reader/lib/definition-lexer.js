@@ -140,6 +140,8 @@ const keywordTokens = _.fromPairs(
       Enum: "enum",
       Extends: "extends",
       Bitmask: "bitmask",
+      If: "if",
+      Else: "else",
     },
     (keyword, name) => [
       `${name}Token`,
