@@ -26,14 +26,14 @@ bitmask AccessFlag extends uint:16 {
     ACC_PRIVATE             = 0b000000000010,     // Declared private; usable only within the defining class.
     ACC_PROTECTED           = 0b000000000100,     // Declared protected; may be accessed within subclasses.
     ACC_STATIC              = 0b000000001000,     // Declared static.
-    ACC_FINAL               = 0x000000010000,     // Declared final; no subclasses allowed.
-    ACC_SUPER               = 0x000000100000,     // Treat superclass methods specially when invoked by the invokespecial instruction.
-    ACC_VOLATILE            = 0x000001000000,     // Declared volatile; cannot be cached.
-    ACC_TRANSIENT           = 0x000010000000,     // Declared transient; not written or read by a persistent object manager.
-    ACC_NATIVE              = 0x000100000000,     // Declared native; implemented in a language other than Java.
-    ACC_INTERFACE           = 0x001000000000,     // Is an interface, not a class.
-    ACC_ABSTRACT            = 0x010000000000,     // Declared abstract; may not be instantiated.
-    ACC_STRICT              = 0x100000000000      // Declared strictfp; floating-point mode is FP-strict
+    ACC_FINAL               = 0b000000010000,     // Declared final; no subclasses allowed.
+    ACC_SUPER               = 0b000000100000,     // Treat superclass methods specially when invoked by the invokespecial instruction.
+    ACC_VOLATILE            = 0b000001000000,     // Declared volatile; cannot be cached.
+    ACC_TRANSIENT           = 0b000010000000,     // Declared transient; not written or read by a persistent object manager.
+    ACC_NATIVE              = 0b000100000000,     // Declared native; implemented in a language other than Java.
+    ACC_INTERFACE           = 0b001000000000,     // Is an interface, not a class.
+    ACC_ABSTRACT            = 0b010000000000,     // Declared abstract; may not be instantiated.
+    ACC_STRICT              = 0b100000000000      // Declared strictfp; floating-point mode is FP-strict
 }
 
 struct ConstantPoolInfo {
@@ -72,6 +72,28 @@ struct ConstantPoolInfo {
     }
 }
 
+struct FieldInfo {
+    AccessFlag accessFlags;
+    uint:16 nameIndex;
+    uint:16 descriptorIndex;
+    uint:16 attributesCount;
+    AttributeInfo attributes[attributesCount];
+}
+
+struct MethodInfo {
+    AccessFlag accessFlags;
+    uint:16 nameIndex;
+    uint:16 descriptorIndex;
+    uint:16 attributesCount;
+    AttributeInfo attributes[attributesCount];
+}
+
+struct AttributeInfo {
+    uint:16 attributeNameIndex;
+    uint:32 attributeLength;
+    uint:8 info[attributeLength];
+}
+
 struct JVMClass {
     uint:32 magic; // must be 0xCAFEBABE
     uint:16 minorVersion;
@@ -84,7 +106,9 @@ struct JVMClass {
     uint:16 interfacesCount;
     uint:16 interfaces[interfacesCount];
     uint:16 fieldsCount;
-    uint:16 fields[fieldsCount];
+    FieldInfo fields[fieldsCount];
+    uint:16 methodsCount;
+    MethodInfo methods[methodsCount];
     uint:16 attributesCount;
-    uint:16 attributes[attributesCount];
+    AttributeInfo attributes[attributesCount];
 }
