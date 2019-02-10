@@ -16,7 +16,7 @@ describe("EOT reading", () => {
   const fontEotFile = `${pathToBinaryFixtures}/roboto-regular-webfont.eot`;
   const fontEotBuffer = fs.readFileSync(fontEotFile);
 
-  test("reads EOT file with EOT definition", () => {
+  test("reads EOT file", () => {
     const binaryReader = new BinaryReader();
     const eotValue = binaryReader.read(fontEotBuffer, eotDefinition, "EotFile");
     expect(eotValue).toBeDefined();

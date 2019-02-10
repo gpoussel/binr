@@ -15,7 +15,7 @@ describe("ROMFS reading", () => {
   const sampleRomfsFile = `${pathToBinaryFixtures}/sample.romfs`;
   const sampleRomfsBuffer = fs.readFileSync(sampleRomfsFile);
 
-  test("reads ROMFS file with ROMFS definition", () => {
+  test("reads ROMFS file", () => {
     const binaryReader = new BinaryReader();
     const value = binaryReader.read(sampleRomfsBuffer, romfsDefinition, "RomfsFile");
     expect(value).toBeDefined();

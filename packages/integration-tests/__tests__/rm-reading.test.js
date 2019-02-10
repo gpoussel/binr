@@ -16,7 +16,7 @@ describe("RM reading", () => {
   const videoRmFile = `${pathToBinaryFixtures}/video.rm`;
   const videoRmBuffer = fs.readFileSync(videoRmFile);
 
-  test("reads RM file with RM definition", () => {
+  test("reads RM file", () => {
     const binaryReader = new BinaryReader();
     const videoValue = binaryReader.read(videoRmBuffer, rmDefinition, "RmFile");
     expect(videoValue).toBeDefined();

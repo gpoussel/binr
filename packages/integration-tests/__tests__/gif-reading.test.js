@@ -16,7 +16,7 @@ describe("GIF reading", () => {
   const treeGifFile = `${pathToBinaryFixtures}/tree.gif`;
   const treeGifBuffer = fs.readFileSync(treeGifFile);
 
-  test("reads GIF file with GIF definition", () => {
+  test("reads GIF file", () => {
     const binaryReader = new BinaryReader();
     const gifValue = binaryReader.read(treeGifBuffer, gifDefinition, "GifFile");
     expect(gifValue).toBeDefined();

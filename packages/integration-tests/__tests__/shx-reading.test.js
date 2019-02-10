@@ -16,7 +16,7 @@ describe("SHX reading", () => {
   const shxFile = `${pathToBinaryFixtures}/us_ski_areas.shx`;
   const shxBuffer = fs.readFileSync(shxFile);
 
-  test("reads file with SHX definition", () => {
+  test("reads SHX file", () => {
     const binaryReader = new BinaryReader();
     const shxValue = binaryReader.read(shxBuffer, shxDefinition, "ShxFile");
     expect(shxValue).toBeDefined();
