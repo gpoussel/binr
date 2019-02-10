@@ -1,0 +1,76 @@
+#name "ICO Format"
+#extension ".ico"
+#endianness "little"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/ICO.bt
+
+struct IconDirEntry {
+    uint:8 width;
+    uint:8 height;
+    uint:8 colorCount;
+    uint:8 reserved;
+    uint:16 planes;
+    uint:16 bitCount;
+    uint:32 bytesInResource;
+    uint:32 imageOffset;
+}
+
+struct IconDir {
+    uint:16 reserved;
+    uint:16 type;
+    uint:16 count;
+    IconDirEntry entries[count];
+}
+
+struct RgbQuad {
+    uint:8 blue;
+    uint:8 green;
+    uint:8 red;
+    uint:8 reserved;
+}
+
+struct BitmapInfoHeader {
+    uint:32 size;
+    int:32  width;
+    int:32  height;
+    uint:16 planes;
+    uint:16 bitCount;
+    uint:32 compression;
+    uint:32 sizeImage;
+    int:32  xPelsPerMeter;
+    int:32  yPelsPerMeter;
+    uint:32 clrUsed;
+    uint:32 clrImportant;
+}
+
+struct ImageData {
+    if (header.bitCount !== 24 && header.bitCount !== 32) {
+        if (header.clrUsed > 0) {
+            RgbQuad colors[header.clrUsed];
+        } else {
+            RgbQuad colors[1 << header.bitCount];
+        }
+    }
+
+    // TODO: Local variables
+    // TODO: Inline structures
+    if (header.bitCount < 8) {
+
+    } else if (header.bitCount === 8) {
+
+    } else if (header.bitCount === 24) {
+
+    } else if (header.bitCount === 32) {
+
+    }
+}
+
+struct IconImage {
+    BitmapInfoHeader header;
+    ImageData data;
+}
+
+export struct IcoFile {
+    IconDir iconDir;
+    IconImage images[1];
+}

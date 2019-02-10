@@ -387,6 +387,9 @@ class DefinitionParser extends chevrotain.Parser {
               ALT: () => $.CONSUME(tokens.UnsignedShiftRightToken),
             },
             {
+              ALT: () => $.CONSUME(tokens.GreaterToken),
+            },
+            {
               ALT: () => $.CONSUME(tokens.MultiplicationToken),
             },
             {
