@@ -30,8 +30,5 @@ describe("ROMFS reading", () => {
 
     const { header: entryHeader } = entry;
     expect(entryHeader).toBeDefined();
-    // expect(entryHeader.nextEntryPosition).toBe(1);
-    // expect(entryHeader.executable).toBe(1);
-    // expect(entryHeader.type).toEqual("BLOCK_DEV");
   });
 });
