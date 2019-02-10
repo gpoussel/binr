@@ -9,7 +9,9 @@
   "directories": {
     "src": "src"
   },
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gpoussel/binr.git"
@@ -20,5 +22,7 @@
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
 }
