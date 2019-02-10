@@ -1,0 +1,90 @@
+#name "CLASS Format (Java Bytecode)"
+#extension ".class"
+
+// Note: this is *inspired* by the CLASS format, but this definition cannot read
+// a CLASS file. It is definitely missing some important parts.
+
+enum ConstantPoolTag extends uint:8 {
+    TAG_UTF8                = 1,
+    TAG_INTEGER             = 3,
+    TAG_FLOAT               = 4,
+    TAG_LONG                = 5,
+    TAG_DOUBLE              = 6,
+    TAG_CLASS               = 7,
+    TAG_STRING              = 8,
+    TAG_FIELDREF            = 9,
+    TAG_METHODREF           = 10,
+    TAG_INTERFACEMETHODREF  = 11,
+    TAG_NAMEANDTYPE         = 12,
+    TAG_METHODHANDLE_INFO   = 15,
+    TAG_METHODTYPE          = 16,
+    TAG_INVOKEDYNAMIC       = 18
+}
+
+bitmask AccessFlag extends uint:16 {
+    ACC_PUBLIC              = 0b000000000001,     // Declared public; may be accessed from outside its package.
+    ACC_PRIVATE             = 0b000000000010,     // Declared private; usable only within the defining class.
+    ACC_PROTECTED           = 0b000000000100,     // Declared protected; may be accessed within subclasses.
+    ACC_STATIC              = 0b000000001000,     // Declared static.
+    ACC_FINAL               = 0x000000010000,     // Declared final; no subclasses allowed.
+    ACC_SUPER               = 0x000000100000,     // Treat superclass methods specially when invoked by the invokespecial instruction.
+    ACC_VOLATILE            = 0x000001000000,     // Declared volatile; cannot be cached.
+    ACC_TRANSIENT           = 0x000010000000,     // Declared transient; not written or read by a persistent object manager.
+    ACC_NATIVE              = 0x000100000000,     // Declared native; implemented in a language other than Java.
+    ACC_INTERFACE           = 0x001000000000,     // Is an interface, not a class.
+    ACC_ABSTRACT            = 0x010000000000,     // Declared abstract; may not be instantiated.
+    ACC_STRICT              = 0x100000000000      // Declared strictfp; floating-point mode is FP-strict
+}
+
+struct ConstantPoolInfo {
+    ConstantPoolTag tag;
+    if (tag === "TAG_UTF8") {
+        uint:16 length;
+        char bytes[length];
+    }
+    if (tag === "TAG_INTEGER" || tag === "TAG_FLOAT")
+        uint:8 bytes[4];
+    if (tag === "TAG_LONG" || tag === "TAG_DOUBLE") {
+        uint:32 highBytes;
+        uint:32 lowBytes;
+    }
+    if (tag === "TAG_CLASS")
+        uint:16 nameIndex;
+    if (tag === "TAG_STRING")
+        uint:16 stringIndex;
+    if (tag === "TAG_FIELDREF" || tag === "TAG_METHODREF" || tag === "TAG_INTERFACEMETHODREF") {
+        uint:16 classIndex;
+        uint:16 nameAndTypeIndex;
+    }
+    if (tag === "TAG_NAMEANDTYPE") {
+        uint:16 nameIndex;
+        uint:16 descriptorIndex;
+    }
+    if (tag === "TAG_METHODHANDLE_INFO"){
+        uint:8 referenceKind;
+        uint:16 referenceIndex;
+    }
+    if (tag === "TAG_METHODTYPE")
+        uint:16 descriptorIndex;
+    if (tag === "TAG_INVOKEDYNAMIC") {
+        uint:16 bootstrapMethodAttrIndex;
+        uint:16 nameAndTypeIndex;
+    }
+}
+
+struct JVMClass {
+    uint:32 magic; // must be 0xCAFEBABE
+    uint:16 minorVersion;
+    uint:16 majorVersion;
+    uint:16 constantPoolSize;
+    ConstantPoolInfo constantPool[constantPoolSize - 1];
+    AccessFlag accessFlags;
+    uint:16 thisClass;
+    uint:16 superClass;
+    uint:16 interfacesCount;
+    uint:16 interfaces[interfacesCount];
+    uint:16 fieldsCount;
+    uint:16 fields[fieldsCount];
+    uint:16 attributesCount;
+    uint:16 attributes[attributesCount];
+}
