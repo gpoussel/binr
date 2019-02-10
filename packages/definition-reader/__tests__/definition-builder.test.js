@@ -7,7 +7,7 @@ describe("DefinitionBuilder", () => {
     const builder = new DefinitionBuilder();
     const structure1 = {
       name: "Structure1",
-      fields: [
+      statements: [
         {
           statementType: "field",
           name: "s2",
@@ -19,7 +19,7 @@ describe("DefinitionBuilder", () => {
     };
     const structure2 = {
       name: "Structure2",
-      fields: [
+      statements: [
         {
           statementType: "field",
           name: "s1",
@@ -42,7 +42,7 @@ describe("DefinitionBuilder", () => {
     const builder = new DefinitionBuilder();
     const structure1 = {
       name: "Structure1",
-      fields: [
+      statements: [
         {
           statementType: "field",
           name: "s2",

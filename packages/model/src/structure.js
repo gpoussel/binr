@@ -3,9 +3,9 @@
 const assert = require("assert");
 
 class Structure {
-  constructor(name, fields) {
+  constructor(name, statements) {
     this.name = name;
-    this.fields = fields;
+    this.statements = statements;
   }
 
   setEndianness(endianness) {

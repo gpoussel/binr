@@ -66,11 +66,11 @@ class DefinitionReader {
       topLevelClause(ctx) {
         const annotations = _.map(ctx.annotationClause, this.visit.bind(this));
         if (_.has(ctx, "structureClause")) {
-          const { name, exported, fields } = this.visit(ctx.structureClause);
+          const { name, exported, statements } = this.visit(ctx.structureClause);
           return {
             name,
             exported,
-            fields,
+            statements,
             annotations,
           };
         }
@@ -143,11 +143,11 @@ class DefinitionReader {
       structureClause(ctx) {
         const exported = _.has(ctx, "ExportToken");
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-        const fields = _.map(ctx.statementClause, this.visit.bind(this));
+        const statements = _.map(ctx.statementClause, this.visit.bind(this));
         return {
           name,
           exported,
-          fields,
+          statements,
         };
       }
 

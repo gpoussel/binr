@@ -15,7 +15,7 @@ class StructureType extends Type {
 
   read(buffer, scope) {
     const value = {};
-    _.each(this.structure.fields, statement => {
+    _.each(this.structure.statements, statement => {
       buffer.setEndianness(this.structure.endianness);
       const nestedScope = new VariableScope(scope);
       statement.read(buffer, nestedScope, scope, value);

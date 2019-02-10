@@ -88,7 +88,7 @@ describe("DefinitionReader", () => {
       value => {
         const result = createAndCallParser(`struct a { int foo[${value}]; }`)();
         expect(result).toBeDefined();
-        const resultFn = _.first(_.first(result.structures).fields).type.sizeExpression;
+        const resultFn = _.first(_.first(result.structures).statements).type.sizeExpression;
         expect(resultFn).toBeDefined();
         const scope = new VariableScope();
         scope.put("a", 1);
@@ -115,7 +115,7 @@ describe("DefinitionReader", () => {
   test("accepts === and ||", () => {
     const result = createAndCallParser(`struct a { int foo[1 === 2 || 3 === 4]; }`)();
     expect(result).toBeDefined();
-    const resultFn = _.first(_.first(result.structures).fields).type.sizeExpression;
+    const resultFn = _.first(_.first(result.structures).statements).type.sizeExpression;
     expect(resultFn).toBeDefined();
     expect(resultFn).toContain("===");
     expect(resultFn).toContain("||");

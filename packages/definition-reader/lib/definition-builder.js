@@ -47,7 +47,7 @@ class DefinitionBuilder {
       // We have to check if any field depends on a structure not built yet
       _.each(structuresToProcess, structureToProcess => {
         let readyToBuild = true;
-        _.each(structureToProcess.fields, statement => {
+        _.each(structureToProcess.statements, statement => {
           _.each(this.getTypes(statement), type => {
             const typeName = type.type;
             if (_.has(builtInTypes, typeName)) {
@@ -103,7 +103,7 @@ class DefinitionBuilder {
   buildStructure(globalEndianness, builtElements, structure) {
     const structureObject = new Structure(
       structure.name,
-      _.map(structure.fields, s => this.buildStatement(builtElements, s))
+      _.map(structure.statements, s => this.buildStatement(builtElements, s))
     );
     const endiannessAnnotation = _.find(structure.annotations, h => h.name === "endianness");
     const structureEndianness = _.get(endiannessAnnotation, "value", globalEndianness);
