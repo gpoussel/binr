@@ -37,5 +37,15 @@ describe("GIF reading", () => {
     expect(logicalScreen.pixelAspectRatio).toBe(0);
 
     expect(globalColorTable).toHaveLength(256);
+    expect(globalColorTable[0]).toEqual({
+      red: 1,
+      green: 128,
+      blue: 1,
+    });
+    expect(globalColorTable[255]).toEqual({
+      red: 0,
+      green: 0,
+      blue: 0,
+    });
   });
 });
