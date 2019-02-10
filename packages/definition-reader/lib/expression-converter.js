@@ -6,9 +6,6 @@ const _ = require("lodash");
 const esprima = require("esprima");
 const escodegen = require("escodegen");
 
-const MODE_VARIABLE = 1;
-const MODE_FUNCTION = 2;
-
 class ExpressionConverter {
   convert(source) {
     const ast = esprima.parseScript(source);
@@ -84,15 +81,15 @@ class ExpressionConverter {
   }
 
   generateVariableScopeGetNode(name) {
-    return this.generateGetNode("variableScope", name);
+    return this.generateGetNode("variables", name);
   }
 
   generateFunctionScopeGetNode(name) {
-    return this.generateGetNode("functionScope", name);
+    return this.generateGetNode("functions", name);
   }
 
   generateTopLevelFunctionScopeGetNode(name) {
-    return this.generateGetNode("globalFunctionScope", name);
+    return this.generateGetNode("globalFunctions", name);
   }
 
   generateGetNode(objectName, propertyName) {
@@ -103,8 +100,16 @@ class ExpressionConverter {
         type: esprima.Syntax.MemberExpression,
         generated: true,
         object: {
-          type: esprima.Syntax.Identifier,
-          name: objectName,
+          type: esprima.Syntax.MemberExpression,
+          generated: true,
+          object: {
+            type: esprima.Syntax.Identifier,
+            name: "scopes",
+          },
+          property: {
+            type: esprima.Syntax.Identifier,
+            name: objectName,
+          },
         },
         property: {
           type: esprima.Syntax.Identifier,

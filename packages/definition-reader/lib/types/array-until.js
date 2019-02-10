@@ -14,26 +14,30 @@ class ArrayUntilType extends Type {
     this.untilExpression = untilExpression;
   }
 
-  read(buffer, scope) {
+  read(buffer, scopes) {
     assert(_.isString(this.untilExpression), "untilExpression must be a string");
     const untilFn = eval(this.untilExpression);
     const values = [];
 
-    let { element, elementScope } = this.readSingleElement(buffer, scope);
+    let { element, elementScopes } = this.readSingleElement(buffer, scopes);
     values.push(element);
 
-    while (!untilFn(elementScope)) {
-      ({ element, elementScope } = this.readSingleElement(buffer, scope));
+    while (!untilFn(elementScopes)) {
+      ({ element, elementScopes } = this.readSingleElement(buffer, scopes));
       values.push(element);
     }
     return values;
   }
 
-  readSingleElement(buffer, scope) {
-    const nestedScope = new VariableScope(scope);
+  readSingleElement(buffer, scopes) {
+    const nestedScope = {
+      functions: scopes.functions,
+      globalFunctions: scopes.globalFunctions,
+      variables: new VariableScope(scopes.variables),
+    };
     return {
       element: this.innerType.read(buffer, nestedScope),
-      elementScope: nestedScope,
+      elementScopes: nestedScope,
     };
   }
 }

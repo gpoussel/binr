@@ -65,17 +65,17 @@ describe("ExpressionConverter", () => {
     const converter = new ExpressionConverter();
     const test = "foo(1, bar(2, foo, baz(3), baz(4)))";
     const result = converter.convert(test);
-    expect(result).toContain("variableScope");
-    expect(result).toContain("functionScope");
+    expect(result).toContain("scopes.variables");
+    expect(result).toContain("scopes.functions");
   });
 
   test("processes correctly global function calls", () => {
     const converter = new ExpressionConverter();
     const test = "_.foo(1, 2, _.bar(a), baz(5))";
     const result = converter.convert(test);
-    expect(result).toContain("globalFunctionScope");
-    expect(result).toContain("functionScope");
-    expect(result).toContain("variableScope");
+    expect(result).toContain("scopes.globalFunctions");
+    expect(result).toContain("scopes.functions");
+    expect(result).toContain("scopes.variables");
   });
 
   test("rejects non top-level functions", () => {

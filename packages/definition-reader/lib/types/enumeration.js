@@ -11,8 +11,8 @@ class EnumerationType extends Type {
     this.enumeration = enumeration;
   }
 
-  read(buffer, scope) {
-    const value = this.parentType.read(buffer, scope);
+  read(buffer, scopes) {
+    const value = this.parentType.read(buffer, scopes);
     const matchingEntry = _.find(this.enumeration.entries, entry => entry.value === value);
     return _.get(matchingEntry, "key");
   }

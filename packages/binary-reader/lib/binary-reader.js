@@ -4,14 +4,18 @@ const _ = require("lodash");
 const assert = require("assert");
 
 const { StructureType } = require("@binr/definition-reader");
-const { BufferWrapper, VariableScope } = require("@binr/shared");
+const { BufferWrapper, VariableScope, FunctionScope } = require("@binr/shared");
 
 class BinaryReader {
   read(binaryBuffer, definition, providedStructureName = undefined) {
     assert(_.isObject(definition), "definition must be an object");
     assert(_.isBuffer(binaryBuffer), "binaryBuffer must be a buffer");
 
-    const globalScope = new VariableScope();
+    const scopes = {
+      variables: new VariableScope(),
+      functions: new FunctionScope(),
+      globalFunctions: new FunctionScope(),
+    };
 
     let mainStructureName;
     if (_.isUndefined(providedStructureName)) {
@@ -31,7 +35,7 @@ class BinaryReader {
 
     const structureType = new StructureType(mainStructure);
     const bufferWrapper = new BufferWrapper(binaryBuffer, mainStructure.getEndianness());
-    return structureType.read(bufferWrapper, globalScope);
+    return structureType.read(bufferWrapper, scopes);
   }
 }
 

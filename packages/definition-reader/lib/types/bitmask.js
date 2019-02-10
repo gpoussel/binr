@@ -1,6 +1,5 @@
 "use strict";
 
-const assert = require("assert");
 const _ = require("lodash");
 
 const Type = require("./type");
@@ -12,8 +11,8 @@ class BitmaskType extends Type {
     this.bitmask = bitmask;
   }
 
-  read(buffer, scope) {
-    const value = this.parentType.read(buffer, scope);
+  read(buffer, scopes) {
+    const value = this.parentType.read(buffer, scopes);
     const matchedItems = [];
     _.each(this.bitmask.entries, entry => {
       if ((value & entry.value) !== 0) {

@@ -2,7 +2,7 @@
 
 const _ = require("lodash");
 const DefinitionReader = require("../lib/definition-reader");
-const { VariableScope } = require("@binr/shared");
+const { VariableScope, FunctionScope } = require("@binr/shared");
 
 function createAndCallParser(input) {
   return () => {
@@ -90,26 +90,28 @@ describe("DefinitionReader", () => {
         expect(result).toBeDefined();
         const resultFn = _.first(_.first(result.structures).statements).type.sizeExpression;
         expect(resultFn).toBeDefined();
-        const scope = new VariableScope();
-        scope.put("a", 1);
-        scope.put("b", 11);
-        scope.put("c", 5);
-        scope.put("d", 3);
-        scope.put("ar", [
+        const variableScope = new VariableScope();
+        variableScope.put("a", 1);
+        variableScope.put("b", 11);
+        variableScope.put("c", 5);
+        variableScope.put("d", 3);
+        variableScope.put("ar", [
           {
             c: 1,
           },
         ]);
-        scope.put("ob", {
+        variableScope.put("ob", {
           b: 4,
         });
 
-        // TODO: Use a FunctionScope? Or maybe rename the VariableScope class
-        const functionScope = new VariableScope();
+        const functionScope = new FunctionScope();
         functionScope.put("f", () => 1);
 
         // eslint-disable-next-line no-eval
-        const size = eval(resultFn)(scope, functionScope);
+        const size = eval(resultFn)({
+          variables: variableScope,
+          functions: functionScope,
+        });
         expect(size).toBeDefined();
       }
     );
