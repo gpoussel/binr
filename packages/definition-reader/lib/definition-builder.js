@@ -13,7 +13,14 @@ const {
   BitmaskEntry,
 } = require("@binr/model");
 const ExpressionConverter = require("./expression-converter");
-const { builtInTypes, StructureType, ArrayType, EnumerationType, BitmaskType } = require("./types");
+const {
+  builtInTypes,
+  StructureType,
+  ArrayType,
+  ArrayUntilType,
+  EnumerationType,
+  BitmaskType,
+} = require("./types");
 
 class DefinitionBuilder {
   constructor() {
@@ -154,6 +161,10 @@ class DefinitionBuilder {
     if (_.has(field, "arrayDefinition")) {
       const definitionCode = this.transformCodeToFunction(field.arrayDefinition);
       type = new ArrayType(type, definitionCode);
+    }
+    if (_.has(field, "arrayUntilDefinition")) {
+      const definitionCode = this.transformCodeToFunction(field.arrayUntilDefinition);
+      type = new ArrayUntilType(type, definitionCode);
     }
     return new FieldStatement(
       field.name,

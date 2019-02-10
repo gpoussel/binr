@@ -1,0 +1,117 @@
+#name "WMF Format"
+#extension ".wmf"
+#endianness "little"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/WMF.bt
+
+struct SpecialHeader {
+    uint:32 magicNumber;
+    uint:16 handle;
+    uint:16 left;
+    uint:16 top;
+    uint:16 right;
+    uint:16 bottom;
+    uint:16 inch;
+    uint:32 reserved;
+    uint:16 checksum;
+}
+
+enum MetaFileType extends uint:16 {
+    MEMORY = 1,
+    DISK = 2
+}
+
+struct Header {
+    MetaFileType fileType;
+    uint:16 headerSize;
+    uint:16 version;
+    uint:32 size;
+    uint:16 objectsCount;
+    uint:32 maxRecords;
+    uint:16 membersCount;
+}
+
+enum RecordFunction extends uint:16 {
+    EOF = 0x0000,
+    REALIZEPALETTE = 0x0035,
+    SETPALENTRIES = 0x0037,
+    SETBKMODE = 0x0102,
+    SETMAPMODE = 0x0103,
+    SETROP2 = 0x0104,
+    SETRELABS = 0x0105,
+    SETPOLYFILLMODE = 0x0106,
+    SETSTRETCHBLTMODE = 0x0107,
+    SETTEXTCHAREXTRA = 0x0108,
+    RESTOREDC = 0x0127,
+    RESIZEPALETTE = 0x0139,
+    DIBCREATEPATTERNBRUSH = 0x0142,
+    SETLAYOUT = 0x0149,
+    SETBKCOLOR = 0x0201,
+    SETTEXTCOLOR = 0x0209,
+    OFFSETVIEWPORTORG = 0x0211,
+    LINETO = 0x0213,
+    MOVETO = 0x0214,
+    OFFSETCLIPRGN = 0x0220,
+    FILLREGION = 0x0228,
+    SETMAPPERFLAGS = 0x0231,
+    SELECTPALETTE = 0x0234,
+    POLYGON = 0x0324,
+    POLYLINE = 0x0325,
+    SETTEXTJUSTIFICATION = 0x020a,
+    SETWINDOWORG = 0x020b,
+    SETWINDOWEXT = 0x020c,
+    SETVIEWPORTORG = 0x020d,
+    SETVIEWPORTEXT = 0x020e,
+    OFFSETWINDOWORG = 0x020f,
+    SCALEWINDOWEXT = 0x0410,
+    SCALEVIEWPORTEXT = 0x0412,
+    EXCLUDECLIPRECT = 0x0415,
+    INTERSECTCLIPRECT = 0x0416,
+    ELLIPSE = 0x0418,
+    FLOODFILL = 0x0419,
+    FRAMEREGION = 0x0429,
+    ANIMATEPALETTE = 0x0436,
+    TEXTOUT = 0x0521,
+    POLYPOLYGON = 0x0538,
+    EXTFLOODFILL = 0x0548,
+    RECTANGLE = 0x041b,
+    SETPIXEL = 0x041f,
+    ROUNDRECT = 0x061c,
+    PATBLT = 0x061d,
+    SAVEDC = 0x001e,
+    PIE = 0x081a,
+    STRETCHBLT = 0x0b23,
+    ESCAPE = 0x0626,
+    INVERTREGION = 0x012a,
+    PAINTREGION = 0x012b,
+    SELECTCLIPREGION = 0x012c,
+    SELECTOBJECT = 0x012d,
+    SETTEXTALIGN = 0x012e,
+    ARC = 0x0817,
+    CHORD = 0x0830,
+    BITBLT = 0x0922,
+    EXTTEXTOUT = 0x0a32,
+    SETDIBTODEV = 0x0d33,
+    DIBBITBLT = 0x0940,
+    DIBSTRETCHBLT = 0x0b41,
+    STRETCHDIB = 0x0f43,
+    DELETEOBJECT = 0x01f0,
+    CREATEPALETTE = 0x00f7,
+    CREATEPATTERNBRUSH = 0x01f9,
+    CREATEPENINDIRECT = 0x02fa,
+    CREATEFONTINDIRECT = 0x02fb,
+    CREATEBRUSHINDIRECT = 0x02fc,
+    CREATEREGION = 0x06ff
+}
+
+struct Record {
+    uint:32 size;
+    RecordFunction fn;
+    uint:16 params[size - 3];
+}
+
+struct WmfFile {
+    SpecialHeader specialHeader;
+    Header header;
+    Record records[until fn === "EOF"];
+}

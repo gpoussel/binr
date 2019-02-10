@@ -142,6 +142,7 @@ const keywordTokens = _.fromPairs(
       Bitmask: "bitmask",
       If: "if",
       Else: "else",
+      Until: "until",
     },
     (keyword, name) => [
       `${name}Token`,

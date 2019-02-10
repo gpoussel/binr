@@ -192,6 +192,9 @@ class DefinitionReader {
           const boxMemberDefinition = this.visit(_.first(ctx.BoxMemberExpression));
           fieldResult.arrayDefinition = boxMemberDefinition.substr(1, boxMemberDefinition.length - 2);
         }
+        if (_.has(ctx, "BoxMemberUntilExpression")) {
+          fieldResult.arrayUntilDefinition = this.visit(_.first(ctx.BoxMemberUntilExpression));
+        }
         return fieldResult;
       }
 
@@ -225,6 +228,10 @@ class DefinitionReader {
 
       BoxMemberExpression(ctx) {
         return `[${this.visit(ctx.Expression)}]`;
+      }
+
+      BoxMemberUntilExpression(ctx) {
+        return this.visit(ctx.Expression);
       }
 
       Expression(ctx) {

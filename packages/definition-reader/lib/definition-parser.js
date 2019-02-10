@@ -165,7 +165,14 @@ class DefinitionParser extends chevrotain.Parser {
       $.SUBRULE($.typeReferenceClause);
       $.CONSUME1(tokens.IdentifierToken);
       $.OPTION1(() => {
-        $.SUBRULE($.BoxMemberExpression);
+        $.OR([
+          {
+            ALT: () => $.SUBRULE($.BoxMemberExpression),
+          },
+          {
+            ALT: () => $.SUBRULE($.BoxMemberUntilExpression),
+          },
+        ]);
       });
       $.CONSUME(tokens.SemiColonToken);
     });
@@ -268,6 +275,12 @@ class DefinitionParser extends chevrotain.Parser {
     });
     $.RULE("BoxMemberExpression", () => {
       $.CONSUME(tokens.BracketOpenToken);
+      $.SUBRULE($.Expression);
+      $.CONSUME(tokens.BracketCloseToken);
+    });
+    $.RULE("BoxMemberUntilExpression", () => {
+      $.CONSUME(tokens.BracketOpenToken);
+      $.CONSUME(tokens.UntilToken);
       $.SUBRULE($.Expression);
       $.CONSUME(tokens.BracketCloseToken);
     });
@@ -388,6 +401,9 @@ class DefinitionParser extends chevrotain.Parser {
             },
             {
               ALT: () => $.CONSUME(tokens.GreaterToken),
+            },
+            {
+              ALT: () => $.CONSUME(tokens.LessToken),
             },
             {
               ALT: () => $.CONSUME(tokens.MultiplicationToken),

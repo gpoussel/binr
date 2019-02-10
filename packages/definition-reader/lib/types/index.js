@@ -8,6 +8,7 @@ const UintType = require("./uint");
 const IntType = require("./int");
 const StructureType = require("./structure");
 const ArrayType = require("./array");
+const ArrayUntilType = require("./array-until");
 const EnumerationType = require("./enumeration");
 const BitmaskType = require("./bitmask");
 
@@ -29,6 +30,7 @@ module.exports = {
   IntType,
   StructureType,
   ArrayType,
+  ArrayUntilType,
   EnumerationType,
   BitmaskType,
   builtInTypes,
