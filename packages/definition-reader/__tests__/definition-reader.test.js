@@ -89,6 +89,7 @@ describe("DefinitionReader", () => {
         const result = createAndCallParser(`struct a { int foo[${value}]; }`)();
         expect(result).toBeDefined();
         const resultFn = _.first(_.first(result.structures).fields).type.sizeExpression;
+        expect(resultFn).toBeDefined();
         const scope = new VariableScope();
         scope.put("a", 1);
         scope.put("b", 11);
@@ -103,7 +104,6 @@ describe("DefinitionReader", () => {
           b: 4,
         });
         scope.put("f", () => 1);
-        expect(resultFn).toBeDefined();
 
         // eslint-disable-next-line no-eval
         const size = eval(resultFn)(scope);
@@ -111,6 +111,16 @@ describe("DefinitionReader", () => {
       }
     );
   });
+
+  test("accepts === and ||", () => {
+    const result = createAndCallParser(`struct a { int foo[1 === 2 || 3 === 4]; }`)();
+    expect(result).toBeDefined();
+    const resultFn = _.first(_.first(result.structures).fields).type.sizeExpression;
+    expect(resultFn).toBeDefined();
+    expect(resultFn).toContain("===");
+    expect(resultFn).toContain("||");
+  });
+
   test("rejects unsupported expression", () => {
     _.each(["a++", "a--", "++a", "--a"], value => {
       expect(createAndCallParser(`struct a { int foo[${value}]; }`)).toThrow(/supported/);
