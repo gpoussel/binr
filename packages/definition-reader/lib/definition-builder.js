@@ -47,8 +47,8 @@ class DefinitionBuilder {
       // We have to check if any field depends on a structure not built yet
       _.each(structuresToProcess, structureToProcess => {
         let readyToBuild = true;
-        _.each(structureToProcess.fields, field => {
-          _.each(this.getTypes(field), type => {
+        _.each(structureToProcess.fields, statement => {
+          _.each(this.getTypes(statement), type => {
             const typeName = type.type;
             if (_.has(builtInTypes, typeName)) {
               // Built-in type
