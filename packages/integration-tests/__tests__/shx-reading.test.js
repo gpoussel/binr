@@ -16,7 +16,7 @@ describe("SHX reading", () => {
   const shxFile = `${pathToBinaryFixtures}/us_ski_areas.shx`;
   const shxBuffer = fs.readFileSync(shxFile);
 
-  test("reads GIF file with GIF definition", () => {
+  test("reads file with SHX definition", () => {
     const binaryReader = new BinaryReader();
     const shxValue = binaryReader.read(shxBuffer, shxDefinition, "ShxFile");
     expect(shxValue).toBeDefined();
@@ -24,7 +24,6 @@ describe("SHX reading", () => {
     expect(shxValue.fileHeader).toBeDefined();
     expect(shxValue.fileHeader.code).toBe(0x270a);
     expect(shxValue.fileHeader.length).toBe(2786);
-    expect(shxValue.fileHeader.unused).toEqual([0, 0, 0, 0, 0]);
 
     expect(shxValue.header).toBeDefined();
     expect(shxValue.header.version).toBe(1000);

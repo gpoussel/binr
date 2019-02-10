@@ -5,8 +5,8 @@
 
 @endianness("big")
 struct FileHeader {
-    int:32 code;
-    int:32 unused[5];
+    int:32 code; // corresponds to s4be value of 9994
+    @ignore(true) int:32 unused[5];
     uint:32 length;
 }
 
@@ -29,7 +29,7 @@ enum ShapeType extends int:32 {
 
 @endianness("little")
 struct Header {
-    int:32 version;
+    int:32 version; // corresponds to s4le value of 1000
     ShapeType shapeType;
 	double xMin;
 	double yMin;
