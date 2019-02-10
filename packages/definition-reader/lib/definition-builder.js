@@ -146,6 +146,9 @@ class DefinitionBuilder {
       type = new EnumerationType(this.getBuiltInType(enumeration.parentType), enumeration);
     } else {
       const bitmask = _.get(builtElements.bitmasks, typeName);
+      if (_.isUndefined(bitmask)) {
+        throw new Error(`Bad type: ${typeName}`);
+      }
       type = new BitmaskType(this.getBuiltInType(bitmask.parentType), bitmask);
     }
     if (_.has(field, "arrayDefinition")) {
