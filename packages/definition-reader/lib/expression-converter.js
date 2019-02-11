@@ -7,6 +7,10 @@ const esprima = require("esprima");
 const escodegen = require("escodegen");
 
 class ExpressionConverter {
+  transformCodeToFunction(code) {
+    return `(function(scopes) { "use strict"; return ${this.convert(code)} })`;
+  }
+
   convert(source) {
     const ast = esprima.parseScript(source);
     if (!_.isArray(ast.body)) {

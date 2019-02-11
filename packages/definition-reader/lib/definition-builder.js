@@ -1,26 +1,9 @@
 "use strict";
 
 const _ = require("lodash");
-const {
-  Definition,
-  FieldStatement,
-  IfStatement,
-  BlockStatement,
-  Structure,
-  Enumeration,
-  EnumEntry,
-  Bitmask,
-  BitmaskEntry,
-} = require("@binr/model");
+const { Definition, Structure, Enumeration, EnumEntry, Bitmask, BitmaskEntry } = require("@binr/model");
 const ExpressionConverter = require("./expression-converter");
-const {
-  builtInTypes,
-  StructureType,
-  ArrayType,
-  ArrayUntilType,
-  EnumerationType,
-  BitmaskType,
-} = require("./types");
+const { builtInTypes } = require("./types");
 
 class DefinitionBuilder {
   constructor() {
@@ -55,7 +38,7 @@ class DefinitionBuilder {
       _.each(structuresToProcess, structureToProcess => {
         let readyToBuild = true;
         _.each(structureToProcess.statements, statement => {
-          _.each(this.getTypes(statement), type => {
+          _.each(statement.getTypes(), type => {
             const typeName = type.type;
             if (_.has(builtInTypes, typeName)) {
               // Built-in type
@@ -110,25 +93,12 @@ class DefinitionBuilder {
   buildStructure(globalEndianness, builtElements, structure) {
     const structureObject = new Structure(
       structure.name,
-      _.map(structure.statements, s => this.buildStatement(builtElements, s))
+      _.map(structure.statements, s => s.buildStatement(builtElements))
     );
     const endiannessAnnotation = _.find(structure.annotations, h => h.name === "endianness");
     const structureEndianness = _.get(endiannessAnnotation, "value", globalEndianness);
     structureObject.setEndianness(_.defaultTo(structureEndianness));
     return structureObject;
-  }
-
-  buildStatement(builtElements, statement) {
-    const { statementType } = statement;
-    if (statementType === "field") {
-      return this.buildField(builtElements, statement);
-    }
-    if (statementType === "if") {
-      return this.buildIfStatement(builtElements, statement);
-    }
-    if (statementType === "block") {
-      return this.buildBlockStatement(builtElements, statement);
-    }
   }
 
   buildEnumeration(enumeration) {
@@ -141,88 +111,12 @@ class DefinitionBuilder {
     return new Bitmask(bitmask.name, bitmask.parentType, entries);
   }
 
-  buildField(builtElements, field) {
-    const typeName = field.type.type;
-    let type;
-    if (_.has(builtInTypes, typeName)) {
-      type = this.getBuiltInType(field.type);
-    } else if (_.has(builtElements.structures, typeName)) {
-      type = new StructureType(_.get(builtElements.structures, typeName));
-    } else if (_.has(builtElements.enumerations, typeName)) {
-      const enumeration = _.get(builtElements.enumerations, typeName);
-      type = new EnumerationType(this.getBuiltInType(enumeration.parentType), enumeration);
-    } else {
-      const bitmask = _.get(builtElements.bitmasks, typeName);
-      if (_.isUndefined(bitmask)) {
-        throw new Error(`Bad type: ${typeName}`);
-      }
-      type = new BitmaskType(this.getBuiltInType(bitmask.parentType), bitmask);
-    }
-    if (_.has(field, "arrayDefinition")) {
-      const definitionCode = this.transformCodeToFunction(field.arrayDefinition);
-      type = new ArrayType(type, definitionCode);
-    }
-    if (_.has(field, "arrayUntilDefinition")) {
-      const definitionCode = this.transformCodeToFunction(field.arrayUntilDefinition);
-      type = new ArrayUntilType(type, definitionCode);
-    }
-    return new FieldStatement(
-      field.name,
-      type,
-      _.fromPairs(
-        _.map(field.annotations, annotation => {
-          if (annotation.name === "ignore") {
-            return ["ignore", annotation.value];
-          }
-        }).filter(pair => pair[0])
-      )
-    );
-  }
-
-  transformCodeToFunction(code) {
-    return `(function(scopes) { "use strict"; return ${this.converter.convert(code)} })`;
-  }
-
-  buildIfStatement(builtElements, statement) {
-    const testCode = this.transformCodeToFunction(statement.test);
-    const consequentStatement = this.buildStatement(builtElements, statement.consequent);
-    const alternateStatement =
-      _.has(statement, "alternate") && !_.isUndefined(statement.alternate)
-        ? this.buildStatement(builtElements, statement.alternate)
-        : undefined;
-    return new IfStatement(testCode, consequentStatement, alternateStatement);
-  }
-
-  buildBlockStatement(builtElements, statement) {
-    return new BlockStatement(
-      _.map(statement.statements, innerStatement => this.buildStatement(builtElements, innerStatement))
-    );
-  }
-
-  getBuiltInType(type) {
-    return builtInTypes[type.type](type);
-  }
-
   buildEnumEntry(entry) {
     return new EnumEntry(entry.key, entry.value);
   }
 
   buildBitmaskEntry(entry) {
     return new BitmaskEntry(entry.key, entry.value);
-  }
-
-  getTypes(statement) {
-    const { statementType } = statement;
-    if (statementType === "field") {
-      return [statement.type];
-    }
-    if (statementType === "if") {
-      return _.concat(this.getTypes(statement.consequent));
-    }
-    if (statementType === "block") {
-      return _.flatMap(statement.innerStatements, this.getTypes.bind(this));
-    }
-    throw new Error(`Unsupported statement type: ${statementType}`);
   }
 }
 

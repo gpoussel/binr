@@ -2,6 +2,7 @@
 
 const _ = require("lodash");
 
+const { IfNode, BlockNode, FieldNode } = require("./nodes");
 const { DefinitionLexer } = require("./definition-lexer");
 const DefinitionParser = require("./definition-parser");
 const DefinitionValidator = require("./definition-validator");
@@ -172,37 +173,28 @@ class DefinitionReader {
       }
 
       IfStatement(ctx) {
-        return {
-          statementType: "if",
-          test: this.visit(_.first(ctx.Expression)),
-          consequent: this.visit(_.first(ctx.statementClause)),
-          alternate: _.size(ctx.statementClause) > 1 ? this.visit(_.get(ctx.statementClause, 1)) : undefined,
-        };
+        return new IfNode(
+          this.visit(_.first(ctx.Expression)),
+          this.visit(_.first(ctx.statementClause)),
+          _.size(ctx.statementClause) > 1 ? this.visit(_.get(ctx.statementClause, 1)) : undefined
+        );
       }
 
       BlockStatement(ctx) {
-        return {
-          statementType: "block",
-          statements: _.map(ctx.statementClause, this.visit.bind(this)),
-        };
+        return new BlockNode(_.map(ctx.statementClause, this.visit.bind(this)));
       }
 
       fieldClause(ctx) {
         const type = this.visit(ctx.typeReferenceClause);
         const name = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
         const annotations = _.map(ctx.annotationClause, this.visit.bind(this));
-        const fieldResult = {
-          statementType: "field",
-          type,
-          name,
-          annotations,
-        };
+        const fieldResult = new FieldNode(type, name, annotations);
         if (_.has(ctx, "BoxMemberExpression")) {
           const boxMemberDefinition = this.visit(_.first(ctx.BoxMemberExpression));
-          fieldResult.arrayDefinition = boxMemberDefinition.substr(1, boxMemberDefinition.length - 2);
+          fieldResult.setArrayDefinition(boxMemberDefinition.substr(1, boxMemberDefinition.length - 2));
         }
         if (_.has(ctx, "BoxMemberUntilExpression")) {
-          fieldResult.arrayUntilDefinition = this.visit(_.first(ctx.BoxMemberUntilExpression));
+          fieldResult.setArrayUntilDefinition(this.visit(_.first(ctx.BoxMemberUntilExpression)));
         }
         return fieldResult;
       }

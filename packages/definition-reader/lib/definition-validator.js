@@ -4,6 +4,7 @@ const _ = require("lodash");
 _.mixin(require("lodash-inflection"));
 
 const { builtInTypes } = require("./types");
+const { FieldNode } = require("./nodes");
 
 class DefinitionValidator {
   validate(ast) {
@@ -78,7 +79,7 @@ class DefinitionValidator {
   validateStructure(structure, errors, typeNames) {
     const fieldNames = [];
     _.each(structure.statements, statement => {
-      if (statement.statementType !== "field") {
+      if (!(statement instanceof FieldNode)) {
         // FIXME: Ignore non-fields for the validation step.
         // This not-implemented validation slows down development of new
         // features. It shall be postponed later.

@@ -1,6 +1,7 @@
 "use strict";
 
 const DefinitionBuilder = require("../lib/definition-builder");
+const { FieldNode } = require("../lib/nodes");
 
 describe("DefinitionBuilder", () => {
   test("throws an error when circular dependencies are found", () => {
@@ -8,25 +9,17 @@ describe("DefinitionBuilder", () => {
     const structure1 = {
       name: "Structure1",
       statements: [
-        {
-          statementType: "field",
-          name: "s2",
-          type: {
-            type: "Structure2",
-          },
-        },
+        new FieldNode("s2", {
+          type: "Structure2",
+        }),
       ],
     };
     const structure2 = {
       name: "Structure2",
       statements: [
-        {
-          statementType: "field",
-          name: "s1",
-          type: {
-            type: "Structure1",
-          },
-        },
+        new FieldNode("s1", {
+          type: "Structure1",
+        }),
       ],
     };
     const ast = {
@@ -43,13 +36,9 @@ describe("DefinitionBuilder", () => {
     const structure1 = {
       name: "Structure1",
       statements: [
-        {
-          statementType: "field",
-          name: "s2",
-          type: {
-            type: "WTF",
-          },
-        },
+        new FieldNode("s2", {
+          type: "WTF",
+        }),
       ],
     };
     const ast = {
