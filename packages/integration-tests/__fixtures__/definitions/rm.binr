@@ -94,10 +94,10 @@ struct DataPacket {
     uint:16 size;
     uint:16 streamNumber;
     uint:32 timestamp;
-    if (version === 0) {
+    if (version == 0) {
         uint:8 packetGroup;
         uint:8 flags;
-    } else if (version === 1) {
+    } else if (version == 1) {
         uint:16 asmRule;
         uint:8 asmFlag;
     }

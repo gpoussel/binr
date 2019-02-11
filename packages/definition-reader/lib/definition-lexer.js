@@ -71,9 +71,7 @@ const symbolTokens = _.fromPairs(
       ShiftRight: ">>",
 
       // Comparison token
-      TripleEquals: "===",
       DoubleEquals: "==",
-      DoubleDifferent: "!==",
       Different: "!=",
       GreaterOrEqual: ">=",
       LessOrEqual: "<=",

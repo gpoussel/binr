@@ -38,35 +38,35 @@ bitmask AccessFlag extends uint:16 {
 
 struct ConstantPoolInfo {
     ConstantPoolTag tag;
-    if (tag === "TAG_UTF8") {
+    if (tag == "TAG_UTF8") {
         uint:16 length;
         char bytes[length];
     }
-    if (tag === "TAG_INTEGER" || tag === "TAG_FLOAT")
+    if (tag == "TAG_INTEGER" || tag == "TAG_FLOAT")
         uint:8 bytes[4];
-    if (tag === "TAG_LONG" || tag === "TAG_DOUBLE") {
+    if (tag == "TAG_LONG" || tag == "TAG_DOUBLE") {
         uint:32 highBytes;
         uint:32 lowBytes;
     }
-    if (tag === "TAG_CLASS")
+    if (tag == "TAG_CLASS")
         uint:16 nameIndex;
-    if (tag === "TAG_STRING")
+    if (tag == "TAG_STRING")
         uint:16 stringIndex;
-    if (tag === "TAG_FIELDREF" || tag === "TAG_METHODREF" || tag === "TAG_INTERFACEMETHODREF") {
+    if (tag == "TAG_FIELDREF" || tag == "TAG_METHODREF" || tag == "TAG_INTERFACEMETHODREF") {
         uint:16 classIndex;
         uint:16 nameAndTypeIndex;
     }
-    if (tag === "TAG_NAMEANDTYPE") {
+    if (tag == "TAG_NAMEANDTYPE") {
         uint:16 nameIndex;
         uint:16 descriptorIndex;
     }
-    if (tag === "TAG_METHODHANDLE_INFO"){
+    if (tag == "TAG_METHODHANDLE_INFO"){
         uint:8 referenceKind;
         uint:16 referenceIndex;
     }
-    if (tag === "TAG_METHODTYPE")
+    if (tag == "TAG_METHODTYPE")
         uint:16 descriptorIndex;
-    if (tag === "TAG_INVOKEDYNAMIC") {
+    if (tag == "TAG_INVOKEDYNAMIC") {
         uint:16 bootstrapMethodAttrIndex;
         uint:16 nameAndTypeIndex;
     }

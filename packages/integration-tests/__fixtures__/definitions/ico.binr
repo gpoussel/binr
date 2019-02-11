@@ -44,7 +44,7 @@ struct BitmapInfoHeader {
 }
 
 struct ImageData {
-    if (header.bitCount !== 24 && header.bitCount !== 32) {
+    if (header.bitCount != 24 && header.bitCount != 32) {
         if (header.clrUsed > 0) {
             RgbQuad colors[header.clrUsed];
         } else {
@@ -56,11 +56,11 @@ struct ImageData {
     // TODO: Inline structures
     if (header.bitCount < 8) {
 
-    } else if (header.bitCount === 8) {
+    } else if (header.bitCount == 8) {
 
-    } else if (header.bitCount === 24) {
+    } else if (header.bitCount == 24) {
 
-    } else if (header.bitCount === 32) {
+    } else if (header.bitCount == 32) {
 
     }
 }

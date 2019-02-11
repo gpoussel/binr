@@ -36,8 +36,8 @@ export struct GifFile {
     Header header;
     LogicalScreen logicalScreen;
     
-    // Global Color table is only present if logicalScreen.globalColorTable === 1
-    if (logicalScreen.globalColorTable === 1) {
+    // Global Color table is only present if logicalScreen.globalColorTable == 1
+    if (logicalScreen.globalColorTable == 1) {
         RgbEntry globalColorTable[1 << (logicalScreen.globalColorTableSize + 1)];
     }
     

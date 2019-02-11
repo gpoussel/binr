@@ -7,6 +7,14 @@ const DefinitionParser = require("./definition-parser");
 const DefinitionValidator = require("./definition-validator");
 const DefinitionBuilder = require("./definition-builder");
 
+/**
+ * This is the mapping between Binr symbols and Javascript ones
+ */
+const SYMBOL_MAPPING = {
+  "==": "===",
+  "!=": "!==",
+};
+
 class DefinitionReader {
   constructor() {
     this.lexer = new DefinitionLexer();
@@ -257,7 +265,7 @@ class DefinitionReader {
           const tokenName = _.first(_.keys(token.children));
           const tokenSymbol = _.first(token.children[tokenName]).image;
           const childExpression = this.visit(ctx.UnaryExpression[i + 1]);
-          result.push(tokenSymbol);
+          result.push(_.get(SYMBOL_MAPPING, tokenSymbol, tokenSymbol));
           result.push(childExpression);
         });
         return _.join(result, " ");

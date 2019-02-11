@@ -5,11 +5,11 @@
 
 struct TorrentFile {
     char identifier;
-    if (identifier === "i") {
+    if (identifier == "i") {
         // Integer
-    } else if (identifier === "l") {
+    } else if (identifier == "l") {
         // List
-    } else if (identifier === "d") {
+    } else if (identifier == "d") {
         // Dictionary
         // TODO: need current byte value
     } else {

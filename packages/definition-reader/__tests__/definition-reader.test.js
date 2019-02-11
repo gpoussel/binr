@@ -72,10 +72,8 @@ describe("DefinitionReader", () => {
         "a & b",
         "ob.b",
         "f(b,c)",
-        "a === b ? 1 : 0",
         "a == b ? 1 : 0",
         "a != b ? 1 : 0",
-        "a !== b ? 1 : 0",
         "~1",
         "!a",
         "+a",
@@ -117,12 +115,12 @@ describe("DefinitionReader", () => {
     );
   });
 
-  test("accepts === and ||", () => {
-    const result = createAndCallParser(`struct a { int foo[1 === 2 || 3 === 4]; }`)();
+  test("accepts == and ||", () => {
+    const result = createAndCallParser(`struct a { int foo[1 == 2 || 3 == 4]; }`)();
     expect(result).toBeDefined();
     const resultFn = _.first(_.first(result.structures).statements).type.sizeExpression;
     expect(resultFn).toBeDefined();
-    expect(resultFn).toContain("===");
+    expect(resultFn).toContain("==");
     expect(resultFn).toContain("||");
   });
 
