@@ -32,7 +32,7 @@ class ArrayUntilType extends Type {
   readSingleElement(buffer, scopes) {
     const nestedScope = {
       functions: scopes.functions,
-      globalFunctions: scopes.globalFunctions,
+      stream: scopes.stream,
       variables: new VariableScope(scopes.variables),
     };
     return {

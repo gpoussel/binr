@@ -93,7 +93,26 @@ class ExpressionConverter {
   }
 
   generateTopLevelFunctionScopeGetNode(name) {
-    return this.generateGetNode("globalFunctions", name);
+    return {
+      type: esprima.Syntax.MemberExpression,
+      generated: true,
+      object: {
+        type: esprima.Syntax.MemberExpression,
+        generated: true,
+        object: {
+          type: esprima.Syntax.Identifier,
+          name: "scopes",
+        },
+        property: {
+          type: esprima.Syntax.Identifier,
+          name: "stream",
+        },
+      },
+      property: {
+        type: esprima.Syntax.Identifier,
+        name,
+      },
+    };
   }
 
   generateGetNode(objectName, propertyName) {

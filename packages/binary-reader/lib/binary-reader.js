@@ -6,18 +6,15 @@ const assert = require("assert");
 const { StructureType } = require("@binr/definition-reader");
 const { BufferWrapper, VariableScope, FunctionScope } = require("@binr/shared");
 
+const StreamObject = require("./stream-object");
+
 class BinaryReader {
   read(binaryBuffer, definition, providedStructureName = undefined) {
     assert(_.isObject(definition), "definition must be an object");
     assert(_.isBuffer(binaryBuffer), "binaryBuffer must be a buffer");
 
-    const scopes = {
-      variables: new VariableScope(),
-      functions: new FunctionScope(),
-      globalFunctions: new FunctionScope(),
-    };
-
-    this.setupFunctionScope(scopes.functions);
+    const functionScope = new FunctionScope();
+    this.setupFunctionScope(functionScope);
 
     let mainStructureName;
     if (_.isUndefined(providedStructureName)) {
@@ -37,6 +34,13 @@ class BinaryReader {
 
     const structureType = new StructureType(mainStructure);
     const bufferWrapper = new BufferWrapper(binaryBuffer, mainStructure.getEndianness());
+
+    const scopes = {
+      variables: new VariableScope(),
+      functions: functionScope,
+      stream: new StreamObject(bufferWrapper),
+    };
+
     return structureType.read(bufferWrapper, scopes);
   }
 

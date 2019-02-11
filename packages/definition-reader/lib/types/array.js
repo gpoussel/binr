@@ -26,7 +26,7 @@ class ArrayType extends Type {
       const nestedScope = new VariableScope(scopes.variables);
       return this.innerType.read(buffer, {
         functions: scopes.functions,
-        globalFunctions: scopes.globalFunctions,
+        stream: scopes.stream,
         variables: nestedScope,
       });
     });

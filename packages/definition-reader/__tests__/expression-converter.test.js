@@ -73,7 +73,7 @@ describe("ExpressionConverter", () => {
     const converter = new ExpressionConverter();
     const test = "_.foo(1, 2, _.bar(a), baz(5))";
     const result = converter.convert(test);
-    expect(result).toContain("scopes.globalFunctions");
+    expect(result).toContain("scopes.stream");
     expect(result).toContain("scopes.functions");
     expect(result).toContain("scopes.variables");
   });

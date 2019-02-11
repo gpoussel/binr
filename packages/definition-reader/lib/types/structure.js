@@ -19,7 +19,7 @@ class StructureType extends Type {
       buffer.setEndianness(this.structure.endianness);
       const nestedScope = {
         functions: scopes.functions,
-        globalFunctions: scopes.globalFunctions,
+        stream: scopes.stream,
         variables: new VariableScope(scopes.variables),
       };
       statement.read(buffer, nestedScope, scopes, value);
