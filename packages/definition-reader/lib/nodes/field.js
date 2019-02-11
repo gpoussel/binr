@@ -10,6 +10,7 @@ const {
   EnumerationType,
   BitmaskType,
   ArrayType,
+  CharArrayType,
   ArrayUntilType,
 } = require("../types");
 
@@ -52,6 +53,10 @@ class FieldNode extends Node {
     if (_.has(this, "arrayDefinition")) {
       const definitionCode = this.converter.transformCodeToFunction(this.arrayDefinition);
       type = new ArrayType(type, definitionCode);
+      if (_.includes(["char", "wchar"], typeName)) {
+        // Special case for array of characters, that shall be read as strings
+        type = new CharArrayType(type);
+      }
     }
     if (_.has(this, "arrayUntilDefinition")) {
       const definitionCode = this.converter.transformCodeToFunction(this.arrayUntilDefinition);

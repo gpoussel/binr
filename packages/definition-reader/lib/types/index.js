@@ -7,6 +7,7 @@ const DoubleType = require("./double");
 const UintType = require("./uint");
 const IntType = require("./int");
 const StructureType = require("./structure");
+const CharArrayType = require("./char-array");
 const ArrayType = require("./array");
 const ArrayUntilType = require("./array-until");
 const EnumerationType = require("./enumeration");
@@ -29,6 +30,7 @@ module.exports = {
   UintType,
   IntType,
   StructureType,
+  CharArrayType,
   ArrayType,
   ArrayUntilType,
   EnumerationType,

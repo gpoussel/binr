@@ -22,9 +22,9 @@ describe("AVI reading", () => {
     expect(aviValue).toBeDefined();
 
     const { root } = aviValue;
-    expect(root.id).toEqual("RIFF".split(""));
+    expect(root.id).toEqual("RIFF");
     expect(root.datalen).toBe(904606);
-    expect(root.form).toEqual("AVI ".split(""));
+    expect(root.form).toEqual("AVI ");
     console.log(aviValue);
   });
 });

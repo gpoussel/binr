@@ -21,14 +21,14 @@ describe("RM reading", () => {
     const videoValue = binaryReader.read(videoRmBuffer, rmDefinition, "RmFile");
     expect(videoValue).toBeDefined();
     expect(videoValue.header).toEqual({
-      type: ".RMF".split(""),
+      type: ".RMF",
       size: 18,
       version: 1,
       fileVersion: 0,
       numberOfHeaders: 7,
     });
     expect(videoValue.properties).toEqual({
-      type: "PROP".split(""),
+      type: "PROP",
       size: 50,
       version: 0,
       maxBitRate: 40000,
@@ -45,7 +45,7 @@ describe("RM reading", () => {
     });
     expect(videoValue.mediaDescription).toEqual([
       {
-        type: "MDPR".split(""),
+        type: "MDPR",
         size: 164,
         version: 0,
         numberOfStreams: 0,
@@ -57,9 +57,9 @@ describe("RM reading", () => {
         preroll: 2304,
         duration: 9200,
         descriptionSize: 12,
-        description: "Audio Stream".split(""),
+        description: "Audio Stream",
         streamMimeTypeSize: 20,
-        streamMimeType: "audio/x-pn-realaudio".split(""),
+        streamMimeType: "audio/x-pn-realaudio",
         specificTypeDataSize: 86,
         specificTypeData: [
           46,
@@ -151,7 +151,7 @@ describe("RM reading", () => {
         ],
       },
       {
-        type: ["M", "D", "P", "R"],
+        type: "MDPR",
         size: 116,
         version: 0,
         numberOfStreams: 1,
@@ -163,9 +163,9 @@ describe("RM reading", () => {
         preroll: 5069,
         duration: 8500,
         descriptionSize: 12,
-        description: "Video Stream".split(""),
+        description: "Video Stream",
         streamMimeTypeSize: 20,
-        streamMimeType: "video/x-pn-realvideo".split(""),
+        streamMimeType: "video/x-pn-realvideo",
         specificTypeDataSize: 38,
         specificTypeData: [
           0,
@@ -209,7 +209,7 @@ describe("RM reading", () => {
         ],
       },
       {
-        type: ["M", "D", "P", "R"],
+        type: "MDPR",
         size: 627,
         version: 0,
         numberOfStreams: 2,
@@ -221,9 +221,9 @@ describe("RM reading", () => {
         preroll: 0,
         duration: 0,
         descriptionSize: 0,
-        description: [],
+        description: "",
         streamMimeTypeSize: 16,
-        streamMimeType: "logical-fileinfo".split(""),
+        streamMimeType: "logical-fileinfo",
         specificTypeDataSize: 565,
         specificTypeData: [
           0,
@@ -795,19 +795,19 @@ describe("RM reading", () => {
       },
     ]);
     expect(videoValue.contentDescription).toEqual({
-      author: [],
+      author: "",
       authorLength: 0,
-      comment: [],
+      comment: "",
       commentLength: 0,
-      copyright: ")2000".split(""),
+      copyright: ")2000",
       copyrightLength: 5,
       size: 23,
-      title: [],
+      title: "",
       titleLength: 0,
-      type: "CONT".split(""),
+      type: "CONT",
       version: 0,
     });
-    expect(videoValue.dataHeader.type).toEqual("DATA".split(""));
+    expect(videoValue.dataHeader.type).toEqual("DATA");
     expect(videoValue.dataHeader.size).toBe(57948);
     expect(videoValue.dataHeader.version).toBe(0);
     expect(videoValue.dataHeader.numOfDataPackets).toBe(132);
@@ -829,7 +829,7 @@ describe("RM reading", () => {
     expect(videoValue.dataHeader.dataPackets[131].specificData.length).toBe(290);
     expect(videoValue.indexHeaders).toEqual([
       {
-        type: "INDX".split(""),
+        type: "INDX",
         version: 0,
         numberOfStreams: 0,
         numberOfEntries: 4,
@@ -863,7 +863,7 @@ describe("RM reading", () => {
         ],
       },
       {
-        type: "INDX".split(""),
+        type: "INDX",
         version: 0,
         numberOfStreams: 1,
         numberOfEntries: 2,
@@ -885,7 +885,7 @@ describe("RM reading", () => {
         ],
       },
       {
-        type: "INDX".split(""),
+        type: "INDX",
         version: 0,
         numberOfStreams: 2,
         numberOfEntries: 0,

@@ -21,7 +21,7 @@ describe("ROMFS reading", () => {
     expect(value).toBeDefined();
     const { header, entry } = value;
     expect(header).toBeDefined();
-    expect(header.magicBytes).toEqual("-rom1fs-".split(""));
+    expect(header.magicBytes).toEqual("-rom1fs-");
     expect(header.size).toBe(272);
     expect(header.checksum).toBe(1391339101);
     expect(header.volumeName).toEqual("DEFALIGNED");

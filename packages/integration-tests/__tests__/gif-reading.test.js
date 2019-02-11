@@ -23,8 +23,8 @@ describe("GIF reading", () => {
 
     const { logicalScreen, header, globalColorTable } = gifValue;
     expect(header).toBeDefined();
-    expect(header.magic).toEqual(["G", "I", "F"]);
-    expect(header.version).toEqual(["8", "9", "a"]);
+    expect(header.magic).toEqual("GIF");
+    expect(header.version).toEqual("89a");
 
     expect(logicalScreen).toBeDefined();
     expect(logicalScreen.imageWidth).toBe(150);

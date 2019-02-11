@@ -36,13 +36,13 @@ describe("EOT reading", () => {
     expect(eotValue.checkSumAdjustment).toBe(2389338260);
     expect(eotValue.reserved).toEqual([0, 0, 0, 0]);
     expect(eotValue.familyNameSize).toBe(12);
-    expect(eotValue.familyName).toEqual("Roboto".split(""));
+    expect(eotValue.familyName).toEqual("Roboto");
     expect(eotValue.styleNameSize).toBe(14);
-    expect(eotValue.styleName).toEqual("Regular".split(""));
+    expect(eotValue.styleName).toEqual("Regular");
     expect(eotValue.versionNameSize).toBe(42);
-    expect(eotValue.versionName).toEqual("Version 1.00000; 2011".split(""));
+    expect(eotValue.versionName).toEqual("Version 1.00000; 2011");
     expect(eotValue.fullNameSize).toBe(28);
-    expect(eotValue.fullName).toEqual("Roboto Regular".split(""));
+    expect(eotValue.fullName).toEqual("Roboto Regular");
     expect(eotValue.rootStringSize).toBe(0);
     expect(eotValue.rootString).toHaveLength(0);
     expect(eotValue.eudcCodePage).toBe(0);
