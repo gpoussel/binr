@@ -1,0 +1,24 @@
+#name "AVI Format"
+#comment "This structure is an example of the \"AVI\" format"
+#extension ".avi"
+#endianness "little"
+
+struct Root {
+    char id[4];
+    if (id[3] == "X") {
+        // Big Endian
+    } else {
+        // Little Endian
+    }
+
+    uint:32 datalen;
+    char form[4];
+}
+
+struct AviFile {
+    Root root;
+
+    char nheader[4];
+    // TODO: Read char arrays as strings
+    // TODO: While FEOF
+}
