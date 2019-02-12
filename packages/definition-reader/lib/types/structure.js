@@ -15,13 +15,13 @@ class StructureType extends Type {
 
   read(buffer, scopes) {
     const value = {};
+    const nestedScope = {
+      functions: scopes.functions,
+      stream: scopes.stream,
+      variables: new VariableScope(scopes.variables),
+    };
     _.each(this.structure.statements, statement => {
       buffer.setEndianness(this.structure.endianness);
-      const nestedScope = {
-        functions: scopes.functions,
-        stream: scopes.stream,
-        variables: new VariableScope(scopes.variables),
-      };
       statement.read(buffer, nestedScope, scopes, value);
     });
     return value;

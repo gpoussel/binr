@@ -17,7 +17,7 @@ class FieldStatement extends Statement {
     const ignore = _.get(this.meta, "ignore", false);
     if (!ignore) {
       value[this.name] = readValue;
-      scopes.variables.put(this.name, readValue);
+      parentScopes.variables.put(this.name, readValue);
     }
   }
 }
