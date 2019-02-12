@@ -411,6 +411,9 @@ class DefinitionParser extends chevrotain.Parser {
             {
               ALT: () => $.CONSUME(tokens.MinusToken),
             },
+            {
+              ALT: () => $.CONSUME(tokens.ModuloToken),
+            },
           ])
       );
     });
