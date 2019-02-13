@@ -113,5 +113,5 @@ struct Record {
 struct WmfFile {
     SpecialHeader specialHeader;
     Header header;
-    Record records[until fn == "EOF"];
+    Record records[until _.eof()];
 }
