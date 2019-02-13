@@ -12,12 +12,12 @@ class FieldStatement extends Statement {
     this.meta = meta;
   }
 
-  read(buffer, parentScopes, scopes, value) {
-    const readValue = this.type.read(buffer, parentScopes);
+  read(buffer, environment, value) {
+    const readValue = this.type.read(buffer, environment);
     const ignore = _.get(this.meta, "ignore", false);
     if (!ignore) {
       value[this.name] = readValue;
-      parentScopes.variables.put(this.name, readValue);
+      environment.variables.put(this.name, readValue);
     }
   }
 }

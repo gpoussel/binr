@@ -2,7 +2,6 @@
 
 const assert = require("assert");
 const _ = require("lodash");
-const { VariableScope } = require("@binr/shared");
 
 const Type = require("./type");
 
@@ -13,16 +12,12 @@ class StructureType extends Type {
     this.structure = structure;
   }
 
-  read(buffer, scopes) {
+  read(buffer, environment) {
     const value = {};
-    const nestedScope = {
-      functions: scopes.functions,
-      stream: scopes.stream,
-      variables: new VariableScope(scopes.variables),
-    };
+    const nestedEnvironment = environment.nestedScope();
     _.each(this.structure.statements, statement => {
       buffer.setEndianness(this.structure.endianness);
-      statement.read(buffer, nestedScope, scopes, value);
+      statement.read(buffer, nestedEnvironment, value);
     });
     return value;
   }

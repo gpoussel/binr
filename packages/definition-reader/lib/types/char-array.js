@@ -10,8 +10,8 @@ class CharArrayType extends Type {
     this.arrayType = arrayType;
   }
 
-  read(buffer, scopes) {
-    return _.join(this.arrayType.read(buffer, scopes), "");
+  read(buffer, environment) {
+    return _.join(this.arrayType.read(buffer, environment), "");
   }
 }
 

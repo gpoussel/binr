@@ -10,8 +10,8 @@ class BlockStatement extends Statement {
     this.innerStatements = innerStatements;
   }
 
-  read(buffer, parentScopes, scopes, value) {
-    _.each(this.innerStatements, s => s.read(buffer, parentScopes, scopes, value));
+  read(buffer, environment, value) {
+    _.each(this.innerStatements, s => s.read(buffer, environment, value));
   }
 }
 

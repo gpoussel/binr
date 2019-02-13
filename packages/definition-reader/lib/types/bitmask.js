@@ -11,8 +11,8 @@ class BitmaskType extends Type {
     this.bitmask = bitmask;
   }
 
-  read(buffer, scopes) {
-    const value = this.parentType.read(buffer, scopes);
+  read(buffer, environment) {
+    const value = this.parentType.read(buffer, environment);
     const matchedItems = [];
     _.each(this.bitmask.entries, entry => {
       if ((value & entry.value) !== 0) {

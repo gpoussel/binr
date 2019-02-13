@@ -4,17 +4,12 @@ const _ = require("lodash");
 const assert = require("assert");
 
 const { StructureType } = require("@binr/definition-reader");
-const { BufferWrapper, VariableScope, FunctionScope } = require("@binr/shared");
-
-const StreamObject = require("./stream-object");
+const { BufferWrapper, Environment, StreamObject } = require("@binr/shared");
 
 class BinaryReader {
   read(binaryBuffer, definition, providedStructureName = undefined) {
     assert(_.isObject(definition), "definition must be an object");
     assert(_.isBuffer(binaryBuffer), "binaryBuffer must be a buffer");
-
-    const functionScope = new FunctionScope();
-    this.setupFunctionScope(functionScope);
 
     let mainStructureName;
     if (_.isUndefined(providedStructureName)) {
@@ -35,13 +30,11 @@ class BinaryReader {
     const structureType = new StructureType(mainStructure);
     const bufferWrapper = new BufferWrapper(binaryBuffer, mainStructure.getEndianness());
 
-    const scopes = {
-      variables: new VariableScope(),
-      functions: functionScope,
-      stream: new StreamObject(bufferWrapper),
-    };
+    const streamObject = new StreamObject(bufferWrapper);
+    const environment = new Environment(streamObject);
+    this.setupFunctionScope(environment.functions);
 
-    return structureType.read(bufferWrapper, scopes);
+    return structureType.read(bufferWrapper, environment);
   }
 
   setupFunctionScope(functionScope) {
