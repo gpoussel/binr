@@ -26,7 +26,10 @@ class DefinitionBuilder {
   /**
    * This method build all structures and takes into account dependencies
    * between them. Some structures need to be built before other ones.
+   * @param {string} globalEndianness definition endianness "little" or "big"
    * @param {array} structures AST structures
+   * @param {array} builtElements all elements already built in this definition
+   * @return {array} all structures
    */
   buildAllStructures(globalEndianness, structures, builtElements) {
     const builtStructures = {};

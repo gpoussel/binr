@@ -1,6 +1,7 @@
 root: true
 extends:
   - airbnb-base
+  - google
   - plugin:jest/recommended
   - plugin:node/recommended
   - plugin:prettier/recommended
@@ -9,42 +10,16 @@ plugins:
   - node
   - prettier
 rules:
-  consistent-return: off
-  class-methods-use-this: off
-  curly:
-    - error
-    - all
   max-len:
     - error
     - 110 # keep in sync with .prettierrc.yaml printWidth
     - 2
-  no-param-reassign:
-    - error
-    - props: true
-      ignorePropertyModificationsFor:
-        - err # Error decoration
-        - obj # .reduce() object
-        - pkg # Package instance
-  no-restricted-syntax:
-    - error
-    - ForInStatement
-    - LabeledStatement
-    - WithStatement
-  import/no-unresolved: off
-  node/no-missing-require: off
+  require-jsdoc: off
   no-bitwise: off
-  no-underscore-dangle:
-    - error
-    - allowAfterThis: true
-  no-use-before-define:
-    - error
-    - functions: false
-      classes: false
   strict: off
+  class-methods-use-this: off
+  consistent-return: off
 overrides:
-  - files: "commands/*/command.js"
-    rules:
-      global-require: off
   - files:
       - "integration/**"
       - "**/__tests__/**"
@@ -64,18 +39,3 @@ overrides:
             - asyncFunctions
             # jest transpiles fast-async
       no-console: off
-  - files:
-      - "test/fixtures/**"
-      - "**/__fixtures__/**"
-    rules:
-      global-require: off
-      import/no-extraneous-dependencies: off
-      node/no-extraneous-require: off
-      no-console: off
-      strict: off
-  - files:
-      - "utils/map-to-registry/lib/map-to-registry.js"
-      - "utils/npm-conf/lib/nerf-dart.js"
-    rules:
-      # Allow legacy url API
-      node/no-deprecated-api: off
