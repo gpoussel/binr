@@ -14,6 +14,14 @@ class BufferWrapper {
     this.setEndianness(endianness);
   }
 
+  skip(length) {
+    this.cursor += length;
+  }
+
+  seek(length) {
+    this.cursor = length;
+  }
+
   readAsciiString(length) {
     const stringValue = this.buffer.toString("ascii", this.cursor, this.cursor + length);
     this.cursor += length;
