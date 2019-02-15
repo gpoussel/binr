@@ -2,7 +2,6 @@
 
 const VariableScope = require("./variable-scope");
 const FunctionScope = require("./function-scope");
-const StreamObject = require("./stream-object");
 
 class Environment {
   constructor(stream, variables, functions) {
