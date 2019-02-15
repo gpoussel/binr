@@ -2,6 +2,8 @@
 
 const _ = require("lodash");
 
+const { ExpressionEvaluator } = require("@binr/shared");
+
 const Statement = require("./statement");
 
 class IfStatement extends Statement {
@@ -13,7 +15,8 @@ class IfStatement extends Statement {
   }
 
   read(buffer, environment, valueAggregator) {
-    const testResult = eval(this.testCode)(environment);
+    const evaluator = new ExpressionEvaluator();
+    const testResult = evaluator.evaluate(this.testCode, environment);
     if (testResult) {
       this.consequentStatement.read(buffer, environment, valueAggregator);
     } else if (!_.isUndefined(this.alternateStatement)) {

@@ -3,6 +3,8 @@
 const _ = require("lodash");
 const assert = require("assert");
 
+const { ExpressionEvaluator } = require("@binr/shared");
+
 const Type = require("./type");
 
 class ArrayUntilType extends Type {
@@ -13,14 +15,14 @@ class ArrayUntilType extends Type {
   }
 
   read(buffer, environment) {
+    const evaluator = new ExpressionEvaluator();
     assert(_.isString(this.untilExpression), "untilExpression must be a string");
-    const untilFn = eval(this.untilExpression);
     const values = [];
 
     let { element, nestedEnvironment } = this.readSingleElement(buffer, environment);
     values.push(element);
 
-    while (!untilFn(nestedEnvironment)) {
+    while (!evaluator.evaluate(this.untilExpression, nestedEnvironment)) {
       ({ element, nestedEnvironment } = this.readSingleElement(buffer, environment));
       values.push(element);
     }

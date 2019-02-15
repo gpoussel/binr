@@ -2,7 +2,7 @@
 
 const _ = require("lodash");
 const DefinitionReader = require("../lib/definition-reader");
-const { VariableScope, FunctionScope } = require("@binr/shared");
+const { VariableScope, FunctionScope, ExpressionEvaluator } = require("@binr/shared");
 
 function createAndCallParser(input) {
   return () => {
@@ -60,6 +60,7 @@ describe("DefinitionReader", () => {
   });
 
   test("accepts expression", () => {
+    const evaluator = new ExpressionEvaluator();
     _.each(
       [
         "2+3",
@@ -105,7 +106,7 @@ describe("DefinitionReader", () => {
         const functionScope = new FunctionScope();
         functionScope.put("f", () => 1);
 
-        const size = eval(resultFn)({
+        const size = evaluator.evaluate(resultFn, {
           variables: variableScope,
           functions: functionScope,
         });

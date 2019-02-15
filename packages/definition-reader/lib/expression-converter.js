@@ -8,7 +8,7 @@ const escodegen = require("escodegen");
 
 class ExpressionConverter {
   transformCodeToFunction(code) {
-    return `(function(scopes) { "use strict"; return ${this.convert(code)} })`;
+    return `(function() { return ${this.convert(code)}; })()`;
   }
 
   convert(source) {
@@ -132,7 +132,7 @@ class ExpressionConverter {
         generated: true,
         object: {
           type: esprima.Syntax.Identifier,
-          name: "scopes",
+          name: "env",
         },
         property: {
           type: esprima.Syntax.Identifier,
@@ -158,7 +158,7 @@ class ExpressionConverter {
           generated: true,
           object: {
             type: esprima.Syntax.Identifier,
-            name: "scopes",
+            name: "env",
           },
           property: {
             type: esprima.Syntax.Identifier,
