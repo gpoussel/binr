@@ -32,14 +32,8 @@ class BinaryReader {
 
     const streamObject = new StreamObject(bufferWrapper);
     const environment = new Environment(streamObject);
-    this.setupFunctionScope(environment.functions);
 
     return structureType.read(bufferWrapper, environment);
-  }
-
-  setupFunctionScope(functionScope) {
-    functionScope.put("min", (...args) => _.min(args));
-    functionScope.put("max", (...args) => _.max(args));
   }
 }
 

@@ -60,7 +60,30 @@ class ExpressionConverter {
       const { callee } = expression;
       if (callee.type === esprima.Syntax.Identifier) {
         // Top-level functions: that's fine
-        expression.callee = this.generateFunctionScopeGetNode(expression.callee.name);
+        if (
+          _.includes(
+            [
+              "abs",
+              "ceil",
+              "cos",
+              "exp",
+              "floor",
+              "log",
+              "max",
+              "min",
+              "pow",
+              "random",
+              "sin",
+              "sqrt",
+              "tan",
+            ],
+            expression.callee.name
+          )
+        ) {
+          expression.callee = this.generateBuiltinFunctionScopeGetNode(expression.callee.name);
+        } else {
+          expression.callee = this.generateFunctionScopeGetNode(expression.callee.name);
+        }
       } else if (callee.type === esprima.Syntax.MemberExpression) {
         const { object, property } = callee;
         if (
@@ -93,6 +116,14 @@ class ExpressionConverter {
   }
 
   generateTopLevelFunctionScopeGetNode(name) {
+    return this.generateFunctionCallNode("stream", name);
+  }
+
+  generateBuiltinFunctionScopeGetNode(name) {
+    return this.generateFunctionCallNode("utils", name);
+  }
+
+  generateFunctionCallNode(objectName, functionName) {
     return {
       type: esprima.Syntax.MemberExpression,
       generated: true,
@@ -105,12 +136,12 @@ class ExpressionConverter {
         },
         property: {
           type: esprima.Syntax.Identifier,
-          name: "stream",
+          name: objectName,
         },
       },
       property: {
         type: esprima.Syntax.Identifier,
-        name,
+        name: functionName,
       },
     };
   }

@@ -25,6 +25,9 @@
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
   },
+  "engines": {
+    "node": ">=8.3.0"
+  },
   "devDependencies": {
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
