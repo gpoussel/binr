@@ -12,13 +12,13 @@ class IfStatement extends Statement {
     this.alternateStatement = alternateStatement;
   }
 
-  read(buffer, environment, value) {
+  read(buffer, environment, valueAggregator) {
     // TODO: Better code evaluation?
     const testResult = eval(this.testCode)(environment);
     if (testResult) {
-      this.consequentStatement.read(buffer, environment, value);
+      this.consequentStatement.read(buffer, environment, valueAggregator);
     } else if (!_.isUndefined(this.alternateStatement)) {
-      this.alternateStatement.read(buffer, environment, value);
+      this.alternateStatement.read(buffer, environment, valueAggregator);
     }
   }
 }

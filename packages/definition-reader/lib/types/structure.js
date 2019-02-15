@@ -3,6 +3,8 @@
 const assert = require("assert");
 const _ = require("lodash");
 
+const { ValueAggregator } = require("@binr/shared");
+
 const Type = require("./type");
 
 class StructureType extends Type {
@@ -13,13 +15,13 @@ class StructureType extends Type {
   }
 
   read(buffer, environment) {
-    const value = {};
+    const valueAggregator = new ValueAggregator();
     const nestedEnvironment = environment.nestedScope();
     _.each(this.structure.statements, statement => {
       buffer.setEndianness(this.structure.endianness);
-      statement.read(buffer, nestedEnvironment, value);
+      statement.read(buffer, nestedEnvironment, valueAggregator);
     });
-    return value;
+    return valueAggregator.build();
   }
 }
 

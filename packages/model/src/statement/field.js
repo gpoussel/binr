@@ -12,11 +12,11 @@ class FieldStatement extends Statement {
     this.meta = meta;
   }
 
-  read(buffer, environment, value) {
+  read(buffer, environment, valueAggregator) {
     const readValue = this.type.read(buffer, environment);
     const ignore = _.get(this.meta, "ignore", false);
     if (!ignore) {
-      value[this.name] = readValue;
+      valueAggregator.set(this.name, readValue);
       environment.variables.put(this.name, readValue);
     }
   }
