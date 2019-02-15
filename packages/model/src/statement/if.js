@@ -13,7 +13,6 @@ class IfStatement extends Statement {
   }
 
   read(buffer, environment, valueAggregator) {
-    // TODO: Better code evaluation?
     const testResult = eval(this.testCode)(environment);
     if (testResult) {
       this.consequentStatement.read(buffer, environment, valueAggregator);

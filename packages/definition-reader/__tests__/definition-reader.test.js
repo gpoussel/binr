@@ -105,7 +105,6 @@ describe("DefinitionReader", () => {
         const functionScope = new FunctionScope();
         functionScope.put("f", () => 1);
 
-        // eslint-disable-next-line no-eval
         const size = eval(resultFn)({
           variables: variableScope,
           functions: functionScope,
