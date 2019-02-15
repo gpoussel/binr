@@ -1,7 +1,5 @@
 "use strict";
 
-const _ = require("lodash");
-
 const fs = require("fs");
 const { BinaryReader } = require("@binr/binary-reader");
 const { DefinitionReader } = require("@binr/definition-reader");
