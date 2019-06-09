@@ -90,22 +90,24 @@ struct StrfHeaderBih {
 struct ListHeader {
     uint:32 datalen;
     char type[4];
-    if (type == "hdrl") {
-        AviHeader header;
-    } else if (type == "strl") {
-        StrhHeader strhHeader;
-        if (strhHeader.data.type == "vids") {
-            StrfHeaderBih strfHeader;
-        } else if (strhHeader.data.type == "auds") {
+    switch (type) {
+        "hdrl" => {
+            AviHeader header;
+        },
+        "strl" => {
+            StrhHeader strhHeader;
+            if (strhHeader.data.type == "vids") {
+                StrfHeaderBih strfHeader;
+            } else if (strhHeader.data.type == "auds") {
 
-        } else {
+            } else {
+
+            }
+            StrnHeader strnHeader;
+        },
+        "movi" => {
 
         }
-        StrnHeader strnHeader;
-    } else if (type == "movi") {
-
-    } else {
-
     }
 }
 

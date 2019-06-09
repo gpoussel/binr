@@ -32,7 +32,8 @@ class SwitchNode extends Node {
   }
 
   getTestCondition(value) {
-    return this.converter.transformCodeToFunction(`${this.test} === ${value}`);
+    const transformedValue = _.isString(value) ? `"${value}"` : value;
+    return this.converter.transformCodeToFunction(`${this.test} === ${transformedValue}`);
   }
 }
 
