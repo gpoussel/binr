@@ -2,7 +2,7 @@
 
 const _ = require("lodash");
 
-const { IfNode, BlockNode, FieldNode } = require("./nodes");
+const { IfNode, BlockNode, FieldNode, SwitchNode } = require("./nodes");
 const { DefinitionLexer } = require("./definition-lexer");
 const DefinitionParser = require("./definition-parser");
 const DefinitionValidator = require("./definition-validator");
@@ -45,7 +45,9 @@ class DefinitionReader {
     const parsingResult = parser.definition();
 
     if (!_.isEmpty(parser.errors)) {
-      throw new Error(`Got an error while parsing input: ${_.first(parser.errors).message}`);
+      const firstError = _.first(parser.errors);
+      const message = `${firstError.name}: ${firstError.message} (token ${firstError.token.image} at ${firstError.token.startLine}:${firstError.token.startColumn})`;
+      throw new Error(`Got an error while parsing input: ${message}`);
     }
 
     class Visitor extends parser.getBaseCstVisitorConstructorWithDefaults() {
@@ -170,6 +172,9 @@ class DefinitionReader {
         if (_.has(ctx, "BlockStatement")) {
           return this.visit(ctx.BlockStatement);
         }
+        if (_.has(ctx, "SwitchStatement")) {
+          return this.visit(ctx.SwitchStatement);
+        }
       }
 
       IfStatement(ctx) {
@@ -182,6 +187,21 @@ class DefinitionReader {
 
       BlockStatement(ctx) {
         return new BlockNode(_.map(ctx.statementClause, this.visit.bind(this)));
+      }
+
+      SwitchStatement(ctx) {
+        const testExpression = this.visit(_.first(ctx.Expression));
+        const switchClauses = _.map(ctx.switchInnerClause, this.visit.bind(this));
+        return new SwitchNode(testExpression, switchClauses);
+      }
+
+      switchInnerClause(ctx) {
+        const value = this.visit(_.first(ctx.valueClause));
+        const statement = this.visit(_.first(ctx.BlockStatement));
+        return {
+          value,
+          statement,
+        };
       }
 
       fieldClause(ctx) {

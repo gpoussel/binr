@@ -109,6 +109,7 @@ const symbolTokens = _.fromPairs(
       Modulo: "%",
 
       // Others
+      DoubleArrow: "=>",
       Equals: "=",
       Question: "?",
       Period: ".",
@@ -141,6 +142,7 @@ const keywordTokens = _.fromPairs(
       If: "if",
       Else: "else",
       Until: "until",
+      Switch: "switch"
     },
     (keyword, name) => [
       `${name}Token`,
