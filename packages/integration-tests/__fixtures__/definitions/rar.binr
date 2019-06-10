@@ -5,7 +5,7 @@
 // Source: https://www.sweetscape.com/010editor/repository/files/RAR.bt
 
 enum RarBlockType extends uint:8 {
-	MARKER = 0x72,
+    MARKER = 0x72,
     ARCHIVE = 0x73,
     FILE_OR_DIR = 0x74,
     COMMENT_OLD = 0x75,
@@ -18,33 +18,33 @@ enum RarBlockType extends uint:8 {
 }
 
 bitmask MainHeadFlags extends uint:16 {
-	ARCHIVE_VOLUME             = 0x0001,
-	ARCHIVE_COMMENT_PRESENT    = 0x0002,
-	ARCHIVE_LOCKED             = 0x0004,
-	ARCHIVE_SOLID              = 0x0008,
-	NEW_VOLUME_NAMING          = 0x0010,
-	AV_PRESENT                 = 0x0020,
-	RECOVERY_PRESENT           = 0x0040,
-	BLOCK_HEADERS_ENCRYPTED    = 0x0080,
-	IS_FIRST_VOLUME            = 0x0100,
-	OLD_VERSION_IGNORE         = 0x4000,
-	ADD_SIZE_PRESENT           = 0x8000
+    ARCHIVE_VOLUME             = 0x0001,
+    ARCHIVE_COMMENT_PRESENT    = 0x0002,
+    ARCHIVE_LOCKED             = 0x0004,
+    ARCHIVE_SOLID              = 0x0008,
+    NEW_VOLUME_NAMING          = 0x0010,
+    AV_PRESENT                 = 0x0020,
+    RECOVERY_PRESENT           = 0x0040,
+    BLOCK_HEADERS_ENCRYPTED    = 0x0080,
+    IS_FIRST_VOLUME            = 0x0100,
+    OLD_VERSION_IGNORE         = 0x4000,
+    ADD_SIZE_PRESENT           = 0x8000
 }
 
 bitmask FileHeadFlags extends uint:16 {
     from_PREV_VOLUME            = 0x0001,
-	to_NEXT_VOLUME              = 0x0002,
-	PASSWORD_ENCRYPTED          = 0x0004,
-	FILE_COMMENT_PRESENT        = 0x0008,
-	SOLID                       = 0x0010,
-	// TODO enums in bitmasks - FileDictType DICTIONARY : 3;
-	HIGH_SIZE                   = 0x0100,
-	has_UNICODE_FILENAME        = 0x0200,
-	ENCRYPTION_SALT             = 0x0400,
-	IS_OLD_FILE_VERSION         = 0x0800,
-	EXTENDED_TIME_INFO          = 0x1000,
-	OLD_VERSION_IGNORE          = 0x4000,
-	ADD_SIZE_PRESENT            = 0x8000
+    to_NEXT_VOLUME              = 0x0002,
+    PASSWORD_ENCRYPTED          = 0x0004,
+    FILE_COMMENT_PRESENT        = 0x0008,
+    SOLID                       = 0x0010,
+    // TODO enums in bitmasks - FileDictType DICTIONARY : 3;
+    HIGH_SIZE                   = 0x0100,
+    has_UNICODE_FILENAME        = 0x0200,
+    ENCRYPTION_SALT             = 0x0400,
+    IS_OLD_FILE_VERSION         = 0x0800,
+    EXTENDED_TIME_INFO          = 0x1000,
+    OLD_VERSION_IGNORE          = 0x4000,
+    ADD_SIZE_PRESENT            = 0x8000
 }
 
 
