@@ -142,7 +142,7 @@ const keywordTokens = _.fromPairs(
       If: "if",
       Else: "else",
       Until: "until",
-      Switch: "switch"
+      Switch: "switch",
     },
     (keyword, name) => [
       `${name}Token`,

@@ -17,7 +17,7 @@ class BinaryReader {
       // Otherwise that's an error
       assert(
         _.get(definition, "structures.length") === 1,
-        `No 'structureName' provided: structures.length must be === 1`
+        "No 'structureName' provided: structures.length must be === 1"
       );
       mainStructureName = _.first(definition.structures).name;
     } else {

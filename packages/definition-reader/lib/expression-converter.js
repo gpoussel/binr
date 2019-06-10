@@ -14,14 +14,14 @@ class ExpressionConverter {
   convert(source) {
     const ast = esprima.parseScript(source);
     if (!_.isArray(ast.body)) {
-      throw new Error(`AST body is not an array`);
+      throw new Error("AST body is not an array");
     }
     if (_.size(ast.body) !== 1) {
-      throw new Error(`AST body size shall be 1`);
+      throw new Error("AST body size shall be 1");
     }
     const bodyExpression = ast.body[0];
     if (bodyExpression.type !== esprima.Syntax.ExpressionStatement) {
-      throw new Error(`body shall be an expression`);
+      throw new Error("body shall be an expression");
     }
     bodyExpression.expression = this.processExpression(bodyExpression.expression);
     const generatedSource = escodegen.generate(ast);
@@ -33,7 +33,7 @@ class ExpressionConverter {
       return expression;
     }
     if (expression.type === esprima.Syntax.UpdateExpression) {
-      throw new Error(`UpdateExpression not supported`);
+      throw new Error("UpdateExpression not supported");
     }
     if (expression.type === esprima.Syntax.Identifier) {
       return this.generateVariableScopeGetNode(expression.name);
