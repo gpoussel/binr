@@ -19,6 +19,10 @@ rules:
   strict: off
   class-methods-use-this: off
   consistent-return: off
+  quotes:
+    - error
+    - double
+    - avoidEscape: true
 overrides:
   - files:
       - "integration/**"

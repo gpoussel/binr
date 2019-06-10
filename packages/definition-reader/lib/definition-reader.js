@@ -46,7 +46,9 @@ class DefinitionReader {
 
     if (!_.isEmpty(parser.errors)) {
       const firstError = _.first(parser.errors);
-      const message = `${firstError.name}: ${firstError.message} (token ${firstError.token.image} at ${firstError.token.startLine}:${firstError.token.startColumn})`;
+      const tokenPosition = `${firstError.token.startLine}:${firstError.token.startColumn}`;
+      const tokenDetails = `(token ${firstError.token.image} at ${tokenPosition})`;
+      const message = `${firstError.name}: ${firstError.message} ${tokenDetails}`;
       throw new Error(`Got an error while parsing input: ${message}`);
     }
 
