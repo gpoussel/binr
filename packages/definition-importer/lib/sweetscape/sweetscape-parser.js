@@ -38,9 +38,23 @@ class SweetscapeParser extends Parser {
 
     $.RULE("topLevelDirective", () => {
       $.CONSUME(tokens.DirectiveDefineToken);
-      $.CONSUME1(tokens.IdentifierToken);
+      $.CONSUME(tokens.IdentifierToken);
+      $.OR([
+        { ALT: () => $.SUBRULE($.Number) },
+        { ALT: () => $.SUBRULE($.StringLiteral) },
+        {
+          ALT: () =>
+            $.MANY(() =>
+              $.OR2([
+                // TODO Type name rule?
+                { ALT: () => $.CONSUME1(tokens.IdentifierToken) },
+                { ALT: () => $.CONSUME1(tokens.SignedToken) },
+                { ALT: () => $.CONSUME1(tokens.UnsignedToken) },
+              ])
+            ),
+        },
+      ]);
       // TODO Parenthesis around numbers shall be supported
-      $.SUBRULE($.Number);
     });
 
     $.RULE("simpleDirective", () => {
@@ -226,7 +240,7 @@ class SweetscapeParser extends Parser {
           $.CONSUME(tokens.EqualsToken);
           $.OR([
             { ALT: () => $.CONSUME2(tokens.IdentifierToken) },
-            { ALT: () => $.CONSUME2(tokens.StringLiteralToken) },
+            { ALT: () => $.SUBRULE($.StringLiteral) },
             { ALT: () => $.SUBRULE($.Number) },
           ]);
         },
@@ -299,7 +313,7 @@ class SweetscapeParser extends Parser {
               $.OR2([
                 { ALT: () => $.SUBRULE($.Number) },
                 { ALT: () => $.CONSUME(tokens.IdentifierToken) },
-                { ALT: () => $.CONSUME(tokens.StringLiteralToken) },
+                { ALT: () => $.SUBRULE($.StringLiteral) },
               ]);
             },
           },
@@ -514,7 +528,7 @@ class SweetscapeParser extends Parser {
           ALT: () => $.SUBRULE($.Number),
         },
         {
-          ALT: () => $.CONSUME(tokens.StringLiteralToken),
+          ALT: () => $.SUBRULE($.StringLiteral),
         },
         {
           ALT: () => $.SUBRULE($.parExpressionOrCastExpression),
@@ -637,6 +651,10 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.NumberDecimalLiteralToken) },
         { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteralToken) },
       ]);
+    });
+
+    $.RULE("StringLiteral", () => {
+      $.OR([{ ALT: () => $.CONSUME(tokens.StringLiteralToken) }]);
     });
 
     this.performSelfAnalysis();
