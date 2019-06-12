@@ -365,7 +365,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("expression", () => {
       $.SUBRULE($.expression1);
-      $.OPTION(() => {
+      $.MANY(() => {
         $.SUBRULE($.assignmentOperator);
         $.SUBRULE1($.expression1);
       });
@@ -609,6 +609,7 @@ class SweetscapeParser extends Parser {
         SEP: tokens.CommaToken,
         DEF: () => {
           $.OPTION3(() => $.CONSUME(tokens.LocalToken));
+          $.OPTION4(() => $.CONSUME(tokens.StructToken));
           $.CONSUME(tokens.IdentifierToken); // Parameter type
           $.OPTION(() => $.CONSUME(tokens.BinaryAndToken));
           $.CONSUME1(tokens.IdentifierToken); // Parameter name
