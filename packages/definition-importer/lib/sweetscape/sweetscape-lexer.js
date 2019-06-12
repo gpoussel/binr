@@ -39,6 +39,11 @@ const NumberDecimalLiteralToken = createToken({
   pattern: /-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?[Ll]?/,
 });
 
+const NumberBinaryLiteralToken = createToken({
+  name: "NumberBinaryLiteralToken",
+  pattern: /0b[01]+/,
+});
+
 const NumberHexadecimalLiteralToken = createToken({
   name: "NumberHexadecimalLiteralToken",
   pattern: /0x[A-F0-9]+/i,
@@ -193,6 +198,7 @@ const tokens = {
   IdentifierToken,
   StringLiteralToken,
   NumberHexadecimalLiteralToken,
+  NumberBinaryLiteralToken,
   NumberOctalLiteralToken,
   NumberDecimalLiteralToken,
 };

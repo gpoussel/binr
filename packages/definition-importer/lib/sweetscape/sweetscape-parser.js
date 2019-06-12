@@ -659,6 +659,7 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.NumberOctalLiteralToken) },
         { ALT: () => $.CONSUME(tokens.NumberDecimalLiteralToken) },
         { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteralToken) },
+        { ALT: () => $.CONSUME(tokens.NumberBinaryLiteralToken) },
       ]);
     });
 
