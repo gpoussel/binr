@@ -39,7 +39,21 @@ class SweetscapeParser extends Parser {
     $.RULE("topLevelDirective", () => {
       $.CONSUME(tokens.DirectiveDefineToken);
       $.CONSUME(tokens.IdentifierToken);
-      $.SUBRULE($.expression2);
+      $.OR([
+        { ALT: () => $.SUBRULE($.expression2) },
+        {
+          ALT: () => {
+            $.CONSUME(tokens.SignedToken);
+            $.CONSUME2(tokens.IdentifierToken);
+          },
+        },
+        {
+          ALT: () => {
+            $.CONSUME(tokens.UnsignedToken);
+            $.CONSUME3(tokens.IdentifierToken);
+          },
+        },
+      ]);
     });
 
     $.RULE("simpleDirective", () => {
