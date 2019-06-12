@@ -8,9 +8,9 @@ const structureFolder = `${__dirname}/../__fixtures__/`;
 
 describe("Sweetscape Importer", () => {
   const importer = new SweetscapeImporter();
-  _.each(["swf-sample", "vbmeta-sample"], name => {
+  _.each(["class", "exe", "misc", "swf", "vbmeta"], name => {
     test(`reads ${name} definition`, () => {
-      const definitionBuffer = fs.readFileSync(`${structureFolder}/${name}.bt`, "UTF-8");
+      const definitionBuffer = fs.readFileSync(`${structureFolder}/${name}-sample.bt`, "UTF-8");
       const definition = importer.readInput(definitionBuffer);
 
       expect(definition).toBeDefined();
