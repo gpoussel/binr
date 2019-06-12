@@ -347,6 +347,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("parExpressionOrCastExpression", () => {
       $.CONSUME(tokens.ParenthesisOpenToken);
+      $.SUBRULE($.expressionOrTypeName);
       $.CONSUME2(tokens.ParenthesisCloseToken);
       $.OR2([
         {
