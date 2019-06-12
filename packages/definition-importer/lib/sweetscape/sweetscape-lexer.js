@@ -44,6 +44,11 @@ const NumberHexadecimalLiteralToken = createToken({
   pattern: /0x[A-F0-9]+/i,
 });
 
+const NumberOctalLiteralToken = createToken({
+  name: "NumberOctalLiteralToken",
+  pattern: /0[0-7]+/,
+});
+
 const symbolTokens = _.fromPairs(
   _.map(
     {
@@ -187,6 +192,7 @@ const tokens = {
   IdentifierToken,
   StringLiteralToken,
   NumberHexadecimalLiteralToken,
+  NumberOctalLiteralToken,
   NumberDecimalLiteralToken,
 };
 

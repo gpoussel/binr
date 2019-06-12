@@ -617,6 +617,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("Number", () => {
       $.OR([
+        { ALT: () => $.CONSUME(tokens.NumberOctalLiteralToken) },
         { ALT: () => $.CONSUME(tokens.NumberDecimalLiteralToken) },
         { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteralToken) },
       ]);
