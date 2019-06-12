@@ -10,7 +10,7 @@ class SweetscapeParser extends Parser {
   constructor() {
     super(_.values(tokens), {
       recoveryEnabled: false,
-      maxLookahead: 11,
+      maxLookahead: 5,
       ignoredIssues: {
         topLevelStatement: { OR: true },
       },
@@ -107,11 +107,7 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("functionDeclarationStatement", () => {
-      $.CONSUME(tokens.IdentifierToken); // Return type
-      $.OPTION(() => {
-        $.CONSUME(tokens.BracketOpenToken);
-        $.CONSUME(tokens.BracketCloseToken);
-      });
+      $.SUBRULE($.TypeName);
       $.CONSUME1(tokens.IdentifierToken); // Function name
       $.SUBRULE($.parameterDeclarationList);
       $.CONSUME(tokens.CurlyBraceOpenToken);
@@ -121,7 +117,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("localVariableDeclarationStatement", () => {
       $.MANY(() => $.SUBRULE($.variableModifier));
-      $.SUBRULE($.type);
+      $.SUBRULE($.TypeName);
       $.OR([
         {
           ALT: () => {
@@ -155,7 +151,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("typedefStatement", () => {
       $.CONSUME(tokens.TypedefToken);
-      $.SUBRULE($.type); // Type
+      $.SUBRULE($.TypeName); // Type
       $.CONSUME2(tokens.IdentifierToken); // Alias
       $.OPTION3(() => $.SUBRULE($.identifierSuffix));
       $.OPTION4(() => $.SUBRULE($.selector));
@@ -196,10 +192,7 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.EnumToken);
       $.OPTION2(() => {
         $.CONSUME(tokens.LessToken);
-        // TODO Create a subrule for type reference
-        $.OPTION7(() => $.CONSUME(tokens.UnsignedToken));
-        $.OPTION8(() => $.CONSUME(tokens.SignedToken));
-        $.CONSUME(tokens.IdentifierToken); // Base type
+        $.SUBRULE($.TypeName);
         $.CONSUME(tokens.GreaterToken);
       });
       $.OR([
@@ -475,27 +468,6 @@ class SweetscapeParser extends Parser {
       $.OR([{ ALT: () => $.CONSUME(tokens.LocalToken) }, { ALT: () => $.CONSUME(tokens.ConstToken) }]);
     });
 
-    $.RULE("type", () => {
-      $.OR([
-        {
-          ALT: () => {
-            $.OPTION2(() => {
-              $.OR2([
-                { ALT: () => $.CONSUME(tokens.UnsignedToken) },
-                { ALT: () => $.CONSUME(tokens.SignedToken) },
-                { ALT: () => $.CONSUME(tokens.StructToken) },
-              ]);
-            });
-            $.CONSUME(tokens.IdentifierToken);
-            $.OPTION(() => {
-              $.CONSUME(tokens.BracketOpenToken);
-              $.CONSUME(tokens.BracketCloseToken);
-            });
-          },
-        },
-      ]);
-    });
-
     $.RULE("variableDeclarators", () => {
       $.AT_LEAST_ONE_SEP({
         SEP: tokens.CommaToken,
@@ -709,6 +681,27 @@ class SweetscapeParser extends Parser {
 
     $.RULE("StringLiteral", () => {
       $.OR([{ ALT: () => $.CONSUME(tokens.StringLiteralToken) }]);
+    });
+
+    $.RULE("TypeName", () => {
+      $.OR([
+        { ALT: () => $.CONSUME(tokens.VoidToken) },
+        {
+          ALT: () => {
+            $.OR2([
+              { ALT: () => $.CONSUME(tokens.SignedToken) },
+              { ALT: () => $.CONSUME(tokens.UnsignedToken) },
+              { ALT: () => $.CONSUME(tokens.StructToken) },
+              { ALT: () => {} },
+            ]);
+            $.CONSUME2(tokens.IdentifierToken);
+            $.OPTION(() => {
+              $.CONSUME(tokens.BracketOpenToken);
+              $.CONSUME(tokens.BracketCloseToken);
+            });
+          },
+        },
+      ]);
     });
 
     this.performSelfAnalysis();

@@ -146,6 +146,7 @@ const keywordTokens = _.fromPairs(
       "if",
       "else",
       "const",
+      "void",
       "return",
       "break",
       "do",
