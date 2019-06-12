@@ -21,7 +21,7 @@
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "test:watch": "jest --watch --verbose",
     "test:watch:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --watch --runInBand",
-    "test:coverage": "jest --coverage --no-cache --runInBand"
+    "test:coverage": "jest --coverage"
   },
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
