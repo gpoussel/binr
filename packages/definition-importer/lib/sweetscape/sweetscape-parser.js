@@ -134,7 +134,17 @@ class SweetscapeParser extends Parser {
 
     $.RULE("bitfieldRest", () => {
       $.CONSUME(tokens.ColonToken);
-      $.SUBRULE($.Number);
+      $.OR([
+        { ALT: () => $.SUBRULE($.Number) },
+        {
+          ALT: () => {
+            $.CONSUME(tokens.IdentifierToken);
+            $.OPTION(() => {
+              $.SUBRULE($.expression2Rest);
+            });
+          },
+        },
+      ]);
     });
 
     $.RULE("typedefStatement", () => {
