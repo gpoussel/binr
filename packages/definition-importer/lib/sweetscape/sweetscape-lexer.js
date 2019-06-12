@@ -31,7 +31,7 @@ const IdentifierToken = createToken({
 
 const StringLiteralToken = createToken({
   name: "StringLiteralToken",
-  pattern: /"(:?[^\\"\n\r]+|\\(:?[bfnrtv"\\/]|u[0-9a-fA-F]{4}))*"|'[^<']*'/,
+  pattern: /(["'])(?:(?=(\\?))\2.)*?\1/,
 });
 
 const NumberDecimalLiteralToken = createToken({
