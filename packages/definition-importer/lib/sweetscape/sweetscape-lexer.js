@@ -168,7 +168,7 @@ const keywordTokens = _.fromPairs(
 );
 
 const directiveTokens = _.fromPairs(
-  _.map(["define", "ifdef", "endif"], keyword => [
+  _.map(["define", "ifdef", "else", "endif"], keyword => [
     `Directive${_.upperFirst(keyword)}Token`,
     createToken({
       name: `Directive${_.upperFirst(keyword)}Token`,

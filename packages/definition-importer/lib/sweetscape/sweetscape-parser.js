@@ -65,11 +65,8 @@ class SweetscapeParser extends Parser {
             $.CONSUME2(tokens.IdentifierToken);
           },
         },
-        {
-          ALT: () => {
-            $.CONSUME(tokens.DirectiveEndifToken);
-          },
-        },
+        { ALT: () => $.CONSUME(tokens.DirectiveElseToken) },
+        { ALT: () => $.CONSUME(tokens.DirectiveEndifToken) },
       ]);
     });
 
