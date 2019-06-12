@@ -483,27 +483,20 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("variableDeclaratorRest", () => {
-      $.OR([
-        {
-          ALT: () => {
-            $.CONSUME(tokens.BracketOpenToken);
-            $.OPTION(() => $.SUBRULE($.expression));
-            $.CONSUME(tokens.BracketCloseToken);
-          },
-        },
-        {
-          ALT: () => {
-            // Be careful to avoid duplication with the function declaration rule
-            $.CONSUME(tokens.ParenthesisOpenToken);
-            $.MANY_SEP({
-              SEP: tokens.CommaToken,
-              DEF: () => $.SUBRULE2($.expression),
-            });
-            $.CONSUME(tokens.ParenthesisCloseToken);
-          },
-        },
-        { ALT: () => {} },
-      ]);
+      $.OPTION(() => {
+        // Be careful to avoid duplication with the function declaration rule
+        $.CONSUME(tokens.ParenthesisOpenToken);
+        $.MANY_SEP({
+          SEP: tokens.CommaToken,
+          DEF: () => $.SUBRULE2($.expression),
+        });
+        $.CONSUME(tokens.ParenthesisCloseToken);
+      });
+      $.OPTION1(() => {
+        $.CONSUME(tokens.BracketOpenToken);
+        $.OPTION4(() => $.SUBRULE($.expression));
+        $.CONSUME(tokens.BracketCloseToken);
+      });
       $.OPTION3(() => $.SUBRULE($.annotations));
       $.OPTION2(() => {
         $.CONSUME(tokens.EqualsToken);
