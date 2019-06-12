@@ -97,9 +97,21 @@ class SweetscapeParser extends Parser {
       $.SUBRULE($.TypeName);
       $.CONSUME1(tokens.IdentifierToken); // Function name
       $.SUBRULE($.parameterDeclarationList);
-      $.CONSUME(tokens.CurlyBraceOpenToken);
-      $.SUBRULE($.statementList);
-      $.CONSUME(tokens.CurlyBraceCloseToken);
+      $.OR([
+        {
+          ALT: () => {
+            $.CONSUME(tokens.CurlyBraceOpenToken);
+            $.SUBRULE($.statementList);
+            $.CONSUME(tokens.CurlyBraceCloseToken);
+          },
+        },
+        {
+          ALT: () => {
+            // Forward declaration
+            $.CONSUME(tokens.SemiColonToken);
+          },
+        },
+      ]);
     });
 
     $.RULE("localVariableDeclarationStatement", () => {
