@@ -430,7 +430,7 @@ class SweetscapeParser extends Parser {
           ALT: () => {
             $.CONSUME(tokens.SizeofToken);
             $.CONSUME(tokens.ParenthesisOpenToken);
-            $.CONSUME(tokens.StructToken);
+            $.OPTION3(() => $.CONSUME(tokens.StructToken));
             $.CONSUME(tokens.IdentifierToken);
             $.CONSUME(tokens.ParenthesisCloseToken);
           },
