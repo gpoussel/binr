@@ -10,7 +10,10 @@ class SweetscapeParser extends Parser {
   constructor() {
     super(_.values(tokens), {
       recoveryEnabled: false,
-      maxLookahead: 7,
+      maxLookahead: 11,
+      ignoredIssues: {
+        topLevelStatement: { OR: true },
+      },
     });
 
     const $ = this;
@@ -22,6 +25,7 @@ class SweetscapeParser extends Parser {
     $.RULE("topLevelStatement", () => {
       $.OR([
         {
+          GATE: () => $.BACKTRACK($.functionDeclarationStatement),
           ALT: () => $.SUBRULE($.functionDeclarationStatement),
         },
         {
@@ -31,6 +35,7 @@ class SweetscapeParser extends Parser {
           ALT: () => $.SUBRULE($.topLevelDirective),
         },
         {
+          GATE: () => $.BACKTRACK($.statement),
           ALT: () => $.SUBRULE($.statement),
         },
       ]);
@@ -520,7 +525,7 @@ class SweetscapeParser extends Parser {
             $.CONSUME(tokens.ParenthesisOpenToken);
             $.MANY_SEP({
               SEP: tokens.CommaToken,
-              DEF: () => $.SUBRULE($.primary),
+              DEF: () => $.SUBRULE2($.expression),
             });
             $.CONSUME(tokens.ParenthesisCloseToken);
           },
