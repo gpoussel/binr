@@ -13,6 +13,7 @@ class SweetscapeParser extends Parser {
       maxLookahead: 5,
       ignoredIssues: {
         topLevelStatement: { OR: true },
+        expressionOrTypeName: { OR: true },
       },
     });
 
@@ -190,11 +191,17 @@ class SweetscapeParser extends Parser {
     $.RULE("enumStatement", () => {
       $.OPTION(() => $.CONSUME(tokens.TypedefToken));
       $.CONSUME(tokens.EnumToken);
-      $.OPTION2(() => {
-        $.CONSUME(tokens.LessToken);
-        $.SUBRULE($.TypeName);
-        $.CONSUME(tokens.GreaterToken);
-      });
+      $.OR2([
+        {
+          ALT: () => {
+            $.CONSUME(tokens.LessToken);
+            $.SUBRULE($.TypeName);
+            $.CONSUME(tokens.GreaterToken);
+          },
+        },
+        { ALT: () => $.CONSUME(tokens.IntToken) },
+        { ALT: () => {} },
+      ]);
       $.OR([
         {
           ALT: () => {
@@ -353,25 +360,19 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.ParenthesisCloseToken);
     });
 
-    $.RULE("parExpressionOrCastExpression", () => {
-      $.CONSUME(tokens.ParenthesisOpenToken);
+    $.RULE("expressionOrTypeName", () => {
       $.OR([
         { ALT: () => $.SUBRULE($.expression) },
         {
-          ALT: () => {
-            // That's definitely a cast
-            $.CONSUME(tokens.UnsignedToken);
-            $.CONSUME(tokens.IdentifierToken);
-          },
-        },
-        {
-          ALT: () => {
-            // That's definitely a cast
-            $.CONSUME(tokens.SignedToken);
-            $.CONSUME2(tokens.IdentifierToken);
-          },
+          GATE: () => $.LA(1).tokenType !== tokens.IdentifierToken,
+          ALT: () => $.SUBRULE($.TypeNameWithoutVoid),
         },
       ]);
+    });
+
+    $.RULE("parExpressionOrCastExpression", () => {
+      $.CONSUME(tokens.ParenthesisOpenToken);
+      $.SUBRULE($.expressionOrTypeName);
       $.CONSUME2(tokens.ParenthesisCloseToken);
       $.OR2([
         {
@@ -455,9 +456,7 @@ class SweetscapeParser extends Parser {
           ALT: () => {
             $.CONSUME(tokens.SizeofToken);
             $.CONSUME(tokens.ParenthesisOpenToken);
-            $.OPTION3(() => $.CONSUME(tokens.StructToken));
-            $.CONSUME(tokens.IdentifierToken);
-            $.OPTION4(() => $.SUBRULE2($.selector));
+            $.SUBRULE($.expressionOrTypeName);
             $.CONSUME(tokens.ParenthesisCloseToken);
           },
         },
@@ -688,7 +687,7 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.StructToken) },
         { ALT: () => {} },
       ]);
-      $.CONSUME2(tokens.IdentifierToken);
+      $.OR([{ ALT: () => $.CONSUME2(tokens.IdentifierToken) }, { ALT: () => $.CONSUME2(tokens.IntToken) }]);
       $.OPTION(() => {
         $.CONSUME(tokens.BracketOpenToken);
         $.CONSUME(tokens.BracketCloseToken);

@@ -142,25 +142,35 @@ const symbolTokens = _.fromPairs(
 const keywordTokens = _.fromPairs(
   _.map(
     [
+      // Modifiers
       "local",
+      "const",
+
+      // Control structures
       "if",
       "else",
-      "const",
-      "void",
       "return",
       "break",
       "do",
       "while",
       "for",
-      "typedef",
       "enum",
       "switch",
       "case",
       "default",
+
+      // Top-level elements
       "struct",
       "union",
+
+      // Types
+      "typedef",
+      "void",
       "signed",
       "unsigned",
+      "int",
+
+      // Special functions
       "sizeof",
     ],
     keyword => [
