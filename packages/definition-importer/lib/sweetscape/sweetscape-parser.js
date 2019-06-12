@@ -442,6 +442,7 @@ class SweetscapeParser extends Parser {
             $.CONSUME(tokens.ParenthesisOpenToken);
             $.OPTION3(() => $.CONSUME(tokens.StructToken));
             $.CONSUME(tokens.IdentifierToken);
+            $.OPTION4(() => $.SUBRULE2($.selector));
             $.CONSUME(tokens.ParenthesisCloseToken);
           },
         },
