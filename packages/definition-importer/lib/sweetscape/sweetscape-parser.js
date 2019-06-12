@@ -129,6 +129,7 @@ class SweetscapeParser extends Parser {
       $.SUBRULE($.type); // Type
       $.CONSUME2(tokens.IdentifierToken); // Alias
       $.OPTION3(() => $.SUBRULE($.identifierSuffix));
+      $.OPTION4(() => $.SUBRULE($.selector));
       $.OPTION2(() => $.SUBRULE($.annotations));
       $.CONSUME(tokens.SemiColonToken);
     });
