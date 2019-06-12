@@ -39,6 +39,7 @@ class SweetscapeParser extends Parser {
     $.RULE("topLevelDirective", () => {
       $.CONSUME(tokens.DirectiveDefineToken);
       $.CONSUME1(tokens.IdentifierToken);
+      // TODO Parenthesis around numbers shall be supported
       $.SUBRULE($.Number);
     });
 
@@ -165,6 +166,9 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.EnumToken);
       $.OPTION2(() => {
         $.CONSUME(tokens.LessToken);
+        // TODO Create a subrule for type reference
+        $.OPTION7(() => $.CONSUME(tokens.UnsignedToken));
+        $.OPTION8(() => $.CONSUME(tokens.SignedToken));
         $.CONSUME(tokens.IdentifierToken); // Base type
         $.CONSUME(tokens.GreaterToken);
       });
@@ -472,6 +476,7 @@ class SweetscapeParser extends Parser {
         },
         { ALT: () => {} },
       ]);
+      $.OPTION3(() => $.SUBRULE($.annotations));
       $.OPTION2(() => {
         $.CONSUME(tokens.EqualsToken);
         $.SUBRULE($.variableInitializer);
@@ -608,8 +613,12 @@ class SweetscapeParser extends Parser {
       $.MANY_SEP({
         SEP: tokens.CommaToken,
         DEF: () => {
+          // TODO Support "void" keyword
+          // TODO Better type handling?
           $.OPTION3(() => $.CONSUME(tokens.LocalToken));
           $.OPTION4(() => $.CONSUME(tokens.StructToken));
+          $.OPTION5(() => $.CONSUME(tokens.UnsignedToken));
+          $.OPTION6(() => $.CONSUME(tokens.SignedToken));
           $.CONSUME(tokens.IdentifierToken); // Parameter type
           $.OPTION(() => $.CONSUME(tokens.BinaryAndToken));
           $.CONSUME1(tokens.IdentifierToken); // Parameter name
