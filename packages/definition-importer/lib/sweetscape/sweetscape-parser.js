@@ -208,7 +208,7 @@ class SweetscapeParser extends Parser {
         {
           ALT: () => {
             $.SUBRULE2($.enumDeclaration);
-            $.OPTION5(() => $.SUBRULE2($.variableDeclarator));
+            $.OPTION5(() => $.SUBRULE2($.variableDeclarators));
           },
         },
       ]);
