@@ -10,7 +10,7 @@ class SweetscapeParser extends Parser {
   constructor() {
     super(_.values(tokens), {
       recoveryEnabled: false,
-      maxLookahead: 5,
+      maxLookahead: 7,
     });
 
     const $ = this;
@@ -103,6 +103,10 @@ class SweetscapeParser extends Parser {
 
     $.RULE("functionDeclarationStatement", () => {
       $.CONSUME(tokens.IdentifierToken); // Return type
+      $.OPTION(() => {
+        $.CONSUME(tokens.BracketOpenToken);
+        $.CONSUME(tokens.BracketCloseToken);
+      });
       $.CONSUME1(tokens.IdentifierToken); // Function name
       $.SUBRULE($.parameterDeclarationList);
       $.CONSUME(tokens.CurlyBraceOpenToken);
