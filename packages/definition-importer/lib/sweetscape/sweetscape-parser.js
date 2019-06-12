@@ -666,6 +666,7 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.NumberOctalLiteralToken) },
         { ALT: () => $.CONSUME(tokens.NumberDecimalLiteralToken) },
         { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteralToken) },
+        { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteralToken2) },
         { ALT: () => $.CONSUME(tokens.NumberBinaryLiteralToken) },
       ]);
     });
@@ -685,7 +686,19 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.StructToken) },
         { ALT: () => {} },
       ]);
-      $.OR([{ ALT: () => $.CONSUME2(tokens.IdentifierToken) }, { ALT: () => $.CONSUME2(tokens.IntToken) }]);
+      $.OR([
+        { ALT: () => $.CONSUME2(tokens.IdentifierToken) },
+        { ALT: () => $.CONSUME2(tokens.IntToken) },
+        { ALT: () => $.CONSUME2(tokens.ShortToken) },
+        { ALT: () => $.CONSUME2(tokens.CharToken) },
+        { ALT: () => $.CONSUME2(tokens.ByteToken) },
+        { ALT: () => $.CONSUME2(tokens.LongToken) },
+        { ALT: () => $.CONSUME2(tokens.DoubleToken) },
+        { ALT: () => $.CONSUME2(tokens.FloatToken) },
+        { ALT: () => $.CONSUME2(tokens.WordToken) },
+        { ALT: () => $.CONSUME2(tokens.QuadToken) },
+        { ALT: () => $.CONSUME2(tokens.TimeToken) },
+      ]);
       $.OPTION(() => {
         $.CONSUME(tokens.BracketOpenToken);
         $.CONSUME(tokens.BracketCloseToken);

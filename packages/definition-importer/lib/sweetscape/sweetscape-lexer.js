@@ -53,12 +53,77 @@ const NumberBinaryLiteralToken = createToken({
 
 const NumberHexadecimalLiteralToken = createToken({
   name: "NumberHexadecimalLiteralToken",
-  pattern: /0x[A-F0-9]+/i,
+  pattern: /0x[A-F0-9]+L?/i,
+});
+
+const NumberHexadecimalLiteralToken2 = createToken({
+  name: "NumberHexadecimalLiteralToken2",
+  pattern: /[0-9][0-9a-f]h/i,
 });
 
 const NumberOctalLiteralToken = createToken({
   name: "NumberOctalLiteralToken",
   pattern: /0[0-7]+/,
+});
+
+const IntToken = createToken({
+  name: "IntToken",
+  pattern: /(__)?u?int(16|32|64)?/i,
+  longer_alt: IdentifierToken,
+});
+
+const CharToken = createToken({
+  name: "CharToken",
+  pattern: /u?char/i,
+  longer_alt: IdentifierToken,
+});
+
+const ShortToken = createToken({
+  name: "ShortToken",
+  pattern: /u?short/i,
+  longer_alt: IdentifierToken,
+});
+
+const ByteToken = createToken({
+  name: "ByteToken",
+  pattern: /u?byte/i,
+  longer_alt: IdentifierToken,
+});
+
+const LongToken = createToken({
+  name: "LongToken",
+  pattern: /u?long/i,
+  longer_alt: IdentifierToken,
+});
+
+const DoubleToken = createToken({
+  name: "DoubleToken",
+  pattern: /u?double/i,
+  longer_alt: IdentifierToken,
+});
+
+const FloatToken = createToken({
+  name: "FloatToken",
+  pattern: /h?float/i,
+  longer_alt: IdentifierToken,
+});
+
+const WordToken = createToken({
+  name: "WordToken",
+  pattern: /(D|Q)?WORD/,
+  longer_alt: IdentifierToken,
+});
+
+const QuadToken = createToken({
+  name: "QuadToken",
+  pattern: /u?quad/i,
+  longer_alt: IdentifierToken,
+});
+
+const TimeToken = createToken({
+  name: "TimeToken",
+  pattern: /(DOSDATE|DOSTIME|FILETIME|OLETIME|time_t|time64_t)/,
+  longer_alt: IdentifierToken,
 });
 
 const symbolTokens = _.fromPairs(
@@ -169,7 +234,6 @@ const keywordTokens = _.fromPairs(
       "void",
       "signed",
       "unsigned",
-      "int",
 
       // Special functions
       "sizeof",
@@ -217,9 +281,22 @@ const tokens = {
   IdentifierToken,
   StringLiteralToken,
   NumberHexadecimalLiteralToken,
+  NumberHexadecimalLiteralToken2,
   NumberBinaryLiteralToken,
   NumberOctalLiteralToken,
   NumberDecimalLiteralToken,
+
+  // Built-in types
+  IntToken,
+  CharToken,
+  ShortToken,
+  ByteToken,
+  LongToken,
+  DoubleToken,
+  FloatToken,
+  WordToken,
+  QuadToken,
+  TimeToken,
 };
 
 class SweetscapeLexer extends Lexer {
