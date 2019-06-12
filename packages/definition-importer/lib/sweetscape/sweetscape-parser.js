@@ -426,6 +426,15 @@ class SweetscapeParser extends Parser {
             $.OPTION2(() => $.SUBRULE($.postfixOperator));
           },
         },
+        {
+          ALT: () => {
+            $.CONSUME(tokens.SizeofToken);
+            $.CONSUME(tokens.ParenthesisOpenToken);
+            $.CONSUME(tokens.StructToken);
+            $.CONSUME(tokens.IdentifierToken);
+            $.CONSUME(tokens.ParenthesisCloseToken);
+          },
+        },
       ]);
     });
 

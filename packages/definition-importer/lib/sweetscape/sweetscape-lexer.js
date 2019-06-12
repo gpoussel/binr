@@ -149,6 +149,7 @@ const keywordTokens = _.fromPairs(
       "union",
       "signed",
       "unsigned",
+      "sizeof",
     ],
     keyword => [
       `${_.upperFirst(keyword)}Token`,
