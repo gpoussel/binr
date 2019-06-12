@@ -2,8 +2,13 @@ const _ = require("lodash");
 
 class Importer {
   readInput(input) {
-    const ast = this.readAst(input);
+    const preprocessed = this.performPreprocessing(input);
+    const ast = this.readAst(preprocessed);
     return this.build(ast);
+  }
+
+  performPreprocessing(input) {
+    return input;
   }
 
   readAst(input) {

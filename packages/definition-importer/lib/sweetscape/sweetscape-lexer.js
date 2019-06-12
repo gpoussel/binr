@@ -249,17 +249,6 @@ const keywordTokens = _.fromPairs(
   )
 );
 
-const directiveTokens = _.fromPairs(
-  _.map(["define", "ifdef", "else", "endif"], keyword => [
-    `Directive${_.upperFirst(keyword)}Token`,
-    createToken({
-      name: `Directive${_.upperFirst(keyword)}Token`,
-      pattern: new RegExp(escapeRegexp(`#${keyword}`)),
-      longer_alt: IdentifierToken,
-    }),
-  ])
-);
-
 const tokens = {
   // Whitespaces
   WhitespaceToken,
@@ -274,9 +263,6 @@ const tokens = {
 
   // Keywords
   ...keywordTokens,
-
-  // Directive keywords
-  ...directiveTokens,
 
   IdentifierToken,
   StringLiteralToken,

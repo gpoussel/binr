@@ -33,31 +33,9 @@ class SweetscapeParser extends Parser {
           ALT: () => $.SUBRULE($.emptyStructStatement),
         },
         {
-          ALT: () => $.SUBRULE($.topLevelDirective),
-        },
-        {
           GATE: () => $.BACKTRACK($.statement),
           ALT: () => $.SUBRULE($.statement),
         },
-      ]);
-    });
-
-    $.RULE("topLevelDirective", () => {
-      $.CONSUME(tokens.DirectiveDefineToken);
-      $.CONSUME(tokens.IdentifierToken);
-      $.SUBRULE($.expressionOrTypeName);
-    });
-
-    $.RULE("simpleDirective", () => {
-      $.OR([
-        {
-          ALT: () => {
-            $.CONSUME(tokens.DirectiveIfdefToken);
-            $.CONSUME2(tokens.IdentifierToken);
-          },
-        },
-        { ALT: () => $.CONSUME(tokens.DirectiveElseToken) },
-        { ALT: () => $.CONSUME(tokens.DirectiveEndifToken) },
       ]);
     });
 
@@ -89,7 +67,6 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.SUBRULE($.returnStatement) },
         { ALT: () => $.SUBRULE($.breakStatement) },
         { ALT: () => $.CONSUME(tokens.SemiColonToken) },
-        { ALT: () => $.SUBRULE($.simpleDirective) },
       ]);
     });
 
@@ -370,7 +347,6 @@ class SweetscapeParser extends Parser {
 
     $.RULE("parExpressionOrCastExpression", () => {
       $.CONSUME(tokens.ParenthesisOpenToken);
-      $.SUBRULE($.expressionOrTypeName);
       $.CONSUME2(tokens.ParenthesisCloseToken);
       $.OR2([
         {
