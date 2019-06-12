@@ -12,6 +12,12 @@ const WhitespaceToken = createToken({
   group: Lexer.SKIPPED,
 });
 
+const EscapedLineBreakToken = createToken({
+  name: "EscapedLineBreakToken",
+  pattern: /\\\r?\n/,
+  group: Lexer.SKIPPED,
+});
+
 const SingleLineCommentToken = createToken({
   name: "SingleLineCommentToken",
   pattern: /\/\/.*/,
@@ -181,6 +187,7 @@ const directiveTokens = _.fromPairs(
 const tokens = {
   // Whitespaces
   WhitespaceToken,
+  EscapedLineBreakToken,
 
   // Comments
   SingleLineCommentToken,
