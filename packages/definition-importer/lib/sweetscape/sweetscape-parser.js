@@ -648,25 +648,26 @@ class SweetscapeParser extends Parser {
 
     $.RULE("parameterDeclarationList", () => {
       $.CONSUME(tokens.ParenthesisOpenToken);
-      $.MANY_SEP({
-        SEP: tokens.CommaToken,
-        DEF: () => {
-          // TODO Support "void" keyword
-          // TODO Better type handling?
-          $.OPTION3(() => $.CONSUME(tokens.LocalToken));
-          $.OPTION7(() => $.CONSUME(tokens.ConstToken));
-          $.OPTION4(() => $.CONSUME(tokens.StructToken));
-          $.OPTION5(() => $.CONSUME(tokens.UnsignedToken));
-          $.OPTION6(() => $.CONSUME(tokens.SignedToken));
-          $.CONSUME(tokens.IdentifierToken); // Parameter type
-          $.OPTION(() => $.CONSUME(tokens.BinaryAndToken));
-          $.CONSUME1(tokens.IdentifierToken); // Parameter name
-          $.OPTION2(() => {
-            $.CONSUME(tokens.BracketOpenToken);
-            $.CONSUME(tokens.BracketCloseToken);
-          });
+      $.OR([
+        { ALT: () => $.CONSUME(tokens.VoidToken) },
+        {
+          ALT: () =>
+            $.MANY_SEP({
+              SEP: tokens.CommaToken,
+              DEF: () => {
+                $.OPTION3(() => $.CONSUME(tokens.LocalToken));
+                $.OPTION7(() => $.CONSUME(tokens.ConstToken));
+                $.SUBRULE($.TypeNameWithoutVoid); // Parameter type
+                $.OPTION(() => $.CONSUME(tokens.BinaryAndToken));
+                $.CONSUME1(tokens.IdentifierToken); // Parameter name
+                $.OPTION2(() => {
+                  $.CONSUME(tokens.BracketOpenToken);
+                  $.CONSUME(tokens.BracketCloseToken);
+                });
+              },
+            }),
         },
-      });
+      ]);
       $.CONSUME(tokens.ParenthesisCloseToken);
     });
 
@@ -684,24 +685,21 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("TypeName", () => {
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.VoidToken) },
-        {
-          ALT: () => {
-            $.OR2([
-              { ALT: () => $.CONSUME(tokens.SignedToken) },
-              { ALT: () => $.CONSUME(tokens.UnsignedToken) },
-              { ALT: () => $.CONSUME(tokens.StructToken) },
-              { ALT: () => {} },
-            ]);
-            $.CONSUME2(tokens.IdentifierToken);
-            $.OPTION(() => {
-              $.CONSUME(tokens.BracketOpenToken);
-              $.CONSUME(tokens.BracketCloseToken);
-            });
-          },
-        },
+      $.OR([{ ALT: () => $.CONSUME(tokens.VoidToken) }, { ALT: () => $.SUBRULE($.TypeNameWithoutVoid) }]);
+    });
+
+    $.RULE("TypeNameWithoutVoid", () => {
+      $.OR2([
+        { ALT: () => $.CONSUME(tokens.SignedToken) },
+        { ALT: () => $.CONSUME(tokens.UnsignedToken) },
+        { ALT: () => $.CONSUME(tokens.StructToken) },
+        { ALT: () => {} },
       ]);
+      $.CONSUME2(tokens.IdentifierToken);
+      $.OPTION(() => {
+        $.CONSUME(tokens.BracketOpenToken);
+        $.CONSUME(tokens.BracketCloseToken);
+      });
     });
 
     this.performSelfAnalysis();
