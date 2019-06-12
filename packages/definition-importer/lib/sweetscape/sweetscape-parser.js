@@ -225,6 +225,7 @@ class SweetscapeParser extends Parser {
           $.OR([
             { ALT: () => $.CONSUME2(tokens.IdentifierToken) },
             { ALT: () => $.CONSUME2(tokens.StringLiteralToken) },
+            { ALT: () => $.SUBRULE($.Number) },
           ]);
         },
       });
