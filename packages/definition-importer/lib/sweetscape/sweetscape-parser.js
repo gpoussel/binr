@@ -517,8 +517,18 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("variableInitializer", () => {
-      // TODO ArrayInitializer
+      $.OR([{ ALT: () => $.SUBRULE($.expression) }, { ALT: () => $.SUBRULE($.arrayInitializer) }]);
+    });
+
+    $.RULE("arrayInitializer", () => {
+      $.CONSUME(tokens.CurlyBraceOpenToken);
       $.SUBRULE($.expression);
+      $.MANY(() => {
+        $.CONSUME(tokens.CommaToken);
+        $.SUBRULE2($.expression);
+      });
+      $.OPTION2(() => $.CONSUME2(tokens.CommaToken));
+      $.CONSUME(tokens.CurlyBraceCloseToken);
     });
 
     $.RULE("selector", () => {
