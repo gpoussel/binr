@@ -106,7 +106,6 @@ class SweetscapeParser extends Parser {
         {
           ALT: () => {
             $.SUBRULE($.variableDeclarators);
-            $.OPTION(() => $.SUBRULE($.bitfieldRest));
           },
         },
         {
@@ -115,7 +114,6 @@ class SweetscapeParser extends Parser {
           },
         },
       ]);
-      $.OPTION2(() => $.SUBRULE($.annotations));
       $.CONSUME(tokens.SemiColonToken);
     });
 
@@ -448,6 +446,8 @@ class SweetscapeParser extends Parser {
     $.RULE("variableDeclarator", () => {
       $.CONSUME(tokens.IdentifierToken);
       $.SUBRULE($.variableDeclaratorRest);
+      $.OPTION(() => $.SUBRULE($.bitfieldRest));
+      $.OPTION2(() => $.SUBRULE($.annotations));
     });
 
     $.RULE("variableDeclaratorRest", () => {
