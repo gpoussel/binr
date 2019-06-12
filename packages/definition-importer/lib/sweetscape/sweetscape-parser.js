@@ -270,7 +270,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("doWhileStatement", () => {
       $.CONSUME(tokens.DoToken);
-      $.SUBRULE($.block);
+      $.SUBRULE($.statement);
       $.CONSUME(tokens.WhileToken);
       $.SUBRULE($.parExpression);
       $.CONSUME(tokens.SemiColonToken);
