@@ -30,14 +30,15 @@ const MultiLineCommentToken = createToken({
   group: "comments",
 });
 
+const StringLiteralToken = createToken({
+  name: "StringLiteralToken",
+  pattern: /L?(["'])(?:(?=(\\?))\2.)*?\1/,
+});
+
 const IdentifierToken = createToken({
   name: "IdentifierToken",
   pattern: /[a-z_][a-z0-9_]*/i,
-});
-
-const StringLiteralToken = createToken({
-  name: "StringLiteralToken",
-  pattern: /(["'])(?:(?=(\\?))\2.)*?\1/,
+  longer_alt: StringLiteralToken,
 });
 
 const NumberDecimalLiteralToken = createToken({
