@@ -11,7 +11,7 @@ describe("Sweetscape Importer", () => {
   const importer = new SweetscapeImporter();
   _.each(
     [
-      // "010",
+      "010",
       "010Theme",
       "7ZIP",
       "ADF",
