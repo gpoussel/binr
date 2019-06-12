@@ -122,6 +122,7 @@ class SweetscapeParser extends Parser {
         {
           ALT: () => {
             $.SUBRULE2($.bitfieldRest);
+            $.OPTION(() => $.SUBRULE($.annotations));
           },
         },
       ]);
@@ -656,6 +657,7 @@ class SweetscapeParser extends Parser {
           // TODO Support "void" keyword
           // TODO Better type handling?
           $.OPTION3(() => $.CONSUME(tokens.LocalToken));
+          $.OPTION7(() => $.CONSUME(tokens.ConstToken));
           $.OPTION4(() => $.CONSUME(tokens.StructToken));
           $.OPTION5(() => $.CONSUME(tokens.UnsignedToken));
           $.OPTION6(() => $.CONSUME(tokens.SignedToken));
