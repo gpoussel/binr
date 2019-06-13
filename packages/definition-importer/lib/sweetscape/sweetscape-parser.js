@@ -46,9 +46,9 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("block", () => {
-      $.CONSUME(tokens.CurlyBraceOpenToken);
+      $.CONSUME(tokens.CurlyBraceOpen);
       $.SUBRULE($.statementList);
-      $.CONSUME(tokens.CurlyBraceCloseToken);
+      $.CONSUME(tokens.CurlyBraceClose);
     });
 
     $.RULE("statement", () => {
@@ -66,26 +66,26 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.SUBRULE($.switchStatement) },
         { ALT: () => $.SUBRULE($.returnStatement) },
         { ALT: () => $.SUBRULE($.breakStatement) },
-        { ALT: () => $.CONSUME(tokens.SemiColonToken) },
+        { ALT: () => $.CONSUME(tokens.SemiColon) },
       ]);
     });
 
     $.RULE("functionDeclarationStatement", () => {
       $.SUBRULE($.TypeName);
-      $.CONSUME1(tokens.IdentifierToken); // Function name
+      $.CONSUME1(tokens.Identifier); // Function name
       $.SUBRULE($.parameterDeclarationList);
       $.OR([
         {
           ALT: () => {
-            $.CONSUME(tokens.CurlyBraceOpenToken);
+            $.CONSUME(tokens.CurlyBraceOpen);
             $.SUBRULE($.statementList);
-            $.CONSUME(tokens.CurlyBraceCloseToken);
+            $.CONSUME(tokens.CurlyBraceClose);
           },
         },
         {
           ALT: () => {
             // Forward declaration
-            $.CONSUME(tokens.SemiColonToken);
+            $.CONSUME(tokens.SemiColon);
           },
         },
       ]);
@@ -107,16 +107,16 @@ class SweetscapeParser extends Parser {
           },
         },
       ]);
-      $.CONSUME(tokens.SemiColonToken);
+      $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("bitfieldRest", () => {
-      $.CONSUME(tokens.ColonToken);
+      $.CONSUME(tokens.Colon);
       $.OR([
         { ALT: () => $.SUBRULE($.Number) },
         {
           ALT: () => {
-            $.CONSUME(tokens.IdentifierToken);
+            $.CONSUME(tokens.Identifier);
             $.OPTION(() => {
               $.SUBRULE($.expression2Rest);
             });
@@ -126,23 +126,23 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("typedefStatement", () => {
-      $.CONSUME(tokens.TypedefToken);
+      $.CONSUME(tokens.Typedef);
       $.SUBRULE($.TypeName); // Type
-      $.CONSUME2(tokens.IdentifierToken); // Alias
+      $.CONSUME2(tokens.Identifier); // Alias
       $.OPTION4(() => $.SUBRULE($.selector));
       $.OPTION2(() => $.SUBRULE($.annotations));
-      $.CONSUME(tokens.SemiColonToken);
+      $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("emptyStructStatement", () => {
-      $.CONSUME(tokens.StructToken);
-      $.CONSUME3(tokens.IdentifierToken);
-      $.CONSUME(tokens.SemiColonToken);
+      $.CONSUME(tokens.Struct);
+      $.CONSUME3(tokens.Identifier);
+      $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("structStatement", () => {
-      $.OPTION(() => $.CONSUME(tokens.TypedefToken));
-      $.OR2([{ ALT: () => $.CONSUME(tokens.StructToken) }, { ALT: () => $.CONSUME(tokens.UnionToken) }]);
+      $.OPTION(() => $.CONSUME(tokens.Typedef));
+      $.OR2([{ ALT: () => $.CONSUME(tokens.Struct) }, { ALT: () => $.CONSUME(tokens.Union) }]);
       $.OR([
         {
           ALT: () => {
@@ -152,24 +152,24 @@ class SweetscapeParser extends Parser {
         },
         {
           ALT: () => {
-            $.CONSUME3(tokens.IdentifierToken); // Alias
+            $.CONSUME3(tokens.Identifier); // Alias
             $.SUBRULE($.structDeclaration);
             $.OPTION5(() => $.SUBRULE2($.variableDeclarator));
           },
         },
       ]);
-      $.CONSUME(tokens.SemiColonToken);
+      $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("enumStatement", () => {
-      $.OPTION(() => $.CONSUME(tokens.TypedefToken));
-      $.CONSUME(tokens.EnumToken);
+      $.OPTION(() => $.CONSUME(tokens.Typedef));
+      $.CONSUME(tokens.Enum);
       $.OR2([
         {
           ALT: () => {
-            $.CONSUME(tokens.LessToken);
+            $.CONSUME(tokens.Less);
             $.SUBRULE($.TypeName);
-            $.CONSUME(tokens.GreaterToken);
+            $.CONSUME(tokens.Greater);
           },
         },
         { ALT: () => {} },
@@ -177,7 +177,7 @@ class SweetscapeParser extends Parser {
       $.OR([
         {
           ALT: () => {
-            $.CONSUME1(tokens.IdentifierToken); // Type name
+            $.CONSUME1(tokens.Identifier); // Type name
             $.OPTION6(() => $.SUBRULE($.enumDeclaration));
             $.OPTION4(() => $.SUBRULE($.variableDeclarator));
           },
@@ -189,101 +189,101 @@ class SweetscapeParser extends Parser {
           },
         },
       ]);
-      $.CONSUME(tokens.SemiColonToken);
+      $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("structDeclaration", () => {
       $.OPTION(() => $.SUBRULE($.parameterDeclarationList));
-      $.CONSUME(tokens.CurlyBraceOpenToken);
+      $.CONSUME(tokens.CurlyBraceOpen);
       $.SUBRULE($.statementList);
-      $.CONSUME(tokens.CurlyBraceCloseToken);
+      $.CONSUME(tokens.CurlyBraceClose);
     });
 
     $.RULE("enumDeclaration", () => {
-      $.CONSUME(tokens.CurlyBraceOpenToken);
+      $.CONSUME(tokens.CurlyBraceOpen);
       $.SUBRULE($.enumElementDeclaration);
       $.MANY(() => {
-        $.CONSUME(tokens.CommaToken);
+        $.CONSUME(tokens.Comma);
         $.SUBRULE2($.enumElementDeclaration);
       });
-      $.OPTION2(() => $.CONSUME2(tokens.CommaToken));
-      $.CONSUME(tokens.CurlyBraceCloseToken);
+      $.OPTION2(() => $.CONSUME2(tokens.Comma));
+      $.CONSUME(tokens.CurlyBraceClose);
     });
 
     $.RULE("enumElementDeclaration", () => {
-      $.CONSUME(tokens.IdentifierToken);
+      $.CONSUME(tokens.Identifier);
       $.OPTION(() => {
-        $.CONSUME(tokens.EqualsToken);
+        $.CONSUME(tokens.Equals);
         $.SUBRULE($.expression);
       });
     });
 
     $.RULE("annotations", () => {
-      $.CONSUME(tokens.LessToken);
+      $.CONSUME(tokens.Less);
       $.MANY_SEP({
-        SEP: tokens.CommaToken,
+        SEP: tokens.Comma,
         DEF: () => {
-          $.CONSUME(tokens.IdentifierToken); // Key
-          $.CONSUME(tokens.EqualsToken);
+          $.CONSUME(tokens.Identifier); // Key
+          $.CONSUME(tokens.Equals);
           $.OR([
-            { ALT: () => $.CONSUME2(tokens.IdentifierToken) },
-            { ALT: () => $.SUBRULE($.StringLiteral) },
+            { ALT: () => $.CONSUME2(tokens.Identifier) },
+            { ALT: () => $.SUBRULE($.stringLiteral) },
             { ALT: () => $.SUBRULE($.Number) },
           ]);
         },
       });
-      $.CONSUME(tokens.GreaterToken);
+      $.CONSUME(tokens.Greater);
     });
 
     $.RULE("ifStatement", () => {
-      $.CONSUME(tokens.IfToken);
+      $.CONSUME(tokens.If);
       $.SUBRULE($.parExpression);
       $.SUBRULE($.statement);
       $.OPTION(() => {
-        $.CONSUME(tokens.ElseToken);
+        $.CONSUME(tokens.Else);
         $.SUBRULE2($.statement);
       });
     });
 
     $.RULE("doWhileStatement", () => {
-      $.CONSUME(tokens.DoToken);
+      $.CONSUME(tokens.Do);
       $.SUBRULE($.statement);
-      $.CONSUME(tokens.WhileToken);
+      $.CONSUME(tokens.While);
       $.SUBRULE($.parExpression);
-      $.CONSUME(tokens.SemiColonToken);
+      $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("whileStatement", () => {
-      $.CONSUME(tokens.WhileToken);
+      $.CONSUME(tokens.While);
       $.SUBRULE($.parExpression);
       $.SUBRULE($.statement);
     });
 
     $.RULE("forStatement", () => {
-      $.CONSUME(tokens.ForToken);
-      $.CONSUME(tokens.ParenthesisOpenToken);
+      $.CONSUME(tokens.For);
+      $.CONSUME(tokens.ParenthesisOpen);
       $.SUBRULE($.forInitUpdate);
-      $.CONSUME2(tokens.SemiColonToken);
+      $.CONSUME2(tokens.SemiColon);
       $.OPTION(() => $.SUBRULE($.expression));
-      $.CONSUME3(tokens.SemiColonToken);
+      $.CONSUME3(tokens.SemiColon);
       $.SUBRULE2($.forInitUpdate);
-      $.CONSUME(tokens.ParenthesisCloseToken);
+      $.CONSUME(tokens.ParenthesisClose);
       $.SUBRULE($.statement);
     });
 
     $.RULE("forInitUpdate", () => {
       $.MANY_SEP({
-        SEP: tokens.CommaToken,
+        SEP: tokens.Comma,
         DEF: () => $.SUBRULE($.expression),
       });
     });
 
     $.RULE("switchStatement", () => {
-      $.CONSUME(tokens.SwitchToken);
+      $.CONSUME(tokens.Switch);
       $.SUBRULE($.parExpression);
-      $.CONSUME(tokens.CurlyBraceOpenToken);
+      $.CONSUME(tokens.CurlyBraceOpen);
       $.MANY(() => $.SUBRULE($.switchBlockStatementGroup));
-      $.CONSUME(tokens.CurlyBraceCloseToken);
+      $.CONSUME(tokens.CurlyBraceClose);
     });
 
     $.RULE("switchBlockStatementGroup", () => {
@@ -296,55 +296,55 @@ class SweetscapeParser extends Parser {
         $.OR([
           {
             ALT: () => {
-              $.CONSUME(tokens.CaseToken);
+              $.CONSUME(tokens.Case);
               $.OR2([
                 { ALT: () => $.SUBRULE($.Number) },
-                { ALT: () => $.CONSUME(tokens.IdentifierToken) },
-                { ALT: () => $.SUBRULE($.StringLiteral) },
+                { ALT: () => $.CONSUME(tokens.Identifier) },
+                { ALT: () => $.SUBRULE($.stringLiteral) },
               ]);
             },
           },
           {
             ALT: () => {
-              $.CONSUME(tokens.DefaultToken);
+              $.CONSUME(tokens.Default);
             },
           },
         ]);
-        $.CONSUME(tokens.ColonToken);
+        $.CONSUME(tokens.Colon);
       });
     });
 
     $.RULE("breakStatement", () => {
-      $.CONSUME(tokens.BreakToken);
-      $.CONSUME(tokens.SemiColonToken);
+      $.CONSUME(tokens.Break);
+      $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("returnStatement", () => {
-      $.CONSUME(tokens.ReturnToken);
+      $.CONSUME(tokens.Return);
       $.OPTION(() => $.SUBRULE($.expression));
-      $.CONSUME(tokens.SemiColonToken);
+      $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("parExpression", () => {
-      $.CONSUME(tokens.ParenthesisOpenToken);
+      $.CONSUME(tokens.ParenthesisOpen);
       $.SUBRULE($.expression);
-      $.CONSUME(tokens.ParenthesisCloseToken);
+      $.CONSUME(tokens.ParenthesisClose);
     });
 
     $.RULE("expressionOrTypeName", () => {
       $.OR([
         { ALT: () => $.SUBRULE($.expression) },
         {
-          GATE: () => $.LA(1).tokenType !== tokens.IdentifierToken,
+          GATE: () => $.LA(1).tokenType !== tokens.Identifier,
           ALT: () => $.SUBRULE($.TypeNameWithoutVoid),
         },
       ]);
     });
 
     $.RULE("parExpressionOrCastExpression", () => {
-      $.CONSUME(tokens.ParenthesisOpenToken);
+      $.CONSUME(tokens.ParenthesisOpen);
       $.SUBRULE($.expressionOrTypeName);
-      $.CONSUME2(tokens.ParenthesisCloseToken);
+      $.CONSUME2(tokens.ParenthesisClose);
       $.OR2([
         {
           ALT: () => {
@@ -373,7 +373,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("expressionStatement", () => {
       $.SUBRULE($.expression);
-      $.CONSUME(tokens.SemiColonToken);
+      $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("expression", () => {
@@ -390,9 +390,9 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("expression1Rest", () => {
-      $.CONSUME(tokens.QuestionToken);
+      $.CONSUME(tokens.Question);
       $.SUBRULE($.expression);
-      $.CONSUME(tokens.ColonToken);
+      $.CONSUME(tokens.Colon);
       $.SUBRULE($.expression1);
     });
 
@@ -425,28 +425,28 @@ class SweetscapeParser extends Parser {
         },
         {
           ALT: () => {
-            $.CONSUME(tokens.SizeofToken);
-            $.CONSUME(tokens.ParenthesisOpenToken);
+            $.CONSUME(tokens.Sizeof);
+            $.CONSUME(tokens.ParenthesisOpen);
             $.SUBRULE($.expressionOrTypeName);
-            $.CONSUME(tokens.ParenthesisCloseToken);
+            $.CONSUME(tokens.ParenthesisClose);
           },
         },
       ]);
     });
 
     $.RULE("variableModifier", () => {
-      $.OR([{ ALT: () => $.CONSUME(tokens.LocalToken) }, { ALT: () => $.CONSUME(tokens.ConstToken) }]);
+      $.OR([{ ALT: () => $.CONSUME(tokens.Local) }, { ALT: () => $.CONSUME(tokens.Const) }]);
     });
 
     $.RULE("variableDeclarators", () => {
       $.AT_LEAST_ONE_SEP({
-        SEP: tokens.CommaToken,
+        SEP: tokens.Comma,
         DEF: () => $.SUBRULE($.variableDeclarator),
       });
     });
 
     $.RULE("variableDeclarator", () => {
-      $.CONSUME(tokens.IdentifierToken);
+      $.CONSUME(tokens.Identifier);
       $.SUBRULE($.variableDeclaratorRest);
       $.OPTION(() => $.SUBRULE($.bitfieldRest));
       $.OPTION2(() => $.SUBRULE($.annotations));
@@ -455,21 +455,21 @@ class SweetscapeParser extends Parser {
     $.RULE("variableDeclaratorRest", () => {
       $.OPTION(() => {
         // Be careful to avoid duplication with the function declaration rule
-        $.CONSUME(tokens.ParenthesisOpenToken);
+        $.CONSUME(tokens.ParenthesisOpen);
         $.MANY_SEP({
-          SEP: tokens.CommaToken,
+          SEP: tokens.Comma,
           DEF: () => $.SUBRULE2($.expression),
         });
-        $.CONSUME(tokens.ParenthesisCloseToken);
+        $.CONSUME(tokens.ParenthesisClose);
       });
       $.OPTION1(() => {
-        $.CONSUME(tokens.BracketOpenToken);
+        $.CONSUME(tokens.BracketOpen);
         $.OPTION4(() => $.SUBRULE($.expression));
-        $.CONSUME(tokens.BracketCloseToken);
+        $.CONSUME(tokens.BracketClose);
       });
       $.OPTION3(() => $.SUBRULE($.annotations));
       $.OPTION2(() => {
-        $.CONSUME(tokens.EqualsToken);
+        $.CONSUME(tokens.Equals);
         $.SUBRULE($.variableInitializer);
       });
     });
@@ -479,25 +479,25 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("arrayInitializer", () => {
-      $.CONSUME(tokens.CurlyBraceOpenToken);
+      $.CONSUME(tokens.CurlyBraceOpen);
       // No trailing comma supported
-      $.AT_LEAST_ONE_SEP({ SEP: tokens.CommaToken, DEF: () => $.SUBRULE2($.expression) });
-      $.CONSUME(tokens.CurlyBraceCloseToken);
+      $.AT_LEAST_ONE_SEP({ SEP: tokens.Comma, DEF: () => $.SUBRULE2($.expression) });
+      $.CONSUME(tokens.CurlyBraceClose);
     });
 
     $.RULE("selector", () => {
       $.OR([
         {
           ALT: () => {
-            $.CONSUME(tokens.PeriodToken);
-            $.CONSUME(tokens.IdentifierToken);
+            $.CONSUME(tokens.Period);
+            $.CONSUME(tokens.Identifier);
           },
         },
         {
           ALT: () => {
-            $.CONSUME(tokens.BracketOpenToken);
+            $.CONSUME(tokens.BracketOpen);
             $.SUBRULE($.expression);
-            $.CONSUME(tokens.BracketCloseToken);
+            $.CONSUME(tokens.BracketClose);
           },
         },
       ]);
@@ -509,14 +509,14 @@ class SweetscapeParser extends Parser {
           ALT: () => $.SUBRULE($.Number),
         },
         {
-          ALT: () => $.SUBRULE($.StringLiteral),
+          ALT: () => $.SUBRULE($.stringLiteral),
         },
         {
           ALT: () => $.SUBRULE($.parExpressionOrCastExpression),
         },
         {
           ALT: () => {
-            $.CONSUME(tokens.IdentifierToken);
+            $.CONSUME(tokens.Identifier);
             $.OPTION(() => $.SUBRULE($.identifierSuffix));
           },
         },
@@ -528,127 +528,124 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("arguments", () => {
-      $.CONSUME(tokens.ParenthesisOpenToken);
+      $.CONSUME(tokens.ParenthesisOpen);
       $.MANY_SEP({
-        SEP: tokens.CommaToken,
+        SEP: tokens.Comma,
         DEF: () => $.SUBRULE($.expression),
       });
-      $.CONSUME(tokens.ParenthesisCloseToken);
+      $.CONSUME(tokens.ParenthesisClose);
     });
 
     $.RULE("assignmentOperator", () => {
       $.OR([
-        { ALT: () => $.CONSUME(tokens.EqualsToken) },
-        { ALT: () => $.CONSUME(tokens.MultiplicationEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.DivisionEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.ModuloEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.PlusEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.MinusEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.ShiftLeftEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.ShiftRightEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.UnsignedShiftRightEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.BinaryAndEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.BinaryXorEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.BinaryOrEqualsToken) },
+        { ALT: () => $.CONSUME(tokens.Equals) },
+        { ALT: () => $.CONSUME(tokens.MultiplicationEquals) },
+        { ALT: () => $.CONSUME(tokens.DivisionEquals) },
+        { ALT: () => $.CONSUME(tokens.ModuloEquals) },
+        { ALT: () => $.CONSUME(tokens.PlusEquals) },
+        { ALT: () => $.CONSUME(tokens.MinusEquals) },
+        { ALT: () => $.CONSUME(tokens.ShiftLeftEquals) },
+        { ALT: () => $.CONSUME(tokens.ShiftRightEquals) },
+        { ALT: () => $.CONSUME(tokens.UnsignedShiftRightEquals) },
+        { ALT: () => $.CONSUME(tokens.BinaryAndEquals) },
+        { ALT: () => $.CONSUME(tokens.BinaryXorEquals) },
+        { ALT: () => $.CONSUME(tokens.BinaryOrEquals) },
       ]);
     });
 
     $.RULE("infixOperator", () => {
       $.OR([
-        { ALT: () => $.CONSUME(tokens.BooleanAndToken) },
-        { ALT: () => $.CONSUME(tokens.BooleanOrToken) },
-        { ALT: () => $.CONSUME(tokens.BinaryOrToken) },
-        { ALT: () => $.CONSUME(tokens.BinaryXorToken) },
-        { ALT: () => $.CONSUME(tokens.BinaryAndToken) },
-        { ALT: () => $.CONSUME(tokens.DoubleEqualsToken) },
-        { ALT: () => $.CONSUME(tokens.DifferentToken) },
-        { ALT: () => $.CONSUME(tokens.GreaterToken) },
-        { ALT: () => $.CONSUME(tokens.LessToken) },
-        { ALT: () => $.CONSUME(tokens.GreaterOrEqualToken) },
-        { ALT: () => $.CONSUME(tokens.LessOrEqualToken) },
-        { ALT: () => $.CONSUME(tokens.ShiftLeftToken) },
-        { ALT: () => $.CONSUME(tokens.ShiftRightToken) },
-        { ALT: () => $.CONSUME(tokens.UnsignedShiftRightToken) },
-        { ALT: () => $.CONSUME(tokens.PlusToken) },
-        { ALT: () => $.CONSUME(tokens.MinusToken) },
-        { ALT: () => $.CONSUME(tokens.MultiplicationToken) },
-        { ALT: () => $.CONSUME(tokens.DivisionToken) },
-        { ALT: () => $.CONSUME(tokens.ModuloToken) },
+        { ALT: () => $.CONSUME(tokens.BooleanAnd) },
+        { ALT: () => $.CONSUME(tokens.BooleanOr) },
+        { ALT: () => $.CONSUME(tokens.BinaryOr) },
+        { ALT: () => $.CONSUME(tokens.BinaryXor) },
+        { ALT: () => $.CONSUME(tokens.BinaryAnd) },
+        { ALT: () => $.CONSUME(tokens.DoubleEquals) },
+        { ALT: () => $.CONSUME(tokens.Different) },
+        { ALT: () => $.CONSUME(tokens.Greater) },
+        { ALT: () => $.CONSUME(tokens.Less) },
+        { ALT: () => $.CONSUME(tokens.GreaterOrEqual) },
+        { ALT: () => $.CONSUME(tokens.LessOrEqual) },
+        { ALT: () => $.CONSUME(tokens.ShiftLeft) },
+        { ALT: () => $.CONSUME(tokens.ShiftRight) },
+        { ALT: () => $.CONSUME(tokens.UnsignedShiftRight) },
+        { ALT: () => $.CONSUME(tokens.Plus) },
+        { ALT: () => $.CONSUME(tokens.Minus) },
+        { ALT: () => $.CONSUME(tokens.Multiplication) },
+        { ALT: () => $.CONSUME(tokens.Division) },
+        { ALT: () => $.CONSUME(tokens.Modulo) },
       ]);
     });
 
     $.RULE("prefixOperator", () => {
       $.OR([
-        { ALT: () => $.CONSUME(tokens.PlusToken) },
-        { ALT: () => $.CONSUME(tokens.MinusToken) },
-        { ALT: () => $.CONSUME(tokens.DoublePlusToken) },
-        { ALT: () => $.CONSUME(tokens.DoubleMinusToken) },
-        { ALT: () => $.CONSUME(tokens.TildaToken) },
-        { ALT: () => $.CONSUME(tokens.ExclamationToken) },
+        { ALT: () => $.CONSUME(tokens.Plus) },
+        { ALT: () => $.CONSUME(tokens.Minus) },
+        { ALT: () => $.CONSUME(tokens.DoublePlus) },
+        { ALT: () => $.CONSUME(tokens.DoubleMinus) },
+        { ALT: () => $.CONSUME(tokens.Tilda) },
+        { ALT: () => $.CONSUME(tokens.Exclamation) },
       ]);
     });
 
     $.RULE("postfixOperator", () => {
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.DoublePlusToken) },
-        { ALT: () => $.CONSUME(tokens.DoubleMinusToken) },
-      ]);
+      $.OR([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }]);
     });
 
     $.RULE("parameterDeclarationList", () => {
-      $.CONSUME(tokens.ParenthesisOpenToken);
+      $.CONSUME(tokens.ParenthesisOpen);
       $.OR([
-        { ALT: () => $.CONSUME(tokens.VoidToken) },
+        { ALT: () => $.CONSUME(tokens.Void) },
         {
           ALT: () =>
             $.MANY_SEP({
-              SEP: tokens.CommaToken,
+              SEP: tokens.Comma,
               DEF: () => {
-                $.OPTION3(() => $.CONSUME(tokens.LocalToken));
-                $.OPTION7(() => $.CONSUME(tokens.ConstToken));
+                $.OPTION3(() => $.CONSUME(tokens.Local));
+                $.OPTION7(() => $.CONSUME(tokens.Const));
                 $.SUBRULE($.TypeNameWithoutVoid); // Parameter type
-                $.OPTION(() => $.CONSUME(tokens.BinaryAndToken));
-                $.CONSUME1(tokens.IdentifierToken); // Parameter name
+                $.OPTION(() => $.CONSUME(tokens.BinaryAnd));
+                $.CONSUME1(tokens.Identifier); // Parameter name
                 $.OPTION2(() => {
-                  $.CONSUME(tokens.BracketOpenToken);
-                  $.CONSUME(tokens.BracketCloseToken);
+                  $.CONSUME(tokens.BracketOpen);
+                  $.CONSUME(tokens.BracketClose);
                 });
               },
             }),
         },
       ]);
-      $.CONSUME(tokens.ParenthesisCloseToken);
+      $.CONSUME(tokens.ParenthesisClose);
     });
 
     $.RULE("Number", () => {
       $.OR([
-        { ALT: () => $.CONSUME(tokens.NumberOctalLiteralToken) },
-        { ALT: () => $.CONSUME(tokens.NumberDecimalLiteralToken) },
-        { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteralToken) },
-        { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteralToken2) },
-        { ALT: () => $.CONSUME(tokens.NumberBinaryLiteralToken) },
+        { ALT: () => $.CONSUME(tokens.NumberOctalLiteral) },
+        { ALT: () => $.CONSUME(tokens.NumberDecimalLiteral) },
+        { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteral) },
+        { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteral2) },
+        { ALT: () => $.CONSUME(tokens.NumberBinaryLiteral) },
       ]);
     });
 
-    $.RULE("StringLiteral", () => {
-      $.OR([{ ALT: () => $.CONSUME(tokens.StringLiteralToken) }]);
+    $.RULE("stringLiteral", () => {
+      $.OR([{ ALT: () => $.CONSUME(tokens.StringLiteral) }]);
     });
 
     $.RULE("TypeName", () => {
-      $.OR([{ ALT: () => $.CONSUME(tokens.VoidToken) }, { ALT: () => $.SUBRULE($.TypeNameWithoutVoid) }]);
+      $.OR([{ ALT: () => $.CONSUME(tokens.Void) }, { ALT: () => $.SUBRULE($.TypeNameWithoutVoid) }]);
     });
 
     $.RULE("TypeNameWithoutVoid", () => {
       $.OR2([
-        { ALT: () => $.CONSUME(tokens.SignedToken) },
-        { ALT: () => $.CONSUME(tokens.UnsignedToken) },
-        { ALT: () => $.CONSUME(tokens.StructToken) },
+        { ALT: () => $.CONSUME(tokens.Signed) },
+        { ALT: () => $.CONSUME(tokens.Unsigned) },
+        { ALT: () => $.CONSUME(tokens.Struct) },
         { ALT: () => {} },
       ]);
-      $.CONSUME2(tokens.IdentifierToken);
+      $.CONSUME2(tokens.Identifier);
       $.OPTION(() => {
-        $.CONSUME(tokens.BracketOpenToken);
-        $.CONSUME(tokens.BracketCloseToken);
+        $.CONSUME(tokens.BracketOpen);
+        $.CONSUME(tokens.BracketClose);
       });
     });
 

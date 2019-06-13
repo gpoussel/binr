@@ -4,7 +4,7 @@ const _ = require("lodash");
 const SweetscapeImporter = require("../lib/sweetscape/sweetscape-importer");
 const { getSingleStructure, iterateStructures } = require("./utils/010-structures");
 
-describe("Sweetscape Importer", () => {
+describe("Sweetscape Parser", () => {
   const importer = new SweetscapeImporter();
   test("reads misc definitions", () => {
     // The file itself is not important and does not represent any structures

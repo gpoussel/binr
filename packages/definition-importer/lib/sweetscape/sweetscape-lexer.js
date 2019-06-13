@@ -6,63 +6,63 @@ const escapeRegexp = require("escape-string-regexp");
 
 const { createToken, Lexer } = chevrotain;
 
-const WhitespaceToken = createToken({
-  name: "WhitespaceToken",
+const Whitespace = createToken({
+  name: "Whitespace",
   pattern: /[ \t\r\n]+/,
   group: Lexer.SKIPPED,
 });
 
-const EscapedLineBreakToken = createToken({
-  name: "EscapedLineBreakToken",
+const EscapedLineBreak = createToken({
+  name: "EscapedLineBreak",
   pattern: /\\\r?\n/,
   group: Lexer.SKIPPED,
 });
 
-const SingleLineCommentToken = createToken({
-  name: "SingleLineCommentToken",
+const SingleLineComment = createToken({
+  name: "SingleLineComment",
   pattern: /\/\/.*/,
   group: "comments",
 });
 
-const MultiLineCommentToken = createToken({
-  name: "MultiLineCommentToken",
+const MultiLineComment = createToken({
+  name: "MultiLineComment",
   pattern: /\/\*[\s\S]+?\*\//,
   group: "comments",
 });
 
-const StringLiteralToken = createToken({
-  name: "StringLiteralToken",
+const StringLiteral = createToken({
+  name: "StringLiteral",
   pattern: /L?(["'])(?:(?=(\\?))\2.)*?\1/,
 });
 
-const IdentifierToken = createToken({
-  name: "IdentifierToken",
+const Identifier = createToken({
+  name: "Identifier",
   pattern: /[a-z_][a-z0-9_]*/i,
-  longer_alt: StringLiteralToken,
+  longer_alt: StringLiteral,
 });
 
-const NumberDecimalLiteralToken = createToken({
-  name: "NumberDecimalLiteralToken",
+const NumberDecimalLiteral = createToken({
+  name: "NumberDecimalLiteral",
   pattern: /-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?[Ll]?/,
 });
 
-const NumberBinaryLiteralToken = createToken({
-  name: "NumberBinaryLiteralToken",
+const NumberBinaryLiteral = createToken({
+  name: "NumberBinaryLiteral",
   pattern: /0b[01]+/,
 });
 
-const NumberHexadecimalLiteralToken = createToken({
-  name: "NumberHexadecimalLiteralToken",
+const NumberHexadecimalLiteral = createToken({
+  name: "NumberHexadecimalLiteral",
   pattern: /0x[A-F0-9]+L?/i,
 });
 
-const NumberHexadecimalLiteralToken2 = createToken({
-  name: "NumberHexadecimalLiteralToken2",
+const NumberHexadecimalLiteral2 = createToken({
+  name: "NumberHexadecimalLiteral2",
   pattern: /[0-9][0-9a-f]h/i,
 });
 
-const NumberOctalLiteralToken = createToken({
-  name: "NumberOctalLiteralToken",
+const NumberOctalLiteral = createToken({
+  name: "NumberOctalLiteral",
   pattern: /0[0-7]+/,
 });
 
@@ -136,9 +136,9 @@ const symbolTokens = _.fromPairs(
       At: "@",
     },
     (keyword, name) => [
-      `${name}Token`,
+      name,
       createToken({
-        name: `${name}Token`,
+        name,
         pattern: new RegExp(escapeRegexp(keyword)),
       }),
     ]
@@ -179,11 +179,11 @@ const keywordTokens = _.fromPairs(
       "sizeof",
     ],
     keyword => [
-      `${_.upperFirst(keyword)}Token`,
+      _.upperFirst(keyword),
       createToken({
-        name: `${_.upperFirst(keyword)}Token`,
+        name: _.upperFirst(keyword),
         pattern: new RegExp(escapeRegexp(keyword)),
-        longer_alt: IdentifierToken,
+        longer_alt: Identifier,
       }),
     ]
   )
@@ -191,12 +191,12 @@ const keywordTokens = _.fromPairs(
 
 const tokens = {
   // Whitespaces
-  WhitespaceToken,
-  EscapedLineBreakToken,
+  Whitespace,
+  EscapedLineBreak,
 
   // Comments
-  SingleLineCommentToken,
-  MultiLineCommentToken,
+  SingleLineComment,
+  MultiLineComment,
 
   // Symbols
   ...symbolTokens,
@@ -204,13 +204,13 @@ const tokens = {
   // Keywords
   ...keywordTokens,
 
-  IdentifierToken,
-  StringLiteralToken,
-  NumberHexadecimalLiteralToken,
-  NumberHexadecimalLiteralToken2,
-  NumberBinaryLiteralToken,
-  NumberOctalLiteralToken,
-  NumberDecimalLiteralToken,
+  Identifier,
+  StringLiteral,
+  NumberHexadecimalLiteral,
+  NumberHexadecimalLiteral2,
+  NumberBinaryLiteral,
+  NumberOctalLiteral,
+  NumberDecimalLiteral,
 };
 
 class SweetscapeLexer extends Lexer {
