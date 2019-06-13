@@ -3,6 +3,7 @@
 const Importer = require("../importer");
 const { SweetscapeLexer } = require("./sweetscape-lexer");
 const SweetscapeParser = require("./sweetscape-parser");
+const CStylePreprocessor = require("../common/cstyle-preprocessor");
 const { getVisitor } = require("./sweetscape-visitor");
 
 class SweetscapeDefinitionImporter extends Importer {
@@ -19,8 +20,8 @@ class SweetscapeDefinitionImporter extends Importer {
   }
 
   performPreprocessing(input) {
-    // TODO Execute #define, #ifdef, #else and #endif
-    return input.replace(/^[ \t]*#.*/gm, "");
+    const preprocessor = new CStylePreprocessor();
+    return preprocessor.preprocess(input);
   }
 
   build(ast) {
