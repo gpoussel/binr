@@ -129,14 +129,13 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.TypedefToken);
       $.SUBRULE($.TypeName); // Type
       $.CONSUME2(tokens.IdentifierToken); // Alias
-      $.OPTION3(() => $.SUBRULE($.identifierSuffix));
       $.OPTION4(() => $.SUBRULE($.selector));
       $.OPTION2(() => $.SUBRULE($.annotations));
       $.CONSUME(tokens.SemiColonToken);
     });
 
     $.RULE("emptyStructStatement", () => {
-      $.OR2([{ ALT: () => $.CONSUME(tokens.StructToken) }, { ALT: () => $.CONSUME(tokens.UnionToken) }]);
+      $.CONSUME(tokens.StructToken);
       $.CONSUME3(tokens.IdentifierToken);
       $.CONSUME(tokens.SemiColonToken);
     });
@@ -159,7 +158,6 @@ class SweetscapeParser extends Parser {
           },
         },
       ]);
-      $.OPTION3(() => $.SUBRULE2($.annotations));
       $.CONSUME(tokens.SemiColonToken);
     });
 
@@ -174,7 +172,6 @@ class SweetscapeParser extends Parser {
             $.CONSUME(tokens.GreaterToken);
           },
         },
-        { ALT: () => $.CONSUME(tokens.IntToken) },
         { ALT: () => {} },
       ]);
       $.OR([
@@ -192,7 +189,6 @@ class SweetscapeParser extends Parser {
           },
         },
       ]);
-      $.OPTION3(() => $.SUBRULE($.annotations));
       $.CONSUME(tokens.SemiColonToken);
     });
 
@@ -484,23 +480,17 @@ class SweetscapeParser extends Parser {
 
     $.RULE("arrayInitializer", () => {
       $.CONSUME(tokens.CurlyBraceOpenToken);
-      $.SUBRULE($.expression);
-      $.MANY(() => {
-        $.CONSUME(tokens.CommaToken);
-        $.SUBRULE2($.expression);
-      });
-      $.OPTION2(() => $.CONSUME2(tokens.CommaToken));
+      // No trailing comma supported
+      $.AT_LEAST_ONE_SEP({ SEP: tokens.CommaToken, DEF: () => $.SUBRULE2($.expression) });
       $.CONSUME(tokens.CurlyBraceCloseToken);
     });
 
     $.RULE("selector", () => {
-      // TODO Many other alternatives
       $.OR([
         {
           ALT: () => {
             $.CONSUME(tokens.PeriodToken);
             $.CONSUME(tokens.IdentifierToken);
-            $.OPTION(() => $.SUBRULE($.arguments));
           },
         },
         {
@@ -526,7 +516,6 @@ class SweetscapeParser extends Parser {
         },
         {
           ALT: () => {
-            // TODO Identifier { . Identifier } [IdentifierSuffix]
             $.CONSUME(tokens.IdentifierToken);
             $.OPTION(() => $.SUBRULE($.identifierSuffix));
           },
@@ -535,7 +524,6 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("identifierSuffix", () => {
-      // TODO: Other things?
       $.SUBRULE($.arguments);
     });
 
@@ -657,19 +645,7 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.StructToken) },
         { ALT: () => {} },
       ]);
-      $.OR([
-        { ALT: () => $.CONSUME2(tokens.IdentifierToken) },
-        { ALT: () => $.CONSUME2(tokens.IntToken) },
-        { ALT: () => $.CONSUME2(tokens.ShortToken) },
-        { ALT: () => $.CONSUME2(tokens.CharToken) },
-        { ALT: () => $.CONSUME2(tokens.ByteToken) },
-        { ALT: () => $.CONSUME2(tokens.LongToken) },
-        { ALT: () => $.CONSUME2(tokens.DoubleToken) },
-        { ALT: () => $.CONSUME2(tokens.FloatToken) },
-        { ALT: () => $.CONSUME2(tokens.WordToken) },
-        { ALT: () => $.CONSUME2(tokens.QuadToken) },
-        { ALT: () => $.CONSUME2(tokens.TimeToken) },
-      ]);
+      $.CONSUME2(tokens.IdentifierToken);
       $.OPTION(() => {
         $.CONSUME(tokens.BracketOpenToken);
         $.CONSUME(tokens.BracketCloseToken);
