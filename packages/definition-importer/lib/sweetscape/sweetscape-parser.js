@@ -607,12 +607,6 @@ class SweetscapeParser extends Parser {
       ]);
     });
 
-    $.RULE("assignmentExpression", () => {
-      $.CONSUME(tokens.IdentifierToken);
-      $.CONSUME(tokens.EqualsToken);
-      $.SUBRULE($.expression);
-    });
-
     $.RULE("parameterDeclarationList", () => {
       $.CONSUME(tokens.ParenthesisOpenToken);
       $.OR([
