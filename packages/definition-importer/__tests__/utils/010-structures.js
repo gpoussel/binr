@@ -9,7 +9,7 @@ function getSingleStructure(name) {
   return fs.readFileSync(`${structureFolder}/${name}.bt`, "UTF-8");
 }
 
-function iterateStructures(iteratee, done) {
+function iterateStructures(iteratee, done, filter) {
   const readStream = fs.createReadStream(`${structureFolder}/010-structures.tar.gz`);
   const extract = tar.extract();
 
@@ -18,7 +18,9 @@ function iterateStructures(iteratee, done) {
     stream.on("data", chunk => chunks.push(chunk));
     stream.once("end", () => {
       const buffer = _.join(chunks, "");
-      iteratee(header.name, buffer);
+      if (_.isUndefined(filter) || filter(header.name)) {
+        iteratee(header.name, buffer);
+      }
       next();
     });
     stream.resume();
