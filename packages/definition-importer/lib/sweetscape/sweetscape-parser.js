@@ -71,9 +71,9 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("functionDeclarationStatement", () => {
-      $.SUBRULE($.TypeName);
+      $.SUBRULE($.typeName);
       $.CONSUME1(tokens.Identifier); // Function name
-      $.SUBRULE($.parameterDeclarationList);
+      $.SUBRULE($.functionParameterDeclarationList);
       $.OR([
         {
           ALT: () => {
@@ -93,7 +93,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("localVariableDeclarationStatement", () => {
       $.MANY(() => $.SUBRULE($.variableModifier));
-      $.SUBRULE($.TypeName);
+      $.SUBRULE($.typeName);
       $.OR([
         {
           ALT: () => {
@@ -113,7 +113,7 @@ class SweetscapeParser extends Parser {
     $.RULE("bitfieldRest", () => {
       $.CONSUME(tokens.Colon);
       $.OR([
-        { ALT: () => $.SUBRULE($.Number) },
+        { ALT: () => $.SUBRULE($.number) },
         {
           ALT: () => {
             $.CONSUME(tokens.Identifier);
@@ -127,7 +127,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("typedefStatement", () => {
       $.CONSUME(tokens.Typedef);
-      $.SUBRULE($.TypeName); // Type
+      $.SUBRULE($.typeName); // Type
       $.CONSUME2(tokens.Identifier); // Alias
       $.OPTION4(() => $.SUBRULE($.selector));
       $.OPTION2(() => $.SUBRULE($.annotations));
@@ -168,7 +168,7 @@ class SweetscapeParser extends Parser {
         {
           ALT: () => {
             $.CONSUME(tokens.Less);
-            $.SUBRULE($.TypeName);
+            $.SUBRULE($.typeName);
             $.CONSUME(tokens.Greater);
           },
         },
@@ -193,7 +193,7 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("structDeclaration", () => {
-      $.OPTION(() => $.SUBRULE($.parameterDeclarationList));
+      $.OPTION(() => $.SUBRULE($.functionParameterDeclarationList));
       $.CONSUME(tokens.CurlyBraceOpen);
       $.SUBRULE($.statementList);
       $.CONSUME(tokens.CurlyBraceClose);
@@ -228,7 +228,7 @@ class SweetscapeParser extends Parser {
           $.OR([
             { ALT: () => $.CONSUME2(tokens.Identifier) },
             { ALT: () => $.CONSUME(tokens.StringLiteral) },
-            { ALT: () => $.SUBRULE($.Number) },
+            { ALT: () => $.SUBRULE($.number) },
           ]);
         },
       });
@@ -298,7 +298,7 @@ class SweetscapeParser extends Parser {
             ALT: () => {
               $.CONSUME(tokens.Case);
               $.OR2([
-                { ALT: () => $.SUBRULE($.Number) },
+                { ALT: () => $.SUBRULE($.number) },
                 { ALT: () => $.CONSUME(tokens.Identifier) },
                 { ALT: () => $.CONSUME(tokens.StringLiteral) },
               ]);
@@ -336,7 +336,7 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.SUBRULE($.expression) },
         {
           GATE: () => $.LA(1).tokenType !== tokens.Identifier,
-          ALT: () => $.SUBRULE($.TypeNameWithoutVoid),
+          ALT: () => $.SUBRULE($.typeNameWithoutVoid),
         },
       ]);
     });
@@ -506,7 +506,7 @@ class SweetscapeParser extends Parser {
     $.RULE("primary", () => {
       $.OR([
         {
-          ALT: () => $.SUBRULE($.Number),
+          ALT: () => $.SUBRULE($.number),
         },
         {
           ALT: () => $.CONSUME(tokens.StringLiteral),
@@ -592,7 +592,10 @@ class SweetscapeParser extends Parser {
       $.OR([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }]);
     });
 
-    $.RULE("parameterDeclarationList", () => {
+    /**
+     * Function parameters declaration
+     */
+    $.RULE("functionParameterDeclarationList", () => {
       $.CONSUME(tokens.ParenthesisOpen);
       $.OR([
         { ALT: () => $.CONSUME(tokens.Void) },
@@ -603,7 +606,7 @@ class SweetscapeParser extends Parser {
               DEF: () => {
                 $.OPTION3(() => $.CONSUME(tokens.Local));
                 $.OPTION7(() => $.CONSUME(tokens.Const));
-                $.SUBRULE($.TypeNameWithoutVoid); // Parameter type
+                $.SUBRULE($.typeNameWithoutVoid); // Parameter type
                 $.OPTION(() => $.CONSUME(tokens.BinaryAnd));
                 $.CONSUME1(tokens.Identifier); // Parameter name
                 $.OPTION2(() => {
@@ -617,21 +620,30 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.ParenthesisClose);
     });
 
-    $.RULE("Number", () => {
+    /**
+     * Represents any number, in any representation (binary, octal, decimal, hexadecimal)
+     */
+    $.RULE("number", () => {
       $.OR([
+        { ALT: () => $.CONSUME(tokens.NumberBinaryLiteral) },
         { ALT: () => $.CONSUME(tokens.NumberOctalLiteral) },
         { ALT: () => $.CONSUME(tokens.NumberDecimalLiteral) },
         { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteral) },
         { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteral2) },
-        { ALT: () => $.CONSUME(tokens.NumberBinaryLiteral) },
       ]);
     });
 
-    $.RULE("TypeName", () => {
-      $.OR([{ ALT: () => $.CONSUME(tokens.Void) }, { ALT: () => $.SUBRULE($.TypeNameWithoutVoid) }]);
+    /**
+     * Represents any type (void being included)
+     */
+    $.RULE("typeName", () => {
+      $.OR([{ ALT: () => $.CONSUME(tokens.Void) }, { ALT: () => $.SUBRULE($.typeNameWithoutVoid) }]);
     });
 
-    $.RULE("TypeNameWithoutVoid", () => {
+    /**
+     * Represents any concrete type (void being excluded)
+     */
+    $.RULE("typeNameWithoutVoid", () => {
       $.OR2([
         { ALT: () => $.CONSUME(tokens.Signed) },
         { ALT: () => $.CONSUME(tokens.Unsigned) },
