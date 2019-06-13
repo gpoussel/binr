@@ -227,7 +227,7 @@ class SweetscapeParser extends Parser {
           $.CONSUME(tokens.Equals);
           $.OR([
             { ALT: () => $.CONSUME2(tokens.Identifier) },
-            { ALT: () => $.SUBRULE($.stringLiteral) },
+            { ALT: () => $.CONSUME(tokens.StringLiteral) },
             { ALT: () => $.SUBRULE($.Number) },
           ]);
         },
@@ -300,7 +300,7 @@ class SweetscapeParser extends Parser {
               $.OR2([
                 { ALT: () => $.SUBRULE($.Number) },
                 { ALT: () => $.CONSUME(tokens.Identifier) },
-                { ALT: () => $.SUBRULE($.stringLiteral) },
+                { ALT: () => $.CONSUME(tokens.StringLiteral) },
               ]);
             },
           },
@@ -509,7 +509,7 @@ class SweetscapeParser extends Parser {
           ALT: () => $.SUBRULE($.Number),
         },
         {
-          ALT: () => $.SUBRULE($.stringLiteral),
+          ALT: () => $.CONSUME(tokens.StringLiteral),
         },
         {
           ALT: () => $.SUBRULE($.parExpressionOrCastExpression),
@@ -625,10 +625,6 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteral2) },
         { ALT: () => $.CONSUME(tokens.NumberBinaryLiteral) },
       ]);
-    });
-
-    $.RULE("stringLiteral", () => {
-      $.OR([{ ALT: () => $.CONSUME(tokens.StringLiteral) }]);
     });
 
     $.RULE("TypeName", () => {
