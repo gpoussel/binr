@@ -26,7 +26,7 @@ class SweetscapeDefinitionImporter extends Importer {
 
   build(ast) {
     // TODO: Complete that!
-    return {};
+    return ast;
   }
 }
 module.exports = SweetscapeDefinitionImporter;
