@@ -11,6 +11,7 @@ class SweetscapeParser extends Parser {
     super(_.values(tokens), {
       recoveryEnabled: false,
       maxLookahead: 5,
+      outputCst: true,
       ignoredIssues: {
         topLevelStatement: { OR: true },
         expressionOrTypeName: { OR: true },
