@@ -32,7 +32,9 @@
   "dependencies": {
     "chevrotain": "^4.7.0",
     "escape-string-regexp": "^2.0.0",
+    "gunzip-maybe": "^1.4.1",
     "lerna": "^3.10.8",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "tar-stream": "^2.1.0"
   }
 }

@@ -2,7 +2,16 @@ const _ = require("lodash");
 
 class Importer {
   readInput(input) {
+    if (!_.isString(input)) {
+      throw new Error("input must be a string");
+    }
+
     const preprocessed = this.performPreprocessing(input);
+
+    if (!_.isString(preprocessed)) {
+      throw new Error("input must be a string");
+    }
+
     const ast = this.readAst(preprocessed);
     return this.build(ast);
   }
@@ -12,10 +21,6 @@ class Importer {
   }
 
   readAst(input) {
-    if (!_.isString(input)) {
-      throw new Error("input must be a string");
-    }
-
     const lexingResult = this.getLexer().tokenize(input);
     if (!_.isEmpty(lexingResult.errors)) {
       throw new Error(`Got an error while lexing input: ${_.first(lexingResult.errors).message}`);

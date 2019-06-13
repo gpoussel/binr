@@ -20,7 +20,7 @@ class SweetscapeDefinitionImporter extends Importer {
 
   performPreprocessing(input) {
     // TODO Execute #define, #ifdef, #else and #endif
-    return input.replace(/^\w*#.*/gm, "");
+    return input.replace(/^[ \t]*#.*/gm, "");
   }
 
   build(ast) {
