@@ -604,21 +604,26 @@ class SweetscapeParser extends Parser {
           ALT: () =>
             $.MANY_SEP({
               SEP: tokens.Comma,
-              DEF: () => {
-                $.OPTION3(() => $.CONSUME(tokens.Local));
-                $.OPTION7(() => $.CONSUME(tokens.Const));
-                $.SUBRULE($.typeNameWithoutVoid); // Parameter type
-                $.OPTION(() => $.CONSUME(tokens.BinaryAnd));
-                $.CONSUME1(tokens.Identifier); // Parameter name
-                $.OPTION2(() => {
-                  $.CONSUME(tokens.BracketOpen);
-                  $.CONSUME(tokens.BracketClose);
-                });
-              },
+              DEF: () => $.SUBRULE($.functionParameterDeclaration),
             }),
         },
       ]);
       $.CONSUME(tokens.ParenthesisClose);
+    });
+
+    /**
+     * Single function parameter declaration
+     */
+    $.RULE("functionParameterDeclaration", () => {
+      $.OPTION3(() => $.CONSUME(tokens.Local));
+      $.OPTION7(() => $.CONSUME(tokens.Const));
+      $.SUBRULE($.typeNameWithoutVoid); // Parameter type
+      $.OPTION(() => $.CONSUME(tokens.BinaryAnd));
+      $.CONSUME1(tokens.Identifier); // Parameter name
+      $.OPTION2(() => {
+        $.CONSUME(tokens.BracketOpen);
+        $.CONSUME(tokens.BracketClose);
+      });
     });
 
     /**
