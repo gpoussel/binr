@@ -27,11 +27,18 @@ function getVisitor(parser) {
       if (_.has(ctx, "functionDeclarationStatement")) {
         return this.visit(ctx.functionDeclarationStatement);
       }
+      if (_.has(ctx, "emptyStructStatement")) {
+        return this.visit(ctx.emptyStructStatement);
+      }
       throw new Error();
     }
 
     functionDeclarationStatement(ctx) {
-      const { typeName, Identifier: identifiers, functionParameterDeclarationList } = ctx;
+      const {
+        typeName,
+        Identifier: identifiers,
+        functionParameterDeclarationList
+      } = ctx;
       const forwardDeclaration = _.has(ctx, "SemiColon");
       return {
         type: "functionDeclaration",
@@ -48,7 +55,9 @@ function getVisitor(parser) {
         return this.visit(ctx.typeNameWithoutVoid);
       }
       if (_.has(ctx, "Void")) {
-        return { name: "void" };
+        return {
+          name: "void"
+        };
       }
       throw new Error();
     }
@@ -91,8 +100,14 @@ function getVisitor(parser) {
     statementList(ctx) {
       // TODO
     }
+
+    emptyStructStatement(ctx) {
+      // TODO
+    }
   }
 
   return new Visitor();
 }
-module.exports = { getVisitor };
+module.exports = {
+  getVisitor
+};
