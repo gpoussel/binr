@@ -94,11 +94,7 @@ class SweetscapeParser extends Parser {
       $.MANY(() => $.SUBRULE($.variableModifier));
       $.SUBRULE($.typeName);
       $.OR([
-        {
-          ALT: () => {
-            $.SUBRULE($.variableDeclarators);
-          },
-        },
+        { ALT: () => $.SUBRULE($.variableDeclarators) },
         {
           ALT: () => {
             $.SUBRULE2($.bitfieldRest);

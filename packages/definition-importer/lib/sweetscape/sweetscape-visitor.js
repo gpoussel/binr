@@ -121,6 +121,95 @@ function getVisitor(parser) {
       return this.visit(ctx[matchingStatementType]);
     }
 
+    returnStatement(ctx) {
+      const result = {
+        type: "returnStatement",
+      };
+      if (_.has(ctx, "expression")) {
+        result.expression = this.visit(ctx.expression);
+      }
+      return result;
+    }
+
+    breakStatement(ctx) {
+      return {
+        type: "breakStatement",
+      };
+    }
+
+    whileStatement(ctx) {
+      return {
+        type: "whileStatement",
+        condition: this.visit(ctx.parExpression),
+        body: this.visit(ctx.statement),
+      };
+    }
+
+    doWhileStatement(ctx) {
+      return {
+        type: "doWhileStatement",
+        condition: this.visit(ctx.parExpression),
+        body: this.visit(ctx.statement),
+      };
+    }
+
+    switchStatement(ctx) {
+      return {
+        type: "switchStatement",
+        statements: _.map(ctx.switchBlockStatementGroup, this.visit.bind(this)),
+      };
+    }
+
+    switchBlockStatementGroup(ctx) {
+      return {
+        labels: this.visit(ctx.switchLabels),
+        body: this.visit(ctx.statementList),
+      };
+    }
+
+    switchLabels(ctx) {
+      const numbers = _.map(ctx.number, this.visit.bind(this));
+      const identifiers = _.map(ctx.Identifier, this.getIdentifier.bind(this));
+      const stringLiterals = _.map(ctx.StringLiteral, this.getString.bind(this));
+      const defaultStatement = _.has(ctx, "Default") ? [{ type: "defaultStatement" }] : [];
+      return _.concat(numbers, identifiers, stringLiterals, defaultStatement);
+    }
+
+    forStatement(ctx) {
+      const result = {
+        type: "forStatement",
+        initialization: this.visit(_.first(ctx.forInitUpdate)),
+        increment: this.visit(_.last(ctx.forInitUpdate)),
+        body: this.visit(ctx.statement),
+      };
+      if (_.has(ctx, "expression")) {
+        result.condition = this.visit(ctx.expression);
+      }
+      return result;
+    }
+
+    localVariableDeclarationStatement(ctx) {
+      const result = {
+        type: "variableDeclaration",
+        variableType: this.visit(ctx.typeName),
+      };
+      // TODO bitfieldRest
+      // TODO annotations
+      if (_.has(ctx, "variableModifiers")) {
+        result.modifiers = _.map(ctx.variableModifier, this.visit.bind(this));
+      }
+      if (_.has(ctx, "variableDeclarators")) {
+        result.declarations = this.visit(ctx.variableDeclarators);
+      }
+      return result;
+    }
+
+    variableDeclarators(ctx) {
+      return _.map(ctx.variableDeclarators, this.visit.bind(this));
+    }
+
+    variableModifier(ctx) {}
+
     typedefStatement(ctx) {
       // TODO selector
       // TODO annotations
@@ -177,9 +266,6 @@ function getVisitor(parser) {
       }
       if (_.has(ctx, "Identifier")) {
         result.alias = this.getIdentifier(ctx.Identifier);
-      }
-      if (_.has(ctx, "variableDeclarator")) {
-        result.name = this.visit(ctx.variableDeclarator);
       }
       if (_.has(ctx, "variableDeclarator")) {
         result.name = this.visit(ctx.variableDeclarator);
