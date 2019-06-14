@@ -2,7 +2,10 @@
 
 const _ = require("lodash");
 const SweetscapeImporter = require("../lib/sweetscape/sweetscape-importer");
-const { getSingleStructure, iterateStructures } = require("./utils/010-structures");
+const {
+  getSingleStructure,
+  iterateStructures
+} = require("./utils/010-structures");
 
 describe("Sweetscape Parser", () => {
   const importer = new SweetscapeImporter();
@@ -15,6 +18,9 @@ describe("Sweetscape Parser", () => {
   });
 
   test("reads all 010 sample structures", done => {
+    // We are keeping the state right there, so we can stop the iteration
+    // as soon as we got a failure
+    let hasFailed = false;
     iterateStructures((name, input) => {
       try {
         const definition = importer.readInput(input);
@@ -22,7 +28,8 @@ describe("Sweetscape Parser", () => {
       } catch (e) {
         e.message = `[${name}] ${e.message}`;
         done.fail(e);
+        hasFailed = true;
       }
-    }, done);
+    }, done, () => !hasFailed);
   }, 45000);
 });
