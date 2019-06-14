@@ -74,4 +74,18 @@ C
     expect(result).toEqual(`B
 C`);
   });
+
+  test("handles duplicated #define", () => {
+    const input = `#define A a
+#define A a
+A`;
+    expect(() => preprocessor.preprocess(input)).toThrow(/already defined/);
+  });
+
+  test("handles invalid #else", () => {
+    const input = `#else foo
+A
+#endif`;
+    expect(() => preprocessor.preprocess(input)).toThrow(/#else/);
+  });
 });
