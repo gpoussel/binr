@@ -95,7 +95,6 @@ function getVisitor(parser) {
     }
 
     statement(ctx) {
-      // TODO Other kind of statements
       const matchingStatementType = _.filter(
         [
           "block",
@@ -228,7 +227,7 @@ function getVisitor(parser) {
     }
 
     emptyStructStatement(ctx) {
-      // TODO
+      // TODO emptyStructStatement
     }
 
     ifStatement(ctx) {
@@ -286,11 +285,11 @@ function getVisitor(parser) {
     }
 
     structDeclaration(ctx) {
-      // TODO
+      // TODO structDeclaration
     }
 
     variableDeclaratorRest(ctx) {
-      // TODO
+      // TODO variableDeclaratorRest
     }
 
     expressionStatement(ctx) {
@@ -303,25 +302,52 @@ function getVisitor(parser) {
 
     expression(ctx) {
       if (_.size(ctx.expression1) > 1) {
-        // That's a binary operation (or even larger)
-        // TODO
-        return {};
+        const operators = _.map(ctx.assignmentOperator, this.visit.bind(this));
+        const expressions = _.map(ctx.expression1, this.visit.bind(this));
+        const lastExpression = _.last(expressions);
+        let currentExpression = lastExpression;
+        for (let i = expressions.length - 1; i > 0; i -= 1) {
+          currentExpression = {
+            type: "binaryExpression",
+            left: expressions[i],
+            right: currentExpression,
+            operator: operators[i - 1],
+          };
+        }
+        return currentExpression;
       }
       return this.visit(_.first(ctx.expression1));
+    }
+
+    assignmentOperator(ctx) {
+      return _.first(_.get(ctx, _.first(_.keys(ctx)))).image;
     }
 
     expression1(ctx) {
       const result = this.visit(ctx.expression2);
       if (_.has(ctx, "expression1Rest")) {
-        // TODO
+        const ternaryCondition = this.visit(ctx.expression1Rest);
+        return {
+          type: "ternaryExpression",
+          condition: result,
+          trueStatement: ternaryCondition.trueStatement,
+          falseStatement: ternaryCondition.falseStatement,
+        };
       }
       return result;
+    }
+
+    expression1Rest(ctx) {
+      return {
+        trueStatement: this.visit(ctx.expression),
+        falseStatement: this.visit(ctx.expression1),
+      };
     }
 
     expression2(ctx) {
       const result = this.visit(ctx.expression3);
       if (_.has(ctx, "expression2Rest")) {
-        // TODO
+        // TODO expression2Rest
       }
       return result;
     }
