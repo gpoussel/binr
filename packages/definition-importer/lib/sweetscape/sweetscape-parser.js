@@ -41,9 +41,7 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("statementList", () => {
-      $.MANY(() => {
-        $.SUBRULE($.statement);
-      });
+      $.MANY(() => $.SUBRULE($.statement));
     });
 
     $.RULE("block", () => {

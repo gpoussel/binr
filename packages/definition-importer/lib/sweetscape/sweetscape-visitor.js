@@ -90,6 +90,10 @@ function getVisitor(parser) {
       };
     }
 
+    block(ctx) {
+      return this.visit(ctx.statementList);
+    }
+
     statement(ctx) {
       // TODO Other kind of statements
       const matchingStatementType = _.filter(
@@ -128,11 +132,27 @@ function getVisitor(parser) {
     }
 
     statementList(ctx) {
-      // TODO
+      return {
+        type: "statementList",
+        statements: _.map(ctx.statement, this.visit.bind(this)),
+      };
     }
 
     emptyStructStatement(ctx) {
       // TODO
+    }
+
+    ifStatement(ctx) {
+      const statements = _.map(ctx.statement, this.visit.bind(this));
+      const result = {
+        type: "ifStatement",
+        condition: this.visit(ctx.parExpression),
+        trueStatement: _.first(statements),
+      };
+      if (_.size(statements) > 1) {
+        result.falseStatement = _.get(statements, 2);
+      }
+      return result;
     }
 
     structStatement(ctx) {
@@ -188,6 +208,10 @@ function getVisitor(parser) {
     }
 
     expressionStatement(ctx) {
+      return this.visit(ctx.expression);
+    }
+
+    parExpression(ctx) {
       return this.visit(ctx.expression);
     }
 

@@ -27,10 +27,7 @@ class SweetscapeDefinitionImporter extends Importer {
 
   build(ast) {
     _.each(
-      _.map(
-        _.filter(ast.content, element => _.get(element, "type") !== "primaryExpression"),
-        element => element
-      ),
+      _.map(_.filter(ast.content, element => _.get(element, "type") === "ifStatement"), element => element),
       expression => {
         console.log(expression);
       }
