@@ -144,37 +144,20 @@ class SweetscapeParser extends Parser {
     $.RULE("structStatement", () => {
       $.OPTION(() => $.CONSUME(tokens.Typedef));
       $.OR2([{ ALT: () => $.CONSUME(tokens.Struct) }, { ALT: () => $.CONSUME(tokens.Union) }]);
-      $.OR([
-        {
-          ALT: () => {
-            $.SUBRULE2($.structDeclaration);
-            $.OPTION4(() => $.SUBRULE($.variableDeclarator));
-          },
-        },
-        {
-          ALT: () => {
-            $.CONSUME3(tokens.Identifier); // Alias
-            $.SUBRULE($.structDeclaration);
-            $.OPTION5(() => $.SUBRULE2($.variableDeclarator));
-          },
-        },
-      ]);
+      $.OPTION2(() => $.CONSUME(tokens.Identifier)); // Alias
+      $.SUBRULE2($.structDeclaration);
+      $.OPTION4(() => $.SUBRULE($.variableDeclarator));
       $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("enumStatement", () => {
       $.OPTION(() => $.CONSUME(tokens.Typedef));
       $.CONSUME(tokens.Enum);
-      $.OR2([
-        {
-          ALT: () => {
-            $.CONSUME(tokens.Less);
-            $.SUBRULE($.typeName);
-            $.CONSUME(tokens.Greater);
-          },
-        },
-        { ALT: () => {} },
-      ]);
+      $.OPTION2(() => {
+        $.CONSUME(tokens.Less);
+        $.SUBRULE($.typeName);
+        $.CONSUME(tokens.Greater);
+      });
       $.OR([
         {
           ALT: () => {
