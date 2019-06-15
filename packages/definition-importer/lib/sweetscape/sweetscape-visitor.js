@@ -193,7 +193,9 @@ function getVisitor(parser) {
         variableType: this.visit(ctx.typeName),
         annotations: _.has(ctx.annotations) ? this.visit(ctx.annotations) : [],
       };
-      // TODO "local"
+      _.each(ctx.variableModifier, modifier => {
+        _.assign(result, this.visit(modifier));
+      });
       // TODO bitfieldRest
       if (_.has(ctx, "variableModifiers")) {
         result.modifiers = _.map(ctx.variableModifier, this.visit.bind(this));
@@ -208,11 +210,17 @@ function getVisitor(parser) {
       return _.map(ctx.variableDeclarator, this.visit.bind(this));
     }
 
-    variableModifier(ctx) {}
+    variableModifier(ctx) {
+      if (_.has(ctx, "Local")) {
+        return { local: true };
+      }
+      if (_.has(ctx, "Const")) {
+        return { const: true };
+      }
+    }
 
     typedefStatement(ctx) {
       // TODO selector
-      // TODO annotations
       return {
         type: "typeAlias",
         name: this.visit(ctx.typeName),

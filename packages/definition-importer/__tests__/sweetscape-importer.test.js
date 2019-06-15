@@ -63,6 +63,7 @@ describe("Sweetscape Importer", () => {
             statements: [
               {
                 type: "variableDeclaration",
+                local: true,
                 variableType: {
                   name: "string",
                   array: false,
@@ -123,6 +124,7 @@ describe("Sweetscape Importer", () => {
         const localVarDeclaration = content[75];
         expect(localVarDeclaration).toEqual({
           type: "variableDeclaration",
+          local: true,
           variableType: {
             name: "ULONG",
             array: false,
@@ -134,7 +136,6 @@ describe("Sweetscape Importer", () => {
             },
           ],
           annotations: [],
-          // TODO Missing "local"
         });
 
         const ifStatement = content[76];
