@@ -17,14 +17,99 @@ describe("Sweetscape Importer", () => {
 
         expect(content).toHaveLength(93);
 
-        const firstNode = content[0];
-        expect(firstNode).toEqual({
+        const typedefNode = content[0];
+        expect(typedefNode).toEqual({
           type: "typeAlias",
           name: {
             name: "QWORD",
-            array: false,
+            array: false, // TODO That's wrong
           },
           alias: "ULONGLONG",
+        });
+
+        const structDeclaration = content[1];
+        expect(structDeclaration).toEqual({
+          type: "structDeclaration",
+          name: {
+            // TODO Weird?
+            name: "IMAGE_DOS_HEADER",
+          },
+          declaration: undefined, // TODO Obviously wrong
+        });
+
+        const functionDeclaration = content[64];
+        expect(functionDeclaration).toEqual({
+          type: "functionDeclaration",
+          forwardDeclaration: false,
+          name: "CommentBaseRelocationTable",
+          parameters: [
+            {
+              type: {
+                name: "BASE_RELOCATION_TABLE",
+                array: false,
+              },
+              name: "RelocTable",
+              reference: true,
+            },
+          ],
+          returnType: {
+            name: "string",
+            array: false,
+          },
+          content: {
+            type: "statementList",
+            statements: [
+              {
+                type: "variableDeclaration",
+                variableType: {
+                  name: "string",
+                  array: false,
+                },
+                declarations: [], // TODO That's wrong
+              },
+              {
+                type: "primaryExpression",
+                expression: {
+                  type: "functionCall",
+                  name: "SPrintf",
+                  arguments: [
+                    {
+                      type: "primaryExpression",
+                      expression: {
+                        type: "identifier",
+                        name: "sComment",
+                      },
+                    },
+                    {
+                      type: "primaryExpression",
+                      expression: {
+                        type: "stringLiteral",
+                        string: "%d",
+                      },
+                    },
+                    {
+                      // TODO That's wrong
+                      type: "primaryExpression",
+                      expression: {
+                        name: "RelocTable",
+                        type: "identifier",
+                      },
+                    },
+                  ],
+                },
+              },
+              {
+                type: "returnStatement",
+                expression: {
+                  type: "primaryExpression",
+                  expression: {
+                    type: "identifier",
+                    name: "sComment",
+                  },
+                },
+              },
+            ],
+          },
         });
 
         const localVarDeclaration = content[75];
