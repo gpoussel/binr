@@ -220,13 +220,16 @@ function getVisitor(parser) {
     }
 
     typedefStatement(ctx) {
-      // TODO selector
-      return {
+      const result = {
         type: "typeAlias",
         name: this.visit(ctx.typeName),
         alias: this.getIdentifier(ctx.Identifier),
         annotations: _.has(ctx.annotations) ? this.visit(ctx.annotations) : [],
       };
+      if (_.has(ctx, "selector")) {
+        result.selector = this.visit(ctx.selector);
+      }
+      return result;
     }
 
     statementList(ctx) {
@@ -407,11 +410,24 @@ function getVisitor(parser) {
       }
       if (_.has(ctx, "primary")) {
         if (_.has(ctx, "postfixOperator")) {
+          const expression = _.has(ctx, "selector")
+            ? {
+                type: "qualifiedExpression",
+                selectors: _.map(ctx.selector, this.visit.bind(this)),
+                expression: this.visit(ctx.primary),
+              }
+            : this.visit(ctx.primary);
           return {
             type: "postfixExpression",
-            expression: this.visit(ctx.primary),
             operator: this.visit(ctx.postfixOperator),
-            // TODO selector
+            expression,
+          };
+        }
+        if (_.has(ctx, "selector")) {
+          return {
+            type: "qualifiedExpression",
+            selectors: _.map(ctx.selector, this.visit.bind(this)),
+            expression: this.visit(ctx.primary),
           };
         }
         return {
@@ -514,7 +530,10 @@ function getVisitor(parser) {
     }
 
     arrayInitializer(ctx) {
-      // TODO arrayInitializer
+      return {
+        type: "arrayDeclaration",
+        values: _.map(ctx.expression, this.visit.bind(this)),
+      };
     }
 
     bitfieldRest(ctx) {
@@ -542,15 +561,32 @@ function getVisitor(parser) {
     }
 
     selector(ctx) {
-      // TODO selector
+      if (_.has(ctx, "arraySelector")) {
+        return this.visit(ctx.arraySelector);
+      }
+      if (_.has(ctx, "Period")) {
+        return {
+          type: "qualifiedSelector",
+          name: this.getIdentifier(ctx.Identifier),
+        };
+      }
+      throw new Error();
     }
 
     arraySelector(ctx) {
-      // TODO arraySelector
+      return {
+        type: "arraySelector",
+        expression: this.visit(ctx.expression),
+      };
     }
 
     variableInitializer(ctx) {
-      // TODO variableInitializer
+      if (_.has(ctx, "expression")) {
+        return this.visit(ctx.expression);
+      }
+      if (_.has(ctx, "arrayInitializer")) {
+        return this.visit(ctx.arrayInitializer);
+      }
     }
 
     getString(stringLiteralToken) {

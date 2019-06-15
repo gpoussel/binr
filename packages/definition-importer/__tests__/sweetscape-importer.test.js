@@ -97,12 +97,12 @@ describe("Sweetscape Importer", () => {
                       },
                     },
                     {
-                      // TODO That's wrong
-                      type: "primaryExpression",
+                      type: "qualifiedExpression",
                       expression: {
-                        name: "RelocTable",
                         type: "identifier",
+                        name: "RelocTable",
                       },
+                      selectors: [{ name: "ulRelocNum", type: "qualifiedSelector" }],
                     },
                   ],
                 },
@@ -142,11 +142,14 @@ describe("Sweetscape Importer", () => {
         expect(ifStatement).toEqual({
           type: "ifStatement",
           condition: {
-            type: "primaryExpression",
+            type: "qualifiedExpression",
+            selectors: [
+              { name: "OptionalHeader", type: "qualifiedSelector" },
+              { name: "SizeOfHeaders", type: "qualifiedSelector" },
+            ],
             expression: {
               name: "NtHeader",
               type: "identifier",
-              // TODO That's wrong
             },
           },
           trueStatement: {
@@ -167,12 +170,15 @@ describe("Sweetscape Importer", () => {
                       { key: "comment", value: "Space between header and first section" },
                     ],
                     arraySelector: {
-                      type: "primaryExpression",
+                      type: "qualifiedExpression",
                       expression: {
                         type: "identifier",
                         name: "NtHeader",
-                        // TODO That's wrong
                       },
+                      selectors: [
+                        { name: "OptionalHeader", type: "qualifiedSelector" },
+                        { name: "SizeOfHeaders", type: "qualifiedSelector" },
+                      ],
                     },
                   },
                 ],
@@ -219,12 +225,15 @@ describe("Sweetscape Importer", () => {
             name: "FSeek",
             arguments: [
               {
-                type: "primaryExpression",
+                type: "qualifiedExpression",
                 expression: {
                   type: "identifier",
                   name: "NtHeader",
-                  // TODO: That's wrong, but that's the current output
                 },
+                selectors: [
+                  { name: "OptionalHeader", type: "qualifiedSelector" },
+                  { name: "SizeOfHeaders", type: "qualifiedSelector" },
+                ],
               },
             ],
           },
