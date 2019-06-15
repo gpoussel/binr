@@ -947,38 +947,42 @@ Object {
         "TOKEN": "Question",
         "content": "?",
       },
-      "expression": Object {
-        "expression1": Object {
-          "expression2": Object {
-            "expression2Rest": Object {},
-            "expression3": Object {
-              "primary": Object {
-                "number": Object {
-                  "NumberDecimalLiteral": Object {
-                    "TOKEN": "NumberDecimalLiteral",
-                    "content": "1",
+      "expression": Array [
+        Object {
+          "expression1": Object {
+            "expression2": Object {
+              "expression2Rest": Object {},
+              "expression3": Object {
+                "primary": Object {
+                  "number": Object {
+                    "NumberDecimalLiteral": Object {
+                      "TOKEN": "NumberDecimalLiteral",
+                      "content": "1",
+                    },
                   },
                 },
               },
             },
           },
         },
-      },
-      "expression1": Object {
-        "expression2": Object {
-          "expression2Rest": Object {},
-          "expression3": Object {
-            "primary": Object {
-              "number": Object {
-                "NumberDecimalLiteral": Object {
-                  "TOKEN": "NumberDecimalLiteral",
-                  "content": "0",
+        Object {
+          "expression1": Object {
+            "expression2": Object {
+              "expression2Rest": Object {},
+              "expression3": Object {
+                "primary": Object {
+                  "number": Object {
+                    "NumberDecimalLiteral": Object {
+                      "TOKEN": "NumberDecimalLiteral",
+                      "content": "0",
+                    },
+                  },
                 },
               },
             },
           },
         },
-      },
+      ],
     },
     "expression2": Object {
       "expression2Rest": Object {},

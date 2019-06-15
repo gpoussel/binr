@@ -354,6 +354,9 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.SemiColon);
     });
 
+    /**
+     * Level 1 precedence: assignments
+     */
     $.RULE("expression", () => {
       $.SUBRULE($.expression1);
       $.MANY(() => {
@@ -362,6 +365,9 @@ class SweetscapeParser extends Parser {
       });
     });
 
+    /**
+     * Level 2 precedence: ternary
+     */
     $.RULE("expression1", () => {
       $.SUBRULE($.expression2);
       $.OPTION(() => $.SUBRULE($.expression1Rest));
@@ -371,7 +377,7 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.Question);
       $.SUBRULE($.expression);
       $.CONSUME(tokens.Colon);
-      $.SUBRULE($.expression1);
+      $.SUBRULE2($.expression);
     });
 
     $.RULE("expression2", () => {
