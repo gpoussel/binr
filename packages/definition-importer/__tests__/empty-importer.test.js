@@ -1,7 +1,6 @@
 "use strict";
 
-const _ = require("lodash");
-const Importer = require('../lib/importer');
+const Importer = require("../lib/importer");
 
 /**
  * This test only exists to reach a maximum line coverage on the code.
@@ -24,15 +23,15 @@ describe("Default Importer", () => {
     const importer = new Importer();
     expect(() => importer.readInput("")).toThrow(/lexer/i);
     importer.getLexer = () => ({
-      tokenize: () => []
+      tokenize: () => [],
     });
     expect(() => importer.readInput("")).toThrow(/parser/i);
     importer.getParser = () => ({
-      definition: () => ({})
+      definition: () => ({}),
     });
     expect(() => importer.readInput("")).toThrow(/visitor/i);
     importer.getVisitor = () => ({
-      visit: () => ({})
+      visit: () => ({}),
     });
     expect(() => importer.readInput("")).toThrow(/build/i);
     importer.build = input => input;
@@ -43,16 +42,18 @@ describe("Default Importer", () => {
     const importer = new Importer();
     importer.getLexer = () => ({
       tokenize: () => ({
-        errors: [{
-          message: "test error"
-        }]
+        errors: [
+          {
+            message: "test error",
+          },
+        ],
       }),
     });
     importer.getParser = () => ({
-      definition: () => ({})
+      definition: () => ({}),
     });
     importer.getVisitor = () => ({
-      visit: () => ({})
+      visit: () => ({}),
     });
     importer.build = input => input;
     expect(() => importer.readInput("")).toThrow(/test error/i);
@@ -61,20 +62,22 @@ describe("Default Importer", () => {
   test("check parser errors", () => {
     const importer = new Importer();
     importer.getLexer = () => ({
-      tokenize: () => []
+      tokenize: () => [],
     });
     importer.getParser = () => ({
       definition: () => ({}),
-      errors: [{
-        token: {
-          startLine: 1,
-          startColumn: 1,
-          image: "foo",
+      errors: [
+        {
+          token: {
+            startLine: 1,
+            startColumn: 1,
+            image: "foo",
+          },
+          name: "ParserError",
+          message: "test error",
         },
-        name: "ParserError",
-        message: "test error"
-      }]
+      ],
     });
     expect(() => importer.readInput("")).toThrow(/test error/i);
-  })
+  });
 });

@@ -1,6 +1,5 @@
 "use strict";
 
-const _ = require("lodash");
 const Importer = require("../importer");
 const { SweetscapeLexer } = require("./sweetscape-lexer");
 const SweetscapeParser = require("./sweetscape-parser");

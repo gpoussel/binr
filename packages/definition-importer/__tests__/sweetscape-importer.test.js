@@ -1,6 +1,5 @@
 "use strict";
 
-const _ = require("lodash");
 const SweetscapeImporter = require("../lib/sweetscape/sweetscape-importer");
 const { iterateStructures } = require("./utils/010-structures");
 
