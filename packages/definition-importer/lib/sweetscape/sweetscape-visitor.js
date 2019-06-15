@@ -196,12 +196,17 @@ function getVisitor(parser) {
       _.each(ctx.variableModifier, modifier => {
         _.assign(result, this.visit(modifier));
       });
-      // TODO bitfieldRest
+      if (_.has(ctx, "bitfieldRest")) {
+        result.bits = this.visit(ctx.bitfieldRest);
+      }
       if (_.has(ctx, "variableModifiers")) {
         result.modifiers = _.map(ctx.variableModifier, this.visit.bind(this));
       }
       if (_.has(ctx, "variableDeclarators")) {
         result.declarations = this.visit(ctx.variableDeclarators);
+      }
+      if (_.has(ctx, "annotations")) {
+        result.annotations = this.visit(ctx.annotations);
       }
       return result;
     }
@@ -302,7 +307,9 @@ function getVisitor(parser) {
       if (_.has(ctx, "variableDeclaratorRest")) {
         _.assign(result, this.visit(ctx.variableDeclaratorRest));
       }
-      // TODO bitfieldRest
+      if (_.has(ctx, "bitfieldRest")) {
+        result.bits = this.visit(ctx.bitfieldRest);
+      }
       return result;
     }
 
@@ -404,18 +411,22 @@ function getVisitor(parser) {
       const result = this.visit(ctx.expression3);
       if (_.has(ctx, "expression2Rest")) {
         const otherExpressions = this.visit(ctx.expression2Rest);
-        let currentExpression = result;
-        for (let i = 0; i < otherExpressions.length; i += 1) {
-          currentExpression = {
-            type: "binaryExpression",
-            left: currentExpression,
-            right: otherExpressions[i].expression,
-            operator: otherExpressions[i].operator,
-          };
-        }
-        return currentExpression;
+        return this.createBinaryExpressions(result, otherExpressions);
       }
       return result;
+    }
+
+    createBinaryExpressions(initialExpression, otherExpressions) {
+      let currentExpression = initialExpression;
+      for (let i = 0; i < otherExpressions.length; i += 1) {
+        currentExpression = {
+          type: "binaryExpression",
+          left: currentExpression,
+          right: otherExpressions[i].expression,
+          operator: otherExpressions[i].operator,
+        };
+      }
+      return currentExpression;
     }
 
     expression3(ctx) {
@@ -561,7 +572,17 @@ function getVisitor(parser) {
     }
 
     bitfieldRest(ctx) {
-      // TODO bitfieldRest
+      if (_.has(ctx, "number")) {
+        return this.visit(ctx.number);
+      }
+      const identifierResult = {
+        type: "identifier",
+        name: this.getIdentifier(ctx.Identifier),
+      };
+      if (_.has(ctx, "expression2Rest")) {
+        return this.createBinaryExpressions(identifierResult, [this.visit(ctx.expression2Rest)]);
+      }
+      return identifierResult;
     }
 
     enumDeclaration(ctx) {

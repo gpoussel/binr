@@ -112,9 +112,7 @@ class SweetscapeParser extends Parser {
         {
           ALT: () => {
             $.CONSUME(tokens.Identifier);
-            $.OPTION(() => {
-              $.SUBRULE($.expression2Rest);
-            });
+            $.OPTION(() => $.SUBRULE($.expression2Rest));
           },
         },
       ]);

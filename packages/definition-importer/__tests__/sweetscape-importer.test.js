@@ -373,6 +373,226 @@ describe("Sweetscape Importer", () => {
           ],
         });
 
+        const structWithBitsetDeclaration = content[4];
+        expect(structWithBitsetDeclaration).toEqual({
+          type: "structDeclaration",
+          declaration: {
+            body: {
+              type: "statementList",
+              statements: [
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x0001  Relocation info stripped from file" }],
+                      name: "IMAGE_FILE_RELOCS_STRIPPED",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x0002  File is executable" }],
+                      name: "IMAGE_FILE_EXECUTABLE_IMAGE",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x0004  Line nunbers stripped from file" }],
+                      name: "IMAGE_FILE_LINE_NUMS_STRIPPED",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x0008  Local symbols stripped from file" }],
+                      name: "IMAGE_FILE_LOCAL_SYMS_STRIPPED",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x0010  Agressively trim working set" }],
+                      name: "IMAGE_FILE_AGGRESIVE_WS_TRIM",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x0020  App can handle >2gb addresses" }],
+                      name: "IMAGE_FILE_LARGE_ADDRESS_AWARE",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [
+                    { key: "comment", value: "0x0040  Reserved" },
+                    { key: "hidden", value: "true" },
+                  ],
+                  bits: 1,
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x0080  Bytes of machine word are reversed" }],
+                      name: "IMAGE_FILE_BYTES_REVERSED_LO",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x0100  32 bit word machine" }],
+                      name: "IMAGE_FILE_32BIT_MACHINE",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [
+                        { key: "comment", value: "0x0200  Debugging info stripped from file in .DBG file" },
+                      ],
+                      name: "IMAGE_FILE_DEBUG_STRIPPED",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [
+                        {
+                          key: "comment",
+                          value: "0x0400  If Image is on removable media, copy and run from the swap file",
+                        },
+                      ],
+                      name: "IMAGE_FILE_REMOVABLE_RUN_FROM_SWAP",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [
+                        {
+                          key: "comment",
+                          value: "0x0800  If Image is on Net, copy and run from the swap file",
+                        },
+                      ],
+                      name: "IMAGE_FILE_NET_RUN_FROM_SWAP",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x1000  System File" }],
+                      name: "IMAGE_FILE_SYSTEM",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x2000  File is a DLL" }],
+                      name: "IMAGE_FILE_DLL",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [
+                        { key: "comment", value: "0x4000  File should only be run on a UP machine" },
+                      ],
+                      name: "IMAGE_FILE_UP_SYSTEM_ONLY",
+                      bits: 1,
+                    },
+                  ],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { array: false, name: "WORD" },
+                  annotations: [],
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "0x8000  Bytes of machine word are reversed" }],
+                      name: "IMAGE_FILE_BYTES_REVERSED_HI",
+                      bits: 1,
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+          name: {
+            // TODO Wrong!
+            name: "FILE_CHARACTERISTICS",
+            annotations: [{ key: "comment", value: "WORD" }],
+          },
+        });
+
         const functionDeclaration = content[64];
         expect(functionDeclaration).toEqual({
           type: "functionDeclaration",
