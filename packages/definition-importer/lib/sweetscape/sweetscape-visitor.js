@@ -240,7 +240,10 @@ function getVisitor(parser) {
     }
 
     emptyStructStatement(ctx) {
-      // TODO emptyStructStatement
+      return {
+        type: "structDeclaration",
+        name: this.getIdentifier(ctx.Identifier),
+      };
     }
 
     ifStatement(ctx) {
