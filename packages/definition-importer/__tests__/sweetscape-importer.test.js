@@ -354,14 +354,36 @@ describe("Sweetscape Importer", () => {
         expect(ifStatement).toEqual({
           type: "ifStatement",
           condition: {
-            type: "qualifiedExpression",
-            selectors: [
-              { name: "OptionalHeader", type: "qualifiedSelector" },
-              { name: "SizeOfHeaders", type: "qualifiedSelector" },
-            ],
-            expression: {
-              name: "NtHeader",
-              type: "identifier",
+            type: "binaryExpression",
+            operator: ">",
+            left: {
+              type: "binaryExpression",
+              operator: "-",
+              left: {
+                type: "qualifiedExpression",
+                selectors: [
+                  { name: "OptionalHeader", type: "qualifiedSelector" },
+                  { name: "SizeOfHeaders", type: "qualifiedSelector" },
+                ],
+                expression: {
+                  name: "NtHeader",
+                  type: "identifier",
+                },
+              },
+              right: {
+                type: "primaryExpression",
+                expression: {
+                  type: "identifier",
+                  name: "ulRawHeaderSize",
+                },
+              },
+            },
+            right: {
+              type: "primaryExpression",
+              expression: {
+                type: "number",
+                value: 0,
+              },
             },
           },
           trueStatement: {
@@ -382,20 +404,30 @@ describe("Sweetscape Importer", () => {
                       { key: "comment", value: "Space between header and first section" },
                     ],
                     arraySelector: {
-                      type: "qualifiedExpression",
-                      expression: {
-                        type: "identifier",
-                        name: "NtHeader",
+                      type: "binaryExpression",
+                      operator: "-",
+                      left: {
+                        type: "qualifiedExpression",
+                        expression: {
+                          type: "identifier",
+                          name: "NtHeader",
+                        },
+                        selectors: [
+                          { name: "OptionalHeader", type: "qualifiedSelector" },
+                          { name: "SizeOfHeaders", type: "qualifiedSelector" },
+                        ],
                       },
-                      selectors: [
-                        { name: "OptionalHeader", type: "qualifiedSelector" },
-                        { name: "SizeOfHeaders", type: "qualifiedSelector" },
-                      ],
+                      right: {
+                        type: "primaryExpression",
+                        expression: {
+                          type: "identifier",
+                          name: "ulRawHeaderSize",
+                        },
+                      },
                     },
                   },
                 ],
                 annotations: [],
-                // TODO Missing comments
               },
             ],
           },

@@ -336,13 +336,12 @@ function getVisitor(parser) {
       if (_.size(ctx.expression1) > 1) {
         const operators = _.map(ctx.assignmentOperator, this.visit.bind(this));
         const expressions = _.map(ctx.expression1, this.visit.bind(this));
-        const lastExpression = _.last(expressions);
-        let currentExpression = lastExpression;
-        for (let i = expressions.length - 1; i > 0; i -= 1) {
+        let currentExpression = _.first(expressions);
+        for (let i = 1; i < expressions.length; i += 1) {
           currentExpression = {
             type: "binaryExpression",
-            left: expressions[i],
-            right: currentExpression,
+            left: currentExpression,
+            right: expressions[i - 1],
             operator: operators[i - 1],
           };
         }
@@ -395,7 +394,17 @@ function getVisitor(parser) {
     expression2(ctx) {
       const result = this.visit(ctx.expression3);
       if (_.has(ctx, "expression2Rest")) {
-        // TODO expression2Rest
+        const otherExpressions = this.visit(ctx.expression2Rest);
+        let currentExpression = result;
+        for (let i = 0; i < otherExpressions.length; i += 1) {
+          currentExpression = {
+            type: "binaryExpression",
+            left: currentExpression,
+            right: otherExpressions[i].expression,
+            operator: otherExpressions[i].operator,
+          };
+        }
+        return currentExpression;
       }
       return result;
     }
@@ -555,7 +564,10 @@ function getVisitor(parser) {
     }
 
     expression2Rest(ctx) {
-      // TODO expression2Rest
+      return _.map(ctx.infixOperator, (operator, index) => ({
+        operator: this.visit(operator),
+        expression: this.visit(ctx.expression3[index]),
+      }));
     }
 
     forInitUpdate(ctx) {
