@@ -200,17 +200,19 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.Less);
       $.MANY_SEP({
         SEP: tokens.Comma,
-        DEF: () => {
-          $.CONSUME(tokens.Identifier); // Key
-          $.CONSUME(tokens.Equals);
-          $.OR([
-            { ALT: () => $.CONSUME2(tokens.Identifier) },
-            { ALT: () => $.CONSUME(tokens.StringLiteral) },
-            { ALT: () => $.SUBRULE($.number) },
-          ]);
-        },
+        DEF: () => $.SUBRULE($.annotation),
       });
       $.CONSUME(tokens.Greater);
+    });
+
+    $.RULE("annotation", () => {
+      $.CONSUME(tokens.Identifier); // Key
+      $.CONSUME(tokens.Equals);
+      $.OR([
+        { ALT: () => $.CONSUME2(tokens.Identifier) },
+        { ALT: () => $.CONSUME(tokens.StringLiteral) },
+        { ALT: () => $.SUBRULE($.number) },
+      ]);
     });
 
     $.RULE("ifStatement", () => {

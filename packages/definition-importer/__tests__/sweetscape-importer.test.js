@@ -25,6 +25,7 @@ describe("Sweetscape Importer", () => {
             array: false, // TODO That's wrong
           },
           alias: "ULONGLONG",
+          annotations: [],
         });
 
         const structDeclaration = content[1];
@@ -33,6 +34,7 @@ describe("Sweetscape Importer", () => {
           name: {
             // TODO Weird?
             name: "IMAGE_DOS_HEADER",
+            annotations: [],
           },
           declaration: undefined, // TODO Obviously wrong
         });
@@ -66,6 +68,7 @@ describe("Sweetscape Importer", () => {
                   array: false,
                 },
                 declarations: [], // TODO That's wrong
+                annotations: [],
               },
               {
                 type: "primaryExpression",
@@ -120,6 +123,7 @@ describe("Sweetscape Importer", () => {
             array: false,
           },
           declarations: [], // TODO That's wrong
+          annotations: [],
           // TODO Missing "local"
         });
 
@@ -144,6 +148,7 @@ describe("Sweetscape Importer", () => {
                   name: "UCHAR",
                 },
                 declarations: [], // TODO That's wrong
+                annotations: [],
                 // TODO Missing comments
               },
             ],

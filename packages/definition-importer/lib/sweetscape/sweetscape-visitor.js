@@ -191,10 +191,10 @@ function getVisitor(parser) {
       const result = {
         type: "variableDeclaration",
         variableType: this.visit(ctx.typeName),
+        annotations: _.has(ctx.annotations) ? this.visit(ctx.annotations) : [],
       };
       // TODO "local"
       // TODO bitfieldRest
-      // TODO annotations
       if (_.has(ctx, "variableModifiers")) {
         result.modifiers = _.map(ctx.variableModifier, this.visit.bind(this));
       }
@@ -217,6 +217,7 @@ function getVisitor(parser) {
         type: "typeAlias",
         name: this.visit(ctx.typeName),
         alias: this.getIdentifier(ctx.Identifier),
+        annotations: _.has(ctx.annotations) ? this.visit(ctx.annotations) : [],
       };
     }
 
@@ -276,12 +277,12 @@ function getVisitor(parser) {
     variableDeclarator(ctx) {
       const result = {
         name: this.getIdentifier(ctx.Identifier),
+        annotations: _.has(ctx.annotations) ? this.visit(ctx.annotations) : [],
       };
       if (_.has(ctx, "variableDeclaratorRest")) {
         _.assign(result, this.visit(ctx.variableDeclaratorRest));
       }
       // TODO bitfieldRest
-      // TODO annotations
       return result;
     }
 
@@ -465,7 +466,30 @@ function getVisitor(parser) {
     }
 
     annotations(ctx) {
-      // TODO annotations
+      return _.map(ctx.annotation, this.visit.bind(this));
+    }
+
+    annotation(ctx) {
+      const key = this.getIdentifier(ctx.Identifier);
+      if (_.has(ctx, "StringLiteral")) {
+        return {
+          key,
+          value: this.getString(ctx.StringLiteral),
+        };
+      }
+      if (_.has(ctx, "number")) {
+        return {
+          key,
+          value: this.visit(ctx.number),
+        };
+      }
+      if (_.size(ctx, "Identifier") > 1) {
+        return {
+          key,
+          value: this.getIdentifier([_.last(ctx.Identifier)]),
+        };
+      }
+      throw new Error();
     }
 
     arrayInitializer(ctx) {
