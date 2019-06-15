@@ -2,7 +2,7 @@
 
 const _ = require("lodash");
 const chevrotain = require("chevrotain");
-const tokens = require("./sweetscape-tokens");
+const { tokens } = require("./sweetscape-tokens");
 
 const { Lexer } = chevrotain;
 
@@ -13,4 +13,4 @@ class SweetscapeLexer extends Lexer {
     });
   }
 }
-module.exports = { SweetscapeLexer, tokens };
+module.exports = { SweetscapeLexer };

@@ -2,7 +2,7 @@
 
 const _ = require("lodash");
 const chevrotain = require("chevrotain");
-const { tokens } = require("./sweetscape-lexer");
+const { tokens } = require("./sweetscape-tokens");
 
 const { Parser } = chevrotain;
 
