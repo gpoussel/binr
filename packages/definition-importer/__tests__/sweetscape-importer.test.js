@@ -852,4 +852,89 @@ describe("Sweetscape Importer", () => {
       name => name === "EXE.bt"
     );
   });
+
+  test("creates DEX definition", done => {
+    iterateStructures(
+      (name, input) => {
+        const definition = importer.readInput(input);
+        expect(definition).toBeDefined();
+        expect(definition.type).toEqual("definition");
+        const { content } = definition;
+
+        expect(content).toHaveLength(155);
+        const functionDeclaration = content[9];
+        expect(functionDeclaration).toEqual({
+          type: "functionDeclaration",
+          forwardDeclaration: false,
+          name: "uleb128p1_value",
+          parameters: [
+            {
+              type: {
+                name: "uleb128",
+                array: false,
+              },
+              name: "u",
+              reference: true,
+            },
+          ],
+          returnType: {
+            name: "int",
+            array: false,
+          },
+          content: {
+            type: "statementList",
+            statements: [
+              {
+                type: "returnStatement",
+                expression: {
+                  type: "primaryExpression",
+                  expression: {
+                    type: "castExpression",
+                    typeName: {
+                      type: "primaryExpression",
+                      expression: {
+                        type: "identifier",
+                        name: "int",
+                      },
+                    },
+                    // TODO The operator priority is wrong, the cast shall not be applied
+                    // to the whole expression
+                    expression: {
+                      type: "binaryExpression",
+                      operator: "-",
+                      left: {
+                        type: "primaryExpression",
+                        expression: {
+                          type: "functionCall",
+                          name: "uleb128_value",
+                          arguments: [
+                            {
+                              type: "primaryExpression",
+                              expression: {
+                                type: "identifier",
+                                name: "u",
+                              },
+                            },
+                          ],
+                        },
+                      },
+                      right: {
+                        type: "primaryExpression",
+                        expression: {
+                          type: "number",
+                          value: 1,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            ],
+          },
+        });
+      },
+      done,
+      name => name === "DEX.bt"
+    );
+  });
 });

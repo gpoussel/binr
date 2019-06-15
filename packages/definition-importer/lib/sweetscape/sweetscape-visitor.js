@@ -352,16 +352,13 @@ function getVisitor(parser) {
       if (_.size(ctx.expression1) > 1) {
         const operators = _.map(ctx.assignmentOperator, this.visit.bind(this));
         const expressions = _.map(ctx.expression1, this.visit.bind(this));
-        let currentExpression = _.first(expressions);
-        for (let i = 1; i < expressions.length; i += 1) {
-          currentExpression = {
-            type: "binaryExpression",
-            left: currentExpression,
-            right: expressions[i - 1],
-            operator: operators[i - 1],
-          };
-        }
-        return currentExpression;
+        return this.createBinaryExpressions(
+          _.first(expressions),
+          _.times(operators.length - 1, i => ({
+            operator: operators[i],
+            expression: expressions[i],
+          }))
+        );
       }
       return this.visit(_.first(ctx.expression1));
     }
@@ -470,6 +467,7 @@ function getVisitor(parser) {
           expression: this.visit(ctx.primary),
         };
       }
+      throw new Error();
     }
 
     primary(ctx) {
@@ -499,7 +497,10 @@ function getVisitor(parser) {
           value: this.visit(ctx.number),
         };
       }
-      // TODO parExpressionOrCastExpression
+      if (_.has(ctx, "parExpressionOrCastExpression")) {
+        return this.visit(ctx.parExpressionOrCastExpression);
+      }
+      throw new Error();
     }
 
     number(ctx) {
@@ -611,7 +612,26 @@ function getVisitor(parser) {
     }
 
     parExpressionOrCastExpression(ctx) {
-      // TODO parExpressionOrCastExpression
+      const firstExpression = this.visit(ctx.expressionOrTypeName);
+      if (_.has(ctx, "infixOperator")) {
+        // That's not a cast
+        return this.createBinaryExpressions(
+          firstExpression,
+          _.concat([
+            {
+              operator: this.visit(ctx.infixOperator),
+              expression: this.visit(ctx.expression),
+            },
+            this.visit(ctx.expression2Rest),
+          ])
+        );
+      }
+      // That's a cast
+      return {
+        type: "castExpression",
+        typeName: firstExpression,
+        expression: this.visit(ctx.expression),
+      };
     }
 
     selector(ctx) {
