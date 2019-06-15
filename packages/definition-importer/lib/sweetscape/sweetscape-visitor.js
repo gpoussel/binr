@@ -385,23 +385,15 @@ function getVisitor(parser) {
 
     ternaryExpression(ctx) {
       const result = this.visit(ctx.expression2);
-      if (_.has(ctx, "ternaryExpressionRest")) {
-        const ternaryCondition = this.visit(ctx.ternaryExpressionRest);
+      if (_.has(ctx, "assignmentExpression")) {
         return {
           type: "ternaryExpression",
           condition: result,
-          trueStatement: ternaryCondition.trueStatement,
-          falseStatement: ternaryCondition.falseStatement,
+          trueStatement: this.visit(_.first(ctx.assignmentExpression)),
+          falseStatement: this.visit(_.last(ctx.assignmentExpression)),
         };
       }
       return result;
-    }
-
-    ternaryExpressionRest(ctx) {
-      return {
-        trueStatement: this.visit(ctx.assignmentExpression),
-        falseStatement: this.visit(ctx.ternaryExpression),
-      };
     }
 
     expression2(ctx) {

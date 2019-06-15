@@ -938,6 +938,50 @@ Object {
 exports[`Sweetscape Parser parses expression (ternary) 1`] = `
 Object {
   "ternaryExpression": Object {
+    "Colon": Object {
+      "TOKEN": "Colon",
+      "content": ":",
+    },
+    "Question": Object {
+      "TOKEN": "Question",
+      "content": "?",
+    },
+    "assignmentExpression": Array [
+      Object {
+        "ternaryExpression": Object {
+          "expression2": Object {
+            "expression2Rest": Object {},
+            "expression3": Object {
+              "primary": Object {
+                "number": Object {
+                  "NumberDecimalLiteral": Object {
+                    "TOKEN": "NumberDecimalLiteral",
+                    "content": "1",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      Object {
+        "ternaryExpression": Object {
+          "expression2": Object {
+            "expression2Rest": Object {},
+            "expression3": Object {
+              "primary": Object {
+                "number": Object {
+                  "NumberDecimalLiteral": Object {
+                    "TOKEN": "NumberDecimalLiteral",
+                    "content": "0",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -948,52 +992,6 @@ Object {
           },
         },
       },
-    },
-    "ternaryExpressionRest": Object {
-      "Colon": Object {
-        "TOKEN": "Colon",
-        "content": ":",
-      },
-      "Question": Object {
-        "TOKEN": "Question",
-        "content": "?",
-      },
-      "assignmentExpression": Array [
-        Object {
-          "ternaryExpression": Object {
-            "expression2": Object {
-              "expression2Rest": Object {},
-              "expression3": Object {
-                "primary": Object {
-                  "number": Object {
-                    "NumberDecimalLiteral": Object {
-                      "TOKEN": "NumberDecimalLiteral",
-                      "content": "1",
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-        Object {
-          "ternaryExpression": Object {
-            "expression2": Object {
-              "expression2Rest": Object {},
-              "expression3": Object {
-                "primary": Object {
-                  "number": Object {
-                    "NumberDecimalLiteral": Object {
-                      "TOKEN": "NumberDecimalLiteral",
-                      "content": "0",
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      ],
     },
   },
 }

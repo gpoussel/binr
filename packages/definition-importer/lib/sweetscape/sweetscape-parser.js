@@ -370,14 +370,12 @@ class SweetscapeParser extends Parser {
      */
     $.RULE("ternaryExpression", () => {
       $.SUBRULE($.expression2);
-      $.OPTION(() => $.SUBRULE($.ternaryExpressionRest));
-    });
-
-    $.RULE("ternaryExpressionRest", () => {
-      $.CONSUME(tokens.Question);
-      $.SUBRULE($.assignmentExpression);
-      $.CONSUME(tokens.Colon);
-      $.SUBRULE2($.assignmentExpression);
+      $.OPTION(() => {
+        $.CONSUME(tokens.Question);
+        $.SUBRULE($.assignmentExpression);
+        $.CONSUME(tokens.Colon);
+        $.SUBRULE2($.assignmentExpression);
+      });
     });
 
     /**
