@@ -384,7 +384,7 @@ function getVisitor(parser) {
     }
 
     ternaryExpression(ctx) {
-      const result = this.visit(ctx.expression2);
+      const result = this.visit(ctx.logicalOrExpression);
       if (_.has(ctx, "assignmentExpression")) {
         return {
           type: "ternaryExpression",
@@ -396,10 +396,10 @@ function getVisitor(parser) {
       return result;
     }
 
-    expression2(ctx) {
+    logicalOrExpression(ctx) {
       const result = this.visit(ctx.expression3);
-      if (_.has(ctx, "expression2Rest")) {
-        const otherExpressions = this.visit(ctx.expression2Rest);
+      if (_.has(ctx, "logicalOrExpressionRest")) {
+        const otherExpressions = this.visit(ctx.logicalOrExpressionRest);
         return this.createBinaryExpressions(result, otherExpressions);
       }
       return result;
@@ -565,17 +565,7 @@ function getVisitor(parser) {
     }
 
     bitfieldRest(ctx) {
-      if (_.has(ctx, "number")) {
-        return this.visit(ctx.number);
-      }
-      const identifierResult = {
-        type: "identifier",
-        name: this.getIdentifier(ctx.Identifier),
-      };
-      if (_.has(ctx, "expression2Rest")) {
-        return this.createBinaryExpressions(identifierResult, [this.visit(ctx.expression2Rest)]);
-      }
-      return identifierResult;
+      return this.visit(ctx.additiveExpression);
     }
 
     enumDeclaration(ctx) {
@@ -592,7 +582,7 @@ function getVisitor(parser) {
       return result;
     }
 
-    expression2Rest(ctx) {
+    logicalOrExpressionRest(ctx) {
       return _.map(ctx.infixOperator, (operator, index) => ({
         operator: this.visit(operator),
         expression: this.visit(ctx.expression3[index]),
@@ -614,7 +604,7 @@ function getVisitor(parser) {
               operator: this.visit(ctx.infixOperator),
               expression: this.visit(ctx.assignmentExpression),
             },
-            this.visit(ctx.expression2Rest),
+            this.visit(ctx.logicalOrExpressionRest),
           ])
         );
       }

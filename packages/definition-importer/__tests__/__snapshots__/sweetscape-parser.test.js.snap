@@ -3,65 +3,117 @@
 exports[`Sweetscape Parser parses complex expression (operator priority with cast) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "parExpressionOrCastExpression": Object {
-            "ParenthesisClose": Object {
-              "TOKEN": "ParenthesisClose",
-              "content": ")",
-            },
-            "ParenthesisOpen": Object {
-              "TOKEN": "ParenthesisOpen",
-              "content": "(",
-            },
-            "assignmentExpression": Object {
-              "ternaryExpression": Object {
-                "expression2": Object {
-                  "expression2Rest": Object {
-                    "expression3": Object {
-                      "primary": Object {
-                        "number": Object {
-                          "NumberDecimalLiteral": Object {
-                            "TOKEN": "NumberDecimalLiteral",
-                            "content": "1",
-                          },
-                        },
-                      },
-                    },
-                    "infixOperator": Object {
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
                       "Plus": Object {
                         "TOKEN": "Plus",
                         "content": "+",
                       },
-                    },
-                  },
-                  "expression3": Object {
-                    "primary": Object {
-                      "Identifier": Object {
-                        "TOKEN": "Identifier",
-                        "content": "fn",
-                      },
-                      "identifierSuffix": Object {
-                        "arguments": Object {
-                          "ParenthesisClose": Object {
-                            "TOKEN": "ParenthesisClose",
-                            "content": ")",
+                      "multiplicativeExpression": Array [
+                        Object {
+                          "castExpression": Object {
+                            "castOperation": Object {
+                              "ParenthesisClose": Object {
+                                "TOKEN": "ParenthesisClose",
+                                "content": ")",
+                              },
+                              "ParenthesisOpen": Object {
+                                "TOKEN": "ParenthesisOpen",
+                                "content": "(",
+                              },
+                              "prefixExpression": Object {
+                                "postfixExpression": Object {
+                                  "callExpression": Object {
+                                    "arguments": Object {
+                                      "ParenthesisClose": Object {
+                                        "TOKEN": "ParenthesisClose",
+                                        "content": ")",
+                                      },
+                                      "ParenthesisOpen": Object {
+                                        "TOKEN": "ParenthesisOpen",
+                                        "content": "(",
+                                      },
+                                      "assignmentExpression": Object {
+                                        "ternaryExpression": Object {
+                                          "booleanOrExpression": Object {
+                                            "booleanAndExpression": Object {
+                                              "binaryOrExpression": Object {
+                                                "binaryXorExpression": Object {
+                                                  "binaryAndExpression": Object {
+                                                    "equalityExpression": Object {
+                                                      "relationalExpression": Object {
+                                                        "shiftExpression": Object {
+                                                          "additiveExpression": Object {
+                                                            "multiplicativeExpression": Object {
+                                                              "castExpression": Object {
+                                                                "prefixExpression": Object {
+                                                                  "postfixExpression": Object {
+                                                                    "callExpression": Object {
+                                                                      "memberExpression": Object {
+                                                                        "primaryExpression": Object {
+                                                                          "Identifier": Object {
+                                                                            "TOKEN": "Identifier",
+                                                                            "content": "a",
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              },
+                                                            },
+                                                          },
+                                                        },
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
+                                    "memberExpression": Object {
+                                      "primaryExpression": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "fn",
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                              "typeNameWithoutVoid": Object {
+                                "Identifier": Object {
+                                  "TOKEN": "Identifier",
+                                  "content": "int",
+                                },
+                              },
+                            },
                           },
-                          "ParenthesisOpen": Object {
-                            "TOKEN": "ParenthesisOpen",
-                            "content": "(",
-                          },
-                          "assignmentExpression": Object {
-                            "ternaryExpression": Object {
-                              "expression2": Object {
-                                "expression2Rest": Object {},
-                                "expression3": Object {
-                                  "primary": Object {
-                                    "Identifier": Object {
-                                      "TOKEN": "Identifier",
-                                      "content": "a",
+                        },
+                        Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "number": Object {
+                                        "NumberDecimalLiteral": Object {
+                                          "TOKEN": "NumberDecimalLiteral",
+                                          "content": "1",
+                                        },
+                                      },
                                     },
                                   },
                                 },
@@ -69,24 +121,7 @@ Object {
                             },
                           },
                         },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-            "expressionOrTypeName": Object {
-              "assignmentExpression": Object {
-                "ternaryExpression": Object {
-                  "expression2": Object {
-                    "expression2Rest": Object {},
-                    "expression3": Object {
-                      "primary": Object {
-                        "Identifier": Object {
-                          "TOKEN": "Identifier",
-                          "content": "int",
-                        },
-                      },
+                      ],
                     },
                   },
                 },
@@ -103,75 +138,131 @@ Object {
 exports[`Sweetscape Parser parses complex expression (operator priority with parenthesis and cast) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "parExpressionOrCastExpression": Object {
-            "ParenthesisClose": Object {
-              "TOKEN": "ParenthesisClose",
-              "content": ")",
-            },
-            "ParenthesisOpen": Object {
-              "TOKEN": "ParenthesisOpen",
-              "content": "(",
-            },
-            "assignmentExpression": Object {
-              "ternaryExpression": Object {
-                "expression2": Object {
-                  "expression2Rest": Object {},
-                  "expression3": Object {
-                    "primary": Object {
-                      "parExpressionOrCastExpression": Object {
-                        "ParenthesisClose": Object {
-                          "TOKEN": "ParenthesisClose",
-                          "content": ")",
-                        },
-                        "ParenthesisOpen": Object {
-                          "TOKEN": "ParenthesisOpen",
-                          "content": "(",
-                        },
-                        "assignmentExpression": Object {
-                          "ternaryExpression": Object {
-                            "expression2": Object {
-                              "expression2Rest": Object {},
-                              "expression3": Object {
-                                "primary": Object {
-                                  "Identifier": Object {
-                                    "TOKEN": "Identifier",
-                                    "content": "c",
-                                  },
-                                },
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "Plus": Object {
+                        "TOKEN": "Plus",
+                        "content": "+",
+                      },
+                      "multiplicativeExpression": Array [
+                        Object {
+                          "castExpression": Object {
+                            "castOperation": Object {
+                              "ParenthesisClose": Object {
+                                "TOKEN": "ParenthesisClose",
+                                "content": ")",
                               },
-                            },
-                          },
-                        },
-                        "expression2Rest": Object {},
-                        "expressionOrTypeName": Object {
-                          "assignmentExpression": Object {
-                            "ternaryExpression": Object {
-                              "expression2": Object {
-                                "expression2Rest": Object {
-                                  "expression3": Object {
-                                    "primary": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "b",
+                              "ParenthesisOpen": Object {
+                                "TOKEN": "ParenthesisOpen",
+                                "content": "(",
+                              },
+                              "prefixExpression": Object {
+                                "postfixExpression": Object {
+                                  "callExpression": Object {
+                                    "memberExpression": Object {
+                                      "primaryExpression": Object {
+                                        "ParenthesisClose": Object {
+                                          "TOKEN": "ParenthesisClose",
+                                          "content": ")",
+                                        },
+                                        "ParenthesisOpen": Object {
+                                          "TOKEN": "ParenthesisOpen",
+                                          "content": "(",
+                                        },
+                                        "assignmentExpression": Object {
+                                          "ternaryExpression": Object {
+                                            "booleanOrExpression": Object {
+                                              "booleanAndExpression": Object {
+                                                "binaryOrExpression": Object {
+                                                  "binaryXorExpression": Object {
+                                                    "binaryAndExpression": Object {
+                                                      "equalityExpression": Object {
+                                                        "relationalExpression": Object {
+                                                          "shiftExpression": Object {
+                                                            "additiveExpression": Object {
+                                                              "multiplicativeExpression": Object {
+                                                                "Multiplication": Object {
+                                                                  "TOKEN": "Multiplication",
+                                                                  "content": "*",
+                                                                },
+                                                                "castExpression": Array [
+                                                                  Object {
+                                                                    "prefixExpression": Object {
+                                                                      "postfixExpression": Object {
+                                                                        "callExpression": Object {
+                                                                          "memberExpression": Object {
+                                                                            "primaryExpression": Object {
+                                                                              "Identifier": Object {
+                                                                                "TOKEN": "Identifier",
+                                                                                "content": "a",
+                                                                              },
+                                                                            },
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                  Object {
+                                                                    "prefixExpression": Object {
+                                                                      "postfixExpression": Object {
+                                                                        "callExpression": Object {
+                                                                          "memberExpression": Object {
+                                                                            "primaryExpression": Object {
+                                                                              "Identifier": Object {
+                                                                                "TOKEN": "Identifier",
+                                                                                "content": "b",
+                                                                              },
+                                                                            },
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                ],
+                                                              },
+                                                            },
+                                                          },
+                                                        },
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
                                       },
                                     },
                                   },
-                                  "infixOperator": Object {
-                                    "Multiplication": Object {
-                                      "TOKEN": "Multiplication",
-                                      "content": "*",
-                                    },
-                                  },
                                 },
-                                "expression3": Object {
-                                  "primary": Object {
-                                    "Identifier": Object {
-                                      "TOKEN": "Identifier",
-                                      "content": "a",
+                              },
+                              "typeNameWithoutVoid": Object {
+                                "Identifier": Object {
+                                  "TOKEN": "Identifier",
+                                  "content": "int",
+                                },
+                              },
+                            },
+                          },
+                        },
+                        Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "c",
+                                      },
                                     },
                                   },
                                 },
@@ -179,30 +270,7 @@ Object {
                             },
                           },
                         },
-                        "infixOperator": Object {
-                          "Plus": Object {
-                            "TOKEN": "Plus",
-                            "content": "+",
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-            "expressionOrTypeName": Object {
-              "assignmentExpression": Object {
-                "ternaryExpression": Object {
-                  "expression2": Object {
-                    "expression2Rest": Object {},
-                    "expression3": Object {
-                      "primary": Object {
-                        "Identifier": Object {
-                          "TOKEN": "Identifier",
-                          "content": "int",
-                        },
-                      },
+                      ],
                     },
                   },
                 },
@@ -219,71 +287,126 @@ Object {
 exports[`Sweetscape Parser parses complex expression (operator priority with parenthesis) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "parExpressionOrCastExpression": Object {
-            "ParenthesisClose": Object {
-              "TOKEN": "ParenthesisClose",
-              "content": ")",
-            },
-            "ParenthesisOpen": Object {
-              "TOKEN": "ParenthesisOpen",
-              "content": "(",
-            },
-            "assignmentExpression": Object {
-              "ternaryExpression": Object {
-                "expression2": Object {
-                  "expression2Rest": Object {},
-                  "expression3": Object {
-                    "primary": Object {
-                      "Identifier": Object {
-                        "TOKEN": "Identifier",
-                        "content": "c",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "Plus": Object {
+                        "TOKEN": "Plus",
+                        "content": "+",
                       },
-                    },
-                  },
-                },
-              },
-            },
-            "expression2Rest": Object {},
-            "expressionOrTypeName": Object {
-              "assignmentExpression": Object {
-                "ternaryExpression": Object {
-                  "expression2": Object {
-                    "expression2Rest": Object {
-                      "expression3": Object {
-                        "primary": Object {
-                          "Identifier": Object {
-                            "TOKEN": "Identifier",
-                            "content": "b",
+                      "multiplicativeExpression": Array [
+                        Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "ParenthesisClose": Object {
+                                        "TOKEN": "ParenthesisClose",
+                                        "content": ")",
+                                      },
+                                      "ParenthesisOpen": Object {
+                                        "TOKEN": "ParenthesisOpen",
+                                        "content": "(",
+                                      },
+                                      "assignmentExpression": Object {
+                                        "ternaryExpression": Object {
+                                          "booleanOrExpression": Object {
+                                            "booleanAndExpression": Object {
+                                              "binaryOrExpression": Object {
+                                                "binaryXorExpression": Object {
+                                                  "binaryAndExpression": Object {
+                                                    "equalityExpression": Object {
+                                                      "relationalExpression": Object {
+                                                        "shiftExpression": Object {
+                                                          "additiveExpression": Object {
+                                                            "multiplicativeExpression": Object {
+                                                              "Multiplication": Object {
+                                                                "TOKEN": "Multiplication",
+                                                                "content": "*",
+                                                              },
+                                                              "castExpression": Array [
+                                                                Object {
+                                                                  "prefixExpression": Object {
+                                                                    "postfixExpression": Object {
+                                                                      "callExpression": Object {
+                                                                        "memberExpression": Object {
+                                                                          "primaryExpression": Object {
+                                                                            "Identifier": Object {
+                                                                              "TOKEN": "Identifier",
+                                                                              "content": "a",
+                                                                            },
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                                Object {
+                                                                  "prefixExpression": Object {
+                                                                    "postfixExpression": Object {
+                                                                      "callExpression": Object {
+                                                                        "memberExpression": Object {
+                                                                          "primaryExpression": Object {
+                                                                            "Identifier": Object {
+                                                                              "TOKEN": "Identifier",
+                                                                              "content": "b",
+                                                                            },
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              ],
+                                                            },
+                                                          },
+                                                        },
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
                           },
                         },
-                      },
-                      "infixOperator": Object {
-                        "Multiplication": Object {
-                          "TOKEN": "Multiplication",
-                          "content": "*",
+                        Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "c",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
                         },
-                      },
-                    },
-                    "expression3": Object {
-                      "primary": Object {
-                        "Identifier": Object {
-                          "TOKEN": "Identifier",
-                          "content": "a",
-                        },
-                      },
+                      ],
                     },
                   },
                 },
-              },
-            },
-            "infixOperator": Object {
-              "Plus": Object {
-                "TOKEN": "Plus",
-                "content": "+",
               },
             },
           },
@@ -297,46 +420,84 @@ Object {
 exports[`Sweetscape Parser parses complex expression (operator priority) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {
-        "expression3": Array [
-          Object {
-            "primary": Object {
-              "Identifier": Object {
-                "TOKEN": "Identifier",
-                "content": "b",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "Plus": Object {
+                        "TOKEN": "Plus",
+                        "content": "+",
+                      },
+                      "multiplicativeExpression": Array [
+                        Object {
+                          "Multiplication": Object {
+                            "TOKEN": "Multiplication",
+                            "content": "*",
+                          },
+                          "castExpression": Array [
+                            Object {
+                              "prefixExpression": Object {
+                                "postfixExpression": Object {
+                                  "callExpression": Object {
+                                    "memberExpression": Object {
+                                      "primaryExpression": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "a",
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                            Object {
+                              "prefixExpression": Object {
+                                "postfixExpression": Object {
+                                  "callExpression": Object {
+                                    "memberExpression": Object {
+                                      "primaryExpression": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "b",
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          ],
+                        },
+                        Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "c",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  },
+                },
               },
             },
-          },
-          Object {
-            "primary": Object {
-              "Identifier": Object {
-                "TOKEN": "Identifier",
-                "content": "c",
-              },
-            },
-          },
-        ],
-        "infixOperator": Array [
-          Object {
-            "Multiplication": Object {
-              "TOKEN": "Multiplication",
-              "content": "*",
-            },
-          },
-          Object {
-            "Plus": Object {
-              "TOKEN": "Plus",
-              "content": "+",
-            },
-          },
-        ],
-      },
-      "expression3": Object {
-        "primary": Object {
-          "Identifier": Object {
-            "TOKEN": "Identifier",
-            "content": "a",
           },
         },
       },
@@ -355,26 +516,76 @@ Object {
   },
   "ternaryExpression": Array [
     Object {
-      "expression2": Object {
-        "expression2Rest": Object {},
-        "expression3": Object {
-          "primary": Object {
-            "Identifier": Object {
-              "TOKEN": "Identifier",
-              "content": "a",
+      "booleanOrExpression": Object {
+        "booleanAndExpression": Object {
+          "binaryOrExpression": Object {
+            "binaryXorExpression": Object {
+              "binaryAndExpression": Object {
+                "equalityExpression": Object {
+                  "relationalExpression": Object {
+                    "shiftExpression": Object {
+                      "additiveExpression": Object {
+                        "multiplicativeExpression": Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "a",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             },
           },
         },
       },
     },
     Object {
-      "expression2": Object {
-        "expression2Rest": Object {},
-        "expression3": Object {
-          "primary": Object {
-            "Identifier": Object {
-              "TOKEN": "Identifier",
-              "content": "b",
+      "booleanOrExpression": Object {
+        "booleanAndExpression": Object {
+          "binaryOrExpression": Object {
+            "binaryXorExpression": Object {
+              "binaryAndExpression": Object {
+                "equalityExpression": Object {
+                  "relationalExpression": Object {
+                    "shiftExpression": Object {
+                      "additiveExpression": Object {
+                        "multiplicativeExpression": Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "b",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -387,14 +598,39 @@ Object {
 exports[`Sweetscape Parser parses expression (binary number) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "number": Object {
-            "NumberBinaryLiteral": Object {
-              "TOKEN": "NumberBinaryLiteral",
-              "content": "0b10",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "number": Object {
+                                      "NumberBinaryLiteral": Object {
+                                        "TOKEN": "NumberBinaryLiteral",
+                                        "content": "0b10",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -407,44 +643,47 @@ Object {
 exports[`Sweetscape Parser parses expression (cast) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "parExpressionOrCastExpression": Object {
-            "ParenthesisClose": Object {
-              "TOKEN": "ParenthesisClose",
-              "content": ")",
-            },
-            "ParenthesisOpen": Object {
-              "TOKEN": "ParenthesisOpen",
-              "content": "(",
-            },
-            "assignmentExpression": Object {
-              "ternaryExpression": Object {
-                "expression2": Object {
-                  "expression2Rest": Object {},
-                  "expression3": Object {
-                    "primary": Object {
-                      "Identifier": Object {
-                        "TOKEN": "Identifier",
-                        "content": "b",
-                      },
-                    },
-                  },
-                },
-              },
-            },
-            "expressionOrTypeName": Object {
-              "assignmentExpression": Object {
-                "ternaryExpression": Object {
-                  "expression2": Object {
-                    "expression2Rest": Object {},
-                    "expression3": Object {
-                      "primary": Object {
-                        "Identifier": Object {
-                          "TOKEN": "Identifier",
-                          "content": "int",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "castOperation": Object {
+                            "ParenthesisClose": Object {
+                              "TOKEN": "ParenthesisClose",
+                              "content": ")",
+                            },
+                            "ParenthesisOpen": Object {
+                              "TOKEN": "ParenthesisOpen",
+                              "content": "(",
+                            },
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "b",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                            "typeNameWithoutVoid": Object {
+                              "Identifier": Object {
+                                "TOKEN": "Identifier",
+                                "content": "int",
+                              },
+                            },
+                          },
                         },
                       },
                     },
@@ -463,14 +702,39 @@ Object {
 exports[`Sweetscape Parser parses expression (decimal number) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "number": Object {
-            "NumberDecimalLiteral": Object {
-              "TOKEN": "NumberDecimalLiteral",
-              "content": "10",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "number": Object {
+                                      "NumberDecimalLiteral": Object {
+                                        "TOKEN": "NumberDecimalLiteral",
+                                        "content": "10",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -483,39 +747,129 @@ Object {
 exports[`Sweetscape Parser parses expression (function call) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "Identifier": Object {
-            "TOKEN": "Identifier",
-            "content": "a",
-          },
-          "identifierSuffix": Object {
-            "arguments": Object {
-              "Comma": Object {
-                "TOKEN": "Comma",
-                "content": ",",
-              },
-              "ParenthesisClose": Object {
-                "TOKEN": "ParenthesisClose",
-                "content": ")",
-              },
-              "ParenthesisOpen": Object {
-                "TOKEN": "ParenthesisOpen",
-                "content": "(",
-              },
-              "assignmentExpression": Array [
-                Object {
-                  "ternaryExpression": Object {
-                    "expression2": Object {
-                      "expression2Rest": Object {},
-                      "expression3": Object {
-                        "primary": Object {
-                          "number": Object {
-                            "NumberDecimalLiteral": Object {
-                              "TOKEN": "NumberDecimalLiteral",
-                              "content": "1",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "arguments": Object {
+                                  "Comma": Object {
+                                    "TOKEN": "Comma",
+                                    "content": ",",
+                                  },
+                                  "ParenthesisClose": Object {
+                                    "TOKEN": "ParenthesisClose",
+                                    "content": ")",
+                                  },
+                                  "ParenthesisOpen": Object {
+                                    "TOKEN": "ParenthesisOpen",
+                                    "content": "(",
+                                  },
+                                  "assignmentExpression": Array [
+                                    Object {
+                                      "ternaryExpression": Object {
+                                        "booleanOrExpression": Object {
+                                          "booleanAndExpression": Object {
+                                            "binaryOrExpression": Object {
+                                              "binaryXorExpression": Object {
+                                                "binaryAndExpression": Object {
+                                                  "equalityExpression": Object {
+                                                    "relationalExpression": Object {
+                                                      "shiftExpression": Object {
+                                                        "additiveExpression": Object {
+                                                          "multiplicativeExpression": Object {
+                                                            "castExpression": Object {
+                                                              "prefixExpression": Object {
+                                                                "postfixExpression": Object {
+                                                                  "callExpression": Object {
+                                                                    "memberExpression": Object {
+                                                                      "primaryExpression": Object {
+                                                                        "number": Object {
+                                                                          "NumberDecimalLiteral": Object {
+                                                                            "TOKEN": "NumberDecimalLiteral",
+                                                                            "content": "1",
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              },
+                                                            },
+                                                          },
+                                                        },
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
+                                    Object {
+                                      "ternaryExpression": Object {
+                                        "booleanOrExpression": Object {
+                                          "booleanAndExpression": Object {
+                                            "binaryOrExpression": Object {
+                                              "binaryXorExpression": Object {
+                                                "binaryAndExpression": Object {
+                                                  "equalityExpression": Object {
+                                                    "relationalExpression": Object {
+                                                      "shiftExpression": Object {
+                                                        "additiveExpression": Object {
+                                                          "multiplicativeExpression": Object {
+                                                            "castExpression": Object {
+                                                              "prefixExpression": Object {
+                                                                "postfixExpression": Object {
+                                                                  "callExpression": Object {
+                                                                    "memberExpression": Object {
+                                                                      "primaryExpression": Object {
+                                                                        "number": Object {
+                                                                          "NumberDecimalLiteral": Object {
+                                                                            "TOKEN": "NumberDecimalLiteral",
+                                                                            "content": "2",
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              },
+                                                            },
+                                                          },
+                                                        },
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
+                                  ],
+                                },
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "Identifier": Object {
+                                      "TOKEN": "Identifier",
+                                      "content": "a",
+                                    },
+                                  },
+                                },
+                              },
                             },
                           },
                         },
@@ -523,24 +877,7 @@ Object {
                     },
                   },
                 },
-                Object {
-                  "ternaryExpression": Object {
-                    "expression2": Object {
-                      "expression2Rest": Object {},
-                      "expression3": Object {
-                        "primary": Object {
-                          "number": Object {
-                            "NumberDecimalLiteral": Object {
-                              "TOKEN": "NumberDecimalLiteral",
-                              "content": "2",
-                            },
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              ],
+              },
             },
           },
         },
@@ -553,14 +890,39 @@ Object {
 exports[`Sweetscape Parser parses expression (hex number 1) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "number": Object {
-            "NumberHexadecimalLiteral": Object {
-              "TOKEN": "NumberHexadecimalLiteral",
-              "content": "0x20",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "number": Object {
+                                      "NumberHexadecimalLiteral": Object {
+                                        "TOKEN": "NumberHexadecimalLiteral",
+                                        "content": "0x20",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -573,14 +935,39 @@ Object {
 exports[`Sweetscape Parser parses expression (hex number 2) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "number": Object {
-            "NumberHexadecimalLiteral2": Object {
-              "TOKEN": "NumberHexadecimalLiteral2",
-              "content": "20h",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "number": Object {
+                                      "NumberHexadecimalLiteral2": Object {
+                                        "TOKEN": "NumberHexadecimalLiteral2",
+                                        "content": "20h",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -593,28 +980,62 @@ Object {
 exports[`Sweetscape Parser parses expression (infixOperation) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {
-        "expression3": Object {
-          "primary": Object {
-            "Identifier": Object {
-              "TOKEN": "Identifier",
-              "content": "b",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "Plus": Object {
+                        "TOKEN": "Plus",
+                        "content": "+",
+                      },
+                      "multiplicativeExpression": Array [
+                        Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "a",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                        Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "b",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  },
+                },
+              },
             },
-          },
-        },
-        "infixOperator": Object {
-          "Plus": Object {
-            "TOKEN": "Plus",
-            "content": "+",
-          },
-        },
-      },
-      "expression3": Object {
-        "primary": Object {
-          "Identifier": Object {
-            "TOKEN": "Identifier",
-            "content": "a",
           },
         },
       },
@@ -626,14 +1047,39 @@ Object {
 exports[`Sweetscape Parser parses expression (octal number) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "number": Object {
-            "NumberOctalLiteral": Object {
-              "TOKEN": "NumberOctalLiteral",
-              "content": "045",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "number": Object {
+                                      "NumberOctalLiteral": Object {
+                                        "TOKEN": "NumberOctalLiteral",
+                                        "content": "045",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -646,44 +1092,99 @@ Object {
 exports[`Sweetscape Parser parses expression (parenthesized expression) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "parExpressionOrCastExpression": Object {
-            "ParenthesisClose": Object {
-              "TOKEN": "ParenthesisClose",
-              "content": ")",
-            },
-            "ParenthesisOpen": Object {
-              "TOKEN": "ParenthesisOpen",
-              "content": "(",
-            },
-            "expressionOrTypeName": Object {
-              "assignmentExpression": Object {
-                "ternaryExpression": Object {
-                  "expression2": Object {
-                    "expression2Rest": Object {
-                      "expression3": Object {
-                        "primary": Object {
-                          "Identifier": Object {
-                            "TOKEN": "Identifier",
-                            "content": "b",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "ParenthesisClose": Object {
+                                      "TOKEN": "ParenthesisClose",
+                                      "content": ")",
+                                    },
+                                    "ParenthesisOpen": Object {
+                                      "TOKEN": "ParenthesisOpen",
+                                      "content": "(",
+                                    },
+                                    "assignmentExpression": Object {
+                                      "ternaryExpression": Object {
+                                        "booleanOrExpression": Object {
+                                          "booleanAndExpression": Object {
+                                            "binaryOrExpression": Object {
+                                              "binaryXorExpression": Object {
+                                                "binaryAndExpression": Object {
+                                                  "equalityExpression": Object {
+                                                    "relationalExpression": Object {
+                                                      "shiftExpression": Object {
+                                                        "additiveExpression": Object {
+                                                          "Plus": Object {
+                                                            "TOKEN": "Plus",
+                                                            "content": "+",
+                                                          },
+                                                          "multiplicativeExpression": Array [
+                                                            Object {
+                                                              "castExpression": Object {
+                                                                "prefixExpression": Object {
+                                                                  "postfixExpression": Object {
+                                                                    "callExpression": Object {
+                                                                      "memberExpression": Object {
+                                                                        "primaryExpression": Object {
+                                                                          "Identifier": Object {
+                                                                            "TOKEN": "Identifier",
+                                                                            "content": "a",
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              },
+                                                            },
+                                                            Object {
+                                                              "castExpression": Object {
+                                                                "prefixExpression": Object {
+                                                                  "postfixExpression": Object {
+                                                                    "callExpression": Object {
+                                                                      "memberExpression": Object {
+                                                                        "primaryExpression": Object {
+                                                                          "Identifier": Object {
+                                                                            "TOKEN": "Identifier",
+                                                                            "content": "b",
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              },
+                                                            },
+                                                          ],
+                                                        },
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
                           },
-                        },
-                      },
-                      "infixOperator": Object {
-                        "Plus": Object {
-                          "TOKEN": "Plus",
-                          "content": "+",
-                        },
-                      },
-                    },
-                    "expression3": Object {
-                      "primary": Object {
-                        "Identifier": Object {
-                          "TOKEN": "Identifier",
-                          "content": "a",
                         },
                       },
                     },
@@ -702,19 +1203,42 @@ Object {
 exports[`Sweetscape Parser parses expression (postfixOperation) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "postfixOperator": Object {
-          "DoublePlus": Object {
-            "TOKEN": "DoublePlus",
-            "content": "++",
-          },
-        },
-        "primary": Object {
-          "Identifier": Object {
-            "TOKEN": "Identifier",
-            "content": "a",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "DoublePlus": Object {
+                                "TOKEN": "DoublePlus",
+                                "content": "++",
+                              },
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "Identifier": Object {
+                                      "TOKEN": "Identifier",
+                                      "content": "a",
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -726,21 +1250,46 @@ Object {
 exports[`Sweetscape Parser parses expression (prefixOperation) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "expression3": Object {
-          "primary": Object {
-            "Identifier": Object {
-              "TOKEN": "Identifier",
-              "content": "a",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "Exclamation": Object {
+                              "TOKEN": "Exclamation",
+                              "content": "!",
+                            },
+                            "castExpression": Object {
+                              "prefixExpression": Object {
+                                "postfixExpression": Object {
+                                  "callExpression": Object {
+                                    "memberExpression": Object {
+                                      "primaryExpression": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "a",
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             },
-          },
-        },
-        "prefixOperator": Object {
-          "Exclamation": Object {
-            "TOKEN": "Exclamation",
-            "content": "!",
           },
         },
       },
@@ -752,45 +1301,87 @@ Object {
 exports[`Sweetscape Parser parses expression (selector) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "Identifier": Object {
-            "TOKEN": "Identifier",
-            "content": "a",
-          },
-        },
-        "selector": Array [
-          Object {
-            "Identifier": Object {
-              "TOKEN": "Identifier",
-              "content": "b",
-            },
-            "Period": Object {
-              "TOKEN": "Period",
-              "content": ".",
-            },
-          },
-          Object {
-            "arraySelector": Object {
-              "BracketClose": Object {
-                "TOKEN": "BracketClose",
-                "content": "]",
-              },
-              "BracketOpen": Object {
-                "TOKEN": "BracketOpen",
-                "content": "[",
-              },
-              "assignmentExpression": Object {
-                "ternaryExpression": Object {
-                  "expression2": Object {
-                    "expression2Rest": Object {},
-                    "expression3": Object {
-                      "primary": Object {
-                        "Identifier": Object {
-                          "TOKEN": "Identifier",
-                          "content": "c",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "BracketClose": Object {
+                                    "TOKEN": "BracketClose",
+                                    "content": "]",
+                                  },
+                                  "BracketOpen": Object {
+                                    "TOKEN": "BracketOpen",
+                                    "content": "[",
+                                  },
+                                  "Identifier": Object {
+                                    "TOKEN": "Identifier",
+                                    "content": "b",
+                                  },
+                                  "Period": Object {
+                                    "TOKEN": "Period",
+                                    "content": ".",
+                                  },
+                                  "assignmentExpression": Object {
+                                    "ternaryExpression": Object {
+                                      "booleanOrExpression": Object {
+                                        "booleanAndExpression": Object {
+                                          "binaryOrExpression": Object {
+                                            "binaryXorExpression": Object {
+                                              "binaryAndExpression": Object {
+                                                "equalityExpression": Object {
+                                                  "relationalExpression": Object {
+                                                    "shiftExpression": Object {
+                                                      "additiveExpression": Object {
+                                                        "multiplicativeExpression": Object {
+                                                          "castExpression": Object {
+                                                            "prefixExpression": Object {
+                                                              "postfixExpression": Object {
+                                                                "callExpression": Object {
+                                                                  "memberExpression": Object {
+                                                                    "primaryExpression": Object {
+                                                                      "Identifier": Object {
+                                                                        "TOKEN": "Identifier",
+                                                                        "content": "c",
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              },
+                                                            },
+                                                          },
+                                                        },
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
+                                  },
+                                  "primaryExpression": Object {
+                                    "Identifier": Object {
+                                      "TOKEN": "Identifier",
+                                      "content": "a",
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
                         },
                       },
                     },
@@ -799,7 +1390,7 @@ Object {
               },
             },
           },
-        ],
+        },
       },
     },
   },
@@ -809,53 +1400,126 @@ Object {
 exports[`Sweetscape Parser parses expression (sizeof expression) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "ParenthesisClose": Object {
-          "TOKEN": "ParenthesisClose",
-          "content": ")",
-        },
-        "ParenthesisOpen": Object {
-          "TOKEN": "ParenthesisOpen",
-          "content": "(",
-        },
-        "Sizeof": Object {
-          "TOKEN": "Sizeof",
-          "content": "sizeof",
-        },
-        "expressionOrTypeName": Object {
-          "assignmentExpression": Object {
-            "ternaryExpression": Object {
-              "expression2": Object {
-                "expression2Rest": Object {},
-                "expression3": Object {
-                  "primary": Object {
-                    "Identifier": Object {
-                      "TOKEN": "Identifier",
-                      "content": "a",
-                    },
-                  },
-                  "selector": Object {
-                    "arraySelector": Object {
-                      "BracketClose": Object {
-                        "TOKEN": "BracketClose",
-                        "content": "]",
-                      },
-                      "BracketOpen": Object {
-                        "TOKEN": "BracketOpen",
-                        "content": "[",
-                      },
-                      "assignmentExpression": Object {
-                        "ternaryExpression": Object {
-                          "expression2": Object {
-                            "expression2Rest": Object {},
-                            "expression3": Object {
-                              "primary": Object {
-                                "number": Object {
-                                  "NumberDecimalLiteral": Object {
-                                    "TOKEN": "NumberDecimalLiteral",
-                                    "content": "0",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "ParenthesisClose": Object {
+                                      "TOKEN": "ParenthesisClose",
+                                      "content": ")",
+                                    },
+                                    "ParenthesisOpen": Object {
+                                      "TOKEN": "ParenthesisOpen",
+                                      "content": "(",
+                                    },
+                                    "Sizeof": Object {
+                                      "TOKEN": "Sizeof",
+                                      "content": "sizeof",
+                                    },
+                                    "expressionOrTypeName": Object {
+                                      "assignmentExpression": Object {
+                                        "ternaryExpression": Object {
+                                          "booleanOrExpression": Object {
+                                            "booleanAndExpression": Object {
+                                              "binaryOrExpression": Object {
+                                                "binaryXorExpression": Object {
+                                                  "binaryAndExpression": Object {
+                                                    "equalityExpression": Object {
+                                                      "relationalExpression": Object {
+                                                        "shiftExpression": Object {
+                                                          "additiveExpression": Object {
+                                                            "multiplicativeExpression": Object {
+                                                              "castExpression": Object {
+                                                                "prefixExpression": Object {
+                                                                  "postfixExpression": Object {
+                                                                    "callExpression": Object {
+                                                                      "memberExpression": Object {
+                                                                        "BracketClose": Object {
+                                                                          "TOKEN": "BracketClose",
+                                                                          "content": "]",
+                                                                        },
+                                                                        "BracketOpen": Object {
+                                                                          "TOKEN": "BracketOpen",
+                                                                          "content": "[",
+                                                                        },
+                                                                        "assignmentExpression": Object {
+                                                                          "ternaryExpression": Object {
+                                                                            "booleanOrExpression": Object {
+                                                                              "booleanAndExpression": Object {
+                                                                                "binaryOrExpression": Object {
+                                                                                  "binaryXorExpression": Object {
+                                                                                    "binaryAndExpression": Object {
+                                                                                      "equalityExpression": Object {
+                                                                                        "relationalExpression": Object {
+                                                                                          "shiftExpression": Object {
+                                                                                            "additiveExpression": Object {
+                                                                                              "multiplicativeExpression": Object {
+                                                                                                "castExpression": Object {
+                                                                                                  "prefixExpression": Object {
+                                                                                                    "postfixExpression": Object {
+                                                                                                      "callExpression": Object {
+                                                                                                        "memberExpression": Object {
+                                                                                                          "primaryExpression": Object {
+                                                                                                            "number": Object {
+                                                                                                              "NumberDecimalLiteral": Object {
+                                                                                                                "TOKEN": "NumberDecimalLiteral",
+                                                                                                                "content": "0",
+                                                                                                              },
+                                                                                                            },
+                                                                                                          },
+                                                                                                        },
+                                                                                                      },
+                                                                                                    },
+                                                                                                  },
+                                                                                                },
+                                                                                              },
+                                                                                            },
+                                                                                          },
+                                                                                        },
+                                                                                      },
+                                                                                    },
+                                                                                  },
+                                                                                },
+                                                                              },
+                                                                            },
+                                                                          },
+                                                                        },
+                                                                        "primaryExpression": Object {
+                                                                          "Identifier": Object {
+                                                                            "TOKEN": "Identifier",
+                                                                            "content": "a",
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              },
+                                                            },
+                                                          },
+                                                        },
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
                                   },
                                 },
                               },
@@ -879,31 +1543,83 @@ Object {
 exports[`Sweetscape Parser parses expression (sizeof type) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "ParenthesisClose": Object {
-          "TOKEN": "ParenthesisClose",
-          "content": ")",
-        },
-        "ParenthesisOpen": Object {
-          "TOKEN": "ParenthesisOpen",
-          "content": "(",
-        },
-        "Sizeof": Object {
-          "TOKEN": "Sizeof",
-          "content": "sizeof",
-        },
-        "expressionOrTypeName": Object {
-          "assignmentExpression": Object {
-            "ternaryExpression": Object {
-              "expression2": Object {
-                "expression2Rest": Object {},
-                "expression3": Object {
-                  "primary": Object {
-                    "Identifier": Object {
-                      "TOKEN": "Identifier",
-                      "content": "int",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "ParenthesisClose": Object {
+                                      "TOKEN": "ParenthesisClose",
+                                      "content": ")",
+                                    },
+                                    "ParenthesisOpen": Object {
+                                      "TOKEN": "ParenthesisOpen",
+                                      "content": "(",
+                                    },
+                                    "Sizeof": Object {
+                                      "TOKEN": "Sizeof",
+                                      "content": "sizeof",
+                                    },
+                                    "expressionOrTypeName": Object {
+                                      "assignmentExpression": Object {
+                                        "ternaryExpression": Object {
+                                          "booleanOrExpression": Object {
+                                            "booleanAndExpression": Object {
+                                              "binaryOrExpression": Object {
+                                                "binaryXorExpression": Object {
+                                                  "binaryAndExpression": Object {
+                                                    "equalityExpression": Object {
+                                                      "relationalExpression": Object {
+                                                        "shiftExpression": Object {
+                                                          "additiveExpression": Object {
+                                                            "multiplicativeExpression": Object {
+                                                              "castExpression": Object {
+                                                                "prefixExpression": Object {
+                                                                  "postfixExpression": Object {
+                                                                    "callExpression": Object {
+                                                                      "memberExpression": Object {
+                                                                        "primaryExpression": Object {
+                                                                          "Identifier": Object {
+                                                                            "TOKEN": "Identifier",
+                                                                            "content": "int",
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              },
+                                                            },
+                                                          },
+                                                        },
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
                     },
                   },
                 },
@@ -920,13 +1636,38 @@ Object {
 exports[`Sweetscape Parser parses expression (string) 1`] = `
 Object {
   "ternaryExpression": Object {
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "StringLiteral": Object {
-            "TOKEN": "StringLiteral",
-            "content": "'a'",
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "StringLiteral": Object {
+                                      "TOKEN": "StringLiteral",
+                                      "content": "'a'",
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -946,17 +1687,40 @@ Object {
       "TOKEN": "Question",
       "content": "?",
     },
-    "assignmentExpression": Array [
-      Object {
-        "ternaryExpression": Object {
-          "expression2": Object {
-            "expression2Rest": Object {},
-            "expression3": Object {
-              "primary": Object {
-                "number": Object {
-                  "NumberDecimalLiteral": Object {
-                    "TOKEN": "NumberDecimalLiteral",
-                    "content": "1",
+    "assignmentExpression": Object {
+      "ternaryExpression": Object {
+        "booleanOrExpression": Object {
+          "booleanAndExpression": Object {
+            "binaryOrExpression": Object {
+              "binaryXorExpression": Object {
+                "binaryAndExpression": Object {
+                  "equalityExpression": Object {
+                    "relationalExpression": Object {
+                      "shiftExpression": Object {
+                        "additiveExpression": Object {
+                          "multiplicativeExpression": Object {
+                            "castExpression": Object {
+                              "prefixExpression": Object {
+                                "postfixExpression": Object {
+                                  "callExpression": Object {
+                                    "memberExpression": Object {
+                                      "primaryExpression": Object {
+                                        "number": Object {
+                                          "NumberDecimalLiteral": Object {
+                                            "TOKEN": "NumberDecimalLiteral",
+                                            "content": "1",
+                                          },
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
                   },
                 },
               },
@@ -964,16 +1728,35 @@ Object {
           },
         },
       },
-      Object {
-        "ternaryExpression": Object {
-          "expression2": Object {
-            "expression2Rest": Object {},
-            "expression3": Object {
-              "primary": Object {
-                "number": Object {
-                  "NumberDecimalLiteral": Object {
-                    "TOKEN": "NumberDecimalLiteral",
-                    "content": "0",
+    },
+    "booleanOrExpression": Object {
+      "booleanAndExpression": Object {
+        "binaryOrExpression": Object {
+          "binaryXorExpression": Object {
+            "binaryAndExpression": Object {
+              "equalityExpression": Object {
+                "relationalExpression": Object {
+                  "shiftExpression": Object {
+                    "additiveExpression": Object {
+                      "multiplicativeExpression": Object {
+                        "castExpression": Object {
+                          "prefixExpression": Object {
+                            "postfixExpression": Object {
+                              "callExpression": Object {
+                                "memberExpression": Object {
+                                  "primaryExpression": Object {
+                                    "Identifier": Object {
+                                      "TOKEN": "Identifier",
+                                      "content": "a",
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
                   },
                 },
               },
@@ -981,14 +1764,43 @@ Object {
           },
         },
       },
-    ],
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "Identifier": Object {
-            "TOKEN": "Identifier",
-            "content": "a",
+    },
+    "ternaryExpression": Object {
+      "booleanOrExpression": Object {
+        "booleanAndExpression": Object {
+          "binaryOrExpression": Object {
+            "binaryXorExpression": Object {
+              "binaryAndExpression": Object {
+                "equalityExpression": Object {
+                  "relationalExpression": Object {
+                    "shiftExpression": Object {
+                      "additiveExpression": Object {
+                        "multiplicativeExpression": Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "number": Object {
+                                        "NumberDecimalLiteral": Object {
+                                          "TOKEN": "NumberDecimalLiteral",
+                                          "content": "0",
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -1035,10 +1847,26 @@ Object {
         "TOKEN": "Colon",
         "content": ":",
       },
-      "number": Object {
-        "NumberDecimalLiteral": Object {
-          "TOKEN": "NumberDecimalLiteral",
-          "content": "3",
+      "additiveExpression": Object {
+        "multiplicativeExpression": Object {
+          "castExpression": Object {
+            "prefixExpression": Object {
+              "postfixExpression": Object {
+                "callExpression": Object {
+                  "memberExpression": Object {
+                    "primaryExpression": Object {
+                      "number": Object {
+                        "NumberDecimalLiteral": Object {
+                          "TOKEN": "NumberDecimalLiteral",
+                          "content": "3",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
     },
@@ -1121,10 +1949,26 @@ Object {
         "TOKEN": "Colon",
         "content": ":",
       },
-      "number": Object {
-        "NumberDecimalLiteral": Object {
-          "TOKEN": "NumberDecimalLiteral",
-          "content": "3",
+      "additiveExpression": Object {
+        "multiplicativeExpression": Object {
+          "castExpression": Object {
+            "prefixExpression": Object {
+              "postfixExpression": Object {
+                "callExpression": Object {
+                  "memberExpression": Object {
+                    "primaryExpression": Object {
+                      "number": Object {
+                        "NumberDecimalLiteral": Object {
+                          "TOKEN": "NumberDecimalLiteral",
+                          "content": "3",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
     },
@@ -1191,14 +2035,39 @@ Object {
               "assignmentExpression": Array [
                 Object {
                   "ternaryExpression": Object {
-                    "expression2": Object {
-                      "expression2Rest": Object {},
-                      "expression3": Object {
-                        "primary": Object {
-                          "number": Object {
-                            "NumberDecimalLiteral": Object {
-                              "TOKEN": "NumberDecimalLiteral",
-                              "content": "1",
+                    "booleanOrExpression": Object {
+                      "booleanAndExpression": Object {
+                        "binaryOrExpression": Object {
+                          "binaryXorExpression": Object {
+                            "binaryAndExpression": Object {
+                              "equalityExpression": Object {
+                                "relationalExpression": Object {
+                                  "shiftExpression": Object {
+                                    "additiveExpression": Object {
+                                      "multiplicativeExpression": Object {
+                                        "castExpression": Object {
+                                          "prefixExpression": Object {
+                                            "postfixExpression": Object {
+                                              "callExpression": Object {
+                                                "memberExpression": Object {
+                                                  "primaryExpression": Object {
+                                                    "number": Object {
+                                                      "NumberDecimalLiteral": Object {
+                                                        "TOKEN": "NumberDecimalLiteral",
+                                                        "content": "1",
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
                             },
                           },
                         },
@@ -1208,14 +2077,39 @@ Object {
                 },
                 Object {
                   "ternaryExpression": Object {
-                    "expression2": Object {
-                      "expression2Rest": Object {},
-                      "expression3": Object {
-                        "primary": Object {
-                          "number": Object {
-                            "NumberDecimalLiteral": Object {
-                              "TOKEN": "NumberDecimalLiteral",
-                              "content": "2",
+                    "booleanOrExpression": Object {
+                      "booleanAndExpression": Object {
+                        "binaryOrExpression": Object {
+                          "binaryXorExpression": Object {
+                            "binaryAndExpression": Object {
+                              "equalityExpression": Object {
+                                "relationalExpression": Object {
+                                  "shiftExpression": Object {
+                                    "additiveExpression": Object {
+                                      "multiplicativeExpression": Object {
+                                        "castExpression": Object {
+                                          "prefixExpression": Object {
+                                            "postfixExpression": Object {
+                                              "callExpression": Object {
+                                                "memberExpression": Object {
+                                                  "primaryExpression": Object {
+                                                    "number": Object {
+                                                      "NumberDecimalLiteral": Object {
+                                                        "TOKEN": "NumberDecimalLiteral",
+                                                        "content": "2",
+                                                      },
+                                                    },
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
                             },
                           },
                         },
@@ -1407,14 +2301,39 @@ Object {
           "variableInitializer": Object {
             "assignmentExpression": Object {
               "ternaryExpression": Object {
-                "expression2": Object {
-                  "expression2Rest": Object {},
-                  "expression3": Object {
-                    "primary": Object {
-                      "number": Object {
-                        "NumberDecimalLiteral": Object {
-                          "TOKEN": "NumberDecimalLiteral",
-                          "content": "1",
+                "booleanOrExpression": Object {
+                  "booleanAndExpression": Object {
+                    "binaryOrExpression": Object {
+                      "binaryXorExpression": Object {
+                        "binaryAndExpression": Object {
+                          "equalityExpression": Object {
+                            "relationalExpression": Object {
+                              "shiftExpression": Object {
+                                "additiveExpression": Object {
+                                  "multiplicativeExpression": Object {
+                                    "castExpression": Object {
+                                      "prefixExpression": Object {
+                                        "postfixExpression": Object {
+                                          "callExpression": Object {
+                                            "memberExpression": Object {
+                                              "primaryExpression": Object {
+                                                "number": Object {
+                                                  "NumberDecimalLiteral": Object {
+                                                    "TOKEN": "NumberDecimalLiteral",
+                                                    "content": "1",
+                                                  },
+                                                },
+                                              },
+                                            },
+                                          },
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
                         },
                       },
                     },
@@ -1484,10 +2403,26 @@ Object {
             "TOKEN": "Colon",
             "content": ":",
           },
-          "number": Object {
-            "NumberDecimalLiteral": Object {
-              "TOKEN": "NumberDecimalLiteral",
-              "content": "3",
+          "additiveExpression": Object {
+            "multiplicativeExpression": Object {
+              "castExpression": Object {
+                "prefixExpression": Object {
+                  "postfixExpression": Object {
+                    "callExpression": Object {
+                      "memberExpression": Object {
+                        "primaryExpression": Object {
+                          "number": Object {
+                            "NumberDecimalLiteral": Object {
+                              "TOKEN": "NumberDecimalLiteral",
+                              "content": "3",
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -1524,26 +2459,48 @@ Object {
             "TOKEN": "Colon",
             "content": ":",
           },
-          "Identifier": Object {
-            "TOKEN": "Identifier",
-            "content": "NBits",
-          },
-          "expression2Rest": Object {
-            "expression3": Object {
-              "primary": Object {
-                "number": Object {
-                  "NumberDecimalLiteral": Object {
-                    "TOKEN": "NumberDecimalLiteral",
-                    "content": "2",
-                  },
-                },
-              },
-            },
-            "infixOperator": Object {
+          "additiveExpression": Object {
+            "multiplicativeExpression": Object {
               "Division": Object {
                 "TOKEN": "Division",
                 "content": "/",
               },
+              "castExpression": Array [
+                Object {
+                  "prefixExpression": Object {
+                    "postfixExpression": Object {
+                      "callExpression": Object {
+                        "memberExpression": Object {
+                          "primaryExpression": Object {
+                            "Identifier": Object {
+                              "TOKEN": "Identifier",
+                              "content": "NBits",
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+                Object {
+                  "prefixExpression": Object {
+                    "postfixExpression": Object {
+                      "callExpression": Object {
+                        "memberExpression": Object {
+                          "primaryExpression": Object {
+                            "number": Object {
+                              "NumberDecimalLiteral": Object {
+                                "TOKEN": "NumberDecimalLiteral",
+                                "content": "2",
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              ],
             },
           },
         },
@@ -1580,11 +2537,26 @@ Object {
             "TOKEN": "Colon",
             "content": ":",
           },
-          "Identifier": Object {
-            "TOKEN": "Identifier",
-            "content": "NBits",
+          "additiveExpression": Object {
+            "multiplicativeExpression": Object {
+              "castExpression": Object {
+                "prefixExpression": Object {
+                  "postfixExpression": Object {
+                    "callExpression": Object {
+                      "memberExpression": Object {
+                        "primaryExpression": Object {
+                          "Identifier": Object {
+                            "TOKEN": "Identifier",
+                            "content": "NBits",
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
-          "expression2Rest": Object {},
         },
         "variableDeclaratorRest": Object {},
       },

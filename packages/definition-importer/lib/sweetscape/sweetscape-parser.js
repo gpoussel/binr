@@ -15,6 +15,7 @@ class SweetscapeParser extends Parser {
       ignoredIssues: {
         topLevelStatement: { OR: true },
         expressionOrTypeName: { OR: true },
+        castExpression: { OR: true },
       },
     });
 
@@ -107,15 +108,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("bitfieldRest", () => {
       $.CONSUME(tokens.Colon);
-      $.OR([
-        { ALT: () => $.SUBRULE($.number) },
-        {
-          ALT: () => {
-            $.CONSUME(tokens.Identifier);
-            $.OPTION(() => $.SUBRULE($.expression2Rest));
-          },
-        },
-      ]);
+      $.SUBRULE($.additiveExpression);
     });
 
     $.RULE("typedefStatement", () => {
@@ -319,36 +312,6 @@ class SweetscapeParser extends Parser {
       ]);
     });
 
-    $.RULE("parExpressionOrCastExpression", () => {
-      $.CONSUME(tokens.ParenthesisOpen);
-      $.SUBRULE($.expressionOrTypeName);
-      $.CONSUME2(tokens.ParenthesisClose);
-      $.OR2([
-        {
-          ALT: () => {
-            // for potential cast expression
-            // or operator expression
-            let isOperatorExpression = false;
-            $.OPTION4(() => {
-              $.SUBRULE($.infixOperator);
-              isOperatorExpression = true;
-            });
-            $.SUBRULE3($.assignmentExpression);
-            $.MANY2({
-              GATE: () => isOperatorExpression,
-              DEF: () => {
-                $.SUBRULE($.expression2Rest);
-              },
-            });
-          },
-        },
-        {
-          // if the first expression is not an identifier, second expression should be empty
-          ALT: () => {},
-        },
-      ]);
-    });
-
     $.RULE("expressionStatement", () => {
       $.SUBRULE($.assignmentExpression);
       $.CONSUME(tokens.SemiColon);
@@ -369,51 +332,266 @@ class SweetscapeParser extends Parser {
      * Level 1 precedence: ternary
      */
     $.RULE("ternaryExpression", () => {
-      $.SUBRULE($.expression2);
+      $.SUBRULE($.booleanOrExpression);
       $.OPTION(() => {
         $.CONSUME(tokens.Question);
         $.SUBRULE($.assignmentExpression);
         $.CONSUME(tokens.Colon);
-        $.SUBRULE2($.assignmentExpression);
+        $.SUBRULE2($.ternaryExpression);
       });
     });
 
     /**
-     * Level 2 precedence: infix operators
+     * Level 2 precedence: boolean or (||)
      */
-    $.RULE("expression2", () => {
-      $.SUBRULE($.expression3);
-      $.OPTION(() => $.SUBRULE($.expression2Rest));
-    });
-
-    $.RULE("expression2Rest", () => {
+    $.RULE("booleanOrExpression", () => {
+      $.SUBRULE($.booleanAndExpression);
       $.MANY(() => {
-        $.SUBRULE($.infixOperator);
-        $.SUBRULE($.expression3);
+        $.CONSUME(tokens.BooleanOr);
+        $.SUBRULE2($.booleanAndExpression);
       });
     });
 
-    $.RULE("expression3", () => {
+    /**
+     * Level 3 precedence: boolean and (&&)
+     */
+    $.RULE("booleanAndExpression", () => {
+      $.SUBRULE($.binaryOrExpression);
+      $.MANY(() => {
+        $.CONSUME(tokens.BooleanAnd);
+        $.SUBRULE2($.binaryOrExpression);
+      });
+    });
+
+    /**
+     * Level 4 precedence: binary or (|)
+     */
+    $.RULE("binaryOrExpression", () => {
+      $.SUBRULE($.binaryXorExpression);
+      $.MANY(() => {
+        $.CONSUME(tokens.BinaryOr);
+        $.SUBRULE2($.binaryXorExpression);
+      });
+    });
+
+    /**
+     * Level 5 precedence: binary xor (^)
+     */
+    $.RULE("binaryXorExpression", () => {
+      $.SUBRULE($.binaryAndExpression);
+      $.MANY(() => {
+        $.CONSUME(tokens.BinaryXor);
+        $.SUBRULE2($.binaryAndExpression);
+      });
+    });
+
+    /**
+     * Level 6 precedence: binary and (&)
+     */
+    $.RULE("binaryAndExpression", () => {
+      $.SUBRULE($.equalityExpression);
+      $.MANY(() => {
+        $.CONSUME(tokens.BinaryAnd);
+        $.SUBRULE2($.equalityExpression);
+      });
+    });
+
+    /**
+     * Level 7 precedence: equality (== !=)
+     */
+    $.RULE("equalityExpression", () => {
+      $.SUBRULE($.relationalExpression);
+      $.MANY(() => {
+        $.OR([{ ALT: () => $.CONSUME(tokens.DoubleEquals) }, { ALT: () => $.CONSUME(tokens.Different) }]);
+        $.SUBRULE2($.relationalExpression);
+      });
+    });
+
+    /**
+     * Level 8 precedence: relational (< <= > >=)
+     */
+    $.RULE("relationalExpression", () => {
+      $.SUBRULE($.shiftExpression);
+      $.OPTION(() => {
+        $.OR([
+          { ALT: () => $.CONSUME(tokens.Greater) },
+          { ALT: () => $.CONSUME(tokens.Less) },
+          { ALT: () => $.CONSUME(tokens.GreaterOrEqual) },
+          { ALT: () => $.CONSUME(tokens.LessOrEqual) },
+        ]);
+        $.SUBRULE2($.shiftExpression);
+      });
+    });
+
+    /**
+     * Level 9 precedence: shift (<< >> >>>)
+     */
+    $.RULE("shiftExpression", () => {
+      $.SUBRULE($.additiveExpression);
+      $.MANY(() => {
+        $.OR([
+          { ALT: () => $.CONSUME(tokens.ShiftLeft) },
+          { ALT: () => $.CONSUME(tokens.ShiftRight) },
+          { ALT: () => $.CONSUME(tokens.UnsignedShiftRight) },
+        ]);
+        $.SUBRULE2($.additiveExpression);
+      });
+    });
+
+    /**
+     * Level 10 precedence: additive (+ -)
+     */
+    $.RULE("additiveExpression", () => {
+      $.SUBRULE($.multiplicativeExpression);
+      $.MANY(() => {
+        $.OR([{ ALT: () => $.CONSUME(tokens.Plus) }, { ALT: () => $.CONSUME(tokens.Minus) }]);
+        $.SUBRULE2($.multiplicativeExpression);
+      });
+    });
+
+    /**
+     * Level 11 precedence: multiplicative (* / %)
+     */
+    $.RULE("multiplicativeExpression", () => {
+      $.SUBRULE($.castExpression);
+      $.MANY(() => {
+        $.OR([
+          { ALT: () => $.CONSUME(tokens.Multiplication) },
+          { ALT: () => $.CONSUME(tokens.Division) },
+          { ALT: () => $.CONSUME(tokens.Modulo) },
+        ]);
+        $.SUBRULE2($.castExpression);
+      });
+    });
+
+    /**
+     * Level 12 precedence: cast (type)
+     */
+    $.RULE("castExpression", () => {
       $.OR([
         {
+          GATE: () => $.BACKTRACK($.castOperation),
+          ALT: () => $.SUBRULE($.castOperation),
+        },
+        {
+          GATE: () => $.BACKTRACK($.prefixExpression),
+          ALT: () => $.SUBRULE($.prefixExpression),
+        },
+      ]);
+    });
+
+    $.RULE("castOperation", () => {
+      $.CONSUME(tokens.ParenthesisOpen);
+      $.SUBRULE($.typeNameWithoutVoid);
+      $.CONSUME(tokens.ParenthesisClose);
+      $.SUBRULE($.prefixExpression);
+    });
+
+    /**
+     * Level 13 precedence: prefix (++ -- + - ! ~)
+     */
+    $.RULE("prefixExpression", () => {
+      $.OR([
+        { ALT: () => $.SUBRULE($.postfixExpression) },
+        {
           ALT: () => {
-            $.SUBRULE($.prefixOperator);
-            $.SUBRULE($.expression3);
+            $.OR2([
+              { ALT: () => $.CONSUME(tokens.DoublePlus) },
+              { ALT: () => $.CONSUME(tokens.DoubleMinus) },
+            ]);
+            $.SUBRULE($.prefixExpression);
           },
         },
         {
           ALT: () => {
-            $.SUBRULE($.primary);
-            $.MANY(() => $.SUBRULE($.selector));
-            $.OPTION2(() => $.SUBRULE($.postfixOperator));
+            $.OR3([
+              { ALT: () => $.CONSUME(tokens.Tilda) },
+              { ALT: () => $.CONSUME(tokens.Exclamation) },
+              { ALT: () => $.CONSUME(tokens.Plus) },
+              { ALT: () => $.CONSUME(tokens.Minus) },
+            ]);
+            $.SUBRULE($.castExpression);
           },
         },
+      ]);
+    });
+
+    /**
+     * Level 14 precedence: postfix (++ --)
+     */
+    $.RULE("postfixExpression", () => {
+      $.SUBRULE($.callExpression);
+      $.MANY(() => {
+        $.OR([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }]);
+      });
+    });
+
+    /**
+     * Level 15 precedence: access (array object parentheses)
+     */
+    $.RULE("callExpression", () => {
+      $.SUBRULE($.memberExpression);
+      $.MANY(() => {
+        $.OR([
+          {
+            ALT: () => $.SUBRULE($.arguments),
+          },
+          {
+            ALT: () => {
+              $.CONSUME(tokens.BracketOpen);
+              $.SUBRULE($.assignmentExpression);
+              $.CONSUME(tokens.BracketClose);
+            },
+          },
+          {
+            ALT: () => {
+              $.CONSUME(tokens.Period);
+              $.CONSUME(tokens.Identifier);
+            },
+          },
+        ]);
+      });
+    });
+
+    $.RULE("memberExpression", () => {
+      $.SUBRULE($.primaryExpression);
+      $.MANY(() => {
+        $.OR([
+          {
+            ALT: () => {
+              $.CONSUME(tokens.BracketOpen);
+              $.SUBRULE($.assignmentExpression);
+              $.CONSUME(tokens.BracketClose);
+            },
+          },
+          {
+            ALT: () => {
+              $.CONSUME(tokens.Period);
+              $.CONSUME(tokens.Identifier);
+            },
+          },
+        ]);
+      });
+    });
+
+    $.RULE("primaryExpression", () => {
+      $.OR([
+        { ALT: () => $.CONSUME(tokens.Identifier) },
+        { ALT: () => $.SUBRULE($.number) },
+        { ALT: () => $.CONSUME(tokens.StringLiteral) },
         {
           ALT: () => {
             $.CONSUME(tokens.Sizeof);
             $.CONSUME(tokens.ParenthesisOpen);
             $.SUBRULE($.expressionOrTypeName);
             $.CONSUME(tokens.ParenthesisClose);
+          },
+        },
+        {
+          ALT: () => {
+            $.CONSUME2(tokens.ParenthesisOpen);
+            $.SUBRULE2($.assignmentExpression);
+            $.CONSUME2(tokens.ParenthesisClose);
           },
         },
       ]);
@@ -481,26 +659,6 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.BracketClose);
     });
 
-    $.RULE("primary", () => {
-      $.OR([
-        {
-          ALT: () => $.SUBRULE($.number),
-        },
-        {
-          ALT: () => $.CONSUME(tokens.StringLiteral),
-        },
-        {
-          ALT: () => $.SUBRULE($.parExpressionOrCastExpression),
-        },
-        {
-          ALT: () => {
-            $.CONSUME(tokens.Identifier);
-            $.OPTION(() => $.SUBRULE($.identifierSuffix));
-          },
-        },
-      ]);
-    });
-
     $.RULE("identifierSuffix", () => {
       $.SUBRULE($.arguments);
     });
@@ -529,45 +687,6 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.BinaryXorEquals) },
         { ALT: () => $.CONSUME(tokens.BinaryOrEquals) },
       ]);
-    });
-
-    $.RULE("infixOperator", () => {
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.BooleanAnd) },
-        { ALT: () => $.CONSUME(tokens.BooleanOr) },
-        { ALT: () => $.CONSUME(tokens.BinaryOr) },
-        { ALT: () => $.CONSUME(tokens.BinaryXor) },
-        { ALT: () => $.CONSUME(tokens.BinaryAnd) },
-        { ALT: () => $.CONSUME(tokens.DoubleEquals) },
-        { ALT: () => $.CONSUME(tokens.Different) },
-        { ALT: () => $.CONSUME(tokens.Greater) },
-        { ALT: () => $.CONSUME(tokens.Less) },
-        { ALT: () => $.CONSUME(tokens.GreaterOrEqual) },
-        { ALT: () => $.CONSUME(tokens.LessOrEqual) },
-        { ALT: () => $.CONSUME(tokens.ShiftLeft) },
-        { ALT: () => $.CONSUME(tokens.ShiftRight) },
-        { ALT: () => $.CONSUME(tokens.UnsignedShiftRight) },
-        { ALT: () => $.CONSUME(tokens.Plus) },
-        { ALT: () => $.CONSUME(tokens.Minus) },
-        { ALT: () => $.CONSUME(tokens.Multiplication) },
-        { ALT: () => $.CONSUME(tokens.Division) },
-        { ALT: () => $.CONSUME(tokens.Modulo) },
-      ]);
-    });
-
-    $.RULE("prefixOperator", () => {
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.Plus) },
-        { ALT: () => $.CONSUME(tokens.Minus) },
-        { ALT: () => $.CONSUME(tokens.DoublePlus) },
-        { ALT: () => $.CONSUME(tokens.DoubleMinus) },
-        { ALT: () => $.CONSUME(tokens.Tilda) },
-        { ALT: () => $.CONSUME(tokens.Exclamation) },
-      ]);
-    });
-
-    $.RULE("postfixOperator", () => {
-      $.OR([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }]);
     });
 
     /**
