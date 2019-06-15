@@ -268,9 +268,9 @@ function getVisitor(parser) {
       const type = _.has(ctx, "Struct") ? "structDeclaration" : "unionDeclaration";
       const result = {
         type,
-        name: this.visit(ctx.variableDeclarator),
         declaration: this.visit(ctx.structDeclaration),
       };
+      _.assign(result, this.visit(ctx.variableDeclarator));
       if (_.has(ctx, "Identifier")) {
         result.alias = this.getIdentifier(ctx.Identifier);
       }

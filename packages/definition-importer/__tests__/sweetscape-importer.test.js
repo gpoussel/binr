@@ -31,10 +31,8 @@ describe("Sweetscape Importer", () => {
         const structDeclaration = content[1];
         expect(structDeclaration).toEqual({
           type: "structDeclaration",
-          name: {
-            name: "IMAGE_DOS_HEADER",
-            annotations: [],
-          },
+          name: "IMAGE_DOS_HEADER",
+          annotations: [],
           declaration: {
             body: {
               type: "statementList",
@@ -586,11 +584,8 @@ describe("Sweetscape Importer", () => {
               ],
             },
           },
-          name: {
-            // TODO Wrong!
-            name: "FILE_CHARACTERISTICS",
-            annotations: [{ key: "comment", value: "WORD" }],
-          },
+          name: "FILE_CHARACTERISTICS",
+          annotations: [{ key: "comment", value: "WORD" }],
         });
 
         const functionDeclaration = content[64];
