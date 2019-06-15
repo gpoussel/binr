@@ -433,15 +433,8 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("variableDeclaratorRest", () => {
-      $.OPTION(() => {
-        // Be careful to avoid duplication with the function declaration rule
-        $.CONSUME(tokens.ParenthesisOpen);
-        $.MANY_SEP({
-          SEP: tokens.Comma,
-          DEF: () => $.SUBRULE2($.expression),
-        });
-        $.CONSUME(tokens.ParenthesisClose);
-      });
+      // Be careful to avoid duplication with the function declaration rule
+      $.OPTION(() => $.SUBRULE($.arguments));
       $.OPTION1(() => {
         $.CONSUME(tokens.BracketOpen);
         $.OPTION4(() => $.SUBRULE($.expression));
@@ -473,14 +466,14 @@ class SweetscapeParser extends Parser {
             $.CONSUME(tokens.Identifier);
           },
         },
-        {
-          ALT: () => {
-            $.CONSUME(tokens.BracketOpen);
-            $.SUBRULE($.expression);
-            $.CONSUME(tokens.BracketClose);
-          },
-        },
+        { ALT: () => $.SUBRULE($.arraySelector) },
       ]);
+    });
+
+    $.RULE("arraySelector", () => {
+      $.CONSUME(tokens.BracketOpen);
+      $.SUBRULE($.expression);
+      $.CONSUME(tokens.BracketClose);
     });
 
     $.RULE("primary", () => {

@@ -285,7 +285,7 @@ function getVisitor(parser) {
     variableDeclarator(ctx) {
       const result = {
         name: this.getIdentifier(ctx.Identifier),
-        annotations: _.has(ctx.annotations) ? this.visit(ctx.annotations) : [],
+        annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
       if (_.has(ctx, "variableDeclaratorRest")) {
         _.assign(result, this.visit(ctx.variableDeclaratorRest));
@@ -299,7 +299,20 @@ function getVisitor(parser) {
     }
 
     variableDeclaratorRest(ctx) {
-      // TODO variableDeclaratorRest
+      const result = {};
+      if (_.has(ctx, "annotations")) {
+        result.annotations = this.visit(ctx.annotations);
+      }
+      if (_.has(ctx, "arguments")) {
+        result.arguments = this.visit(ctx.arguments);
+      }
+      if (_.has(ctx, "expression")) {
+        result.arraySelector = this.visit(ctx.expression);
+      }
+      if (_.has(ctx, "initializer")) {
+        result.initializer = this.visit(ctx.variableInitializer);
+      }
+      return result;
     }
 
     expressionStatement(ctx) {
@@ -530,6 +543,10 @@ function getVisitor(parser) {
 
     selector(ctx) {
       // TODO selector
+    }
+
+    arraySelector(ctx) {
+      // TODO arraySelector
     }
 
     variableInitializer(ctx) {

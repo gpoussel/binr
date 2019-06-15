@@ -161,9 +161,21 @@ describe("Sweetscape Importer", () => {
                 declarations: [
                   {
                     name: "Space2",
-                    annotations: [],
+                    annotations: [
+                      { key: "hidden", value: "true" },
+                      { key: "fgcolor", value: "cRed" },
+                      { key: "comment", value: "Space between header and first section" },
+                    ],
+                    arraySelector: {
+                      type: "primaryExpression",
+                      expression: {
+                        type: "identifier",
+                        name: "NtHeader",
+                        // TODO That's wrong
+                      },
+                    },
                   },
-                ], // TODO That's wrong
+                ],
                 annotations: [],
                 // TODO Missing comments
               },
