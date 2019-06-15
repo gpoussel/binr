@@ -26,9 +26,6 @@ class SweetscapeDefinitionImporter extends Importer {
   }
 
   build(ast) {
-    _.each(ast.content, expression => {
-      console.log(expression);
-    });
     return ast;
   }
 }
