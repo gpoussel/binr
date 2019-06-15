@@ -2,7 +2,7 @@
 
 exports[`Sweetscape Importer creates DEX definition 1`] = `
 Array [
-  undefined,
+  "LittleEndian",
   Object {
     "annotations": Array [],
     "declarations": Array [
@@ -26,7 +26,7 @@ Array [
       "name": "ubyte",
     },
     "selector": Object {
-      "expression": undefined,
+      "expression": 20,
       "type": "arraySelector",
     },
     "type": "typeAlias",
@@ -79,18 +79,18 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              undefined,
-              undefined,
+              "SPrintf",
+              "ret",
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ret",
           "type": "returnStatement",
         },
       ],
@@ -129,7 +129,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
-                "arraySelector": undefined,
+                "arraySelector": 3,
                 "name": "dex",
               },
             ],
@@ -158,7 +158,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
-                "arraySelector": undefined,
+                "arraySelector": 3,
                 "name": "ver",
               },
             ],
@@ -186,7 +186,7 @@ Array [
             "condition": undefined,
             "trueStatement": Object {
               "statements": Array [
-                undefined,
+                "Warning",
                 Object {
                   "assignmentExpression": undefined,
                   "type": "returnStatement",
@@ -220,9 +220,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -280,7 +280,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "val",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -303,7 +303,7 @@ Array [
                   },
                 },
                 Object {
-                  "condition": undefined,
+                  "condition": "val",
                   "trueStatement": Object {
                     "statements": Array [
                       Object {
@@ -326,7 +326,7 @@ Array [
                         },
                       },
                       Object {
-                        "condition": undefined,
+                        "condition": "val",
                         "trueStatement": Object {
                           "statements": Array [
                             Object {
@@ -349,7 +349,7 @@ Array [
                               },
                             },
                             Object {
-                              "condition": undefined,
+                              "condition": "val",
                               "trueStatement": Object {
                                 "statements": Array [
                                   Object {
@@ -431,31 +431,31 @@ Array [
             "name": "ubyte",
           },
         },
-        undefined,
+        "result",
         Object {
-          "condition": undefined,
+          "condition": "result",
           "trueStatement": Object {
             "statements": Array [
-              undefined,
-              undefined,
+              "cur",
+              "result",
               Object {
-                "condition": undefined,
+                "condition": "cur",
                 "trueStatement": Object {
                   "statements": Array [
-                    undefined,
-                    undefined,
+                    "cur",
+                    "result",
                     Object {
-                      "condition": undefined,
+                      "condition": "cur",
                       "trueStatement": Object {
                         "statements": Array [
-                          undefined,
-                          undefined,
+                          "cur",
+                          "result",
                           Object {
-                            "condition": undefined,
+                            "condition": "cur",
                             "trueStatement": Object {
                               "statements": Array [
-                                undefined,
-                                undefined,
+                                "cur",
+                                "result",
                               ],
                               "type": "statementList",
                             },
@@ -477,7 +477,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "result",
           "type": "returnStatement",
         },
       ],
@@ -556,9 +556,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "s",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -616,7 +616,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "val",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -639,7 +639,7 @@ Array [
                   },
                 },
                 Object {
-                  "condition": undefined,
+                  "condition": "val",
                   "trueStatement": Object {
                     "statements": Array [
                       Object {
@@ -662,7 +662,7 @@ Array [
                         },
                       },
                       Object {
-                        "condition": undefined,
+                        "condition": "val",
                         "trueStatement": Object {
                           "statements": Array [
                             Object {
@@ -685,7 +685,7 @@ Array [
                               },
                             },
                             Object {
-                              "condition": undefined,
+                              "condition": "val",
                               "trueStatement": Object {
                                 "statements": Array [
                                   Object {
@@ -767,20 +767,20 @@ Array [
             "name": "ubyte",
           },
         },
-        undefined,
+        "result",
         Object {
-          "condition": undefined,
+          "condition": "result",
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "result",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "result",
           "type": "returnStatement",
         },
       ],
@@ -822,9 +822,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "s",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -856,67 +856,67 @@ Array [
     "declarations": Array [
       Object {
         "name": "VALUE_BYTE",
-        "value": undefined,
+        "value": 0,
       },
       Object {
         "name": "VALUE_SHORT",
-        "value": undefined,
+        "value": 2,
       },
       Object {
         "name": "VALUE_CHAR",
-        "value": undefined,
+        "value": 3,
       },
       Object {
         "name": "VALUE_INT",
-        "value": undefined,
+        "value": 4,
       },
       Object {
         "name": "VALUE_LONG",
-        "value": undefined,
+        "value": 6,
       },
       Object {
         "name": "VALUE_FLOAT",
-        "value": undefined,
+        "value": 16,
       },
       Object {
         "name": "VALUE_DOUBLE",
-        "value": undefined,
+        "value": 17,
       },
       Object {
         "name": "VALUE_STRING",
-        "value": undefined,
+        "value": 23,
       },
       Object {
         "name": "VALUE_TYPE",
-        "value": undefined,
+        "value": 24,
       },
       Object {
         "name": "VALUE_FIELD",
-        "value": undefined,
+        "value": 25,
       },
       Object {
         "name": "VALUE_METHOD",
-        "value": undefined,
+        "value": 26,
       },
       Object {
         "name": "VALUE_ENUM",
-        "value": undefined,
+        "value": 27,
       },
       Object {
         "name": "VALUE_ARRAY",
-        "value": undefined,
+        "value": 28,
       },
       Object {
         "name": "VALUE_ANNOTATION",
-        "value": undefined,
+        "value": 29,
       },
       Object {
         "name": "VALUE_NULL",
-        "value": undefined,
+        "value": 30,
       },
       Object {
         "name": "VALUE_BOOLEAN",
-        "value": undefined,
+        "value": 31,
       },
     ],
     "type": "enumDeclaration",
@@ -1005,7 +1005,7 @@ Array [
               ],
               "type": "statementList",
             },
-            "condition": undefined,
+            "condition": "i",
             "increment": undefined,
             "initialization": undefined,
             "type": "forStatement",
@@ -1058,7 +1058,7 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  undefined,
+                  "SPrintf",
                   Object {
                     "type": "breakStatement",
                   },
@@ -1077,7 +1077,7 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  undefined,
+                  "s",
                   Object {
                     "type": "breakStatement",
                   },
@@ -1091,7 +1091,7 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  undefined,
+                  "s",
                   Object {
                     "type": "breakStatement",
                   },
@@ -1105,7 +1105,7 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  undefined,
+                  "s",
                   Object {
                     "type": "breakStatement",
                   },
@@ -1119,7 +1119,7 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  undefined,
+                  "s",
                   Object {
                     "type": "breakStatement",
                   },
@@ -1133,7 +1133,7 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  undefined,
+                  "s",
                   Object {
                     "type": "breakStatement",
                   },
@@ -1158,7 +1158,7 @@ Array [
           "type": "switchStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -1231,11 +1231,11 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": "v",
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "v",
                 "type": "returnStatement",
               },
             ],
@@ -1246,18 +1246,18 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              undefined,
-              undefined,
+              "ret",
+              "shift",
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ret",
           "type": "returnStatement",
         },
       ],
@@ -1305,7 +1305,7 @@ Array [
                     "value": "Value type",
                   },
                 ],
-                "bits": undefined,
+                "bits": 5,
                 "name": "value_type",
               },
             ],
@@ -1325,7 +1325,7 @@ Array [
                     "value": "Value clarifying argument",
                   },
                 ],
-                "bits": undefined,
+                "bits": 3,
                 "name": "value_arg",
               },
             ],
@@ -1389,8 +1389,8 @@ Array [
                         "name": "ubyte",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "SPrintf",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1415,8 +1415,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1427,8 +1427,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "SPrintf",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1453,8 +1453,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1465,8 +1465,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "SPrintf",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1491,8 +1491,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1503,8 +1503,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "SPrintf",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1529,8 +1529,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1541,8 +1541,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "SPrintf",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1567,8 +1567,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1579,8 +1579,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "SPrintf",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1605,8 +1605,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1617,8 +1617,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "SPrintf",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1643,8 +1643,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1655,8 +1655,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "valstr",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1681,8 +1681,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1693,8 +1693,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "valstr",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1719,8 +1719,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1731,8 +1731,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "valstr",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1757,8 +1757,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1769,8 +1769,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "valstr",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1795,8 +1795,8 @@ Array [
                             },
                           ],
                           "arguments": Array [
-                            undefined,
-                            undefined,
+                            "value_arg",
+                            "value_type",
                           ],
                           "name": "value",
                         },
@@ -1807,8 +1807,8 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    undefined,
-                    undefined,
+                    "valstr",
+                    "typestr",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1887,9 +1887,9 @@ Array [
                 "body": Object {
                   "statements": Array [
                     Object {
-                      "left": undefined,
+                      "left": "typestr",
                       "operator": "=",
-                      "right": undefined,
+                      "right": "typestr",
                       "type": "binaryExpression",
                     },
                     Object {
@@ -1905,13 +1905,13 @@ Array [
               Object {
                 "body": Object {
                   "statements": Array [
-                    undefined,
+                    "typestr",
                     Object {
-                      "condition": undefined,
+                      "condition": "value_arg",
                       "falseStatement": undefined,
                       "trueStatement": Object {
                         "statements": Array [
-                          undefined,
+                          "valstr",
                         ],
                         "type": "statementList",
                       },
@@ -1930,7 +1930,7 @@ Array [
               Object {
                 "body": Object {
                   "statements": Array [
-                    undefined,
+                    "Warning",
                     Object {
                       "type": "breakStatement",
                     },
@@ -1964,7 +1964,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "v",
           "type": "returnStatement",
         },
       ],
@@ -2027,7 +2027,7 @@ Array [
                     "value": "Encoded value element",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": "uleb128_value",
                 "name": "values",
               },
             ],
@@ -2093,11 +2093,11 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": "uleb128_value",
           "trueStatement": Object {
             "statements": Array [
-              undefined,
-              undefined,
+              "count",
+              "dots",
             ],
             "type": "statementList",
           },
@@ -2120,12 +2120,12 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              undefined,
+              "val",
               Object {
-                "condition": undefined,
+                "condition": "i",
                 "trueStatement": Object {
                   "statements": Array [
-                    undefined,
+                    "val",
                   ],
                   "type": "statementList",
                 },
@@ -2134,24 +2134,24 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
         },
         Object {
-          "condition": undefined,
+          "condition": "dots",
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "val",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
-        undefined,
+        "val",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "val",
           "type": "returnStatement",
         },
       ],
@@ -2256,7 +2256,7 @@ Array [
           },
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "name",
           "type": "returnStatement",
         },
       ],
@@ -2333,7 +2333,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "uleb128_value",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -2346,7 +2346,7 @@ Array [
                           "value": "Encoded annotation contents",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "uleb128_value",
                       "name": "elements",
                     },
                   ],
@@ -2385,9 +2385,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -2539,10 +2539,10 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "endian_tag",
             "trueStatement": Object {
               "statements": Array [
-                undefined,
+                "Warning",
               ],
               "type": "statementList",
             },
@@ -2886,19 +2886,19 @@ Array [
     "declarations": Array [
       Object {
         "name": "DEX_FLAG_VERIFIED",
-        "value": undefined,
+        "value": 1,
       },
       Object {
         "name": "DEX_OPT_FLAG_BIG",
-        "value": undefined,
+        "value": 2,
       },
       Object {
         "name": "DEX_OPT_FLAG_FIELDS",
-        "value": undefined,
+        "value": 4,
       },
       Object {
         "name": "DEX_OPT_FLAG_INVOCATIONS",
-        "value": undefined,
+        "value": 8,
       },
     ],
     "type": "enumDeclaration",
@@ -3139,25 +3139,25 @@ Array [
           "body": Object {
             "statements": Array [
               Object {
-                "condition": undefined,
+                "condition": "f",
                 "trueStatement": Object {
                   "statements": Array [
-                    undefined,
+                    "flags",
                   ],
                   "type": "statementList",
                 },
                 "type": "ifStatement",
               },
-              undefined,
+              "i",
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "type": "whileStatement",
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ret",
           "type": "returnStatement",
         },
       ],
@@ -3279,7 +3279,7 @@ Array [
               "name": "int64",
             },
           },
-          undefined,
+          "FSeek",
           Object {
             "annotations": Array [],
             "declarations": Array [
@@ -3299,7 +3299,7 @@ Array [
               "name": "string_item",
             },
           },
-          undefined,
+          "FSeek",
         ],
         "type": "statementList",
       },
@@ -3311,7 +3311,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "i",
           "type": "returnStatement",
         },
       ],
@@ -3374,7 +3374,7 @@ Array [
                     "value": "String ID",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": "size",
                 "name": "string_id",
               },
             ],
@@ -3418,9 +3418,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "s",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -3492,7 +3492,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetLongTypeDescriptor",
           "type": "returnStatement",
         },
       ],
@@ -3551,7 +3551,7 @@ Array [
                     "value": "Type ID",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": "size",
                 "name": "type_id",
               },
             ],
@@ -3595,9 +3595,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "s",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -3699,7 +3699,7 @@ Array [
                     "value": "Type entry",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": "size",
                 "name": "list",
               },
             ],
@@ -3720,7 +3720,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetTypeById",
           "type": "returnStatement",
         },
       ],
@@ -3792,12 +3792,12 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              undefined,
+              "s",
               Object {
-                "condition": undefined,
+                "condition": "i",
                 "trueStatement": Object {
                   "statements": Array [
-                    undefined,
+                    "s",
                   ],
                   "type": "statementList",
                 },
@@ -3806,13 +3806,13 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -3902,12 +3902,12 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              undefined,
-              undefined,
+              "post",
+              "i",
               Object {
-                "condition": undefined,
+                "condition": "i",
                 "trueStatement": Object {
-                  "assignmentExpression": undefined,
+                  "assignmentExpression": "ERROR",
                   "type": "returnStatement",
                 },
                 "type": "ifStatement",
@@ -3915,29 +3915,29 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "descriptor",
           "type": "whileStatement",
         },
         Object {
-          "condition": undefined,
+          "condition": "descriptor",
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "i",
               Object {
                 "body": Object {
                   "statements": Array [
                     Object {
-                      "condition": undefined,
+                      "condition": "descriptor",
                       "falseStatement": undefined,
-                      "trueStatement": undefined,
+                      "trueStatement": "desc",
                       "type": "ifStatement",
                     },
-                    undefined,
+                    "i",
                   ],
                   "type": "statementList",
                 },
-                "condition": undefined,
+                "condition": "i",
                 "type": "whileStatement",
               },
             ],
@@ -3946,7 +3946,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "desc",
           "type": "returnStatement",
         },
       ],
@@ -4050,7 +4050,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "parameters_off",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -4068,7 +4068,7 @@ Array [
                     "name": "int64",
                   },
                 },
-                undefined,
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -4088,7 +4088,7 @@ Array [
                     "name": "type_item_list",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -4105,7 +4105,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetPrototypeSignature",
           "type": "returnStatement",
         },
       ],
@@ -4164,7 +4164,7 @@ Array [
                     "value": "Prototype ID",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": "size",
                 "name": "proto_id",
               },
             ],
@@ -4208,9 +4208,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "s",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -4285,12 +4285,12 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              undefined,
+              "s",
               Object {
-                "condition": undefined,
+                "condition": "i",
                 "trueStatement": Object {
                   "statements": Array [
-                    undefined,
+                    "s",
                   ],
                   "type": "statementList",
                 },
@@ -4299,13 +4299,13 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -4361,17 +4361,17 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": "exists",
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "params",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ret",
           "type": "returnStatement",
         },
       ],
@@ -4534,7 +4534,7 @@ Array [
           },
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "type",
           "type": "returnStatement",
         },
       ],
@@ -4593,7 +4593,7 @@ Array [
                     "value": "Field ID",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": "size",
                 "name": "field_id",
               },
             ],
@@ -4637,9 +4637,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "s",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -4770,9 +4770,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -4860,17 +4860,17 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": "exists",
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "params",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "retval",
           "type": "returnStatement",
         },
       ],
@@ -4929,7 +4929,7 @@ Array [
                     "value": "Method ID",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": "size",
                 "name": "method_id",
               },
             ],
@@ -4973,9 +4973,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "s",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -5047,7 +5047,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "annotations_off",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5065,7 +5065,7 @@ Array [
                     "name": "int64",
                   },
                 },
-                undefined,
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -5080,7 +5080,7 @@ Array [
                     "name": "annotation_set_item",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -5097,7 +5097,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetFieldById",
           "type": "returnStatement",
         },
       ],
@@ -5169,7 +5169,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "annotations_off",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5187,7 +5187,7 @@ Array [
                     "name": "int64",
                   },
                 },
-                undefined,
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -5202,7 +5202,7 @@ Array [
                     "name": "annotation_set_item",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -5219,7 +5219,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetMethodById",
           "type": "returnStatement",
         },
       ],
@@ -5291,7 +5291,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "annotations_off",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5309,7 +5309,7 @@ Array [
                     "name": "int64",
                   },
                 },
-                undefined,
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -5324,7 +5324,7 @@ Array [
                     "name": "annotation_set_ref_list",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -5341,7 +5341,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetParameterListString",
           "type": "returnStatement",
         },
       ],
@@ -5373,15 +5373,15 @@ Array [
     "declarations": Array [
       Object {
         "name": "VISIBILITY_BUILD",
-        "value": undefined,
+        "value": 0,
       },
       Object {
         "name": "VISIBILITY_RUNTIME",
-        "value": undefined,
+        "value": 1,
       },
       Object {
         "name": "VISIBILITY_SYSTEM",
-        "value": undefined,
+        "value": 2,
       },
     ],
     "type": "enumDeclaration",
@@ -5449,7 +5449,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "EncodedAnnotationRead",
           "type": "returnStatement",
         },
       ],
@@ -5507,7 +5507,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "annotation_off",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5525,7 +5525,7 @@ Array [
                     "name": "int64",
                   },
                 },
-                undefined,
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -5545,7 +5545,7 @@ Array [
                     "name": "annotation_item",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -5562,11 +5562,11 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": "exists",
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "AnnotationItemRead",
                 "type": "returnStatement",
               },
             ],
@@ -5629,7 +5629,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "size",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5642,7 +5642,7 @@ Array [
                           "value": "Annotation entry elements",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "size",
                       "name": "entries",
                     },
                   ],
@@ -5682,9 +5682,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -5742,7 +5742,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "class_annotations_off",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5760,7 +5760,7 @@ Array [
                     "name": "int64",
                   },
                 },
-                undefined,
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -5780,7 +5780,7 @@ Array [
                     "name": "annotation_set_item",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -5844,7 +5844,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "fields_size",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5857,7 +5857,7 @@ Array [
                           "value": "List of field annotations",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "fields_size",
                       "name": "field_annotations",
                     },
                   ],
@@ -5873,7 +5873,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "methods_size",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5886,7 +5886,7 @@ Array [
                           "value": "List of method annotations",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "methods_size",
                       "name": "method_annotations",
                     },
                   ],
@@ -5902,7 +5902,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "parameters_size",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5915,7 +5915,7 @@ Array [
                           "value": "List of method parameter annotations",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "parameters_size",
                       "name": "parameter_annotations",
                     },
                   ],
@@ -5971,18 +5971,18 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": "exists",
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "classes",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -6036,7 +6036,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "annotations_off",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -6054,7 +6054,7 @@ Array [
                     "name": "int64",
                   },
                 },
-                undefined,
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -6074,7 +6074,7 @@ Array [
                     "name": "annotation_set_item",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -6112,7 +6112,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "size",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -6125,7 +6125,7 @@ Array [
                           "value": "Annotation set elements",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "size",
                       "name": "list",
                     },
                   ],
@@ -6155,71 +6155,71 @@ Array [
     "declarations": Array [
       Object {
         "name": "ACC_PUBLIC",
-        "value": undefined,
+        "value": 1,
       },
       Object {
         "name": "ACC_PRIVATE",
-        "value": undefined,
+        "value": 2,
       },
       Object {
         "name": "ACC_PROTECTED",
-        "value": undefined,
+        "value": 4,
       },
       Object {
         "name": "ACC_STATIC",
-        "value": undefined,
+        "value": 8,
       },
       Object {
         "name": "ACC_FINAL",
-        "value": undefined,
+        "value": 16,
       },
       Object {
         "name": "ACC_SYNCHRONIZED",
-        "value": undefined,
+        "value": 32,
       },
       Object {
         "name": "ACC_VOLATILE",
-        "value": undefined,
+        "value": 64,
       },
       Object {
         "name": "ACC_TRANSIENT",
-        "value": undefined,
+        "value": 128,
       },
       Object {
         "name": "ACC_NATIVE",
-        "value": undefined,
+        "value": 256,
       },
       Object {
         "name": "ACC_INTERFACE",
-        "value": undefined,
+        "value": 512,
       },
       Object {
         "name": "ACC_ABSTRACT",
-        "value": undefined,
+        "value": 1024,
       },
       Object {
         "name": "ACC_STRICT",
-        "value": undefined,
+        "value": 2048,
       },
       Object {
         "name": "ACC_SYNTHETIC",
-        "value": undefined,
+        "value": 4096,
       },
       Object {
         "name": "ACC_ANNOTATION",
-        "value": undefined,
+        "value": 8192,
       },
       Object {
         "name": "ACC_ENUM",
-        "value": undefined,
+        "value": 16384,
       },
       Object {
         "name": "ACC_CONSTRUCTOR",
-        "value": undefined,
+        "value": 65536,
       },
       Object {
         "name": "ACC_DECLARED_SYNCHRONIZED",
-        "value": undefined,
+        "value": 131072,
       },
     ],
     "type": "enumDeclaration",
@@ -6273,25 +6273,25 @@ Array [
           "body": Object {
             "statements": Array [
               Object {
-                "condition": undefined,
+                "condition": "f",
                 "trueStatement": Object {
                   "statements": Array [
-                    undefined,
+                    "flags",
                   ],
                   "type": "statementList",
                 },
                 "type": "ifStatement",
               },
-              undefined,
+              "i",
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "type": "whileStatement",
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ret",
           "type": "returnStatement",
         },
       ],
@@ -6319,7 +6319,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "AccessFlagsRead",
           "type": "returnStatement",
         },
       ],
@@ -6366,7 +6366,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "public",
                     "type": "returnStatement",
                   },
                 ],
@@ -6380,7 +6380,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "private",
                     "type": "returnStatement",
                   },
                 ],
@@ -6394,7 +6394,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "protected",
                     "type": "returnStatement",
                   },
                 ],
@@ -6408,7 +6408,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "static",
                     "type": "returnStatement",
                   },
                 ],
@@ -6422,7 +6422,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "final",
                     "type": "returnStatement",
                   },
                 ],
@@ -6436,7 +6436,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "synchronized",
                     "type": "returnStatement",
                   },
                 ],
@@ -6450,10 +6450,10 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "condition": undefined,
+                    "condition": "type",
                     "falseStatement": undefined,
                     "trueStatement": Object {
-                      "assignmentExpression": undefined,
+                      "assignmentExpression": "volatile",
                       "type": "returnStatement",
                     },
                     "type": "ifStatement",
@@ -6469,10 +6469,10 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "condition": undefined,
+                    "condition": "type",
                     "falseStatement": undefined,
                     "trueStatement": Object {
-                      "assignmentExpression": undefined,
+                      "assignmentExpression": "transient",
                       "type": "returnStatement",
                     },
                     "type": "ifStatement",
@@ -6488,7 +6488,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "native",
                     "type": "returnStatement",
                   },
                 ],
@@ -6502,7 +6502,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "interface",
                     "type": "returnStatement",
                   },
                 ],
@@ -6516,7 +6516,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "abstract",
                     "type": "returnStatement",
                   },
                 ],
@@ -6530,7 +6530,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "strict",
                     "type": "returnStatement",
                   },
                 ],
@@ -6544,7 +6544,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "synthetic",
                     "type": "returnStatement",
                   },
                 ],
@@ -6558,7 +6558,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "annotation",
                     "type": "returnStatement",
                   },
                 ],
@@ -6572,7 +6572,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "enum",
                     "type": "returnStatement",
                   },
                 ],
@@ -6586,7 +6586,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "constructor",
                     "type": "returnStatement",
                   },
                 ],
@@ -6600,7 +6600,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "assignmentExpression": undefined,
+                    "assignmentExpression": "declared-synchronized",
                     "type": "returnStatement",
                   },
                 ],
@@ -6621,7 +6621,7 @@ Array [
           "type": "switchStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ERROR",
           "type": "returnStatement",
         },
       ],
@@ -6688,24 +6688,24 @@ Array [
           "body": Object {
             "statements": Array [
               Object {
-                "condition": undefined,
+                "condition": "f",
                 "trueStatement": Object {
                   "statements": Array [
-                    undefined,
+                    "flags",
                   ],
                   "type": "statementList",
                 },
                 "type": "ifStatement",
               },
-              undefined,
+              "i",
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "type": "whileStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "flags",
           "type": "returnStatement",
         },
       ],
@@ -6844,7 +6844,7 @@ Array [
           },
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetFriendlyAccessFlags",
           "type": "returnStatement",
         },
       ],
@@ -6937,7 +6937,7 @@ Array [
                         },
                       ],
                       "arguments": Array [
-                        undefined,
+                        "fieldid",
                       ],
                       "name": "field",
                     },
@@ -6948,11 +6948,11 @@ Array [
                     "name": "encoded_field",
                   },
                 },
-                undefined,
+                "fieldid",
               ],
               "type": "statementList",
             },
-            "condition": undefined,
+            "condition": "i",
             "increment": undefined,
             "initialization": undefined,
             "type": "forStatement",
@@ -6992,9 +6992,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -7109,7 +7109,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "uleb128_value",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -7127,7 +7127,7 @@ Array [
                     "name": "int64",
                   },
                 },
-                undefined,
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -7147,7 +7147,7 @@ Array [
                     "name": "code_item",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -7189,7 +7189,7 @@ Array [
           },
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetFriendlyAccessFlags",
           "type": "returnStatement",
         },
       ],
@@ -7282,7 +7282,7 @@ Array [
                         },
                       ],
                       "arguments": Array [
-                        undefined,
+                        "methodid",
                       ],
                       "name": "method",
                     },
@@ -7293,11 +7293,11 @@ Array [
                     "name": "encoded_method",
                   },
                 },
-                undefined,
+                "methodid",
               ],
               "type": "statementList",
             },
-            "condition": undefined,
+            "condition": "i",
             "increment": undefined,
             "initialization": undefined,
             "type": "forStatement",
@@ -7337,9 +7337,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -7450,7 +7450,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "uleb128_value",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -7464,7 +7464,7 @@ Array [
                         },
                       ],
                       "arguments": Array [
-                        undefined,
+                        "uleb128_value",
                       ],
                       "name": "static_fields",
                     },
@@ -7481,7 +7481,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "uleb128_value",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -7495,7 +7495,7 @@ Array [
                         },
                       ],
                       "arguments": Array [
-                        undefined,
+                        "uleb128_value",
                       ],
                       "name": "instance_fields",
                     },
@@ -7512,7 +7512,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "uleb128_value",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -7526,7 +7526,7 @@ Array [
                         },
                       ],
                       "arguments": Array [
-                        undefined,
+                        "uleb128_value",
                       ],
                       "name": "direct_methods",
                     },
@@ -7543,7 +7543,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "uleb128_value",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -7557,7 +7557,7 @@ Array [
                         },
                       ],
                       "arguments": Array [
-                        undefined,
+                        "uleb128_value",
                       ],
                       "name": "virtual_methods",
                     },
@@ -7598,9 +7598,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -7738,11 +7738,11 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "interfaces_off",
             "trueStatement": Object {
               "statements": Array [
-                undefined,
-                undefined,
+                "pos",
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -7766,7 +7766,7 @@ Array [
                     "name": "type_item_list",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -7815,11 +7815,11 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "annotations_off",
             "trueStatement": Object {
               "statements": Array [
-                undefined,
-                undefined,
+                "pos",
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -7839,7 +7839,7 @@ Array [
                     "name": "annotations_directory_item",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -7865,11 +7865,11 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "class_data_off",
             "trueStatement": Object {
               "statements": Array [
-                undefined,
-                undefined,
+                "pos",
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -7889,7 +7889,7 @@ Array [
                     "name": "class_data_item",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -7915,11 +7915,11 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "static_values_off",
             "trueStatement": Object {
               "statements": Array [
-                undefined,
-                undefined,
+                "pos",
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -7939,7 +7939,7 @@ Array [
                     "name": "encoded_array_item",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -7986,7 +7986,7 @@ Array [
           },
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "flags",
           "type": "returnStatement",
         },
       ],
@@ -8044,12 +8044,12 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              undefined,
+              "s",
               Object {
-                "condition": undefined,
+                "condition": "i",
                 "trueStatement": Object {
                   "statements": Array [
-                    undefined,
+                    "s",
                   ],
                   "type": "statementList",
                 },
@@ -8058,13 +8058,13 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -8123,7 +8123,7 @@ Array [
                     "value": "Class ID",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": "size",
                 "name": "class_def",
               },
             ],
@@ -8167,9 +8167,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "s",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -8331,10 +8331,10 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "s",
             "trueStatement": Object {
               "statements": Array [
-                undefined,
+                "numhandlers",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -8345,7 +8345,7 @@ Array [
                           "value": "Exception handler pairs",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "numhandlers",
                       "name": "handlers",
                     },
                   ],
@@ -8361,7 +8361,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "s",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -8383,7 +8383,7 @@ Array [
                     "name": "uleb128",
                   },
                 },
-                undefined,
+                "numhandlers",
               ],
               "type": "statementList",
             },
@@ -8414,9 +8414,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -8479,7 +8479,7 @@ Array [
                     "value": "List of handler lists",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": "uleb128_value",
                 "name": "list",
               },
             ],
@@ -8514,9 +8514,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -8646,7 +8646,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "debug_info_off",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -8664,7 +8664,7 @@ Array [
                     "name": "int64",
                   },
                 },
-                undefined,
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -8684,7 +8684,7 @@ Array [
                     "name": "debug_info_item",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -8710,7 +8710,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "insns_size",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -8723,7 +8723,7 @@ Array [
                           "value": "Instruction",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "insns_size",
                       "name": "insns",
                     },
                   ],
@@ -8739,11 +8739,11 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "tries_size",
             "trueStatement": Object {
               "statements": Array [
                 Object {
-                  "condition": undefined,
+                  "condition": "insns_size",
                   "trueStatement": Object {
                     "statements": Array [
                       Object {
@@ -8780,7 +8780,7 @@ Array [
                           "value": "Array of code try block addresses",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "tries_size",
                       "name": "tries",
                     },
                   ],
@@ -8839,9 +8839,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -8945,9 +8945,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -9025,9 +9025,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -9060,75 +9060,75 @@ Array [
     "declarations": Array [
       Object {
         "name": "TYPE_HEADER_ITEM",
-        "value": undefined,
+        "value": 0,
       },
       Object {
         "name": "TYPE_STRING_ID_ITEM",
-        "value": undefined,
+        "value": 1,
       },
       Object {
         "name": "TYPE_TYPE_ID_ITEM",
-        "value": undefined,
+        "value": 2,
       },
       Object {
         "name": "TYPE_PROTO_ID_ITEM",
-        "value": undefined,
+        "value": 3,
       },
       Object {
         "name": "TYPE_FIELD_ID_ITEM",
-        "value": undefined,
+        "value": 4,
       },
       Object {
         "name": "TYPE_METHOD_ID_ITEM",
-        "value": undefined,
+        "value": 5,
       },
       Object {
         "name": "TYPE_CLASS_DEF_ITEM",
-        "value": undefined,
+        "value": 6,
       },
       Object {
         "name": "TYPE_MAP_LIST",
-        "value": undefined,
+        "value": 4096,
       },
       Object {
         "name": "TYPE_TYPE_LIST",
-        "value": undefined,
+        "value": 4097,
       },
       Object {
         "name": "TYPE_ANNOTATION_SET_REF_LIST",
-        "value": undefined,
+        "value": 4098,
       },
       Object {
         "name": "TYPE_ANNOTATION_SET_ITEM",
-        "value": undefined,
+        "value": 4099,
       },
       Object {
         "name": "TYPE_CLASS_DATA_ITEM",
-        "value": undefined,
+        "value": 8192,
       },
       Object {
         "name": "TYPE_CODE_ITEM",
-        "value": undefined,
+        "value": 8193,
       },
       Object {
         "name": "TYPE_STRING_DATA_ITEM",
-        "value": undefined,
+        "value": 8194,
       },
       Object {
         "name": "TYPE_DEBUG_INFO_ITEM",
-        "value": undefined,
+        "value": 8195,
       },
       Object {
         "name": "TYPE_ANNOTATION_ITEM",
-        "value": undefined,
+        "value": 8196,
       },
       Object {
         "name": "TYPE_ENCODED_ARRAY_ITEM",
-        "value": undefined,
+        "value": 8197,
       },
       Object {
         "name": "TYPE_ANNOTATIONS_DIRECTORY_ITEM",
-        "value": undefined,
+        "value": 8198,
       },
     ],
     "type": "enumDeclaration",
@@ -9141,43 +9141,43 @@ Array [
     "declarations": Array [
       Object {
         "name": "DBG_END_SEQUENCE",
-        "value": undefined,
+        "value": 0,
       },
       Object {
         "name": "DBG_ADVANCE_PC",
-        "value": undefined,
+        "value": 1,
       },
       Object {
         "name": "DBG_ADVANCE_LINE",
-        "value": undefined,
+        "value": 2,
       },
       Object {
         "name": "DBG_START_LOCAL",
-        "value": undefined,
+        "value": 3,
       },
       Object {
         "name": "DBG_START_LOCAL_EXTENDED",
-        "value": undefined,
+        "value": 4,
       },
       Object {
         "name": "DBG_END_LOCAL",
-        "value": undefined,
+        "value": 5,
       },
       Object {
         "name": "DBG_RESTART_LOCAL",
-        "value": undefined,
+        "value": 6,
       },
       Object {
         "name": "DBG_SET_PROLOGUE_END",
-        "value": undefined,
+        "value": 7,
       },
       Object {
         "name": "DBG_SET_EPILOGUE_BEGIN",
-        "value": undefined,
+        "value": 8,
       },
       Object {
         "name": "DBG_SET_FILE",
-        "value": undefined,
+        "value": 9,
       },
     ],
     "type": "enumDeclaration",
@@ -9267,7 +9267,7 @@ Array [
                         "name": "uleb128",
                       },
                     },
-                    undefined,
+                    "SPrintf",
                     Object {
                       "type": "breakStatement",
                     },
@@ -9300,7 +9300,7 @@ Array [
                         "name": "sleb128",
                       },
                     },
-                    undefined,
+                    "SPrintf",
                     Object {
                       "type": "breakStatement",
                     },
@@ -9379,7 +9379,7 @@ Array [
                         "name": "uleb128p1",
                       },
                     },
-                    undefined,
+                    "SPrintf",
                     Object {
                       "type": "breakStatement",
                     },
@@ -9481,7 +9481,7 @@ Array [
                         "name": "uleb128p1",
                       },
                     },
-                    undefined,
+                    "SPrintf",
                     Object {
                       "type": "breakStatement",
                     },
@@ -9514,7 +9514,7 @@ Array [
                         "name": "uleb128",
                       },
                     },
-                    undefined,
+                    "SPrintf",
                     Object {
                       "type": "breakStatement",
                     },
@@ -9547,7 +9547,7 @@ Array [
                         "name": "uleb128",
                       },
                     },
-                    undefined,
+                    "SPrintf",
                     Object {
                       "type": "breakStatement",
                     },
@@ -9598,7 +9598,7 @@ Array [
                         "name": "uleb128p1",
                       },
                     },
-                    undefined,
+                    "SPrintf",
                   ],
                   "type": "statementList",
                 },
@@ -9642,7 +9642,7 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": "opcode",
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
@@ -9661,24 +9661,24 @@ Array [
                   "name": "ubyte",
                 },
               },
-              undefined,
+              "SPrintf",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "condition": undefined,
+          "condition": "opcode",
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "s",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -9746,7 +9746,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "uleb128_value",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -9763,7 +9763,7 @@ Array [
                           "value": "false",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "uleb128_value",
                       "name": "parameter_names",
                     },
                   ],
@@ -9803,7 +9803,7 @@ Array [
               ],
               "type": "statementList",
             },
-            "condition": undefined,
+            "condition": "opcode",
             "type": "doWhileStatement",
           },
         ],
@@ -9903,9 +9903,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -9958,7 +9958,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
-                "arraySelector": undefined,
+                "arraySelector": "size",
                 "name": "list",
               },
             ],
@@ -9993,9 +9993,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -10023,11 +10023,11 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": "id",
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "(0xFFFFFFFF)",
                 "type": "returnStatement",
               },
             ],
@@ -10050,9 +10050,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -10080,7 +10080,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "StringIdRead",
           "type": "returnStatement",
         },
       ],
@@ -10108,7 +10108,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "StringIdRead",
           "type": "returnStatement",
         },
       ],
@@ -10136,7 +10136,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetIdAndNameString",
           "type": "returnStatement",
         },
       ],
@@ -10164,7 +10164,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetIdAndNameString",
           "type": "returnStatement",
         },
       ],
@@ -10192,7 +10192,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "LongTypeIdRead",
           "type": "returnStatement",
         },
       ],
@@ -10220,7 +10220,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "LongTypeIdRead",
           "type": "returnStatement",
         },
       ],
@@ -10248,7 +10248,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetIdAndNameString",
           "type": "returnStatement",
         },
       ],
@@ -10276,7 +10276,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetIdAndNameString",
           "type": "returnStatement",
         },
       ],
@@ -10318,9 +10318,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -10356,11 +10356,11 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": "id",
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "(0xFFFFFFFF)",
                 "type": "returnStatement",
               },
             ],
@@ -10369,12 +10369,12 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "condition": undefined,
+          "condition": "exists",
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "dex_string_ids",
                 "type": "returnStatement",
               },
             ],
@@ -10407,11 +10407,11 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": "id",
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "(0xFFFFFFFF)",
                 "type": "returnStatement",
               },
             ],
@@ -10420,12 +10420,12 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "condition": undefined,
+          "condition": "exists",
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "GetStringById",
                 "type": "returnStatement",
               },
             ],
@@ -10458,7 +10458,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "GetLongTypeDescriptor",
           "type": "returnStatement",
         },
       ],
@@ -10486,11 +10486,11 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": "id",
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "(0xFFFFFFFF)",
                 "type": "returnStatement",
               },
             ],
@@ -10499,12 +10499,12 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "condition": undefined,
+          "condition": "exists",
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "MethodIdItemRead",
                 "type": "returnStatement",
               },
             ],
@@ -10537,11 +10537,11 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": "id",
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "(0xFFFFFFFF)",
                 "type": "returnStatement",
               },
             ],
@@ -10550,12 +10550,12 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "condition": undefined,
+          "condition": "exists",
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "FieldIdItemRead",
                 "type": "returnStatement",
               },
             ],
@@ -10592,15 +10592,15 @@ Array [
     "declarations": Array [
       Object {
         "name": "DEX_CHUNK_CLASS_LOOKUP",
-        "value": undefined,
+        "value": 1129073488,
       },
       Object {
         "name": "DEX_CHUNK_REGISTER_MAPS",
-        "value": undefined,
+        "value": 1380794704,
       },
       Object {
         "name": "DEX_CHUNK_END",
-        "value": undefined,
+        "value": 1095061060,
       },
     ],
     "type": "enumDeclaration",
@@ -10673,7 +10673,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "type",
             "falseStatement": undefined,
             "trueStatement": Object {
               "statements": Array [
@@ -10750,11 +10750,11 @@ Array [
                     "name": "dexopt_opt_chunk",
                   },
                 },
-                undefined,
+                "count",
               ],
               "type": "statementList",
             },
-            "condition": undefined,
+            "condition": "chunk",
             "type": "doWhileStatement",
           },
         ],
@@ -10782,9 +10782,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -10826,9 +10826,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -10948,9 +10948,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "s",
           "type": "returnStatement",
         },
       ],
@@ -11018,7 +11018,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "num_entries",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -11031,7 +11031,7 @@ Array [
                           "value": "Class lookup table",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "num_entries",
                       "name": "table",
                     },
                   ],
@@ -11073,7 +11073,7 @@ Array [
     "declarations": Array [
       Object {
         "annotations": Array [],
-        "arraySelector": undefined,
+        "arraySelector": 3,
         "name": "tmp",
       },
     ],
@@ -11084,20 +11084,20 @@ Array [
       "name": "char",
     },
   },
-  undefined,
-  undefined,
+  "ReadBytes",
+  "FSeek",
   Object {
     "condition": undefined,
     "trueStatement": Object {
       "statements": Array [
-        undefined,
+        "odex",
       ],
       "type": "statementList",
     },
     "type": "ifStatement",
   },
   Object {
-    "condition": undefined,
+    "condition": "odex",
     "trueStatement": Object {
       "statements": Array [
         Object {
@@ -11119,8 +11119,8 @@ Array [
             "name": "dexopt_header_item",
           },
         },
-        undefined,
-        undefined,
+        "odexpad",
+        "FSeek",
       ],
       "type": "statementList",
     },
@@ -11156,7 +11156,7 @@ Array [
           },
         ],
         "arguments": Array [
-          undefined,
+          "dex_header",
         ],
         "name": "dex_string_ids",
       },
@@ -11178,7 +11178,7 @@ Array [
           },
         ],
         "arguments": Array [
-          undefined,
+          "dex_header",
         ],
         "name": "dex_type_ids",
       },
@@ -11200,7 +11200,7 @@ Array [
           },
         ],
         "arguments": Array [
-          undefined,
+          "dex_header",
         ],
         "name": "dex_proto_ids",
       },
@@ -11222,7 +11222,7 @@ Array [
           },
         ],
         "arguments": Array [
-          undefined,
+          "dex_header",
         ],
         "name": "dex_field_ids",
       },
@@ -11244,7 +11244,7 @@ Array [
           },
         ],
         "arguments": Array [
-          undefined,
+          "dex_header",
         ],
         "name": "dex_method_ids",
       },
@@ -11266,7 +11266,7 @@ Array [
           },
         ],
         "arguments": Array [
-          undefined,
+          "dex_header",
         ],
         "name": "dex_class_defs",
       },
@@ -11278,10 +11278,10 @@ Array [
     },
   },
   Object {
-    "condition": undefined,
+    "condition": "dex_header",
     "trueStatement": Object {
       "statements": Array [
-        undefined,
+        "FSeek",
         Object {
           "annotations": Array [],
           "declarations": Array [
@@ -11307,14 +11307,14 @@ Array [
     "type": "ifStatement",
   },
   Object {
-    "condition": undefined,
+    "condition": "odex",
     "trueStatement": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": "dexopt_header",
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "FSeek",
               Object {
                 "annotations": Array [],
                 "declarations": Array [
@@ -11325,7 +11325,7 @@ Array [
                         "value": "DexOpt dependency table",
                       },
                     ],
-                    "arraySelector": undefined,
+                    "arraySelector": "dexopt_header",
                     "name": "dexopt_deps",
                   },
                 ],
@@ -11341,10 +11341,10 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "condition": undefined,
+          "condition": "dexopt_header",
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "FSeek",
               Object {
                 "annotations": Array [],
                 "declarations": Array [
@@ -11673,7 +11673,7 @@ Array [
                     "value": "Reserved words",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": 4,
                 "name": "Reserved",
               },
             ],
@@ -11731,7 +11731,7 @@ Array [
                     "value": "Reserved words",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": 10,
                 "name": "Reserved2",
               },
             ],
@@ -11777,7 +11777,7 @@ Array [
       "body": Object {
         "statements": Array [
           Object {
-            "condition": undefined,
+            "condition": "DosHeader",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -11790,7 +11790,7 @@ Array [
                           "value": "Space between DOS header and NT header",
                         },
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "DosHeader",
                       "name": "Data",
                     },
                   ],
@@ -11805,7 +11805,7 @@ Array [
             },
             "type": "ifStatement",
           },
-          undefined,
+          "Printf",
         ],
         "type": "statementList",
       },
@@ -11821,115 +11821,115 @@ Array [
     "declarations": Array [
       Object {
         "name": "IMAGE_MACHINE_UNKNOWN",
-        "value": undefined,
+        "value": 0,
       },
       Object {
         "name": "I386",
-        "value": undefined,
+        "value": 332,
       },
       Object {
         "name": "R3000",
-        "value": undefined,
+        "value": 354,
       },
       Object {
         "name": "R4000",
-        "value": undefined,
+        "value": 358,
       },
       Object {
         "name": "R10000",
-        "value": undefined,
+        "value": 360,
       },
       Object {
         "name": "WCEMIPSV2",
-        "value": undefined,
+        "value": 361,
       },
       Object {
         "name": "ALPHA",
-        "value": undefined,
+        "value": 388,
       },
       Object {
         "name": "SH3",
-        "value": undefined,
+        "value": 418,
       },
       Object {
         "name": "SH3DSP",
-        "value": undefined,
+        "value": 419,
       },
       Object {
         "name": "SH3E",
-        "value": undefined,
+        "value": 420,
       },
       Object {
         "name": "SH4",
-        "value": undefined,
+        "value": 422,
       },
       Object {
         "name": "SH5",
-        "value": undefined,
+        "value": 424,
       },
       Object {
         "name": "ARM",
-        "value": undefined,
+        "value": 448,
       },
       Object {
         "name": "THUMB",
-        "value": undefined,
+        "value": 450,
       },
       Object {
         "name": "AM33",
-        "value": undefined,
+        "value": 467,
       },
       Object {
         "name": "POWERPC",
-        "value": undefined,
+        "value": 496,
       },
       Object {
         "name": "POWERPCFP",
-        "value": undefined,
+        "value": 497,
       },
       Object {
         "name": "IA64",
-        "value": undefined,
+        "value": 512,
       },
       Object {
         "name": "MIPS16",
-        "value": undefined,
+        "value": 614,
       },
       Object {
         "name": "ALPHA64",
-        "value": undefined,
+        "value": 644,
       },
       Object {
         "name": "MIPSFPU",
-        "value": undefined,
+        "value": 870,
       },
       Object {
         "name": "MIPSFPU16",
-        "value": undefined,
+        "value": 1126,
       },
       Object {
         "name": "TRICORE",
-        "value": undefined,
+        "value": 1312,
       },
       Object {
         "name": "CEF",
-        "value": undefined,
+        "value": 3311,
       },
       Object {
         "name": "EBC",
-        "value": undefined,
+        "value": 3772,
       },
       Object {
         "name": "AMD64",
-        "value": undefined,
+        "value": 34404,
       },
       Object {
         "name": "M32R",
-        "value": undefined,
+        "value": 36929,
       },
       Object {
         "name": "CEE",
-        "value": undefined,
+        "value": 49390,
       },
     ],
     "type": "enumDeclaration",
@@ -11954,7 +11954,7 @@ Array [
                     "value": "0x0001  Relocation info stripped from file",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_RELOCS_STRIPPED",
               },
             ],
@@ -11974,7 +11974,7 @@ Array [
                     "value": "0x0002  File is executable",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_EXECUTABLE_IMAGE",
               },
             ],
@@ -11994,7 +11994,7 @@ Array [
                     "value": "0x0004  Line nunbers stripped from file",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_LINE_NUMS_STRIPPED",
               },
             ],
@@ -12014,7 +12014,7 @@ Array [
                     "value": "0x0008  Local symbols stripped from file",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_LOCAL_SYMS_STRIPPED",
               },
             ],
@@ -12034,7 +12034,7 @@ Array [
                     "value": "0x0010  Agressively trim working set",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_AGGRESIVE_WS_TRIM",
               },
             ],
@@ -12054,7 +12054,7 @@ Array [
                     "value": "0x0020  App can handle >2gb addresses",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_LARGE_ADDRESS_AWARE",
               },
             ],
@@ -12075,7 +12075,7 @@ Array [
                 "value": "true",
               },
             ],
-            "bits": undefined,
+            "bits": 1,
             "type": "variableDeclaration",
             "variableType": Object {
               "array": false,
@@ -12092,7 +12092,7 @@ Array [
                     "value": "0x0080  Bytes of machine word are reversed",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_BYTES_REVERSED_LO",
               },
             ],
@@ -12112,7 +12112,7 @@ Array [
                     "value": "0x0100  32 bit word machine",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_32BIT_MACHINE",
               },
             ],
@@ -12132,7 +12132,7 @@ Array [
                     "value": "0x0200  Debugging info stripped from file in .DBG file",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_DEBUG_STRIPPED",
               },
             ],
@@ -12152,7 +12152,7 @@ Array [
                     "value": "0x0400  If Image is on removable media, copy and run from the swap file",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_REMOVABLE_RUN_FROM_SWAP",
               },
             ],
@@ -12172,7 +12172,7 @@ Array [
                     "value": "0x0800  If Image is on Net, copy and run from the swap file",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_NET_RUN_FROM_SWAP",
               },
             ],
@@ -12192,7 +12192,7 @@ Array [
                     "value": "0x1000  System File",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_SYSTEM",
               },
             ],
@@ -12212,7 +12212,7 @@ Array [
                     "value": "0x2000  File is a DLL",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_DLL",
               },
             ],
@@ -12232,7 +12232,7 @@ Array [
                     "value": "0x4000  File should only be run on a UP machine",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_UP_SYSTEM_ONLY",
               },
             ],
@@ -12252,7 +12252,7 @@ Array [
                     "value": "0x8000  Bytes of machine word are reversed",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_FILE_BYTES_REVERSED_HI",
               },
             ],
@@ -12485,17 +12485,17 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "statements": Array [
-                undefined,
+                "len",
               ],
               "type": "statementList",
             },
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12518,7 +12518,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12545,7 +12545,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12568,7 +12568,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12591,7 +12591,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12614,7 +12614,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12641,7 +12641,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12664,7 +12664,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12687,7 +12687,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12710,7 +12710,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12733,7 +12733,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12756,7 +12756,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12779,7 +12779,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12806,7 +12806,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12829,7 +12829,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12852,7 +12852,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "len",
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12889,59 +12889,59 @@ Array [
     "declarations": Array [
       Object {
         "name": "IMAGE_SUBSYSTEM_UNKNOWN",
-        "value": undefined,
+        "value": 0,
       },
       Object {
         "name": "NATIVE",
-        "value": undefined,
+        "value": 1,
       },
       Object {
         "name": "WINDOWS_GUI",
-        "value": undefined,
+        "value": 2,
       },
       Object {
         "name": "WINDOWS_CUI",
-        "value": undefined,
+        "value": 3,
       },
       Object {
         "name": "OS2_CUI",
-        "value": undefined,
+        "value": 5,
       },
       Object {
         "name": "POSIX_CUI",
-        "value": undefined,
+        "value": 7,
       },
       Object {
         "name": "NATIVE_WINDOWS",
-        "value": undefined,
+        "value": 8,
       },
       Object {
         "name": "WINDOWS_CE_GUI",
-        "value": undefined,
+        "value": 9,
       },
       Object {
         "name": "EFI_APPLICATION",
-        "value": undefined,
+        "value": 10,
       },
       Object {
         "name": "EFI_BOOT_SERVICE_DRIVER",
-        "value": undefined,
+        "value": 11,
       },
       Object {
         "name": "EFI_RUNTIME_DRIVER",
-        "value": undefined,
+        "value": 12,
       },
       Object {
         "name": "EFI_ROM",
-        "value": undefined,
+        "value": 13,
       },
       Object {
         "name": "XBOX",
-        "value": undefined,
+        "value": 14,
       },
       Object {
         "name": "WINDOWS_BOOT_APPLICATION",
-        "value": undefined,
+        "value": 16,
       },
     ],
     "type": "enumDeclaration",
@@ -12966,7 +12966,7 @@ Array [
                     "value": "0x0001 Reserved",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_LIBRARY_PROCESS_INIT",
               },
             ],
@@ -12986,7 +12986,7 @@ Array [
                     "value": "0x0002 Reserved",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_LIBRARY_PROCESS_TERM",
               },
             ],
@@ -13006,7 +13006,7 @@ Array [
                     "value": "0x0004 Reserved",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_LIBRARY_THREAD_INIT",
               },
             ],
@@ -13026,7 +13026,7 @@ Array [
                     "value": "0x0008 Reserved",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_LIBRARY_THREAD_TERM",
               },
             ],
@@ -13047,7 +13047,7 @@ Array [
                 "value": "true",
               },
             ],
-            "bits": undefined,
+            "bits": 2,
             "type": "variableDeclaration",
             "variableType": Object {
               "array": false,
@@ -13064,7 +13064,7 @@ Array [
                     "value": "0x0040",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_DLLCHARACTERISTICS_DYNAMIC_BASE",
               },
             ],
@@ -13084,7 +13084,7 @@ Array [
                     "value": "0x0080",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_DLLCHARACTERISTICS_FORCE_INTEGRITY",
               },
             ],
@@ -13104,7 +13104,7 @@ Array [
                     "value": "0x0100",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_DLLCHARACTERISTICS_NX_COMPAT",
               },
             ],
@@ -13124,7 +13124,7 @@ Array [
                     "value": "0x0200",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_DLLCHARACTERISTICS_NO_ISOLATION",
               },
             ],
@@ -13144,7 +13144,7 @@ Array [
                     "value": "0x0400",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_DLLCHARACTERISTICS_NO_SEH",
               },
             ],
@@ -13164,7 +13164,7 @@ Array [
                     "value": "0x0800",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_DLLCHARACTERISTICS_NO_BIND",
               },
             ],
@@ -13185,7 +13185,7 @@ Array [
                 "value": "true",
               },
             ],
-            "bits": undefined,
+            "bits": 1,
             "type": "variableDeclaration",
             "variableType": Object {
               "array": false,
@@ -13202,7 +13202,7 @@ Array [
                     "value": "0x2000",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_DLLCHARACTERISTICS_WDM_DRIVER",
               },
             ],
@@ -13223,7 +13223,7 @@ Array [
                 "value": "true",
               },
             ],
-            "bits": undefined,
+            "bits": 1,
             "type": "variableDeclaration",
             "variableType": Object {
               "array": false,
@@ -13240,7 +13240,7 @@ Array [
                     "value": "0x8000",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_DLLCHARACTERISTICS_TERMINAL_SERVER_AWARE",
               },
             ],
@@ -13265,15 +13265,15 @@ Array [
     "declarations": Array [
       Object {
         "name": "PE32",
-        "value": undefined,
+        "value": 267,
       },
       Object {
         "name": "PE64",
-        "value": undefined,
+        "value": 523,
       },
       Object {
         "name": "ROM",
-        "value": undefined,
+        "value": 263,
       },
     ],
     "type": "enumDeclaration",
@@ -14359,7 +14359,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": 267,
             "falseStatement": undefined,
             "trueStatement": Object {
               "statements": Array [
@@ -14408,7 +14408,7 @@ Array [
                     "value": "true",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_TYPE_DSECT",
               },
             ],
@@ -14432,7 +14432,7 @@ Array [
                     "value": "true",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_TYPE_NOLOAD",
               },
             ],
@@ -14456,7 +14456,7 @@ Array [
                     "value": "true",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_TYPE_GROUP",
               },
             ],
@@ -14476,7 +14476,7 @@ Array [
                     "value": "0x00000008 Reserved",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_TYPE_NO_PAD",
               },
             ],
@@ -14500,7 +14500,7 @@ Array [
                     "value": "true",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_TYPE_COPY",
               },
             ],
@@ -14520,7 +14520,7 @@ Array [
                     "value": "0x00000020 Section contains code",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_CNT_CODE",
               },
             ],
@@ -14540,7 +14540,7 @@ Array [
                     "value": "0x00000040 Section contains initialized data",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_CNT_INITIALIZED_DATA",
               },
             ],
@@ -14560,7 +14560,7 @@ Array [
                     "value": "0x00000080 Section contains uninitialized data",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_CNT_UNINITIALIZED_DATA",
               },
             ],
@@ -14580,7 +14580,7 @@ Array [
                     "value": "0x00000100 Reserved",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_LNK_OTHER",
               },
             ],
@@ -14600,7 +14600,7 @@ Array [
                     "value": "0x00000200 Section contains comments or some other type of information",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_LNK_INFO",
               },
             ],
@@ -14624,7 +14624,7 @@ Array [
                     "value": "true",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_TYPE_OVER",
               },
             ],
@@ -14644,7 +14644,7 @@ Array [
                     "value": "0x00000800 Section contents will not become part of image",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_LNK_REMOVE",
               },
             ],
@@ -14664,7 +14664,7 @@ Array [
                     "value": "0x00001000 Section contents comdat",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_LNK_COMDAT",
               },
             ],
@@ -14681,7 +14681,7 @@ Array [
                 "value": "0x00002000 Reserved",
               },
             ],
-            "bits": undefined,
+            "bits": 1,
             "type": "variableDeclaration",
             "variableType": Object {
               "array": false,
@@ -14702,7 +14702,7 @@ Array [
                     "value": "true",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_NO_DEFER_SPEC_EXC",
               },
             ],
@@ -14722,7 +14722,7 @@ Array [
                     "value": "0x00008000 Section content can be accessed relative to GP",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_GPREL",
               },
             ],
@@ -14746,7 +14746,7 @@ Array [
                     "value": "true",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_SYSHEAP",
               },
             ],
@@ -14766,7 +14766,7 @@ Array [
                     "value": "0x00020000",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_16BIT",
               },
             ],
@@ -14786,7 +14786,7 @@ Array [
                     "value": "0x00040000 ",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_LOCKED",
               },
             ],
@@ -14806,7 +14806,7 @@ Array [
                     "value": "0x00080000",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_PRELOAD",
               },
             ],
@@ -14826,7 +14826,7 @@ Array [
                     "value": "0x00100000",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_ALIGN_1BYTES",
               },
             ],
@@ -14846,7 +14846,7 @@ Array [
                     "value": "0x00200000",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_ALIGN_2BYTES",
               },
             ],
@@ -14866,7 +14866,7 @@ Array [
                     "value": "0x00400000",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_ALIGN_8BYTES",
               },
             ],
@@ -14886,7 +14886,7 @@ Array [
                     "value": "0x00800000",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_ALIGN_128BYTES",
               },
             ],
@@ -14906,7 +14906,7 @@ Array [
                     "value": "0x01000000 Section contains extended relocations",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_LNK_NRELOC_OVFL",
               },
             ],
@@ -14926,7 +14926,7 @@ Array [
                     "value": "0x02000000 Section can be discarded.",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_DISCARDABLE",
               },
             ],
@@ -14946,7 +14946,7 @@ Array [
                     "value": "0x04000000 Section is not cachable",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_NOT_CACHED",
               },
             ],
@@ -14966,7 +14966,7 @@ Array [
                     "value": "0x08000000 Section is not pageable.",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_NOT_PAGED",
               },
             ],
@@ -14986,7 +14986,7 @@ Array [
                     "value": "0x10000000 Section is shareable",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_SHARED",
               },
             ],
@@ -15006,7 +15006,7 @@ Array [
                     "value": "0x20000000 Section is executable",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_EXECUTE",
               },
             ],
@@ -15026,7 +15026,7 @@ Array [
                     "value": "0x40000000 Section is readable",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_READ",
               },
             ],
@@ -15046,7 +15046,7 @@ Array [
                     "value": "0x80000000 Section is writeable",
                   },
                 ],
-                "bits": undefined,
+                "bits": 1,
                 "name": "IMAGE_SCN_MEM_WRITE",
               },
             ],
@@ -15083,7 +15083,7 @@ Array [
                     "value": "can end without zero",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": 8,
                 "name": "Name",
               },
             ],
@@ -15307,7 +15307,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
-                "arraySelector": undefined,
+                "arraySelector": "SecHeader",
                 "name": "Data",
               },
             ],
@@ -15363,7 +15363,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
-                "arraySelector": undefined,
+                "arraySelector": "nNameLen",
                 "name": "Name",
               },
             ],
@@ -15608,12 +15608,12 @@ Array [
               "name": "ULONG",
             },
           },
-          undefined,
+          "ulOriginalFirstThunkFOA",
           Object {
             "condition": undefined,
             "trueStatement": Object {
               "statements": Array [
-                undefined,
+                "nNameIndex",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -15632,9 +15632,9 @@ Array [
                 Object {
                   "body": Object {
                     "statements": Array [
-                      undefined,
+                      "ulThrunk",
                       Object {
-                        "condition": undefined,
+                        "condition": 0,
                         "trueStatement": Object {
                           "statements": Array [
                             Object {
@@ -15649,13 +15649,13 @@ Array [
                         "condition": undefined,
                         "trueStatement": Object {
                           "statements": Array [
-                            undefined,
+                            "nNameLen",
                             Object {
-                              "condition": undefined,
+                              "condition": 0,
                               "trueStatement": Object {
                                 "statements": Array [
-                                  undefined,
-                                  undefined,
+                                  "og_position",
+                                  "FSeek",
                                   Object {
                                     "annotations": Array [],
                                     "declarations": Array [
@@ -15667,7 +15667,7 @@ Array [
                                           },
                                         ],
                                         "arguments": Array [
-                                          undefined,
+                                          "nNameLen",
                                         ],
                                         "name": "ImportByName",
                                       },
@@ -15678,7 +15678,7 @@ Array [
                                       "name": "IMAGE_IMPORT_BY_NAME",
                                     },
                                   },
-                                  undefined,
+                                  "FSeek",
                                 ],
                                 "type": "statementList",
                               },
@@ -15689,11 +15689,11 @@ Array [
                         },
                         "type": "ifStatement",
                       },
-                      undefined,
+                      "nNameIndex",
                     ],
                     "type": "statementList",
                   },
-                  "condition": undefined,
+                  "condition": 1,
                   "type": "whileStatement",
                 },
               ],
@@ -15757,7 +15757,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
-                "arraySelector": undefined,
+                "arraySelector": "Strlen",
                 "name": "Function",
               },
             ],
@@ -16180,37 +16180,37 @@ Array [
               "name": "ULONG",
             },
           },
-          undefined,
-          undefined,
-          undefined,
+          "NameArrayFOA",
+          "OrdinalArrayFOA",
+          "FuncArrayFOA",
           Object {
             "body": Object {
               "statements": Array [
-                undefined,
-                undefined,
-                undefined,
+                "ulNameRVA",
+                "ulNameFOA",
+                "sExportName",
                 Object {
-                  "condition": undefined,
+                  "condition": 0,
                   "trueStatement": Object {
                     "statements": Array [
-                      undefined,
-                      undefined,
+                      "wOrdinal",
+                      "ulFuncRVA",
                       Object {
                         "condition": undefined,
                         "falseStatement": undefined,
                         "trueStatement": Object {
                           "statements": Array [
-                            undefined,
-                            undefined,
+                            "sJmpName",
+                            "FSeek",
                             Object {
                               "annotations": Array [],
                               "declarations": Array [
                                 Object {
                                   "annotations": Array [],
                                   "arguments": Array [
-                                    undefined,
-                                    undefined,
-                                    undefined,
+                                    "sExportName",
+                                    "ulFuncRVA",
+                                    "sJmpName",
                                   ],
                                   "name": "ExportByName",
                                 },
@@ -16231,12 +16231,12 @@ Array [
                   },
                   "type": "ifStatement",
                 },
-                undefined,
+                "ulCurPos",
                 Object {
-                  "condition": undefined,
+                  "condition": "ulEndPos",
                   "trueStatement": Object {
                     "statements": Array [
-                      undefined,
+                      "ulEndPos",
                     ],
                     "type": "statementList",
                   },
@@ -16245,12 +16245,12 @@ Array [
               ],
               "type": "statementList",
             },
-            "condition": undefined,
+            "condition": "nIndex",
             "increment": undefined,
             "initialization": undefined,
             "type": "forStatement",
           },
-          undefined,
+          "FSeek",
         ],
         "type": "statementList",
       },
@@ -16283,7 +16283,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "Length",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -16291,7 +16291,7 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
-                      "arraySelector": undefined,
+                      "arraySelector": "Length",
                       "name": "String",
                     },
                   ],
@@ -16346,7 +16346,7 @@ Array [
                     "value": "CommentResourceDirectoryString",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": 16,
                 "name": "Strings",
               },
             ],
@@ -16449,8 +16449,8 @@ Array [
               "name": "DWORD",
             },
           },
-          undefined,
-          undefined,
+          "originalPos",
+          "FSeek",
           Object {
             "condition": undefined,
             "falseStatement": undefined,
@@ -16461,7 +16461,7 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
-                      "arraySelector": undefined,
+                      "arraySelector": "DataSize",
                       "name": "Data",
                     },
                   ],
@@ -16476,7 +16476,7 @@ Array [
             },
             "type": "ifStatement",
           },
-          undefined,
+          "FSeek",
         ],
         "type": "statementList",
       },
@@ -16539,10 +16539,10 @@ Array [
               "name": "DWORD",
             },
           },
-          undefined,
-          undefined,
+          "Level",
+          "IsNameEntry",
           Object {
-            "condition": undefined,
+            "condition": "IsNameEntry",
             "falseStatement": undefined,
             "trueStatement": Object {
               "statements": Array [
@@ -16590,7 +16590,7 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": "NextDWORD",
             "falseStatement": undefined,
             "trueStatement": Object {
               "statements": Array [
@@ -16628,16 +16628,16 @@ Array [
                     "name": "DWORD",
                   },
                 },
-                undefined,
-                undefined,
-                undefined,
+                "dwMaskedOffset",
+                "originalPos",
+                "FSeek",
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
                       "arguments": Array [
-                        undefined,
+                        "Level",
                       ],
                       "name": "RsourceDirectoryTable",
                     },
@@ -16648,7 +16648,7 @@ Array [
                     "name": "RESOURCE_DIRECTORY_TABLE",
                   },
                 },
-                undefined,
+                "FSeek",
               ],
               "type": "statementList",
             },
@@ -16817,9 +16817,9 @@ Array [
               "name": "WORD",
             },
           },
-          undefined,
+          "Level",
           Object {
-            "condition": undefined,
+            "condition": "NumberOfNameEntries",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -16833,10 +16833,10 @@ Array [
                         },
                       ],
                       "arguments": Array [
-                        undefined,
-                        undefined,
+                        1,
+                        "Level",
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "NumberOfNameEntries",
                       "name": "NameEntries",
                     },
                   ],
@@ -16852,7 +16852,7 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": undefined,
+            "condition": "NumberOfIDEntries",
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -16866,10 +16866,10 @@ Array [
                         },
                       ],
                       "arguments": Array [
-                        undefined,
-                        undefined,
+                        0,
+                        "Level",
                       ],
-                      "arraySelector": undefined,
+                      "arraySelector": "NumberOfIDEntries",
                       "name": "IDEntries",
                     },
                   ],
@@ -16963,7 +16963,7 @@ Array [
               "name": "ULONG",
             },
           },
-          undefined,
+          "ulBlockNum",
           Object {
             "annotations": Array [],
             "declarations": Array [
@@ -16978,7 +16978,7 @@ Array [
                     "value": "CommentBaseRelocBlock",
                   },
                 ],
-                "arraySelector": undefined,
+                "arraySelector": "ulBlockNum",
                 "name": "Block",
               },
             ],
@@ -17024,7 +17024,7 @@ Array [
             "body": Object {
               "statements": Array [
                 Object {
-                  "condition": undefined,
+                  "condition": 0,
                   "trueStatement": Object {
                     "statements": Array [
                       Object {
@@ -17049,11 +17049,11 @@ Array [
                     "name": "IMAGE_BASE_RELOCATION",
                   },
                 },
-                undefined,
+                "ulRelocNum",
               ],
               "type": "statementList",
             },
-            "condition": undefined,
+            "condition": 1,
             "type": "whileStatement",
           },
         ],
@@ -17085,7 +17085,7 @@ Array [
                   "name": "ULONG",
                 },
               },
-              undefined,
+              "FSeek",
               Object {
                 "annotations": Array [],
                 "declarations": Array [
@@ -17183,13 +17183,13 @@ Array [
                   "name": "int",
                 },
               },
-              undefined,
+              "FSeek",
               Object {
                 "body": Object {
                   "statements": Array [
-                    undefined,
+                    "ulOriginalFirstThunk",
                     Object {
-                      "condition": undefined,
+                      "condition": 0,
                       "trueStatement": Object {
                         "statements": Array [
                           Object {
@@ -17200,7 +17200,7 @@ Array [
                       },
                       "type": "ifStatement",
                     },
-                    undefined,
+                    "FSeek",
                     Object {
                       "annotations": Array [],
                       "declarations": Array [
@@ -17215,11 +17215,11 @@ Array [
                         "name": "IMAGE_IMPORT_DESCRIPTOR",
                       },
                     },
-                    undefined,
+                    "nImportIndex",
                   ],
                   "type": "statementList",
                 },
-                "condition": undefined,
+                "condition": 1,
                 "type": "whileStatement",
               },
             ],
@@ -17253,14 +17253,14 @@ Array [
           },
           "type": "ifStatement",
         },
-        undefined,
+        "FSeek",
         Object {
           "annotations": Array [],
           "declarations": Array [
             Object {
               "annotations": Array [],
               "arguments": Array [
-                undefined,
+                1,
               ],
               "name": "ResourceDirectoryTable",
             },
@@ -17349,7 +17349,7 @@ Array [
           },
           "type": "ifStatement",
         },
-        undefined,
+        "FSeek",
         Object {
           "annotations": Array [],
           "declarations": Array [
@@ -17505,7 +17505,7 @@ Array [
                 "trueStatement": Object {
                   "statements": Array [
                     Object {
-                      "assignmentExpression": undefined,
+                      "assignmentExpression": "SectionHeaders",
                       "type": "returnStatement",
                     },
                   ],
@@ -17516,13 +17516,13 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": 0,
           "type": "returnStatement",
         },
       ],
@@ -17565,13 +17565,13 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": 267,
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "Printf",
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": 248,
                 "type": "returnStatement",
               },
             ],
@@ -17580,7 +17580,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": 0,
           "type": "returnStatement",
         },
       ],
@@ -17608,7 +17608,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "h",
           "type": "returnStatement",
         },
       ],
@@ -17636,7 +17636,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "SecData",
           "type": "returnStatement",
         },
       ],
@@ -17664,7 +17664,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ReadString",
           "type": "returnStatement",
         },
       ],
@@ -17692,7 +17692,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ExportByName",
           "type": "returnStatement",
         },
       ],
@@ -17742,7 +17742,7 @@ Array [
                 "trueStatement": Object {
                   "statements": Array [
                     Object {
-                      "assignmentExpression": undefined,
+                      "assignmentExpression": "SectionHeaders",
                       "type": "returnStatement",
                     },
                   ],
@@ -17753,13 +17753,13 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "i",
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "",
           "type": "returnStatement",
         },
       ],
@@ -17802,17 +17802,17 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": 0,
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "SPrintf",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "sComment",
           "type": "returnStatement",
         },
       ],
@@ -17855,17 +17855,17 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": 0,
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "SPrintf",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "sComment",
           "type": "returnStatement",
         },
       ],
@@ -17893,7 +17893,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ImportByName",
           "type": "returnStatement",
         },
       ],
@@ -17936,18 +17936,18 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": 0,
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "SPrintf",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "sComment",
           "type": "returnStatement",
         },
       ],
@@ -17975,7 +17975,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ReadString",
           "type": "returnStatement",
         },
       ],
@@ -18003,12 +18003,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": 12288,
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "assignmentExpression": undefined,
+                "assignmentExpression": "HIGHLOW",
                 "type": "returnStatement",
               },
             ],
@@ -18017,7 +18017,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "",
           "type": "returnStatement",
         },
       ],
@@ -18059,9 +18059,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "sComment",
           "type": "returnStatement",
         },
       ],
@@ -18163,11 +18163,11 @@ Array [
             "name": "WORD",
           },
         },
-        undefined,
-        undefined,
-        undefined,
+        "wsComment",
+        "wsComment",
+        "sComment",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "sComment",
           "type": "returnStatement",
         },
       ],
@@ -18195,7 +18195,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ResourceDirectoryTable",
           "type": "returnStatement",
         },
       ],
@@ -18223,7 +18223,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ResourceDirectoryEntry",
           "type": "returnStatement",
         },
       ],
@@ -18266,13 +18266,13 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": "IntegerID",
           "falseStatement": undefined,
-          "trueStatement": undefined,
+          "trueStatement": "SPrintf",
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "sComment",
           "type": "returnStatement",
         },
       ],
@@ -18334,7 +18334,7 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  undefined,
+                  "sComment",
                   Object {
                     "type": "breakStatement",
                   },
@@ -18348,7 +18348,7 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  undefined,
+                  "sComment",
                   Object {
                     "type": "breakStatement",
                   },
@@ -18362,7 +18362,7 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  undefined,
+                  "sComment",
                   Object {
                     "type": "breakStatement",
                   },
@@ -18399,7 +18399,7 @@ Array [
           "type": "switchStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "sComment",
           "type": "returnStatement",
         },
       ],
@@ -18534,12 +18534,12 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              undefined,
-              undefined,
+              "myIndex",
+              "curLoc",
             ],
             "type": "statementList",
           },
-          "condition": undefined,
+          "condition": "curLoc",
           "type": "whileStatement",
         },
         Object {
@@ -18558,7 +18558,7 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": "actualLength",
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
@@ -18577,15 +18577,15 @@ Array [
                   "name": "wstring",
                 },
               },
-              undefined,
-              undefined,
+              "wsComment",
+              "SPrintf",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "sComment",
           "type": "returnStatement",
         },
       ],
@@ -18643,18 +18643,18 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": "totalEntries",
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "SPrintf",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "sComment",
           "type": "returnStatement",
         },
       ],
@@ -18682,7 +18682,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ResourceDirectoryEntry",
           "type": "returnStatement",
         },
       ],
@@ -18710,7 +18710,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ResourceDirectoryEntry",
           "type": "returnStatement",
         },
       ],
@@ -18738,7 +18738,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "ResourceDirectoryTable",
           "type": "returnStatement",
         },
       ],
@@ -18781,7 +18781,7 @@ Array [
           },
         },
         Object {
-          "condition": undefined,
+          "condition": "ParentTableLevel",
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -18800,7 +18800,7 @@ Array [
                 },
               },
               Object {
-                "condition": undefined,
+                "condition": "BaseEntryIsNameEntry",
                 "trueStatement": Object {
                   "statements": Array [
                     Object {
@@ -18819,11 +18819,11 @@ Array [
                       },
                     },
                     Object {
-                      "condition": undefined,
+                      "condition": "BaseEntryIntegerID",
                       "trueStatement": Object {
                         "statements": Array [
                           Object {
-                            "assignmentExpression": undefined,
+                            "assignmentExpression": 1,
                             "type": "returnStatement",
                           },
                         ],
@@ -18842,7 +18842,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": 0,
           "type": "returnStatement",
         },
       ],
@@ -18884,9 +18884,9 @@ Array [
             "name": "string",
           },
         },
-        undefined,
+        "SPrintf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": "sComment",
           "type": "returnStatement",
         },
       ],
@@ -18910,8 +18910,8 @@ Array [
     },
     "type": "functionDeclaration",
   },
-  undefined,
-  undefined,
+  "LittleEndian",
+  "Printf",
   Object {
     "annotations": Array [],
     "declarations": Array [
@@ -18932,12 +18932,12 @@ Array [
     },
   },
   Object {
-    "condition": undefined,
+    "condition": "DosHeader",
     "trueStatement": Object {
       "statements": Array [
-        undefined,
+        "Printf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": 1,
           "type": "returnStatement",
         },
       ],
@@ -18946,12 +18946,12 @@ Array [
     "type": "ifStatement",
   },
   Object {
-    "condition": undefined,
+    "condition": 0,
     "trueStatement": Object {
       "statements": Array [
-        undefined,
+        "Warning",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": 2,
           "type": "returnStatement",
         },
       ],
@@ -18973,7 +18973,7 @@ Array [
       "name": "IMAGE_DOS_STUB",
     },
   },
-  undefined,
+  "FSeek",
   Object {
     "annotations": Array [],
     "declarations": Array [
@@ -18994,12 +18994,12 @@ Array [
     },
   },
   Object {
-    "condition": undefined,
+    "condition": 17744,
     "trueStatement": Object {
       "statements": Array [
-        undefined,
+        "Printf",
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": 3,
           "type": "returnStatement",
         },
       ],
@@ -19017,7 +19017,7 @@ Array [
             "value": "cLtGray",
           },
         ],
-        "arraySelector": undefined,
+        "arraySelector": "NtHeader",
         "name": "SectionHeaders",
       },
     ],
@@ -19043,7 +19043,7 @@ Array [
     },
   },
   Object {
-    "condition": undefined,
+    "condition": "NtHeader",
     "trueStatement": Object {
       "statements": Array [
         Object {
@@ -19064,7 +19064,7 @@ Array [
                   "value": "Space between header and first section",
                 },
               ],
-              "arraySelector": undefined,
+              "arraySelector": "NtHeader",
               "name": "Space2",
             },
           ],
@@ -19079,8 +19079,8 @@ Array [
     },
     "type": "ifStatement",
   },
-  undefined,
-  undefined,
+  "Printf",
+  "FSeek",
   Object {
     "annotations": Array [],
     "declarations": Array [
@@ -19100,20 +19100,20 @@ Array [
     "body": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": 0,
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "continue",
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "condition": undefined,
+          "condition": 0,
           "trueStatement": Object {
             "statements": Array [
-              undefined,
+              "continue",
             ],
             "type": "statementList",
           },
@@ -19125,7 +19125,7 @@ Array [
             Object {
               "annotations": Array [],
               "arguments": Array [
-                undefined,
+                "SectionHeaders",
               ],
               "name": "Section",
             },
@@ -19139,22 +19139,22 @@ Array [
       ],
       "type": "statementList",
     },
-    "condition": undefined,
+    "condition": "ulIndex",
     "increment": undefined,
     "initialization": undefined,
     "type": "forStatement",
   },
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
+  "FSeek",
+  "ParseEAT",
+  "ParseIAT",
+  "ParseResource",
+  "ParseException",
+  "ParseSecurity",
+  "ParseBaseReloc",
+  "ParseDebug",
+  "ParseTLS",
+  "ParseBoundImport",
+  "ParseDelayImport",
+  "Printf",
 ]
 `;

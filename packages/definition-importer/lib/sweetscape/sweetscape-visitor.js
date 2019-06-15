@@ -363,46 +363,142 @@ function getVisitor(parser) {
       return this.visit(_.first(ctx.ternaryExpression));
     }
 
-    assignmentOperator(ctx) {
-      return this.getFirstTokenImage(ctx);
-    }
-
-    prefixOperator(ctx) {
-      return this.getFirstTokenImage(ctx);
-    }
-
-    infixOperator(ctx) {
-      return this.getFirstTokenImage(ctx);
-    }
-
-    postfixOperator(ctx) {
-      return this.getFirstTokenImage(ctx);
-    }
-
-    getFirstTokenImage(ctx) {
-      return _.first(_.get(ctx, _.first(_.keys(ctx)))).image;
-    }
-
     ternaryExpression(ctx) {
-      const result = this.visit(ctx.logicalOrExpression);
+      const result = this.visit(ctx.booleanOrExpression);
       if (_.has(ctx, "assignmentExpression")) {
         return {
           type: "ternaryExpression",
           condition: result,
           trueStatement: this.visit(_.first(ctx.assignmentExpression)),
-          falseStatement: this.visit(_.last(ctx.assignmentExpression)),
+          falseStatement: this.visit(_.last(ctx.ternaryExpression)),
         };
       }
       return result;
     }
 
-    logicalOrExpression(ctx) {
-      const result = this.visit(ctx.expression3);
-      if (_.has(ctx, "logicalOrExpressionRest")) {
-        const otherExpressions = this.visit(ctx.logicalOrExpressionRest);
-        return this.createBinaryExpressions(result, otherExpressions);
+    booleanOrExpression(ctx) {
+      if (_.size(ctx.booleanAndExpression) > 1) {
+        // TODO booleanOrExpression
       }
-      return result;
+      return this.visit(_.first(ctx.booleanAndExpression));
+    }
+
+    booleanAndExpression(ctx) {
+      if (_.size(ctx.binaryOrExpression) > 1) {
+        // TODO
+      }
+      return this.visit(_.first(ctx.binaryOrExpression));
+    }
+
+    binaryOrExpression(ctx) {
+      if (_.size(ctx.binaryXorExpression) > 1) {
+        // TODO
+      }
+      return this.visit(_.first(ctx.binaryXorExpression));
+    }
+
+    binaryXorExpression(ctx) {
+      if (_.size(ctx.binaryAndExpression) > 1) {
+        // TODO
+      }
+      return this.visit(_.first(ctx.binaryAndExpression));
+    }
+
+    binaryAndExpression(ctx) {
+      if (_.size(ctx.equalityExpression) > 1) {
+        // TODO
+      }
+      return this.visit(_.first(ctx.equalityExpression));
+    }
+
+    equalityExpression(ctx) {
+      if (_.size(ctx.relationalExpression) > 1) {
+        // TODO
+      }
+      return this.visit(_.first(ctx.relationalExpression));
+    }
+
+    relationalExpression(ctx) {
+      if (_.size(ctx.shiftExpression) > 1) {
+        // TODO
+      }
+      return this.visit(_.first(ctx.shiftExpression));
+    }
+
+    shiftExpression(ctx) {
+      if (_.size(ctx.additiveExpression) > 1) {
+        // TODO
+      }
+      return this.visit(_.first(ctx.additiveExpression));
+    }
+
+    additiveExpression(ctx) {
+      if (_.size(ctx.multiplicativeExpression) > 1) {
+        // TODO
+      }
+      return this.visit(_.first(ctx.multiplicativeExpression));
+    }
+
+    multiplicativeExpression(ctx) {
+      if (_.size(ctx.castExpression) > 1) {
+        // TODO
+      }
+      return this.visit(_.first(ctx.castExpression));
+    }
+
+    castExpression(ctx) {
+      if (_.has(ctx, "castOperator")) {
+        return this.visit(ctx.castOperator);
+      }
+      if (_.has(ctx, "prefixExpression")) {
+        return this.visit(ctx.prefixExpression);
+      }
+    }
+
+    castOperator(ctx) {
+      // TODO
+    }
+
+    prefixExpression(ctx) {
+      if (_.has(ctx, "postfixExpression")) {
+        return this.visit(ctx.postfixExpression);
+      }
+      // TODO
+    }
+
+    postfixExpression(ctx) {
+      // TODO
+      return this.visit(ctx.callExpression);
+    }
+
+    callExpression(ctx) {
+      // TODO
+      return this.visit(ctx.memberExpression);
+    }
+
+    memberExpression(ctx) {
+      // TODO
+      return this.visit(ctx.primaryExpression);
+    }
+
+    primaryExpression(ctx) {
+      if (_.has(ctx, "number")) {
+        return this.visit(ctx.number);
+      }
+      if (_.has(ctx, "Identifier")) {
+        return this.getIdentifier(ctx.Identifier);
+      }
+      if (_.has(ctx, "StringLiteral")) {
+        return this.getString(ctx.StringLiteral);
+      }
+    }
+
+    assignmentOperator(ctx) {
+      return this.getFirstTokenImage(ctx);
+    }
+
+    getFirstTokenImage(ctx) {
+      return _.first(_.get(ctx, _.first(_.keys(ctx)))).image;
     }
 
     createBinaryExpressions(initialExpression, otherExpressions) {
@@ -416,83 +512,6 @@ function getVisitor(parser) {
         };
       }
       return currentExpression;
-    }
-
-    expression3(ctx) {
-      if (_.has(ctx, "expression3")) {
-        return {
-          type: "prefixExpression",
-          prefixOperator: this.visit(ctx.prefixOperator),
-          expression: this.visit(ctx.expression3),
-        };
-      }
-      if (_.has(ctx, "Sizeof")) {
-        return {
-          type: "sizeofExpression",
-          expression: this.visit(ctx.expressionOrTypeName),
-        };
-      }
-      if (_.has(ctx, "primary")) {
-        if (_.has(ctx, "postfixOperator")) {
-          const expression = _.has(ctx, "selector")
-            ? {
-                type: "qualifiedExpression",
-                selectors: _.map(ctx.selector, this.visit.bind(this)),
-                expression: this.visit(ctx.primary),
-              }
-            : this.visit(ctx.primary);
-          return {
-            type: "postfixExpression",
-            operator: this.visit(ctx.postfixOperator),
-            expression,
-          };
-        }
-        if (_.has(ctx, "selector")) {
-          return {
-            type: "qualifiedExpression",
-            selectors: _.map(ctx.selector, this.visit.bind(this)),
-            expression: this.visit(ctx.primary),
-          };
-        }
-        return {
-          type: "primaryExpression",
-          expression: this.visit(ctx.primary),
-        };
-      }
-      throw new Error();
-    }
-
-    primary(ctx) {
-      if (_.has(ctx, "Identifier")) {
-        // That's either a single identifier, a function call, or something
-        if (_.has(ctx, "identifierSuffix")) {
-          return {
-            type: "functionCall",
-            name: this.getIdentifier(ctx.Identifier),
-            arguments: this.visit(ctx.identifierSuffix),
-          };
-        }
-        return {
-          type: "identifier",
-          name: this.getIdentifier(ctx.Identifier),
-        };
-      }
-      if (_.has(ctx, "StringLiteral")) {
-        return {
-          type: "stringLiteral",
-          string: this.getString(ctx.StringLiteral),
-        };
-      }
-      if (_.has(ctx, "number")) {
-        return {
-          type: "number",
-          value: this.visit(ctx.number),
-        };
-      }
-      if (_.has(ctx, "parExpressionOrCastExpression")) {
-        return this.visit(ctx.parExpressionOrCastExpression);
-      }
-      throw new Error();
     }
 
     number(ctx) {
