@@ -33,7 +33,7 @@ class Importer {
     if (!_.isEmpty(parser.errors)) {
       const firstError = _.first(parser.errors);
       const tokenPosition = `${firstError.token.startLine}:${firstError.token.startColumn}`;
-      const tokenDetails = `(token ${firstError.token.image} at ${tokenPosition})`;
+      const tokenDetails = `(token ${firstError.token.name} "${firstError.token.image}" at ${tokenPosition})`;
       const message = `${firstError.name}: ${firstError.message} ${tokenDetails}`;
       throw new Error(`Got an error while parsing input: ${message}`);
     }
