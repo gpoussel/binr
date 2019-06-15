@@ -328,6 +328,10 @@ function getVisitor(parser) {
       return this.getFirstTokenImage(ctx);
     }
 
+    infixOperator(ctx) {
+      return this.getFirstTokenImage(ctx);
+    }
+
     postfixOperator(ctx) {
       return this.getFirstTokenImage(ctx);
     }
@@ -458,6 +462,46 @@ function getVisitor(parser) {
 
     arguments(ctx) {
       return _.map(ctx.expression, this.visit.bind(this));
+    }
+
+    annotations(ctx) {
+      // TODO annotations
+    }
+
+    arrayInitializer(ctx) {
+      // TODO arrayInitializer
+    }
+
+    bitfieldRest(ctx) {
+      // TODO bitfieldRest
+    }
+
+    enumDeclaration(ctx) {
+      // TODO enumDeclaration
+    }
+
+    enumElementDeclaration(ctx) {
+      // TODO enumElementDeclaration
+    }
+
+    expression2Rest(ctx) {
+      // TODO expression2Rest
+    }
+
+    forInitUpdate(ctx) {
+      // TODO forInitUpdate
+    }
+
+    parExpressionOrCastExpression(ctx) {
+      // TODO parExpressionOrCastExpression
+    }
+
+    selector(ctx) {
+      // TODO selector
+    }
+
+    variableInitializer(ctx) {
+      // TODO variableInitializer
     }
 
     getString(stringLiteralToken) {
