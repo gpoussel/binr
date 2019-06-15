@@ -1,7 +1,7 @@
 "use strict";
 
 const Importer = require("../importer");
-const { SweetscapeLexer } = require("./sweetscape-lexer");
+const SweetscapeLexer = require("./sweetscape-lexer");
 const SweetscapeParser = require("./sweetscape-parser");
 const CStylePreprocessor = require("../common/cstyle-preprocessor");
 const { getVisitor } = require("./sweetscape-visitor");

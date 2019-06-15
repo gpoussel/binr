@@ -13,4 +13,4 @@ class SweetscapeLexer extends Lexer {
     });
   }
 }
-module.exports = { SweetscapeLexer };
+module.exports = SweetscapeLexer;
