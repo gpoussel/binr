@@ -298,7 +298,13 @@ function getVisitor(parser) {
     }
 
     structDeclaration(ctx) {
-      // TODO structDeclaration
+      const result = {
+        body: this.visit(ctx.statementList),
+      };
+      if (_.has(ctx, "functionParameterDeclarationList")) {
+        result.parameters = this.visit(ctx.functionParameterDeclarationList);
+      }
+      return result;
     }
 
     variableDeclaratorRest(ctx) {

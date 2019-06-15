@@ -22,7 +22,7 @@ describe("Sweetscape Importer", () => {
           type: "typeAlias",
           name: {
             name: "QWORD",
-            array: false, // TODO That's wrong
+            array: false,
           },
           alias: "ULONGLONG",
           annotations: [],
@@ -36,7 +36,219 @@ describe("Sweetscape Importer", () => {
             name: "IMAGE_DOS_HEADER",
             annotations: [],
           },
-          declaration: undefined, // TODO Obviously wrong
+          declaration: {
+            body: {
+              type: "statementList",
+              statements: [
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [
+                        { key: "comment", value: "IMAGE_DOS_SIGNATURE = 0x5A4D" },
+                        { key: "format", value: "hex" },
+                      ],
+                      name: "MZSignature",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "Bytes on last page of file" }],
+                      name: "UsedBytesInTheLastPage",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    { annotations: [{ key: "comment", value: "Pages in file" }], name: "FileSizeInPages" },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "Relocations" }],
+                      name: "NumberOfRelocationItems",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "Size of header in paragraphs" }],
+                      name: "HeaderSizeInParagraphs",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "Minimum extra paragraphs needed" }],
+                      name: "MinimumExtraParagraphs",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "Maximum extra paragraphs needed" }],
+                      name: "MaximumExtraParagraphs",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "Initial (relative) SS value" }],
+                      name: "InitialRelativeSS",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    { annotations: [{ key: "comment", value: "Initial SP value" }], name: "InitialSP" },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [{ annotations: [{ key: "comment", value: "Checksum" }], name: "Checksum" }],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    { annotations: [{ key: "comment", value: "Initial IP value" }], name: "InitialIP" },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "Initial (relative) CS value" }],
+                      name: "InitialRelativeCS",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "File address of relocation table" }],
+                      name: "AddressOfRelocationTable",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    { annotations: [{ key: "comment", value: "Overlay number" }], name: "OverlayNumber" },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      arraySelector: {
+                        type: "primaryExpression",
+                        expression: { type: "number", value: 4 },
+                      },
+                      annotations: [{ key: "comment", value: "Reserved words" }],
+                      name: "Reserved",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "OEM identifier (for OEMinfo)" }],
+                      name: "OEMid",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      annotations: [{ key: "comment", value: "OEM information; OEMid specific" }],
+                      name: "OEMinfo",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "WORD", array: false },
+                  declarations: [
+                    {
+                      arraySelector: {
+                        type: "primaryExpression",
+                        expression: { type: "number", value: 10 },
+                      },
+                      annotations: [{ key: "comment", value: "Reserved words" }],
+                      name: "Reserved2",
+                    },
+                  ],
+                  annotations: [],
+                },
+                {
+                  type: "variableDeclaration",
+                  variableType: { name: "LONG", array: false },
+                  declarations: [
+                    {
+                      annotations: [
+                        { key: "comment", value: "NtHeader Offset" },
+                        { key: "format", value: "hex" },
+                      ],
+                      name: "AddressOfNewExeHeader",
+                    },
+                  ],
+                  annotations: [],
+                },
+              ],
+            },
+          },
         });
 
         const functionDeclaration = content[64];
