@@ -99,7 +99,7 @@ describe("Sweetscape Parser", () => {
     testDefinition => {
       test(`parses expression (${testDefinition.name})`, () => {
         const parsingResult = parse(testDefinition.input);
-        const statement = parsingResult.expression();
+        const statement = parsingResult.assignmentExpression();
         expect(cleanupResult(statement)).toMatchSnapshot();
       });
     }
@@ -114,7 +114,7 @@ describe("Sweetscape Parser", () => {
     testDefinition => {
       test(`parses complex expression (${testDefinition.name})`, () => {
         const parsingResult = parse(testDefinition.input);
-        const statement = parsingResult.expression();
+        const statement = parsingResult.assignmentExpression();
         expect(cleanupResult(statement)).toMatchSnapshot();
       });
     }

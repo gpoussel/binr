@@ -124,8 +124,8 @@ function getVisitor(parser) {
       const result = {
         type: "returnStatement",
       };
-      if (_.has(ctx, "expression")) {
-        result.expression = this.visit(ctx.expression);
+      if (_.has(ctx, "assignmentExpression")) {
+        result.assignmentExpression = this.visit(ctx.assignmentExpression);
       }
       return result;
     }
@@ -181,8 +181,8 @@ function getVisitor(parser) {
         increment: this.visit(_.last(ctx.forInitUpdate)),
         body: this.visit(ctx.statement),
       };
-      if (_.has(ctx, "expression")) {
-        result.condition = this.visit(ctx.expression);
+      if (_.has(ctx, "assignmentExpression")) {
+        result.condition = this.visit(ctx.assignmentExpression);
       }
       return result;
     }
@@ -331,8 +331,8 @@ function getVisitor(parser) {
       if (_.has(ctx, "arguments")) {
         result.arguments = this.visit(ctx.arguments);
       }
-      if (_.has(ctx, "expression")) {
-        result.arraySelector = this.visit(ctx.expression);
+      if (_.has(ctx, "assignmentExpression")) {
+        result.arraySelector = this.visit(ctx.assignmentExpression);
       }
       if (_.has(ctx, "initializer")) {
         result.initializer = this.visit(ctx.variableInitializer);
@@ -341,17 +341,17 @@ function getVisitor(parser) {
     }
 
     expressionStatement(ctx) {
-      return this.visit(ctx.expression);
+      return this.visit(ctx.assignmentExpression);
     }
 
     parExpression(ctx) {
-      return this.visit(ctx.expression);
+      return this.visit(ctx.assignmentExpression);
     }
 
-    expression(ctx) {
-      if (_.size(ctx.expression1) > 1) {
+    assignmentExpression(ctx) {
+      if (_.size(ctx.ternaryExpression) > 1) {
         const operators = _.map(ctx.assignmentOperator, this.visit.bind(this));
-        const expressions = _.map(ctx.expression1, this.visit.bind(this));
+        const expressions = _.map(ctx.ternaryExpression, this.visit.bind(this));
         return this.createBinaryExpressions(
           _.first(expressions),
           _.times(operators.length - 1, i => ({
@@ -360,7 +360,7 @@ function getVisitor(parser) {
           }))
         );
       }
-      return this.visit(_.first(ctx.expression1));
+      return this.visit(_.first(ctx.ternaryExpression));
     }
 
     assignmentOperator(ctx) {
@@ -383,10 +383,10 @@ function getVisitor(parser) {
       return _.first(_.get(ctx, _.first(_.keys(ctx)))).image;
     }
 
-    expression1(ctx) {
+    ternaryExpression(ctx) {
       const result = this.visit(ctx.expression2);
-      if (_.has(ctx, "expression1Rest")) {
-        const ternaryCondition = this.visit(ctx.expression1Rest);
+      if (_.has(ctx, "ternaryExpressionRest")) {
+        const ternaryCondition = this.visit(ctx.ternaryExpressionRest);
         return {
           type: "ternaryExpression",
           condition: result,
@@ -397,10 +397,10 @@ function getVisitor(parser) {
       return result;
     }
 
-    expression1Rest(ctx) {
+    ternaryExpressionRest(ctx) {
       return {
-        trueStatement: this.visit(ctx.expression),
-        falseStatement: this.visit(ctx.expression1),
+        trueStatement: this.visit(ctx.assignmentExpression),
+        falseStatement: this.visit(ctx.ternaryExpression),
       };
     }
 
@@ -522,8 +522,8 @@ function getVisitor(parser) {
     }
 
     expressionOrTypeName(ctx) {
-      if (_.has(ctx, "expression")) {
-        return this.visit(ctx.expression);
+      if (_.has(ctx, "assignmentExpression")) {
+        return this.visit(ctx.assignmentExpression);
       }
       if (_.has(ctx, "typeNameWithoutVoid")) {
         return this.visit(ctx.typeNameWithoutVoid);
@@ -535,7 +535,7 @@ function getVisitor(parser) {
     }
 
     arguments(ctx) {
-      return _.map(ctx.expression, this.visit.bind(this));
+      return _.map(ctx.assignmentExpression, this.visit.bind(this));
     }
 
     annotations(ctx) {
@@ -568,7 +568,7 @@ function getVisitor(parser) {
     arrayInitializer(ctx) {
       return {
         type: "arrayDeclaration",
-        values: _.map(ctx.expression, this.visit.bind(this)),
+        values: _.map(ctx.assignmentExpression, this.visit.bind(this)),
       };
     }
 
@@ -594,8 +594,8 @@ function getVisitor(parser) {
       const result = {
         name: this.getIdentifier(ctx.Identifier),
       };
-      if (_.has(ctx, "expression")) {
-        result.value = this.visit(ctx.expression);
+      if (_.has(ctx, "assignmentExpression")) {
+        result.value = this.visit(ctx.assignmentExpression);
       }
       return result;
     }
@@ -620,7 +620,7 @@ function getVisitor(parser) {
           _.concat([
             {
               operator: this.visit(ctx.infixOperator),
-              expression: this.visit(ctx.expression),
+              expression: this.visit(ctx.assignmentExpression),
             },
             this.visit(ctx.expression2Rest),
           ])
@@ -630,7 +630,7 @@ function getVisitor(parser) {
       return {
         type: "castExpression",
         typeName: firstExpression,
-        expression: this.visit(ctx.expression),
+        expression: this.visit(ctx.assignmentExpression),
       };
     }
 
@@ -650,13 +650,13 @@ function getVisitor(parser) {
     arraySelector(ctx) {
       return {
         type: "arraySelector",
-        expression: this.visit(ctx.expression),
+        expression: this.visit(ctx.assignmentExpression),
       };
     }
 
     variableInitializer(ctx) {
-      if (_.has(ctx, "expression")) {
-        return this.visit(ctx.expression);
+      if (_.has(ctx, "assignmentExpression")) {
+        return this.visit(ctx.assignmentExpression);
       }
       if (_.has(ctx, "arrayInitializer")) {
         return this.visit(ctx.arrayInitializer);

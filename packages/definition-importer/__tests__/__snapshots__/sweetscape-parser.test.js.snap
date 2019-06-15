@@ -2,7 +2,7 @@
 
 exports[`Sweetscape Parser parses complex expression (operator priority with cast) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -16,8 +16,8 @@ Object {
               "TOKEN": "ParenthesisOpen",
               "content": "(",
             },
-            "expression": Object {
-              "expression1": Object {
+            "assignmentExpression": Object {
+              "ternaryExpression": Object {
                 "expression2": Object {
                   "expression2Rest": Object {
                     "expression3": Object {
@@ -53,8 +53,8 @@ Object {
                             "TOKEN": "ParenthesisOpen",
                             "content": "(",
                           },
-                          "expression": Object {
-                            "expression1": Object {
+                          "assignmentExpression": Object {
+                            "ternaryExpression": Object {
                               "expression2": Object {
                                 "expression2Rest": Object {},
                                 "expression3": Object {
@@ -76,8 +76,8 @@ Object {
               },
             },
             "expressionOrTypeName": Object {
-              "expression": Object {
-                "expression1": Object {
+              "assignmentExpression": Object {
+                "ternaryExpression": Object {
                   "expression2": Object {
                     "expression2Rest": Object {},
                     "expression3": Object {
@@ -102,7 +102,7 @@ Object {
 
 exports[`Sweetscape Parser parses complex expression (operator priority with parenthesis and cast) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -116,8 +116,8 @@ Object {
               "TOKEN": "ParenthesisOpen",
               "content": "(",
             },
-            "expression": Object {
-              "expression1": Object {
+            "assignmentExpression": Object {
+              "ternaryExpression": Object {
                 "expression2": Object {
                   "expression2Rest": Object {},
                   "expression3": Object {
@@ -131,8 +131,8 @@ Object {
                           "TOKEN": "ParenthesisOpen",
                           "content": "(",
                         },
-                        "expression": Object {
-                          "expression1": Object {
+                        "assignmentExpression": Object {
+                          "ternaryExpression": Object {
                             "expression2": Object {
                               "expression2Rest": Object {},
                               "expression3": Object {
@@ -148,8 +148,8 @@ Object {
                         },
                         "expression2Rest": Object {},
                         "expressionOrTypeName": Object {
-                          "expression": Object {
-                            "expression1": Object {
+                          "assignmentExpression": Object {
+                            "ternaryExpression": Object {
                               "expression2": Object {
                                 "expression2Rest": Object {
                                   "expression3": Object {
@@ -192,8 +192,8 @@ Object {
               },
             },
             "expressionOrTypeName": Object {
-              "expression": Object {
-                "expression1": Object {
+              "assignmentExpression": Object {
+                "ternaryExpression": Object {
                   "expression2": Object {
                     "expression2Rest": Object {},
                     "expression3": Object {
@@ -218,7 +218,7 @@ Object {
 
 exports[`Sweetscape Parser parses complex expression (operator priority with parenthesis) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -232,8 +232,8 @@ Object {
               "TOKEN": "ParenthesisOpen",
               "content": "(",
             },
-            "expression": Object {
-              "expression1": Object {
+            "assignmentExpression": Object {
+              "ternaryExpression": Object {
                 "expression2": Object {
                   "expression2Rest": Object {},
                   "expression3": Object {
@@ -249,8 +249,8 @@ Object {
             },
             "expression2Rest": Object {},
             "expressionOrTypeName": Object {
-              "expression": Object {
-                "expression1": Object {
+              "assignmentExpression": Object {
+                "ternaryExpression": Object {
                   "expression2": Object {
                     "expression2Rest": Object {
                       "expression3": Object {
@@ -296,7 +296,7 @@ Object {
 
 exports[`Sweetscape Parser parses complex expression (operator priority) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {
         "expression3": Array [
@@ -353,7 +353,7 @@ Object {
       "content": "=",
     },
   },
-  "expression1": Array [
+  "ternaryExpression": Array [
     Object {
       "expression2": Object {
         "expression2Rest": Object {},
@@ -386,7 +386,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (binary number) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -406,7 +406,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (cast) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -420,8 +420,8 @@ Object {
               "TOKEN": "ParenthesisOpen",
               "content": "(",
             },
-            "expression": Object {
-              "expression1": Object {
+            "assignmentExpression": Object {
+              "ternaryExpression": Object {
                 "expression2": Object {
                   "expression2Rest": Object {},
                   "expression3": Object {
@@ -436,8 +436,8 @@ Object {
               },
             },
             "expressionOrTypeName": Object {
-              "expression": Object {
-                "expression1": Object {
+              "assignmentExpression": Object {
+                "ternaryExpression": Object {
                   "expression2": Object {
                     "expression2Rest": Object {},
                     "expression3": Object {
@@ -462,7 +462,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (decimal number) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -482,7 +482,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (function call) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -505,9 +505,9 @@ Object {
                 "TOKEN": "ParenthesisOpen",
                 "content": "(",
               },
-              "expression": Array [
+              "assignmentExpression": Array [
                 Object {
-                  "expression1": Object {
+                  "ternaryExpression": Object {
                     "expression2": Object {
                       "expression2Rest": Object {},
                       "expression3": Object {
@@ -524,7 +524,7 @@ Object {
                   },
                 },
                 Object {
-                  "expression1": Object {
+                  "ternaryExpression": Object {
                     "expression2": Object {
                       "expression2Rest": Object {},
                       "expression3": Object {
@@ -552,7 +552,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (hex number 1) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -572,7 +572,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (hex number 2) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -592,7 +592,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (infixOperation) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {
         "expression3": Object {
@@ -625,7 +625,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (octal number) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -645,7 +645,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (parenthesized expression) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -660,8 +660,8 @@ Object {
               "content": "(",
             },
             "expressionOrTypeName": Object {
-              "expression": Object {
-                "expression1": Object {
+              "assignmentExpression": Object {
+                "ternaryExpression": Object {
                   "expression2": Object {
                     "expression2Rest": Object {
                       "expression3": Object {
@@ -701,7 +701,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (postfixOperation) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -725,7 +725,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (prefixOperation) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -751,7 +751,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (selector) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -782,8 +782,8 @@ Object {
                 "TOKEN": "BracketOpen",
                 "content": "[",
               },
-              "expression": Object {
-                "expression1": Object {
+              "assignmentExpression": Object {
+                "ternaryExpression": Object {
                   "expression2": Object {
                     "expression2Rest": Object {},
                     "expression3": Object {
@@ -808,7 +808,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (sizeof expression) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -825,8 +825,8 @@ Object {
           "content": "sizeof",
         },
         "expressionOrTypeName": Object {
-          "expression": Object {
-            "expression1": Object {
+          "assignmentExpression": Object {
+            "ternaryExpression": Object {
               "expression2": Object {
                 "expression2Rest": Object {},
                 "expression3": Object {
@@ -846,8 +846,8 @@ Object {
                         "TOKEN": "BracketOpen",
                         "content": "[",
                       },
-                      "expression": Object {
-                        "expression1": Object {
+                      "assignmentExpression": Object {
+                        "ternaryExpression": Object {
                           "expression2": Object {
                             "expression2Rest": Object {},
                             "expression3": Object {
@@ -878,7 +878,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (sizeof type) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -895,8 +895,8 @@ Object {
           "content": "sizeof",
         },
         "expressionOrTypeName": Object {
-          "expression": Object {
-            "expression1": Object {
+          "assignmentExpression": Object {
+            "ternaryExpression": Object {
               "expression2": Object {
                 "expression2Rest": Object {},
                 "expression3": Object {
@@ -919,7 +919,7 @@ Object {
 
 exports[`Sweetscape Parser parses expression (string) 1`] = `
 Object {
-  "expression1": Object {
+  "ternaryExpression": Object {
     "expression2": Object {
       "expression2Rest": Object {},
       "expression3": Object {
@@ -937,8 +937,19 @@ Object {
 
 exports[`Sweetscape Parser parses expression (ternary) 1`] = `
 Object {
-  "expression1": Object {
-    "expression1Rest": Object {
+  "ternaryExpression": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "a",
+          },
+        },
+      },
+    },
+    "ternaryExpressionRest": Object {
       "Colon": Object {
         "TOKEN": "Colon",
         "content": ":",
@@ -947,9 +958,9 @@ Object {
         "TOKEN": "Question",
         "content": "?",
       },
-      "expression": Array [
+      "assignmentExpression": Array [
         Object {
-          "expression1": Object {
+          "ternaryExpression": Object {
             "expression2": Object {
               "expression2Rest": Object {},
               "expression3": Object {
@@ -966,7 +977,7 @@ Object {
           },
         },
         Object {
-          "expression1": Object {
+          "ternaryExpression": Object {
             "expression2": Object {
               "expression2Rest": Object {},
               "expression3": Object {
@@ -983,17 +994,6 @@ Object {
           },
         },
       ],
-    },
-    "expression2": Object {
-      "expression2Rest": Object {},
-      "expression3": Object {
-        "primary": Object {
-          "Identifier": Object {
-            "TOKEN": "Identifier",
-            "content": "a",
-          },
-        },
-      },
     },
   },
 }
@@ -1190,9 +1190,9 @@ Object {
                 "TOKEN": "CurlyBraceOpen",
                 "content": "{",
               },
-              "expression": Array [
+              "assignmentExpression": Array [
                 Object {
-                  "expression1": Object {
+                  "ternaryExpression": Object {
                     "expression2": Object {
                       "expression2Rest": Object {},
                       "expression3": Object {
@@ -1209,7 +1209,7 @@ Object {
                   },
                 },
                 Object {
-                  "expression1": Object {
+                  "ternaryExpression": Object {
                     "expression2": Object {
                       "expression2Rest": Object {},
                       "expression3": Object {
@@ -1407,8 +1407,8 @@ Object {
             "content": "=",
           },
           "variableInitializer": Object {
-            "expression": Object {
-              "expression1": Object {
+            "assignmentExpression": Object {
+              "ternaryExpression": Object {
                 "expression2": Object {
                   "expression2Rest": Object {},
                   "expression3": Object {

@@ -190,7 +190,7 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.Identifier);
       $.OPTION(() => {
         $.CONSUME(tokens.Equals);
-        $.SUBRULE($.expression);
+        $.SUBRULE($.assignmentExpression);
       });
     });
 
@@ -242,7 +242,7 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.ParenthesisOpen);
       $.SUBRULE($.forInitUpdate);
       $.CONSUME2(tokens.SemiColon);
-      $.OPTION(() => $.SUBRULE($.expression));
+      $.OPTION(() => $.SUBRULE($.assignmentExpression));
       $.CONSUME3(tokens.SemiColon);
       $.SUBRULE2($.forInitUpdate);
       $.CONSUME(tokens.ParenthesisClose);
@@ -252,7 +252,7 @@ class SweetscapeParser extends Parser {
     $.RULE("forInitUpdate", () => {
       $.MANY_SEP({
         SEP: tokens.Comma,
-        DEF: () => $.SUBRULE($.expression),
+        DEF: () => $.SUBRULE($.assignmentExpression),
       });
     });
 
@@ -299,19 +299,19 @@ class SweetscapeParser extends Parser {
 
     $.RULE("returnStatement", () => {
       $.CONSUME(tokens.Return);
-      $.OPTION(() => $.SUBRULE($.expression));
+      $.OPTION(() => $.SUBRULE($.assignmentExpression));
       $.CONSUME(tokens.SemiColon);
     });
 
     $.RULE("parExpression", () => {
       $.CONSUME(tokens.ParenthesisOpen);
-      $.SUBRULE($.expression);
+      $.SUBRULE($.assignmentExpression);
       $.CONSUME(tokens.ParenthesisClose);
     });
 
     $.RULE("expressionOrTypeName", () => {
       $.OR([
-        { ALT: () => $.SUBRULE($.expression) },
+        { ALT: () => $.SUBRULE($.assignmentExpression) },
         {
           GATE: () => $.LA(1).tokenType !== tokens.Identifier,
           ALT: () => $.SUBRULE($.typeNameWithoutVoid),
@@ -333,7 +333,7 @@ class SweetscapeParser extends Parser {
               $.SUBRULE($.infixOperator);
               isOperatorExpression = true;
             });
-            $.SUBRULE3($.expression);
+            $.SUBRULE3($.assignmentExpression);
             $.MANY2({
               GATE: () => isOperatorExpression,
               DEF: () => {
@@ -350,36 +350,39 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("expressionStatement", () => {
-      $.SUBRULE($.expression);
+      $.SUBRULE($.assignmentExpression);
       $.CONSUME(tokens.SemiColon);
     });
 
     /**
-     * Level 1 precedence: assignments
+     * Level 0 precedence: assignment expressions
      */
-    $.RULE("expression", () => {
-      $.SUBRULE($.expression1);
+    $.RULE("assignmentExpression", () => {
+      $.SUBRULE($.ternaryExpression);
       $.MANY(() => {
         $.SUBRULE($.assignmentOperator);
-        $.SUBRULE1($.expression1);
+        $.SUBRULE1($.ternaryExpression);
       });
     });
 
     /**
-     * Level 2 precedence: ternary
+     * Level 1 precedence: ternary
      */
-    $.RULE("expression1", () => {
+    $.RULE("ternaryExpression", () => {
       $.SUBRULE($.expression2);
-      $.OPTION(() => $.SUBRULE($.expression1Rest));
+      $.OPTION(() => $.SUBRULE($.ternaryExpressionRest));
     });
 
-    $.RULE("expression1Rest", () => {
+    $.RULE("ternaryExpressionRest", () => {
       $.CONSUME(tokens.Question);
-      $.SUBRULE($.expression);
+      $.SUBRULE($.assignmentExpression);
       $.CONSUME(tokens.Colon);
-      $.SUBRULE2($.expression);
+      $.SUBRULE2($.assignmentExpression);
     });
 
+    /**
+     * Level 2 precedence: infix operators
+     */
     $.RULE("expression2", () => {
       $.SUBRULE($.expression3);
       $.OPTION(() => $.SUBRULE($.expression2Rest));
@@ -441,7 +444,7 @@ class SweetscapeParser extends Parser {
       $.OPTION(() => $.SUBRULE($.arguments));
       $.OPTION1(() => {
         $.CONSUME(tokens.BracketOpen);
-        $.OPTION4(() => $.SUBRULE($.expression));
+        $.OPTION4(() => $.SUBRULE($.assignmentExpression));
         $.CONSUME(tokens.BracketClose);
       });
       $.OPTION3(() => $.SUBRULE($.annotations));
@@ -452,13 +455,13 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("variableInitializer", () => {
-      $.OR([{ ALT: () => $.SUBRULE($.expression) }, { ALT: () => $.SUBRULE($.arrayInitializer) }]);
+      $.OR([{ ALT: () => $.SUBRULE($.assignmentExpression) }, { ALT: () => $.SUBRULE($.arrayInitializer) }]);
     });
 
     $.RULE("arrayInitializer", () => {
       $.CONSUME(tokens.CurlyBraceOpen);
       // No trailing comma supported
-      $.AT_LEAST_ONE_SEP({ SEP: tokens.Comma, DEF: () => $.SUBRULE2($.expression) });
+      $.AT_LEAST_ONE_SEP({ SEP: tokens.Comma, DEF: () => $.SUBRULE2($.assignmentExpression) });
       $.CONSUME(tokens.CurlyBraceClose);
     });
 
@@ -476,7 +479,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("arraySelector", () => {
       $.CONSUME(tokens.BracketOpen);
-      $.SUBRULE($.expression);
+      $.SUBRULE($.assignmentExpression);
       $.CONSUME(tokens.BracketClose);
     });
 
@@ -508,7 +511,7 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.ParenthesisOpen);
       $.MANY_SEP({
         SEP: tokens.Comma,
-        DEF: () => $.SUBRULE($.expression),
+        DEF: () => $.SUBRULE($.assignmentExpression),
       });
       $.CONSUME(tokens.ParenthesisClose);
     });

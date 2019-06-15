@@ -167,7 +167,7 @@ Array [
           "type": "forStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ret",
               "type": "identifier",
@@ -399,7 +399,7 @@ Array [
                   "type": "primaryExpression",
                 },
                 Object {
-                  "expression": Object {
+                  "assignmentExpression": Object {
                     "expression": Object {
                       "expression": Object {
                         "type": "number",
@@ -491,7 +491,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -942,7 +942,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "result",
               "type": "identifier",
@@ -985,7 +985,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "expression": Object {
                 "left": Object {
@@ -1074,7 +1074,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -1399,7 +1399,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "result",
               "type": "identifier",
@@ -1455,7 +1455,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -1976,7 +1976,7 @@ Array [
           "type": "switchStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -2082,7 +2082,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "name": "v",
                     "type": "identifier",
@@ -2151,7 +2151,7 @@ Array [
           "type": "forStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ret",
               "type": "identifier",
@@ -3418,7 +3418,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "left": Object {
               "left": Object {
                 "expression": Object {
@@ -3798,7 +3798,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "val",
               "type": "identifier",
@@ -3909,7 +3909,7 @@ Array [
           },
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "left": Object {
               "left": Object {
                 "expression": Object {
@@ -4194,7 +4194,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -5136,7 +5136,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ret",
               "type": "identifier",
@@ -5337,7 +5337,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "i",
               "type": "identifier",
@@ -5474,7 +5474,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -5552,7 +5552,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -5699,7 +5699,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -5834,7 +5834,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -6016,7 +6016,7 @@ Array [
           "type": "forStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -6147,7 +6147,7 @@ Array [
                   "type": "binaryExpression",
                 },
                 "trueStatement": Object {
-                  "expression": Object {
+                  "assignmentExpression": Object {
                     "expression": Object {
                       "string": "ERROR",
                       "type": "stringLiteral",
@@ -6316,7 +6316,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "left": Object {
               "expression": Object {
                 "name": "desc",
@@ -6550,7 +6550,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -6682,7 +6682,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -6852,7 +6852,7 @@ Array [
           "type": "forStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "left": Object {
               "expression": Object {
                 "name": "s",
@@ -6962,7 +6962,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "left": Object {
               "left": Object {
                 "expression": Object {
@@ -7153,7 +7153,7 @@ Array [
           },
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "left": Object {
               "left": Object {
                 "left": Object {
@@ -7320,7 +7320,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -7520,7 +7520,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -7671,7 +7671,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "left": Object {
               "left": Object {
                 "left": Object {
@@ -7849,7 +7849,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -8035,7 +8035,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -8236,7 +8236,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -8437,7 +8437,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -8624,7 +8624,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -8841,7 +8841,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "arguments": Array [
                       Object {
@@ -9038,7 +9038,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -9564,7 +9564,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -10144,7 +10144,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ret",
               "type": "identifier",
@@ -10178,7 +10178,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -10249,7 +10249,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "public",
                         "type": "stringLiteral",
@@ -10269,7 +10269,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "private",
                         "type": "stringLiteral",
@@ -10289,7 +10289,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "protected",
                         "type": "stringLiteral",
@@ -10309,7 +10309,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "static",
                         "type": "stringLiteral",
@@ -10329,7 +10329,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "final",
                         "type": "stringLiteral",
@@ -10349,7 +10349,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "synchronized",
                         "type": "stringLiteral",
@@ -10389,7 +10389,7 @@ Array [
                     },
                     "falseStatement": undefined,
                     "trueStatement": Object {
-                      "expression": Object {
+                      "assignmentExpression": Object {
                         "expression": Object {
                           "string": "volatile",
                           "type": "stringLiteral",
@@ -10431,7 +10431,7 @@ Array [
                     },
                     "falseStatement": undefined,
                     "trueStatement": Object {
-                      "expression": Object {
+                      "assignmentExpression": Object {
                         "expression": Object {
                           "string": "transient",
                           "type": "stringLiteral",
@@ -10453,7 +10453,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "native",
                         "type": "stringLiteral",
@@ -10473,7 +10473,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "interface",
                         "type": "stringLiteral",
@@ -10493,7 +10493,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "abstract",
                         "type": "stringLiteral",
@@ -10513,7 +10513,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "strict",
                         "type": "stringLiteral",
@@ -10533,7 +10533,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "synthetic",
                         "type": "stringLiteral",
@@ -10553,7 +10553,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "annotation",
                         "type": "stringLiteral",
@@ -10573,7 +10573,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "enum",
                         "type": "stringLiteral",
@@ -10593,7 +10593,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "constructor",
                         "type": "stringLiteral",
@@ -10613,7 +10613,7 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "expression": Object {
+                    "assignmentExpression": Object {
                       "expression": Object {
                         "string": "declared-synchronized",
                         "type": "stringLiteral",
@@ -10640,7 +10640,7 @@ Array [
           "type": "switchStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "string": "ERROR",
               "type": "stringLiteral",
@@ -10776,7 +10776,7 @@ Array [
           "type": "whileStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "flags",
               "type": "identifier",
@@ -10921,7 +10921,7 @@ Array [
           },
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "left": Object {
               "expression": Object {
                 "arguments": Array [
@@ -11192,7 +11192,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -11469,7 +11469,7 @@ Array [
           },
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "left": Object {
               "expression": Object {
                 "arguments": Array [
@@ -11740,7 +11740,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -12281,7 +12281,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -12929,7 +12929,7 @@ Array [
           },
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "left": Object {
               "expression": Object {
                 "name": "flags",
@@ -13093,7 +13093,7 @@ Array [
           "type": "forStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -13216,7 +13216,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -13557,7 +13557,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -13722,7 +13722,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -14272,7 +14272,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -14459,7 +14459,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -14615,7 +14615,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -15925,7 +15925,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -16266,7 +16266,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -16403,7 +16403,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -16465,7 +16465,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "string": "(0xFFFFFFFF)",
                     "type": "stringLiteral",
@@ -16541,7 +16541,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -16575,7 +16575,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -16627,7 +16627,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -16679,7 +16679,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -16738,7 +16738,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -16797,7 +16797,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -16849,7 +16849,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -16901,7 +16901,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -16960,7 +16960,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -17071,7 +17071,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -17141,7 +17141,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "string": "(0xFFFFFFFF)",
                     "type": "stringLiteral",
@@ -17192,7 +17192,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "name": "dex_string_ids",
                     "type": "identifier",
@@ -17283,7 +17283,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "string": "(0xFFFFFFFF)",
                     "type": "stringLiteral",
@@ -17334,7 +17334,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "arguments": Array [
                       Object {
@@ -17402,7 +17402,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -17482,7 +17482,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "string": "(0xFFFFFFFF)",
                     "type": "stringLiteral",
@@ -17533,7 +17533,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "arguments": Array [
                       Object {
@@ -17625,7 +17625,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "string": "(0xFFFFFFFF)",
                     "type": "stringLiteral",
@@ -17676,7 +17676,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "arguments": Array [
                       Object {
@@ -18036,7 +18036,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -18143,7 +18143,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -18332,7 +18332,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "s",
               "type": "identifier",
@@ -28081,7 +28081,7 @@ Array [
                 "trueStatement": Object {
                   "statements": Array [
                     Object {
-                      "expression": Object {
+                      "assignmentExpression": Object {
                         "left": Object {
                           "expression": Object {
                             "name": "SectionHeaders",
@@ -28192,7 +28192,7 @@ Array [
           "type": "forStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "type": "number",
               "value": 0,
@@ -28279,7 +28279,7 @@ Array [
                 "type": "primaryExpression",
               },
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "type": "number",
                     "value": 248,
@@ -28294,7 +28294,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "type": "number",
               "value": 0,
@@ -28328,7 +28328,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "h",
               "type": "identifier",
@@ -28368,7 +28368,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "SecData",
               "type": "identifier",
@@ -28408,7 +28408,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -28466,7 +28466,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ExportByName",
               "type": "identifier",
@@ -28641,7 +28641,7 @@ Array [
                 "trueStatement": Object {
                   "statements": Array [
                     Object {
-                      "expression": Object {
+                      "assignmentExpression": Object {
                         "expression": Object {
                           "name": "SectionHeaders",
                           "type": "identifier",
@@ -28707,7 +28707,7 @@ Array [
           "type": "forStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "string": "",
               "type": "stringLiteral",
@@ -28837,7 +28837,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "sComment",
               "type": "identifier",
@@ -28992,7 +28992,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "sComment",
               "type": "identifier",
@@ -29026,7 +29026,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ImportByName",
               "type": "identifier",
@@ -29159,7 +29159,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "sComment",
               "type": "identifier",
@@ -29193,7 +29193,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "arguments": Array [
                 Object {
@@ -29291,7 +29291,7 @@ Array [
           "trueStatement": Object {
             "statements": Array [
               Object {
-                "expression": Object {
+                "assignmentExpression": Object {
                   "expression": Object {
                     "string": "HIGHLOW",
                     "type": "stringLiteral",
@@ -29306,7 +29306,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "string": "",
               "type": "stringLiteral",
@@ -29391,7 +29391,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "sComment",
               "type": "identifier",
@@ -29521,7 +29521,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "sComment",
               "type": "identifier",
@@ -29555,7 +29555,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ResourceDirectoryTable",
               "type": "identifier",
@@ -29595,7 +29595,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ResourceDirectoryEntry",
               "type": "identifier",
@@ -29724,7 +29724,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "sComment",
               "type": "identifier",
@@ -29875,7 +29875,7 @@ Array [
           "type": "switchStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "sComment",
               "type": "identifier",
@@ -30165,7 +30165,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "sComment",
               "type": "identifier",
@@ -30299,7 +30299,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "sComment",
               "type": "identifier",
@@ -30333,7 +30333,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ResourceDirectoryEntry",
               "type": "identifier",
@@ -30373,7 +30373,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ResourceDirectoryEntry",
               "type": "identifier",
@@ -30413,7 +30413,7 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "ResourceDirectoryTable",
               "type": "identifier",
@@ -30561,7 +30561,7 @@ Array [
                       "trueStatement": Object {
                         "statements": Array [
                           Object {
-                            "expression": Object {
+                            "assignmentExpression": Object {
                               "expression": Object {
                                 "type": "number",
                                 "value": 1,
@@ -30586,7 +30586,7 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "type": "number",
               "value": 0,
@@ -30671,7 +30671,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "name": "sComment",
               "type": "identifier",
@@ -30788,7 +30788,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "type": "number",
               "value": 1,
@@ -30859,7 +30859,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "type": "number",
               "value": 2,
@@ -30985,7 +30985,7 @@ Array [
           "type": "primaryExpression",
         },
         Object {
-          "expression": Object {
+          "assignmentExpression": Object {
             "expression": Object {
               "type": "number",
               "value": 3,
