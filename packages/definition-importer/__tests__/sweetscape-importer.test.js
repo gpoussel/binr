@@ -67,7 +67,12 @@ describe("Sweetscape Importer", () => {
                   name: "string",
                   array: false,
                 },
-                declarations: [], // TODO That's wrong
+                declarations: [
+                  {
+                    name: "sComment",
+                    annotations: [],
+                  },
+                ],
                 annotations: [],
               },
               {
@@ -122,7 +127,12 @@ describe("Sweetscape Importer", () => {
             name: "ULONG",
             array: false,
           },
-          declarations: [], // TODO That's wrong
+          declarations: [
+            {
+              name: "ulRawHeaderSize",
+              annotations: [],
+            },
+          ],
           annotations: [],
           // TODO Missing "local"
         });
@@ -147,7 +157,12 @@ describe("Sweetscape Importer", () => {
                   array: false, // TODO That's wrong
                   name: "UCHAR",
                 },
-                declarations: [], // TODO That's wrong
+                declarations: [
+                  {
+                    name: "Space2",
+                    annotations: [],
+                  },
+                ], // TODO That's wrong
                 annotations: [],
                 // TODO Missing comments
               },

@@ -205,7 +205,7 @@ function getVisitor(parser) {
     }
 
     variableDeclarators(ctx) {
-      return _.map(ctx.variableDeclarators, this.visit.bind(this));
+      return _.map(ctx.variableDeclarator, this.visit.bind(this));
     }
 
     variableModifier(ctx) {}
