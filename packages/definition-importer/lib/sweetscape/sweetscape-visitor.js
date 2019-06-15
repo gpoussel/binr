@@ -282,8 +282,14 @@ function getVisitor(parser) {
       if (_.has(ctx, "Identifier")) {
         result.alias = this.getIdentifier(ctx.Identifier);
       }
+      if (_.has(ctx, "variableDeclarators")) {
+        result.declarations = this.visit(ctx.variableDeclarators);
+      }
       if (_.has(ctx, "variableDeclarator")) {
         result.name = this.visit(ctx.variableDeclarator);
+      }
+      if (_.has(ctx, "enumDeclaration")) {
+        result.declarations = this.visit(ctx.enumDeclaration);
       }
       return result;
     }
@@ -559,11 +565,17 @@ function getVisitor(parser) {
     }
 
     enumDeclaration(ctx) {
-      // TODO enumDeclaration
+      return _.map(ctx.enumElementDeclaration, this.visit.bind(this));
     }
 
     enumElementDeclaration(ctx) {
-      // TODO enumElementDeclaration
+      const result = {
+        name: this.getIdentifier(ctx.Identifier),
+      };
+      if (_.has(ctx, "expression")) {
+        result.value = this.visit(ctx.expression);
+      }
+      return result;
     }
 
     expression2Rest(ctx) {

@@ -32,7 +32,6 @@ describe("Sweetscape Importer", () => {
         expect(structDeclaration).toEqual({
           type: "structDeclaration",
           name: {
-            // TODO Weird?
             name: "IMAGE_DOS_HEADER",
             annotations: [],
           },
@@ -251,6 +250,129 @@ describe("Sweetscape Importer", () => {
           },
         });
 
+        const enumDeclaration = content[3];
+        expect(enumDeclaration).toEqual({
+          type: "enumDeclaration",
+          baseType: {
+            name: "WORD",
+            array: false,
+          },
+          declarations: [
+            {
+              name: "IMAGE_MACHINE_UNKNOWN",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0 } },
+            },
+            {
+              name: "I386",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x014c } },
+            },
+            {
+              name: "R3000",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0162 } },
+            },
+            {
+              name: "R4000",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0166 } },
+            },
+            {
+              name: "R10000",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0168 } },
+            },
+            {
+              name: "WCEMIPSV2",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0169 } },
+            },
+            {
+              name: "ALPHA",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0184 } },
+            },
+            {
+              name: "SH3",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x01a2 } },
+            },
+            {
+              name: "SH3DSP",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x01a3 } },
+            },
+            {
+              name: "SH3E",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x01a4 } },
+            },
+            {
+              name: "SH4",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x01a6 } },
+            },
+            {
+              name: "SH5",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x01a8 } },
+            },
+            {
+              name: "ARM",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x01c0 } },
+            },
+            {
+              name: "THUMB",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x01c2 } },
+            },
+            {
+              name: "AM33",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x01d3 } },
+            },
+            {
+              name: "POWERPC",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x01f0 } },
+            },
+            {
+              name: "POWERPCFP",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x01f1 } },
+            },
+            {
+              name: "IA64",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0200 } },
+            },
+            {
+              name: "MIPS16",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0266 } },
+            },
+            {
+              name: "ALPHA64",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0284 } },
+            },
+            {
+              name: "MIPSFPU",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0366 } },
+            },
+            {
+              name: "MIPSFPU16",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0466 } },
+            },
+            {
+              name: "TRICORE",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0520 } },
+            },
+            {
+              name: "CEF",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0cef } },
+            },
+            {
+              name: "EBC",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x0ebc } },
+            },
+            {
+              name: "AMD64",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x8664 } },
+            },
+            {
+              name: "M32R",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0x9041 } },
+            },
+            {
+              name: "CEE",
+              value: { type: "primaryExpression", expression: { type: "number", value: 0xc0ee } },
+            },
+          ],
+        });
+
         const functionDeclaration = content[64];
         expect(functionDeclaration).toEqual({
           type: "functionDeclaration",
@@ -392,7 +514,7 @@ describe("Sweetscape Importer", () => {
               {
                 type: "variableDeclaration",
                 variableType: {
-                  array: false, // TODO That's wrong
+                  array: false,
                   name: "UCHAR",
                 },
                 declarations: [
