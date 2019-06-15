@@ -1,0 +1,1592 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sweetscape Parser parses complex expression (operator priority with cast) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "parExpressionOrCastExpression": Object {
+            "ParenthesisClose": Object {
+              "TOKEN": "ParenthesisClose",
+              "content": ")",
+            },
+            "ParenthesisOpen": Object {
+              "TOKEN": "ParenthesisOpen",
+              "content": "(",
+            },
+            "expression": Object {
+              "expression1": Object {
+                "expression2": Object {
+                  "expression2Rest": Object {
+                    "expression3": Object {
+                      "primary": Object {
+                        "number": Object {
+                          "NumberDecimalLiteral": Object {
+                            "TOKEN": "NumberDecimalLiteral",
+                            "content": "1",
+                          },
+                        },
+                      },
+                    },
+                    "infixOperator": Object {
+                      "Plus": Object {
+                        "TOKEN": "Plus",
+                        "content": "+",
+                      },
+                    },
+                  },
+                  "expression3": Object {
+                    "primary": Object {
+                      "Identifier": Object {
+                        "TOKEN": "Identifier",
+                        "content": "fn",
+                      },
+                      "identifierSuffix": Object {
+                        "arguments": Object {
+                          "ParenthesisClose": Object {
+                            "TOKEN": "ParenthesisClose",
+                            "content": ")",
+                          },
+                          "ParenthesisOpen": Object {
+                            "TOKEN": "ParenthesisOpen",
+                            "content": "(",
+                          },
+                          "expression": Object {
+                            "expression1": Object {
+                              "expression2": Object {
+                                "expression2Rest": Object {},
+                                "expression3": Object {
+                                  "primary": Object {
+                                    "Identifier": Object {
+                                      "TOKEN": "Identifier",
+                                      "content": "a",
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            "expressionOrTypeName": Object {
+              "expression": Object {
+                "expression1": Object {
+                  "expression2": Object {
+                    "expression2Rest": Object {},
+                    "expression3": Object {
+                      "primary": Object {
+                        "Identifier": Object {
+                          "TOKEN": "Identifier",
+                          "content": "int",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses complex expression (operator priority with parenthesis and cast) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "parExpressionOrCastExpression": Object {
+            "ParenthesisClose": Object {
+              "TOKEN": "ParenthesisClose",
+              "content": ")",
+            },
+            "ParenthesisOpen": Object {
+              "TOKEN": "ParenthesisOpen",
+              "content": "(",
+            },
+            "expression": Object {
+              "expression1": Object {
+                "expression2": Object {
+                  "expression2Rest": Object {},
+                  "expression3": Object {
+                    "primary": Object {
+                      "parExpressionOrCastExpression": Object {
+                        "ParenthesisClose": Object {
+                          "TOKEN": "ParenthesisClose",
+                          "content": ")",
+                        },
+                        "ParenthesisOpen": Object {
+                          "TOKEN": "ParenthesisOpen",
+                          "content": "(",
+                        },
+                        "expression": Object {
+                          "expression1": Object {
+                            "expression2": Object {
+                              "expression2Rest": Object {},
+                              "expression3": Object {
+                                "primary": Object {
+                                  "Identifier": Object {
+                                    "TOKEN": "Identifier",
+                                    "content": "c",
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                        "expression2Rest": Object {},
+                        "expressionOrTypeName": Object {
+                          "expression": Object {
+                            "expression1": Object {
+                              "expression2": Object {
+                                "expression2Rest": Object {
+                                  "expression3": Object {
+                                    "primary": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "b",
+                                      },
+                                    },
+                                  },
+                                  "infixOperator": Object {
+                                    "Multiplication": Object {
+                                      "TOKEN": "Multiplication",
+                                      "content": "*",
+                                    },
+                                  },
+                                },
+                                "expression3": Object {
+                                  "primary": Object {
+                                    "Identifier": Object {
+                                      "TOKEN": "Identifier",
+                                      "content": "a",
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                        "infixOperator": Object {
+                          "Plus": Object {
+                            "TOKEN": "Plus",
+                            "content": "+",
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            "expressionOrTypeName": Object {
+              "expression": Object {
+                "expression1": Object {
+                  "expression2": Object {
+                    "expression2Rest": Object {},
+                    "expression3": Object {
+                      "primary": Object {
+                        "Identifier": Object {
+                          "TOKEN": "Identifier",
+                          "content": "int",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses complex expression (operator priority with parenthesis) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "parExpressionOrCastExpression": Object {
+            "ParenthesisClose": Object {
+              "TOKEN": "ParenthesisClose",
+              "content": ")",
+            },
+            "ParenthesisOpen": Object {
+              "TOKEN": "ParenthesisOpen",
+              "content": "(",
+            },
+            "expression": Object {
+              "expression1": Object {
+                "expression2": Object {
+                  "expression2Rest": Object {},
+                  "expression3": Object {
+                    "primary": Object {
+                      "Identifier": Object {
+                        "TOKEN": "Identifier",
+                        "content": "c",
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            "expression2Rest": Object {},
+            "expressionOrTypeName": Object {
+              "expression": Object {
+                "expression1": Object {
+                  "expression2": Object {
+                    "expression2Rest": Object {
+                      "expression3": Object {
+                        "primary": Object {
+                          "Identifier": Object {
+                            "TOKEN": "Identifier",
+                            "content": "b",
+                          },
+                        },
+                      },
+                      "infixOperator": Object {
+                        "Multiplication": Object {
+                          "TOKEN": "Multiplication",
+                          "content": "*",
+                        },
+                      },
+                    },
+                    "expression3": Object {
+                      "primary": Object {
+                        "Identifier": Object {
+                          "TOKEN": "Identifier",
+                          "content": "a",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            "infixOperator": Object {
+              "Plus": Object {
+                "TOKEN": "Plus",
+                "content": "+",
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses complex expression (operator priority) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {
+        "expression3": Array [
+          Object {
+            "primary": Object {
+              "Identifier": Object {
+                "TOKEN": "Identifier",
+                "content": "b",
+              },
+            },
+          },
+          Object {
+            "primary": Object {
+              "Identifier": Object {
+                "TOKEN": "Identifier",
+                "content": "c",
+              },
+            },
+          },
+        ],
+        "infixOperator": Array [
+          Object {
+            "Multiplication": Object {
+              "TOKEN": "Multiplication",
+              "content": "*",
+            },
+          },
+          Object {
+            "Plus": Object {
+              "TOKEN": "Plus",
+              "content": "+",
+            },
+          },
+        ],
+      },
+      "expression3": Object {
+        "primary": Object {
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "a",
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (assignment) 1`] = `
+Object {
+  "assignmentOperator": Object {
+    "Equals": Object {
+      "TOKEN": "Equals",
+      "content": "=",
+    },
+  },
+  "expression1": Array [
+    Object {
+      "expression2": Object {
+        "expression2Rest": Object {},
+        "expression3": Object {
+          "primary": Object {
+            "Identifier": Object {
+              "TOKEN": "Identifier",
+              "content": "a",
+            },
+          },
+        },
+      },
+    },
+    Object {
+      "expression2": Object {
+        "expression2Rest": Object {},
+        "expression3": Object {
+          "primary": Object {
+            "Identifier": Object {
+              "TOKEN": "Identifier",
+              "content": "b",
+            },
+          },
+        },
+      },
+    },
+  ],
+}
+`;
+
+exports[`Sweetscape Parser parses expression (binary number) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "number": Object {
+            "NumberBinaryLiteral": Object {
+              "TOKEN": "NumberBinaryLiteral",
+              "content": "0b10",
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (cast) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "parExpressionOrCastExpression": Object {
+            "ParenthesisClose": Object {
+              "TOKEN": "ParenthesisClose",
+              "content": ")",
+            },
+            "ParenthesisOpen": Object {
+              "TOKEN": "ParenthesisOpen",
+              "content": "(",
+            },
+            "expression": Object {
+              "expression1": Object {
+                "expression2": Object {
+                  "expression2Rest": Object {},
+                  "expression3": Object {
+                    "primary": Object {
+                      "Identifier": Object {
+                        "TOKEN": "Identifier",
+                        "content": "b",
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            "expressionOrTypeName": Object {
+              "expression": Object {
+                "expression1": Object {
+                  "expression2": Object {
+                    "expression2Rest": Object {},
+                    "expression3": Object {
+                      "primary": Object {
+                        "Identifier": Object {
+                          "TOKEN": "Identifier",
+                          "content": "int",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (decimal number) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "number": Object {
+            "NumberDecimalLiteral": Object {
+              "TOKEN": "NumberDecimalLiteral",
+              "content": "10",
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (function call) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "a",
+          },
+          "identifierSuffix": Object {
+            "arguments": Object {
+              "Comma": Object {
+                "TOKEN": "Comma",
+                "content": ",",
+              },
+              "ParenthesisClose": Object {
+                "TOKEN": "ParenthesisClose",
+                "content": ")",
+              },
+              "ParenthesisOpen": Object {
+                "TOKEN": "ParenthesisOpen",
+                "content": "(",
+              },
+              "expression": Array [
+                Object {
+                  "expression1": Object {
+                    "expression2": Object {
+                      "expression2Rest": Object {},
+                      "expression3": Object {
+                        "primary": Object {
+                          "number": Object {
+                            "NumberDecimalLiteral": Object {
+                              "TOKEN": "NumberDecimalLiteral",
+                              "content": "1",
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+                Object {
+                  "expression1": Object {
+                    "expression2": Object {
+                      "expression2Rest": Object {},
+                      "expression3": Object {
+                        "primary": Object {
+                          "number": Object {
+                            "NumberDecimalLiteral": Object {
+                              "TOKEN": "NumberDecimalLiteral",
+                              "content": "2",
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (hex number 1) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "number": Object {
+            "NumberHexadecimalLiteral": Object {
+              "TOKEN": "NumberHexadecimalLiteral",
+              "content": "0x20",
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (hex number 2) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "number": Object {
+            "NumberHexadecimalLiteral2": Object {
+              "TOKEN": "NumberHexadecimalLiteral2",
+              "content": "20h",
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (infixOperation) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {
+        "expression3": Object {
+          "primary": Object {
+            "Identifier": Object {
+              "TOKEN": "Identifier",
+              "content": "b",
+            },
+          },
+        },
+        "infixOperator": Object {
+          "Plus": Object {
+            "TOKEN": "Plus",
+            "content": "+",
+          },
+        },
+      },
+      "expression3": Object {
+        "primary": Object {
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "a",
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (octal number) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "number": Object {
+            "NumberOctalLiteral": Object {
+              "TOKEN": "NumberOctalLiteral",
+              "content": "045",
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (parenthesized expression) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "parExpressionOrCastExpression": Object {
+            "ParenthesisClose": Object {
+              "TOKEN": "ParenthesisClose",
+              "content": ")",
+            },
+            "ParenthesisOpen": Object {
+              "TOKEN": "ParenthesisOpen",
+              "content": "(",
+            },
+            "expressionOrTypeName": Object {
+              "expression": Object {
+                "expression1": Object {
+                  "expression2": Object {
+                    "expression2Rest": Object {
+                      "expression3": Object {
+                        "primary": Object {
+                          "Identifier": Object {
+                            "TOKEN": "Identifier",
+                            "content": "b",
+                          },
+                        },
+                      },
+                      "infixOperator": Object {
+                        "Plus": Object {
+                          "TOKEN": "Plus",
+                          "content": "+",
+                        },
+                      },
+                    },
+                    "expression3": Object {
+                      "primary": Object {
+                        "Identifier": Object {
+                          "TOKEN": "Identifier",
+                          "content": "a",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (postfixOperation) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "postfixOperator": Object {
+          "DoublePlus": Object {
+            "TOKEN": "DoublePlus",
+            "content": "++",
+          },
+        },
+        "primary": Object {
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "a",
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (prefixOperation) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "expression3": Object {
+          "primary": Object {
+            "Identifier": Object {
+              "TOKEN": "Identifier",
+              "content": "a",
+            },
+          },
+        },
+        "prefixOperator": Object {
+          "Exclamation": Object {
+            "TOKEN": "Exclamation",
+            "content": "!",
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (selector) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "a",
+          },
+        },
+        "selector": Array [
+          Object {
+            "Identifier": Object {
+              "TOKEN": "Identifier",
+              "content": "b",
+            },
+            "Period": Object {
+              "TOKEN": "Period",
+              "content": ".",
+            },
+          },
+          Object {
+            "arraySelector": Object {
+              "BracketClose": Object {
+                "TOKEN": "BracketClose",
+                "content": "]",
+              },
+              "BracketOpen": Object {
+                "TOKEN": "BracketOpen",
+                "content": "[",
+              },
+              "expression": Object {
+                "expression1": Object {
+                  "expression2": Object {
+                    "expression2Rest": Object {},
+                    "expression3": Object {
+                      "primary": Object {
+                        "Identifier": Object {
+                          "TOKEN": "Identifier",
+                          "content": "c",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (sizeof expression) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "ParenthesisClose": Object {
+          "TOKEN": "ParenthesisClose",
+          "content": ")",
+        },
+        "ParenthesisOpen": Object {
+          "TOKEN": "ParenthesisOpen",
+          "content": "(",
+        },
+        "Sizeof": Object {
+          "TOKEN": "Sizeof",
+          "content": "sizeof",
+        },
+        "expressionOrTypeName": Object {
+          "expression": Object {
+            "expression1": Object {
+              "expression2": Object {
+                "expression2Rest": Object {},
+                "expression3": Object {
+                  "primary": Object {
+                    "Identifier": Object {
+                      "TOKEN": "Identifier",
+                      "content": "a",
+                    },
+                  },
+                  "selector": Object {
+                    "arraySelector": Object {
+                      "BracketClose": Object {
+                        "TOKEN": "BracketClose",
+                        "content": "]",
+                      },
+                      "BracketOpen": Object {
+                        "TOKEN": "BracketOpen",
+                        "content": "[",
+                      },
+                      "expression": Object {
+                        "expression1": Object {
+                          "expression2": Object {
+                            "expression2Rest": Object {},
+                            "expression3": Object {
+                              "primary": Object {
+                                "number": Object {
+                                  "NumberDecimalLiteral": Object {
+                                    "TOKEN": "NumberDecimalLiteral",
+                                    "content": "0",
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (sizeof type) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "ParenthesisClose": Object {
+          "TOKEN": "ParenthesisClose",
+          "content": ")",
+        },
+        "ParenthesisOpen": Object {
+          "TOKEN": "ParenthesisOpen",
+          "content": "(",
+        },
+        "Sizeof": Object {
+          "TOKEN": "Sizeof",
+          "content": "sizeof",
+        },
+        "expressionOrTypeName": Object {
+          "expression": Object {
+            "expression1": Object {
+              "expression2": Object {
+                "expression2Rest": Object {},
+                "expression3": Object {
+                  "primary": Object {
+                    "Identifier": Object {
+                      "TOKEN": "Identifier",
+                      "content": "int",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (string) 1`] = `
+Object {
+  "expression1": Object {
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "StringLiteral": Object {
+            "TOKEN": "StringLiteral",
+            "content": "'a'",
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses expression (ternary) 1`] = `
+Object {
+  "expression1": Object {
+    "expression1Rest": Object {
+      "Colon": Object {
+        "TOKEN": "Colon",
+        "content": ":",
+      },
+      "Question": Object {
+        "TOKEN": "Question",
+        "content": "?",
+      },
+      "expression": Object {
+        "expression1": Object {
+          "expression2": Object {
+            "expression2Rest": Object {},
+            "expression3": Object {
+              "primary": Object {
+                "number": Object {
+                  "NumberDecimalLiteral": Object {
+                    "TOKEN": "NumberDecimalLiteral",
+                    "content": "1",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      "expression1": Object {
+        "expression2": Object {
+          "expression2Rest": Object {},
+          "expression3": Object {
+            "primary": Object {
+              "number": Object {
+                "NumberDecimalLiteral": Object {
+                  "TOKEN": "NumberDecimalLiteral",
+                  "content": "0",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    "expression2": Object {
+      "expression2Rest": Object {},
+      "expression3": Object {
+        "primary": Object {
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "a",
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (annotated anonymous variable with bitfield) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "annotations": Object {
+      "Greater": Object {
+        "TOKEN": "Greater",
+        "content": ">",
+      },
+      "Less": Object {
+        "TOKEN": "Less",
+        "content": "<",
+      },
+      "annotation": Object {
+        "Equals": Object {
+          "TOKEN": "Equals",
+          "content": "=",
+        },
+        "Identifier": Array [
+          Object {
+            "TOKEN": "Identifier",
+            "content": "format",
+          },
+          Object {
+            "TOKEN": "Identifier",
+            "content": "hex",
+          },
+        ],
+      },
+    },
+    "bitfieldRest": Object {
+      "Colon": Object {
+        "TOKEN": "Colon",
+        "content": ":",
+      },
+      "number": Object {
+        "NumberDecimalLiteral": Object {
+          "TOKEN": "NumberDecimalLiteral",
+          "content": "3",
+        },
+      },
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (annotated variable definition) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "variableDeclarator": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "a",
+        },
+        "variableDeclaratorRest": Object {
+          "annotations": Object {
+            "Greater": Object {
+              "TOKEN": "Greater",
+              "content": ">",
+            },
+            "Less": Object {
+              "TOKEN": "Less",
+              "content": "<",
+            },
+            "annotation": Object {
+              "Equals": Object {
+                "TOKEN": "Equals",
+                "content": "=",
+              },
+              "Identifier": Array [
+                Object {
+                  "TOKEN": "Identifier",
+                  "content": "format",
+                },
+                Object {
+                  "TOKEN": "Identifier",
+                  "content": "hex",
+                },
+              ],
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (anonymous variable with bitfield) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "bitfieldRest": Object {
+      "Colon": Object {
+        "TOKEN": "Colon",
+        "content": ":",
+      },
+      "number": Object {
+        "NumberDecimalLiteral": Object {
+          "TOKEN": "NumberDecimalLiteral",
+          "content": "3",
+        },
+      },
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (array variable definition with initializer) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "BracketClose": Object {
+          "TOKEN": "BracketClose",
+          "content": "]",
+        },
+        "BracketOpen": Object {
+          "TOKEN": "BracketOpen",
+          "content": "[",
+        },
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "variableDeclarator": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "a",
+        },
+        "variableDeclaratorRest": Object {
+          "Equals": Object {
+            "TOKEN": "Equals",
+            "content": "=",
+          },
+          "variableInitializer": Object {
+            "arrayInitializer": Object {
+              "Comma": Object {
+                "TOKEN": "Comma",
+                "content": ",",
+              },
+              "CurlyBraceClose": Object {
+                "TOKEN": "CurlyBraceClose",
+                "content": "}",
+              },
+              "CurlyBraceOpen": Object {
+                "TOKEN": "CurlyBraceOpen",
+                "content": "{",
+              },
+              "expression": Array [
+                Object {
+                  "expression1": Object {
+                    "expression2": Object {
+                      "expression2Rest": Object {},
+                      "expression3": Object {
+                        "primary": Object {
+                          "number": Object {
+                            "NumberDecimalLiteral": Object {
+                              "TOKEN": "NumberDecimalLiteral",
+                              "content": "1",
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+                Object {
+                  "expression1": Object {
+                    "expression2": Object {
+                      "expression2Rest": Object {},
+                      "expression3": Object {
+                        "primary": Object {
+                          "number": Object {
+                            "NumberDecimalLiteral": Object {
+                              "TOKEN": "NumberDecimalLiteral",
+                              "content": "2",
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (array variable definition) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "BracketClose": Object {
+          "TOKEN": "BracketClose",
+          "content": "]",
+        },
+        "BracketOpen": Object {
+          "TOKEN": "BracketOpen",
+          "content": "[",
+        },
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "variableDeclarator": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "a",
+        },
+        "variableDeclaratorRest": Object {},
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (const variable definition) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "variableDeclarator": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "a",
+        },
+        "variableDeclaratorRest": Object {},
+      },
+    },
+    "variableModifier": Object {
+      "Const": Object {
+        "TOKEN": "Const",
+        "content": "const",
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (local variable definition) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "variableDeclarator": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "a",
+        },
+        "variableDeclaratorRest": Object {},
+      },
+    },
+    "variableModifier": Object {
+      "Local": Object {
+        "TOKEN": "Local",
+        "content": "local",
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (several variable definitions) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "Comma": Object {
+        "TOKEN": "Comma",
+        "content": ",",
+      },
+      "variableDeclarator": Array [
+        Object {
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "a",
+          },
+          "variableDeclaratorRest": Object {},
+        },
+        Object {
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "b",
+          },
+          "variableDeclaratorRest": Object {},
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (variable definition with initializer) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "variableDeclarator": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "a",
+        },
+        "variableDeclaratorRest": Object {
+          "Equals": Object {
+            "TOKEN": "Equals",
+            "content": "=",
+          },
+          "variableInitializer": Object {
+            "expression": Object {
+              "expression1": Object {
+                "expression2": Object {
+                  "expression2Rest": Object {},
+                  "expression3": Object {
+                    "primary": Object {
+                      "number": Object {
+                        "NumberDecimalLiteral": Object {
+                          "TOKEN": "NumberDecimalLiteral",
+                          "content": "1",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (variable definition) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "variableDeclarator": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "a",
+        },
+        "variableDeclaratorRest": Object {},
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (variable with constant bitfield) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "variableDeclarator": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "a",
+        },
+        "bitfieldRest": Object {
+          "Colon": Object {
+            "TOKEN": "Colon",
+            "content": ":",
+          },
+          "number": Object {
+            "NumberDecimalLiteral": Object {
+              "TOKEN": "NumberDecimalLiteral",
+              "content": "3",
+            },
+          },
+        },
+        "variableDeclaratorRest": Object {},
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (variable with expression as bitfield) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "variableDeclarator": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "a",
+        },
+        "bitfieldRest": Object {
+          "Colon": Object {
+            "TOKEN": "Colon",
+            "content": ":",
+          },
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "NBits",
+          },
+          "expression2Rest": Object {
+            "expression3": Object {
+              "primary": Object {
+                "number": Object {
+                  "NumberDecimalLiteral": Object {
+                    "TOKEN": "NumberDecimalLiteral",
+                    "content": "2",
+                  },
+                },
+              },
+            },
+            "infixOperator": Object {
+              "Division": Object {
+                "TOKEN": "Division",
+                "content": "/",
+              },
+            },
+          },
+        },
+        "variableDeclaratorRest": Object {},
+      },
+    },
+  },
+}
+`;
+
+exports[`Sweetscape Parser parses statement (variable with identifier as bitfield) 1`] = `
+Object {
+  "localVariableDeclarationStatement": Object {
+    "SemiColon": Object {
+      "TOKEN": "SemiColon",
+      "content": ";",
+    },
+    "typeName": Object {
+      "typeNameWithoutVoid": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "int",
+        },
+      },
+    },
+    "variableDeclarators": Object {
+      "variableDeclarator": Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "a",
+        },
+        "bitfieldRest": Object {
+          "Colon": Object {
+            "TOKEN": "Colon",
+            "content": ":",
+          },
+          "Identifier": Object {
+            "TOKEN": "Identifier",
+            "content": "NBits",
+          },
+          "expression2Rest": Object {},
+        },
+        "variableDeclaratorRest": Object {},
+      },
+    },
+  },
+}
+`;
