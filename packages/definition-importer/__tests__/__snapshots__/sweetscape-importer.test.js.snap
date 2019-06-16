@@ -13992,7 +13992,10 @@ Array [
                       },
                       Object {
                         "assignmentExpression": Object {
-                          "expression": undefined,
+                          "expression": Object {
+                            "type": "number",
+                            "value": 1,
+                          },
                           "operator": "-",
                           "type": "unaryExpression",
                         },
@@ -15218,7 +15221,14 @@ Array [
       "type": "statementList",
     },
     "condition": Object {
-      "expression": undefined,
+      "expression": Object {
+        "arguments": Array [],
+        "name": Object {
+          "name": "FEof",
+          "type": "identifier",
+        },
+        "type": "functionCallExpression",
+      },
       "operator": "!",
       "type": "unaryExpression",
     },
@@ -21719,7 +21729,10 @@ Array [
                 },
                 Object {
                   "assignmentExpression": Object {
-                    "expression": undefined,
+                    "expression": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
                     "operator": "-",
                     "type": "unaryExpression",
                   },
@@ -39223,7 +39236,10 @@ Array [
                   },
                   Object {
                     "left": Object {
-                      "expression": undefined,
+                      "expression": Object {
+                        "type": "number",
+                        "value": 4,
+                      },
                       "operator": "-",
                       "type": "unaryExpression",
                     },
@@ -41049,7 +41065,10 @@ Array [
                   },
                   "operator": "&",
                   "right": Object {
-                    "expression": undefined,
+                    "expression": Object {
+                      "type": "number",
+                      "value": 7,
+                    },
                     "operator": "~",
                     "type": "unaryExpression",
                   },
@@ -41796,7 +41815,23 @@ Array [
   },
   Object {
     "condition": Object {
-      "expression": undefined,
+      "expression": Object {
+        "arguments": Array [
+          Object {
+            "name": "tmp",
+            "type": "identifier",
+          },
+          Object {
+            "string": "dey",
+            "type": "string",
+          },
+        ],
+        "name": Object {
+          "name": "Strcmp",
+          "type": "identifier",
+        },
+        "type": "functionCallExpression",
+      },
       "operator": "!",
       "type": "unaryExpression",
     },
@@ -47843,7 +47878,26 @@ Array [
           },
           Object {
             "condition": Object {
-              "expression": undefined,
+              "expression": Object {
+                "left": Object {
+                  "type": "number",
+                  "value": 523,
+                },
+                "operator": "==",
+                "right": Object {
+                  "expression": Object {
+                    "expression": Object {
+                      "name": "NtHeader",
+                      "type": "identifier",
+                    },
+                    "name": "OptionalHeader",
+                    "type": "propertyAccessExpression",
+                  },
+                  "name": "Magic",
+                  "type": "propertyAccessExpression",
+                },
+                "type": "binaryExpression",
+              },
               "operator": "!",
               "type": "unaryExpression",
             },
@@ -47945,7 +47999,18 @@ Array [
                       },
                       Object {
                         "condition": Object {
-                          "expression": undefined,
+                          "expression": Object {
+                            "left": Object {
+                              "name": "ulThrunk",
+                              "type": "identifier",
+                            },
+                            "operator": "&",
+                            "right": Object {
+                              "type": "number",
+                              "value": 2147483648,
+                            },
+                            "type": "binaryExpression",
+                          },
                           "operator": "!",
                           "type": "unaryExpression",
                         },
@@ -49610,7 +49675,19 @@ Array [
           },
           Object {
             "condition": Object {
-              "expression": undefined,
+              "expression": Object {
+                "arguments": Array [
+                  Object {
+                    "name": "this",
+                    "type": "identifier",
+                  },
+                ],
+                "name": Object {
+                  "name": "IsResourceDirectoryString",
+                  "type": "identifier",
+                },
+                "type": "functionCallExpression",
+              },
               "operator": "!",
               "type": "unaryExpression",
             },

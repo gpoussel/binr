@@ -503,7 +503,7 @@ function getVisitor(parser) {
       if (_.has(ctx, "unaryOperator")) {
         return {
           type: "unaryExpression",
-          expression: this.visit(ctx.prefixExpression),
+          expression: this.visit(ctx.castExpression),
           operator: this.visit(ctx.unaryOperator),
         };
       }
