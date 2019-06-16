@@ -74,9 +74,6 @@ function getVisitor(parser) {
       if (_.has(ctx, "functionDeclarationStatement")) {
         return this.visit(ctx.functionDeclarationStatement);
       }
-      if (_.has(ctx, "emptyStructStatement")) {
-        return this.visit(ctx.emptyStructStatement);
-      }
       throw new Error();
     }
 
@@ -293,13 +290,6 @@ function getVisitor(parser) {
       };
     }
 
-    emptyStructStatement(ctx) {
-      return {
-        type: "structDeclaration",
-        name: getIdentifier(ctx.Identifier),
-      };
-    }
-
     ifStatement(ctx) {
       const statements = _.map(ctx.statement, this.visit.bind(this));
       const result = {
@@ -317,8 +307,10 @@ function getVisitor(parser) {
       const type = _.has(ctx, "Struct") ? "structDeclaration" : "unionDeclaration";
       const result = {
         type,
-        declaration: this.visit(ctx.structDeclaration),
       };
+      if (_.has(ctx, "structDeclaration")) {
+        result.declaration = this.visit(ctx.structDeclaration);
+      }
       _.assign(result, this.visit(ctx.variableDeclarator));
       if (_.has(ctx, "Identifier")) {
         result.alias = getIdentifier(ctx.Identifier);

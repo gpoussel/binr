@@ -32,9 +32,6 @@ class SweetscapeParser extends Parser {
           ALT: () => $.SUBRULE($.functionDeclarationStatement),
         },
         {
-          ALT: () => $.SUBRULE($.emptyStructStatement),
-        },
-        {
           GATE: () => $.BACKTRACK($.statement),
           ALT: () => $.SUBRULE($.statement),
         },
@@ -120,18 +117,14 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.SemiColon);
     });
 
-    $.RULE("emptyStructStatement", () => {
-      $.CONSUME(tokens.Struct);
-      $.CONSUME3(tokens.Identifier);
-      $.CONSUME(tokens.SemiColon);
-    });
-
     $.RULE("structStatement", () => {
       $.OPTION(() => $.CONSUME(tokens.Typedef));
       $.OR2([{ ALT: () => $.CONSUME(tokens.Struct) }, { ALT: () => $.CONSUME(tokens.Union) }]);
       $.OPTION2(() => $.CONSUME(tokens.Identifier)); // Alias
-      $.SUBRULE2($.structDeclaration);
-      $.OPTION4(() => $.SUBRULE($.variableDeclarator));
+      $.OPTION3(() => {
+        $.SUBRULE2($.structDeclaration);
+        $.OPTION4(() => $.SUBRULE($.variableDeclarator));
+      });
       $.CONSUME(tokens.SemiColon);
     });
 
