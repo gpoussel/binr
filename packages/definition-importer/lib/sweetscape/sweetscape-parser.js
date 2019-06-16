@@ -482,21 +482,13 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.SUBRULE($.postfixExpression) },
         {
           ALT: () => {
-            $.OR2([
-              { ALT: () => $.CONSUME(tokens.DoublePlus) },
-              { ALT: () => $.CONSUME(tokens.DoubleMinus) },
-            ]);
+            $.SUBRULE($.prefixOperator);
             $.SUBRULE($.prefixExpression);
           },
         },
         {
           ALT: () => {
-            $.OR3([
-              { ALT: () => $.CONSUME(tokens.Tilda) },
-              { ALT: () => $.CONSUME(tokens.Exclamation) },
-              { ALT: () => $.CONSUME(tokens.Plus) },
-              { ALT: () => $.CONSUME(tokens.Minus) },
-            ]);
+            $.SUBRULE($.unaryOperator);
             $.SUBRULE($.castExpression);
           },
         },
@@ -508,9 +500,7 @@ class SweetscapeParser extends Parser {
      */
     $.RULE("postfixExpression", () => {
       $.SUBRULE($.callExpression);
-      $.MANY(() => {
-        $.OR([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }]);
-      });
+      $.MANY(() => $.SUBRULE($.postfixOperator));
     });
 
     /**
@@ -520,9 +510,7 @@ class SweetscapeParser extends Parser {
       $.SUBRULE($.memberExpression);
       $.MANY(() => {
         $.OR([
-          {
-            ALT: () => $.SUBRULE($.arguments),
-          },
+          { ALT: () => $.SUBRULE($.arguments) },
           {
             ALT: () => {
               $.CONSUME(tokens.BracketOpen);
@@ -702,6 +690,23 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.Multiplication) },
         { ALT: () => $.CONSUME(tokens.Division) },
         { ALT: () => $.CONSUME(tokens.Modulo) },
+      ]);
+    });
+
+    $.RULE("prefixOperator", () =>
+      $.OR2([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }])
+    );
+
+    $.RULE("postfixOperator", () =>
+      $.OR2([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }])
+    );
+
+    $.RULE("unaryOperator", () => {
+      $.OR3([
+        { ALT: () => $.CONSUME(tokens.Tilda) },
+        { ALT: () => $.CONSUME(tokens.Exclamation) },
+        { ALT: () => $.CONSUME(tokens.Plus) },
+        { ALT: () => $.CONSUME(tokens.Minus) },
       ]);
     });
 

@@ -495,12 +495,38 @@ function getVisitor(parser) {
       if (_.has(ctx, "postfixExpression")) {
         return this.visit(ctx.postfixExpression);
       }
-      // TODO prefixExpression
+      if (_.has(ctx, "prefixOperator")) {
+        return {
+          type: "prefixExpression",
+          expression: this.visit(ctx.castExpression),
+          operator: this.visit(ctx.prefixOperator),
+        };
+      }
+      if (_.has(ctx, "unaryOperator")) {
+        return {
+          type: "unaryExpression",
+          expression: this.visit(ctx.prefixExpression),
+          operator: this.visit(ctx.unaryOperator),
+        };
+      }
+      throw new Error();
     }
 
     postfixExpression(ctx) {
-      // TODO postfixExpression
-      return this.visit(ctx.callExpression);
+      const expression = this.visit(ctx.callExpression);
+      if (_.has(ctx, "postfixOperator")) {
+        let currentExpression = expression;
+        _.each(_.map(ctx.postfixOperator, this.visit.bind(this)), operator => {
+          currentExpression = {
+            type: "postfixExpression",
+            expression: currentExpression,
+            operator,
+          };
+        });
+        return currentExpression;
+      }
+      // Without operator, the expression is the result
+      return expression;
     }
 
     callExpression(ctx) {
@@ -542,6 +568,18 @@ function getVisitor(parser) {
     }
 
     additiveOperator(ctx) {
+      return getFirstTokenImage(ctx);
+    }
+
+    multiplicativeOperator(ctx) {
+      return getFirstTokenImage(ctx);
+    }
+
+    prefixOperator(ctx) {
+      return getFirstTokenImage(ctx);
+    }
+
+    unaryOperator(ctx) {
       return getFirstTokenImage(ctx);
     }
 
