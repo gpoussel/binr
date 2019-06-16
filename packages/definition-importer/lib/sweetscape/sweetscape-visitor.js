@@ -296,7 +296,7 @@ function getVisitor(parser) {
         trueStatement: _.first(statements),
       };
       if (_.size(statements) > 1) {
-        result.falseStatement = _.get(statements, 2);
+        [, result.falseStatement] = statements;
       }
       return result;
     }
@@ -397,12 +397,15 @@ function getVisitor(parser) {
     ternaryExpression(ctx) {
       const condition = this.visit(ctx.booleanOrExpression);
       if (_.has(ctx, "assignmentExpression")) {
-        return {
+        const result = {
           type: "ternaryExpression",
           condition,
           trueStatement: this.visit(_.first(ctx.assignmentExpression)),
-          falseStatement: this.visit(_.last(ctx.ternaryExpression)),
         };
+        if (_.has(ctx, "ternaryExpression")) {
+          result.falseStatement = this.visit(ctx.ternaryExpression);
+        }
+        return result;
       }
       // Without ternary operators, the condition is in fact the expression itself
       return condition;
