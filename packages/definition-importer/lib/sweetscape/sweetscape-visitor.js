@@ -596,7 +596,7 @@ function getVisitor(parser) {
           operand: this.visit(ctx.expressionOrTypeName),
         };
       }
-      return this.visit(ctx.assignmentExpression);
+      return this.visit(ctx.parExpression);
     }
 
     assignmentOperator(ctx) {

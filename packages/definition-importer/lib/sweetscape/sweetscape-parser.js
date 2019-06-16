@@ -513,13 +513,7 @@ class SweetscapeParser extends Parser {
             $.CONSUME(tokens.ParenthesisClose);
           },
         },
-        {
-          ALT: () => {
-            $.CONSUME2(tokens.ParenthesisOpen);
-            $.SUBRULE2($.assignmentExpression);
-            $.CONSUME2(tokens.ParenthesisClose);
-          },
-        },
+        { ALT: () => $.SUBRULE($.parExpression) },
       ]);
     });
 

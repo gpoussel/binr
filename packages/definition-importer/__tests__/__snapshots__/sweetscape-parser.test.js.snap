@@ -180,37 +180,39 @@ Object {
                                   "callExpression": Object {
                                     "memberExpression": Object {
                                       "primaryExpression": Object {
-                                        "ParenthesisClose": Object {
-                                          "TOKEN": "ParenthesisClose",
-                                          "content": ")",
-                                        },
-                                        "ParenthesisOpen": Object {
-                                          "TOKEN": "ParenthesisOpen",
-                                          "content": "(",
-                                        },
-                                        "assignmentExpression": Object {
-                                          "ternaryExpression": Object {
-                                            "booleanOrExpression": Object {
-                                              "booleanAndExpression": Object {
-                                                "binaryOrExpression": Object {
-                                                  "binaryXorExpression": Object {
-                                                    "binaryAndExpression": Object {
-                                                      "equalityExpression": Object {
-                                                        "relationalExpression": Object {
-                                                          "shiftExpression": Object {
-                                                            "additiveExpression": Object {
-                                                              "multiplicativeExpression": Object {
-                                                                "castExpression": Array [
-                                                                  Object {
-                                                                    "prefixExpression": Object {
-                                                                      "postfixExpression": Object {
-                                                                        "callExpression": Object {
-                                                                          "memberExpression": Object {
-                                                                            "primaryExpression": Object {
-                                                                              "simpleValue": Object {
-                                                                                "Identifier": Object {
-                                                                                  "TOKEN": "Identifier",
-                                                                                  "content": "a",
+                                        "parExpression": Object {
+                                          "ParenthesisClose": Object {
+                                            "TOKEN": "ParenthesisClose",
+                                            "content": ")",
+                                          },
+                                          "ParenthesisOpen": Object {
+                                            "TOKEN": "ParenthesisOpen",
+                                            "content": "(",
+                                          },
+                                          "assignmentExpression": Object {
+                                            "ternaryExpression": Object {
+                                              "booleanOrExpression": Object {
+                                                "booleanAndExpression": Object {
+                                                  "binaryOrExpression": Object {
+                                                    "binaryXorExpression": Object {
+                                                      "binaryAndExpression": Object {
+                                                        "equalityExpression": Object {
+                                                          "relationalExpression": Object {
+                                                            "shiftExpression": Object {
+                                                              "additiveExpression": Object {
+                                                                "multiplicativeExpression": Object {
+                                                                  "castExpression": Array [
+                                                                    Object {
+                                                                      "prefixExpression": Object {
+                                                                        "postfixExpression": Object {
+                                                                          "callExpression": Object {
+                                                                            "memberExpression": Object {
+                                                                              "primaryExpression": Object {
+                                                                                "simpleValue": Object {
+                                                                                  "Identifier": Object {
+                                                                                    "TOKEN": "Identifier",
+                                                                                    "content": "a",
+                                                                                  },
                                                                                 },
                                                                               },
                                                                             },
@@ -218,17 +220,17 @@ Object {
                                                                         },
                                                                       },
                                                                     },
-                                                                  },
-                                                                  Object {
-                                                                    "prefixExpression": Object {
-                                                                      "postfixExpression": Object {
-                                                                        "callExpression": Object {
-                                                                          "memberExpression": Object {
-                                                                            "primaryExpression": Object {
-                                                                              "simpleValue": Object {
-                                                                                "Identifier": Object {
-                                                                                  "TOKEN": "Identifier",
-                                                                                  "content": "b",
+                                                                    Object {
+                                                                      "prefixExpression": Object {
+                                                                        "postfixExpression": Object {
+                                                                          "callExpression": Object {
+                                                                            "memberExpression": Object {
+                                                                              "primaryExpression": Object {
+                                                                                "simpleValue": Object {
+                                                                                  "Identifier": Object {
+                                                                                    "TOKEN": "Identifier",
+                                                                                    "content": "b",
+                                                                                  },
                                                                                 },
                                                                               },
                                                                             },
@@ -236,12 +238,12 @@ Object {
                                                                         },
                                                                       },
                                                                     },
-                                                                  },
-                                                                ],
-                                                                "multiplicativeOperator": Object {
-                                                                  "Multiplication": Object {
-                                                                    "TOKEN": "Multiplication",
-                                                                    "content": "*",
+                                                                  ],
+                                                                  "multiplicativeOperator": Object {
+                                                                    "Multiplication": Object {
+                                                                      "TOKEN": "Multiplication",
+                                                                      "content": "*",
+                                                                    },
                                                                   },
                                                                 },
                                                               },
@@ -330,37 +332,39 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "ParenthesisClose": Object {
-                                        "TOKEN": "ParenthesisClose",
-                                        "content": ")",
-                                      },
-                                      "ParenthesisOpen": Object {
-                                        "TOKEN": "ParenthesisOpen",
-                                        "content": "(",
-                                      },
-                                      "assignmentExpression": Object {
-                                        "ternaryExpression": Object {
-                                          "booleanOrExpression": Object {
-                                            "booleanAndExpression": Object {
-                                              "binaryOrExpression": Object {
-                                                "binaryXorExpression": Object {
-                                                  "binaryAndExpression": Object {
-                                                    "equalityExpression": Object {
-                                                      "relationalExpression": Object {
-                                                        "shiftExpression": Object {
-                                                          "additiveExpression": Object {
-                                                            "multiplicativeExpression": Object {
-                                                              "castExpression": Array [
-                                                                Object {
-                                                                  "prefixExpression": Object {
-                                                                    "postfixExpression": Object {
-                                                                      "callExpression": Object {
-                                                                        "memberExpression": Object {
-                                                                          "primaryExpression": Object {
-                                                                            "simpleValue": Object {
-                                                                              "Identifier": Object {
-                                                                                "TOKEN": "Identifier",
-                                                                                "content": "a",
+                                      "parExpression": Object {
+                                        "ParenthesisClose": Object {
+                                          "TOKEN": "ParenthesisClose",
+                                          "content": ")",
+                                        },
+                                        "ParenthesisOpen": Object {
+                                          "TOKEN": "ParenthesisOpen",
+                                          "content": "(",
+                                        },
+                                        "assignmentExpression": Object {
+                                          "ternaryExpression": Object {
+                                            "booleanOrExpression": Object {
+                                              "booleanAndExpression": Object {
+                                                "binaryOrExpression": Object {
+                                                  "binaryXorExpression": Object {
+                                                    "binaryAndExpression": Object {
+                                                      "equalityExpression": Object {
+                                                        "relationalExpression": Object {
+                                                          "shiftExpression": Object {
+                                                            "additiveExpression": Object {
+                                                              "multiplicativeExpression": Object {
+                                                                "castExpression": Array [
+                                                                  Object {
+                                                                    "prefixExpression": Object {
+                                                                      "postfixExpression": Object {
+                                                                        "callExpression": Object {
+                                                                          "memberExpression": Object {
+                                                                            "primaryExpression": Object {
+                                                                              "simpleValue": Object {
+                                                                                "Identifier": Object {
+                                                                                  "TOKEN": "Identifier",
+                                                                                  "content": "a",
+                                                                                },
                                                                               },
                                                                             },
                                                                           },
@@ -368,17 +372,17 @@ Object {
                                                                       },
                                                                     },
                                                                   },
-                                                                },
-                                                                Object {
-                                                                  "prefixExpression": Object {
-                                                                    "postfixExpression": Object {
-                                                                      "callExpression": Object {
-                                                                        "memberExpression": Object {
-                                                                          "primaryExpression": Object {
-                                                                            "simpleValue": Object {
-                                                                              "Identifier": Object {
-                                                                                "TOKEN": "Identifier",
-                                                                                "content": "b",
+                                                                  Object {
+                                                                    "prefixExpression": Object {
+                                                                      "postfixExpression": Object {
+                                                                        "callExpression": Object {
+                                                                          "memberExpression": Object {
+                                                                            "primaryExpression": Object {
+                                                                              "simpleValue": Object {
+                                                                                "Identifier": Object {
+                                                                                  "TOKEN": "Identifier",
+                                                                                  "content": "b",
+                                                                                },
                                                                               },
                                                                             },
                                                                           },
@@ -386,12 +390,12 @@ Object {
                                                                       },
                                                                     },
                                                                   },
-                                                                },
-                                                              ],
-                                                              "multiplicativeOperator": Object {
-                                                                "Multiplication": Object {
-                                                                  "TOKEN": "Multiplication",
-                                                                  "content": "*",
+                                                                ],
+                                                                "multiplicativeOperator": Object {
+                                                                  "Multiplication": Object {
+                                                                    "TOKEN": "Multiplication",
+                                                                    "content": "*",
+                                                                  },
                                                                 },
                                                               },
                                                             },
@@ -1347,73 +1351,75 @@ Object {
                               "callExpression": Object {
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
-                                    "ParenthesisClose": Object {
-                                      "TOKEN": "ParenthesisClose",
-                                      "content": ")",
-                                    },
-                                    "ParenthesisOpen": Object {
-                                      "TOKEN": "ParenthesisOpen",
-                                      "content": "(",
-                                    },
-                                    "assignmentExpression": Object {
-                                      "ternaryExpression": Object {
-                                        "booleanOrExpression": Object {
-                                          "booleanAndExpression": Object {
-                                            "binaryOrExpression": Object {
-                                              "binaryXorExpression": Object {
-                                                "binaryAndExpression": Object {
-                                                  "equalityExpression": Object {
-                                                    "relationalExpression": Object {
-                                                      "shiftExpression": Object {
-                                                        "additiveExpression": Object {
-                                                          "additiveOperator": Object {
-                                                            "Plus": Object {
-                                                              "TOKEN": "Plus",
-                                                              "content": "+",
+                                    "parExpression": Object {
+                                      "ParenthesisClose": Object {
+                                        "TOKEN": "ParenthesisClose",
+                                        "content": ")",
+                                      },
+                                      "ParenthesisOpen": Object {
+                                        "TOKEN": "ParenthesisOpen",
+                                        "content": "(",
+                                      },
+                                      "assignmentExpression": Object {
+                                        "ternaryExpression": Object {
+                                          "booleanOrExpression": Object {
+                                            "booleanAndExpression": Object {
+                                              "binaryOrExpression": Object {
+                                                "binaryXorExpression": Object {
+                                                  "binaryAndExpression": Object {
+                                                    "equalityExpression": Object {
+                                                      "relationalExpression": Object {
+                                                        "shiftExpression": Object {
+                                                          "additiveExpression": Object {
+                                                            "additiveOperator": Object {
+                                                              "Plus": Object {
+                                                                "TOKEN": "Plus",
+                                                                "content": "+",
+                                                              },
                                                             },
+                                                            "multiplicativeExpression": Array [
+                                                              Object {
+                                                                "castExpression": Object {
+                                                                  "prefixExpression": Object {
+                                                                    "postfixExpression": Object {
+                                                                      "callExpression": Object {
+                                                                        "memberExpression": Object {
+                                                                          "primaryExpression": Object {
+                                                                            "simpleValue": Object {
+                                                                              "Identifier": Object {
+                                                                                "TOKEN": "Identifier",
+                                                                                "content": "a",
+                                                                              },
+                                                                            },
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              },
+                                                              Object {
+                                                                "castExpression": Object {
+                                                                  "prefixExpression": Object {
+                                                                    "postfixExpression": Object {
+                                                                      "callExpression": Object {
+                                                                        "memberExpression": Object {
+                                                                          "primaryExpression": Object {
+                                                                            "simpleValue": Object {
+                                                                              "Identifier": Object {
+                                                                                "TOKEN": "Identifier",
+                                                                                "content": "b",
+                                                                              },
+                                                                            },
+                                                                          },
+                                                                        },
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                },
+                                                              },
+                                                            ],
                                                           },
-                                                          "multiplicativeExpression": Array [
-                                                            Object {
-                                                              "castExpression": Object {
-                                                                "prefixExpression": Object {
-                                                                  "postfixExpression": Object {
-                                                                    "callExpression": Object {
-                                                                      "memberExpression": Object {
-                                                                        "primaryExpression": Object {
-                                                                          "simpleValue": Object {
-                                                                            "Identifier": Object {
-                                                                              "TOKEN": "Identifier",
-                                                                              "content": "a",
-                                                                            },
-                                                                          },
-                                                                        },
-                                                                      },
-                                                                    },
-                                                                  },
-                                                                },
-                                                              },
-                                                            },
-                                                            Object {
-                                                              "castExpression": Object {
-                                                                "prefixExpression": Object {
-                                                                  "postfixExpression": Object {
-                                                                    "callExpression": Object {
-                                                                      "memberExpression": Object {
-                                                                        "primaryExpression": Object {
-                                                                          "simpleValue": Object {
-                                                                            "Identifier": Object {
-                                                                              "TOKEN": "Identifier",
-                                                                              "content": "b",
-                                                                            },
-                                                                          },
-                                                                        },
-                                                                      },
-                                                                    },
-                                                                  },
-                                                                },
-                                                              },
-                                                            },
-                                                          ],
                                                         },
                                                       },
                                                     },
