@@ -6,14 +6,20 @@ function getFirstTokenImage(ctx) {
   return _.first(_.get(ctx, _.first(_.keys(ctx)))).image;
 }
 
-function createBinaryExpressions(initialExpression, otherExpressions) {
-  let currentExpression = initialExpression;
-  for (let i = 0; i < otherExpressions.length; i += 1) {
+function createBinaryExpressions(expressions, operators) {
+  if (_.isEmpty(operators) && _.size(expressions) === 1) {
+    // In that case, we cannot create a binary expression
+    // We can just return the only expression provided
+    return _.first(expressions);
+  }
+  // N expressions and (N - 1) operators
+  let currentExpression = _.first(expressions);
+  for (let i = 1; i < expressions.length; i += 1) {
     currentExpression = {
       type: "binaryExpression",
       left: currentExpression,
-      right: otherExpressions[i].expression,
-      operator: otherExpressions[i].operator,
+      right: expressions[i],
+      operator: operators[i - 1],
     };
   }
   return currentExpression;
@@ -393,38 +399,29 @@ function getVisitor(parser) {
     }
 
     assignmentExpression(ctx) {
-      if (_.size(ctx.ternaryExpression) > 1) {
-        const operators = _.map(ctx.assignmentOperator, this.visit.bind(this));
-        const expressions = _.map(ctx.ternaryExpression, this.visit.bind(this));
-        return createBinaryExpressions(
-          _.first(expressions),
-          _.times(operators.length - 1, i => ({
-            operator: operators[i],
-            expression: expressions[i],
-          }))
-        );
-      }
-      return this.visit(_.first(ctx.ternaryExpression));
+      const operators = _.map(ctx.assignmentOperator, this.visit.bind(this));
+      const expressions = _.map(ctx.ternaryExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     ternaryExpression(ctx) {
-      const result = this.visit(ctx.booleanOrExpression);
+      const condition = this.visit(ctx.booleanOrExpression);
       if (_.has(ctx, "assignmentExpression")) {
         return {
           type: "ternaryExpression",
-          condition: result,
+          condition,
           trueStatement: this.visit(_.first(ctx.assignmentExpression)),
           falseStatement: this.visit(_.last(ctx.ternaryExpression)),
         };
       }
-      return result;
+      // Without ternary operators, the condition is in fact the expression itself
+      return condition;
     }
 
     booleanOrExpression(ctx) {
-      if (_.size(ctx.booleanAndExpression) > 1) {
-        // TODO booleanOrExpression
-      }
-      return this.visit(_.first(ctx.booleanAndExpression));
+      const operators = ctx.BooleanOr;
+      const expressions = _.map(ctx.booleanAndExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     booleanAndExpression(ctx) {
