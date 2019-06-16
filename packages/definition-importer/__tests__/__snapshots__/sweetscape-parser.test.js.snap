@@ -1571,13 +1571,15 @@ Object {
                                 "memberExpression": Object {
                                   "memberExpressionRest": Array [
                                     Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "b",
-                                      },
-                                      "Period": Object {
-                                        "TOKEN": "Period",
-                                        "content": ".",
+                                      "propertyAccess": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "b",
+                                        },
+                                        "Period": Object {
+                                          "TOKEN": "Period",
+                                          "content": ".",
+                                        },
                                       },
                                     },
                                     Object {

@@ -540,17 +540,21 @@ function getVisitor(parser) {
             expression: currentExpression,
             index: this.visit(expressionRestChildren.assignmentExpression),
           };
-        } else if (_.has(expressionRestChildren, "Identifier")) {
+        } else if (_.has(expressionRestChildren, "propertyAccess")) {
           currentExpression = {
             type: "propertyAccessExpression",
             expression: currentExpression,
-            name: getIdentifier(expressionRestChildren.Identifier),
+            name: this.visit(expressionRestChildren.propertyAccess),
           };
         } else {
           throw new Error();
         }
       });
       return currentExpression;
+    }
+
+    propertyAccess(ctx) {
+      return getIdentifier(ctx.Identifier);
     }
 
     memberExpression(ctx) {
@@ -565,11 +569,11 @@ function getVisitor(parser) {
             expression: currentExpression,
             index: this.visit(expressionRestChildren.assignmentExpression),
           };
-        } else if (_.has(expressionRestChildren, "Identifier")) {
+        } else if (_.has(expressionRestChildren, "propertyAccess")) {
           currentExpression = {
             type: "propertyAccessExpression",
             expression: currentExpression,
-            name: getIdentifier(expressionRestChildren.Identifier),
+            name: this.visit(expressionRestChildren.propertyAccess),
           };
         } else {
           throw new Error();

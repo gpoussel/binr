@@ -506,12 +506,7 @@ class SweetscapeParser extends Parser {
             $.CONSUME(tokens.BracketClose);
           },
         },
-        {
-          ALT: () => {
-            $.CONSUME(tokens.Period);
-            $.CONSUME(tokens.Identifier);
-          },
-        },
+        { ALT: () => $.SUBRULE($.propertyAccess) },
       ]);
     });
 
@@ -529,13 +524,13 @@ class SweetscapeParser extends Parser {
             $.CONSUME(tokens.BracketClose);
           },
         },
-        {
-          ALT: () => {
-            $.CONSUME(tokens.Period);
-            $.CONSUME(tokens.Identifier);
-          },
-        },
+        { ALT: () => $.SUBRULE($.propertyAccess) },
       ]);
+    });
+
+    $.RULE("propertyAccess", () => {
+      $.CONSUME(tokens.Period);
+      $.CONSUME(tokens.Identifier);
     });
 
     $.RULE("primaryExpression", () => {
