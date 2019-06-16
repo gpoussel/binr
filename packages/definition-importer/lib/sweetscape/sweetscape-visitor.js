@@ -241,7 +241,7 @@ function getVisitor(parser) {
       const result = {
         type: "variableDeclaration",
         variableType: this.visit(ctx.typeName),
-        annotations: _.has(ctx.annotations) ? this.visit(ctx.annotations) : [],
+        annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
       _.each(ctx.variableModifier, modifier => {
         _.assign(result, this.visit(modifier));
@@ -279,7 +279,7 @@ function getVisitor(parser) {
         type: "typeAlias",
         name: this.visit(ctx.typeName),
         alias: getIdentifier(ctx.Identifier),
-        annotations: _.has(ctx.annotations) ? this.visit(ctx.annotations) : [],
+        annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
       if (_.has(ctx, "selector")) {
         result.selector = this.visit(ctx.selector);

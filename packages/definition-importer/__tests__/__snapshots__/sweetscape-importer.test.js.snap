@@ -1,5 +1,5490 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Sweetscape Importer creates DDS definition 1`] = `
+Array [
+  Object {
+    "alias": "DDS_PIXELFORMAT",
+    "declaration": Object {
+      "body": Object {
+        "statements": Array [
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "size",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [
+                  Object {
+                    "key": "format",
+                    "value": "binary",
+                  },
+                  Object {
+                    "key": "read",
+                    "value": "ReadDDSPixelFormatFlags",
+                  },
+                ],
+                "name": "flags",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "arraySelector": Object {
+                  "type": "number",
+                  "value": 4,
+                },
+                "name": "fourCC",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "char",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "RGBBitCount",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [
+                  Object {
+                    "key": "format",
+                    "value": "binary",
+                  },
+                ],
+                "name": "RBitMask",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [
+                  Object {
+                    "key": "format",
+                    "value": "binary",
+                  },
+                ],
+                "name": "GBitMask",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [
+                  Object {
+                    "key": "format",
+                    "value": "binary",
+                  },
+                ],
+                "name": "BBitMask",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [
+                  Object {
+                    "key": "format",
+                    "value": "binary",
+                  },
+                ],
+                "name": "ABitMask",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+        ],
+        "type": "statementList",
+      },
+    },
+    "type": "structDeclaration",
+  },
+  Object {
+    "alias": "DXGI_FORMAT",
+    "annotations": Array [
+      Object {
+        "key": "read",
+        "value": "ReadDXGIFormat",
+      },
+    ],
+    "name": Object {
+      "array": false,
+      "name": "uint",
+    },
+    "type": "typeAlias",
+  },
+  Object {
+    "alias": "D3D10_RESOURCE_DIMENSION",
+    "annotations": Array [
+      Object {
+        "key": "read",
+        "value": "ReadD3D10ResourceDimension",
+      },
+    ],
+    "name": Object {
+      "array": false,
+      "name": "uint",
+    },
+    "type": "typeAlias",
+  },
+  Object {
+    "annotations": Array [],
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "arraySelector": Object {
+          "type": "number",
+          "value": 4,
+        },
+        "name": "magic",
+      },
+    ],
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "char",
+    },
+  },
+  Object {
+    "alias": "DDS_HEADER",
+    "annotations": Array [],
+    "declaration": Object {
+      "body": Object {
+        "statements": Array [
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "size",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [
+                  Object {
+                    "key": "format",
+                    "value": "binary",
+                  },
+                  Object {
+                    "key": "read",
+                    "value": "ReadHeaderFlags",
+                  },
+                ],
+                "name": "flags",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "height",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "width",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "pitchOrLinearSize",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "depth",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "mipMapCount",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "arraySelector": Object {
+                  "type": "number",
+                  "value": 11,
+                },
+                "name": "reserved1",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "ddspf",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "DDS_PIXELFORMAT",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [
+                  Object {
+                    "key": "format",
+                    "value": "binary",
+                  },
+                  Object {
+                    "key": "read",
+                    "value": "ReadHeaderCaps",
+                  },
+                ],
+                "name": "caps",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [
+                  Object {
+                    "key": "format",
+                    "value": "binary",
+                  },
+                  Object {
+                    "key": "read",
+                    "value": "ReadHeaderCaps2",
+                  },
+                ],
+                "name": "caps2",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "caps3",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "caps4",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+          Object {
+            "annotations": Array [],
+            "declarations": Array [
+              Object {
+                "annotations": Array [],
+                "name": "reserved2",
+              },
+            ],
+            "type": "variableDeclaration",
+            "variableType": Object {
+              "array": false,
+              "name": "uint",
+            },
+          },
+        ],
+        "type": "statementList",
+      },
+    },
+    "name": "dds_header",
+    "type": "structDeclaration",
+  },
+  Object {
+    "condition": Object {
+      "left": Object {
+        "expression": Object {
+          "expression": Object {
+            "name": "dds_header",
+            "type": "idenitfier",
+          },
+          "name": "ddspf",
+          "type": "propertyAccessExpression",
+        },
+        "name": "fourCC",
+        "type": "propertyAccessExpression",
+      },
+      "operator": "==",
+      "right": Object {
+        "string": "DX10",
+        "type": "string",
+      },
+      "type": "binaryExpression",
+    },
+    "trueStatement": Object {
+      "statements": Array [
+        Object {
+          "alias": "DDS_HEADER_DXT10",
+          "annotations": Array [],
+          "declaration": Object {
+            "body": Object {
+              "statements": Array [
+                Object {
+                  "annotations": Array [],
+                  "declarations": Array [
+                    Object {
+                      "annotations": Array [],
+                      "name": "dxgiFormat",
+                    },
+                  ],
+                  "type": "variableDeclaration",
+                  "variableType": Object {
+                    "array": false,
+                    "name": "DXGI_FORMAT",
+                  },
+                },
+                Object {
+                  "annotations": Array [],
+                  "declarations": Array [
+                    Object {
+                      "annotations": Array [],
+                      "name": "resourceDimension",
+                    },
+                  ],
+                  "type": "variableDeclaration",
+                  "variableType": Object {
+                    "array": false,
+                    "name": "D3D10_RESOURCE_DIMENSION",
+                  },
+                },
+                Object {
+                  "annotations": Array [],
+                  "declarations": Array [
+                    Object {
+                      "annotations": Array [
+                        Object {
+                          "key": "format",
+                          "value": "binary",
+                        },
+                        Object {
+                          "key": "read",
+                          "value": "ReadHeader10MiscFlag",
+                        },
+                      ],
+                      "name": "miscFlag",
+                    },
+                  ],
+                  "type": "variableDeclaration",
+                  "variableType": Object {
+                    "array": false,
+                    "name": "uint",
+                  },
+                },
+                Object {
+                  "annotations": Array [],
+                  "declarations": Array [
+                    Object {
+                      "annotations": Array [],
+                      "name": "arraySize",
+                    },
+                  ],
+                  "type": "variableDeclaration",
+                  "variableType": Object {
+                    "array": false,
+                    "name": "uint",
+                  },
+                },
+                Object {
+                  "annotations": Array [],
+                  "declarations": Array [
+                    Object {
+                      "annotations": Array [
+                        Object {
+                          "key": "format",
+                          "value": "binary",
+                        },
+                        Object {
+                          "key": "read",
+                          "value": "ReadHeader10MiscFlags2",
+                        },
+                      ],
+                      "name": "miscFlags2",
+                    },
+                  ],
+                  "type": "variableDeclaration",
+                  "variableType": Object {
+                    "array": false,
+                    "name": "uint",
+                  },
+                },
+              ],
+              "type": "statementList",
+            },
+          },
+          "name": "ds_header_dxt10",
+          "type": "structDeclaration",
+        },
+      ],
+      "type": "statementList",
+    },
+    "type": "ifStatement",
+  },
+  Object {
+    "content": Object {
+      "statements": Array [
+        Object {
+          "statements": Array [
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_UNKNOWN",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                0,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32B32A32_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                1,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32B32A32_FLOAT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                2,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32B32A32_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                3,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32B32A32_SINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                4,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32B32_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                5,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32B32_FLOAT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                6,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32B32_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                7,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32B32_SINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                8,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16B16A16_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                9,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16B16A16_FLOAT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                10,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16B16A16_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                11,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16B16A16_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                12,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16B16A16_SNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                13,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16B16A16_SINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                14,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                15,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32_FLOAT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                16,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                17,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G32_SINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                18,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32G8X24_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                19,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_D32_FLOAT_S8X24_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                20,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32_FLOAT_X8X24_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                21,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_X32_TYPELESS_G8X24_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                22,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R10G10B10A2_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                23,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R10G10B10A2_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                24,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R10G10B10A2_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                25,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R11G11B10_FLOAT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                26,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8B8A8_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                27,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8B8A8_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                28,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8B8A8_UNORM_SRGB",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                29,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8B8A8_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                30,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8B8A8_SNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                31,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8B8A8_SINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                32,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                33,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16_FLOAT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                34,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                35,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                36,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16_SNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                37,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16G16_SINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                38,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                39,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_D32_FLOAT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                40,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32_FLOAT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                41,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                42,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R32_SINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                43,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R24G8_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                44,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_D24_UNORM_S8_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                45,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R24_UNORM_X8_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                46,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_X24_TYPELESS_G8_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                47,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                48,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                49,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                50,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8_SNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                51,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8_SINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                52,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                53,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16_FLOAT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                54,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_D16_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                55,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                56,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                57,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16_SNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                58,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R16_SINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                59,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                60,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                61,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                62,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8_SNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                63,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8_SINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                64,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_A8_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                65,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R1_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                66,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R9G9B9E5_SHAREDEXP",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                67,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R8G8_B8G8_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                68,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_G8R8_G8B8_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                69,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC1_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                70,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC1_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                71,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC1_UNORM_SRGB",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                72,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC2_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                73,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC2_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                74,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC2_UNORM_SRGB",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                75,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC3_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                76,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC3_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                77,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC3_UNORM_SRGB",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                78,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC4_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                79,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC4_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                80,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC4_SNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                81,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC5_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                82,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC5_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                83,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC5_SNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                84,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_B5G6R5_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                85,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_B5G5R5A1_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                86,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_B8G8R8A8_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                87,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_B8G8R8X8_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                88,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                89,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_B8G8R8A8_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                90,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_B8G8R8A8_UNORM_SRGB",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                91,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_B8G8R8X8_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                92,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_B8G8R8X8_UNORM_SRGB",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                93,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC6H_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                94,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC6H_UF16",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                95,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC6H_SF16",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                96,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC7_TYPELESS",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                97,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC7_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                98,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_BC7_UNORM_SRGB",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                99,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_AYUV",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                100,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_Y410",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                101,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_Y416",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                102,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_NV12",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                103,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_P010",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                104,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_P016",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                105,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_420_OPAQUE",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                106,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_YUY2",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                107,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_Y210",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                108,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_Y216",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                109,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_NV11",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                110,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_AI44",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                111,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_IA44",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                112,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_P8",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                113,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_A8P8",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                114,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_B4G4R4A4_UNORM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                115,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_P208",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                130,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_V208",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                131,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_V408",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                132,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DXGI_FORMAT_FORCE_UINT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                4294967295,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [],
+                "type": "statementList",
+              },
+              "labels": Array [],
+            },
+          ],
+          "type": "switchStatement",
+        },
+        Object {
+          "assignmentExpression": Object {
+            "string": "",
+            "type": "string",
+          },
+          "type": "returnStatement",
+        },
+      ],
+      "type": "statementList",
+    },
+    "forwardDeclaration": false,
+    "name": "ReadDXGIFormat",
+    "parameters": Array [
+      Object {
+        "name": "dxgiFormat",
+        "reference": true,
+        "type": Object {
+          "array": false,
+          "name": "DXGI_FORMAT",
+        },
+      },
+    ],
+    "returnType": Object {
+      "array": false,
+      "name": "string",
+    },
+    "type": "functionDeclaration",
+  },
+  Object {
+    "content": Object {
+      "statements": Array [
+        Object {
+          "statements": Array [
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "D3D10_RESOURCE_DIMENSION_UNKNOWN",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                0,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "D3D10_RESOURCE_DIMENSION_BUFFER",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                1,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "D3D10_RESOURCE_DIMENSION_TEXTURE1D",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                2,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "D3D10_RESOURCE_DIMENSION_TEXTURE2D",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                3,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "D3D10_RESOURCE_DIMENSION_TEXTURE3D",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                4,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [],
+                "type": "statementList",
+              },
+              "labels": Array [],
+            },
+          ],
+          "type": "switchStatement",
+        },
+        Object {
+          "assignmentExpression": Object {
+            "string": "",
+            "type": "string",
+          },
+          "type": "returnStatement",
+        },
+      ],
+      "type": "statementList",
+    },
+    "forwardDeclaration": false,
+    "name": "ReadD3D10ResourceDimension",
+    "parameters": Array [
+      Object {
+        "name": "resourceDimension",
+        "reference": true,
+        "type": Object {
+          "array": false,
+          "name": "D3D10_RESOURCE_DIMENSION",
+        },
+      },
+    ],
+    "returnType": Object {
+      "array": false,
+      "name": "string",
+    },
+    "type": "functionDeclaration",
+  },
+  Object {
+    "content": Object {
+      "statements": Array [
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "value",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "string",
+          },
+        },
+        Object {
+          "condition": Object {
+            "left": Object {
+              "name": "flags",
+              "type": "idenitfier",
+            },
+            "operator": "==",
+            "right": Object {
+              "type": "number",
+              "value": 0,
+            },
+            "type": "binaryExpression",
+          },
+          "trueStatement": Object {
+            "statements": Array [
+              Object {
+                "assignmentExpression": Object {
+                  "string": "",
+                  "type": "string",
+                },
+                "type": "returnStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "type": "ifStatement",
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "i",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flag",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flagsFound",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "left": Object {
+                  "name": "flag",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "left": Object {
+                    "name": "flags",
+                    "type": "idenitfier",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "left": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "operator": "<<",
+                    "right": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "name": "flag",
+                    "type": "idenitfier",
+                  },
+                  "operator": "!=",
+                  "right": Object {
+                    "type": "number",
+                    "value": 0,
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "statements": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "flagsFound",
+                        "type": "idenitfier",
+                      },
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
+                  ],
+                  "type": "statementList",
+                },
+                "type": "ifStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "type": "number",
+              "value": 32,
+            },
+            "type": "binaryExpression",
+          },
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "type": "number",
+                  "value": 0,
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "type": "forStatement",
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flagCounter",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "left": Object {
+                  "name": "flag",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "left": Object {
+                    "name": "flags",
+                    "type": "idenitfier",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "left": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "operator": "<<",
+                    "right": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "statements": Array [
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSD_CAPS",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      1,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSD_HEIGHT",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      2,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSD_WIDTH",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      4,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSD_PITCH",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      8,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSD_PIXELFORMAT",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      4096,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSD_MIPMAPCOUNT",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      131072,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSD_LINEARSIZE",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      524288,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSD_DEPTH",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      8388608,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [],
+                      "type": "statementList",
+                    },
+                    "labels": Array [],
+                  },
+                ],
+                "type": "switchStatement",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "name": "flag",
+                    "type": "idenitfier",
+                  },
+                  "operator": "!=",
+                  "right": Object {
+                    "type": "number",
+                    "value": 0,
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "statements": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "flagCounter",
+                        "type": "idenitfier",
+                      },
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
+                    Object {
+                      "condition": Object {
+                        "left": Object {
+                          "name": "flagCounter",
+                          "type": "idenitfier",
+                        },
+                        "operator": "<",
+                        "right": Object {
+                          "name": "flagsFound",
+                          "type": "idenitfier",
+                        },
+                        "type": "binaryExpression",
+                      },
+                      "trueStatement": Object {
+                        "statements": Array [
+                          Object {
+                            "left": Object {
+                              "name": "value",
+                              "type": "idenitfier",
+                            },
+                            "operator": "+=",
+                            "right": Object {
+                              "string": " | ",
+                              "type": "string",
+                            },
+                            "type": "binaryExpression",
+                          },
+                        ],
+                        "type": "statementList",
+                      },
+                      "type": "ifStatement",
+                    },
+                  ],
+                  "type": "statementList",
+                },
+                "type": "ifStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "type": "number",
+              "value": 32,
+            },
+            "type": "binaryExpression",
+          },
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "type": "number",
+                  "value": 0,
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "type": "forStatement",
+        },
+        Object {
+          "assignmentExpression": Object {
+            "name": "value",
+            "type": "idenitfier",
+          },
+          "type": "returnStatement",
+        },
+      ],
+      "type": "statementList",
+    },
+    "forwardDeclaration": false,
+    "name": "ReadHeaderFlags",
+    "parameters": Array [
+      Object {
+        "name": "flags",
+        "reference": false,
+        "type": Object {
+          "array": false,
+          "name": "uint",
+        },
+      },
+    ],
+    "returnType": Object {
+      "array": false,
+      "name": "string",
+    },
+    "type": "functionDeclaration",
+  },
+  Object {
+    "content": Object {
+      "statements": Array [
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "value",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "string",
+          },
+        },
+        Object {
+          "condition": Object {
+            "left": Object {
+              "name": "flags",
+              "type": "idenitfier",
+            },
+            "operator": "==",
+            "right": Object {
+              "type": "number",
+              "value": 0,
+            },
+            "type": "binaryExpression",
+          },
+          "trueStatement": Object {
+            "statements": Array [
+              Object {
+                "assignmentExpression": Object {
+                  "string": "",
+                  "type": "string",
+                },
+                "type": "returnStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "type": "ifStatement",
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "i",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flag",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flagsFound",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "left": Object {
+                  "name": "flag",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "left": Object {
+                    "name": "flags",
+                    "type": "idenitfier",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "left": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "operator": "<<",
+                    "right": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "name": "flag",
+                    "type": "idenitfier",
+                  },
+                  "operator": "!=",
+                  "right": Object {
+                    "type": "number",
+                    "value": 0,
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "statements": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "flagsFound",
+                        "type": "idenitfier",
+                      },
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
+                  ],
+                  "type": "statementList",
+                },
+                "type": "ifStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "type": "number",
+              "value": 32,
+            },
+            "type": "binaryExpression",
+          },
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "type": "number",
+                  "value": 0,
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "type": "forStatement",
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flagCounter",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "left": Object {
+                  "name": "flag",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "left": Object {
+                    "name": "flags",
+                    "type": "idenitfier",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "left": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "operator": "<<",
+                    "right": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "statements": Array [
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDPF_ALPHAPIXELS",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      1,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDPF_ALPHA",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      2,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDPF_FOURCC",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      4,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDPF_RGB",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      64,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDPF_YUV",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      512,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDPF_LUMINANCE",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      131072,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [],
+                      "type": "statementList",
+                    },
+                    "labels": Array [],
+                  },
+                ],
+                "type": "switchStatement",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "name": "flag",
+                    "type": "idenitfier",
+                  },
+                  "operator": "!=",
+                  "right": Object {
+                    "type": "number",
+                    "value": 0,
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "statements": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "flagCounter",
+                        "type": "idenitfier",
+                      },
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
+                    Object {
+                      "condition": Object {
+                        "left": Object {
+                          "name": "flagCounter",
+                          "type": "idenitfier",
+                        },
+                        "operator": "<",
+                        "right": Object {
+                          "name": "flagsFound",
+                          "type": "idenitfier",
+                        },
+                        "type": "binaryExpression",
+                      },
+                      "trueStatement": Object {
+                        "statements": Array [
+                          Object {
+                            "left": Object {
+                              "name": "value",
+                              "type": "idenitfier",
+                            },
+                            "operator": "+=",
+                            "right": Object {
+                              "string": " | ",
+                              "type": "string",
+                            },
+                            "type": "binaryExpression",
+                          },
+                        ],
+                        "type": "statementList",
+                      },
+                      "type": "ifStatement",
+                    },
+                  ],
+                  "type": "statementList",
+                },
+                "type": "ifStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "type": "number",
+              "value": 32,
+            },
+            "type": "binaryExpression",
+          },
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "type": "number",
+                  "value": 0,
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "type": "forStatement",
+        },
+        Object {
+          "assignmentExpression": Object {
+            "name": "value",
+            "type": "idenitfier",
+          },
+          "type": "returnStatement",
+        },
+      ],
+      "type": "statementList",
+    },
+    "forwardDeclaration": false,
+    "name": "ReadDDSPixelFormatFlags",
+    "parameters": Array [
+      Object {
+        "name": "flags",
+        "reference": false,
+        "type": Object {
+          "array": false,
+          "name": "uint",
+        },
+      },
+    ],
+    "returnType": Object {
+      "array": false,
+      "name": "string",
+    },
+    "type": "functionDeclaration",
+  },
+  Object {
+    "content": Object {
+      "statements": Array [
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "value",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "string",
+          },
+        },
+        Object {
+          "condition": Object {
+            "left": Object {
+              "name": "caps",
+              "type": "idenitfier",
+            },
+            "operator": "==",
+            "right": Object {
+              "type": "number",
+              "value": 0,
+            },
+            "type": "binaryExpression",
+          },
+          "trueStatement": Object {
+            "statements": Array [
+              Object {
+                "assignmentExpression": Object {
+                  "string": "",
+                  "type": "string",
+                },
+                "type": "returnStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "type": "ifStatement",
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "i",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flag",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flagsFound",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "left": Object {
+                  "name": "flag",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "left": Object {
+                    "name": "caps",
+                    "type": "idenitfier",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "left": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "operator": "<<",
+                    "right": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "name": "flag",
+                    "type": "idenitfier",
+                  },
+                  "operator": "!=",
+                  "right": Object {
+                    "type": "number",
+                    "value": 0,
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "statements": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "flagsFound",
+                        "type": "idenitfier",
+                      },
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
+                  ],
+                  "type": "statementList",
+                },
+                "type": "ifStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "type": "number",
+              "value": 32,
+            },
+            "type": "binaryExpression",
+          },
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "type": "number",
+                  "value": 0,
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "type": "forStatement",
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flagCounter",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "left": Object {
+                  "name": "flag",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "left": Object {
+                    "name": "caps",
+                    "type": "idenitfier",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "left": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "operator": "<<",
+                    "right": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "statements": Array [
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS_COMPLEX",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      8,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS_MIPMAP",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      4194304,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS_TEXTURE",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      4096,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [],
+                      "type": "statementList",
+                    },
+                    "labels": Array [],
+                  },
+                ],
+                "type": "switchStatement",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "name": "flag",
+                    "type": "idenitfier",
+                  },
+                  "operator": "!=",
+                  "right": Object {
+                    "type": "number",
+                    "value": 0,
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "statements": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "flagCounter",
+                        "type": "idenitfier",
+                      },
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
+                    Object {
+                      "condition": Object {
+                        "left": Object {
+                          "name": "flagCounter",
+                          "type": "idenitfier",
+                        },
+                        "operator": "<",
+                        "right": Object {
+                          "name": "flagsFound",
+                          "type": "idenitfier",
+                        },
+                        "type": "binaryExpression",
+                      },
+                      "trueStatement": Object {
+                        "statements": Array [
+                          Object {
+                            "left": Object {
+                              "name": "value",
+                              "type": "idenitfier",
+                            },
+                            "operator": "+=",
+                            "right": Object {
+                              "string": " | ",
+                              "type": "string",
+                            },
+                            "type": "binaryExpression",
+                          },
+                        ],
+                        "type": "statementList",
+                      },
+                      "type": "ifStatement",
+                    },
+                  ],
+                  "type": "statementList",
+                },
+                "type": "ifStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "type": "number",
+              "value": 32,
+            },
+            "type": "binaryExpression",
+          },
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "type": "number",
+                  "value": 0,
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "type": "forStatement",
+        },
+        Object {
+          "assignmentExpression": Object {
+            "name": "value",
+            "type": "idenitfier",
+          },
+          "type": "returnStatement",
+        },
+      ],
+      "type": "statementList",
+    },
+    "forwardDeclaration": false,
+    "name": "ReadHeaderCaps",
+    "parameters": Array [
+      Object {
+        "name": "caps",
+        "reference": false,
+        "type": Object {
+          "array": false,
+          "name": "uint",
+        },
+      },
+    ],
+    "returnType": Object {
+      "array": false,
+      "name": "string",
+    },
+    "type": "functionDeclaration",
+  },
+  Object {
+    "content": Object {
+      "statements": Array [
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "value",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "string",
+          },
+        },
+        Object {
+          "condition": Object {
+            "left": Object {
+              "name": "caps",
+              "type": "idenitfier",
+            },
+            "operator": "==",
+            "right": Object {
+              "type": "number",
+              "value": 0,
+            },
+            "type": "binaryExpression",
+          },
+          "trueStatement": Object {
+            "statements": Array [
+              Object {
+                "assignmentExpression": Object {
+                  "string": "",
+                  "type": "string",
+                },
+                "type": "returnStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "type": "ifStatement",
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "i",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flag",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flagsFound",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "left": Object {
+                  "name": "flag",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "left": Object {
+                    "name": "caps",
+                    "type": "idenitfier",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "left": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "operator": "<<",
+                    "right": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "name": "flag",
+                    "type": "idenitfier",
+                  },
+                  "operator": "!=",
+                  "right": Object {
+                    "type": "number",
+                    "value": 0,
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "statements": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "flagsFound",
+                        "type": "idenitfier",
+                      },
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
+                  ],
+                  "type": "statementList",
+                },
+                "type": "ifStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "type": "number",
+              "value": 32,
+            },
+            "type": "binaryExpression",
+          },
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "type": "number",
+                  "value": 0,
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "type": "forStatement",
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flagCounter",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "left": Object {
+                  "name": "flag",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "left": Object {
+                    "name": "caps",
+                    "type": "idenitfier",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "left": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "operator": "<<",
+                    "right": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "statements": Array [
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS2_CUBEMAP",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      512,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS2_CUBEMAP_POSITIVEX",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      1024,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS2_CUBEMAP_NEGATIVEX",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      2048,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS2_CUBEMAP_POSITIVEY",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      4096,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS2_CUBEMAP_NEGATIVEY",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      8192,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS2_CUBEMAP_POSITIVEZ",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      16384,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS2_CUBEMAP_NEGATIVEZ",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      32768,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDSCAPS2_VOLUME",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      2097152,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [],
+                      "type": "statementList",
+                    },
+                    "labels": Array [],
+                  },
+                ],
+                "type": "switchStatement",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "name": "flag",
+                    "type": "idenitfier",
+                  },
+                  "operator": "!=",
+                  "right": Object {
+                    "type": "number",
+                    "value": 0,
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "statements": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "flagCounter",
+                        "type": "idenitfier",
+                      },
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
+                    Object {
+                      "condition": Object {
+                        "left": Object {
+                          "name": "flagCounter",
+                          "type": "idenitfier",
+                        },
+                        "operator": "<",
+                        "right": Object {
+                          "name": "flagsFound",
+                          "type": "idenitfier",
+                        },
+                        "type": "binaryExpression",
+                      },
+                      "trueStatement": Object {
+                        "statements": Array [
+                          Object {
+                            "left": Object {
+                              "name": "value",
+                              "type": "idenitfier",
+                            },
+                            "operator": "+=",
+                            "right": Object {
+                              "string": " | ",
+                              "type": "string",
+                            },
+                            "type": "binaryExpression",
+                          },
+                        ],
+                        "type": "statementList",
+                      },
+                      "type": "ifStatement",
+                    },
+                  ],
+                  "type": "statementList",
+                },
+                "type": "ifStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "type": "number",
+              "value": 32,
+            },
+            "type": "binaryExpression",
+          },
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "type": "number",
+                  "value": 0,
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "type": "forStatement",
+        },
+        Object {
+          "assignmentExpression": Object {
+            "name": "value",
+            "type": "idenitfier",
+          },
+          "type": "returnStatement",
+        },
+      ],
+      "type": "statementList",
+    },
+    "forwardDeclaration": false,
+    "name": "ReadHeaderCaps2",
+    "parameters": Array [
+      Object {
+        "name": "caps",
+        "reference": false,
+        "type": Object {
+          "array": false,
+          "name": "uint",
+        },
+      },
+    ],
+    "returnType": Object {
+      "array": false,
+      "name": "string",
+    },
+    "type": "functionDeclaration",
+  },
+  Object {
+    "content": Object {
+      "statements": Array [
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "value",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "string",
+          },
+        },
+        Object {
+          "condition": Object {
+            "left": Object {
+              "name": "flags",
+              "type": "idenitfier",
+            },
+            "operator": "==",
+            "right": Object {
+              "type": "number",
+              "value": 0,
+            },
+            "type": "binaryExpression",
+          },
+          "trueStatement": Object {
+            "statements": Array [
+              Object {
+                "assignmentExpression": Object {
+                  "string": "",
+                  "type": "string",
+                },
+                "type": "returnStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "type": "ifStatement",
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "i",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flag",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flagsFound",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "left": Object {
+                  "name": "flag",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "left": Object {
+                    "name": "caps",
+                    "type": "idenitfier",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "left": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "operator": "<<",
+                    "right": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "name": "flag",
+                    "type": "idenitfier",
+                  },
+                  "operator": "!=",
+                  "right": Object {
+                    "type": "number",
+                    "value": 0,
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "statements": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "flagsFound",
+                        "type": "idenitfier",
+                      },
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
+                  ],
+                  "type": "statementList",
+                },
+                "type": "ifStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "type": "number",
+              "value": 32,
+            },
+            "type": "binaryExpression",
+          },
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "type": "number",
+                  "value": 0,
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "type": "forStatement",
+        },
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "flagCounter",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "left": Object {
+                  "name": "flag",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "left": Object {
+                    "name": "flags",
+                    "type": "idenitfier",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "left": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "operator": "<<",
+                    "right": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "statements": Array [
+                  Object {
+                    "body": Object {
+                      "statements": Array [
+                        Object {
+                          "left": Object {
+                            "name": "value",
+                            "type": "idenitfier",
+                          },
+                          "operator": "+=",
+                          "right": Object {
+                            "string": "DDS_RESOURCE_MISC_TEXTURECUBE",
+                            "type": "string",
+                          },
+                          "type": "binaryExpression",
+                        },
+                        Object {
+                          "type": "breakStatement",
+                        },
+                      ],
+                      "type": "statementList",
+                    },
+                    "labels": Array [
+                      4,
+                    ],
+                  },
+                  Object {
+                    "body": Object {
+                      "statements": Array [],
+                      "type": "statementList",
+                    },
+                    "labels": Array [],
+                  },
+                ],
+                "type": "switchStatement",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "name": "flag",
+                    "type": "idenitfier",
+                  },
+                  "operator": "!=",
+                  "right": Object {
+                    "type": "number",
+                    "value": 0,
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "statements": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "flagCounter",
+                        "type": "idenitfier",
+                      },
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
+                    Object {
+                      "condition": Object {
+                        "left": Object {
+                          "name": "flagCounter",
+                          "type": "idenitfier",
+                        },
+                        "operator": "<",
+                        "right": Object {
+                          "name": "flagsFound",
+                          "type": "idenitfier",
+                        },
+                        "type": "binaryExpression",
+                      },
+                      "trueStatement": Object {
+                        "statements": Array [
+                          Object {
+                            "left": Object {
+                              "name": "value",
+                              "type": "idenitfier",
+                            },
+                            "operator": "+=",
+                            "right": Object {
+                              "string": " | ",
+                              "type": "string",
+                            },
+                            "type": "binaryExpression",
+                          },
+                        ],
+                        "type": "statementList",
+                      },
+                      "type": "ifStatement",
+                    },
+                  ],
+                  "type": "statementList",
+                },
+                "type": "ifStatement",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "type": "number",
+              "value": 32,
+            },
+            "type": "binaryExpression",
+          },
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "type": "number",
+                  "value": 0,
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "type": "forStatement",
+        },
+        Object {
+          "assignmentExpression": Object {
+            "name": "value",
+            "type": "idenitfier",
+          },
+          "type": "returnStatement",
+        },
+      ],
+      "type": "statementList",
+    },
+    "forwardDeclaration": false,
+    "name": "ReadHeader10MiscFlag",
+    "parameters": Array [
+      Object {
+        "name": "flags",
+        "reference": false,
+        "type": Object {
+          "array": false,
+          "name": "uint",
+        },
+      },
+    ],
+    "returnType": Object {
+      "array": false,
+      "name": "string",
+    },
+    "type": "functionDeclaration",
+  },
+  Object {
+    "content": Object {
+      "statements": Array [
+        Object {
+          "statements": Array [
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DDS_ALPHA_MODE_UNKNOWN",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                0,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DDS_ALPHA_MODE_STRAIGHT",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                1,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DDS_ALPHA_MODE_PREMULTIPLIED",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                2,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DDS_ALPHA_MODE_OPAQUE",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                3,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [
+                  Object {
+                    "assignmentExpression": Object {
+                      "string": "DDS_ALPHA_MODE_CUSTOM",
+                      "type": "string",
+                    },
+                    "type": "returnStatement",
+                  },
+                ],
+                "type": "statementList",
+              },
+              "labels": Array [
+                4,
+              ],
+            },
+            Object {
+              "body": Object {
+                "statements": Array [],
+                "type": "statementList",
+              },
+              "labels": Array [],
+            },
+          ],
+          "type": "switchStatement",
+        },
+        Object {
+          "assignmentExpression": Object {
+            "string": "",
+            "type": "string",
+          },
+          "type": "returnStatement",
+        },
+      ],
+      "type": "statementList",
+    },
+    "forwardDeclaration": false,
+    "name": "ReadHeader10MiscFlags2",
+    "parameters": Array [
+      Object {
+        "name": "flags",
+        "reference": false,
+        "type": Object {
+          "array": false,
+          "name": "uint",
+        },
+      },
+    ],
+    "returnType": Object {
+      "array": false,
+      "name": "string",
+    },
+    "type": "functionDeclaration",
+  },
+]
+`;
+
 exports[`Sweetscape Importer creates DEX definition 1`] = `
 Array [
   Object {
@@ -27,7 +5512,16 @@ Array [
   },
   Object {
     "alias": "SHA1",
-    "annotations": Array [],
+    "annotations": Array [
+      Object {
+        "key": "read",
+        "value": "SHA1Read",
+      },
+      Object {
+        "key": "format",
+        "value": "hex",
+      },
+    ],
     "name": Object {
       "array": false,
       "name": "ubyte",

@@ -38,6 +38,9 @@ describe("Sweetscape Importer", () => {
     );
   }, 45000);
 
+  /**
+   * This test exists because the EXE.bt contains many different elements.
+   */
   test("creates EXE definition", done => {
     iterateStructures(
       (name, input) => {
@@ -54,6 +57,9 @@ describe("Sweetscape Importer", () => {
     );
   });
 
+  /**
+   * This test exists because the DEX.bt contains many different elements.
+   */
   test("creates DEX definition", done => {
     iterateStructures(
       (name, input) => {
@@ -67,6 +73,25 @@ describe("Sweetscape Importer", () => {
       },
       done,
       name => name === "DEX.bt"
+    );
+  });
+
+  /**
+   * This test exists for completeness (annotations on typedef statement)
+   */
+  test("creates DDS definition", done => {
+    iterateStructures(
+      (name, input) => {
+        const definition = importer.readInput(input);
+        expect(definition).toBeDefined();
+        expect(definition.type).toEqual("definition");
+        const { content } = definition;
+
+        expect(content).toHaveLength(14);
+        expect(content).toMatchSnapshot();
+      },
+      done,
+      name => name === "DDS.bt"
     );
   });
 });
