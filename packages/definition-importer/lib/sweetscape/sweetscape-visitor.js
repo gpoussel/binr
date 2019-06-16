@@ -133,11 +133,15 @@ function getVisitor(parser) {
       if (_.has(ctx, "BracketOpen")) {
         type.array = true;
       }
-      return {
+      const result = {
         type,
         reference: _.has(ctx, "BinaryAnd"),
         name: getIdentifier(ctx.Identifier),
       };
+      _.each(ctx.variableModifier, modifier => {
+        _.assign(result, this.visit(modifier));
+      });
+      return result;
     }
 
     block(ctx) {
@@ -246,9 +250,6 @@ function getVisitor(parser) {
       if (_.has(ctx, "bitfieldRest")) {
         result.bits = this.visit(ctx.bitfieldRest);
       }
-      if (_.has(ctx, "variableModifiers")) {
-        result.modifiers = _.map(ctx.variableModifier, this.visit.bind(this));
-      }
       if (_.has(ctx, "variableDeclarators")) {
         result.declarations = this.visit(ctx.variableDeclarators);
       }
@@ -269,6 +270,7 @@ function getVisitor(parser) {
       if (_.has(ctx, "Const")) {
         return { const: true };
       }
+      throw new Error();
     }
 
     typedefStatement(ctx) {
@@ -351,9 +353,7 @@ function getVisitor(parser) {
         name: getIdentifier(ctx.Identifier),
         annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
-      if (_.has(ctx, "variableDeclaratorRest")) {
-        _.assign(result, this.visit(ctx.variableDeclaratorRest));
-      }
+      _.assign(result, this.visit(ctx.variableDeclaratorRest));
       if (_.has(ctx, "bitfieldRest")) {
         result.bits = this.visit(ctx.bitfieldRest);
       }
@@ -482,6 +482,7 @@ function getVisitor(parser) {
       if (_.has(ctx, "prefixExpression")) {
         return this.visit(ctx.prefixExpression);
       }
+      throw new Error();
     }
 
     castOperation(ctx) {
@@ -673,10 +674,7 @@ function getVisitor(parser) {
       if (_.has(ctx, "typeNameWithoutVoid")) {
         return this.visit(ctx.typeNameWithoutVoid);
       }
-    }
-
-    identifierSuffix(ctx) {
-      return this.visit(ctx.arguments);
+      throw new Error();
     }
 
     arguments(ctx) {
@@ -769,6 +767,7 @@ function getVisitor(parser) {
       if (_.has(ctx, "arrayInitializer")) {
         return this.visit(ctx.arrayInitializer);
       }
+      throw new Error();
     }
   }
 

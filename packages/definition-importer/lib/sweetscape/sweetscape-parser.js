@@ -736,8 +736,7 @@ class SweetscapeParser extends Parser {
      * Single function parameter declaration
      */
     $.RULE("functionParameterDeclaration", () => {
-      $.OPTION3(() => $.CONSUME(tokens.Local));
-      $.OPTION7(() => $.CONSUME(tokens.Const));
+      $.MANY(() => $.SUBRULE($.variableModifier));
       $.SUBRULE($.typeNameWithoutVoid); // Parameter type
       $.OPTION(() => $.CONSUME(tokens.BinaryAnd));
       $.CONSUME1(tokens.Identifier); // Parameter name

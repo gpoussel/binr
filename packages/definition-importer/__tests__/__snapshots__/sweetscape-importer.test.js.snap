@@ -1,5 +1,1330 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Sweetscape Importer creates 010 definition 1`] = `
+Array [
+  Object {
+    "arguments": Array [
+      Object {
+        "type": "number",
+        "value": 9,
+      },
+    ],
+    "name": Object {
+      "name": "RequiresVersion",
+      "type": "idenitfier",
+    },
+    "type": "functionCallExpression",
+  },
+  Object {
+    "arguments": Array [
+      Object {
+        "name": "true",
+        "type": "idenitfier",
+      },
+    ],
+    "name": Object {
+      "name": "HighlightAllowInstanceSharing",
+      "type": "idenitfier",
+    },
+    "type": "functionCallExpression",
+  },
+  Object {
+    "annotations": Array [],
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "initializer": Object {
+          "arguments": Array [
+            Object {
+              "string": "code-comment",
+              "type": "string",
+            },
+          ],
+          "name": Object {
+            "name": "HighlightFindStyle",
+            "type": "idenitfier",
+          },
+          "type": "functionCallExpression",
+        },
+        "name": "commentStyle",
+      },
+    ],
+    "local": true,
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "int",
+    },
+  },
+  Object {
+    "annotations": Array [],
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "initializer": Object {
+          "arguments": Array [
+            Object {
+              "string": "code-keyword",
+              "type": "string",
+            },
+          ],
+          "name": Object {
+            "name": "HighlightFindStyle",
+            "type": "idenitfier",
+          },
+          "type": "functionCallExpression",
+        },
+        "name": "keywordStyle",
+      },
+    ],
+    "local": true,
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "int",
+    },
+  },
+  Object {
+    "annotations": Array [],
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "initializer": Object {
+          "arguments": Array [
+            Object {
+              "string": "code-data-type",
+              "type": "string",
+            },
+          ],
+          "name": Object {
+            "name": "HighlightFindStyle",
+            "type": "idenitfier",
+          },
+          "type": "functionCallExpression",
+        },
+        "name": "dataTypeStyle",
+      },
+    ],
+    "local": true,
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "int",
+    },
+  },
+  Object {
+    "annotations": Array [],
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "initializer": Object {
+          "arguments": Array [
+            Object {
+              "string": "code-string",
+              "type": "string",
+            },
+          ],
+          "name": Object {
+            "name": "HighlightFindStyle",
+            "type": "idenitfier",
+          },
+          "type": "functionCallExpression",
+        },
+        "name": "stringStyle",
+      },
+    ],
+    "local": true,
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "int",
+    },
+  },
+  Object {
+    "annotations": Array [],
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "initializer": Object {
+          "arguments": Array [
+            Object {
+              "string": "calculator-result",
+              "type": "string",
+            },
+          ],
+          "name": Object {
+            "name": "HighlightFindStyle",
+            "type": "idenitfier",
+          },
+          "type": "functionCallExpression",
+        },
+        "name": "calculatorStyle",
+      },
+    ],
+    "local": true,
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "int",
+    },
+  },
+  Object {
+    "annotations": Array [],
+    "const": true,
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "initializer": Object {
+          "type": "number",
+          "value": 0,
+        },
+        "name": "RULE_NONE",
+      },
+    ],
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "int",
+    },
+  },
+  Object {
+    "annotations": Array [],
+    "const": true,
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "initializer": Object {
+          "type": "number",
+          "value": 1,
+        },
+        "name": "RULE_MULTILINE_COMMENT",
+      },
+    ],
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "int",
+    },
+  },
+  Object {
+    "annotations": Array [],
+    "const": true,
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "initializer": Object {
+          "type": "number",
+          "value": 2,
+        },
+        "name": "RULE_STRING",
+      },
+    ],
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "int",
+    },
+  },
+  Object {
+    "annotations": Array [],
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "initializer": Object {
+          "arguments": Array [
+            Object {
+              "name": "HIGHLIGHT_WHOLEWORD",
+              "type": "idenitfier",
+            },
+            Object {
+              "string": "#define",
+              "type": "string",
+            },
+            Object {
+              "string": "#else",
+              "type": "string",
+            },
+            Object {
+              "string": "#endif",
+              "type": "string",
+            },
+            Object {
+              "string": "#error",
+              "type": "string",
+            },
+            Object {
+              "string": "#ifdef",
+              "type": "string",
+            },
+            Object {
+              "string": "#ifndef",
+              "type": "string",
+            },
+            Object {
+              "string": "#include",
+              "type": "string",
+            },
+            Object {
+              "string": "#undef",
+              "type": "string",
+            },
+            Object {
+              "string": "#warning",
+              "type": "string",
+            },
+            Object {
+              "string": "FALSE",
+              "type": "string",
+            },
+            Object {
+              "string": "TRUE",
+              "type": "string",
+            },
+            Object {
+              "string": "break",
+              "type": "string",
+            },
+            Object {
+              "string": "case",
+              "type": "string",
+            },
+            Object {
+              "string": "continue",
+              "type": "string",
+            },
+            Object {
+              "string": "default",
+              "type": "string",
+            },
+            Object {
+              "string": "do",
+              "type": "string",
+            },
+            Object {
+              "string": "else",
+              "type": "string",
+            },
+            Object {
+              "string": "exists",
+              "type": "string",
+            },
+            Object {
+              "string": "false",
+              "type": "string",
+            },
+            Object {
+              "string": "for",
+              "type": "string",
+            },
+            Object {
+              "string": "function_exists",
+              "type": "string",
+            },
+            Object {
+              "string": "if",
+              "type": "string",
+            },
+            Object {
+              "string": "parentof",
+              "type": "string",
+            },
+            Object {
+              "string": "return",
+              "type": "string",
+            },
+            Object {
+              "string": "sizeof",
+              "type": "string",
+            },
+            Object {
+              "string": "startof",
+              "type": "string",
+            },
+            Object {
+              "string": "switch",
+              "type": "string",
+            },
+            Object {
+              "string": "this",
+              "type": "string",
+            },
+            Object {
+              "string": "true",
+              "type": "string",
+            },
+            Object {
+              "string": "typedef",
+              "type": "string",
+            },
+            Object {
+              "string": "while",
+              "type": "string",
+            },
+            Object {
+              "string": "#link",
+              "type": "string",
+            },
+            Object {
+              "string": "#endlink",
+              "type": "string",
+            },
+          ],
+          "name": Object {
+            "name": "HighlightBuildKeywordList",
+            "type": "idenitfier",
+          },
+          "type": "functionCallExpression",
+        },
+        "name": "keywordList",
+      },
+    ],
+    "local": true,
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "TKeywordList",
+    },
+  },
+  Object {
+    "annotations": Array [],
+    "declarations": Array [
+      Object {
+        "annotations": Array [],
+        "initializer": Object {
+          "arguments": Array [
+            Object {
+              "name": "HIGHLIGHT_WHOLEWORD",
+              "type": "idenitfier",
+            },
+            Object {
+              "string": "BYTE",
+              "type": "string",
+            },
+            Object {
+              "string": "CHAR",
+              "type": "string",
+            },
+            Object {
+              "string": "DOSDATE",
+              "type": "string",
+            },
+            Object {
+              "string": "DOSTIME",
+              "type": "string",
+            },
+            Object {
+              "string": "DOUBLE",
+              "type": "string",
+            },
+            Object {
+              "string": "DWORD",
+              "type": "string",
+            },
+            Object {
+              "string": "FILETIME",
+              "type": "string",
+            },
+            Object {
+              "string": "FLOAT",
+              "type": "string",
+            },
+            Object {
+              "string": "HFLOAT",
+              "type": "string",
+            },
+            Object {
+              "string": "INT",
+              "type": "string",
+            },
+            Object {
+              "string": "INT16",
+              "type": "string",
+            },
+            Object {
+              "string": "INT32",
+              "type": "string",
+            },
+            Object {
+              "string": "INT64",
+              "type": "string",
+            },
+            Object {
+              "string": "LONG",
+              "type": "string",
+            },
+            Object {
+              "string": "OLETIME",
+              "type": "string",
+            },
+            Object {
+              "string": "QUAD",
+              "type": "string",
+            },
+            Object {
+              "string": "QWORD",
+              "type": "string",
+            },
+            Object {
+              "string": "SHORT",
+              "type": "string",
+            },
+            Object {
+              "string": "UBYTE",
+              "type": "string",
+            },
+            Object {
+              "string": "UCHAR",
+              "type": "string",
+            },
+            Object {
+              "string": "UINT",
+              "type": "string",
+            },
+            Object {
+              "string": "UINT16",
+              "type": "string",
+            },
+            Object {
+              "string": "UINT32",
+              "type": "string",
+            },
+            Object {
+              "string": "UINT64",
+              "type": "string",
+            },
+            Object {
+              "string": "ULONG",
+              "type": "string",
+            },
+            Object {
+              "string": "UQUAD",
+              "type": "string",
+            },
+            Object {
+              "string": "USHORT",
+              "type": "string",
+            },
+            Object {
+              "string": "WORD",
+              "type": "string",
+            },
+            Object {
+              "string": "__int64",
+              "type": "string",
+            },
+            Object {
+              "string": "__uint64",
+              "type": "string",
+            },
+            Object {
+              "string": "byte",
+              "type": "string",
+            },
+            Object {
+              "string": "char",
+              "type": "string",
+            },
+            Object {
+              "string": "const",
+              "type": "string",
+            },
+            Object {
+              "string": "double",
+              "type": "string",
+            },
+            Object {
+              "string": "enum",
+              "type": "string",
+            },
+            Object {
+              "string": "float",
+              "type": "string",
+            },
+            Object {
+              "string": "hfloat",
+              "type": "string",
+            },
+            Object {
+              "string": "int",
+              "type": "string",
+            },
+            Object {
+              "string": "int16",
+              "type": "string",
+            },
+            Object {
+              "string": "int32",
+              "type": "string",
+            },
+            Object {
+              "string": "int64",
+              "type": "string",
+            },
+            Object {
+              "string": "local",
+              "type": "string",
+            },
+            Object {
+              "string": "long",
+              "type": "string",
+            },
+            Object {
+              "string": "quad",
+              "type": "string",
+            },
+            Object {
+              "string": "short",
+              "type": "string",
+            },
+            Object {
+              "string": "signed",
+              "type": "string",
+            },
+            Object {
+              "string": "string",
+              "type": "string",
+            },
+            Object {
+              "string": "struct",
+              "type": "string",
+            },
+            Object {
+              "string": "time64_t",
+              "type": "string",
+            },
+            Object {
+              "string": "time_t",
+              "type": "string",
+            },
+            Object {
+              "string": "ubyte",
+              "type": "string",
+            },
+            Object {
+              "string": "uchar",
+              "type": "string",
+            },
+            Object {
+              "string": "uint",
+              "type": "string",
+            },
+            Object {
+              "string": "uint16",
+              "type": "string",
+            },
+            Object {
+              "string": "uint32",
+              "type": "string",
+            },
+            Object {
+              "string": "uint64",
+              "type": "string",
+            },
+            Object {
+              "string": "ulong",
+              "type": "string",
+            },
+            Object {
+              "string": "union",
+              "type": "string",
+            },
+            Object {
+              "string": "unsigned",
+              "type": "string",
+            },
+            Object {
+              "string": "uquad",
+              "type": "string",
+            },
+            Object {
+              "string": "ushort",
+              "type": "string",
+            },
+            Object {
+              "string": "void",
+              "type": "string",
+            },
+            Object {
+              "string": "wchar_t",
+              "type": "string",
+            },
+            Object {
+              "string": "wstring",
+              "type": "string",
+            },
+          ],
+          "name": Object {
+            "name": "HighlightBuildKeywordList",
+            "type": "idenitfier",
+          },
+          "type": "functionCallExpression",
+        },
+        "name": "dataTypeList",
+      },
+    ],
+    "local": true,
+    "type": "variableDeclaration",
+    "variableType": Object {
+      "array": false,
+      "name": "TKeywordList",
+    },
+  },
+  Object {
+    "content": Object {
+      "statements": Array [
+        Object {
+          "annotations": Array [],
+          "declarations": Array [
+            Object {
+              "annotations": Array [],
+              "name": "i",
+            },
+            Object {
+              "annotations": Array [],
+              "name": "len",
+            },
+            Object {
+              "annotations": Array [],
+              "name": "pos",
+            },
+            Object {
+              "annotations": Array [],
+              "initializer": Object {
+                "name": "flags",
+                "type": "idenitfier",
+              },
+              "name": "rule",
+            },
+          ],
+          "type": "variableDeclaration",
+          "variableType": Object {
+            "array": false,
+            "name": "int",
+          },
+        },
+        Object {
+          "body": Object {
+            "statements": Array [
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "left": Object {
+                      "left": Object {
+                        "expression": Object {
+                          "name": "text",
+                          "type": "idenitfier",
+                        },
+                        "index": Object {
+                          "name": "i",
+                          "type": "idenitfier",
+                        },
+                        "type": "arrayIndexExpression",
+                      },
+                      "operator": "==",
+                      "right": Object {
+                        "string": "/",
+                        "type": "string",
+                      },
+                      "type": "binaryExpression",
+                    },
+                    "operator": "||",
+                    "right": Object {
+                      "left": Object {
+                        "name": "rule",
+                        "type": "idenitfier",
+                      },
+                      "operator": "==",
+                      "right": Object {
+                        "name": "RULE_MULTILINE_COMMENT",
+                        "type": "idenitfier",
+                      },
+                      "type": "binaryExpression",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "operator": "&&",
+                  "right": Object {
+                    "arguments": Array [
+                      Object {
+                        "name": "text",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "count",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "string": "/*",
+                        "type": "string",
+                      },
+                      Object {
+                        "string": "*/",
+                        "type": "string",
+                      },
+                      Object {
+                        "name": "i",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "rule",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "RULE_NONE",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "RULE_MULTILINE_COMMENT",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "foreColors",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "backColors",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "commentStyle",
+                        "type": "idenitfier",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "HighlightCheckMultiLineRule",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "name": "continue",
+                  "type": "idenitfier",
+                },
+                "type": "ifStatement",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "left": Object {
+                      "left": Object {
+                        "expression": Object {
+                          "name": "text",
+                          "type": "idenitfier",
+                        },
+                        "index": Object {
+                          "name": "i",
+                          "type": "idenitfier",
+                        },
+                        "type": "arrayIndexExpression",
+                      },
+                      "operator": "==",
+                      "right": Object {
+                        "string": "\\\\\\"",
+                        "type": "string",
+                      },
+                      "type": "binaryExpression",
+                    },
+                    "operator": "||",
+                    "right": Object {
+                      "left": Object {
+                        "name": "rule",
+                        "type": "idenitfier",
+                      },
+                      "operator": "==",
+                      "right": Object {
+                        "name": "RULE_STRING",
+                        "type": "idenitfier",
+                      },
+                      "type": "binaryExpression",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "operator": "&&",
+                  "right": Object {
+                    "arguments": Array [
+                      Object {
+                        "name": "text",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "count",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "string": "\\\\\\"",
+                        "type": "string",
+                      },
+                      Object {
+                        "string": "\\\\\\"",
+                        "type": "string",
+                      },
+                      Object {
+                        "name": "i",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "rule",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "RULE_NONE",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "RULE_STRING",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "foreColors",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "backColors",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "stringStyle",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "HIGHLIGHT_CSTRING",
+                        "type": "idenitfier",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "HighlightCheckMultiLineRule",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "name": "continue",
+                  "type": "idenitfier",
+                },
+                "type": "ifStatement",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "left": Object {
+                      "expression": Object {
+                        "name": "text",
+                        "type": "idenitfier",
+                      },
+                      "index": Object {
+                        "name": "i",
+                        "type": "idenitfier",
+                      },
+                      "type": "arrayIndexExpression",
+                    },
+                    "operator": "==",
+                    "right": Object {
+                      "string": "/",
+                      "type": "string",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "operator": "&&",
+                  "right": Object {
+                    "arguments": Array [
+                      Object {
+                        "name": "text",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "count",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "string": "//",
+                        "type": "string",
+                      },
+                      Object {
+                        "name": "i",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "foreColors",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "backColors",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "commentStyle",
+                        "type": "idenitfier",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "HighlightCheckCommentRule",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "name": "continue",
+                  "type": "idenitfier",
+                },
+                "type": "ifStatement",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "left": Object {
+                      "expression": Object {
+                        "name": "text",
+                        "type": "idenitfier",
+                      },
+                      "index": Object {
+                        "name": "i",
+                        "type": "idenitfier",
+                      },
+                      "type": "arrayIndexExpression",
+                    },
+                    "operator": "==",
+                    "right": Object {
+                      "string": "<",
+                      "type": "string",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "operator": "&&",
+                  "right": Object {
+                    "arguments": Array [
+                      Object {
+                        "name": "text",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "count",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "string": "<<<",
+                        "type": "string",
+                      },
+                      Object {
+                        "name": "i",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "foreColors",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "backColors",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "calculatorStyle",
+                        "type": "idenitfier",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "HighlightCheckCommentRule",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "name": "continue",
+                  "type": "idenitfier",
+                },
+                "type": "ifStatement",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "left": Object {
+                      "expression": Object {
+                        "name": "text",
+                        "type": "idenitfier",
+                      },
+                      "index": Object {
+                        "name": "i",
+                        "type": "idenitfier",
+                      },
+                      "type": "arrayIndexExpression",
+                    },
+                    "operator": "==",
+                    "right": Object {
+                      "string": "'",
+                      "type": "string",
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "operator": "&&",
+                  "right": Object {
+                    "arguments": Array [
+                      Object {
+                        "name": "text",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "count",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "string": "\\\\'",
+                        "type": "string",
+                      },
+                      Object {
+                        "string": "\\\\'",
+                        "type": "string",
+                      },
+                      Object {
+                        "name": "i",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "foreColors",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "backColors",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "stringStyle",
+                        "type": "idenitfier",
+                      },
+                      Object {
+                        "name": "HIGHLIGHT_CSTRING",
+                        "type": "idenitfier",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "HighlightCheckSingleLineRule",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                "trueStatement": Object {
+                  "name": "continue",
+                  "type": "idenitfier",
+                },
+                "type": "ifStatement",
+              },
+              Object {
+                "condition": Object {
+                  "arguments": Array [
+                    Object {
+                      "name": "text",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "count",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "keywordList",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "foreColors",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "backColors",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "keywordStyle",
+                      "type": "idenitfier",
+                    },
+                  ],
+                  "name": Object {
+                    "name": "HighlightCheckKeywordRule",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
+                "trueStatement": Object {
+                  "name": "continue",
+                  "type": "idenitfier",
+                },
+                "type": "ifStatement",
+              },
+              Object {
+                "condition": Object {
+                  "arguments": Array [
+                    Object {
+                      "name": "text",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "count",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "dataTypeList",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "foreColors",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "backColors",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "dataTypeStyle",
+                      "type": "idenitfier",
+                    },
+                  ],
+                  "name": Object {
+                    "name": "HighlightCheckKeywordRule",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
+                "trueStatement": Object {
+                  "name": "continue",
+                  "type": "idenitfier",
+                },
+                "type": "ifStatement",
+              },
+              Object {
+                "left": Object {
+                  "name": "i",
+                  "type": "idenitfier",
+                },
+                "operator": "=",
+                "right": Object {
+                  "arguments": Array [
+                    Object {
+                      "name": "text",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "count",
+                      "type": "idenitfier",
+                    },
+                    Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                  ],
+                  "name": Object {
+                    "name": "HighlightGetNextToken",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "statementList",
+          },
+          "condition": Object {
+            "left": Object {
+              "name": "i",
+              "type": "idenitfier",
+            },
+            "operator": "<",
+            "right": Object {
+              "name": "count",
+              "type": "idenitfier",
+            },
+            "type": "binaryExpression",
+          },
+          "type": "whileStatement",
+        },
+        Object {
+          "left": Object {
+            "name": "flags",
+            "type": "idenitfier",
+          },
+          "operator": "=",
+          "right": Object {
+            "name": "rule",
+            "type": "idenitfier",
+          },
+          "type": "binaryExpression",
+        },
+      ],
+      "type": "statementList",
+    },
+    "forwardDeclaration": false,
+    "name": "HighlightLineRealtime",
+    "parameters": Array [
+      Object {
+        "name": "line",
+        "reference": false,
+        "type": Object {
+          "array": false,
+          "name": "int64",
+        },
+      },
+      Object {
+        "name": "text",
+        "reference": false,
+        "type": Object {
+          "array": true,
+          "name": "wchar_t",
+        },
+      },
+      Object {
+        "name": "foreColors",
+        "reference": false,
+        "type": Object {
+          "array": true,
+          "name": "int",
+        },
+      },
+      Object {
+        "name": "backColors",
+        "reference": false,
+        "type": Object {
+          "array": true,
+          "name": "int",
+        },
+      },
+      Object {
+        "name": "count",
+        "reference": false,
+        "type": Object {
+          "array": false,
+          "name": "int",
+        },
+      },
+      Object {
+        "name": "flags",
+        "reference": true,
+        "type": Object {
+          "array": false,
+          "name": "ushort",
+        },
+      },
+    ],
+    "returnType": Object {
+      "name": "void",
+    },
+    "type": "functionDeclaration",
+  },
+]
+`;
+
 exports[`Sweetscape Importer creates CAP definition 1`] = `
 Array [
   Object {
