@@ -402,7 +402,7 @@ class SweetscapeParser extends Parser {
     $.RULE("equalityExpression", () => {
       $.SUBRULE($.relationalExpression);
       $.MANY(() => {
-        $.OR([{ ALT: () => $.CONSUME(tokens.DoubleEquals) }, { ALT: () => $.CONSUME(tokens.Different) }]);
+        $.SUBRULE($.equalityOperator);
         $.SUBRULE2($.relationalExpression);
       });
     });
@@ -413,12 +413,7 @@ class SweetscapeParser extends Parser {
     $.RULE("relationalExpression", () => {
       $.SUBRULE($.shiftExpression);
       $.OPTION(() => {
-        $.OR([
-          { ALT: () => $.CONSUME(tokens.Greater) },
-          { ALT: () => $.CONSUME(tokens.Less) },
-          { ALT: () => $.CONSUME(tokens.GreaterOrEqual) },
-          { ALT: () => $.CONSUME(tokens.LessOrEqual) },
-        ]);
+        $.SUBRULE($.relationalOperator);
         $.SUBRULE2($.shiftExpression);
       });
     });
@@ -429,11 +424,7 @@ class SweetscapeParser extends Parser {
     $.RULE("shiftExpression", () => {
       $.SUBRULE($.additiveExpression);
       $.MANY(() => {
-        $.OR([
-          { ALT: () => $.CONSUME(tokens.ShiftLeft) },
-          { ALT: () => $.CONSUME(tokens.ShiftRight) },
-          { ALT: () => $.CONSUME(tokens.UnsignedShiftRight) },
-        ]);
+        $.SUBRULE($.shiftOperator);
         $.SUBRULE2($.additiveExpression);
       });
     });
@@ -444,7 +435,7 @@ class SweetscapeParser extends Parser {
     $.RULE("additiveExpression", () => {
       $.SUBRULE($.multiplicativeExpression);
       $.MANY(() => {
-        $.OR([{ ALT: () => $.CONSUME(tokens.Plus) }, { ALT: () => $.CONSUME(tokens.Minus) }]);
+        $.SUBRULE($.additiveOperator);
         $.SUBRULE2($.multiplicativeExpression);
       });
     });
@@ -455,11 +446,7 @@ class SweetscapeParser extends Parser {
     $.RULE("multiplicativeExpression", () => {
       $.SUBRULE($.castExpression);
       $.MANY(() => {
-        $.OR([
-          { ALT: () => $.CONSUME(tokens.Multiplication) },
-          { ALT: () => $.CONSUME(tokens.Division) },
-          { ALT: () => $.CONSUME(tokens.Modulo) },
-        ]);
+        $.SUBRULE($.multiplicativeOperator);
         $.SUBRULE2($.castExpression);
       });
     });
@@ -682,6 +669,39 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.BinaryAndEquals) },
         { ALT: () => $.CONSUME(tokens.BinaryXorEquals) },
         { ALT: () => $.CONSUME(tokens.BinaryOrEquals) },
+      ]);
+    });
+
+    $.RULE("equalityOperator", () =>
+      $.OR([{ ALT: () => $.CONSUME(tokens.DoubleEquals) }, { ALT: () => $.CONSUME(tokens.Different) }])
+    );
+
+    $.RULE("relationalOperator", () => {
+      $.OR([
+        { ALT: () => $.CONSUME(tokens.Greater) },
+        { ALT: () => $.CONSUME(tokens.Less) },
+        { ALT: () => $.CONSUME(tokens.GreaterOrEqual) },
+        { ALT: () => $.CONSUME(tokens.LessOrEqual) },
+      ]);
+    });
+
+    $.RULE("shiftOperator", () => {
+      $.OR([
+        { ALT: () => $.CONSUME(tokens.ShiftLeft) },
+        { ALT: () => $.CONSUME(tokens.ShiftRight) },
+        { ALT: () => $.CONSUME(tokens.UnsignedShiftRight) },
+      ]);
+    });
+
+    $.RULE("additiveOperator", () =>
+      $.OR([{ ALT: () => $.CONSUME(tokens.Plus) }, { ALT: () => $.CONSUME(tokens.Minus) }])
+    );
+
+    $.RULE("multiplicativeOperator", () => {
+      $.OR([
+        { ALT: () => $.CONSUME(tokens.Multiplication) },
+        { ALT: () => $.CONSUME(tokens.Division) },
+        { ALT: () => $.CONSUME(tokens.Modulo) },
       ]);
     });
 

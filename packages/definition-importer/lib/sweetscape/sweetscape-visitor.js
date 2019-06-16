@@ -419,72 +419,63 @@ function getVisitor(parser) {
     }
 
     booleanOrExpression(ctx) {
-      const operators = ctx.BooleanOr;
+      const operators = _.map(ctx.BooleanOr, token => token.image);
       const expressions = _.map(ctx.booleanAndExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     booleanAndExpression(ctx) {
-      if (_.size(ctx.binaryOrExpression) > 1) {
-        // TODO booleanAndExpression
-      }
-      return this.visit(_.first(ctx.binaryOrExpression));
+      const operators = _.map(ctx.BooleanAnd, token => token.image);
+      const expressions = _.map(ctx.binaryOrExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     binaryOrExpression(ctx) {
-      if (_.size(ctx.binaryXorExpression) > 1) {
-        // TODO binaryOrExpression
-      }
-      return this.visit(_.first(ctx.binaryXorExpression));
+      const operators = _.map(ctx.BinaryOr, token => token.image);
+      const expressions = _.map(ctx.binaryXorExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     binaryXorExpression(ctx) {
-      if (_.size(ctx.binaryAndExpression) > 1) {
-        // TODO binaryXorExpression
-      }
-      return this.visit(_.first(ctx.binaryAndExpression));
+      const operators = _.map(ctx.BinaryXor, token => token.image);
+      const expressions = _.map(ctx.binaryAndExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     binaryAndExpression(ctx) {
-      if (_.size(ctx.equalityExpression) > 1) {
-        // TODO binaryAndExpression
-      }
-      return this.visit(_.first(ctx.equalityExpression));
+      const operators = _.map(ctx.BinaryAnd, token => token.image);
+      const expressions = _.map(ctx.equalityExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     equalityExpression(ctx) {
-      if (_.size(ctx.relationalExpression) > 1) {
-        // TODO equalityExpression
-      }
-      return this.visit(_.first(ctx.relationalExpression));
+      const operators = _.map(ctx.equalityOperator, this.visit.bind(this));
+      const expressions = _.map(ctx.relationalExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     relationalExpression(ctx) {
-      if (_.size(ctx.shiftExpression) > 1) {
-        // TODO relationalExpression
-      }
-      return this.visit(_.first(ctx.shiftExpression));
+      const operators = _.map(ctx.relationalOperator, this.visit.bind(this));
+      const expressions = _.map(ctx.shiftExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     shiftExpression(ctx) {
-      if (_.size(ctx.additiveExpression) > 1) {
-        // TODO shiftExpression
-      }
-      return this.visit(_.first(ctx.additiveExpression));
+      const operators = _.map(ctx.shiftOperator, this.visit.bind(this));
+      const expressions = _.map(ctx.additiveExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     additiveExpression(ctx) {
-      if (_.size(ctx.multiplicativeExpression) > 1) {
-        // TODO additiveExpression
-      }
-      return this.visit(_.first(ctx.multiplicativeExpression));
+      const operators = _.map(ctx.additiveOperator, this.visit.bind(this));
+      const expressions = _.map(ctx.multiplicativeExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     multiplicativeExpression(ctx) {
-      if (_.size(ctx.castExpression) > 1) {
-        // TODO multiplicativeExpression
-      }
-      return this.visit(_.first(ctx.castExpression));
+      const operators = _.map(ctx.multiplicativeOperator, this.visit.bind(this));
+      const expressions = _.map(ctx.castExpression, this.visit.bind(this));
+      return createBinaryExpressions(expressions, operators);
     }
 
     castExpression(ctx) {
@@ -535,6 +526,22 @@ function getVisitor(parser) {
     }
 
     assignmentOperator(ctx) {
+      return getFirstTokenImage(ctx);
+    }
+
+    equalityOperator(ctx) {
+      return getFirstTokenImage(ctx);
+    }
+
+    relationalOperator(ctx) {
+      return getFirstTokenImage(ctx);
+    }
+
+    shiftOperator(ctx) {
+      return getFirstTokenImage(ctx);
+    }
+
+    additiveOperator(ctx) {
       return getFirstTokenImage(ctx);
     }
 
