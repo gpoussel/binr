@@ -163,7 +163,7 @@ function getVisitor(parser) {
         ],
         statementType => _.has(ctx, statementType)
       );
-      if (_.isUndefined(matchingStatementType)) {
+      if (_.isEmpty(matchingStatementType)) {
         // Just a semi-colon
         return { type: "emptyStatement" };
       }

@@ -94,4 +94,23 @@ describe("Sweetscape Importer", () => {
       name => name === "DDS.bt"
     );
   });
+
+  /**
+   * This test exists for completeness (empty statement, with a single semi-colon)
+   */
+  test("creates CAP definition", done => {
+    iterateStructures(
+      (name, input) => {
+        const definition = importer.readInput(input);
+        expect(definition).toBeDefined();
+        expect(definition.type).toEqual("definition");
+        const { content } = definition;
+
+        expect(content).toHaveLength(81);
+        expect(content).toMatchSnapshot();
+      },
+      done,
+      name => name === "CAP.bt"
+    );
+  });
 });
