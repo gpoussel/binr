@@ -508,45 +508,49 @@ class SweetscapeParser extends Parser {
      */
     $.RULE("callExpression", () => {
       $.SUBRULE($.memberExpression);
-      $.MANY(() => {
-        $.OR([
-          { ALT: () => $.SUBRULE($.arguments) },
-          {
-            ALT: () => {
-              $.CONSUME(tokens.BracketOpen);
-              $.SUBRULE($.assignmentExpression);
-              $.CONSUME(tokens.BracketClose);
-            },
+      $.MANY(() => $.SUBRULE($.callExpressionRest));
+    });
+
+    $.RULE("callExpressionRest", () => {
+      $.OR([
+        { ALT: () => $.SUBRULE($.arguments) },
+        {
+          ALT: () => {
+            $.CONSUME(tokens.BracketOpen);
+            $.SUBRULE($.assignmentExpression);
+            $.CONSUME(tokens.BracketClose);
           },
-          {
-            ALT: () => {
-              $.CONSUME(tokens.Period);
-              $.CONSUME(tokens.Identifier);
-            },
+        },
+        {
+          ALT: () => {
+            $.CONSUME(tokens.Period);
+            $.CONSUME(tokens.Identifier);
           },
-        ]);
-      });
+        },
+      ]);
     });
 
     $.RULE("memberExpression", () => {
       $.SUBRULE($.primaryExpression);
-      $.MANY(() => {
-        $.OR([
-          {
-            ALT: () => {
-              $.CONSUME(tokens.BracketOpen);
-              $.SUBRULE($.assignmentExpression);
-              $.CONSUME(tokens.BracketClose);
-            },
+      $.MANY(() => $.SUBRULE($.memberExpressionRest));
+    });
+
+    $.RULE("memberExpressionRest", () => {
+      $.OR([
+        {
+          ALT: () => {
+            $.CONSUME(tokens.BracketOpen);
+            $.SUBRULE($.assignmentExpression);
+            $.CONSUME(tokens.BracketClose);
           },
-          {
-            ALT: () => {
-              $.CONSUME(tokens.Period);
-              $.CONSUME(tokens.Identifier);
-            },
+        },
+        {
+          ALT: () => {
+            $.CONSUME(tokens.Period);
+            $.CONSUME(tokens.Identifier);
           },
-        ]);
-      });
+        },
+      ]);
     });
 
     $.RULE("primaryExpression", () => {

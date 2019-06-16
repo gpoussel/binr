@@ -488,7 +488,11 @@ function getVisitor(parser) {
     }
 
     castOperation(ctx) {
-      // TODO castOperation
+      return {
+        type: "castExpression",
+        typeName: this.visit(ctx.typeNameWithoutVoid),
+        expression: this.visit(ctx.prefixExpression),
+      };
     }
 
     prefixExpression(ctx) {
@@ -530,25 +534,83 @@ function getVisitor(parser) {
     }
 
     callExpression(ctx) {
-      // TODO callExpression
-      return this.visit(ctx.memberExpression);
+      const memberResult = this.visit(ctx.memberExpression);
+      let currentExpression = memberResult;
+      _.each(ctx.callExpressionRest, expressionRest => {
+        if (_.has(expressionRest, "arguments")) {
+          // That's a function call
+          currentExpression = {
+            type: "functionCallExpression",
+            name: currentExpression,
+            arguments: this.visit(expressionRest.arguments),
+          };
+        } else if (_.has(expressionRest, "assignmentExpression")) {
+          // That's an array index
+          currentExpression = {
+            type: "arrayIndexExpression",
+            expression: currentExpression,
+            index: this.visit(expressionRest.assignmentExpression),
+          };
+        } else if (_.has(expressionRest, "Identifier")) {
+          currentExpression = {
+            type: "propertyAccessExpression",
+            expression: currentExpression,
+            name: getIdentifier(expressionRest.Identifier),
+          };
+        }
+      });
+      return currentExpression;
     }
 
     memberExpression(ctx) {
-      // TODO memberExpression
-      return this.visit(ctx.primaryExpression);
+      const primaryResult = this.visit(ctx.primaryExpression);
+      let currentExpression = primaryResult;
+      _.each(ctx.memberExpressionRest, expressionRest => {
+        if (_.has(expressionRest, "assignmentExpression")) {
+          // That's an array index
+          currentExpression = {
+            type: "arrayIndexExpression",
+            expression: currentExpression,
+            index: this.visit(expressionRest.assignmentExpression),
+          };
+        } else if (_.has(expressionRest, "Identifier")) {
+          currentExpression = {
+            type: "propertyAccessExpression",
+            expression: currentExpression,
+            name: getIdentifier(expressionRest.Identifier),
+          };
+        }
+      });
+      return currentExpression;
     }
 
     primaryExpression(ctx) {
       if (_.has(ctx, "number")) {
-        return this.visit(ctx.number);
+        return {
+          type: "number",
+          value: this.visit(ctx.number),
+        };
       }
       if (_.has(ctx, "Identifier")) {
-        return getIdentifier(ctx.Identifier);
+        return {
+          type: "idenitfier",
+          name: getIdentifier(ctx.Identifier),
+        };
       }
       if (_.has(ctx, "StringLiteral")) {
-        return getString(ctx.StringLiteral);
+        return {
+          type: "string",
+          string: getString(ctx.StringLiteral),
+        };
       }
+      if (_.has(ctx, "expressionOrTypeName")) {
+        // Sizeof expression
+        return {
+          type: "sizeofExpression",
+          operand: this.visit(ctx.expressionOrTypeName),
+        };
+      }
+      return this.visit(ctx.assignmentExpression);
     }
 
     assignmentOperator(ctx) {
