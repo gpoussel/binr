@@ -225,16 +225,13 @@ function getVisitor(parser) {
     }
 
     forStatement(ctx) {
-      const result = {
+      return {
         type: "forStatement",
         initialization: this.visit(_.first(ctx.forInitUpdate)),
         increment: this.visit(_.last(ctx.forInitUpdate)),
         body: this.visit(ctx.statement),
+        condition: this.visit(ctx.assignmentExpression),
       };
-      if (_.has(ctx, "assignmentExpression")) {
-        result.condition = this.visit(ctx.assignmentExpression);
-      }
-      return result;
     }
 
     localVariableDeclarationStatement(ctx) {

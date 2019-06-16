@@ -235,7 +235,7 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.ParenthesisOpen);
       $.SUBRULE($.forInitUpdate);
       $.CONSUME2(tokens.SemiColon);
-      $.OPTION(() => $.SUBRULE($.assignmentExpression));
+      $.SUBRULE($.assignmentExpression);
       $.CONSUME3(tokens.SemiColon);
       $.SUBRULE2($.forInitUpdate);
       $.CONSUME(tokens.ParenthesisClose);
