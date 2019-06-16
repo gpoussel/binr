@@ -671,7 +671,10 @@ function getVisitor(parser) {
     }
 
     forInitUpdate(ctx) {
-      // TODO forInitUpdate
+      return {
+        type: "commaExpression",
+        expressions: _.map(ctx.assignmentExpression, this.visit.bind(this)),
+      };
     }
 
     selector(ctx) {

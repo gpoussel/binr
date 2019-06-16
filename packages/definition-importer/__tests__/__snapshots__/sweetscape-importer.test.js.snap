@@ -95,8 +95,27 @@ Array [
             "right": 20,
             "type": "binaryExpression",
           },
-          "increment": undefined,
-          "initialization": undefined,
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": "i",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": 0,
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
           "type": "forStatement",
         },
         Object {
@@ -1205,8 +1224,27 @@ Array [
               "right": "s",
               "type": "binaryExpression",
             },
-            "increment": undefined,
-            "initialization": undefined,
+            "increment": Object {
+              "expressions": Array [
+                Object {
+                  "expression": "i",
+                  "operator": undefined,
+                  "type": "postfixExpression",
+                },
+              ],
+              "type": "commaExpression",
+            },
+            "initialization": Object {
+              "expressions": Array [
+                Object {
+                  "left": "i",
+                  "operator": "=",
+                  "right": 0,
+                  "type": "binaryExpression",
+                },
+              ],
+              "type": "commaExpression",
+            },
             "type": "forStatement",
           },
         ],
@@ -1501,8 +1539,27 @@ Array [
             "right": "v",
             "type": "binaryExpression",
           },
-          "increment": undefined,
-          "initialization": undefined,
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": "i",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": 0,
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
           "type": "forStatement",
         },
         Object {
@@ -2549,8 +2606,27 @@ Array [
             "right": "count",
             "type": "binaryExpression",
           },
-          "increment": undefined,
-          "initialization": undefined,
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": "i",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": 0,
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
           "type": "forStatement",
         },
         Object {
@@ -4316,8 +4392,27 @@ Array [
             "right": "l",
             "type": "binaryExpression",
           },
-          "increment": undefined,
-          "initialization": undefined,
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": "i",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": 0,
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
           "type": "forStatement",
         },
         Object {
@@ -4896,8 +4991,27 @@ Array [
             "right": "l",
             "type": "binaryExpression",
           },
-          "increment": undefined,
-          "initialization": undefined,
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": "i",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": 0,
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
           "type": "forStatement",
         },
         Object {
@@ -7779,8 +7893,27 @@ Array [
               "right": "size",
               "type": "binaryExpression",
             },
-            "increment": undefined,
-            "initialization": undefined,
+            "increment": Object {
+              "expressions": Array [
+                Object {
+                  "expression": "i",
+                  "operator": undefined,
+                  "type": "postfixExpression",
+                },
+              ],
+              "type": "commaExpression",
+            },
+            "initialization": Object {
+              "expressions": Array [
+                Object {
+                  "left": "i",
+                  "operator": "=",
+                  "right": 0,
+                  "type": "binaryExpression",
+                },
+              ],
+              "type": "commaExpression",
+            },
             "type": "forStatement",
           },
         ],
@@ -8149,8 +8282,27 @@ Array [
               "right": "size",
               "type": "binaryExpression",
             },
-            "increment": undefined,
-            "initialization": undefined,
+            "increment": Object {
+              "expressions": Array [
+                Object {
+                  "expression": "i",
+                  "operator": undefined,
+                  "type": "postfixExpression",
+                },
+              ],
+              "type": "commaExpression",
+            },
+            "initialization": Object {
+              "expressions": Array [
+                Object {
+                  "left": "i",
+                  "operator": "=",
+                  "right": 0,
+                  "type": "binaryExpression",
+                },
+              ],
+              "type": "commaExpression",
+            },
             "type": "forStatement",
           },
         ],
@@ -9000,8 +9152,27 @@ Array [
             "right": "l",
             "type": "binaryExpression",
           },
-          "increment": undefined,
-          "initialization": undefined,
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": "i",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": 0,
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
           "type": "forStatement",
         },
         Object {
@@ -17581,8 +17752,27 @@ Array [
               "right": "ExportDir",
               "type": "binaryExpression",
             },
-            "increment": undefined,
-            "initialization": undefined,
+            "increment": Object {
+              "expressions": Array [
+                Object {
+                  "expression": "nIndex",
+                  "operator": undefined,
+                  "type": "postfixExpression",
+                },
+              ],
+              "type": "commaExpression",
+            },
+            "initialization": Object {
+              "expressions": Array [
+                Object {
+                  "left": "nIndex",
+                  "operator": "=",
+                  "right": 0,
+                  "type": "binaryExpression",
+                },
+              ],
+              "type": "commaExpression",
+            },
             "type": "forStatement",
           },
           "FSeek",
@@ -19024,8 +19214,27 @@ Array [
             "right": "NtHeader",
             "type": "binaryExpression",
           },
-          "increment": undefined,
-          "initialization": undefined,
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": "i",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": 0,
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
           "type": "forStatement",
         },
         Object {
@@ -19276,8 +19485,27 @@ Array [
             "right": "NtHeader",
             "type": "binaryExpression",
           },
-          "increment": undefined,
-          "initialization": undefined,
+          "increment": Object {
+            "expressions": Array [
+              Object {
+                "expression": "i",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
+          "initialization": Object {
+            "expressions": Array [
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": 0,
+                "type": "binaryExpression",
+              },
+            ],
+            "type": "commaExpression",
+          },
           "type": "forStatement",
         },
         Object {
@@ -20836,8 +21064,27 @@ Array [
       "right": "NtHeader",
       "type": "binaryExpression",
     },
-    "increment": undefined,
-    "initialization": undefined,
+    "increment": Object {
+      "expressions": Array [
+        Object {
+          "expression": "ulIndex",
+          "operator": undefined,
+          "type": "postfixExpression",
+        },
+      ],
+      "type": "commaExpression",
+    },
+    "initialization": Object {
+      "expressions": Array [
+        Object {
+          "left": "ulIndex",
+          "operator": "=",
+          "right": 0,
+          "type": "binaryExpression",
+        },
+      ],
+      "type": "commaExpression",
+    },
     "type": "forStatement",
   },
   "FSeek",
