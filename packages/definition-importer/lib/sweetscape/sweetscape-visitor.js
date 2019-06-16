@@ -2,6 +2,50 @@
 
 const _ = require("lodash");
 
+function getFirstTokenImage(ctx) {
+  return _.first(_.get(ctx, _.first(_.keys(ctx)))).image;
+}
+
+function createBinaryExpressions(initialExpression, otherExpressions) {
+  let currentExpression = initialExpression;
+  for (let i = 0; i < otherExpressions.length; i += 1) {
+    currentExpression = {
+      type: "binaryExpression",
+      left: currentExpression,
+      right: otherExpressions[i].expression,
+      operator: otherExpressions[i].operator,
+    };
+  }
+  return currentExpression;
+}
+
+function getString(stringLiteralToken) {
+  // We cannot use JSON.parse here, because JSON does not support single-quote delimited strings
+  let finalString = _.first(stringLiteralToken).image;
+  if (finalString.charAt(0) === "L") {
+    // Wide-char strings can start with an L (outside quotes)
+    finalString = finalString.substr(1);
+  }
+
+  const delimiter = finalString.charAt(0);
+  if (delimiter === "'") {
+    // In that case, we have to replace \' with '
+    finalString = finalString.replace(/\\'/g, "'");
+  }
+  finalString = finalString.substr(1, finalString.length - 2);
+  finalString = finalString.replace(/"/g, '\\"');
+  finalString = finalString.replace(/\\(?!")/g, "\\\\");
+  try {
+    return JSON.parse(`"${finalString}"`);
+  } catch (e) {
+    throw new Error(`Cannot parse string: ${finalString} (${e.message})`);
+  }
+}
+
+function getIdentifier(identifierToken) {
+  return _.first(identifierToken).image;
+}
+
 function getVisitor(parser) {
   class Visitor extends parser.getBaseCstVisitorConstructorWithDefaults() {
     constructor() {
@@ -36,7 +80,7 @@ function getVisitor(parser) {
       return {
         type: "functionDeclaration",
         returnType: this.visit(typeName),
-        name: this.getIdentifier(identifiers),
+        name: getIdentifier(identifiers),
         parameters: this.visit(functionParameterDeclarationList),
         forwardDeclaration,
         content: forwardDeclaration ? {} : this.visit(ctx.statementList),
@@ -56,7 +100,7 @@ function getVisitor(parser) {
     }
 
     typeNameWithoutVoid(ctx) {
-      const simpleName = this.getIdentifier(ctx.Identifier);
+      const simpleName = getIdentifier(ctx.Identifier);
       const nameParts = [];
       if (_.has(ctx, "Signed")) {
         nameParts.push("signed");
@@ -86,7 +130,7 @@ function getVisitor(parser) {
       return {
         type,
         reference: _.has(ctx, "BinaryAnd"),
-        name: this.getIdentifier(ctx.Identifier),
+        name: getIdentifier(ctx.Identifier),
       };
     }
 
@@ -168,8 +212,8 @@ function getVisitor(parser) {
 
     switchLabels(ctx) {
       const numbers = _.map(ctx.number, this.visit.bind(this));
-      const identifiers = _.map(ctx.Identifier, identifier => this.getIdentifier([identifier]));
-      const stringLiterals = _.map(ctx.StringLiteral, literal => this.getString([literal]));
+      const identifiers = _.map(ctx.Identifier, identifier => getIdentifier([identifier]));
+      const stringLiterals = _.map(ctx.StringLiteral, literal => getString([literal]));
       const defaultStatement = _.has(ctx, "Default") ? [{ type: "defaultStatement" }] : [];
       return _.concat(numbers, identifiers, stringLiterals, defaultStatement);
     }
@@ -228,7 +272,7 @@ function getVisitor(parser) {
       const result = {
         type: "typeAlias",
         name: this.visit(ctx.typeName),
-        alias: this.getIdentifier(ctx.Identifier),
+        alias: getIdentifier(ctx.Identifier),
         annotations: _.has(ctx.annotations) ? this.visit(ctx.annotations) : [],
       };
       if (_.has(ctx, "selector")) {
@@ -247,7 +291,7 @@ function getVisitor(parser) {
     emptyStructStatement(ctx) {
       return {
         type: "structDeclaration",
-        name: this.getIdentifier(ctx.Identifier),
+        name: getIdentifier(ctx.Identifier),
       };
     }
 
@@ -272,7 +316,7 @@ function getVisitor(parser) {
       };
       _.assign(result, this.visit(ctx.variableDeclarator));
       if (_.has(ctx, "Identifier")) {
-        result.alias = this.getIdentifier(ctx.Identifier);
+        result.alias = getIdentifier(ctx.Identifier);
       }
       return result;
     }
@@ -285,7 +329,7 @@ function getVisitor(parser) {
         result.baseType = this.visit(ctx.typeName);
       }
       if (_.has(ctx, "Identifier")) {
-        result.alias = this.getIdentifier(ctx.Identifier);
+        result.alias = getIdentifier(ctx.Identifier);
       }
       if (_.has(ctx, "variableDeclarators")) {
         result.declarations = this.visit(ctx.variableDeclarators);
@@ -301,7 +345,7 @@ function getVisitor(parser) {
 
     variableDeclarator(ctx) {
       const result = {
-        name: this.getIdentifier(ctx.Identifier),
+        name: getIdentifier(ctx.Identifier),
         annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
       if (_.has(ctx, "variableDeclaratorRest")) {
@@ -352,7 +396,7 @@ function getVisitor(parser) {
       if (_.size(ctx.ternaryExpression) > 1) {
         const operators = _.map(ctx.assignmentOperator, this.visit.bind(this));
         const expressions = _.map(ctx.ternaryExpression, this.visit.bind(this));
-        return this.createBinaryExpressions(
+        return createBinaryExpressions(
           _.first(expressions),
           _.times(operators.length - 1, i => ({
             operator: operators[i],
@@ -486,32 +530,15 @@ function getVisitor(parser) {
         return this.visit(ctx.number);
       }
       if (_.has(ctx, "Identifier")) {
-        return this.getIdentifier(ctx.Identifier);
+        return getIdentifier(ctx.Identifier);
       }
       if (_.has(ctx, "StringLiteral")) {
-        return this.getString(ctx.StringLiteral);
+        return getString(ctx.StringLiteral);
       }
     }
 
     assignmentOperator(ctx) {
-      return this.getFirstTokenImage(ctx);
-    }
-
-    getFirstTokenImage(ctx) {
-      return _.first(_.get(ctx, _.first(_.keys(ctx)))).image;
-    }
-
-    createBinaryExpressions(initialExpression, otherExpressions) {
-      let currentExpression = initialExpression;
-      for (let i = 0; i < otherExpressions.length; i += 1) {
-        currentExpression = {
-          type: "binaryExpression",
-          left: currentExpression,
-          right: otherExpressions[i].expression,
-          operator: otherExpressions[i].operator,
-        };
-      }
-      return currentExpression;
+      return getFirstTokenImage(ctx);
     }
 
     number(ctx) {
@@ -554,11 +581,11 @@ function getVisitor(parser) {
     }
 
     annotation(ctx) {
-      const key = this.getIdentifier(ctx.Identifier);
+      const key = getIdentifier(ctx.Identifier);
       if (_.has(ctx, "StringLiteral")) {
         return {
           key,
-          value: this.getString(ctx.StringLiteral),
+          value: getString(ctx.StringLiteral),
         };
       }
       if (_.has(ctx, "number")) {
@@ -570,7 +597,7 @@ function getVisitor(parser) {
       if (_.size(ctx, "Identifier") > 1) {
         return {
           key,
-          value: this.getIdentifier([_.last(ctx.Identifier)]),
+          value: getIdentifier([_.last(ctx.Identifier)]),
         };
       }
       throw new Error();
@@ -593,7 +620,7 @@ function getVisitor(parser) {
 
     enumElementDeclaration(ctx) {
       const result = {
-        name: this.getIdentifier(ctx.Identifier),
+        name: getIdentifier(ctx.Identifier),
       };
       if (_.has(ctx, "assignmentExpression")) {
         result.value = this.visit(ctx.assignmentExpression);
@@ -612,7 +639,7 @@ function getVisitor(parser) {
       if (_.has(ctx, "Period")) {
         return {
           type: "qualifiedSelector",
-          name: this.getIdentifier(ctx.Identifier),
+          name: getIdentifier(ctx.Identifier),
         };
       }
       throw new Error();
@@ -632,33 +659,6 @@ function getVisitor(parser) {
       if (_.has(ctx, "arrayInitializer")) {
         return this.visit(ctx.arrayInitializer);
       }
-    }
-
-    getString(stringLiteralToken) {
-      // We cannot use JSON.parse here, because JSON does not support single-quote delimited strings
-      let finalString = _.first(stringLiteralToken).image;
-      if (finalString.charAt(0) === "L") {
-        // Wide-char strings can start with an L (outside quotes)
-        finalString = finalString.substr(1);
-      }
-
-      const delimiter = finalString.charAt(0);
-      if (delimiter === "'") {
-        // In that case, we have to replace \' with '
-        finalString = finalString.replace(/\\'/g, "'");
-      }
-      finalString = finalString.substr(1, finalString.length - 2);
-      finalString = finalString.replace(/"/g, '\\"');
-      finalString = finalString.replace(/\\(?!")/g, "\\\\");
-      try {
-        return JSON.parse(`"${finalString}"`);
-      } catch (e) {
-        throw new Error(`Cannot parse string: ${finalString} (${e.message})`);
-      }
-    }
-
-    getIdentifier(identifierToken) {
-      return _.first(identifierToken).image;
     }
   }
 
