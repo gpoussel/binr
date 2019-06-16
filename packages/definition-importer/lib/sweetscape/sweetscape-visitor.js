@@ -384,7 +384,7 @@ function getVisitor(parser) {
       if (_.has(ctx, "assignmentExpression")) {
         result.arraySelector = this.visit(ctx.assignmentExpression);
       }
-      if (_.has(ctx, "initializer")) {
+      if (_.has(ctx, "variableInitializer")) {
         result.initializer = this.visit(ctx.variableInitializer);
       }
       return result;

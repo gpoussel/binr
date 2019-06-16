@@ -2792,6 +2792,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "value",
             },
           ],
@@ -2833,6 +2837,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "i",
             },
           ],
@@ -2847,6 +2855,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flag",
             },
           ],
@@ -2861,6 +2873,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flagsFound",
             },
           ],
@@ -2981,6 +2997,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flagCounter",
             },
           ],
@@ -3376,6 +3396,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "value",
             },
           ],
@@ -3417,6 +3441,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "i",
             },
           ],
@@ -3431,6 +3459,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flag",
             },
           ],
@@ -3445,6 +3477,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flagsFound",
             },
           ],
@@ -3565,6 +3601,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flagCounter",
             },
           ],
@@ -3910,6 +3950,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "value",
             },
           ],
@@ -3951,6 +3995,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "i",
             },
           ],
@@ -3965,6 +4013,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flag",
             },
           ],
@@ -3979,6 +4031,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flagsFound",
             },
           ],
@@ -4099,6 +4155,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flagCounter",
             },
           ],
@@ -4369,6 +4429,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "value",
             },
           ],
@@ -4410,6 +4474,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "i",
             },
           ],
@@ -4424,6 +4492,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flag",
             },
           ],
@@ -4438,6 +4510,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flagsFound",
             },
           ],
@@ -4558,6 +4634,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flagCounter",
             },
           ],
@@ -4953,6 +5033,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "value",
             },
           ],
@@ -4994,6 +5078,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "i",
             },
           ],
@@ -5008,6 +5096,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flag",
             },
           ],
@@ -5022,6 +5114,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flagsFound",
             },
           ],
@@ -5142,6 +5238,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "flagCounter",
             },
           ],
@@ -5500,6 +5600,10 @@ Array [
     "declarations": Array [
       Object {
         "annotations": Array [],
+        "initializer": Object {
+          "type": "number",
+          "value": 0,
+        },
         "name": "odexpad",
       },
     ],
@@ -7257,6 +7361,18 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "left": Object {
+                    "name": "size",
+                    "type": "idenitfier",
+                  },
+                  "operator": "+",
+                  "right": Object {
+                    "type": "number",
+                    "value": 1,
+                  },
+                  "type": "binaryExpression",
+                },
                 "name": "s",
               },
             ],
@@ -7272,6 +7388,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "type",
+                  "type": "idenitfier",
+                },
                 "name": "t",
               },
             ],
@@ -7399,6 +7519,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "s",
             },
           ],
@@ -7705,6 +7829,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "shift",
             },
           ],
@@ -7977,6 +8105,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "string": "",
+                  "type": "string",
+                },
                 "name": "valstr",
               },
             ],
@@ -7992,6 +8124,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "string": "",
+                  "type": "string",
+                },
                 "name": "typestr",
               },
             ],
@@ -9344,6 +9480,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 5,
+              },
               "name": "count",
             },
           ],
@@ -9359,6 +9499,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 1,
+              },
               "name": "dots",
             },
           ],
@@ -9459,6 +9603,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "[",
+                "type": "string",
+              },
               "name": "val",
             },
           ],
@@ -9733,6 +9881,32 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "arguments": Array [
+                      Object {
+                        "expression": Object {
+                          "name": "e",
+                          "type": "idenitfier",
+                        },
+                        "name": "name_idx",
+                        "type": "propertyAccessExpression",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "uleb128_value",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetStringById",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "name",
             },
           ],
@@ -10749,6 +10923,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "ret",
             },
           ],
@@ -10763,6 +10941,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "flags",
             },
           ],
@@ -10777,6 +10959,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 1,
+              },
               "name": "i",
             },
           ],
@@ -11016,6 +11202,14 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "arguments": Array [],
+                  "name": Object {
+                    "name": "FTell",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
                 "name": "pos",
               },
             ],
@@ -11144,6 +11338,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "size",
+                  "type": "idenitfier",
+                },
                 "name": "s",
               },
             ],
@@ -11384,6 +11582,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "size",
+                  "type": "idenitfier",
+                },
                 "name": "s",
               },
             ],
@@ -11662,6 +11864,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "s",
             },
           ],
@@ -11869,6 +12075,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "desc",
             },
           ],
@@ -11884,6 +12094,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "post",
             },
           ],
@@ -11899,6 +12113,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "i",
             },
           ],
@@ -11914,6 +12132,19 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "name": "descriptor",
+                    "type": "idenitfier",
+                  },
+                ],
+                "name": Object {
+                  "name": "Strlen",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "len",
             },
           ],
@@ -12227,6 +12458,14 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "initializer": Object {
+                        "arguments": Array [],
+                        "name": Object {
+                          "name": "FTell",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
                       "name": "pos",
                     },
                   ],
@@ -12357,6 +12596,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "size",
+                  "type": "idenitfier",
+                },
                 "name": "s",
               },
             ],
@@ -12493,6 +12736,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "(",
+                "type": "string",
+              },
               "name": "s",
             },
           ],
@@ -12720,6 +12967,32 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "arguments": Array [
+                      Object {
+                        "expression": Object {
+                          "name": "item",
+                          "type": "idenitfier",
+                        },
+                        "name": "return_type_idx",
+                        "type": "propertyAccessExpression",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "GetTypeById",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetLongTypeDescriptor",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "ret",
             },
           ],
@@ -12734,6 +13007,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "()",
+                "type": "string",
+              },
               "name": "params",
             },
           ],
@@ -12935,6 +13212,32 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "arguments": Array [
+                      Object {
+                        "expression": Object {
+                          "name": "i",
+                          "type": "idenitfier",
+                        },
+                        "name": "type_idx",
+                        "type": "propertyAccessExpression",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "GetTypeById",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetLongTypeDescriptor",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "type",
             },
           ],
@@ -12950,6 +13253,32 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "arguments": Array [
+                      Object {
+                        "expression": Object {
+                          "name": "i",
+                          "type": "idenitfier",
+                        },
+                        "name": "class_idx",
+                        "type": "propertyAccessExpression",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "GetTypeById",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetLongTypeDescriptor",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "class",
             },
           ],
@@ -12965,6 +13294,23 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "expression": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "name": "name_idx",
+                    "type": "propertyAccessExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetStringById",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "name",
             },
           ],
@@ -13050,6 +13396,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "size",
+                  "type": "idenitfier",
+                },
                 "name": "s",
               },
             ],
@@ -13366,6 +13716,47 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "arguments": Array [
+                      Object {
+                        "expression": Object {
+                          "expression": Object {
+                            "expression": Object {
+                              "name": "dex_proto_ids",
+                              "type": "idenitfier",
+                            },
+                            "name": "proto_id",
+                            "type": "propertyAccessExpression",
+                          },
+                          "index": Object {
+                            "expression": Object {
+                              "name": "m",
+                              "type": "idenitfier",
+                            },
+                            "name": "proto_idx",
+                            "type": "propertyAccessExpression",
+                          },
+                          "type": "arrayIndexExpression",
+                        },
+                        "name": "return_type_idx",
+                        "type": "propertyAccessExpression",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "GetTypeById",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetLongTypeDescriptor",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "retval",
             },
           ],
@@ -13381,6 +13772,47 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "arguments": Array [
+                      Object {
+                        "expression": Object {
+                          "expression": Object {
+                            "expression": Object {
+                              "name": "dex_type_ids",
+                              "type": "idenitfier",
+                            },
+                            "name": "type_id",
+                            "type": "propertyAccessExpression",
+                          },
+                          "index": Object {
+                            "expression": Object {
+                              "name": "m",
+                              "type": "idenitfier",
+                            },
+                            "name": "class_idx",
+                            "type": "propertyAccessExpression",
+                          },
+                          "type": "arrayIndexExpression",
+                        },
+                        "name": "descriptor_idx",
+                        "type": "propertyAccessExpression",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "GetStringById",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetLongTypeDescriptor",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "classname",
             },
           ],
@@ -13396,6 +13828,23 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "expression": Object {
+                      "name": "m",
+                      "type": "idenitfier",
+                    },
+                    "name": "name_idx",
+                    "type": "propertyAccessExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetStringById",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "methodname",
             },
           ],
@@ -13411,6 +13860,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "()",
+                "type": "string",
+              },
               "name": "params",
             },
           ],
@@ -13584,6 +14037,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "size",
+                  "type": "idenitfier",
+                },
                 "name": "s",
               },
             ],
@@ -13779,6 +14236,14 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "initializer": Object {
+                        "arguments": Array [],
+                        "name": Object {
+                          "name": "FTell",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
                       "name": "pos",
                     },
                   ],
@@ -13960,6 +14425,14 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "initializer": Object {
+                        "arguments": Array [],
+                        "name": Object {
+                          "name": "FTell",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
                       "name": "pos",
                     },
                   ],
@@ -14141,6 +14614,14 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "initializer": Object {
+                        "arguments": Array [],
+                        "name": Object {
+                          "name": "FTell",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
                       "name": "pos",
                     },
                   ],
@@ -14471,6 +14952,14 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "initializer": Object {
+                        "arguments": Array [],
+                        "name": Object {
+                          "name": "FTell",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
                       "name": "pos",
                     },
                   ],
@@ -14822,6 +15311,14 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "initializer": Object {
+                        "arguments": Array [],
+                        "name": Object {
+                          "name": "FTell",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
                       "name": "pos",
                     },
                   ],
@@ -15106,6 +15603,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "classes",
             },
           ],
@@ -15283,6 +15784,14 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "initializer": Object {
+                        "arguments": Array [],
+                        "name": Object {
+                          "name": "FTell",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
                       "name": "pos",
                     },
                   ],
@@ -15568,6 +16077,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "ret",
             },
           ],
@@ -15582,6 +16095,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "flags",
             },
           ],
@@ -15596,6 +16113,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 1,
+              },
               "name": "i",
             },
           ],
@@ -16190,6 +16711,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "flags",
             },
           ],
@@ -16204,6 +16729,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 1,
+              },
               "name": "i",
             },
           ],
@@ -16361,6 +16890,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "previd",
+                  "type": "idenitfier",
+                },
                 "name": "p",
               },
             ],
@@ -16438,6 +16971,35 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "left": Object {
+                  "expression": Object {
+                    "name": "f",
+                    "type": "idenitfier",
+                  },
+                  "name": "p",
+                  "type": "propertyAccessExpression",
+                },
+                "operator": "+",
+                "right": Object {
+                  "arguments": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "f",
+                        "type": "idenitfier",
+                      },
+                      "name": "field_idx_diff",
+                      "type": "propertyAccessExpression",
+                    },
+                  ],
+                  "name": Object {
+                    "name": "uleb128_value",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
+                "type": "binaryExpression",
+              },
               "name": "realid",
             },
           ],
@@ -16534,6 +17096,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "size",
+                  "type": "idenitfier",
+                },
                 "name": "s",
               },
             ],
@@ -16564,6 +17130,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "fieldid",
               },
             ],
@@ -16789,6 +17359,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "previd",
+                  "type": "idenitfier",
+                },
                 "name": "p",
               },
             ],
@@ -16889,6 +17463,14 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "initializer": Object {
+                        "arguments": Array [],
+                        "name": Object {
+                          "name": "FTell",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
                       "name": "pos",
                     },
                   ],
@@ -16991,6 +17573,35 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "left": Object {
+                  "expression": Object {
+                    "name": "m",
+                    "type": "idenitfier",
+                  },
+                  "name": "p",
+                  "type": "propertyAccessExpression",
+                },
+                "operator": "+",
+                "right": Object {
+                  "arguments": Array [
+                    Object {
+                      "expression": Object {
+                        "name": "m",
+                        "type": "idenitfier",
+                      },
+                      "name": "method_idx_diff",
+                      "type": "propertyAccessExpression",
+                    },
+                  ],
+                  "name": Object {
+                    "name": "uleb128_value",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
+                "type": "binaryExpression",
+              },
               "name": "realid",
             },
           ],
@@ -17087,6 +17698,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "size",
+                  "type": "idenitfier",
+                },
                 "name": "s",
               },
             ],
@@ -17117,6 +17732,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "methodid",
               },
             ],
@@ -18367,6 +18986,23 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "expression": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "name": "class_idx",
+                    "type": "propertyAccessExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetLongTypeById",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "classname",
             },
           ],
@@ -18382,6 +19018,27 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "expression": Object {
+                      "name": "i",
+                      "type": "idenitfier",
+                    },
+                    "name": "access_flags",
+                    "type": "propertyAccessExpression",
+                  },
+                  Object {
+                    "name": "AF_CLASS",
+                    "type": "idenitfier",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetFriendlyAccessFlags",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "flags",
             },
           ],
@@ -18436,6 +19093,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "s",
             },
           ],
@@ -18645,6 +19306,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "size",
+                  "type": "idenitfier",
+                },
                 "name": "s",
               },
             ],
@@ -18885,6 +19550,19 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "arguments": Array [
+                    Object {
+                      "name": "size",
+                      "type": "idenitfier",
+                    },
+                  ],
+                  "name": Object {
+                    "name": "sleb128_value",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
                 "name": "s",
               },
             ],
@@ -18900,6 +19578,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "numhandlers",
               },
             ],
@@ -19372,6 +20054,14 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "initializer": Object {
+                        "arguments": Array [],
+                        "name": Object {
+                          "name": "FTell",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
                       "name": "pos",
                     },
                   ],
@@ -20279,6 +20969,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "string": "",
+                  "type": "string",
+                },
                 "name": "args",
               },
             ],
@@ -20993,6 +21687,22 @@ Array [
                 "declarations": Array [
                   Object {
                     "annotations": Array [],
+                    "initializer": Object {
+                      "left": Object {
+                        "expression": Object {
+                          "name": "opcode",
+                          "type": "idenitfier",
+                        },
+                        "name": "opcode",
+                        "type": "propertyAccessExpression",
+                      },
+                      "operator": "-",
+                      "right": Object {
+                        "type": "number",
+                        "value": 10,
+                      },
+                      "type": "binaryExpression",
+                    },
                     "name": "adjusted",
                   },
                 ],
@@ -22749,6 +23459,27 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "left": Object {
+                    "left": Object {
+                      "name": "size",
+                      "type": "idenitfier",
+                    },
+                    "operator": "+",
+                    "right": Object {
+                      "type": "number",
+                      "value": 7,
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "operator": "&",
+                  "right": Object {
+                    "expression": undefined,
+                    "operator": "~",
+                    "type": "unaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
                 "name": "realsize",
               },
             ],
@@ -22821,6 +23552,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "count",
               },
             ],
@@ -23306,6 +24041,10 @@ Array [
     "declarations": Array [
       Object {
         "annotations": Array [],
+        "initializer": Object {
+          "type": "number",
+          "value": 0,
+        },
         "name": "odex",
       },
     ],
@@ -25160,6 +25899,18 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "expression": Object {
+                    "expression": Object {
+                      "name": "NtHeader",
+                      "type": "idenitfier",
+                    },
+                    "name": "OptionalHeader",
+                    "type": "propertyAccessExpression",
+                  },
+                  "name": "NumberOfRvaAndSizes",
+                  "type": "propertyAccessExpression",
+                },
                 "name": "len",
               },
             ],
@@ -27328,6 +28079,23 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "arguments": Array [
+                    Object {
+                      "arguments": Array [],
+                      "name": Object {
+                        "name": "FTell",
+                        "type": "idenitfier",
+                      },
+                      "type": "functionCallExpression",
+                    },
+                  ],
+                  "name": Object {
+                    "name": "ReadShort",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
                 "name": "OptionalHeaderMagic",
               },
             ],
@@ -28382,6 +29150,14 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "expression": Object {
+                    "name": "SecHeader",
+                    "type": "idenitfier",
+                  },
+                  "name": "Name",
+                  "type": "propertyAccessExpression",
+                },
                 "name": "sSecName",
               },
             ],
@@ -28505,6 +29281,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "nNameIndex",
               },
             ],
@@ -28520,6 +29300,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "ulThrunk",
               },
             ],
@@ -28535,6 +29319,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "nNameLen",
               },
             ],
@@ -28550,6 +29338,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "string": "",
+                  "type": "string",
+                },
                 "name": "sDllName",
               },
             ],
@@ -28565,6 +29357,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "ulOriginalFirstThunkFOA",
               },
             ],
@@ -28758,6 +29554,10 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "initializer": Object {
+                        "type": "number",
+                        "value": 0,
+                      },
                       "name": "og_position",
                     },
                   ],
@@ -29046,6 +29846,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "ulDestRVA",
+                  "type": "idenitfier",
+                },
                 "name": "ulLocalDestRVA",
               },
             ],
@@ -29061,6 +29865,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "sJmpName",
+                  "type": "idenitfier",
+                },
                 "name": "sLocalJmpName",
               },
             ],
@@ -29344,6 +30152,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "nIndex",
               },
             ],
@@ -29359,6 +30171,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "NameArrayFOA",
               },
             ],
@@ -29374,6 +30190,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "OrdinalArrayFOA",
               },
             ],
@@ -29389,6 +30209,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "FuncArrayFOA",
               },
             ],
@@ -29404,6 +30228,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "ulNameRVA",
               },
             ],
@@ -29419,6 +30247,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "ulNameFOA",
               },
             ],
@@ -29434,6 +30266,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "ulFuncRVA",
               },
             ],
@@ -29449,6 +30285,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "wOrdinal",
               },
             ],
@@ -29464,6 +30304,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "string": "",
+                  "type": "string",
+                },
                 "name": "sExportName",
               },
             ],
@@ -29479,6 +30323,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "string": "",
+                  "type": "string",
+                },
                 "name": "sJmpName",
               },
             ],
@@ -29494,6 +30342,14 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "arguments": Array [],
+                  "name": Object {
+                    "name": "FTell",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
                 "name": "ulCurPos",
               },
             ],
@@ -29509,6 +30365,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "name": "ulCurPos",
+                  "type": "idenitfier",
+                },
                 "name": "ulEndPos",
               },
             ],
@@ -30392,6 +31252,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "IsNameEntry",
               },
             ],
@@ -30505,6 +31369,14 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "arguments": Array [],
+                  "name": Object {
+                    "name": "ReadInt",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
                 "name": "NextDWORD",
               },
             ],
@@ -31043,6 +31915,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "ulBlockNum",
               },
             ],
@@ -31130,6 +32006,10 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "initializer": Object {
+                  "type": "number",
+                  "value": 0,
+                },
                 "name": "ulRelocNum",
               },
             ],
@@ -31288,6 +32168,35 @@ Array [
                 "declarations": Array [
                   Object {
                     "annotations": Array [],
+                    "initializer": Object {
+                      "arguments": Array [
+                        Object {
+                          "expression": Object {
+                            "expression": Object {
+                              "expression": Object {
+                                "expression": Object {
+                                  "name": "NtHeader",
+                                  "type": "idenitfier",
+                                },
+                                "name": "OptionalHeader",
+                                "type": "propertyAccessExpression",
+                              },
+                              "name": "DataDirArray",
+                              "type": "propertyAccessExpression",
+                            },
+                            "name": "Export",
+                            "type": "propertyAccessExpression",
+                          },
+                          "name": "VirtualAddress",
+                          "type": "propertyAccessExpression",
+                        },
+                      ],
+                      "name": Object {
+                        "name": "RVA2FOA",
+                        "type": "idenitfier",
+                      },
+                      "type": "functionCallExpression",
+                    },
                     "name": "ulExportFOA",
                   },
                 ],
@@ -31412,6 +32321,35 @@ Array [
                 "declarations": Array [
                   Object {
                     "annotations": Array [],
+                    "initializer": Object {
+                      "arguments": Array [
+                        Object {
+                          "expression": Object {
+                            "expression": Object {
+                              "expression": Object {
+                                "expression": Object {
+                                  "name": "NtHeader",
+                                  "type": "idenitfier",
+                                },
+                                "name": "OptionalHeader",
+                                "type": "propertyAccessExpression",
+                              },
+                              "name": "DataDirArray",
+                              "type": "propertyAccessExpression",
+                            },
+                            "name": "Import",
+                            "type": "propertyAccessExpression",
+                          },
+                          "name": "VirtualAddress",
+                          "type": "propertyAccessExpression",
+                        },
+                      ],
+                      "name": Object {
+                        "name": "RVA2FOA",
+                        "type": "idenitfier",
+                      },
+                      "type": "functionCallExpression",
+                    },
                     "name": "ulImportFOA",
                   },
                 ],
@@ -31427,6 +32365,10 @@ Array [
                 "declarations": Array [
                   Object {
                     "annotations": Array [],
+                    "initializer": Object {
+                      "type": "number",
+                      "value": 0,
+                    },
                     "name": "ulOriginalFirstThunk",
                   },
                 ],
@@ -31442,6 +32384,10 @@ Array [
                 "declarations": Array [
                   Object {
                     "annotations": Array [],
+                    "initializer": Object {
+                      "type": "number",
+                      "value": 0,
+                    },
                     "name": "ulOriginalFirstThunkFOA",
                   },
                 ],
@@ -31457,6 +32403,10 @@ Array [
                 "declarations": Array [
                   Object {
                     "annotations": Array [],
+                    "initializer": Object {
+                      "type": "number",
+                      "value": 0,
+                    },
                     "name": "nImportIndex",
                   },
                 ],
@@ -32417,6 +33367,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "i",
             },
           ],
@@ -32643,6 +33597,50 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "left": Object {
+                      "left": Object {
+                        "arguments": Array [
+                          Object {
+                            "name": "stNtHeader",
+                            "type": "idenitfier",
+                          },
+                        ],
+                        "name": Object {
+                          "name": "startof",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
+                      "operator": "+",
+                      "right": Object {
+                        "operand": Object {
+                          "name": "DWORD",
+                          "type": "idenitfier",
+                        },
+                        "type": "sizeofExpression",
+                      },
+                      "type": "binaryExpression",
+                    },
+                    "operator": "+",
+                    "right": Object {
+                      "operand": Object {
+                        "name": "IMAGE_FILE_HEADER",
+                        "type": "idenitfier",
+                      },
+                      "type": "sizeofExpression",
+                    },
+                    "type": "binaryExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "ReadShort",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "OptionalHeaderMagic",
             },
           ],
@@ -32888,6 +33886,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "i",
             },
           ],
@@ -33087,6 +34089,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "sComment",
             },
           ],
@@ -33196,6 +34202,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "sComment",
             },
           ],
@@ -33362,6 +34372,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "sComment",
             },
           ],
@@ -33587,6 +34601,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "sComment",
             },
           ],
@@ -33658,6 +34676,18 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "left": Object {
+                  "name": "NameOffset",
+                  "type": "idenitfier",
+                },
+                "operator": "&",
+                "right": Object {
+                  "type": "number",
+                  "value": 2147483647,
+                },
+                "type": "binaryExpression",
+              },
               "name": "dwMaskedOffset",
             },
           ],
@@ -33673,6 +34703,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "wsComment",
             },
           ],
@@ -33688,6 +34722,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "sComment",
             },
           ],
@@ -33703,6 +34741,43 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "left": Object {
+                  "arguments": Array [
+                    Object {
+                      "expression": Object {
+                        "expression": Object {
+                          "expression": Object {
+                            "expression": Object {
+                              "name": "NtHeader",
+                              "type": "idenitfier",
+                            },
+                            "name": "OptionalHeader",
+                            "type": "propertyAccessExpression",
+                          },
+                          "name": "DataDirArray",
+                          "type": "propertyAccessExpression",
+                        },
+                        "name": "Resource",
+                        "type": "propertyAccessExpression",
+                      },
+                      "name": "VirtualAddress",
+                      "type": "propertyAccessExpression",
+                    },
+                  ],
+                  "name": Object {
+                    "name": "RVA2FOA",
+                    "type": "idenitfier",
+                  },
+                  "type": "functionCallExpression",
+                },
+                "operator": "+",
+                "right": Object {
+                  "name": "dwMaskedOffset",
+                  "type": "idenitfier",
+                },
+                "type": "binaryExpression",
+              },
               "name": "loc",
             },
           ],
@@ -33718,6 +34793,19 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "name": "loc",
+                    "type": "idenitfier",
+                  },
+                ],
+                "name": Object {
+                  "name": "ReadUShort",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "actualLength",
             },
           ],
@@ -33916,6 +35004,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "sComment",
             },
           ],
@@ -34015,6 +35107,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "sComment",
             },
           ],
@@ -34030,6 +35126,28 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "arguments": Array [
+                      Object {
+                        "name": "IntegerID",
+                        "type": "idenitfier",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "parentof",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetLevel",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "level",
             },
           ],
@@ -34203,6 +35321,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "sComment",
             },
           ],
@@ -34218,6 +35340,19 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "name": "str",
+                    "type": "idenitfier",
+                  },
+                ],
+                "name": Object {
+                  "name": "startof",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "loc",
             },
           ],
@@ -34233,6 +35368,19 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "name": "loc",
+                    "type": "idenitfier",
+                  },
+                ],
+                "name": Object {
+                  "name": "ReadShort",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "actualLength",
             },
           ],
@@ -34248,6 +35396,64 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "arguments": Array [
+                      Object {
+                        "arguments": Array [
+                          Object {
+                            "arguments": Array [
+                              Object {
+                                "arguments": Array [
+                                  Object {
+                                    "arguments": Array [
+                                      Object {
+                                        "name": "str",
+                                        "type": "idenitfier",
+                                      },
+                                    ],
+                                    "name": Object {
+                                      "name": "parentof",
+                                      "type": "idenitfier",
+                                    },
+                                    "type": "functionCallExpression",
+                                  },
+                                ],
+                                "name": Object {
+                                  "name": "parentof",
+                                  "type": "idenitfier",
+                                },
+                                "type": "functionCallExpression",
+                              },
+                            ],
+                            "name": Object {
+                              "name": "parentof",
+                              "type": "idenitfier",
+                            },
+                            "type": "functionCallExpression",
+                          },
+                        ],
+                        "name": Object {
+                          "name": "parentof",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "parentof",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetEntryIntegerID",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "BlockNumber",
             },
           ],
@@ -34263,6 +35469,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "type": "number",
+                "value": 0,
+              },
               "name": "myIndex",
             },
           ],
@@ -34278,6 +35488,28 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "arguments": Array [
+                      Object {
+                        "name": "str",
+                        "type": "idenitfier",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "parentof",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "startof",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "blockStart",
             },
           ],
@@ -34293,6 +35525,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "name": "blockStart",
+                "type": "idenitfier",
+              },
               "name": "curLoc",
             },
           ],
@@ -34376,6 +35612,34 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "left": Object {
+                  "left": Object {
+                    "left": Object {
+                      "name": "BlockNumber",
+                      "type": "idenitfier",
+                    },
+                    "operator": "-",
+                    "right": Object {
+                      "type": "number",
+                      "value": 1,
+                    },
+                    "type": "binaryExpression",
+                  },
+                  "operator": "*",
+                  "right": Object {
+                    "type": "number",
+                    "value": 16,
+                  },
+                  "type": "binaryExpression",
+                },
+                "operator": "+",
+                "right": Object {
+                  "name": "myIndex",
+                  "type": "idenitfier",
+                },
+                "type": "binaryExpression",
+              },
               "name": "myStringID",
             },
           ],
@@ -34407,6 +35671,39 @@ Array [
                 "declarations": Array [
                   Object {
                     "annotations": Array [],
+                    "initializer": Object {
+                      "arguments": Array [
+                        Object {
+                          "left": Object {
+                            "arguments": Array [
+                              Object {
+                                "name": "str",
+                                "type": "idenitfier",
+                              },
+                            ],
+                            "name": Object {
+                              "name": "startof",
+                              "type": "idenitfier",
+                            },
+                            "type": "functionCallExpression",
+                          },
+                          "operator": "+",
+                          "right": Object {
+                            "operand": Object {
+                              "name": "WORD",
+                              "type": "idenitfier",
+                            },
+                            "type": "sizeofExpression",
+                          },
+                          "type": "binaryExpression",
+                        },
+                      ],
+                      "name": Object {
+                        "name": "ReadWString",
+                        "type": "idenitfier",
+                      },
+                      "type": "functionCallExpression",
+                    },
                     "name": "wsComment",
                   },
                 ],
@@ -34521,6 +35818,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "sComment",
             },
           ],
@@ -34536,6 +35837,26 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "left": Object {
+                  "expression": Object {
+                    "name": "ResourceDirectoryTable",
+                    "type": "idenitfier",
+                  },
+                  "name": "NumberOfNameEntries",
+                  "type": "propertyAccessExpression",
+                },
+                "operator": "+",
+                "right": Object {
+                  "expression": Object {
+                    "name": "ResourceDirectoryTable",
+                    "type": "idenitfier",
+                  },
+                  "name": "NumberOfIDEntries",
+                  "type": "propertyAccessExpression",
+                },
+                "type": "binaryExpression",
+              },
               "name": "totalEntries",
             },
           ],
@@ -34737,6 +36058,37 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "arguments": Array [
+                  Object {
+                    "arguments": Array [
+                      Object {
+                        "arguments": Array [
+                          Object {
+                            "name": "ResourceDataEntry",
+                            "type": "idenitfier",
+                          },
+                        ],
+                        "name": Object {
+                          "name": "parentof",
+                          "type": "idenitfier",
+                        },
+                        "type": "functionCallExpression",
+                      },
+                    ],
+                    "name": Object {
+                      "name": "parentof",
+                      "type": "idenitfier",
+                    },
+                    "type": "functionCallExpression",
+                  },
+                ],
+                "name": Object {
+                  "name": "GetParentTableLevel",
+                  "type": "idenitfier",
+                },
+                "type": "functionCallExpression",
+              },
               "name": "ParentTableLevel",
             },
           ],
@@ -34767,6 +36119,64 @@ Array [
                 "declarations": Array [
                   Object {
                     "annotations": Array [],
+                    "initializer": Object {
+                      "arguments": Array [
+                        Object {
+                          "arguments": Array [
+                            Object {
+                              "arguments": Array [
+                                Object {
+                                  "arguments": Array [
+                                    Object {
+                                      "arguments": Array [
+                                        Object {
+                                          "arguments": Array [
+                                            Object {
+                                              "name": "ResourceDataEntry",
+                                              "type": "idenitfier",
+                                            },
+                                          ],
+                                          "name": Object {
+                                            "name": "parentof",
+                                            "type": "idenitfier",
+                                          },
+                                          "type": "functionCallExpression",
+                                        },
+                                      ],
+                                      "name": Object {
+                                        "name": "parentof",
+                                        "type": "idenitfier",
+                                      },
+                                      "type": "functionCallExpression",
+                                    },
+                                  ],
+                                  "name": Object {
+                                    "name": "parentof",
+                                    "type": "idenitfier",
+                                  },
+                                  "type": "functionCallExpression",
+                                },
+                              ],
+                              "name": Object {
+                                "name": "parentof",
+                                "type": "idenitfier",
+                              },
+                              "type": "functionCallExpression",
+                            },
+                          ],
+                          "name": Object {
+                            "name": "parentof",
+                            "type": "idenitfier",
+                          },
+                          "type": "functionCallExpression",
+                        },
+                      ],
+                      "name": Object {
+                        "name": "GetEntryIsNameEntry",
+                        "type": "idenitfier",
+                      },
+                      "type": "functionCallExpression",
+                    },
                     "name": "BaseEntryIsNameEntry",
                   },
                 ],
@@ -34797,6 +36207,64 @@ Array [
                       "declarations": Array [
                         Object {
                           "annotations": Array [],
+                          "initializer": Object {
+                            "arguments": Array [
+                              Object {
+                                "arguments": Array [
+                                  Object {
+                                    "arguments": Array [
+                                      Object {
+                                        "arguments": Array [
+                                          Object {
+                                            "arguments": Array [
+                                              Object {
+                                                "arguments": Array [
+                                                  Object {
+                                                    "name": "ResourceDataEntry",
+                                                    "type": "idenitfier",
+                                                  },
+                                                ],
+                                                "name": Object {
+                                                  "name": "parentof",
+                                                  "type": "idenitfier",
+                                                },
+                                                "type": "functionCallExpression",
+                                              },
+                                            ],
+                                            "name": Object {
+                                              "name": "parentof",
+                                              "type": "idenitfier",
+                                            },
+                                            "type": "functionCallExpression",
+                                          },
+                                        ],
+                                        "name": Object {
+                                          "name": "parentof",
+                                          "type": "idenitfier",
+                                        },
+                                        "type": "functionCallExpression",
+                                      },
+                                    ],
+                                    "name": Object {
+                                      "name": "parentof",
+                                      "type": "idenitfier",
+                                    },
+                                    "type": "functionCallExpression",
+                                  },
+                                ],
+                                "name": Object {
+                                  "name": "parentof",
+                                  "type": "idenitfier",
+                                },
+                                "type": "functionCallExpression",
+                              },
+                            ],
+                            "name": Object {
+                              "name": "GetEntryIntegerID",
+                              "type": "idenitfier",
+                            },
+                            "type": "functionCallExpression",
+                          },
                           "name": "BaseEntryIntegerID",
                         },
                       ],
@@ -34880,6 +36348,10 @@ Array [
           "declarations": Array [
             Object {
               "annotations": Array [],
+              "initializer": Object {
+                "string": "",
+                "type": "string",
+              },
               "name": "sComment",
             },
           ],
@@ -35217,6 +36689,52 @@ Array [
     "declarations": Array [
       Object {
         "annotations": Array [],
+        "initializer": Object {
+          "left": Object {
+            "left": Object {
+              "expression": Object {
+                "name": "DosHeader",
+                "type": "idenitfier",
+              },
+              "name": "AddressOfNewExeHeader",
+              "type": "propertyAccessExpression",
+            },
+            "operator": "+",
+            "right": Object {
+              "operand": Object {
+                "name": "NtHeader",
+                "type": "idenitfier",
+              },
+              "type": "sizeofExpression",
+            },
+            "type": "binaryExpression",
+          },
+          "operator": "+",
+          "right": Object {
+            "left": Object {
+              "expression": Object {
+                "expression": Object {
+                  "name": "NtHeader",
+                  "type": "idenitfier",
+                },
+                "name": "FileHeader",
+                "type": "propertyAccessExpression",
+              },
+              "name": "NumberOfSections",
+              "type": "propertyAccessExpression",
+            },
+            "operator": "*",
+            "right": Object {
+              "operand": Object {
+                "name": "IMAGE_SECTION_HEADER",
+                "type": "idenitfier",
+              },
+              "type": "sizeofExpression",
+            },
+            "type": "binaryExpression",
+          },
+          "type": "binaryExpression",
+        },
         "name": "ulRawHeaderSize",
       },
     ],
@@ -35356,6 +36874,10 @@ Array [
     "declarations": Array [
       Object {
         "annotations": Array [],
+        "initializer": Object {
+          "type": "number",
+          "value": 0,
+        },
         "name": "ulIndex",
       },
     ],
