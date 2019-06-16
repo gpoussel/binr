@@ -385,99 +385,99 @@ function getVisitor(parser) {
 
     booleanAndExpression(ctx) {
       if (_.size(ctx.binaryOrExpression) > 1) {
-        // TODO
+        // TODO booleanAndExpression
       }
       return this.visit(_.first(ctx.binaryOrExpression));
     }
 
     binaryOrExpression(ctx) {
       if (_.size(ctx.binaryXorExpression) > 1) {
-        // TODO
+        // TODO binaryOrExpression
       }
       return this.visit(_.first(ctx.binaryXorExpression));
     }
 
     binaryXorExpression(ctx) {
       if (_.size(ctx.binaryAndExpression) > 1) {
-        // TODO
+        // TODO binaryXorExpression
       }
       return this.visit(_.first(ctx.binaryAndExpression));
     }
 
     binaryAndExpression(ctx) {
       if (_.size(ctx.equalityExpression) > 1) {
-        // TODO
+        // TODO binaryAndExpression
       }
       return this.visit(_.first(ctx.equalityExpression));
     }
 
     equalityExpression(ctx) {
       if (_.size(ctx.relationalExpression) > 1) {
-        // TODO
+        // TODO equalityExpression
       }
       return this.visit(_.first(ctx.relationalExpression));
     }
 
     relationalExpression(ctx) {
       if (_.size(ctx.shiftExpression) > 1) {
-        // TODO
+        // TODO relationalExpression
       }
       return this.visit(_.first(ctx.shiftExpression));
     }
 
     shiftExpression(ctx) {
       if (_.size(ctx.additiveExpression) > 1) {
-        // TODO
+        // TODO shiftExpression
       }
       return this.visit(_.first(ctx.additiveExpression));
     }
 
     additiveExpression(ctx) {
       if (_.size(ctx.multiplicativeExpression) > 1) {
-        // TODO
+        // TODO additiveExpression
       }
       return this.visit(_.first(ctx.multiplicativeExpression));
     }
 
     multiplicativeExpression(ctx) {
       if (_.size(ctx.castExpression) > 1) {
-        // TODO
+        // TODO multiplicativeExpression
       }
       return this.visit(_.first(ctx.castExpression));
     }
 
     castExpression(ctx) {
-      if (_.has(ctx, "castOperator")) {
-        return this.visit(ctx.castOperator);
+      if (_.has(ctx, "castOperation")) {
+        return this.visit(ctx.castOperation);
       }
       if (_.has(ctx, "prefixExpression")) {
         return this.visit(ctx.prefixExpression);
       }
     }
 
-    castOperator(ctx) {
-      // TODO
+    castOperation(ctx) {
+      // TODO castOperation
     }
 
     prefixExpression(ctx) {
       if (_.has(ctx, "postfixExpression")) {
         return this.visit(ctx.postfixExpression);
       }
-      // TODO
+      // TODO prefixExpression
     }
 
     postfixExpression(ctx) {
-      // TODO
+      // TODO postfixExpression
       return this.visit(ctx.callExpression);
     }
 
     callExpression(ctx) {
-      // TODO
+      // TODO callExpression
       return this.visit(ctx.memberExpression);
     }
 
     memberExpression(ctx) {
-      // TODO
+      // TODO memberExpression
       return this.visit(ctx.primaryExpression);
     }
 
@@ -601,38 +601,8 @@ function getVisitor(parser) {
       return result;
     }
 
-    logicalOrExpressionRest(ctx) {
-      return _.map(ctx.infixOperator, (operator, index) => ({
-        operator: this.visit(operator),
-        expression: this.visit(ctx.expression3[index]),
-      }));
-    }
-
     forInitUpdate(ctx) {
       // TODO forInitUpdate
-    }
-
-    parExpressionOrCastExpression(ctx) {
-      const firstExpression = this.visit(ctx.expressionOrTypeName);
-      if (_.has(ctx, "infixOperator")) {
-        // That's not a cast
-        return this.createBinaryExpressions(
-          firstExpression,
-          _.concat([
-            {
-              operator: this.visit(ctx.infixOperator),
-              expression: this.visit(ctx.assignmentExpression),
-            },
-            this.visit(ctx.logicalOrExpressionRest),
-          ])
-        );
-      }
-      // That's a cast
-      return {
-        type: "castExpression",
-        typeName: firstExpression,
-        expression: this.visit(ctx.assignmentExpression),
-      };
     }
 
     selector(ctx) {

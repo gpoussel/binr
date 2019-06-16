@@ -659,10 +659,6 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.BracketClose);
     });
 
-    $.RULE("identifierSuffix", () => {
-      $.SUBRULE($.arguments);
-    });
-
     $.RULE("arguments", () => {
       $.CONSUME(tokens.ParenthesisOpen);
       $.MANY_SEP({
