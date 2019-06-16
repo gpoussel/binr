@@ -735,7 +735,7 @@ function getVisitor(parser) {
       }
       if (_.has(ctx, "Identifier")) {
         return {
-          type: "idenitfier",
+          type: "identifier",
           name: getIdentifier(ctx.Identifier),
         };
       }
