@@ -627,6 +627,10 @@ function getVisitor(parser) {
       return getFirstTokenImage(ctx);
     }
 
+    postfixOperator(ctx) {
+      return getFirstTokenImage(ctx);
+    }
+
     unaryOperator(ctx) {
       return getFirstTokenImage(ctx);
     }
