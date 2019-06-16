@@ -78,6 +78,8 @@ const TokenName = SEnum(
   "Signed",
   "Unsigned",
   "Sizeof",
+  "True",
+  "False",
   "Identifier",
   "StringLiteral",
   "NumberHexadecimalLiteral",
@@ -235,6 +237,10 @@ _.each(
     { name: TokenName.Void, keyword: "void" },
     { name: TokenName.Signed, keyword: "signed" },
     { name: TokenName.Unsigned, keyword: "unsigned" },
+
+    // Booleans
+    { name: TokenName.True, keyword: "true" },
+    { name: TokenName.False, keyword: "false" },
 
     // Special functions
     { name: TokenName.Sizeof, keyword: "sizeof" },

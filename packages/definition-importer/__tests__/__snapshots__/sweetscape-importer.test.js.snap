@@ -18,8 +18,8 @@ Array [
   Object {
     "arguments": Array [
       Object {
-        "name": "true",
-        "type": "idenitfier",
+        "type": "boolean",
+        "value": true,
       },
     ],
     "name": Object {
@@ -3656,8 +3656,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -3751,8 +3751,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -4623,8 +4623,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -4678,8 +4678,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -4733,8 +4733,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -4788,8 +4788,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -4989,8 +4989,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -5030,8 +5030,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -5071,8 +5071,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -5189,8 +5189,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -5645,8 +5645,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -5714,8 +5714,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -5897,8 +5897,8 @@ Array [
               Object {
                 "key": "optimize",
                 "value": Object {
-                  "name": "false",
-                  "type": "idenitfier",
+                  "type": "boolean",
+                  "value": false,
                 },
               },
             ],
@@ -6277,8 +6277,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -8017,8 +8017,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -8818,8 +8818,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -8859,8 +8859,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -8902,8 +8902,8 @@ Array [
                         Object {
                           "key": "optimize",
                           "value": Object {
-                            "name": "false",
-                            "type": "idenitfier",
+                            "type": "boolean",
+                            "value": false,
                           },
                         },
                       ],
@@ -9023,8 +9023,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -9579,8 +9579,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -9620,8 +9620,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -9785,8 +9785,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -9826,8 +9826,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -9867,8 +9867,8 @@ Array [
                     Object {
                       "key": "optimize",
                       "value": Object {
-                        "name": "false",
-                        "type": "idenitfier",
+                        "type": "boolean",
+                        "value": false,
                       },
                     },
                   ],
@@ -9949,8 +9949,8 @@ Array [
                   Object {
                     "key": "optimize",
                     "value": Object {
-                      "name": "false",
-                      "type": "idenitfier",
+                      "type": "boolean",
+                      "value": false,
                     },
                   },
                 ],
@@ -10003,8 +10003,8 @@ Array [
                   Object {
                     "key": "optimize",
                     "value": Object {
-                      "name": "false",
-                      "type": "idenitfier",
+                      "type": "boolean",
+                      "value": false,
                     },
                   },
                 ],
@@ -10053,8 +10053,8 @@ Array [
       Object {
         "annotations": Array [],
         "initializer": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
         "name": "descriptor_comp_decoded",
       },
@@ -10072,8 +10072,8 @@ Array [
       Object {
         "annotations": Array [],
         "initializer": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
         "name": "method_comp_decoded",
       },
@@ -19933,8 +19933,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -20682,8 +20682,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -22563,8 +22563,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -24058,8 +24058,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -24385,8 +24385,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -24681,8 +24681,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -25310,8 +25310,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -26095,8 +26095,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -26539,8 +26539,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -27210,8 +27210,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -27408,8 +27408,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -27606,8 +27606,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -27864,8 +27864,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -27979,8 +27979,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -28196,8 +28196,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -28362,8 +28362,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -28862,8 +28862,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -30071,8 +30071,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -30561,8 +30561,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -31693,8 +31693,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -32766,8 +32766,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -32859,8 +32859,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -33818,8 +33818,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -34359,8 +34359,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -35449,8 +35449,8 @@ Array [
                         Object {
                           "key": "optimize",
                           "value": Object {
-                            "name": "false",
-                            "type": "idenitfier",
+                            "type": "boolean",
+                            "value": false,
                           },
                         },
                       ],
@@ -36944,8 +36944,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -37338,8 +37338,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -39163,8 +39163,8 @@ Array [
               Object {
                 "key": "hidden",
                 "value": Object {
-                  "name": "true",
-                  "type": "idenitfier",
+                  "type": "boolean",
+                  "value": true,
                 },
               },
             ],
@@ -40564,8 +40564,8 @@ Array [
               Object {
                 "key": "hidden",
                 "value": Object {
-                  "name": "true",
-                  "type": "idenitfier",
+                  "type": "boolean",
+                  "value": true,
                 },
               },
             ],
@@ -40747,8 +40747,8 @@ Array [
               Object {
                 "key": "hidden",
                 "value": Object {
-                  "name": "true",
-                  "type": "idenitfier",
+                  "type": "boolean",
+                  "value": true,
                 },
               },
             ],
@@ -40800,8 +40800,8 @@ Array [
               Object {
                 "key": "hidden",
                 "value": Object {
-                  "name": "true",
-                  "type": "idenitfier",
+                  "type": "boolean",
+                  "value": true,
                 },
               },
             ],
@@ -42133,8 +42133,8 @@ Array [
                   Object {
                     "key": "hidden",
                     "value": Object {
-                      "name": "true",
-                      "type": "idenitfier",
+                      "type": "boolean",
+                      "value": true,
                     },
                   },
                 ],
@@ -42166,8 +42166,8 @@ Array [
                   Object {
                     "key": "hidden",
                     "value": Object {
-                      "name": "true",
-                      "type": "idenitfier",
+                      "type": "boolean",
+                      "value": true,
                     },
                   },
                 ],
@@ -42199,8 +42199,8 @@ Array [
                   Object {
                     "key": "hidden",
                     "value": Object {
-                      "name": "true",
-                      "type": "idenitfier",
+                      "type": "boolean",
+                      "value": true,
                     },
                   },
                 ],
@@ -42258,8 +42258,8 @@ Array [
                   Object {
                     "key": "hidden",
                     "value": Object {
-                      "name": "true",
-                      "type": "idenitfier",
+                      "type": "boolean",
+                      "value": true,
                     },
                   },
                 ],
@@ -42421,8 +42421,8 @@ Array [
                   Object {
                     "key": "hidden",
                     "value": Object {
-                      "name": "true",
-                      "type": "idenitfier",
+                      "type": "boolean",
+                      "value": true,
                     },
                   },
                 ],
@@ -42526,8 +42526,8 @@ Array [
                   Object {
                     "key": "hidden",
                     "value": Object {
-                      "name": "true",
-                      "type": "idenitfier",
+                      "type": "boolean",
+                      "value": true,
                     },
                   },
                 ],
@@ -42585,8 +42585,8 @@ Array [
                   Object {
                     "key": "hidden",
                     "value": Object {
-                      "name": "true",
-                      "type": "idenitfier",
+                      "type": "boolean",
+                      "value": true,
                     },
                   },
                 ],
@@ -43886,8 +43886,8 @@ Array [
                                           Object {
                                             "key": "open",
                                             "value": Object {
-                                              "name": "false",
-                                              "type": "idenitfier",
+                                              "type": "boolean",
+                                              "value": false,
                                             },
                                           },
                                         ],
@@ -45108,8 +45108,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -45197,8 +45197,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -45213,8 +45213,8 @@ Array [
                   Object {
                     "key": "optimize",
                     "value": Object {
-                      "name": "false",
-                      "type": "idenitfier",
+                      "type": "boolean",
+                      "value": false,
                     },
                   },
                   Object {
@@ -45250,8 +45250,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -45432,8 +45432,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -45804,8 +45804,8 @@ Array [
       Object {
         "key": "optimize",
         "value": Object {
-          "name": "false",
-          "type": "idenitfier",
+          "type": "boolean",
+          "value": false,
         },
       },
     ],
@@ -45986,8 +45986,8 @@ Array [
                         Object {
                           "key": "optimize",
                           "value": Object {
-                            "name": "false",
-                            "type": "idenitfier",
+                            "type": "boolean",
+                            "value": false,
                           },
                         },
                       ],
@@ -46042,8 +46042,8 @@ Array [
                         Object {
                           "key": "optimize",
                           "value": Object {
-                            "name": "false",
-                            "type": "idenitfier",
+                            "type": "boolean",
+                            "value": false,
                           },
                         },
                       ],
@@ -51049,8 +51049,8 @@ Array [
                 Object {
                   "key": "hidden",
                   "value": Object {
-                    "name": "true",
-                    "type": "idenitfier",
+                    "type": "boolean",
+                    "value": true,
                   },
                 },
                 Object {

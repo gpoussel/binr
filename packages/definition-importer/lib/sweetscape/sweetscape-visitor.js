@@ -727,6 +727,12 @@ function getVisitor(parser) {
           value: this.visit(ctx.number),
         };
       }
+      if (_.has(ctx, "boolean")) {
+        return {
+          type: "boolean",
+          value: this.visit(ctx.boolean),
+        };
+      }
       if (_.has(ctx, "Identifier")) {
         return {
           type: "idenitfier",
@@ -738,6 +744,16 @@ function getVisitor(parser) {
           type: "string",
           string: getString(ctx.StringLiteral),
         };
+      }
+      throw new Error();
+    }
+
+    boolean(ctx) {
+      if (_.has(ctx, "True")) {
+        return true;
+      }
+      if (_.has(ctx, "False")) {
+        return false;
       }
       throw new Error();
     }

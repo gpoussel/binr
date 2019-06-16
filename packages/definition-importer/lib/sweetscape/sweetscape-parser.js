@@ -714,7 +714,12 @@ class SweetscapeParser extends Parser {
         { ALT: () => $.CONSUME(tokens.Identifier) },
         { ALT: () => $.SUBRULE($.number) },
         { ALT: () => $.CONSUME(tokens.StringLiteral) },
+        { ALT: () => $.SUBRULE($.boolean) },
       ]);
+    });
+
+    $.RULE("boolean", () => {
+      $.OR([{ ALT: () => $.CONSUME(tokens.True) }, { ALT: () => $.CONSUME(tokens.False) }]);
     });
 
     this.performSelfAnalysis();
