@@ -86,7 +86,7 @@ function getVisitor(parser) {
         name: getIdentifier(identifiers),
         parameters: this.visit(functionParameterDeclarationList),
         forwardDeclaration,
-        content: forwardDeclaration ? {} : this.visit(ctx.statementList),
+        content: forwardDeclaration ? {} : this.visit(ctx.block),
       };
     }
 
@@ -352,7 +352,7 @@ function getVisitor(parser) {
 
     structDeclaration(ctx) {
       const result = {
-        body: this.visit(ctx.statementList),
+        body: this.visit(ctx.block),
       };
       if (_.has(ctx, "functionParameterDeclarationList")) {
         result.parameters = this.visit(ctx.functionParameterDeclarationList);

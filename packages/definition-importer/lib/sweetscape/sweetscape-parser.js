@@ -71,21 +71,7 @@ class SweetscapeParser extends Parser {
       $.SUBRULE($.typeName);
       $.CONSUME1(tokens.Identifier); // Function name
       $.SUBRULE($.functionParameterDeclarationList);
-      $.OR([
-        {
-          ALT: () => {
-            $.CONSUME(tokens.CurlyBraceOpen);
-            $.SUBRULE($.statementList);
-            $.CONSUME(tokens.CurlyBraceClose);
-          },
-        },
-        {
-          ALT: () => {
-            // Forward declaration
-            $.CONSUME(tokens.SemiColon);
-          },
-        },
-      ]);
+      $.OR([{ ALT: () => $.SUBRULE($.block) }, { ALT: () => $.CONSUME(tokens.SemiColon) }]);
     });
 
     $.RULE("localVariableDeclarationStatement", () => {
@@ -156,9 +142,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("structDeclaration", () => {
       $.OPTION(() => $.SUBRULE($.functionParameterDeclarationList));
-      $.CONSUME(tokens.CurlyBraceOpen);
-      $.SUBRULE($.statementList);
-      $.CONSUME(tokens.CurlyBraceClose);
+      $.SUBRULE($.block);
     });
 
     $.RULE("enumDeclaration", () => {
