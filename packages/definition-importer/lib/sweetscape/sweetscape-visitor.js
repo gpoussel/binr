@@ -280,8 +280,8 @@ function getVisitor(parser) {
         alias: getIdentifier(ctx.Identifier),
         annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
-      if (_.has(ctx, "selector")) {
-        result.selector = this.visit(ctx.selector);
+      if (_.has(ctx, "arraySelector")) {
+        result.arraySelector = this.visit(ctx.arraySelector);
       }
       return result;
     }
@@ -738,19 +738,6 @@ function getVisitor(parser) {
         type: "commaExpression",
         expressions: _.map(ctx.assignmentExpression, this.visit.bind(this)),
       };
-    }
-
-    selector(ctx) {
-      if (_.has(ctx, "arraySelector")) {
-        return this.visit(ctx.arraySelector);
-      }
-      if (_.has(ctx, "Period")) {
-        return {
-          type: "qualifiedSelector",
-          name: getIdentifier(ctx.Identifier),
-        };
-      }
-      throw new Error();
     }
 
     arraySelector(ctx) {

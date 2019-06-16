@@ -115,7 +115,7 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.Typedef);
       $.SUBRULE($.typeName); // Type
       $.CONSUME2(tokens.Identifier); // Alias
-      $.OPTION4(() => $.SUBRULE($.selector));
+      $.OPTION4(() => $.SUBRULE($.arraySelector));
       $.OPTION2(() => $.SUBRULE($.annotations));
       $.CONSUME(tokens.SemiColon);
     });
@@ -618,18 +618,6 @@ class SweetscapeParser extends Parser {
       // No trailing comma supported
       $.AT_LEAST_ONE_SEP({ SEP: tokens.Comma, DEF: () => $.SUBRULE2($.assignmentExpression) });
       $.CONSUME(tokens.CurlyBraceClose);
-    });
-
-    $.RULE("selector", () => {
-      $.OR([
-        {
-          ALT: () => {
-            $.CONSUME(tokens.Period);
-            $.CONSUME(tokens.Identifier);
-          },
-        },
-        { ALT: () => $.SUBRULE($.arraySelector) },
-      ]);
     });
 
     $.RULE("arraySelector", () => {

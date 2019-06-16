@@ -16977,16 +16977,16 @@ Array [
         "value": "hex",
       },
     ],
-    "name": Object {
-      "array": false,
-      "name": "ubyte",
-    },
-    "selector": Object {
+    "arraySelector": Object {
       "expression": Object {
         "type": "number",
         "value": 20,
       },
       "type": "arraySelector",
+    },
+    "name": Object {
+      "array": false,
+      "name": "ubyte",
     },
     "type": "typeAlias",
   },
