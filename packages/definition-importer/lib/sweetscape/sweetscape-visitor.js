@@ -537,26 +537,29 @@ function getVisitor(parser) {
       const memberResult = this.visit(ctx.memberExpression);
       let currentExpression = memberResult;
       _.each(ctx.callExpressionRest, expressionRest => {
-        if (_.has(expressionRest, "arguments")) {
+        const { children: expressionRestChildren } = expressionRest;
+        if (_.has(expressionRestChildren, "arguments")) {
           // That's a function call
           currentExpression = {
             type: "functionCallExpression",
             name: currentExpression,
-            arguments: this.visit(expressionRest.arguments),
+            arguments: this.visit(expressionRestChildren.arguments),
           };
-        } else if (_.has(expressionRest, "assignmentExpression")) {
+        } else if (_.has(expressionRestChildren, "assignmentExpression")) {
           // That's an array index
           currentExpression = {
             type: "arrayIndexExpression",
             expression: currentExpression,
-            index: this.visit(expressionRest.assignmentExpression),
+            index: this.visit(expressionRestChildren.assignmentExpression),
           };
-        } else if (_.has(expressionRest, "Identifier")) {
+        } else if (_.has(expressionRestChildren, "Identifier")) {
           currentExpression = {
             type: "propertyAccessExpression",
             expression: currentExpression,
-            name: getIdentifier(expressionRest.Identifier),
+            name: getIdentifier(expressionRestChildren.Identifier),
           };
+        } else {
+          throw new Error();
         }
       });
       return currentExpression;
@@ -566,19 +569,22 @@ function getVisitor(parser) {
       const primaryResult = this.visit(ctx.primaryExpression);
       let currentExpression = primaryResult;
       _.each(ctx.memberExpressionRest, expressionRest => {
-        if (_.has(expressionRest, "assignmentExpression")) {
+        const { children: expressionRestChildren } = expressionRest;
+        if (_.has(expressionRestChildren, "assignmentExpression")) {
           // That's an array index
           currentExpression = {
             type: "arrayIndexExpression",
             expression: currentExpression,
-            index: this.visit(expressionRest.assignmentExpression),
+            index: this.visit(expressionRestChildren.assignmentExpression),
           };
-        } else if (_.has(expressionRest, "Identifier")) {
+        } else if (_.has(expressionRestChildren, "Identifier")) {
           currentExpression = {
             type: "propertyAccessExpression",
             expression: currentExpression,
-            name: getIdentifier(expressionRest.Identifier),
+            name: getIdentifier(expressionRestChildren.Identifier),
           };
+        } else {
+          throw new Error();
         }
       });
       return currentExpression;
