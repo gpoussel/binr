@@ -80,11 +80,21 @@ Array [
           "body": Object {
             "statements": Array [
               "SPrintf",
-              "ret",
+              Object {
+                "left": "ret",
+                "operator": "+=",
+                "right": "tmp",
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<",
+            "right": 20,
+            "type": "binaryExpression",
+          },
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
@@ -183,12 +193,36 @@ Array [
             },
           },
           Object {
-            "condition": undefined,
+            "condition": Object {
+              "left": Object {
+                "left": undefined,
+                "operator": "||",
+                "right": Object {
+                  "left": "newline",
+                  "operator": "!=",
+                  "right": "\\\\n",
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              "operator": "||",
+              "right": Object {
+                "left": "zero",
+                "operator": "!=",
+                "right": 0,
+                "type": "binaryExpression",
+              },
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 "Warning",
                 Object {
-                  "assignmentExpression": undefined,
+                  "assignmentExpression": Object {
+                    "expression": undefined,
+                    "operator": "-",
+                    "type": "unaryExpression",
+                  },
                   "type": "returnStatement",
                 },
               ],
@@ -280,7 +314,12 @@ Array [
             },
           },
           Object {
-            "condition": "val",
+            "condition": Object {
+              "left": "val",
+              "operator": ">",
+              "right": 127,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -303,7 +342,12 @@ Array [
                   },
                 },
                 Object {
-                  "condition": "val",
+                  "condition": Object {
+                    "left": "val",
+                    "operator": ">",
+                    "right": 127,
+                    "type": "binaryExpression",
+                  },
                   "trueStatement": Object {
                     "statements": Array [
                       Object {
@@ -326,7 +370,12 @@ Array [
                         },
                       },
                       Object {
-                        "condition": "val",
+                        "condition": Object {
+                          "left": "val",
+                          "operator": ">",
+                          "right": 127,
+                          "type": "binaryExpression",
+                        },
                         "trueStatement": Object {
                           "statements": Array [
                             Object {
@@ -349,7 +398,12 @@ Array [
                               },
                             },
                             Object {
-                              "condition": "val",
+                              "condition": Object {
+                                "left": "val",
+                                "operator": ">",
+                                "right": 127,
+                                "type": "binaryExpression",
+                              },
                               "trueStatement": Object {
                                 "statements": Array [
                                   Object {
@@ -431,31 +485,116 @@ Array [
             "name": "ubyte",
           },
         },
-        "result",
         Object {
-          "condition": "result",
+          "left": "result",
+          "operator": "=",
+          "right": "u",
+          "type": "binaryExpression",
+        },
+        Object {
+          "condition": Object {
+            "left": "result",
+            "operator": ">",
+            "right": 127,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
-              "cur",
-              "result",
               Object {
-                "condition": "cur",
+                "left": "cur",
+                "operator": "=",
+                "right": "u",
+                "type": "binaryExpression",
+              },
+              Object {
+                "left": "result",
+                "operator": "=",
+                "right": Object {
+                  "left": undefined,
+                  "operator": "|",
+                  "right": undefined,
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": "cur",
+                  "operator": ">",
+                  "right": 127,
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
-                    "cur",
-                    "result",
                     Object {
-                      "condition": "cur",
+                      "left": "cur",
+                      "operator": "=",
+                      "right": "u",
+                      "type": "binaryExpression",
+                    },
+                    Object {
+                      "left": "result",
+                      "operator": "|=",
+                      "right": Object {
+                        "left": undefined,
+                        "operator": "<<",
+                        "right": 14,
+                        "type": "binaryExpression",
+                      },
+                      "type": "binaryExpression",
+                    },
+                    Object {
+                      "condition": Object {
+                        "left": "cur",
+                        "operator": ">",
+                        "right": 127,
+                        "type": "binaryExpression",
+                      },
                       "trueStatement": Object {
                         "statements": Array [
-                          "cur",
-                          "result",
                           Object {
-                            "condition": "cur",
+                            "left": "cur",
+                            "operator": "=",
+                            "right": "u",
+                            "type": "binaryExpression",
+                          },
+                          Object {
+                            "left": "result",
+                            "operator": "|=",
+                            "right": Object {
+                              "left": undefined,
+                              "operator": "<<",
+                              "right": 21,
+                              "type": "binaryExpression",
+                            },
+                            "type": "binaryExpression",
+                          },
+                          Object {
+                            "condition": Object {
+                              "left": "cur",
+                              "operator": ">",
+                              "right": 127,
+                              "type": "binaryExpression",
+                            },
                             "trueStatement": Object {
                               "statements": Array [
-                                "cur",
-                                "result",
+                                Object {
+                                  "left": "cur",
+                                  "operator": "=",
+                                  "right": "u",
+                                  "type": "binaryExpression",
+                                },
+                                Object {
+                                  "left": "result",
+                                  "operator": "|=",
+                                  "right": Object {
+                                    "left": undefined,
+                                    "operator": "<<",
+                                    "right": 28,
+                                    "type": "binaryExpression",
+                                  },
+                                  "type": "binaryExpression",
+                                },
                               ],
                               "type": "statementList",
                             },
@@ -514,7 +653,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": undefined,
+          "assignmentExpression": Object {
+            "left": undefined,
+            "operator": "-",
+            "right": 1,
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -556,7 +700,12 @@ Array [
             "name": "string",
           },
         },
-        "s",
+        Object {
+          "left": "s",
+          "operator": "=",
+          "right": "SPrintf",
+          "type": "binaryExpression",
+        },
         Object {
           "assignmentExpression": "s",
           "type": "returnStatement",
@@ -616,7 +765,12 @@ Array [
             },
           },
           Object {
-            "condition": "val",
+            "condition": Object {
+              "left": "val",
+              "operator": ">",
+              "right": 127,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -639,7 +793,12 @@ Array [
                   },
                 },
                 Object {
-                  "condition": "val",
+                  "condition": Object {
+                    "left": "val",
+                    "operator": ">",
+                    "right": 127,
+                    "type": "binaryExpression",
+                  },
                   "trueStatement": Object {
                     "statements": Array [
                       Object {
@@ -662,7 +821,12 @@ Array [
                         },
                       },
                       Object {
-                        "condition": "val",
+                        "condition": Object {
+                          "left": "val",
+                          "operator": ">",
+                          "right": 127,
+                          "type": "binaryExpression",
+                        },
                         "trueStatement": Object {
                           "statements": Array [
                             Object {
@@ -685,7 +849,12 @@ Array [
                               },
                             },
                             Object {
-                              "condition": "val",
+                              "condition": Object {
+                                "left": "val",
+                                "operator": ">",
+                                "right": 127,
+                                "type": "binaryExpression",
+                              },
                               "trueStatement": Object {
                                 "statements": Array [
                                   Object {
@@ -767,13 +936,33 @@ Array [
             "name": "ubyte",
           },
         },
-        "result",
         Object {
-          "condition": "result",
+          "left": "result",
+          "operator": "=",
+          "right": "u",
+          "type": "binaryExpression",
+        },
+        Object {
+          "condition": Object {
+            "left": "result",
+            "operator": "<=",
+            "right": 127,
+            "type": "binaryExpression",
+          },
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
-              "result",
+              Object {
+                "left": "result",
+                "operator": "=",
+                "right": Object {
+                  "left": undefined,
+                  "operator": ">>",
+                  "right": 25,
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
@@ -822,7 +1011,12 @@ Array [
             "name": "string",
           },
         },
-        "s",
+        Object {
+          "left": "s",
+          "operator": "=",
+          "right": "SPrintf",
+          "type": "binaryExpression",
+        },
         Object {
           "assignmentExpression": "s",
           "type": "returnStatement",
@@ -1005,7 +1199,12 @@ Array [
               ],
               "type": "statementList",
             },
-            "condition": "i",
+            "condition": Object {
+              "left": "i",
+              "operator": "<",
+              "right": "s",
+              "type": "binaryExpression",
+            },
             "increment": undefined,
             "initialization": undefined,
             "type": "forStatement",
@@ -1077,7 +1276,12 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  "s",
+                  Object {
+                    "left": "s",
+                    "operator": "=",
+                    "right": "StringIdRead",
+                    "type": "binaryExpression",
+                  },
                   Object {
                     "type": "breakStatement",
                   },
@@ -1091,7 +1295,12 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  "s",
+                  Object {
+                    "left": "s",
+                    "operator": "=",
+                    "right": "LongTypeIdRead",
+                    "type": "binaryExpression",
+                  },
                   Object {
                     "type": "breakStatement",
                   },
@@ -1105,7 +1314,12 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  "s",
+                  Object {
+                    "left": "s",
+                    "operator": "=",
+                    "right": "FieldIdRead",
+                    "type": "binaryExpression",
+                  },
                   Object {
                     "type": "breakStatement",
                   },
@@ -1119,7 +1333,12 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  "s",
+                  Object {
+                    "left": "s",
+                    "operator": "=",
+                    "right": "FieldIdRead",
+                    "type": "binaryExpression",
+                  },
                   Object {
                     "type": "breakStatement",
                   },
@@ -1133,7 +1352,12 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  "s",
+                  Object {
+                    "left": "s",
+                    "operator": "=",
+                    "right": "NULL",
+                    "type": "binaryExpression",
+                  },
                   Object {
                     "type": "breakStatement",
                   },
@@ -1231,7 +1455,12 @@ Array [
           },
         },
         Object {
-          "condition": "v",
+          "condition": Object {
+            "left": "v",
+            "operator": "==",
+            "right": 1,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -1246,12 +1475,32 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              "ret",
-              "shift",
+              Object {
+                "left": "ret",
+                "operator": "|=",
+                "right": Object {
+                  "left": undefined,
+                  "operator": "<<",
+                  "right": "shift",
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
+              Object {
+                "left": "shift",
+                "operator": "+=",
+                "right": 8,
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<",
+            "right": "v",
+            "type": "binaryExpression",
+          },
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
@@ -1390,7 +1639,12 @@ Array [
                       },
                     },
                     "SPrintf",
-                    "typestr",
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "byte",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1428,7 +1682,12 @@ Array [
                       },
                     },
                     "SPrintf",
-                    "typestr",
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "short",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1466,7 +1725,12 @@ Array [
                       },
                     },
                     "SPrintf",
-                    "typestr",
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "char",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1504,7 +1768,12 @@ Array [
                       },
                     },
                     "SPrintf",
-                    "typestr",
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "int",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1542,7 +1811,12 @@ Array [
                       },
                     },
                     "SPrintf",
-                    "typestr",
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "long",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1580,7 +1854,12 @@ Array [
                       },
                     },
                     "SPrintf",
-                    "typestr",
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "float",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1618,7 +1897,12 @@ Array [
                       },
                     },
                     "SPrintf",
-                    "typestr",
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "double",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1655,8 +1939,28 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    "valstr",
-                    "typestr",
+                    Object {
+                      "left": "valstr",
+                      "operator": "=",
+                      "right": Object {
+                        "left": Object {
+                          "left": "\\\\\\"",
+                          "operator": "+",
+                          "right": "GetStringById",
+                          "type": "binaryExpression",
+                        },
+                        "operator": "+",
+                        "right": "\\\\\\"",
+                        "type": "binaryExpression",
+                      },
+                      "type": "binaryExpression",
+                    },
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "string",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1693,8 +1997,18 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    "valstr",
-                    "typestr",
+                    Object {
+                      "left": "valstr",
+                      "operator": "=",
+                      "right": "GetLongTypeById",
+                      "type": "binaryExpression",
+                    },
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "type",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1731,8 +2045,18 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    "valstr",
-                    "typestr",
+                    Object {
+                      "left": "valstr",
+                      "operator": "=",
+                      "right": "GetFieldById",
+                      "type": "binaryExpression",
+                    },
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "field",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1769,8 +2093,18 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    "valstr",
-                    "typestr",
+                    Object {
+                      "left": "valstr",
+                      "operator": "=",
+                      "right": "GetMethodById",
+                      "type": "binaryExpression",
+                    },
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "method",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1807,8 +2141,18 @@ Array [
                         "name": "EncodedValue",
                       },
                     },
-                    "valstr",
-                    "typestr",
+                    Object {
+                      "left": "valstr",
+                      "operator": "=",
+                      "right": "GetFieldById",
+                      "type": "binaryExpression",
+                    },
+                    Object {
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "enum",
+                      "type": "binaryExpression",
+                    },
                     Object {
                       "type": "breakStatement",
                     },
@@ -1887,9 +2231,14 @@ Array [
                 "body": Object {
                   "statements": Array [
                     Object {
-                      "left": "typestr",
+                      "left": Object {
+                        "left": "typestr",
+                        "operator": "=",
+                        "right": "valstr",
+                        "type": "binaryExpression",
+                      },
                       "operator": "=",
-                      "right": "typestr",
+                      "right": "NULL",
                       "type": "binaryExpression",
                     },
                     Object {
@@ -1905,13 +2254,28 @@ Array [
               Object {
                 "body": Object {
                   "statements": Array [
-                    "typestr",
                     Object {
-                      "condition": "value_arg",
+                      "left": "typestr",
+                      "operator": "=",
+                      "right": "boolean",
+                      "type": "binaryExpression",
+                    },
+                    Object {
+                      "condition": Object {
+                        "left": "value_arg",
+                        "operator": "==",
+                        "right": 0,
+                        "type": "binaryExpression",
+                      },
                       "falseStatement": undefined,
                       "trueStatement": Object {
                         "statements": Array [
-                          "valstr",
+                          Object {
+                            "left": "valstr",
+                            "operator": "=",
+                            "right": "false",
+                            "type": "binaryExpression",
+                          },
                         ],
                         "type": "statementList",
                       },
@@ -1964,7 +2328,17 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "assignmentExpression": "v",
+          "assignmentExpression": Object {
+            "left": Object {
+              "left": "v",
+              "operator": "+",
+              "right": ": ",
+              "type": "binaryExpression",
+            },
+            "operator": "+",
+            "right": "v",
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -2093,11 +2467,26 @@ Array [
           },
         },
         Object {
-          "condition": "uleb128_value",
+          "condition": Object {
+            "left": "uleb128_value",
+            "operator": "<",
+            "right": 5,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
-              "count",
-              "dots",
+              Object {
+                "left": "count",
+                "operator": "=",
+                "right": "uleb128_value",
+                "type": "binaryExpression",
+              },
+              Object {
+                "left": "dots",
+                "operator": "=",
+                "right": 0,
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
@@ -2120,12 +2509,32 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              "val",
               Object {
-                "condition": "i",
+                "left": "val",
+                "operator": "+=",
+                "right": "EncodedValueStructRead",
+                "type": "binaryExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "left": "i",
+                    "operator": "<",
+                    "right": undefined,
+                    "type": "binaryExpression",
+                  },
+                  "operator": "||",
+                  "right": "dots",
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
-                    "val",
+                    Object {
+                      "left": "val",
+                      "operator": "+=",
+                      "right": ", ",
+                      "type": "binaryExpression",
+                    },
                   ],
                   "type": "statementList",
                 },
@@ -2134,7 +2543,12 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<",
+            "right": "count",
+            "type": "binaryExpression",
+          },
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
@@ -2143,13 +2557,23 @@ Array [
           "condition": "dots",
           "trueStatement": Object {
             "statements": Array [
-              "val",
+              Object {
+                "left": "val",
+                "operator": "+=",
+                "right": "...",
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
-        "val",
+        Object {
+          "left": "val",
+          "operator": "+=",
+          "right": "]",
+          "type": "binaryExpression",
+        },
         Object {
           "assignmentExpression": "val",
           "type": "returnStatement",
@@ -2256,7 +2680,17 @@ Array [
           },
         },
         Object {
-          "assignmentExpression": "name",
+          "assignmentExpression": Object {
+            "left": Object {
+              "left": "name",
+              "operator": "+",
+              "right": " = ",
+              "type": "binaryExpression",
+            },
+            "operator": "+",
+            "right": "e",
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -2333,7 +2767,12 @@ Array [
             },
           },
           Object {
-            "condition": "uleb128_value",
+            "condition": Object {
+              "left": "uleb128_value",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -2539,7 +2978,12 @@ Array [
             },
           },
           Object {
-            "condition": "endian_tag",
+            "condition": Object {
+              "left": "endian_tag",
+              "operator": "!=",
+              "right": undefined,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 "Warning",
@@ -3139,20 +3583,50 @@ Array [
           "body": Object {
             "statements": Array [
               Object {
-                "condition": "f",
+                "condition": Object {
+                  "left": "f",
+                  "operator": "&",
+                  "right": "i",
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
-                    "flags",
+                    Object {
+                      "left": "flags",
+                      "operator": "+=",
+                      "right": Object {
+                        "left": "EnumToString",
+                        "operator": "+",
+                        "right": " ",
+                        "type": "binaryExpression",
+                      },
+                      "type": "binaryExpression",
+                    },
                   ],
                   "type": "statementList",
                 },
                 "type": "ifStatement",
               },
-              "i",
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": Object {
+                  "left": "i",
+                  "operator": "<<",
+                  "right": 1,
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<=",
+            "right": "DEX_OPT_FLAG_INVOCATIONS",
+            "type": "binaryExpression",
+          },
           "type": "whileStatement",
         },
         "SPrintf",
@@ -3418,7 +3892,12 @@ Array [
             "name": "string",
           },
         },
-        "s",
+        Object {
+          "left": "s",
+          "operator": "=",
+          "right": "SPrintf",
+          "type": "binaryExpression",
+        },
         Object {
           "assignmentExpression": "s",
           "type": "returnStatement",
@@ -3595,7 +4074,12 @@ Array [
             "name": "string",
           },
         },
-        "s",
+        Object {
+          "left": "s",
+          "operator": "=",
+          "right": "SPrintf",
+          "type": "binaryExpression",
+        },
         Object {
           "assignmentExpression": "s",
           "type": "returnStatement",
@@ -3792,12 +4276,32 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              "s",
               Object {
-                "condition": "i",
+                "left": "s",
+                "operator": "+=",
+                "right": "GetTypeById",
+                "type": "binaryExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "left": "i",
+                    "operator": "+",
+                    "right": 1,
+                    "type": "binaryExpression",
+                  },
+                  "operator": "<",
+                  "right": "l",
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
-                    "s",
+                    Object {
+                      "left": "s",
+                      "operator": "+=",
+                      "right": ", ",
+                      "type": "binaryExpression",
+                    },
                   ],
                   "type": "statementList",
                 },
@@ -3806,7 +4310,12 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<",
+            "right": "l",
+            "type": "binaryExpression",
+          },
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
@@ -3902,10 +4411,24 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              "post",
-              "i",
               Object {
-                "condition": "i",
+                "left": "post",
+                "operator": "+=",
+                "right": "[]",
+                "type": "binaryExpression",
+              },
+              Object {
+                "expression": "i",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": "i",
+                  "operator": ">=",
+                  "right": "len",
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "assignmentExpression": "ERROR",
                   "type": "returnStatement",
@@ -3915,29 +4438,62 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": "descriptor",
+          "condition": Object {
+            "left": "descriptor",
+            "operator": "==",
+            "right": "[",
+            "type": "binaryExpression",
+          },
           "type": "whileStatement",
         },
         Object {
-          "condition": "descriptor",
+          "condition": Object {
+            "left": "descriptor",
+            "operator": "==",
+            "right": "L",
+            "type": "binaryExpression",
+          },
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
-              "i",
+              Object {
+                "expression": "i",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
               Object {
                 "body": Object {
                   "statements": Array [
                     Object {
-                      "condition": "descriptor",
+                      "condition": Object {
+                        "left": "descriptor",
+                        "operator": "==",
+                        "right": "/",
+                        "type": "binaryExpression",
+                      },
                       "falseStatement": undefined,
-                      "trueStatement": "desc",
+                      "trueStatement": Object {
+                        "left": "desc",
+                        "operator": "+=",
+                        "right": ".",
+                        "type": "binaryExpression",
+                      },
                       "type": "ifStatement",
                     },
-                    "i",
+                    Object {
+                      "expression": "i",
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
                   ],
                   "type": "statementList",
                 },
-                "condition": "i",
+                "condition": Object {
+                  "left": "i",
+                  "operator": "<",
+                  "right": "len",
+                  "type": "binaryExpression",
+                },
                 "type": "whileStatement",
               },
             ],
@@ -3946,7 +4502,12 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": "desc",
+          "assignmentExpression": Object {
+            "left": "desc",
+            "operator": "+",
+            "right": "post",
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -4050,7 +4611,12 @@ Array [
             },
           },
           Object {
-            "condition": "parameters_off",
+            "condition": Object {
+              "left": "parameters_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -4208,7 +4774,12 @@ Array [
             "name": "string",
           },
         },
-        "s",
+        Object {
+          "left": "s",
+          "operator": "=",
+          "right": "SPrintf",
+          "type": "binaryExpression",
+        },
         Object {
           "assignmentExpression": "s",
           "type": "returnStatement",
@@ -4285,12 +4856,32 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              "s",
               Object {
-                "condition": "i",
+                "left": "s",
+                "operator": "+=",
+                "right": "GetLongTypeDescriptor",
+                "type": "binaryExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "left": "i",
+                    "operator": "+",
+                    "right": 1,
+                    "type": "binaryExpression",
+                  },
+                  "operator": "<",
+                  "right": "l",
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
-                    "s",
+                    Object {
+                      "left": "s",
+                      "operator": "+=",
+                      "right": ", ",
+                      "type": "binaryExpression",
+                    },
                   ],
                   "type": "statementList",
                 },
@@ -4299,13 +4890,23 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<",
+            "right": "l",
+            "type": "binaryExpression",
+          },
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
         },
         Object {
-          "assignmentExpression": "s",
+          "assignmentExpression": Object {
+            "left": "s",
+            "operator": "+",
+            "right": ")",
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -4364,14 +4965,29 @@ Array [
           "condition": "exists",
           "trueStatement": Object {
             "statements": Array [
-              "params",
+              Object {
+                "left": "params",
+                "operator": "=",
+                "right": "GetParameterListString",
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": "ret",
+          "assignmentExpression": Object {
+            "left": Object {
+              "left": "ret",
+              "operator": "+",
+              "right": " ",
+              "type": "binaryExpression",
+            },
+            "operator": "+",
+            "right": "params",
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -4534,7 +5150,27 @@ Array [
           },
         },
         Object {
-          "assignmentExpression": "type",
+          "assignmentExpression": Object {
+            "left": Object {
+              "left": Object {
+                "left": Object {
+                  "left": "type",
+                  "operator": "+",
+                  "right": " ",
+                  "type": "binaryExpression",
+                },
+                "operator": "+",
+                "right": "class",
+                "type": "binaryExpression",
+              },
+              "operator": "+",
+              "right": ".",
+              "type": "binaryExpression",
+            },
+            "operator": "+",
+            "right": "name",
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -4637,7 +5273,12 @@ Array [
             "name": "string",
           },
         },
-        "s",
+        Object {
+          "left": "s",
+          "operator": "=",
+          "right": "SPrintf",
+          "type": "binaryExpression",
+        },
         Object {
           "assignmentExpression": "s",
           "type": "returnStatement",
@@ -4863,14 +5504,44 @@ Array [
           "condition": "exists",
           "trueStatement": Object {
             "statements": Array [
-              "params",
+              Object {
+                "left": "params",
+                "operator": "=",
+                "right": "GetParameterListString",
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
           "type": "ifStatement",
         },
         Object {
-          "assignmentExpression": "retval",
+          "assignmentExpression": Object {
+            "left": Object {
+              "left": Object {
+                "left": Object {
+                  "left": Object {
+                    "left": "retval",
+                    "operator": "+",
+                    "right": " ",
+                    "type": "binaryExpression",
+                  },
+                  "operator": "+",
+                  "right": "classname",
+                  "type": "binaryExpression",
+                },
+                "operator": "+",
+                "right": ".",
+                "type": "binaryExpression",
+              },
+              "operator": "+",
+              "right": "methodname",
+              "type": "binaryExpression",
+            },
+            "operator": "+",
+            "right": "params",
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -4973,7 +5644,12 @@ Array [
             "name": "string",
           },
         },
-        "s",
+        Object {
+          "left": "s",
+          "operator": "=",
+          "right": "SPrintf",
+          "type": "binaryExpression",
+        },
         Object {
           "assignmentExpression": "s",
           "type": "returnStatement",
@@ -5047,7 +5723,12 @@ Array [
             },
           },
           Object {
-            "condition": "annotations_off",
+            "condition": Object {
+              "left": "annotations_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5169,7 +5850,12 @@ Array [
             },
           },
           Object {
-            "condition": "annotations_off",
+            "condition": Object {
+              "left": "annotations_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5291,7 +5977,12 @@ Array [
             },
           },
           Object {
-            "condition": "annotations_off",
+            "condition": Object {
+              "left": "annotations_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5507,7 +6198,12 @@ Array [
             },
           },
           Object {
-            "condition": "annotation_off",
+            "condition": Object {
+              "left": "annotation_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5629,7 +6325,12 @@ Array [
             },
           },
           Object {
-            "condition": "size",
+            "condition": Object {
+              "left": "size",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5742,7 +6443,12 @@ Array [
             },
           },
           Object {
-            "condition": "class_annotations_off",
+            "condition": Object {
+              "left": "class_annotations_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5844,7 +6550,12 @@ Array [
             },
           },
           Object {
-            "condition": "fields_size",
+            "condition": Object {
+              "left": "fields_size",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5873,7 +6584,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "methods_size",
+            "condition": Object {
+              "left": "methods_size",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5902,7 +6618,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "parameters_size",
+            "condition": Object {
+              "left": "parameters_size",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -5974,7 +6695,12 @@ Array [
           "condition": "exists",
           "trueStatement": Object {
             "statements": Array [
-              "classes",
+              Object {
+                "left": "classes",
+                "operator": "=",
+                "right": "i",
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
@@ -6036,7 +6762,12 @@ Array [
             },
           },
           Object {
-            "condition": "annotations_off",
+            "condition": Object {
+              "left": "annotations_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -6112,7 +6843,12 @@ Array [
             },
           },
           Object {
-            "condition": "size",
+            "condition": Object {
+              "left": "size",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -6273,20 +7009,50 @@ Array [
           "body": Object {
             "statements": Array [
               Object {
-                "condition": "f",
+                "condition": Object {
+                  "left": "f",
+                  "operator": "&",
+                  "right": "i",
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
-                    "flags",
+                    Object {
+                      "left": "flags",
+                      "operator": "+=",
+                      "right": Object {
+                        "left": "EnumToString",
+                        "operator": "+",
+                        "right": " ",
+                        "type": "binaryExpression",
+                      },
+                      "type": "binaryExpression",
+                    },
                   ],
                   "type": "statementList",
                 },
                 "type": "ifStatement",
               },
-              "i",
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": Object {
+                  "left": "i",
+                  "operator": "<<",
+                  "right": 1,
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<=",
+            "right": "ACC_DECLARED_SYNCHRONIZED",
+            "type": "binaryExpression",
+          },
           "type": "whileStatement",
         },
         "SPrintf",
@@ -6450,7 +7216,12 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "condition": "type",
+                    "condition": Object {
+                      "left": "type",
+                      "operator": "==",
+                      "right": "AF_FIELD",
+                      "type": "binaryExpression",
+                    },
                     "falseStatement": undefined,
                     "trueStatement": Object {
                       "assignmentExpression": "volatile",
@@ -6469,7 +7240,12 @@ Array [
               "body": Object {
                 "statements": Array [
                   Object {
-                    "condition": "type",
+                    "condition": Object {
+                      "left": "type",
+                      "operator": "==",
+                      "right": "AF_FIELD",
+                      "type": "binaryExpression",
+                    },
                     "falseStatement": undefined,
                     "trueStatement": Object {
                       "assignmentExpression": "transient",
@@ -6688,20 +7464,50 @@ Array [
           "body": Object {
             "statements": Array [
               Object {
-                "condition": "f",
+                "condition": Object {
+                  "left": "f",
+                  "operator": "&",
+                  "right": "i",
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
-                    "flags",
+                    Object {
+                      "left": "flags",
+                      "operator": "+=",
+                      "right": Object {
+                        "left": "GetFriendlyAccessFlag",
+                        "operator": "+",
+                        "right": " ",
+                        "type": "binaryExpression",
+                      },
+                      "type": "binaryExpression",
+                    },
                   ],
                   "type": "statementList",
                 },
                 "type": "ifStatement",
               },
-              "i",
+              Object {
+                "left": "i",
+                "operator": "=",
+                "right": Object {
+                  "left": "i",
+                  "operator": "<<",
+                  "right": 1,
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<=",
+            "right": "ACC_DECLARED_SYNCHRONIZED",
+            "type": "binaryExpression",
+          },
           "type": "whileStatement",
         },
         Object {
@@ -6844,7 +7650,12 @@ Array [
           },
         },
         Object {
-          "assignmentExpression": "GetFriendlyAccessFlags",
+          "assignmentExpression": Object {
+            "left": "GetFriendlyAccessFlags",
+            "operator": "+",
+            "right": "GetFieldById",
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -6948,11 +7759,26 @@ Array [
                     "name": "encoded_field",
                   },
                 },
-                "fieldid",
+                Object {
+                  "left": "fieldid",
+                  "operator": "=",
+                  "right": Object {
+                    "left": "fieldid",
+                    "operator": "+",
+                    "right": "uleb128_value",
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
               ],
               "type": "statementList",
             },
-            "condition": "i",
+            "condition": Object {
+              "left": "i",
+              "operator": "<",
+              "right": "size",
+              "type": "binaryExpression",
+            },
             "increment": undefined,
             "initialization": undefined,
             "type": "forStatement",
@@ -7109,7 +7935,12 @@ Array [
             },
           },
           Object {
-            "condition": "uleb128_value",
+            "condition": Object {
+              "left": "uleb128_value",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -7189,7 +8020,12 @@ Array [
           },
         },
         Object {
-          "assignmentExpression": "GetFriendlyAccessFlags",
+          "assignmentExpression": Object {
+            "left": "GetFriendlyAccessFlags",
+            "operator": "+",
+            "right": "GetMethodById",
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -7293,11 +8129,26 @@ Array [
                     "name": "encoded_method",
                   },
                 },
-                "methodid",
+                Object {
+                  "left": "methodid",
+                  "operator": "=",
+                  "right": Object {
+                    "left": "methodid",
+                    "operator": "+",
+                    "right": "uleb128_value",
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
               ],
               "type": "statementList",
             },
-            "condition": "i",
+            "condition": Object {
+              "left": "i",
+              "operator": "<",
+              "right": "size",
+              "type": "binaryExpression",
+            },
             "increment": undefined,
             "initialization": undefined,
             "type": "forStatement",
@@ -7450,7 +8301,12 @@ Array [
             },
           },
           Object {
-            "condition": "uleb128_value",
+            "condition": Object {
+              "left": "uleb128_value",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -7481,7 +8337,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "uleb128_value",
+            "condition": Object {
+              "left": "uleb128_value",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -7512,7 +8373,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "uleb128_value",
+            "condition": Object {
+              "left": "uleb128_value",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -7543,7 +8409,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "uleb128_value",
+            "condition": Object {
+              "left": "uleb128_value",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -7738,10 +8609,20 @@ Array [
             },
           },
           Object {
-            "condition": "interfaces_off",
+            "condition": Object {
+              "left": "interfaces_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
-                "pos",
+                Object {
+                  "left": "pos",
+                  "operator": "=",
+                  "right": "FTell",
+                  "type": "binaryExpression",
+                },
                 "FSeek",
                 Object {
                   "annotations": Array [],
@@ -7815,10 +8696,20 @@ Array [
             },
           },
           Object {
-            "condition": "annotations_off",
+            "condition": Object {
+              "left": "annotations_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
-                "pos",
+                Object {
+                  "left": "pos",
+                  "operator": "=",
+                  "right": "FTell",
+                  "type": "binaryExpression",
+                },
                 "FSeek",
                 Object {
                   "annotations": Array [],
@@ -7865,10 +8756,20 @@ Array [
             },
           },
           Object {
-            "condition": "class_data_off",
+            "condition": Object {
+              "left": "class_data_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
-                "pos",
+                Object {
+                  "left": "pos",
+                  "operator": "=",
+                  "right": "FTell",
+                  "type": "binaryExpression",
+                },
                 "FSeek",
                 Object {
                   "annotations": Array [],
@@ -7915,10 +8816,20 @@ Array [
             },
           },
           Object {
-            "condition": "static_values_off",
+            "condition": Object {
+              "left": "static_values_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
-                "pos",
+                Object {
+                  "left": "pos",
+                  "operator": "=",
+                  "right": "FTell",
+                  "type": "binaryExpression",
+                },
                 "FSeek",
                 Object {
                   "annotations": Array [],
@@ -7986,7 +8897,12 @@ Array [
           },
         },
         Object {
-          "assignmentExpression": "flags",
+          "assignmentExpression": Object {
+            "left": "flags",
+            "operator": "+",
+            "right": "classname",
+            "type": "binaryExpression",
+          },
           "type": "returnStatement",
         },
       ],
@@ -8044,12 +8960,32 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              "s",
               Object {
-                "condition": "i",
+                "left": "s",
+                "operator": "+=",
+                "right": "GetLongTypeDescriptor",
+                "type": "binaryExpression",
+              },
+              Object {
+                "condition": Object {
+                  "left": Object {
+                    "left": "i",
+                    "operator": "+",
+                    "right": 1,
+                    "type": "binaryExpression",
+                  },
+                  "operator": "<",
+                  "right": "l",
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
-                    "s",
+                    Object {
+                      "left": "s",
+                      "operator": "+=",
+                      "right": ", ",
+                      "type": "binaryExpression",
+                    },
                   ],
                   "type": "statementList",
                 },
@@ -8058,7 +8994,12 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<",
+            "right": "l",
+            "type": "binaryExpression",
+          },
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
@@ -8167,7 +9108,12 @@ Array [
             "name": "string",
           },
         },
-        "s",
+        Object {
+          "left": "s",
+          "operator": "=",
+          "right": "SPrintf",
+          "type": "binaryExpression",
+        },
         Object {
           "assignmentExpression": "s",
           "type": "returnStatement",
@@ -8331,10 +9277,20 @@ Array [
             },
           },
           Object {
-            "condition": "s",
+            "condition": Object {
+              "left": "s",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
-                "numhandlers",
+                Object {
+                  "left": "numhandlers",
+                  "operator": "=",
+                  "right": "Abs",
+                  "type": "binaryExpression",
+                },
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -8361,7 +9317,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "s",
+            "condition": Object {
+              "left": "s",
+              "operator": "<=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -8383,7 +9344,11 @@ Array [
                     "name": "uleb128",
                   },
                 },
-                "numhandlers",
+                Object {
+                  "expression": "numhandlers",
+                  "operator": undefined,
+                  "type": "postfixExpression",
+                },
               ],
               "type": "statementList",
             },
@@ -8646,7 +9611,12 @@ Array [
             },
           },
           Object {
-            "condition": "debug_info_off",
+            "condition": Object {
+              "left": "debug_info_off",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -8710,7 +9680,12 @@ Array [
             },
           },
           Object {
-            "condition": "insns_size",
+            "condition": Object {
+              "left": "insns_size",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -8739,11 +9714,26 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "tries_size",
+            "condition": Object {
+              "left": "tries_size",
+              "operator": "!=",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
-                  "condition": "insns_size",
+                  "condition": Object {
+                    "left": "insns_size",
+                    "operator": "&",
+                    "right": Object {
+                      "left": 1,
+                      "operator": "==",
+                      "right": 1,
+                      "type": "binaryExpression",
+                    },
+                    "type": "binaryExpression",
+                  },
                   "trueStatement": Object {
                     "statements": Array [
                       Object {
@@ -9642,7 +10632,12 @@ Array [
           },
         },
         Object {
-          "condition": "opcode",
+          "condition": Object {
+            "left": "opcode",
+            "operator": ">=",
+            "right": 10,
+            "type": "binaryExpression",
+          },
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
@@ -9668,10 +10663,30 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "condition": "opcode",
+          "condition": Object {
+            "left": "opcode",
+            "operator": "!=",
+            "right": "",
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
-              "s",
+              Object {
+                "left": "s",
+                "operator": "+=",
+                "right": Object {
+                  "left": Object {
+                    "left": " (",
+                    "operator": "+",
+                    "right": "opcode",
+                    "type": "binaryExpression",
+                  },
+                  "operator": "+",
+                  "right": ")",
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
@@ -9746,7 +10761,12 @@ Array [
             },
           },
           Object {
-            "condition": "uleb128_value",
+            "condition": Object {
+              "left": "uleb128_value",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -9803,7 +10823,12 @@ Array [
               ],
               "type": "statementList",
             },
-            "condition": "opcode",
+            "condition": Object {
+              "left": "opcode",
+              "operator": "!=",
+              "right": "DBG_END_SEQUENCE",
+              "type": "binaryExpression",
+            },
             "type": "doWhileStatement",
           },
         ],
@@ -10023,7 +11048,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": "id",
+          "condition": Object {
+            "left": "id",
+            "operator": "==",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -10356,7 +11386,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": "id",
+          "condition": Object {
+            "left": "id",
+            "operator": "==",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -10407,7 +11442,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": "id",
+          "condition": Object {
+            "left": "id",
+            "operator": "==",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -10486,7 +11526,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": "id",
+          "condition": Object {
+            "left": "id",
+            "operator": "==",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -10537,7 +11582,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": "id",
+          "condition": Object {
+            "left": "id",
+            "operator": "==",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -10673,7 +11723,12 @@ Array [
             },
           },
           Object {
-            "condition": "type",
+            "condition": Object {
+              "left": "type",
+              "operator": "==",
+              "right": "DEX_CHUNK_CLASS_LOOKUP",
+              "type": "binaryExpression",
+            },
             "falseStatement": undefined,
             "trueStatement": Object {
               "statements": Array [
@@ -10750,11 +11805,20 @@ Array [
                     "name": "dexopt_opt_chunk",
                   },
                 },
-                "count",
+                Object {
+                  "expression": "count",
+                  "operator": undefined,
+                  "type": "postfixExpression",
+                },
               ],
               "type": "statementList",
             },
-            "condition": "chunk",
+            "condition": Object {
+              "left": "chunk",
+              "operator": "!=",
+              "right": "DEX_CHUNK_END",
+              "type": "binaryExpression",
+            },
             "type": "doWhileStatement",
           },
         ],
@@ -11018,7 +12082,12 @@ Array [
             },
           },
           Object {
-            "condition": "num_entries",
+            "condition": Object {
+              "left": "num_entries",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -11087,10 +12156,19 @@ Array [
   "ReadBytes",
   "FSeek",
   Object {
-    "condition": undefined,
+    "condition": Object {
+      "expression": undefined,
+      "operator": "!",
+      "type": "unaryExpression",
+    },
     "trueStatement": Object {
       "statements": Array [
-        "odex",
+        Object {
+          "left": "odex",
+          "operator": "=",
+          "right": 1,
+          "type": "binaryExpression",
+        },
       ],
       "type": "statementList",
     },
@@ -11119,7 +12197,12 @@ Array [
             "name": "dexopt_header_item",
           },
         },
-        "odexpad",
+        Object {
+          "left": "odexpad",
+          "operator": "=",
+          "right": "dexopt_header",
+          "type": "binaryExpression",
+        },
         "FSeek",
       ],
       "type": "statementList",
@@ -11278,7 +12361,12 @@ Array [
     },
   },
   Object {
-    "condition": "dex_header",
+    "condition": Object {
+      "left": "dex_header",
+      "operator": "!=",
+      "right": 0,
+      "type": "binaryExpression",
+    },
     "trueStatement": Object {
       "statements": Array [
         "FSeek",
@@ -11311,7 +12399,12 @@ Array [
     "trueStatement": Object {
       "statements": Array [
         Object {
-          "condition": "dexopt_header",
+          "condition": Object {
+            "left": "dexopt_header",
+            "operator": "!=",
+            "right": 0,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               "FSeek",
@@ -11341,7 +12434,12 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "condition": "dexopt_header",
+          "condition": Object {
+            "left": "dexopt_header",
+            "operator": "!=",
+            "right": 0,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               "FSeek",
@@ -11777,7 +12875,12 @@ Array [
       "body": Object {
         "statements": Array [
           Object {
-            "condition": "DosHeader",
+            "condition": Object {
+              "left": "DosHeader",
+              "operator": ">",
+              "right": undefined,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -11790,7 +12893,12 @@ Array [
                           "value": "Space between DOS header and NT header",
                         },
                       ],
-                      "arraySelector": "DosHeader",
+                      "arraySelector": Object {
+                        "left": "DosHeader",
+                        "operator": "-",
+                        "right": undefined,
+                        "type": "binaryExpression",
+                      },
                       "name": "Data",
                     },
                   ],
@@ -12485,17 +13593,32 @@ Array [
             },
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 16,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
-                "len",
+                Object {
+                  "left": "len",
+                  "operator": "=",
+                  "right": 16,
+                  "type": "binaryExpression",
+                },
               ],
               "type": "statementList",
             },
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12518,7 +13641,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 1,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12545,7 +13673,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 2,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12568,7 +13701,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 3,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12591,7 +13729,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 4,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12614,7 +13757,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 5,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12641,7 +13789,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 6,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12664,7 +13817,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 7,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12687,7 +13845,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 8,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12710,7 +13873,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 9,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12733,7 +13901,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 10,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12756,7 +13929,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 11,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12779,7 +13957,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 12,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12806,7 +13989,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 13,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12829,7 +14017,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 14,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -12852,7 +14045,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "len",
+            "condition": Object {
+              "left": "len",
+              "operator": ">",
+              "right": 15,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "annotations": Array [],
               "declarations": Array [
@@ -14359,7 +15557,12 @@ Array [
             },
           },
           Object {
-            "condition": 267,
+            "condition": Object {
+              "left": 267,
+              "operator": "==",
+              "right": "OptionalHeaderMagic",
+              "type": "binaryExpression",
+            },
             "falseStatement": undefined,
             "trueStatement": Object {
               "statements": Array [
@@ -15608,12 +16811,26 @@ Array [
               "name": "ULONG",
             },
           },
-          "ulOriginalFirstThunkFOA",
           Object {
-            "condition": undefined,
+            "left": "ulOriginalFirstThunkFOA",
+            "operator": "=",
+            "right": "RVA2FOA",
+            "type": "binaryExpression",
+          },
+          Object {
+            "condition": Object {
+              "expression": undefined,
+              "operator": "!",
+              "type": "unaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
-                "nNameIndex",
+                Object {
+                  "left": "nNameIndex",
+                  "operator": "=",
+                  "right": 0,
+                  "type": "binaryExpression",
+                },
                 Object {
                   "annotations": Array [],
                   "declarations": Array [
@@ -15632,9 +16849,19 @@ Array [
                 Object {
                   "body": Object {
                     "statements": Array [
-                      "ulThrunk",
                       Object {
-                        "condition": 0,
+                        "left": "ulThrunk",
+                        "operator": "=",
+                        "right": "ReadUInt",
+                        "type": "binaryExpression",
+                      },
+                      Object {
+                        "condition": Object {
+                          "left": 0,
+                          "operator": "==",
+                          "right": "ulThrunk",
+                          "type": "binaryExpression",
+                        },
                         "trueStatement": Object {
                           "statements": Array [
                             Object {
@@ -15646,15 +16873,34 @@ Array [
                         "type": "ifStatement",
                       },
                       Object {
-                        "condition": undefined,
+                        "condition": Object {
+                          "expression": undefined,
+                          "operator": "!",
+                          "type": "unaryExpression",
+                        },
                         "trueStatement": Object {
                           "statements": Array [
-                            "nNameLen",
                             Object {
-                              "condition": 0,
+                              "left": "nNameLen",
+                              "operator": "=",
+                              "right": "Strlen",
+                              "type": "binaryExpression",
+                            },
+                            Object {
+                              "condition": Object {
+                                "left": 0,
+                                "operator": "!=",
+                                "right": "nNameLen",
+                                "type": "binaryExpression",
+                              },
                               "trueStatement": Object {
                                 "statements": Array [
-                                  "og_position",
+                                  Object {
+                                    "left": "og_position",
+                                    "operator": "=",
+                                    "right": "FTell",
+                                    "type": "binaryExpression",
+                                  },
                                   "FSeek",
                                   Object {
                                     "annotations": Array [],
@@ -15667,7 +16913,12 @@ Array [
                                           },
                                         ],
                                         "arguments": Array [
-                                          "nNameLen",
+                                          Object {
+                                            "left": "nNameLen",
+                                            "operator": "+",
+                                            "right": 1,
+                                            "type": "binaryExpression",
+                                          },
                                         ],
                                         "name": "ImportByName",
                                       },
@@ -15689,7 +16940,11 @@ Array [
                         },
                         "type": "ifStatement",
                       },
-                      "nNameIndex",
+                      Object {
+                        "expression": "nNameIndex",
+                        "operator": undefined,
+                        "type": "postfixExpression",
+                      },
                     ],
                     "type": "statementList",
                   },
@@ -15757,7 +17012,12 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
-                "arraySelector": "Strlen",
+                "arraySelector": Object {
+                  "left": "Strlen",
+                  "operator": "+",
+                  "right": 1,
+                  "type": "binaryExpression",
+                },
                 "name": "Function",
               },
             ],
@@ -16180,27 +17440,82 @@ Array [
               "name": "ULONG",
             },
           },
-          "NameArrayFOA",
-          "OrdinalArrayFOA",
-          "FuncArrayFOA",
+          Object {
+            "left": "NameArrayFOA",
+            "operator": "=",
+            "right": "RVA2FOA",
+            "type": "binaryExpression",
+          },
+          Object {
+            "left": "OrdinalArrayFOA",
+            "operator": "=",
+            "right": "RVA2FOA",
+            "type": "binaryExpression",
+          },
+          Object {
+            "left": "FuncArrayFOA",
+            "operator": "=",
+            "right": "RVA2FOA",
+            "type": "binaryExpression",
+          },
           Object {
             "body": Object {
               "statements": Array [
-                "ulNameRVA",
-                "ulNameFOA",
-                "sExportName",
                 Object {
-                  "condition": 0,
+                  "left": "ulNameRVA",
+                  "operator": "=",
+                  "right": "ReadUInt",
+                  "type": "binaryExpression",
+                },
+                Object {
+                  "left": "ulNameFOA",
+                  "operator": "=",
+                  "right": "RVA2FOA",
+                  "type": "binaryExpression",
+                },
+                Object {
+                  "left": "sExportName",
+                  "operator": "=",
+                  "right": "ReadString",
+                  "type": "binaryExpression",
+                },
+                Object {
+                  "condition": Object {
+                    "left": 0,
+                    "operator": "!=",
+                    "right": "Strlen",
+                    "type": "binaryExpression",
+                  },
                   "trueStatement": Object {
                     "statements": Array [
-                      "wOrdinal",
-                      "ulFuncRVA",
                       Object {
-                        "condition": undefined,
+                        "left": "wOrdinal",
+                        "operator": "=",
+                        "right": "ReadUShort",
+                        "type": "binaryExpression",
+                      },
+                      Object {
+                        "left": "ulFuncRVA",
+                        "operator": "=",
+                        "right": "ReadUInt",
+                        "type": "binaryExpression",
+                      },
+                      Object {
+                        "condition": Object {
+                          "left": undefined,
+                          "operator": "&&",
+                          "right": undefined,
+                          "type": "binaryExpression",
+                        },
                         "falseStatement": undefined,
                         "trueStatement": Object {
                           "statements": Array [
-                            "sJmpName",
+                            Object {
+                              "left": "sJmpName",
+                              "operator": "=",
+                              "right": "ReadString",
+                              "type": "binaryExpression",
+                            },
                             "FSeek",
                             Object {
                               "annotations": Array [],
@@ -16231,12 +17546,27 @@ Array [
                   },
                   "type": "ifStatement",
                 },
-                "ulCurPos",
                 Object {
-                  "condition": "ulEndPos",
+                  "left": "ulCurPos",
+                  "operator": "=",
+                  "right": "FTell",
+                  "type": "binaryExpression",
+                },
+                Object {
+                  "condition": Object {
+                    "left": "ulEndPos",
+                    "operator": "<",
+                    "right": "ulCurPos",
+                    "type": "binaryExpression",
+                  },
                   "trueStatement": Object {
                     "statements": Array [
-                      "ulEndPos",
+                      Object {
+                        "left": "ulEndPos",
+                        "operator": "=",
+                        "right": "ulCurPos",
+                        "type": "binaryExpression",
+                      },
                     ],
                     "type": "statementList",
                   },
@@ -16245,7 +17575,12 @@ Array [
               ],
               "type": "statementList",
             },
-            "condition": "nIndex",
+            "condition": Object {
+              "left": "nIndex",
+              "operator": "<",
+              "right": "ExportDir",
+              "type": "binaryExpression",
+            },
             "increment": undefined,
             "initialization": undefined,
             "type": "forStatement",
@@ -16283,7 +17618,12 @@ Array [
             },
           },
           Object {
-            "condition": "Length",
+            "condition": Object {
+              "left": "Length",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -16291,7 +17631,12 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
-                      "arraySelector": "Length",
+                      "arraySelector": Object {
+                        "left": "Length",
+                        "operator": "*",
+                        "right": 2,
+                        "type": "binaryExpression",
+                      },
                       "name": "String",
                     },
                   ],
@@ -16449,10 +17794,19 @@ Array [
               "name": "DWORD",
             },
           },
-          "originalPos",
+          Object {
+            "left": "originalPos",
+            "operator": "=",
+            "right": "FTell",
+            "type": "binaryExpression",
+          },
           "FSeek",
           Object {
-            "condition": undefined,
+            "condition": Object {
+              "expression": undefined,
+              "operator": "!",
+              "type": "unaryExpression",
+            },
             "falseStatement": undefined,
             "trueStatement": Object {
               "statements": Array [
@@ -16539,10 +17893,25 @@ Array [
               "name": "DWORD",
             },
           },
-          "Level",
-          "IsNameEntry",
           Object {
-            "condition": "IsNameEntry",
+            "left": "Level",
+            "operator": "=",
+            "right": "level",
+            "type": "binaryExpression",
+          },
+          Object {
+            "left": "IsNameEntry",
+            "operator": "=",
+            "right": "isNameEntry",
+            "type": "binaryExpression",
+          },
+          Object {
+            "condition": Object {
+              "left": "IsNameEntry",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "falseStatement": undefined,
             "trueStatement": Object {
               "statements": Array [
@@ -16590,7 +17959,12 @@ Array [
             },
           },
           Object {
-            "condition": "NextDWORD",
+            "condition": Object {
+              "left": "NextDWORD",
+              "operator": "&",
+              "right": 2147483648,
+              "type": "binaryExpression",
+            },
             "falseStatement": undefined,
             "trueStatement": Object {
               "statements": Array [
@@ -16628,8 +18002,23 @@ Array [
                     "name": "DWORD",
                   },
                 },
-                "dwMaskedOffset",
-                "originalPos",
+                Object {
+                  "left": "dwMaskedOffset",
+                  "operator": "=",
+                  "right": Object {
+                    "left": "SubdirectoryOffset",
+                    "operator": "&",
+                    "right": 2147483647,
+                    "type": "binaryExpression",
+                  },
+                  "type": "binaryExpression",
+                },
+                Object {
+                  "left": "originalPos",
+                  "operator": "=",
+                  "right": "FTell",
+                  "type": "binaryExpression",
+                },
                 "FSeek",
                 Object {
                   "annotations": Array [],
@@ -16637,7 +18026,12 @@ Array [
                     Object {
                       "annotations": Array [],
                       "arguments": Array [
-                        "Level",
+                        Object {
+                          "left": "Level",
+                          "operator": "+",
+                          "right": 1,
+                          "type": "binaryExpression",
+                        },
                       ],
                       "name": "RsourceDirectoryTable",
                     },
@@ -16817,9 +18211,19 @@ Array [
               "name": "WORD",
             },
           },
-          "Level",
           Object {
-            "condition": "NumberOfNameEntries",
+            "left": "Level",
+            "operator": "=",
+            "right": "level",
+            "type": "binaryExpression",
+          },
+          Object {
+            "condition": Object {
+              "left": "NumberOfNameEntries",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -16852,7 +18256,12 @@ Array [
             "type": "ifStatement",
           },
           Object {
-            "condition": "NumberOfIDEntries",
+            "condition": Object {
+              "left": "NumberOfIDEntries",
+              "operator": ">",
+              "right": 0,
+              "type": "binaryExpression",
+            },
             "trueStatement": Object {
               "statements": Array [
                 Object {
@@ -16963,7 +18372,17 @@ Array [
               "name": "ULONG",
             },
           },
-          "ulBlockNum",
+          Object {
+            "left": "ulBlockNum",
+            "operator": "=",
+            "right": Object {
+              "left": undefined,
+              "operator": "/",
+              "right": 2,
+              "type": "binaryExpression",
+            },
+            "type": "binaryExpression",
+          },
           Object {
             "annotations": Array [],
             "declarations": Array [
@@ -17024,7 +18443,12 @@ Array [
             "body": Object {
               "statements": Array [
                 Object {
-                  "condition": 0,
+                  "condition": Object {
+                    "left": 0,
+                    "operator": "==",
+                    "right": "ReadUInt",
+                    "type": "binaryExpression",
+                  },
                   "trueStatement": Object {
                     "statements": Array [
                       Object {
@@ -17049,7 +18473,11 @@ Array [
                     "name": "IMAGE_BASE_RELOCATION",
                   },
                 },
-                "ulRelocNum",
+                Object {
+                  "expression": "ulRelocNum",
+                  "operator": undefined,
+                  "type": "postfixExpression",
+                },
               ],
               "type": "statementList",
             },
@@ -17067,7 +18495,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": Object {
+            "left": undefined,
+            "operator": "&&",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -17120,7 +18553,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": Object {
+            "left": undefined,
+            "operator": "&&",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -17187,9 +18625,19 @@ Array [
               Object {
                 "body": Object {
                   "statements": Array [
-                    "ulOriginalFirstThunk",
                     Object {
-                      "condition": 0,
+                      "left": "ulOriginalFirstThunk",
+                      "operator": "=",
+                      "right": "ReadUInt",
+                      "type": "binaryExpression",
+                    },
+                    Object {
+                      "condition": Object {
+                        "left": 0,
+                        "operator": "==",
+                        "right": "ulOriginalFirstThunk",
+                        "type": "binaryExpression",
+                      },
                       "trueStatement": Object {
                         "statements": Array [
                           Object {
@@ -17215,7 +18663,11 @@ Array [
                         "name": "IMAGE_IMPORT_DESCRIPTOR",
                       },
                     },
-                    "nImportIndex",
+                    Object {
+                      "expression": "nImportIndex",
+                      "operator": undefined,
+                      "type": "postfixExpression",
+                    },
                   ],
                   "type": "statementList",
                 },
@@ -17242,7 +18694,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": Object {
+            "left": undefined,
+            "operator": "||",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -17286,7 +18743,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": Object {
+            "left": undefined,
+            "operator": "||",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -17312,7 +18774,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": Object {
+            "left": undefined,
+            "operator": "||",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -17338,7 +18805,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": Object {
+            "left": undefined,
+            "operator": "||",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -17379,7 +18851,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": Object {
+            "left": undefined,
+            "operator": "||",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -17405,7 +18882,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": Object {
+            "left": undefined,
+            "operator": "||",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -17431,7 +18913,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": Object {
+            "left": undefined,
+            "operator": "||",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -17457,7 +18944,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": undefined,
+          "condition": Object {
+            "left": undefined,
+            "operator": "||",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -17501,11 +18993,21 @@ Array [
           "body": Object {
             "statements": Array [
               Object {
-                "condition": undefined,
+                "condition": Object {
+                  "left": undefined,
+                  "operator": "&&",
+                  "right": undefined,
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
                     Object {
-                      "assignmentExpression": "SectionHeaders",
+                      "assignmentExpression": Object {
+                        "left": "SectionHeaders",
+                        "operator": "+",
+                        "right": undefined,
+                        "type": "binaryExpression",
+                      },
                       "type": "returnStatement",
                     },
                   ],
@@ -17516,7 +19018,12 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<",
+            "right": "NtHeader",
+            "type": "binaryExpression",
+          },
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
@@ -17565,7 +19072,12 @@ Array [
           },
         },
         Object {
-          "condition": 267,
+          "condition": Object {
+            "left": 267,
+            "operator": "==",
+            "right": "OptionalHeaderMagic",
+            "type": "binaryExpression",
+          },
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
@@ -17738,7 +19250,12 @@ Array [
           "body": Object {
             "statements": Array [
               Object {
-                "condition": undefined,
+                "condition": Object {
+                  "left": undefined,
+                  "operator": "&&",
+                  "right": undefined,
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
                     Object {
@@ -17753,7 +19270,12 @@ Array [
             ],
             "type": "statementList",
           },
-          "condition": "i",
+          "condition": Object {
+            "left": "i",
+            "operator": "<",
+            "right": "NtHeader",
+            "type": "binaryExpression",
+          },
           "increment": undefined,
           "initialization": undefined,
           "type": "forStatement",
@@ -17802,7 +19324,12 @@ Array [
           },
         },
         Object {
-          "condition": 0,
+          "condition": Object {
+            "left": 0,
+            "operator": "!=",
+            "right": "dwRVA",
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               "SPrintf",
@@ -17855,7 +19382,12 @@ Array [
           },
         },
         Object {
-          "condition": 0,
+          "condition": Object {
+            "left": 0,
+            "operator": "!=",
+            "right": "dwRVA",
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               "SPrintf",
@@ -17936,7 +19468,12 @@ Array [
           },
         },
         Object {
-          "condition": 0,
+          "condition": Object {
+            "left": 0,
+            "operator": "==",
+            "right": "Strlen",
+            "type": "binaryExpression",
+          },
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
@@ -18003,7 +19540,12 @@ Array [
     "content": Object {
       "statements": Array [
         Object {
-          "condition": 12288,
+          "condition": Object {
+            "left": 12288,
+            "operator": "==",
+            "right": undefined,
+            "type": "binaryExpression",
+          },
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
@@ -18163,9 +19705,24 @@ Array [
             "name": "WORD",
           },
         },
-        "wsComment",
-        "wsComment",
-        "sComment",
+        Object {
+          "left": "wsComment",
+          "operator": "=",
+          "right": "ReadWString",
+          "type": "binaryExpression",
+        },
+        Object {
+          "left": "wsComment",
+          "operator": "=",
+          "right": "WSubStr",
+          "type": "binaryExpression",
+        },
+        Object {
+          "left": "sComment",
+          "operator": "=",
+          "right": "WStringToString",
+          "type": "binaryExpression",
+        },
         Object {
           "assignmentExpression": "sComment",
           "type": "returnStatement",
@@ -18266,7 +19823,22 @@ Array [
           },
         },
         Object {
-          "condition": "IntegerID",
+          "condition": Object {
+            "left": Object {
+              "left": "IntegerID",
+              "operator": "==",
+              "right": 0,
+              "type": "binaryExpression",
+            },
+            "operator": "||",
+            "right": Object {
+              "left": "IntegerID",
+              "operator": ">",
+              "right": 255,
+              "type": "binaryExpression",
+            },
+            "type": "binaryExpression",
+          },
           "falseStatement": undefined,
           "trueStatement": "SPrintf",
           "type": "ifStatement",
@@ -18334,7 +19906,22 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  "sComment",
+                  Object {
+                    "left": "sComment",
+                    "operator": "=",
+                    "right": Object {
+                      "left": Object {
+                        "left": "Type (",
+                        "operator": "+",
+                        "right": "GetType",
+                        "type": "binaryExpression",
+                      },
+                      "operator": "+",
+                      "right": ")",
+                      "type": "binaryExpression",
+                    },
+                    "type": "binaryExpression",
+                  },
                   Object {
                     "type": "breakStatement",
                   },
@@ -18348,7 +19935,12 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  "sComment",
+                  Object {
+                    "left": "sComment",
+                    "operator": "=",
+                    "right": "",
+                    "type": "binaryExpression",
+                  },
                   Object {
                     "type": "breakStatement",
                   },
@@ -18362,7 +19954,12 @@ Array [
             Object {
               "body": Object {
                 "statements": Array [
-                  "sComment",
+                  Object {
+                    "left": "sComment",
+                    "operator": "=",
+                    "right": "Language",
+                    "type": "binaryExpression",
+                  },
                   Object {
                     "type": "breakStatement",
                   },
@@ -18534,12 +20131,36 @@ Array [
         Object {
           "body": Object {
             "statements": Array [
-              "myIndex",
-              "curLoc",
+              Object {
+                "expression": "myIndex",
+                "operator": undefined,
+                "type": "postfixExpression",
+              },
+              Object {
+                "left": "curLoc",
+                "operator": "+=",
+                "right": Object {
+                  "left": Object {
+                    "left": 2,
+                    "operator": "*",
+                    "right": "ReadUShort",
+                    "type": "binaryExpression",
+                  },
+                  "operator": "+",
+                  "right": undefined,
+                  "type": "binaryExpression",
+                },
+                "type": "binaryExpression",
+              },
             ],
             "type": "statementList",
           },
-          "condition": "curLoc",
+          "condition": Object {
+            "left": "curLoc",
+            "operator": "!=",
+            "right": "loc",
+            "type": "binaryExpression",
+          },
           "type": "whileStatement",
         },
         Object {
@@ -18558,7 +20179,12 @@ Array [
           },
         },
         Object {
-          "condition": "actualLength",
+          "condition": Object {
+            "left": "actualLength",
+            "operator": ">",
+            "right": 0,
+            "type": "binaryExpression",
+          },
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
@@ -18577,7 +20203,12 @@ Array [
                   "name": "wstring",
                 },
               },
-              "wsComment",
+              Object {
+                "left": "wsComment",
+                "operator": "=",
+                "right": "WSubStr",
+                "type": "binaryExpression",
+              },
               "SPrintf",
             ],
             "type": "statementList",
@@ -18643,7 +20274,12 @@ Array [
           },
         },
         Object {
-          "condition": "totalEntries",
+          "condition": Object {
+            "left": "totalEntries",
+            "operator": "==",
+            "right": 1,
+            "type": "binaryExpression",
+          },
           "falseStatement": undefined,
           "trueStatement": Object {
             "statements": Array [
@@ -18781,7 +20417,12 @@ Array [
           },
         },
         Object {
-          "condition": "ParentTableLevel",
+          "condition": Object {
+            "left": "ParentTableLevel",
+            "operator": "==",
+            "right": 3,
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               Object {
@@ -18800,7 +20441,12 @@ Array [
                 },
               },
               Object {
-                "condition": "BaseEntryIsNameEntry",
+                "condition": Object {
+                  "left": "BaseEntryIsNameEntry",
+                  "operator": "==",
+                  "right": 0,
+                  "type": "binaryExpression",
+                },
                 "trueStatement": Object {
                   "statements": Array [
                     Object {
@@ -18819,7 +20465,12 @@ Array [
                       },
                     },
                     Object {
-                      "condition": "BaseEntryIntegerID",
+                      "condition": Object {
+                        "left": "BaseEntryIntegerID",
+                        "operator": "==",
+                        "right": 6,
+                        "type": "binaryExpression",
+                      },
                       "trueStatement": Object {
                         "statements": Array [
                           Object {
@@ -18932,7 +20583,12 @@ Array [
     },
   },
   Object {
-    "condition": "DosHeader",
+    "condition": Object {
+      "left": "DosHeader",
+      "operator": "!=",
+      "right": 23117,
+      "type": "binaryExpression",
+    },
     "trueStatement": Object {
       "statements": Array [
         "Printf",
@@ -18946,7 +20602,12 @@ Array [
     "type": "ifStatement",
   },
   Object {
-    "condition": 0,
+    "condition": Object {
+      "left": 0,
+      "operator": "==",
+      "right": "DosHeader",
+      "type": "binaryExpression",
+    },
     "trueStatement": Object {
       "statements": Array [
         "Warning",
@@ -18994,7 +20655,12 @@ Array [
     },
   },
   Object {
-    "condition": 17744,
+    "condition": Object {
+      "left": 17744,
+      "operator": "!=",
+      "right": "NtHeader",
+      "type": "binaryExpression",
+    },
     "trueStatement": Object {
       "statements": Array [
         "Printf",
@@ -19043,7 +20709,17 @@ Array [
     },
   },
   Object {
-    "condition": "NtHeader",
+    "condition": Object {
+      "left": Object {
+        "left": "NtHeader",
+        "operator": "-",
+        "right": "ulRawHeaderSize",
+        "type": "binaryExpression",
+      },
+      "operator": ">",
+      "right": 0,
+      "type": "binaryExpression",
+    },
     "trueStatement": Object {
       "statements": Array [
         Object {
@@ -19064,7 +20740,12 @@ Array [
                   "value": "Space between header and first section",
                 },
               ],
-              "arraySelector": "NtHeader",
+              "arraySelector": Object {
+                "left": "NtHeader",
+                "operator": "-",
+                "right": "ulRawHeaderSize",
+                "type": "binaryExpression",
+              },
               "name": "Space2",
             },
           ],
@@ -19100,7 +20781,12 @@ Array [
     "body": Object {
       "statements": Array [
         Object {
-          "condition": 0,
+          "condition": Object {
+            "left": 0,
+            "operator": "==",
+            "right": "SectionHeaders",
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               "continue",
@@ -19110,7 +20796,12 @@ Array [
           "type": "ifStatement",
         },
         Object {
-          "condition": 0,
+          "condition": Object {
+            "left": 0,
+            "operator": "==",
+            "right": "SectionHeaders",
+            "type": "binaryExpression",
+          },
           "trueStatement": Object {
             "statements": Array [
               "continue",
@@ -19139,7 +20830,12 @@ Array [
       ],
       "type": "statementList",
     },
-    "condition": "ulIndex",
+    "condition": Object {
+      "left": "ulIndex",
+      "operator": "<",
+      "right": "NtHeader",
+      "type": "binaryExpression",
+    },
     "increment": undefined,
     "initialization": undefined,
     "type": "forStatement",

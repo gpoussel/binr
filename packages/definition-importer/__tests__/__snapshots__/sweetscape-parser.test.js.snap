@@ -12,9 +12,11 @@ Object {
                 "relationalExpression": Object {
                   "shiftExpression": Object {
                     "additiveExpression": Object {
-                      "Plus": Object {
-                        "TOKEN": "Plus",
-                        "content": "+",
+                      "additiveOperator": Object {
+                        "Plus": Object {
+                          "TOKEN": "Plus",
+                          "content": "+",
+                        },
                       },
                       "multiplicativeExpression": Array [
                         Object {
@@ -147,9 +149,11 @@ Object {
                 "relationalExpression": Object {
                   "shiftExpression": Object {
                     "additiveExpression": Object {
-                      "Plus": Object {
-                        "TOKEN": "Plus",
-                        "content": "+",
+                      "additiveOperator": Object {
+                        "Plus": Object {
+                          "TOKEN": "Plus",
+                          "content": "+",
+                        },
                       },
                       "multiplicativeExpression": Array [
                         Object {
@@ -188,10 +192,6 @@ Object {
                                                           "shiftExpression": Object {
                                                             "additiveExpression": Object {
                                                               "multiplicativeExpression": Object {
-                                                                "Multiplication": Object {
-                                                                  "TOKEN": "Multiplication",
-                                                                  "content": "*",
-                                                                },
                                                                 "castExpression": Array [
                                                                   Object {
                                                                     "prefixExpression": Object {
@@ -226,6 +226,12 @@ Object {
                                                                     },
                                                                   },
                                                                 ],
+                                                                "multiplicativeOperator": Object {
+                                                                  "Multiplication": Object {
+                                                                    "TOKEN": "Multiplication",
+                                                                    "content": "*",
+                                                                  },
+                                                                },
                                                               },
                                                             },
                                                           },
@@ -296,9 +302,11 @@ Object {
                 "relationalExpression": Object {
                   "shiftExpression": Object {
                     "additiveExpression": Object {
-                      "Plus": Object {
-                        "TOKEN": "Plus",
-                        "content": "+",
+                      "additiveOperator": Object {
+                        "Plus": Object {
+                          "TOKEN": "Plus",
+                          "content": "+",
+                        },
                       },
                       "multiplicativeExpression": Array [
                         Object {
@@ -328,10 +336,6 @@ Object {
                                                         "shiftExpression": Object {
                                                           "additiveExpression": Object {
                                                             "multiplicativeExpression": Object {
-                                                              "Multiplication": Object {
-                                                                "TOKEN": "Multiplication",
-                                                                "content": "*",
-                                                              },
                                                               "castExpression": Array [
                                                                 Object {
                                                                   "prefixExpression": Object {
@@ -366,6 +370,12 @@ Object {
                                                                   },
                                                                 },
                                                               ],
+                                                              "multiplicativeOperator": Object {
+                                                                "Multiplication": Object {
+                                                                  "TOKEN": "Multiplication",
+                                                                  "content": "*",
+                                                                },
+                                                              },
                                                             },
                                                           },
                                                         },
@@ -429,16 +439,14 @@ Object {
                 "relationalExpression": Object {
                   "shiftExpression": Object {
                     "additiveExpression": Object {
-                      "Plus": Object {
-                        "TOKEN": "Plus",
-                        "content": "+",
+                      "additiveOperator": Object {
+                        "Plus": Object {
+                          "TOKEN": "Plus",
+                          "content": "+",
+                        },
                       },
                       "multiplicativeExpression": Array [
                         Object {
-                          "Multiplication": Object {
-                            "TOKEN": "Multiplication",
-                            "content": "*",
-                          },
                           "castExpression": Array [
                             Object {
                               "prefixExpression": Object {
@@ -473,6 +481,12 @@ Object {
                               },
                             },
                           ],
+                          "multiplicativeOperator": Object {
+                            "Multiplication": Object {
+                              "TOKEN": "Multiplication",
+                              "content": "*",
+                            },
+                          },
                         },
                         Object {
                           "castExpression": Object {
@@ -989,9 +1003,11 @@ Object {
                 "relationalExpression": Object {
                   "shiftExpression": Object {
                     "additiveExpression": Object {
-                      "Plus": Object {
-                        "TOKEN": "Plus",
-                        "content": "+",
+                      "additiveOperator": Object {
+                        "Plus": Object {
+                          "TOKEN": "Plus",
+                          "content": "+",
+                        },
                       },
                       "multiplicativeExpression": Array [
                         Object {
@@ -1127,9 +1143,11 @@ Object {
                                                     "relationalExpression": Object {
                                                       "shiftExpression": Object {
                                                         "additiveExpression": Object {
-                                                          "Plus": Object {
-                                                            "TOKEN": "Plus",
-                                                            "content": "+",
+                                                          "additiveOperator": Object {
+                                                            "Plus": Object {
+                                                              "TOKEN": "Plus",
+                                                              "content": "+",
+                                                            },
                                                           },
                                                           "multiplicativeExpression": Array [
                                                             Object {
@@ -1216,10 +1234,6 @@ Object {
                         "castExpression": Object {
                           "prefixExpression": Object {
                             "postfixExpression": Object {
-                              "DoublePlus": Object {
-                                "TOKEN": "DoublePlus",
-                                "content": "++",
-                              },
                               "callExpression": Object {
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
@@ -1228,6 +1242,12 @@ Object {
                                       "content": "a",
                                     },
                                   },
+                                },
+                              },
+                              "postfixOperator": Object {
+                                "DoublePlus": Object {
+                                  "TOKEN": "DoublePlus",
+                                  "content": "++",
                                 },
                               },
                             },
@@ -1262,10 +1282,6 @@ Object {
                       "multiplicativeExpression": Object {
                         "castExpression": Object {
                           "prefixExpression": Object {
-                            "Exclamation": Object {
-                              "TOKEN": "Exclamation",
-                              "content": "!",
-                            },
                             "castExpression": Object {
                               "prefixExpression": Object {
                                 "postfixExpression": Object {
@@ -1280,6 +1296,12 @@ Object {
                                     },
                                   },
                                 },
+                              },
+                            },
+                            "unaryOperator": Object {
+                              "Exclamation": Object {
+                                "TOKEN": "Exclamation",
+                                "content": "!",
                               },
                             },
                           },
@@ -2461,10 +2483,6 @@ Object {
           },
           "additiveExpression": Object {
             "multiplicativeExpression": Object {
-              "Division": Object {
-                "TOKEN": "Division",
-                "content": "/",
-              },
               "castExpression": Array [
                 Object {
                   "prefixExpression": Object {
@@ -2501,6 +2519,12 @@ Object {
                   },
                 },
               ],
+              "multiplicativeOperator": Object {
+                "Division": Object {
+                  "TOKEN": "Division",
+                  "content": "/",
+                },
+              },
             },
           },
         },
