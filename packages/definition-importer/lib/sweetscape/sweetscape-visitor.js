@@ -218,11 +218,9 @@ function getVisitor(parser) {
     }
 
     switchLabels(ctx) {
-      const numbers = _.map(ctx.number, this.visit.bind(this));
-      const identifiers = _.map(ctx.Identifier, identifier => getIdentifier([identifier]));
-      const stringLiterals = _.map(ctx.StringLiteral, literal => getString([literal]));
+      const stringLiterals = _.map(ctx.simpleValue, this.visit.bind(this));
       const defaultStatement = _.has(ctx, "Default") ? [{ type: "defaultStatement" }] : [];
-      return _.concat(numbers, identifiers, stringLiterals, defaultStatement);
+      return _.concat(stringLiterals, defaultStatement);
     }
 
     forStatement(ctx) {
@@ -581,23 +579,8 @@ function getVisitor(parser) {
     }
 
     primaryExpression(ctx) {
-      if (_.has(ctx, "number")) {
-        return {
-          type: "number",
-          value: this.visit(ctx.number),
-        };
-      }
-      if (_.has(ctx, "Identifier")) {
-        return {
-          type: "idenitfier",
-          name: getIdentifier(ctx.Identifier),
-        };
-      }
-      if (_.has(ctx, "StringLiteral")) {
-        return {
-          type: "string",
-          string: getString(ctx.StringLiteral),
-        };
+      if (_.has(ctx, "simpleValue")) {
+        return this.visit(ctx.simpleValue);
       }
       if (_.has(ctx, "expressionOrTypeName")) {
         // Sizeof expression
@@ -678,26 +661,10 @@ function getVisitor(parser) {
     }
 
     annotation(ctx) {
-      const key = getIdentifier(ctx.Identifier);
-      if (_.has(ctx, "StringLiteral")) {
-        return {
-          key,
-          value: getString(ctx.StringLiteral),
-        };
-      }
-      if (_.has(ctx, "number")) {
-        return {
-          key,
-          value: this.visit(ctx.number),
-        };
-      }
-      if (_.size(ctx, "Identifier") > 1) {
-        return {
-          key,
-          value: getIdentifier([_.last(ctx.Identifier)]),
-        };
-      }
-      throw new Error();
+      return {
+        key: getIdentifier(ctx.Identifier),
+        value: this.visit(ctx.simpleValue),
+      };
     }
 
     arrayInitializer(ctx) {
@@ -745,6 +712,28 @@ function getVisitor(parser) {
       }
       if (_.has(ctx, "arrayInitializer")) {
         return this.visit(ctx.arrayInitializer);
+      }
+      throw new Error();
+    }
+
+    simpleValue(ctx) {
+      if (_.has(ctx, "number")) {
+        return {
+          type: "number",
+          value: this.visit(ctx.number),
+        };
+      }
+      if (_.has(ctx, "Identifier")) {
+        return {
+          type: "idenitfier",
+          name: getIdentifier(ctx.Identifier),
+        };
+      }
+      if (_.has(ctx, "StringLiteral")) {
+        return {
+          type: "string",
+          string: getString(ctx.StringLiteral),
+        };
       }
       throw new Error();
     }

@@ -192,11 +192,7 @@ class SweetscapeParser extends Parser {
     $.RULE("annotation", () => {
       $.CONSUME(tokens.Identifier); // Key
       $.CONSUME(tokens.Equals);
-      $.OR([
-        { ALT: () => $.CONSUME2(tokens.Identifier) },
-        { ALT: () => $.CONSUME(tokens.StringLiteral) },
-        { ALT: () => $.SUBRULE($.number) },
-      ]);
+      $.SUBRULE($.simpleValue);
     });
 
     $.RULE("ifStatement", () => {
@@ -261,11 +257,7 @@ class SweetscapeParser extends Parser {
           {
             ALT: () => {
               $.CONSUME(tokens.Case);
-              $.OR2([
-                { ALT: () => $.SUBRULE($.number) },
-                { ALT: () => $.CONSUME(tokens.Identifier) },
-                { ALT: () => $.CONSUME(tokens.StringLiteral) },
-              ]);
+              $.SUBRULE($.simpleValue);
             },
           },
           {
@@ -548,9 +540,7 @@ class SweetscapeParser extends Parser {
 
     $.RULE("primaryExpression", () => {
       $.OR([
-        { ALT: () => $.CONSUME(tokens.Identifier) },
-        { ALT: () => $.SUBRULE($.number) },
-        { ALT: () => $.CONSUME(tokens.StringLiteral) },
+        { ALT: () => $.SUBRULE($.simpleValue) },
         {
           ALT: () => {
             $.CONSUME(tokens.Sizeof);
@@ -762,6 +752,14 @@ class SweetscapeParser extends Parser {
         $.CONSUME(tokens.BracketOpen);
         $.CONSUME(tokens.BracketClose);
       });
+    });
+
+    $.RULE("simpleValue", () => {
+      $.OR([
+        { ALT: () => $.CONSUME(tokens.Identifier) },
+        { ALT: () => $.SUBRULE($.number) },
+        { ALT: () => $.CONSUME(tokens.StringLiteral) },
+      ]);
     });
 
     this.performSelfAnalysis();

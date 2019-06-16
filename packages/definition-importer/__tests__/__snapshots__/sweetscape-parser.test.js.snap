@@ -61,9 +61,11 @@ Object {
                                                                       "callExpression": Object {
                                                                         "memberExpression": Object {
                                                                           "primaryExpression": Object {
-                                                                            "Identifier": Object {
-                                                                              "TOKEN": "Identifier",
-                                                                              "content": "a",
+                                                                            "simpleValue": Object {
+                                                                              "Identifier": Object {
+                                                                                "TOKEN": "Identifier",
+                                                                                "content": "a",
+                                                                              },
                                                                             },
                                                                           },
                                                                         },
@@ -87,9 +89,11 @@ Object {
                                     },
                                     "memberExpression": Object {
                                       "primaryExpression": Object {
-                                        "Identifier": Object {
-                                          "TOKEN": "Identifier",
-                                          "content": "fn",
+                                        "simpleValue": Object {
+                                          "Identifier": Object {
+                                            "TOKEN": "Identifier",
+                                            "content": "fn",
+                                          },
                                         },
                                       },
                                     },
@@ -112,10 +116,12 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "number": Object {
-                                        "NumberDecimalLiteral": Object {
-                                          "TOKEN": "NumberDecimalLiteral",
-                                          "content": "1",
+                                      "simpleValue": Object {
+                                        "number": Object {
+                                          "NumberDecimalLiteral": Object {
+                                            "TOKEN": "NumberDecimalLiteral",
+                                            "content": "1",
+                                          },
                                         },
                                       },
                                     },
@@ -201,9 +207,11 @@ Object {
                                                                         "callExpression": Object {
                                                                           "memberExpression": Object {
                                                                             "primaryExpression": Object {
-                                                                              "Identifier": Object {
-                                                                                "TOKEN": "Identifier",
-                                                                                "content": "a",
+                                                                              "simpleValue": Object {
+                                                                                "Identifier": Object {
+                                                                                  "TOKEN": "Identifier",
+                                                                                  "content": "a",
+                                                                                },
                                                                               },
                                                                             },
                                                                           },
@@ -217,9 +225,11 @@ Object {
                                                                         "callExpression": Object {
                                                                           "memberExpression": Object {
                                                                             "primaryExpression": Object {
-                                                                              "Identifier": Object {
-                                                                                "TOKEN": "Identifier",
-                                                                                "content": "b",
+                                                                              "simpleValue": Object {
+                                                                                "Identifier": Object {
+                                                                                  "TOKEN": "Identifier",
+                                                                                  "content": "b",
+                                                                                },
                                                                               },
                                                                             },
                                                                           },
@@ -267,9 +277,11 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "c",
+                                      "simpleValue": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "c",
+                                        },
                                       },
                                     },
                                   },
@@ -345,9 +357,11 @@ Object {
                                                                       "callExpression": Object {
                                                                         "memberExpression": Object {
                                                                           "primaryExpression": Object {
-                                                                            "Identifier": Object {
-                                                                              "TOKEN": "Identifier",
-                                                                              "content": "a",
+                                                                            "simpleValue": Object {
+                                                                              "Identifier": Object {
+                                                                                "TOKEN": "Identifier",
+                                                                                "content": "a",
+                                                                              },
                                                                             },
                                                                           },
                                                                         },
@@ -361,9 +375,11 @@ Object {
                                                                       "callExpression": Object {
                                                                         "memberExpression": Object {
                                                                           "primaryExpression": Object {
-                                                                            "Identifier": Object {
-                                                                              "TOKEN": "Identifier",
-                                                                              "content": "b",
+                                                                            "simpleValue": Object {
+                                                                              "Identifier": Object {
+                                                                                "TOKEN": "Identifier",
+                                                                                "content": "b",
+                                                                              },
                                                                             },
                                                                           },
                                                                         },
@@ -404,9 +420,11 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "c",
+                                      "simpleValue": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "c",
+                                        },
                                       },
                                     },
                                   },
@@ -456,9 +474,11 @@ Object {
                                   "callExpression": Object {
                                     "memberExpression": Object {
                                       "primaryExpression": Object {
-                                        "Identifier": Object {
-                                          "TOKEN": "Identifier",
-                                          "content": "a",
+                                        "simpleValue": Object {
+                                          "Identifier": Object {
+                                            "TOKEN": "Identifier",
+                                            "content": "a",
+                                          },
                                         },
                                       },
                                     },
@@ -472,9 +492,11 @@ Object {
                                   "callExpression": Object {
                                     "memberExpression": Object {
                                       "primaryExpression": Object {
-                                        "Identifier": Object {
-                                          "TOKEN": "Identifier",
-                                          "content": "b",
+                                        "simpleValue": Object {
+                                          "Identifier": Object {
+                                            "TOKEN": "Identifier",
+                                            "content": "b",
+                                          },
                                         },
                                       },
                                     },
@@ -497,9 +519,11 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "c",
+                                      "simpleValue": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "c",
+                                        },
                                       },
                                     },
                                   },
@@ -557,9 +581,11 @@ Object {
                                   "callExpression": Object {
                                     "memberExpression": Object {
                                       "primaryExpression": Object {
-                                        "Identifier": Object {
-                                          "TOKEN": "Identifier",
-                                          "content": "a",
+                                        "simpleValue": Object {
+                                          "Identifier": Object {
+                                            "TOKEN": "Identifier",
+                                            "content": "a",
+                                          },
                                         },
                                       },
                                     },
@@ -589,9 +615,11 @@ Object {
                                   "callExpression": Object {
                                     "memberExpression": Object {
                                       "primaryExpression": Object {
-                                        "Identifier": Object {
-                                          "TOKEN": "Identifier",
-                                          "content": "b",
+                                        "simpleValue": Object {
+                                          "Identifier": Object {
+                                            "TOKEN": "Identifier",
+                                            "content": "b",
+                                          },
                                         },
                                       },
                                     },
@@ -624,9 +652,11 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "c",
+                                      "simpleValue": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "c",
+                                        },
                                       },
                                     },
                                   },
@@ -658,9 +688,11 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "d",
+                                      "simpleValue": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "d",
+                                        },
                                       },
                                     },
                                   },
@@ -709,9 +741,11 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "a",
+                                      "simpleValue": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "a",
+                                        },
                                       },
                                     },
                                   },
@@ -747,9 +781,11 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "b",
+                                      "simpleValue": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "b",
+                                        },
                                       },
                                     },
                                   },
@@ -791,10 +827,12 @@ Object {
                               "callExpression": Object {
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
-                                    "number": Object {
-                                      "NumberBinaryLiteral": Object {
-                                        "TOKEN": "NumberBinaryLiteral",
-                                        "content": "0b10",
+                                    "simpleValue": Object {
+                                      "number": Object {
+                                        "NumberBinaryLiteral": Object {
+                                          "TOKEN": "NumberBinaryLiteral",
+                                          "content": "0b10",
+                                        },
                                       },
                                     },
                                   },
@@ -845,9 +883,11 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "b",
+                                      "simpleValue": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "b",
+                                        },
                                       },
                                     },
                                   },
@@ -895,10 +935,12 @@ Object {
                               "callExpression": Object {
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
-                                    "number": Object {
-                                      "NumberDecimalLiteral": Object {
-                                        "TOKEN": "NumberDecimalLiteral",
-                                        "content": "10",
+                                    "simpleValue": Object {
+                                      "number": Object {
+                                        "NumberDecimalLiteral": Object {
+                                          "TOKEN": "NumberDecimalLiteral",
+                                          "content": "10",
+                                        },
                                       },
                                     },
                                   },
@@ -971,10 +1013,12 @@ Object {
                                                                     "callExpression": Object {
                                                                       "memberExpression": Object {
                                                                         "primaryExpression": Object {
-                                                                          "number": Object {
-                                                                            "NumberDecimalLiteral": Object {
-                                                                              "TOKEN": "NumberDecimalLiteral",
-                                                                              "content": "1",
+                                                                          "simpleValue": Object {
+                                                                            "number": Object {
+                                                                              "NumberDecimalLiteral": Object {
+                                                                                "TOKEN": "NumberDecimalLiteral",
+                                                                                "content": "1",
+                                                                              },
                                                                             },
                                                                           },
                                                                         },
@@ -1013,10 +1057,12 @@ Object {
                                                                     "callExpression": Object {
                                                                       "memberExpression": Object {
                                                                         "primaryExpression": Object {
-                                                                          "number": Object {
-                                                                            "NumberDecimalLiteral": Object {
-                                                                              "TOKEN": "NumberDecimalLiteral",
-                                                                              "content": "2",
+                                                                          "simpleValue": Object {
+                                                                            "number": Object {
+                                                                              "NumberDecimalLiteral": Object {
+                                                                                "TOKEN": "NumberDecimalLiteral",
+                                                                                "content": "2",
+                                                                              },
                                                                             },
                                                                           },
                                                                         },
@@ -1042,9 +1088,11 @@ Object {
                                 },
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
-                                    "Identifier": Object {
-                                      "TOKEN": "Identifier",
-                                      "content": "a",
+                                    "simpleValue": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "a",
+                                      },
                                     },
                                   },
                                 },
@@ -1085,10 +1133,12 @@ Object {
                               "callExpression": Object {
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
-                                    "number": Object {
-                                      "NumberHexadecimalLiteral": Object {
-                                        "TOKEN": "NumberHexadecimalLiteral",
-                                        "content": "0x20",
+                                    "simpleValue": Object {
+                                      "number": Object {
+                                        "NumberHexadecimalLiteral": Object {
+                                          "TOKEN": "NumberHexadecimalLiteral",
+                                          "content": "0x20",
+                                        },
                                       },
                                     },
                                   },
@@ -1130,10 +1180,12 @@ Object {
                               "callExpression": Object {
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
-                                    "number": Object {
-                                      "NumberHexadecimalLiteral2": Object {
-                                        "TOKEN": "NumberHexadecimalLiteral2",
-                                        "content": "20h",
+                                    "simpleValue": Object {
+                                      "number": Object {
+                                        "NumberHexadecimalLiteral2": Object {
+                                          "TOKEN": "NumberHexadecimalLiteral2",
+                                          "content": "20h",
+                                        },
                                       },
                                     },
                                   },
@@ -1182,9 +1234,11 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "a",
+                                      "simpleValue": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "a",
+                                        },
                                       },
                                     },
                                   },
@@ -1200,9 +1254,11 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "Identifier": Object {
-                                        "TOKEN": "Identifier",
-                                        "content": "b",
+                                      "simpleValue": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "b",
+                                        },
                                       },
                                     },
                                   },
@@ -1244,10 +1300,12 @@ Object {
                               "callExpression": Object {
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
-                                    "number": Object {
-                                      "NumberOctalLiteral": Object {
-                                        "TOKEN": "NumberOctalLiteral",
-                                        "content": "045",
+                                    "simpleValue": Object {
+                                      "number": Object {
+                                        "NumberOctalLiteral": Object {
+                                          "TOKEN": "NumberOctalLiteral",
+                                          "content": "045",
+                                        },
                                       },
                                     },
                                   },
@@ -1322,9 +1380,11 @@ Object {
                                                                     "callExpression": Object {
                                                                       "memberExpression": Object {
                                                                         "primaryExpression": Object {
-                                                                          "Identifier": Object {
-                                                                            "TOKEN": "Identifier",
-                                                                            "content": "a",
+                                                                          "simpleValue": Object {
+                                                                            "Identifier": Object {
+                                                                              "TOKEN": "Identifier",
+                                                                              "content": "a",
+                                                                            },
                                                                           },
                                                                         },
                                                                       },
@@ -1340,9 +1400,11 @@ Object {
                                                                     "callExpression": Object {
                                                                       "memberExpression": Object {
                                                                         "primaryExpression": Object {
-                                                                          "Identifier": Object {
-                                                                            "TOKEN": "Identifier",
-                                                                            "content": "b",
+                                                                          "simpleValue": Object {
+                                                                            "Identifier": Object {
+                                                                              "TOKEN": "Identifier",
+                                                                              "content": "b",
+                                                                            },
                                                                           },
                                                                         },
                                                                       },
@@ -1402,9 +1464,11 @@ Object {
                               "callExpression": Object {
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
-                                    "Identifier": Object {
-                                      "TOKEN": "Identifier",
-                                      "content": "a",
+                                    "simpleValue": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "a",
+                                      },
                                     },
                                   },
                                 },
@@ -1453,9 +1517,11 @@ Object {
                                   "callExpression": Object {
                                     "memberExpression": Object {
                                       "primaryExpression": Object {
-                                        "Identifier": Object {
-                                          "TOKEN": "Identifier",
-                                          "content": "a",
+                                        "simpleValue": Object {
+                                          "Identifier": Object {
+                                            "TOKEN": "Identifier",
+                                            "content": "a",
+                                          },
                                         },
                                       },
                                     },
@@ -1541,9 +1607,11 @@ Object {
                                                                     "callExpression": Object {
                                                                       "memberExpression": Object {
                                                                         "primaryExpression": Object {
-                                                                          "Identifier": Object {
-                                                                            "TOKEN": "Identifier",
-                                                                            "content": "c",
+                                                                          "simpleValue": Object {
+                                                                            "Identifier": Object {
+                                                                              "TOKEN": "Identifier",
+                                                                              "content": "c",
+                                                                            },
                                                                           },
                                                                         },
                                                                       },
@@ -1566,9 +1634,11 @@ Object {
                                     },
                                   ],
                                   "primaryExpression": Object {
-                                    "Identifier": Object {
-                                      "TOKEN": "Identifier",
-                                      "content": "a",
+                                    "simpleValue": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "a",
+                                      },
                                     },
                                   },
                                 },
@@ -1666,10 +1736,12 @@ Object {
                                                                                                         "callExpression": Object {
                                                                                                           "memberExpression": Object {
                                                                                                             "primaryExpression": Object {
-                                                                                                              "number": Object {
-                                                                                                                "NumberDecimalLiteral": Object {
-                                                                                                                  "TOKEN": "NumberDecimalLiteral",
-                                                                                                                  "content": "0",
+                                                                                                              "simpleValue": Object {
+                                                                                                                "number": Object {
+                                                                                                                  "NumberDecimalLiteral": Object {
+                                                                                                                    "TOKEN": "NumberDecimalLiteral",
+                                                                                                                    "content": "0",
+                                                                                                                  },
                                                                                                                 },
                                                                                                               },
                                                                                                             },
@@ -1692,9 +1764,11 @@ Object {
                                                                           },
                                                                         },
                                                                         "primaryExpression": Object {
-                                                                          "Identifier": Object {
-                                                                            "TOKEN": "Identifier",
-                                                                            "content": "a",
+                                                                          "simpleValue": Object {
+                                                                            "Identifier": Object {
+                                                                              "TOKEN": "Identifier",
+                                                                              "content": "a",
+                                                                            },
                                                                           },
                                                                         },
                                                                       },
@@ -1785,9 +1859,11 @@ Object {
                                                                     "callExpression": Object {
                                                                       "memberExpression": Object {
                                                                         "primaryExpression": Object {
-                                                                          "Identifier": Object {
-                                                                            "TOKEN": "Identifier",
-                                                                            "content": "int",
+                                                                          "simpleValue": Object {
+                                                                            "Identifier": Object {
+                                                                              "TOKEN": "Identifier",
+                                                                              "content": "int",
+                                                                            },
                                                                           },
                                                                         },
                                                                       },
@@ -1847,9 +1923,11 @@ Object {
                               "callExpression": Object {
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
-                                    "StringLiteral": Object {
-                                      "TOKEN": "StringLiteral",
-                                      "content": "'a'",
+                                    "simpleValue": Object {
+                                      "StringLiteral": Object {
+                                        "TOKEN": "StringLiteral",
+                                        "content": "'a'",
+                                      },
                                     },
                                   },
                                 },
@@ -1900,10 +1978,12 @@ Object {
                                   "callExpression": Object {
                                     "memberExpression": Object {
                                       "primaryExpression": Object {
-                                        "number": Object {
-                                          "NumberDecimalLiteral": Object {
-                                            "TOKEN": "NumberDecimalLiteral",
-                                            "content": "1",
+                                        "simpleValue": Object {
+                                          "number": Object {
+                                            "NumberDecimalLiteral": Object {
+                                              "TOKEN": "NumberDecimalLiteral",
+                                              "content": "1",
+                                            },
                                           },
                                         },
                                       },
@@ -1940,9 +2020,11 @@ Object {
                               "callExpression": Object {
                                 "memberExpression": Object {
                                   "primaryExpression": Object {
-                                    "Identifier": Object {
-                                      "TOKEN": "Identifier",
-                                      "content": "a",
+                                    "simpleValue": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "a",
+                                      },
                                     },
                                   },
                                 },
@@ -1977,10 +2059,12 @@ Object {
                                 "callExpression": Object {
                                   "memberExpression": Object {
                                     "primaryExpression": Object {
-                                      "number": Object {
-                                        "NumberDecimalLiteral": Object {
-                                          "TOKEN": "NumberDecimalLiteral",
-                                          "content": "0",
+                                      "simpleValue": Object {
+                                        "number": Object {
+                                          "NumberDecimalLiteral": Object {
+                                            "TOKEN": "NumberDecimalLiteral",
+                                            "content": "0",
+                                          },
                                         },
                                       },
                                     },
@@ -2025,16 +2109,16 @@ Object {
           "TOKEN": "Equals",
           "content": "=",
         },
-        "Identifier": Array [
-          Object {
-            "TOKEN": "Identifier",
-            "content": "format",
-          },
-          Object {
+        "Identifier": Object {
+          "TOKEN": "Identifier",
+          "content": "format",
+        },
+        "simpleValue": Object {
+          "Identifier": Object {
             "TOKEN": "Identifier",
             "content": "hex",
           },
-        ],
+        },
       },
     },
     "bitfieldRest": Object {
@@ -2050,10 +2134,12 @@ Object {
                 "callExpression": Object {
                   "memberExpression": Object {
                     "primaryExpression": Object {
-                      "number": Object {
-                        "NumberDecimalLiteral": Object {
-                          "TOKEN": "NumberDecimalLiteral",
-                          "content": "3",
+                      "simpleValue": Object {
+                        "number": Object {
+                          "NumberDecimalLiteral": Object {
+                            "TOKEN": "NumberDecimalLiteral",
+                            "content": "3",
+                          },
                         },
                       },
                     },
@@ -2113,16 +2199,16 @@ Object {
                 "TOKEN": "Equals",
                 "content": "=",
               },
-              "Identifier": Array [
-                Object {
-                  "TOKEN": "Identifier",
-                  "content": "format",
-                },
-                Object {
+              "Identifier": Object {
+                "TOKEN": "Identifier",
+                "content": "format",
+              },
+              "simpleValue": Object {
+                "Identifier": Object {
                   "TOKEN": "Identifier",
                   "content": "hex",
                 },
-              ],
+              },
             },
           },
         },
@@ -2152,10 +2238,12 @@ Object {
                 "callExpression": Object {
                   "memberExpression": Object {
                     "primaryExpression": Object {
-                      "number": Object {
-                        "NumberDecimalLiteral": Object {
-                          "TOKEN": "NumberDecimalLiteral",
-                          "content": "3",
+                      "simpleValue": Object {
+                        "number": Object {
+                          "NumberDecimalLiteral": Object {
+                            "TOKEN": "NumberDecimalLiteral",
+                            "content": "3",
+                          },
                         },
                       },
                     },
@@ -2246,10 +2334,12 @@ Object {
                                               "callExpression": Object {
                                                 "memberExpression": Object {
                                                   "primaryExpression": Object {
-                                                    "number": Object {
-                                                      "NumberDecimalLiteral": Object {
-                                                        "TOKEN": "NumberDecimalLiteral",
-                                                        "content": "1",
+                                                    "simpleValue": Object {
+                                                      "number": Object {
+                                                        "NumberDecimalLiteral": Object {
+                                                          "TOKEN": "NumberDecimalLiteral",
+                                                          "content": "1",
+                                                        },
                                                       },
                                                     },
                                                   },
@@ -2288,10 +2378,12 @@ Object {
                                               "callExpression": Object {
                                                 "memberExpression": Object {
                                                   "primaryExpression": Object {
-                                                    "number": Object {
-                                                      "NumberDecimalLiteral": Object {
-                                                        "TOKEN": "NumberDecimalLiteral",
-                                                        "content": "2",
+                                                    "simpleValue": Object {
+                                                      "number": Object {
+                                                        "NumberDecimalLiteral": Object {
+                                                          "TOKEN": "NumberDecimalLiteral",
+                                                          "content": "2",
+                                                        },
                                                       },
                                                     },
                                                   },
@@ -2512,10 +2604,12 @@ Object {
                                           "callExpression": Object {
                                             "memberExpression": Object {
                                               "primaryExpression": Object {
-                                                "number": Object {
-                                                  "NumberDecimalLiteral": Object {
-                                                    "TOKEN": "NumberDecimalLiteral",
-                                                    "content": "1",
+                                                "simpleValue": Object {
+                                                  "number": Object {
+                                                    "NumberDecimalLiteral": Object {
+                                                      "TOKEN": "NumberDecimalLiteral",
+                                                      "content": "1",
+                                                    },
                                                   },
                                                 },
                                               },
@@ -2606,10 +2700,12 @@ Object {
                     "callExpression": Object {
                       "memberExpression": Object {
                         "primaryExpression": Object {
-                          "number": Object {
-                            "NumberDecimalLiteral": Object {
-                              "TOKEN": "NumberDecimalLiteral",
-                              "content": "3",
+                          "simpleValue": Object {
+                            "number": Object {
+                              "NumberDecimalLiteral": Object {
+                                "TOKEN": "NumberDecimalLiteral",
+                                "content": "3",
+                              },
                             },
                           },
                         },
@@ -2663,9 +2759,11 @@ Object {
                       "callExpression": Object {
                         "memberExpression": Object {
                           "primaryExpression": Object {
-                            "Identifier": Object {
-                              "TOKEN": "Identifier",
-                              "content": "NBits",
+                            "simpleValue": Object {
+                              "Identifier": Object {
+                                "TOKEN": "Identifier",
+                                "content": "NBits",
+                              },
                             },
                           },
                         },
@@ -2679,10 +2777,12 @@ Object {
                       "callExpression": Object {
                         "memberExpression": Object {
                           "primaryExpression": Object {
-                            "number": Object {
-                              "NumberDecimalLiteral": Object {
-                                "TOKEN": "NumberDecimalLiteral",
-                                "content": "2",
+                            "simpleValue": Object {
+                              "number": Object {
+                                "NumberDecimalLiteral": Object {
+                                  "TOKEN": "NumberDecimalLiteral",
+                                  "content": "2",
+                                },
                               },
                             },
                           },
@@ -2742,9 +2842,11 @@ Object {
                     "callExpression": Object {
                       "memberExpression": Object {
                         "primaryExpression": Object {
-                          "Identifier": Object {
-                            "TOKEN": "Identifier",
-                            "content": "NBits",
+                          "simpleValue": Object {
+                            "Identifier": Object {
+                              "TOKEN": "Identifier",
+                              "content": "NBits",
+                            },
                           },
                         },
                       },
