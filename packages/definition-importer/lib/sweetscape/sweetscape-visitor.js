@@ -114,7 +114,7 @@ function getVisitor(parser) {
       nameParts.push(simpleName);
       return {
         name: _.join(nameParts, " "),
-        array: _.has(ctx, "BracketOpen"),
+        array: _.has(ctx, "emptyArraySelector"),
       };
     }
 
@@ -127,7 +127,7 @@ function getVisitor(parser) {
 
     functionParameterDeclaration(ctx) {
       const type = this.visit(ctx.typeNameWithoutVoid);
-      if (_.has(ctx, "BracketOpen")) {
+      if (_.has(ctx, "emptyArraySelector")) {
         type.array = true;
       }
       const result = {
@@ -533,12 +533,12 @@ function getVisitor(parser) {
             name: currentExpression,
             arguments: this.visit(expressionRestChildren.arguments),
           };
-        } else if (_.has(expressionRestChildren, "assignmentExpression")) {
+        } else if (_.has(expressionRestChildren, "arraySelector")) {
           // That's an array index
           currentExpression = {
             type: "arrayIndexExpression",
             expression: currentExpression,
-            index: this.visit(expressionRestChildren.assignmentExpression),
+            index: this.visit(expressionRestChildren.arraySelector).expression,
           };
         } else if (_.has(expressionRestChildren, "propertyAccess")) {
           currentExpression = {
@@ -562,12 +562,12 @@ function getVisitor(parser) {
       let currentExpression = primaryResult;
       _.each(ctx.memberExpressionRest, expressionRest => {
         const { children: expressionRestChildren } = expressionRest;
-        if (_.has(expressionRestChildren, "assignmentExpression")) {
+        if (_.has(expressionRestChildren, "arraySelector")) {
           // That's an array index
           currentExpression = {
             type: "arrayIndexExpression",
             expression: currentExpression,
-            index: this.visit(expressionRestChildren.assignmentExpression),
+            index: this.visit(expressionRestChildren.arraySelector).expression,
           };
         } else if (_.has(expressionRestChildren, "propertyAccess")) {
           currentExpression = {

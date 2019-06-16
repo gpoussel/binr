@@ -483,13 +483,7 @@ class SweetscapeParser extends Parser {
     $.RULE("callExpressionRest", () => {
       $.OR([
         { ALT: () => $.SUBRULE($.arguments) },
-        {
-          ALT: () => {
-            $.CONSUME(tokens.BracketOpen);
-            $.SUBRULE($.assignmentExpression);
-            $.CONSUME(tokens.BracketClose);
-          },
-        },
+        { ALT: () => $.SUBRULE($.arraySelector) },
         { ALT: () => $.SUBRULE($.propertyAccess) },
       ]);
     });
@@ -500,16 +494,7 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("memberExpressionRest", () => {
-      $.OR([
-        {
-          ALT: () => {
-            $.CONSUME(tokens.BracketOpen);
-            $.SUBRULE($.assignmentExpression);
-            $.CONSUME(tokens.BracketClose);
-          },
-        },
-        { ALT: () => $.SUBRULE($.propertyAccess) },
-      ]);
+      $.OR([{ ALT: () => $.SUBRULE($.arraySelector) }, { ALT: () => $.SUBRULE($.propertyAccess) }]);
     });
 
     $.RULE("propertyAccess", () => {
@@ -585,6 +570,11 @@ class SweetscapeParser extends Parser {
     $.RULE("arraySelector", () => {
       $.CONSUME(tokens.BracketOpen);
       $.SUBRULE($.assignmentExpression);
+      $.CONSUME(tokens.BracketClose);
+    });
+
+    $.RULE("emptyArraySelector", () => {
+      $.CONSUME(tokens.BracketOpen);
       $.CONSUME(tokens.BracketClose);
     });
 
@@ -690,10 +680,7 @@ class SweetscapeParser extends Parser {
       $.SUBRULE($.typeNameWithoutVoid); // Parameter type
       $.OPTION(() => $.CONSUME(tokens.BinaryAnd));
       $.CONSUME1(tokens.Identifier); // Parameter name
-      $.OPTION2(() => {
-        $.CONSUME(tokens.BracketOpen);
-        $.CONSUME(tokens.BracketClose);
-      });
+      $.OPTION2(() => $.SUBRULE($.emptyArraySelector));
     });
 
     /**
@@ -727,10 +714,7 @@ class SweetscapeParser extends Parser {
         { ALT: () => {} },
       ]);
       $.CONSUME2(tokens.Identifier);
-      $.OPTION(() => {
-        $.CONSUME(tokens.BracketOpen);
-        $.CONSUME(tokens.BracketClose);
-      });
+      $.OPTION(() => $.SUBRULE($.emptyArraySelector));
     });
 
     $.RULE("simpleValue", () => {
