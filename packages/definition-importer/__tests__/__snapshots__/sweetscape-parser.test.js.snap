@@ -520,6 +520,167 @@ Object {
 }
 `;
 
+exports[`Sweetscape Parser parses complex expression (or-and mixed) 1`] = `
+Object {
+  "ternaryExpression": Object {
+    "booleanOrExpression": Object {
+      "BooleanOr": Array [
+        Object {
+          "TOKEN": "BooleanOr",
+          "content": "||",
+        },
+        Object {
+          "TOKEN": "BooleanOr",
+          "content": "||",
+        },
+      ],
+      "booleanAndExpression": Array [
+        Object {
+          "BooleanAnd": Object {
+            "TOKEN": "BooleanAnd",
+            "content": "&&",
+          },
+          "binaryOrExpression": Array [
+            Object {
+              "binaryXorExpression": Object {
+                "binaryAndExpression": Object {
+                  "equalityExpression": Object {
+                    "relationalExpression": Object {
+                      "shiftExpression": Object {
+                        "additiveExpression": Object {
+                          "multiplicativeExpression": Object {
+                            "castExpression": Object {
+                              "prefixExpression": Object {
+                                "postfixExpression": Object {
+                                  "callExpression": Object {
+                                    "memberExpression": Object {
+                                      "primaryExpression": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "a",
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            Object {
+              "binaryXorExpression": Object {
+                "binaryAndExpression": Object {
+                  "equalityExpression": Object {
+                    "relationalExpression": Object {
+                      "shiftExpression": Object {
+                        "additiveExpression": Object {
+                          "multiplicativeExpression": Object {
+                            "castExpression": Object {
+                              "prefixExpression": Object {
+                                "postfixExpression": Object {
+                                  "callExpression": Object {
+                                    "memberExpression": Object {
+                                      "primaryExpression": Object {
+                                        "Identifier": Object {
+                                          "TOKEN": "Identifier",
+                                          "content": "b",
+                                        },
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          ],
+        },
+        Object {
+          "binaryOrExpression": Object {
+            "binaryXorExpression": Object {
+              "binaryAndExpression": Object {
+                "equalityExpression": Object {
+                  "relationalExpression": Object {
+                    "shiftExpression": Object {
+                      "additiveExpression": Object {
+                        "multiplicativeExpression": Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "c",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        Object {
+          "binaryOrExpression": Object {
+            "binaryXorExpression": Object {
+              "binaryAndExpression": Object {
+                "equalityExpression": Object {
+                  "relationalExpression": Object {
+                    "shiftExpression": Object {
+                      "additiveExpression": Object {
+                        "multiplicativeExpression": Object {
+                          "castExpression": Object {
+                            "prefixExpression": Object {
+                              "postfixExpression": Object {
+                                "callExpression": Object {
+                                  "memberExpression": Object {
+                                    "primaryExpression": Object {
+                                      "Identifier": Object {
+                                        "TOKEN": "Identifier",
+                                        "content": "d",
+                                      },
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      ],
+    },
+  },
+}
+`;
+
 exports[`Sweetscape Parser parses expression (assignment) 1`] = `
 Object {
   "assignmentOperator": Object {

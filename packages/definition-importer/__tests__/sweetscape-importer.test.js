@@ -6,6 +6,10 @@ const { iterateStructures, getSingleStructure } = require("./utils/010-structure
 describe("Sweetscape Importer", () => {
   const importer = new SweetscapeImporter();
 
+  test("creates basic definitions", () => {
+    expect(importer.readInput("if (a && b || c || d) { foo(); }")).toMatchSnapshot();
+  });
+
   test("creates misc definitions", () => {
     // The file itself is not important and does not represent any structures
     // It is only there to reach a 100% coverage on the structure parser

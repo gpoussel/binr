@@ -110,6 +110,7 @@ describe("Sweetscape Parser", () => {
       { name: "operator priority with parenthesis", input: "(a * b) + c" },
       { name: "operator priority with parenthesis and cast", input: "(int) (a * b) + c" },
       { name: "operator priority with cast", input: "(int) fn(a) + 1" },
+      { name: "or-and mixed", input: "a && b || c || d" },
     ],
     testDefinition => {
       test(`parses complex expression (${testDefinition.name})`, () => {

@@ -20854,3 +20854,36 @@ Array [
   "Printf",
 ]
 `;
+
+exports[`Sweetscape Importer creates basic definitions 1`] = `
+Object {
+  "content": Array [
+    Object {
+      "condition": Object {
+        "left": Object {
+          "left": Object {
+            "left": "a",
+            "operator": "&&",
+            "right": "b",
+            "type": "binaryExpression",
+          },
+          "operator": "||",
+          "right": "c",
+          "type": "binaryExpression",
+        },
+        "operator": "||",
+        "right": "d",
+        "type": "binaryExpression",
+      },
+      "trueStatement": Object {
+        "statements": Array [
+          "foo",
+        ],
+        "type": "statementList",
+      },
+      "type": "ifStatement",
+    },
+  ],
+  "type": "definition",
+}
+`;
