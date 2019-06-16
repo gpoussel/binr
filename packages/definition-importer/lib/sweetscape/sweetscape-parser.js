@@ -545,9 +545,7 @@ class SweetscapeParser extends Parser {
       // Be careful to avoid duplication with the function declaration rule
       $.OPTION(() => $.SUBRULE($.arguments));
       $.OPTION1(() => {
-        $.CONSUME(tokens.BracketOpen);
-        $.OPTION4(() => $.SUBRULE($.assignmentExpression));
-        $.CONSUME(tokens.BracketClose);
+        $.OR([{ ALT: () => $.SUBRULE($.arraySelector) }, { ALT: () => $.SUBRULE($.emptyArraySelector) }]);
       });
       $.OPTION3(() => $.SUBRULE($.annotations));
       $.OPTION2(() => {

@@ -368,8 +368,11 @@ function getVisitor(parser) {
       if (_.has(ctx, "arguments")) {
         result.arguments = this.visit(ctx.arguments);
       }
-      if (_.has(ctx, "assignmentExpression")) {
-        result.arraySelector = this.visit(ctx.assignmentExpression);
+      if (_.has(ctx, "arraySelector")) {
+        result.arraySelector = this.visit(ctx.arraySelector);
+      }
+      if (_.has(ctx, "emptyArraySelector")) {
+        result.array = true;
       }
       if (_.has(ctx, "variableInitializer")) {
         result.initializer = this.visit(ctx.variableInitializer);
@@ -538,7 +541,7 @@ function getVisitor(parser) {
           currentExpression = {
             type: "arrayIndexExpression",
             expression: currentExpression,
-            index: this.visit(expressionRestChildren.arraySelector).expression,
+            index: this.visit(expressionRestChildren.arraySelector),
           };
         } else if (_.has(expressionRestChildren, "propertyAccess")) {
           currentExpression = {
@@ -567,7 +570,7 @@ function getVisitor(parser) {
           currentExpression = {
             type: "arrayIndexExpression",
             expression: currentExpression,
-            index: this.visit(expressionRestChildren.arraySelector).expression,
+            index: this.visit(expressionRestChildren.arraySelector),
           };
         } else if (_.has(expressionRestChildren, "propertyAccess")) {
           currentExpression = {
@@ -704,10 +707,7 @@ function getVisitor(parser) {
     }
 
     arraySelector(ctx) {
-      return {
-        type: "arraySelector",
-        expression: this.visit(ctx.assignmentExpression),
-      };
+      return this.visit(ctx.assignmentExpression);
     }
 
     variableInitializer(ctx) {

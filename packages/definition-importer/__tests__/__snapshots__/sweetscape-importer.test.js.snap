@@ -11772,6 +11772,7 @@ Array [
     "declarations": Array [
       Object {
         "annotations": Array [],
+        "array": true,
         "name": "filename",
       },
     ],
@@ -18163,11 +18164,8 @@ Array [
       },
     ],
     "arraySelector": Object {
-      "expression": Object {
-        "type": "number",
-        "value": 20,
-      },
-      "type": "arraySelector",
+      "type": "number",
+      "value": 20,
     },
     "name": Object {
       "array": false,
