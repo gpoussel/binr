@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "types": ["escape-string-regexp"]]
+    "types": ["escape-string-regexp"]
   },
   "include": ["./lib/**/*"]
 }
