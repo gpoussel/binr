@@ -1,8 +1,8 @@
 "use strict";
 
-const fs = require("fs");
-const { BinaryReader } = require("@binr/binary-reader");
-const { DefinitionReader } = require("@binr/definition-reader");
+import { BinaryReader } from "@binr/binary-reader";
+import { DefinitionReader } from "@binr/definition-reader";
+import fs from "fs";
 
 const pathToBinaryFixtures = `${__dirname}/../__fixtures__/binaries`;
 const pathToDefinitionFixtures = `${__dirname}/../__fixtures__/definitions`;
