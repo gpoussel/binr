@@ -2,7 +2,11 @@
 
 const assert = require("assert");
 
-class Structure {
+export class Structure {
+  private name: string;
+  private statements: any[];
+  private endianness: string;
+
   constructor(name, statements) {
     this.name = name;
     this.statements = statements;
@@ -17,5 +21,3 @@ class Structure {
     return this.endianness;
   }
 }
-
-module.exports = Structure;

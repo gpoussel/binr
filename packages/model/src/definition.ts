@@ -1,6 +1,9 @@
 "use strict";
 
-class Definition {
+export class Definition {
+  private structures: any[];
+  private enumerations: any[];
+
   constructor(structures, enumerations) {
     this.structures = structures;
     this.enumerations = enumerations;

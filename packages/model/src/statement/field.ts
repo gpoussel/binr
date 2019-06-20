@@ -1,10 +1,14 @@
 "use strict";
 
-const _ = require("lodash");
+import _ from "lodash";
 
-const Statement = require("./statement");
+import { Statement } from "./statement";
 
-class FieldStatement extends Statement {
+export class FieldStatement extends Statement {
+  private name: string;
+  private type: any;
+  private meta: any;
+
   constructor(name, type, meta) {
     super();
     this.name = name;
@@ -12,7 +16,7 @@ class FieldStatement extends Statement {
     this.meta = meta;
   }
 
-  read(buffer, environment, valueAggregator) {
+  public read(buffer, environment, valueAggregator) {
     const readValue = this.type.read(buffer, environment);
     const ignore = _.get(this.meta, "ignore", false);
     if (!ignore) {
@@ -21,5 +25,3 @@ class FieldStatement extends Statement {
     }
   }
 }
-
-module.exports = FieldStatement;

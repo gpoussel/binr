@@ -1,12 +1,16 @@
 "use strict";
 
-const _ = require("lodash");
+import _ from "lodash";
 
-const { ExpressionEvaluator } = require("@binr/shared");
+import { ExpressionEvaluator } from "@binr/shared";
 
-const Statement = require("./statement");
+import { Statement } from "./statement";
 
-class IfStatement extends Statement {
+export class IfStatement extends Statement {
+  private testCode: string;
+  private consequentStatement: any;
+  private alternateStatement: any;
+
   constructor(testCode, consequentStatement, alternateStatement) {
     super();
     this.testCode = testCode;
@@ -14,7 +18,7 @@ class IfStatement extends Statement {
     this.alternateStatement = alternateStatement;
   }
 
-  read(buffer, environment, valueAggregator) {
+  public read(buffer, environment, valueAggregator) {
     const evaluator = new ExpressionEvaluator();
     const testResult = evaluator.evaluate(this.testCode, environment);
     if (testResult) {
@@ -24,5 +28,3 @@ class IfStatement extends Statement {
     }
   }
 }
-
-module.exports = IfStatement;
