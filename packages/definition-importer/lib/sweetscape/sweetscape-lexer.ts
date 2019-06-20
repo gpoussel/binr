@@ -1,10 +1,8 @@
 "use strict";
 
-const _ = require("lodash");
-const chevrotain = require("chevrotain");
-const { tokens } = require("./sweetscape-tokens");
-
-const { Lexer } = chevrotain;
+import { Lexer } from "chevrotain";
+import _ from "lodash";
+import { tokens } from "./sweetscape-tokens";
 
 export class SweetscapeLexer extends Lexer {
   constructor() {

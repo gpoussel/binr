@@ -1,7 +1,8 @@
 "use strict";
 
 import _ from "lodash";
-_.mixin(require("lodash-inflection"));
+import lodashInflection from "lodash-inflection";
+_.mixin(lodashInflection);
 
 import { FieldNode } from "./nodes";
 import { builtInTypes } from "./types";

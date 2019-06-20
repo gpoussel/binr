@@ -1,9 +1,9 @@
 "use strict";
 
-const _ = require("lodash");
-const chevrotain = require("chevrotain");
-const escapeRegexp = require("escape-string-regexp");
-const SEnum = require("string-enum");
+import { createToken, Lexer } from "chevrotain";
+import escapeRegexp from "escape-string-regexp";
+import _ from "lodash";
+import SEnum from "string-enum";
 
 export const TokenName = SEnum(
   "Whitespace",
@@ -97,7 +97,7 @@ const tokenInfos = [];
 tokenInfos.push({
   name: TokenName.Whitespace,
   pattern: /[ \t\r\n]+/,
-  group: chevrotain.Lexer.SKIPPED,
+  group: Lexer.SKIPPED,
 });
 
 /**
@@ -106,7 +106,7 @@ tokenInfos.push({
 tokenInfos.push({
   name: TokenName.EscapedLineBreak,
   pattern: /\\\r?\n/,
-  group: chevrotain.Lexer.SKIPPED,
+  group: Lexer.SKIPPED,
 });
 
 /**
@@ -292,7 +292,7 @@ tokenInfos.push({
 // Some tokens, with a "longer_alt" attribute set, have to be created after other ones
 const createdTokens = {};
 _.map(_.filter(tokenInfos, (tokenInfo) => !_.has(tokenInfo, "longer_alt")), (tokenInfo) => {
-  createdTokens[tokenInfo.name] = chevrotain.createToken(tokenInfo);
+  createdTokens[tokenInfo.name] = createToken(tokenInfo);
 });
 
 const remainingTokens = _.filter(tokenInfos, (tokenInfo) => _.has(tokenInfo, "longer_alt"));
@@ -302,7 +302,7 @@ while (!_.isEmpty(remainingTokens)) {
     if (_.has(createdTokens, remainingToken.longer_alt)) {
       // The "longer_alt" references an already created token, so we can create the current one immediately
       remainingToken.longer_alt = createdTokens[remainingToken.longer_alt];
-      createdTokens[remainingToken.name] = chevrotain.createToken(remainingToken);
+      createdTokens[remainingToken.name] = createToken(remainingToken);
       remainingTokens.splice(i, 1);
       i -= 1;
     }

@@ -1,6 +1,6 @@
 "use strict";
 
-const _ = require("lodash");
+import _ from "lodash";
 
 function getFirstTokenImage(ctx) {
   return _.first(_.get(ctx, _.first(_.keys(ctx)))).image;

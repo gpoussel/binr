@@ -1,10 +1,10 @@
 "use strict";
 
-const Importer = require("../importer");
-const SweetscapeLexer = require("./sweetscape-lexer");
-const SweetscapeParser = require("./sweetscape-parser");
-const CStylePreprocessor = require("../common/cstyle-preprocessor");
-const { getVisitor } = require("./sweetscape-visitor");
+import { CStylePreprocessor } from "..//common/cstyle-preprocessor";
+import { Importer } from "../importer";
+import { SweetscapeLexer } from "./sweetscape-lexer";
+import { SweetscapeParser } from "./sweetscape-parser";
+import { getVisitor } from "./sweetscape-visitor";
 
 export class SweetscapeDefinitionImporter extends Importer {
   public getLexer() {

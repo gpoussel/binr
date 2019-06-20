@@ -1,10 +1,16 @@
 "use strict";
 
-import chevrotain, { CstNode } from "chevrotain";
+import { CstNode, CstParser } from "chevrotain";
 import _ from "lodash";
 import { tokens } from "./definition-lexer";
 
-export class DefinitionParser extends chevrotain.Parser {
+export class DefinitionParser extends CstParser {
+  private c1: any;
+  private c2: any;
+  private c3: any;
+  private c4: any;
+  private c5: any;
+
   constructor() {
     super(_.values(tokens), {
       recoveryEnabled: true,

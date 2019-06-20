@@ -1,12 +1,11 @@
 "use strict";
 
-const _ = require("lodash");
-const chevrotain = require("chevrotain");
-const { tokens } = require("./sweetscape-tokens");
+import { CstParser } from "chevrotain";
 
-const { Parser } = chevrotain;
+import _ from "lodash";
+import { tokens } from "./sweetscape-tokens";
 
-export class SweetscapeParser extends Parser {
+export class SweetscapeParser extends CstParser {
   constructor() {
     super(_.values(tokens), {
       recoveryEnabled: false,

@@ -1,10 +1,10 @@
 "use strict";
 
-const _ = require("lodash");
-const assert = require("assert");
+import assert from "assert";
+import _ from "lodash";
 
-const { StructureType } = require("@binr/definition-reader");
-const { BufferWrapper, Environment, StreamObject } = require("@binr/shared");
+import { StructureType } from "@binr/definition-reader";
+import { BufferWrapper, Environment, StreamObject } from "@binr/shared";
 
 export class BinaryReader {
   public read(binaryBuffer, definition, providedStructureName = undefined) {
