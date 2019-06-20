@@ -5,11 +5,415 @@ import _ from "lodash";
 import { tokens } from "./definition-lexer";
 
 export class DefinitionParser extends CstParser {
+  public definition = this.RULE("definition", () => {
+    this.MANY(() => {
+      this.SUBRULE(this.headerClause);
+    });
+    this.MANY1(() => {
+      this.SUBRULE(this.topLevelClause);
+    });
+  });
   private c1: any;
   private c2: any;
   private c3: any;
   private c4: any;
   private c5: any;
+
+  private topLevelClause = this.RULE("topLevelClause", () => {
+    this.MANY2(() => {
+      this.SUBRULE(this.annotationClause);
+    });
+    this.OR([
+      {
+        ALT: () => this.SUBRULE(this.structureClause),
+      },
+      {
+        ALT: () => this.SUBRULE(this.enumClause),
+      },
+      {
+        ALT: () => this.SUBRULE(this.bitmaskClause),
+      },
+    ]);
+  });
+
+  private headerClause = this.RULE("headerClause", () => {
+    this.CONSUME(tokens.HashToken);
+    this.CONSUME(tokens.IdentifierToken);
+    this.SUBRULE(this.valueClause);
+  });
+
+  private annotationClause = this.RULE("annotationClause", () => {
+    this.CONSUME(tokens.AtToken);
+    this.CONSUME(tokens.IdentifierToken);
+    this.CONSUME(tokens.ParenthesisOpenToken);
+    this.SUBRULE(this.valueClause);
+    this.CONSUME(tokens.ParenthesisCloseToken);
+  });
+
+  private structureClause = this.RULE("structureClause", () => {
+    this.OPTION(() => {
+      this.CONSUME(tokens.ExportToken);
+    });
+    this.CONSUME(tokens.StructToken);
+    this.CONSUME(tokens.IdentifierToken);
+    this.CONSUME(tokens.CurlyBraceOpenToken);
+    this.MANY2(() => {
+      this.SUBRULE(this.statementClause);
+    });
+    this.CONSUME(tokens.CurlyBraceCloseToken);
+  });
+
+  private enumClause = this.RULE("enumClause", () => {
+    this.CONSUME(tokens.EnumToken);
+    this.CONSUME(tokens.IdentifierToken);
+    this.CONSUME(tokens.ExtendsToken);
+    this.SUBRULE(this.typeReferenceClause);
+    this.CONSUME(tokens.CurlyBraceOpenToken);
+    this.MANY_SEP({
+      SEP: tokens.CommaToken,
+      DEF: () => {
+        this.CONSUME1(tokens.IdentifierToken);
+        this.CONSUME1(tokens.EqualsToken);
+        this.SUBRULE(this.numberClause);
+      },
+    });
+    this.CONSUME(tokens.CurlyBraceCloseToken);
+  });
+
+  private bitmaskClause = this.RULE("bitmaskClause", () => {
+    this.CONSUME(tokens.BitmaskToken);
+    this.CONSUME(tokens.IdentifierToken);
+    this.CONSUME(tokens.ExtendsToken);
+    this.SUBRULE(this.typeReferenceClause);
+    this.CONSUME(tokens.CurlyBraceOpenToken);
+    this.MANY_SEP({
+      SEP: tokens.CommaToken,
+      DEF: () => {
+        this.CONSUME1(tokens.IdentifierToken);
+        this.CONSUME1(tokens.EqualsToken);
+        this.SUBRULE(this.numberClause);
+      },
+    });
+    this.CONSUME(tokens.CurlyBraceCloseToken);
+  });
+
+  private valueClause = this.RULE("valueClause", () => {
+    this.OR([
+      {
+        ALT: () => this.CONSUME(tokens.StringLiteralToken),
+      },
+      {
+        ALT: () => this.SUBRULE(this.numberClause),
+      },
+      {
+        ALT: () => this.CONSUME(tokens.TrueToken),
+      },
+      {
+        ALT: () => this.CONSUME(tokens.FalseToken),
+      },
+    ]);
+  });
+
+  private statementClause = this.RULE("statementClause", () => {
+    this.OR(
+      this.c2 ||
+        (this.c2 = [
+          {
+            ALT: () => this.SUBRULE(this.BlockStatement),
+          },
+          {
+            ALT: () => this.SUBRULE(this.IfStatement),
+          },
+          {
+            ALT: () => this.SUBRULE(this.SwitchStatement),
+          },
+          {
+            ALT: () => this.SUBRULE(this.fieldClause),
+          },
+        ]),
+    );
+  });
+
+  private switchInnerClause = this.RULE("switchInnerClause", () => {
+    this.SUBRULE(this.valueClause);
+    this.CONSUME(tokens.DoubleArrowToken);
+    this.SUBRULE(this.BlockStatement);
+  });
+
+  private BlockStatement = this.RULE("BlockStatement", () => {
+    this.CONSUME(tokens.CurlyBraceOpenToken);
+    this.MANY(() => {
+      this.SUBRULE(this.statementClause);
+    });
+    this.CONSUME(tokens.CurlyBraceCloseToken);
+  });
+
+  private IfStatement = this.RULE("IfStatement", () => {
+    this.CONSUME(tokens.IfToken);
+    this.CONSUME(tokens.ParenthesisOpenToken);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(tokens.ParenthesisCloseToken);
+    this.SUBRULE(this.statementClause);
+    this.OPTION(() => {
+      this.CONSUME(tokens.ElseToken);
+      this.SUBRULE2(this.statementClause);
+    });
+  });
+
+  private SwitchStatement = this.RULE("SwitchStatement", () => {
+    this.CONSUME(tokens.SwitchToken);
+    this.CONSUME(tokens.ParenthesisOpenToken);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(tokens.ParenthesisCloseToken);
+    this.CONSUME(tokens.CurlyBraceOpenToken);
+    this.MANY_SEP({
+      SEP: tokens.CommaToken,
+      DEF: () => {
+        this.SUBRULE(this.switchInnerClause);
+      },
+    });
+    this.CONSUME(tokens.CurlyBraceCloseToken);
+  });
+
+  private fieldClause = this.RULE("fieldClause", () => {
+    this.MANY(() => {
+      this.SUBRULE(this.annotationClause);
+    });
+    this.SUBRULE(this.typeReferenceClause);
+    this.CONSUME1(tokens.IdentifierToken);
+    this.OPTION1(() => {
+      this.OR([
+        {
+          ALT: () => this.SUBRULE(this.BoxMemberExpression),
+        },
+        {
+          ALT: () => this.SUBRULE(this.BoxMemberUntilExpression),
+        },
+      ]);
+    });
+    this.CONSUME(tokens.SemiColonToken);
+  });
+
+  private typeReferenceClause = this.RULE("typeReferenceClause", () => {
+    this.CONSUME(tokens.IdentifierToken);
+    this.OPTION(() => {
+      this.CONSUME(tokens.ColonToken);
+      this.SUBRULE(this.numberClause);
+    });
+  });
+
+  private numberClause = this.RULE("numberClause", () => {
+    this.OR([
+      {
+        ALT: () => this.CONSUME(tokens.NumberHexadecimalLiteralToken),
+      },
+      {
+        ALT: () => this.CONSUME(tokens.NumberBinaryLiteralToken),
+      },
+      {
+        ALT: () => this.CONSUME(tokens.NumberDecimalLiteralToken),
+      },
+    ]);
+  });
+
+  private PrimaryExpression = this.RULE("PrimaryExpression", () => {
+    this.OR(
+      this.c5 ||
+        (this.c5 = [
+          {
+            ALT: () => this.CONSUME(tokens.IdentifierToken),
+          },
+          {
+            ALT: () => this.SUBRULE(this.numberClause),
+          },
+          {
+            ALT: () => this.CONSUME(tokens.StringLiteralToken),
+          },
+          {
+            ALT: () => this.SUBRULE(this.ArrayLiteral),
+          },
+          {
+            ALT: () => this.SUBRULE(this.ParenthesisExpression),
+          },
+        ]),
+    );
+  });
+  private ParenthesisExpression = this.RULE("ParenthesisExpression", () => {
+    this.CONSUME(tokens.ParenthesisOpenToken);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(tokens.ParenthesisCloseToken);
+  });
+  private ArrayLiteral = this.RULE("ArrayLiteral", () => {
+    this.CONSUME(tokens.BracketOpenToken);
+    this.MANY(() => this.SUBRULE(this.ArrayLiteralContent));
+    this.CONSUME(tokens.BracketCloseToken);
+  });
+  private ArrayLiteralContent = this.RULE("ArrayLiteralContent", () => {
+    this.OR([
+      {
+        ALT: () => this.SUBRULE(this.ElementList),
+      },
+      {
+        ALT: () => this.SUBRULE(this.Elision),
+      },
+    ]);
+  });
+  private ElementList = this.RULE("ElementList", () => {
+    this.SUBRULE(this.AssignmentExpression);
+    this.MANY(() => this.SUBRULE(this.ElementListEntry));
+  });
+  private ElementListEntry = this.RULE("ElementListEntry", () => {
+    this.SUBRULE2(this.Elision);
+    this.SUBRULE2(this.AssignmentExpression);
+  });
+  private Elision = this.RULE("Elision", () => {
+    this.AT_LEAST_ONE(() => {
+      this.CONSUME(tokens.CommaToken);
+    });
+  });
+  private MemberCallNewExpression = this.RULE("MemberCallNewExpression", () => {
+    this.SUBRULE(this.PrimaryExpression);
+    this.MANY2(() => {
+      this.SUBRULE(this.MemberCallNewExpressionExtension);
+    });
+  });
+  private MemberCallNewExpressionExtension = this.RULE("MemberCallNewExpressionExtension", () => {
+    this.OR2([
+      {
+        ALT: () => this.SUBRULE(this.BoxMemberExpression),
+      },
+      {
+        ALT: () => this.SUBRULE(this.DotMemberExpression),
+      },
+      {
+        ALT: () => this.SUBRULE(this.Arguments),
+      },
+    ]);
+  });
+  private BoxMemberExpression = this.RULE("BoxMemberExpression", () => {
+    this.CONSUME(tokens.BracketOpenToken);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(tokens.BracketCloseToken);
+  });
+  private BoxMemberUntilExpression = this.RULE("BoxMemberUntilExpression", () => {
+    this.CONSUME(tokens.BracketOpenToken);
+    this.CONSUME(tokens.UntilToken);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(tokens.BracketCloseToken);
+  });
+
+  private DotMemberExpression = this.RULE("DotMemberExpression", () => {
+    this.CONSUME(tokens.PeriodToken);
+    this.CONSUME(tokens.IdentifierToken);
+  });
+  private Arguments = this.RULE("Arguments", () => {
+    this.CONSUME(tokens.ParenthesisOpenToken);
+    this.OPTION(() => {
+      this.SUBRULE(this.AssignmentExpression);
+      this.MANY(() => {
+        this.CONSUME(tokens.CommaToken);
+        this.SUBRULE2(this.AssignmentExpression);
+      });
+    });
+    this.CONSUME(tokens.ParenthesisCloseToken);
+  });
+  private PostfixExpression = this.RULE("PostfixExpression", () => {
+    this.SUBRULE(this.MemberCallNewExpression);
+    this.OPTION({
+      DEF: () => {
+        this.OR([
+          {
+            ALT: () => this.CONSUME(tokens.DoublePlusToken),
+          },
+          {
+            ALT: () => this.CONSUME(tokens.DoubleMinusToken),
+          },
+        ]);
+      },
+    });
+  });
+  private UnaryExpression = this.RULE("UnaryExpression", () => {
+    this.OR([
+      {
+        ALT: () => this.SUBRULE(this.PostfixExpression),
+      },
+      {
+        ALT: () => {
+          this.OR2(
+            this.c1 ||
+              (this.c1 = [
+                {
+                  ALT: () => this.CONSUME(tokens.DoublePlusToken),
+                },
+                {
+                  ALT: () => this.CONSUME(tokens.DoubleMinusToken),
+                },
+                {
+                  ALT: () => this.CONSUME(tokens.PlusToken),
+                },
+                {
+                  ALT: () => this.CONSUME(tokens.MinusToken),
+                },
+                {
+                  ALT: () => this.CONSUME(tokens.TildaToken),
+                },
+                {
+                  ALT: () => this.CONSUME(tokens.ExclamationToken),
+                },
+              ]),
+          );
+          this.SUBRULE(this.UnaryExpression);
+        },
+      },
+    ]);
+  });
+
+  private BinaryExpression = this.RULE("BinaryExpression", () => {
+    this.SUBRULE(this.UnaryExpression);
+    this.MANY(() => {
+      this.SUBRULE2(this.ExpressionToken);
+      this.SUBRULE3(this.UnaryExpression);
+    });
+  });
+
+  private ExpressionToken = this.RULE("ExpressionToken", () => {
+    this.OR(
+      this.c3 ||
+        (this.c3 = [
+          { ALT: () => this.CONSUME(tokens.BooleanOrToken) },
+          { ALT: () => this.CONSUME(tokens.BooleanAndToken) },
+          { ALT: () => this.CONSUME(tokens.BinaryOrToken) },
+          { ALT: () => this.CONSUME(tokens.BinaryXorToken) },
+          { ALT: () => this.CONSUME(tokens.BinaryAndToken) },
+          { ALT: () => this.CONSUME(tokens.DoubleEqualsToken) },
+          { ALT: () => this.CONSUME(tokens.DifferentToken) },
+          { ALT: () => this.CONSUME(tokens.ShiftRightToken) },
+          { ALT: () => this.CONSUME(tokens.ShiftLeftToken) },
+          { ALT: () => this.CONSUME(tokens.UnsignedShiftRightToken) },
+          { ALT: () => this.CONSUME(tokens.GreaterToken) },
+          { ALT: () => this.CONSUME(tokens.LessToken) },
+          { ALT: () => this.CONSUME(tokens.MultiplicationToken) },
+          { ALT: () => this.CONSUME(tokens.DivisionToken) },
+          { ALT: () => this.CONSUME(tokens.PlusToken) },
+          { ALT: () => this.CONSUME(tokens.MinusToken) },
+          { ALT: () => this.CONSUME(tokens.ModuloToken) },
+        ]),
+    );
+  });
+
+  private AssignmentExpression = this.RULE("AssignmentExpression", () => {
+    this.SUBRULE(this.BinaryExpression);
+    this.OPTION(() => {
+      this.CONSUME(tokens.QuestionToken);
+      this.SUBRULE(this.AssignmentExpression);
+      this.CONSUME(tokens.ColonToken);
+      this.SUBRULE2(this.AssignmentExpression);
+    });
+  });
+
+  private Expression = this.RULE("Expression", () => {
+    this.SUBRULE(this.AssignmentExpression);
+  });
 
   constructor() {
     super(_.values(tokens), {
@@ -21,450 +425,6 @@ export class DefinitionParser extends CstParser {
     this.c4 = undefined;
     this.c5 = undefined;
 
-    const $ = this;
-
-    $.RULE("definition", () => {
-      $.MANY(() => {
-        $.SUBRULE($.headerClause);
-      });
-      $.MANY1(() => {
-        $.SUBRULE($.topLevelClause);
-      });
-    });
-
-    $.RULE("topLevelClause", () => {
-      $.MANY2(() => {
-        $.SUBRULE($.annotationClause);
-      });
-      $.OR([
-        {
-          ALT: () => $.SUBRULE($.structureClause),
-        },
-        {
-          ALT: () => $.SUBRULE($.enumClause),
-        },
-        {
-          ALT: () => $.SUBRULE($.bitmaskClause),
-        },
-      ]);
-    });
-
-    $.RULE("headerClause", () => {
-      $.CONSUME(tokens.HashToken);
-      $.CONSUME(tokens.IdentifierToken);
-      $.SUBRULE($.valueClause);
-    });
-
-    $.RULE("annotationClause", () => {
-      $.CONSUME(tokens.AtToken);
-      $.CONSUME(tokens.IdentifierToken);
-      $.CONSUME(tokens.ParenthesisOpenToken);
-      $.SUBRULE($.valueClause);
-      $.CONSUME(tokens.ParenthesisCloseToken);
-    });
-
-    $.RULE("structureClause", () => {
-      $.OPTION(() => {
-        $.CONSUME(tokens.ExportToken);
-      });
-      $.CONSUME(tokens.StructToken);
-      $.CONSUME(tokens.IdentifierToken);
-      $.CONSUME(tokens.CurlyBraceOpenToken);
-      $.MANY2(() => {
-        $.SUBRULE($.statementClause);
-      });
-      $.CONSUME(tokens.CurlyBraceCloseToken);
-    });
-
-    $.RULE("enumClause", () => {
-      $.CONSUME(tokens.EnumToken);
-      $.CONSUME(tokens.IdentifierToken);
-      $.CONSUME(tokens.ExtendsToken);
-      $.SUBRULE($.typeReferenceClause);
-      $.CONSUME(tokens.CurlyBraceOpenToken);
-      $.MANY_SEP({
-        SEP: tokens.CommaToken,
-        DEF: () => {
-          $.CONSUME1(tokens.IdentifierToken);
-          $.CONSUME1(tokens.EqualsToken);
-          $.SUBRULE($.numberClause);
-        },
-      });
-      $.CONSUME(tokens.CurlyBraceCloseToken);
-    });
-
-    $.RULE("bitmaskClause", () => {
-      $.CONSUME(tokens.BitmaskToken);
-      $.CONSUME(tokens.IdentifierToken);
-      $.CONSUME(tokens.ExtendsToken);
-      $.SUBRULE($.typeReferenceClause);
-      $.CONSUME(tokens.CurlyBraceOpenToken);
-      $.MANY_SEP({
-        SEP: tokens.CommaToken,
-        DEF: () => {
-          $.CONSUME1(tokens.IdentifierToken);
-          $.CONSUME1(tokens.EqualsToken);
-          $.SUBRULE($.numberClause);
-        },
-      });
-      $.CONSUME(tokens.CurlyBraceCloseToken);
-    });
-
-    $.RULE("valueClause", () => {
-      $.OR([
-        {
-          ALT: () => $.CONSUME(tokens.StringLiteralToken),
-        },
-        {
-          ALT: () => $.SUBRULE($.numberClause),
-        },
-        {
-          ALT: () => $.CONSUME(tokens.TrueToken),
-        },
-        {
-          ALT: () => $.CONSUME(tokens.FalseToken),
-        },
-      ]);
-    });
-
-    $.RULE("statementClause", () => {
-      $.OR(
-        $.c2 ||
-          ($.c2 = [
-            {
-              ALT: () => $.SUBRULE($.BlockStatement),
-            },
-            {
-              ALT: () => $.SUBRULE($.IfStatement),
-            },
-            {
-              ALT: () => $.SUBRULE($.SwitchStatement),
-            },
-            {
-              ALT: () => $.SUBRULE($.fieldClause),
-            },
-          ]),
-      );
-    });
-
-    $.RULE("switchInnerClause", () => {
-      $.SUBRULE($.valueClause);
-      $.CONSUME(tokens.DoubleArrowToken);
-      $.SUBRULE($.BlockStatement);
-    });
-
-    $.RULE("BlockStatement", () => {
-      $.CONSUME(tokens.CurlyBraceOpenToken);
-      $.MANY(() => {
-        $.SUBRULE($.statementClause);
-      });
-      $.CONSUME(tokens.CurlyBraceCloseToken);
-    });
-
-    $.RULE("IfStatement", () => {
-      $.CONSUME(tokens.IfToken);
-      $.CONSUME(tokens.ParenthesisOpenToken);
-      $.SUBRULE($.Expression);
-      $.CONSUME(tokens.ParenthesisCloseToken);
-      $.SUBRULE($.statementClause);
-      $.OPTION(() => {
-        $.CONSUME(tokens.ElseToken);
-        $.SUBRULE2($.statementClause);
-      });
-    });
-
-    $.RULE("SwitchStatement", () => {
-      $.CONSUME(tokens.SwitchToken);
-      $.CONSUME(tokens.ParenthesisOpenToken);
-      $.SUBRULE($.Expression);
-      $.CONSUME(tokens.ParenthesisCloseToken);
-      $.CONSUME(tokens.CurlyBraceOpenToken);
-      $.MANY_SEP({
-        SEP: tokens.CommaToken,
-        DEF: () => {
-          $.SUBRULE($.switchInnerClause);
-        },
-      });
-      $.CONSUME(tokens.CurlyBraceCloseToken);
-    });
-
-    $.RULE("fieldClause", () => {
-      $.MANY(() => {
-        $.SUBRULE($.annotationClause);
-      });
-      $.SUBRULE($.typeReferenceClause);
-      $.CONSUME1(tokens.IdentifierToken);
-      $.OPTION1(() => {
-        $.OR([
-          {
-            ALT: () => $.SUBRULE($.BoxMemberExpression),
-          },
-          {
-            ALT: () => $.SUBRULE($.BoxMemberUntilExpression),
-          },
-        ]);
-      });
-      $.CONSUME(tokens.SemiColonToken);
-    });
-
-    $.RULE("typeReferenceClause", () => {
-      $.CONSUME(tokens.IdentifierToken);
-      $.OPTION(() => {
-        $.CONSUME(tokens.ColonToken);
-        $.SUBRULE($.numberClause);
-      });
-    });
-
-    $.RULE("numberClause", () => {
-      $.OR([
-        {
-          ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteralToken),
-        },
-        {
-          ALT: () => $.CONSUME(tokens.NumberBinaryLiteralToken),
-        },
-        {
-          ALT: () => $.CONSUME(tokens.NumberDecimalLiteralToken),
-        },
-      ]);
-    });
-
-    $.RULE("PrimaryExpression", () => {
-      $.OR(
-        $.c5 ||
-          ($.c5 = [
-            {
-              ALT: () => $.CONSUME(tokens.IdentifierToken),
-            },
-            {
-              ALT: () => $.SUBRULE($.numberClause),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.StringLiteralToken),
-            },
-            {
-              ALT: () => $.SUBRULE($.ArrayLiteral),
-            },
-            {
-              ALT: () => $.SUBRULE($.ParenthesisExpression),
-            },
-          ]),
-      );
-    });
-    $.RULE("ParenthesisExpression", () => {
-      $.CONSUME(tokens.ParenthesisOpenToken);
-      $.SUBRULE($.Expression);
-      $.CONSUME(tokens.ParenthesisCloseToken);
-    });
-    $.RULE("ArrayLiteral", () => {
-      $.CONSUME(tokens.BracketOpenToken);
-      $.MANY(() => $.SUBRULE($.ArrayLiteralContent));
-      $.CONSUME(tokens.BracketCloseToken);
-    });
-    $.RULE("ArrayLiteralContent", () => {
-      $.OR([
-        {
-          ALT: () => $.SUBRULE($.ElementList),
-        },
-        {
-          ALT: () => $.SUBRULE($.Elision),
-        },
-      ]);
-    });
-    $.RULE("ElementList", () => {
-      $.SUBRULE($.AssignmentExpression);
-      $.MANY(() => $.SUBRULE($.ElementListEntry));
-    });
-    $.RULE("ElementListEntry", () => {
-      $.SUBRULE2($.Elision);
-      $.SUBRULE2($.AssignmentExpression);
-    });
-    $.RULE("Elision", () => {
-      $.AT_LEAST_ONE(() => {
-        $.CONSUME(tokens.CommaToken);
-      });
-    });
-    $.RULE("MemberCallNewExpression", () => {
-      $.SUBRULE($.PrimaryExpression);
-      $.MANY2(() => {
-        $.SUBRULE($.MemberCallNewExpressionExtension);
-      });
-    });
-    $.RULE("MemberCallNewExpressionExtension", () => {
-      $.OR2([
-        {
-          ALT: () => $.SUBRULE($.BoxMemberExpression),
-        },
-        {
-          ALT: () => $.SUBRULE($.DotMemberExpression),
-        },
-        {
-          ALT: () => $.SUBRULE($.Arguments),
-        },
-      ]);
-    });
-    $.RULE("BoxMemberExpression", () => {
-      $.CONSUME(tokens.BracketOpenToken);
-      $.SUBRULE($.Expression);
-      $.CONSUME(tokens.BracketCloseToken);
-    });
-    $.RULE("BoxMemberUntilExpression", () => {
-      $.CONSUME(tokens.BracketOpenToken);
-      $.CONSUME(tokens.UntilToken);
-      $.SUBRULE($.Expression);
-      $.CONSUME(tokens.BracketCloseToken);
-    });
-
-    $.RULE("DotMemberExpression", () => {
-      $.CONSUME(tokens.PeriodToken);
-      $.CONSUME(tokens.IdentifierToken);
-    });
-    $.RULE("Arguments", () => {
-      $.CONSUME(tokens.ParenthesisOpenToken);
-      $.OPTION(() => {
-        $.SUBRULE($.AssignmentExpression);
-        $.MANY(() => {
-          $.CONSUME(tokens.CommaToken);
-          $.SUBRULE2($.AssignmentExpression);
-        });
-      });
-      $.CONSUME(tokens.ParenthesisCloseToken);
-    });
-    $.RULE("PostfixExpression", () => {
-      $.SUBRULE($.MemberCallNewExpression);
-      $.OPTION({
-        DEF: () => {
-          $.OR([
-            {
-              ALT: () => $.CONSUME(tokens.DoublePlusToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.DoubleMinusToken),
-            },
-          ]);
-        },
-      });
-    });
-    $.RULE("UnaryExpression", () => {
-      $.OR([
-        {
-          ALT: () => $.SUBRULE($.PostfixExpression),
-        },
-        {
-          ALT: () => {
-            $.OR2(
-              $.c1 ||
-                ($.c1 = [
-                  {
-                    ALT: () => $.CONSUME(tokens.DoublePlusToken),
-                  },
-                  {
-                    ALT: () => $.CONSUME(tokens.DoubleMinusToken),
-                  },
-                  {
-                    ALT: () => $.CONSUME(tokens.PlusToken),
-                  },
-                  {
-                    ALT: () => $.CONSUME(tokens.MinusToken),
-                  },
-                  {
-                    ALT: () => $.CONSUME(tokens.TildaToken),
-                  },
-                  {
-                    ALT: () => $.CONSUME(tokens.ExclamationToken),
-                  },
-                ]),
-            );
-            $.SUBRULE($.UnaryExpression);
-          },
-        },
-      ]);
-    });
-
-    $.RULE("BinaryExpression", () => {
-      $.SUBRULE($.UnaryExpression);
-      $.MANY(() => {
-        $.SUBRULE2($.ExpressionToken);
-        $.SUBRULE3($.UnaryExpression);
-      });
-    });
-
-    $.RULE("ExpressionToken", () => {
-      $.OR(
-        $.c3 ||
-          ($.c3 = [
-            {
-              ALT: () => $.CONSUME(tokens.BooleanOrToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.BooleanAndToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.BinaryOrToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.BinaryXorToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.BinaryAndToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.DoubleEqualsToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.DifferentToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.ShiftRightToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.ShiftLeftToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.UnsignedShiftRightToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.GreaterToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.LessToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.MultiplicationToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.DivisionToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.PlusToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.MinusToken),
-            },
-            {
-              ALT: () => $.CONSUME(tokens.ModuloToken),
-            },
-          ]),
-      );
-    });
-
-    $.RULE("AssignmentExpression", () => {
-      $.SUBRULE($.BinaryExpression);
-      $.OPTION(() => {
-        $.CONSUME(tokens.QuestionToken);
-        $.SUBRULE($.AssignmentExpression);
-        $.CONSUME(tokens.ColonToken);
-        $.SUBRULE2($.AssignmentExpression);
-      });
-    });
-
-    $.RULE("Expression", () => {
-      $.SUBRULE($.AssignmentExpression);
-    });
-
     this.performSelfAnalysis();
-  }
-  public definition(): CstNode[] {
-    throw new Error("Method not implemented.");
   }
 }

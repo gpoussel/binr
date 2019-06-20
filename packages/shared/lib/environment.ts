@@ -10,7 +10,7 @@ export class Environment {
   private functions: FunctionScope;
   private utils: UtilsObject = new UtilsObject();
 
-  constructor(stream, variables, functions) {
+  constructor(stream, variables?, functions?) {
     this.stream = stream;
     this.variables = variables || new VariableScope();
     this.functions = functions || new FunctionScope();
