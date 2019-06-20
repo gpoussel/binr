@@ -1332,6 +1332,7 @@ Array [
     "declarations": Array [
       Object {
         "annotations": Array [],
+        "array": true,
         "arraySelector": Object {
           "type": "number",
           "value": 256,
@@ -1351,6 +1352,7 @@ Array [
     "declarations": Array [
       Object {
         "annotations": Array [],
+        "array": true,
         "arraySelector": Object {
           "type": "number",
           "value": 256,
@@ -3044,6 +3046,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "AID_length",
                     "type": "identifier",
@@ -3103,6 +3106,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "name_length",
                     "type": "identifier",
@@ -3244,6 +3248,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "AID_length",
                     "type": "identifier",
@@ -3428,6 +3433,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 12,
@@ -3515,6 +3521,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "custom_count",
                     "type": "identifier",
@@ -3574,6 +3581,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "AID_length",
                     "type": "identifier",
@@ -3683,6 +3691,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "count",
                     "type": "identifier",
@@ -3778,6 +3787,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "count",
                     "type": "identifier",
@@ -3837,6 +3847,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "left": Object {
                       "left": Object {
@@ -4004,6 +4015,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "interface_name_length",
                     "type": "identifier",
@@ -4077,6 +4089,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "count",
                     "type": "identifier",
@@ -4774,6 +4787,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "remote_methods_count",
                     "type": "identifier",
@@ -4829,6 +4843,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "hash_modifier_length",
                     "type": "identifier",
@@ -4884,6 +4899,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "class_name_length",
                     "type": "identifier",
@@ -4939,6 +4955,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "remote_interface_count",
                     "type": "identifier",
@@ -5140,6 +5157,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "public_method_table_count",
                     "type": "identifier",
@@ -5181,6 +5199,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "package_method_table_count",
                     "type": "identifier",
@@ -5222,6 +5241,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "interface_count",
                     "type": "identifier",
@@ -5340,6 +5360,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "interface_count",
                     "type": "identifier",
@@ -5693,6 +5714,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "name": "count",
                   "type": "identifier",
@@ -5814,6 +5836,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "array_init_count",
                     "type": "identifier",
@@ -5883,6 +5906,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "non_default_value_count",
                     "type": "identifier",
@@ -5957,6 +5981,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "name": "byte_index_count",
                   "type": "identifier",
@@ -5989,6 +6014,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "name": "byte2_index_count",
                   "type": "identifier",
@@ -6066,6 +6092,7 @@ Array [
                 },
               },
             ],
+            "array": true,
             "arraySelector": Object {
               "name": "class_count",
               "type": "identifier",
@@ -6120,6 +6147,7 @@ Array [
                     "declarations": Array [
                       Object {
                         "annotations": Array [],
+                        "array": true,
                         "arraySelector": Object {
                           "name": "static_field_count",
                           "type": "identifier",
@@ -6138,6 +6166,7 @@ Array [
                     "declarations": Array [
                       Object {
                         "annotations": Array [],
+                        "array": true,
                         "arraySelector": Object {
                           "name": "static_method_count",
                           "type": "identifier",
@@ -7635,6 +7664,7 @@ Array [
                         "declarations": Array [
                           Object {
                             "annotations": Array [],
+                            "array": true,
                             "arraySelector": Object {
                               "left": Object {
                                 "name": "high",
@@ -7893,6 +7923,7 @@ Array [
                         "declarations": Array [
                           Object {
                             "annotations": Array [],
+                            "array": true,
                             "arraySelector": Object {
                               "left": Object {
                                 "name": "high",
@@ -8186,6 +8217,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "handler_count",
                     "type": "identifier",
@@ -8507,6 +8539,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 3,
@@ -8579,6 +8612,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "name": "count",
                   "type": "identifier",
@@ -9023,6 +9057,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "interface_count",
                     "type": "identifier",
@@ -9064,6 +9099,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "field_count",
                     "type": "identifier",
@@ -9107,6 +9143,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "method_count",
                         "type": "identifier",
@@ -9228,6 +9265,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "class_count",
                     "type": "identifier",
@@ -9303,6 +9341,7 @@ Array [
                       "declarations": Array [
                         Object {
                           "annotations": Array [],
+                          "array": true,
                           "arraySelector": Object {
                             "name": "constant_pool_count",
                             "type": "identifier",
@@ -9415,6 +9454,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "length",
                     "type": "identifier",
@@ -9784,6 +9824,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "variable_count",
                     "type": "identifier",
@@ -9825,6 +9866,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "line_count",
                     "type": "identifier",
@@ -9990,6 +10032,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "interface_count",
                     "type": "identifier",
@@ -10031,6 +10074,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "field_count",
                     "type": "identifier",
@@ -10072,6 +10116,7 @@ Array [
                       },
                     },
                   ],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "method_count",
                     "type": "identifier",
@@ -10154,6 +10199,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "name": "string_count",
                   "type": "identifier",
@@ -10208,6 +10254,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "name": "class_count",
                   "type": "identifier",
@@ -10333,6 +10380,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 4,
@@ -10534,6 +10582,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "filename_length",
                     "type": "identifier",
@@ -10567,6 +10616,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "extrafield_length",
                     "type": "identifier",
@@ -11564,6 +11614,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 4,
@@ -11827,6 +11878,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "filename_length",
                     "type": "identifier",
@@ -11860,6 +11912,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "extrafield_length",
                     "type": "identifier",
@@ -11893,6 +11946,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "comment_length",
                     "type": "identifier",
@@ -11925,6 +11979,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 4,
@@ -11970,6 +12025,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "data_length",
                     "type": "identifier",
@@ -12002,6 +12058,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 4,
@@ -12082,6 +12139,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 4,
@@ -12211,6 +12269,7 @@ Array [
               "declarations": Array [
                 Object {
                   "annotations": Array [],
+                  "array": true,
                   "arraySelector": Object {
                     "name": "comment_length",
                     "type": "identifier",
@@ -15292,6 +15351,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 4,
@@ -15452,6 +15512,7 @@ Array [
     "declarations": Array [
       Object {
         "annotations": Array [],
+        "array": true,
         "arraySelector": Object {
           "type": "number",
           "value": 4,
@@ -15589,6 +15650,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 11,
@@ -21582,6 +21644,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 3,
@@ -21614,6 +21677,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 3,
@@ -25834,6 +25898,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "arguments": Array [
                     Object {
@@ -26475,6 +26540,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "arguments": Array [
                           Object {
@@ -27915,6 +27981,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "name": "size",
                   "type": "identifier",
@@ -28177,6 +28244,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "name": "size",
                   "type": "identifier",
@@ -28381,6 +28449,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "name": "size",
                   "type": "identifier",
@@ -29550,6 +29619,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "name": "size",
                   "type": "identifier",
@@ -30380,6 +30450,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "name": "size",
                   "type": "identifier",
@@ -31051,6 +31122,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "name": "size",
                   "type": "identifier",
@@ -32215,6 +32287,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "size",
                         "type": "identifier",
@@ -32546,6 +32619,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "fields_size",
                         "type": "identifier",
@@ -32592,6 +32666,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "methods_size",
                         "type": "identifier",
@@ -32638,6 +32713,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "parameters_size",
                         "type": "identifier",
@@ -33014,6 +33090,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "size",
                         "type": "identifier",
@@ -36626,6 +36703,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "name": "size",
                   "type": "identifier",
@@ -36958,6 +37036,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "numhandlers",
                         "type": "identifier",
@@ -37152,6 +37231,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "arguments": Array [
                     Object {
@@ -37533,6 +37613,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "insns_size",
                         "type": "identifier",
@@ -37629,6 +37710,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "tries_size",
                         "type": "identifier",
@@ -39459,6 +39541,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "arguments": Array [
                           Object {
@@ -39726,6 +39809,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "name": "size",
                   "type": "identifier",
@@ -41161,6 +41245,7 @@ Array [
                     "declarations": Array [
                       Object {
                         "annotations": Array [],
+                        "array": true,
                         "arraySelector": Object {
                           "name": "realsize",
                           "type": "identifier",
@@ -41716,6 +41801,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "num_entries",
                         "type": "identifier",
@@ -41765,6 +41851,7 @@ Array [
     "declarations": Array [
       Object {
         "annotations": Array [],
+        "array": true,
         "arraySelector": Object {
           "type": "number",
           "value": 3,
@@ -42258,6 +42345,7 @@ Array [
                         },
                       },
                     ],
+                    "array": true,
                     "arraySelector": Object {
                       "expression": Object {
                         "name": "dexopt_header",
@@ -42695,6 +42783,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 4,
@@ -42765,6 +42854,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 10,
@@ -42854,6 +42944,7 @@ Array [
                           },
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "left": Object {
                           "expression": Object {
@@ -47237,6 +47328,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 8,
@@ -47490,6 +47582,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "expression": Object {
                     "name": "SecHeader",
@@ -47556,6 +47649,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "name": "nNameLen",
                   "type": "identifier",
@@ -48270,6 +48364,7 @@ Array [
             "declarations": Array [
               Object {
                 "annotations": Array [],
+                "array": true,
                 "arraySelector": Object {
                   "left": Object {
                     "arguments": Array [
@@ -49448,6 +49543,7 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "array": true,
                       "arraySelector": Object {
                         "left": Object {
                           "name": "Length",
@@ -49523,6 +49619,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "type": "number",
                   "value": 16,
@@ -49717,6 +49814,7 @@ Array [
                   "declarations": Array [
                     Object {
                       "annotations": Array [],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "DataSize",
                         "type": "identifier",
@@ -50477,6 +50575,7 @@ Array [
                           "type": "identifier",
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "NumberOfNameEntries",
                         "type": "identifier",
@@ -50533,6 +50632,7 @@ Array [
                           "type": "identifier",
                         },
                       ],
+                      "array": true,
                       "arraySelector": Object {
                         "name": "NumberOfIDEntries",
                         "type": "identifier",
@@ -50691,6 +50791,7 @@ Array [
                     },
                   },
                 ],
+                "array": true,
                 "arraySelector": Object {
                   "name": "ulBlockNum",
                   "type": "identifier",
@@ -56474,6 +56575,7 @@ Array [
             },
           },
         ],
+        "array": true,
         "arraySelector": Object {
           "expression": Object {
             "expression": Object {
@@ -56614,6 +56716,7 @@ Array [
                   },
                 },
               ],
+              "array": true,
               "arraySelector": Object {
                 "left": Object {
                   "expression": Object {

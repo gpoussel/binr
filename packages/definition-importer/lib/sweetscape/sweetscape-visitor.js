@@ -127,8 +127,8 @@ function getVisitor(parser) {
 
     functionParameterDeclaration(ctx) {
       const type = this.visit(ctx.typeNameWithoutVoid);
-      if (_.has(ctx, "emptyArraySelector")) {
-        type.array = true;
+      if (_.has(ctx, "anyArraySelector")) {
+        _.assign(type, this.visit(ctx.anyArraySelector));
       }
       const result = {
         type,
@@ -368,11 +368,9 @@ function getVisitor(parser) {
       if (_.has(ctx, "arguments")) {
         result.arguments = this.visit(ctx.arguments);
       }
-      if (_.has(ctx, "arraySelector")) {
-        result.arraySelector = this.visit(ctx.arraySelector);
-      }
-      if (_.has(ctx, "emptyArraySelector")) {
-        result.array = true;
+      if (_.has(ctx, "anyArraySelector")) {
+        const anyArraySelector = this.visit(ctx.anyArraySelector);
+        _.assign(result, anyArraySelector);
       }
       if (_.has(ctx, "variableInitializer")) {
         result.initializer = this.visit(ctx.variableInitializer);
@@ -715,6 +713,21 @@ function getVisitor(parser) {
 
     arraySelector(ctx) {
       return this.visit(ctx.assignmentExpression);
+    }
+
+    anyArraySelector(ctx) {
+      if (_.has(ctx, "emptyArraySelector")) {
+        return {
+          array: true,
+        };
+      }
+      if (_.has(ctx, "arraySelector")) {
+        return {
+          array: true,
+          arraySelector: this.visit(ctx.arraySelector),
+        };
+      }
+      throw new Error();
     }
 
     variableInitializer(ctx) {

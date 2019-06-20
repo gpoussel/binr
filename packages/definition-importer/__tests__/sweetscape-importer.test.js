@@ -1,7 +1,7 @@
 "use strict";
 
 const SweetscapeImporter = require("../lib/sweetscape/sweetscape-importer");
-const { iterateStructures, getSingleStructure } = require("./utils/010-structures");
+const { iterateStructures, iterateScripts, getSingleStructure } = require("./utils/010-structures");
 
 describe("Sweetscape Importer", () => {
   const importer = new SweetscapeImporter();
@@ -24,6 +24,30 @@ describe("Sweetscape Importer", () => {
     let hasFailed = false;
     iterateStructures(
       (name, input) => {
+        try {
+          const definition = importer.readInput(input);
+          expect(definition).toBeDefined();
+        } catch (e) {
+          e.message = `[${name}] ${e.message}`;
+          done.fail(e);
+          hasFailed = true;
+        }
+      },
+      done,
+      () => !hasFailed
+    );
+  }, 45000);
+
+  test("creates all 010 sample scripts", done => {
+    // We are keeping the state right there, so we can stop the iteration
+    // as soon as we got a failure
+    let hasFailed = false;
+    iterateScripts(
+      (name, input) => {
+        if (name === "CountBlocks.1sc") {
+          // For an unknown reason, this script contains a typo (line 127), so we can't parse it
+          return;
+        }
         try {
           const definition = importer.readInput(input);
           expect(definition).toBeDefined();

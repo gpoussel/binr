@@ -530,9 +530,7 @@ class SweetscapeParser extends Parser {
     $.RULE("variableDeclaratorRest", () => {
       // Be careful to avoid duplication with the function declaration rule
       $.OPTION(() => $.SUBRULE($.arguments));
-      $.OPTION1(() => {
-        $.OR([{ ALT: () => $.SUBRULE($.arraySelector) }, { ALT: () => $.SUBRULE($.emptyArraySelector) }]);
-      });
+      $.OPTION1(() => $.SUBRULE($.anyArraySelector));
       $.OPTION3(() => $.SUBRULE($.annotations));
       $.OPTION2(() => {
         $.CONSUME(tokens.Equals);
@@ -555,6 +553,10 @@ class SweetscapeParser extends Parser {
       $.CONSUME(tokens.BracketOpen);
       $.SUBRULE($.assignmentExpression);
       $.CONSUME(tokens.BracketClose);
+    });
+
+    $.RULE("anyArraySelector", () => {
+      $.OR([{ ALT: () => $.SUBRULE($.arraySelector) }, { ALT: () => $.SUBRULE($.emptyArraySelector) }]);
     });
 
     $.RULE("emptyArraySelector", () => {
@@ -664,7 +666,7 @@ class SweetscapeParser extends Parser {
       $.SUBRULE($.typeNameWithoutVoid); // Parameter type
       $.OPTION(() => $.CONSUME(tokens.BinaryAnd));
       $.CONSUME1(tokens.Identifier); // Parameter name
-      $.OPTION2(() => $.SUBRULE($.emptyArraySelector));
+      $.OPTION2(() => $.SUBRULE($.anyArraySelector));
     });
 
     /**
