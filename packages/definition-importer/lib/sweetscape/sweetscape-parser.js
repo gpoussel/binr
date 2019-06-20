@@ -21,9 +21,7 @@ class SweetscapeParser extends Parser {
 
     const $ = this;
 
-    $.RULE("definition", () => {
-      $.MANY(() => $.SUBRULE($.topLevelStatement));
-    });
+    $.RULE("definition", () => $.MANY(() => $.SUBRULE($.topLevelStatement)));
 
     $.RULE("topLevelStatement", () => {
       $.OR([
@@ -38,9 +36,7 @@ class SweetscapeParser extends Parser {
       ]);
     });
 
-    $.RULE("statementList", () => {
-      $.MANY(() => $.SUBRULE($.statement));
-    });
+    $.RULE("statementList", () => $.MANY(() => $.SUBRULE($.statement)));
 
     $.RULE("block", () => {
       $.CONSUME(tokens.CurlyBraceOpen);
@@ -244,11 +240,7 @@ class SweetscapeParser extends Parser {
               $.SUBRULE($.simpleValue);
             },
           },
-          {
-            ALT: () => {
-              $.CONSUME(tokens.Default);
-            },
-          },
+          { ALT: () => $.CONSUME(tokens.Default) },
         ]);
         $.CONSUME(tokens.Colon);
       });
