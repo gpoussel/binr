@@ -18,7 +18,7 @@ describe("Sweetscape Importer", () => {
     expect(definition).toBeDefined();
   });
 
-  test("creates all 010 sample definitions", done => {
+  test("creates all 010 sample structures", done => {
     // We are keeping the state right there, so we can stop the iteration
     // as soon as we got a failure
     let hasFailed = false;
