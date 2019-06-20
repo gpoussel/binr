@@ -20,17 +20,6 @@ describe("RAR reading", () => {
     const binaryReader = new BinaryReader();
     const archive = binaryReader.read(archiveRarBuffer, rarDefinition, "RarFile");
     expect(archive).toBeDefined();
-    expect(archive.signature).toBeDefined();
-
-    const { header } = archive;
-    expect(header).toBeDefined();
-    expect(header.crc).toBe(37071);
-    expect(header.type).toBe("ARCHIVE");
-    expect(header.headerFlags).toHaveLength(0);
-    expect(header.headerSize).toBe(13);
-
-    const { blocks } = archive;
-    console.log(blocks);
-    console.log(blocks.length);
+    expect(archive).toMatchSnapshot();
   });
 });
