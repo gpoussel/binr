@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Definition Parser for Binr",
   "author": "Guillaume Poussel <gpoussel@gmail.com>",
-  "homepage": "https://github.com/gpoussel/binr#readme",
+  "homepage": "https://github.com/gpoussel/binr/tree/master/packages/definition-reader#readme",
   "license": "MIT",
   "main": "index.js",
   "directories": {
@@ -14,7 +14,7 @@
     "lib"
   ],
   "engines": {
-    "node": ">=8.3.0"
+    "node": ">=9.11.2"
   },
   "repository": {
     "type": "git",

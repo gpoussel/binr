@@ -1,0 +1,41 @@
+{
+  "name": "@binr/definition-importer",
+  "version": "1.0.0",
+  "description": "Import definition from other formats",
+  "author": "Guillaume Poussel <gpoussel@gmail.com>",
+  "homepage": "https://github.com/gpoussel/binr/tree/master/packages/definition-importer#readme",
+  "license": "MIT",
+  "main": "lib/definition-importer.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "engines": {
+    "node": ">=9.11.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gpoussel/binr.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/gpoussel/binr/issues"
+  },
+  "dependencies": {
+    "chevrotain": "^4.7.0",
+    "escape-string-regexp": "^2.0.0",
+    "gunzip-maybe": "^1.4.1",
+    "lerna": "^3.10.8",
+    "lodash": "^4.17.11",
+    "string-enum": "^1.2.1",
+    "tar-stream": "^2.1.0"
+  }
+}

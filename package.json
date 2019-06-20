@@ -19,14 +19,15 @@
     "lint:fix": "eslint . --ignore-path=.gitignore --fix",
     "test": "jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
-    "test:watch": "jest --watch --no-cache --runInBand",
-    "test:coverage": "jest --coverage --no-cache --runInBand"
+    "test:watch": "jest --watch --verbose",
+    "test:watch:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --watch --runInBand",
+    "test:coverage": "jest --coverage"
   },
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
   },
   "engines": {
-    "node": ">=8.3.0"
+    "node": ">=9.11.2"
   },
   "devDependencies": {
     "eslint": "^5.13.0",
@@ -34,10 +35,10 @@
     "eslint-config-google": "^0.12.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jest": "^22.2.2",
+    "eslint-plugin-jest": "^22.6.4",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-prettier": "^3.0.1",
-    "jest": "^24.0.0",
+    "jest": "^24.6.0",
     "lerna": "^3.10.8",
     "prettier": "^1.16.3"
   },
