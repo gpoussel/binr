@@ -88,4 +88,36 @@ A
 #endif`;
     expect(() => preprocessor.preprocess(input)).toThrow(/#else/);
   });
+
+  test("handles escaped line breaks", () => {
+    const input = `#define A a+\
+b \
+c
+A`;
+    expect(preprocessor.preprocess(input)).toEqual("a+b c");
+  });
+
+  test("handles constants in constants", () => {
+    const input = `#define A a
+#define ADDITION A+A
+ADDITION`;
+    expect(preprocessor.preprocess(input)).toEqual("a+a");
+  });
+
+  test("supports #ifndef #else #endif", () => {
+    const input = `#define A
+#ifndef A
+B
+#else
+D
+#endif
+#ifndef B
+D
+#else
+C
+#endif`;
+    const result = preprocessor.preprocess(input);
+    expect(result).toEqual(`D
+D`);
+  });
 });

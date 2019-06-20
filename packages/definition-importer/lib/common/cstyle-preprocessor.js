@@ -28,11 +28,14 @@ class CStylePreprocessor {
           definitions[firstArgument] = replaceDefinitions(contentWithoutComment);
         } else if (directiveName === "#ifdef") {
           conditionStack.push({ positive: true, variable: firstArgument });
+        } else if (directiveName === "#ifndef") {
+          conditionStack.push({ positive: false, variable: firstArgument });
         } else if (directiveName === "#else") {
           if (_.isEmpty(conditionStack)) {
             throw new Error("Cannot use #else outside #ifdef");
           }
-          _.last(conditionStack).positive = false;
+          const topCondition = _.last(conditionStack);
+          topCondition.positive = !topCondition.positive;
         } else if (directiveName === "#endif") {
           conditionStack.pop();
         } else {
