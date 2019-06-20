@@ -6,7 +6,722 @@ import _ from "lodash";
 import { tokens } from "./sweetscape-tokens";
 
 export class SweetscapeParser extends CstParser {
-  constructor() {
+  private definition = this.RULE("definition", () => this.MANY(() => this.SUBRULE(this.topLevelStatement)));
+
+  private topLevelStatement = this.RULE("topLevelStatement", () => {
+    this.OR([
+      {
+        GATE: () => this.BACKTRACK(this.functionDeclarationStatement),
+        ALT: () => this.SUBRULE(this.functionDeclarationStatement),
+      },
+      {
+        GATE: () => this.BACKTRACK(this.statement),
+        ALT: () => this.SUBRULE(this.statement),
+      },
+    ]);
+  });
+
+  private statementList = this.RULE("statementList", () => this.MANY(() => this.SUBRULE(this.statement)));
+
+  private block = this.RULE("block", () => {
+    this.CONSUME(tokens.CurlyBraceOpen);
+    this.SUBRULE(this.statementList);
+    this.CONSUME(tokens.CurlyBraceClose);
+  });
+
+  private statement = this.RULE("statement", () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.block) },
+      { ALT: () => this.SUBRULE(this.expressionStatement) },
+      { ALT: () => this.SUBRULE(this.localVariableDeclarationStatement) },
+      { ALT: () => this.SUBRULE(this.typedefStatement) },
+      { ALT: () => this.SUBRULE(this.structStatement) },
+      { ALT: () => this.SUBRULE(this.enumStatement) },
+      { ALT: () => this.SUBRULE(this.ifStatement) },
+      { ALT: () => this.SUBRULE(this.whileStatement) },
+      { ALT: () => this.SUBRULE(this.doWhileStatement) },
+      { ALT: () => this.SUBRULE(this.forStatement) },
+      { ALT: () => this.SUBRULE(this.switchStatement) },
+      { ALT: () => this.SUBRULE(this.returnStatement) },
+      { ALT: () => this.SUBRULE(this.breakStatement) },
+      { ALT: () => this.CONSUME(tokens.SemiColon) },
+    ]);
+  });
+
+  private functionDeclarationStatement = this.RULE("functionDeclarationStatement", () => {
+    this.SUBRULE(this.typeName);
+    this.CONSUME1(tokens.Identifier); // Function name
+    this.SUBRULE(this.functionParameterDeclarationList);
+    this.OR([{ ALT: () => this.SUBRULE(this.block) }, { ALT: () => this.CONSUME(tokens.SemiColon) }]);
+  });
+
+  private localVariableDeclarationStatement = this.RULE("localVariableDeclarationStatement", () => {
+    this.MANY(() => this.SUBRULE(this.variableModifier));
+    this.SUBRULE(this.typeName);
+    this.OR([
+      { ALT: () => this.SUBRULE(this.variableDeclarators) },
+      {
+        ALT: () => {
+          this.SUBRULE2(this.bitfieldRest);
+          this.OPTION(() => this.SUBRULE(this.annotations));
+        },
+      },
+    ]);
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private bitfieldRest = this.RULE("bitfieldRest", () => {
+    this.CONSUME(tokens.Colon);
+    this.SUBRULE(this.additiveExpression);
+  });
+
+  private typedefStatement = this.RULE("typedefStatement", () => {
+    this.CONSUME(tokens.Typedef);
+    this.SUBRULE(this.typeName); // Type
+    this.CONSUME2(tokens.Identifier); // Alias
+    this.OPTION4(() => this.SUBRULE(this.arraySelector));
+    this.OPTION2(() => this.SUBRULE(this.annotations));
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private structStatement = this.RULE("structStatement", () => {
+    this.OPTION(() => this.CONSUME(tokens.Typedef));
+    this.OR2([{ ALT: () => this.CONSUME(tokens.Struct) }, { ALT: () => this.CONSUME(tokens.Union) }]);
+    this.OPTION2(() => this.CONSUME(tokens.Identifier)); // Alias
+    this.OPTION3(() => {
+      this.SUBRULE2(this.structDeclaration);
+      this.OPTION4(() => this.SUBRULE(this.variableDeclarator));
+    });
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private enumStatement = this.RULE("enumStatement", () => {
+    this.OPTION(() => this.CONSUME(tokens.Typedef));
+    this.CONSUME(tokens.Enum);
+    this.OPTION2(() => {
+      this.CONSUME(tokens.Less);
+      this.SUBRULE(this.typeName);
+      this.CONSUME(tokens.Greater);
+    });
+    this.OR([
+      {
+        ALT: () => {
+          this.CONSUME1(tokens.Identifier); // Type name
+          this.OPTION6(() => this.SUBRULE(this.enumDeclaration));
+          this.OPTION4(() => this.SUBRULE(this.variableDeclarator));
+        },
+      },
+      {
+        ALT: () => {
+          this.SUBRULE2(this.enumDeclaration);
+          this.OPTION5(() => this.SUBRULE2(this.variableDeclarators));
+        },
+      },
+    ]);
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private structDeclaration = this.RULE("structDeclaration", () => {
+    this.OPTION(() => this.SUBRULE(this.functionParameterDeclarationList));
+    this.SUBRULE(this.block);
+  });
+
+  private enumDeclaration = this.RULE("enumDeclaration", () => {
+    this.CONSUME(tokens.CurlyBraceOpen);
+    this.SUBRULE(this.enumElementDeclaration);
+    this.MANY(() => {
+      this.CONSUME(tokens.Comma);
+      this.SUBRULE2(this.enumElementDeclaration);
+    });
+    this.OPTION2(() => this.CONSUME2(tokens.Comma));
+    this.CONSUME(tokens.CurlyBraceClose);
+  });
+
+  private enumElementDeclaration = this.RULE("enumElementDeclaration", () => {
+    this.CONSUME(tokens.Identifier);
+    this.OPTION(() => {
+      this.CONSUME(tokens.Equals);
+      this.SUBRULE(this.assignmentExpression);
+    });
+  });
+
+  private annotations = this.RULE("annotations", () => {
+    this.CONSUME(tokens.Less);
+    this.MANY_SEP({
+      SEP: tokens.Comma,
+      DEF: () => this.SUBRULE(this.annotation),
+    });
+    this.CONSUME(tokens.Greater);
+  });
+
+  private annotation = this.RULE("annotation", () => {
+    this.CONSUME(tokens.Identifier); // Key
+    this.CONSUME(tokens.Equals);
+    this.SUBRULE(this.simpleValue);
+  });
+
+  private ifStatement = this.RULE("ifStatement", () => {
+    this.CONSUME(tokens.If);
+    this.SUBRULE(this.parExpression);
+    this.SUBRULE(this.statement);
+    this.OPTION(() => {
+      this.CONSUME(tokens.Else);
+      this.SUBRULE2(this.statement);
+    });
+  });
+
+  private doWhileStatement = this.RULE("doWhileStatement", () => {
+    this.CONSUME(tokens.Do);
+    this.SUBRULE(this.statement);
+    this.CONSUME(tokens.While);
+    this.SUBRULE(this.parExpression);
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private whileStatement = this.RULE("whileStatement", () => {
+    this.CONSUME(tokens.While);
+    this.SUBRULE(this.parExpression);
+    this.SUBRULE(this.statement);
+  });
+
+  private forStatement = this.RULE("forStatement", () => {
+    this.CONSUME(tokens.For);
+    this.CONSUME(tokens.ParenthesisOpen);
+    this.SUBRULE(this.forInitUpdate);
+    this.CONSUME2(tokens.SemiColon);
+    this.SUBRULE(this.assignmentExpression);
+    this.CONSUME3(tokens.SemiColon);
+    this.SUBRULE2(this.forInitUpdate);
+    this.CONSUME(tokens.ParenthesisClose);
+    this.SUBRULE(this.statement);
+  });
+
+  private forInitUpdate = this.RULE("forInitUpdate", () => {
+    this.MANY_SEP({
+      SEP: tokens.Comma,
+      DEF: () => this.SUBRULE(this.assignmentExpression),
+    });
+  });
+
+  private switchStatement = this.RULE("switchStatement", () => {
+    this.CONSUME(tokens.Switch);
+    this.SUBRULE(this.parExpression);
+    this.CONSUME(tokens.CurlyBraceOpen);
+    this.MANY(() => this.SUBRULE(this.switchBlockStatementGroup));
+    this.CONSUME(tokens.CurlyBraceClose);
+  });
+
+  private switchBlockStatementGroup = this.RULE("switchBlockStatementGroup", () => {
+    this.SUBRULE(this.switchLabels);
+    this.SUBRULE(this.statementList);
+  });
+
+  private switchLabels = this.RULE("switchLabels", () => {
+    this.MANY(() => {
+      this.OR([
+        {
+          ALT: () => {
+            this.CONSUME(tokens.Case);
+            this.SUBRULE(this.simpleValue);
+          },
+        },
+        { ALT: () => this.CONSUME(tokens.Default) },
+      ]);
+      this.CONSUME(tokens.Colon);
+    });
+  });
+
+  private breakStatement = this.RULE("breakStatement", () => {
+    this.CONSUME(tokens.Break);
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private returnStatement = this.RULE("returnStatement", () => {
+    this.CONSUME(tokens.Return);
+    this.OPTION(() => this.SUBRULE(this.assignmentExpression));
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private parExpression = this.RULE("parExpression", () => {
+    this.CONSUME(tokens.ParenthesisOpen);
+    this.SUBRULE(this.assignmentExpression);
+    this.CONSUME(tokens.ParenthesisClose);
+  });
+
+  private expressionOrTypeName = this.RULE("expressionOrTypeName", () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.assignmentExpression) },
+      {
+        GATE: () => this.LA(1).tokenType !== tokens.Identifier,
+        ALT: () => this.SUBRULE(this.typeNameWithoutVoid),
+      },
+    ]);
+  });
+
+  private expressionStatement = this.RULE("expressionStatement", () => {
+    this.SUBRULE(this.assignmentExpression);
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  /**
+   * Level 0 precedence: assignment expressions
+   */
+  private assignmentExpression = this.RULE("assignmentExpression", () => {
+    this.SUBRULE(this.ternaryExpression);
+    this.MANY(() => {
+      this.SUBRULE(this.assignmentOperator);
+      this.SUBRULE1(this.ternaryExpression);
+    });
+  });
+
+  /**
+   * Level 1 precedence: ternary
+   */
+  private ternaryExpression = this.RULE("ternaryExpression", () => {
+    this.SUBRULE(this.booleanOrExpression);
+    this.OPTION(() => {
+      this.CONSUME(tokens.Question);
+      this.SUBRULE(this.assignmentExpression);
+      this.CONSUME(tokens.Colon);
+      this.SUBRULE2(this.ternaryExpression);
+    });
+  });
+
+  /**
+   * Level 2 precedence: boolean or (||)
+   */
+  private booleanOrExpression = this.RULE("booleanOrExpression", () => {
+    this.SUBRULE(this.booleanAndExpression);
+    this.MANY(() => {
+      this.CONSUME(tokens.BooleanOr);
+      this.SUBRULE2(this.booleanAndExpression);
+    });
+  });
+
+  /**
+   * Level 3 precedence: boolean and (&&)
+   */
+  private booleanAndExpression = this.RULE("booleanAndExpression", () => {
+    this.SUBRULE(this.binaryOrExpression);
+    this.MANY(() => {
+      this.CONSUME(tokens.BooleanAnd);
+      this.SUBRULE2(this.binaryOrExpression);
+    });
+  });
+
+  /**
+   * Level 4 precedence: binary or (|)
+   */
+  private binaryOrExpression = this.RULE("binaryOrExpression", () => {
+    this.SUBRULE(this.binaryXorExpression);
+    this.MANY(() => {
+      this.CONSUME(tokens.BinaryOr);
+      this.SUBRULE2(this.binaryXorExpression);
+    });
+  });
+
+  /**
+   * Level 5 precedence: binary xor (^)
+   */
+  private binaryXorExpression = this.RULE("binaryXorExpression", () => {
+    this.SUBRULE(this.binaryAndExpression);
+    this.MANY(() => {
+      this.CONSUME(tokens.BinaryXor);
+      this.SUBRULE2(this.binaryAndExpression);
+    });
+  });
+
+  /**
+   * Level 6 precedence: binary and (&)
+   */
+  private binaryAndExpression = this.RULE("binaryAndExpression", () => {
+    this.SUBRULE(this.equalityExpression);
+    this.MANY(() => {
+      this.CONSUME(tokens.BinaryAnd);
+      this.SUBRULE2(this.equalityExpression);
+    });
+  });
+
+  /**
+   * Level 7 precedence: equality (== !=)
+   */
+  private equalityExpression = this.RULE("equalityExpression", () => {
+    this.SUBRULE(this.relationalExpression);
+    this.MANY(() => {
+      this.SUBRULE(this.equalityOperator);
+      this.SUBRULE2(this.relationalExpression);
+    });
+  });
+
+  /**
+   * Level 8 precedence: relational (< <= > >=)
+   */
+  private relationalExpression = this.RULE("relationalExpression", () => {
+    this.SUBRULE(this.shiftExpression);
+    this.OPTION(() => {
+      this.SUBRULE(this.relationalOperator);
+      this.SUBRULE2(this.shiftExpression);
+    });
+  });
+
+  /**
+   * Level 9 precedence: shift (<< >> >>>)
+   */
+  private shiftExpression = this.RULE("shiftExpression", () => {
+    this.SUBRULE(this.additiveExpression);
+    this.MANY(() => {
+      this.SUBRULE(this.shiftOperator);
+      this.SUBRULE2(this.additiveExpression);
+    });
+  });
+
+  /**
+   * Level 10 precedence: additive (+ -)
+   */
+  private additiveExpression = this.RULE("additiveExpression", () => {
+    this.SUBRULE(this.multiplicativeExpression);
+    this.MANY(() => {
+      this.SUBRULE(this.additiveOperator);
+      this.SUBRULE2(this.multiplicativeExpression);
+    });
+  });
+
+  /**
+   * Level 11 precedence: multiplicative (* / %)
+   */
+  private multiplicativeExpression = this.RULE("multiplicativeExpression", () => {
+    this.SUBRULE(this.castExpression);
+    this.MANY(() => {
+      this.SUBRULE(this.multiplicativeOperator);
+      this.SUBRULE2(this.castExpression);
+    });
+  });
+
+  /**
+   * Level 12 precedence: cast (type)
+   */
+  private castExpression = this.RULE("castExpression", () => {
+    this.OR([
+      {
+        GATE: () => this.BACKTRACK(this.castOperation),
+        ALT: () => this.SUBRULE(this.castOperation),
+      },
+      {
+        GATE: () => this.BACKTRACK(this.prefixExpression),
+        ALT: () => this.SUBRULE(this.prefixExpression),
+      },
+    ]);
+  });
+
+  private castOperation = this.RULE("castOperation", () => {
+    this.CONSUME(tokens.ParenthesisOpen);
+    this.SUBRULE(this.typeNameWithoutVoid);
+    this.CONSUME(tokens.ParenthesisClose);
+    this.SUBRULE(this.prefixExpression);
+  });
+
+  /**
+   * Level 13 precedence: prefix (++ -- + - ! ~)
+   */
+  private prefixExpression = this.RULE("prefixExpression", () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.postfixExpression) },
+      {
+        ALT: () => {
+          this.SUBRULE(this.prefixOperator);
+          this.SUBRULE(this.prefixExpression);
+        },
+      },
+      {
+        ALT: () => {
+          this.SUBRULE(this.unaryOperator);
+          this.SUBRULE(this.castExpression);
+        },
+      },
+    ]);
+  });
+
+  /**
+   * Level 14 precedence: postfix (++ --)
+   */
+  private postfixExpression = this.RULE("postfixExpression", () => {
+    this.SUBRULE(this.callExpression);
+    this.MANY(() => this.SUBRULE(this.postfixOperator));
+  });
+
+  /**
+   * Level 15 precedence: access (array object parentheses)
+   */
+  private callExpression = this.RULE("callExpression", () => {
+    this.SUBRULE(this.memberExpression);
+    this.MANY(() => this.SUBRULE(this.callExpressionRest));
+  });
+
+  private callExpressionRest = this.RULE("callExpressionRest", () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.arguments) },
+      { ALT: () => this.SUBRULE(this.arraySelector) },
+      { ALT: () => this.SUBRULE(this.propertyAccess) },
+    ]);
+  });
+
+  private memberExpression = this.RULE("memberExpression", () => {
+    this.SUBRULE(this.primaryExpression);
+    this.MANY(() => this.SUBRULE(this.memberExpressionRest));
+  });
+
+  private memberExpressionRest = this.RULE("memberExpressionRest", () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.arraySelector) },
+      { ALT: () => this.SUBRULE(this.propertyAccess) },
+    ]);
+  });
+
+  private propertyAccess = this.RULE("propertyAccess", () => {
+    this.CONSUME(tokens.Period);
+    this.CONSUME(tokens.Identifier);
+  });
+
+  private primaryExpression = this.RULE("primaryExpression", () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.simpleValue) },
+      {
+        ALT: () => {
+          this.CONSUME(tokens.Sizeof);
+          this.CONSUME(tokens.ParenthesisOpen);
+          this.SUBRULE(this.expressionOrTypeName);
+          this.CONSUME(tokens.ParenthesisClose);
+        },
+      },
+      { ALT: () => this.SUBRULE(this.parExpression) },
+    ]);
+  });
+
+  private variableModifier = this.RULE("variableModifier", () => {
+    this.OR([{ ALT: () => this.CONSUME(tokens.Local) }, { ALT: () => this.CONSUME(tokens.Const) }]);
+  });
+
+  private variableDeclarators = this.RULE("variableDeclarators", () => {
+    this.AT_LEAST_ONE_SEP({
+      SEP: tokens.Comma,
+      DEF: () => this.SUBRULE(this.variableDeclarator),
+    });
+  });
+
+  private variableDeclarator = this.RULE("variableDeclarator", () => {
+    this.CONSUME(tokens.Identifier);
+    this.SUBRULE(this.variableDeclaratorRest);
+    this.OPTION(() => this.SUBRULE(this.bitfieldRest));
+    this.OPTION2(() => this.SUBRULE(this.annotations));
+  });
+
+  private variableDeclaratorRest = this.RULE("variableDeclaratorRest", () => {
+    // Be careful to avoid duplication with the function declaration rule
+    this.OPTION(() => this.SUBRULE(this.arguments));
+    this.OPTION1(() => this.SUBRULE(this.anyArraySelector));
+    this.OPTION3(() => this.SUBRULE(this.annotations));
+    this.OPTION2(() => {
+      this.CONSUME(tokens.Equals);
+      this.SUBRULE(this.variableInitializer);
+    });
+  });
+
+  private variableInitializer = this.RULE("variableInitializer", () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.assignmentExpression) },
+      { ALT: () => this.SUBRULE(this.arrayInitializer) },
+    ]);
+  });
+
+  private arrayInitializer = this.RULE("arrayInitializer", () => {
+    this.CONSUME(tokens.CurlyBraceOpen);
+    // No trailing comma supported
+    this.AT_LEAST_ONE_SEP({ SEP: tokens.Comma, DEF: () => this.SUBRULE2(this.assignmentExpression) });
+    this.CONSUME(tokens.CurlyBraceClose);
+  });
+
+  private arraySelector = this.RULE("arraySelector", () => {
+    this.CONSUME(tokens.BracketOpen);
+    this.SUBRULE(this.assignmentExpression);
+    this.CONSUME(tokens.BracketClose);
+  });
+
+  private anyArraySelector = this.RULE("anyArraySelector", () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.arraySelector) },
+      { ALT: () => this.SUBRULE(this.emptyArraySelector) },
+    ]);
+  });
+
+  private emptyArraySelector = this.RULE("emptyArraySelector", () => {
+    this.CONSUME(tokens.BracketOpen);
+    this.CONSUME(tokens.BracketClose);
+  });
+
+  private arguments = this.RULE("arguments", () => {
+    this.CONSUME(tokens.ParenthesisOpen);
+    this.MANY_SEP({
+      SEP: tokens.Comma,
+      DEF: () => this.SUBRULE(this.assignmentExpression),
+    });
+    this.CONSUME(tokens.ParenthesisClose);
+  });
+
+  private assignmentOperator = this.RULE("assignmentOperator", () => {
+    this.OR([
+      { ALT: () => this.CONSUME(tokens.Equals) },
+      { ALT: () => this.CONSUME(tokens.MultiplicationEquals) },
+      { ALT: () => this.CONSUME(tokens.DivisionEquals) },
+      { ALT: () => this.CONSUME(tokens.ModuloEquals) },
+      { ALT: () => this.CONSUME(tokens.PlusEquals) },
+      { ALT: () => this.CONSUME(tokens.MinusEquals) },
+      { ALT: () => this.CONSUME(tokens.ShiftLeftEquals) },
+      { ALT: () => this.CONSUME(tokens.ShiftRightEquals) },
+      { ALT: () => this.CONSUME(tokens.UnsignedShiftRightEquals) },
+      { ALT: () => this.CONSUME(tokens.BinaryAndEquals) },
+      { ALT: () => this.CONSUME(tokens.BinaryXorEquals) },
+      { ALT: () => this.CONSUME(tokens.BinaryOrEquals) },
+    ]);
+  });
+
+  private equalityOperator = this.RULE("equalityOperator", () =>
+    this.OR([
+      { ALT: () => this.CONSUME(tokens.DoubleEquals) },
+      { ALT: () => this.CONSUME(tokens.Different) },
+    ]),
+  );
+
+  private relationalOperator = this.RULE("relationalOperator", () => {
+    this.OR([
+      { ALT: () => this.CONSUME(tokens.Greater) },
+      { ALT: () => this.CONSUME(tokens.Less) },
+      { ALT: () => this.CONSUME(tokens.GreaterOrEqual) },
+      { ALT: () => this.CONSUME(tokens.LessOrEqual) },
+    ]);
+  });
+
+  private shiftOperator = this.RULE("shiftOperator", () => {
+    this.OR([
+      { ALT: () => this.CONSUME(tokens.ShiftLeft) },
+      { ALT: () => this.CONSUME(tokens.ShiftRight) },
+      { ALT: () => this.CONSUME(tokens.UnsignedShiftRight) },
+    ]);
+  });
+
+  private additiveOperator = this.RULE("additiveOperator", () =>
+    this.OR([{ ALT: () => this.CONSUME(tokens.Plus) }, { ALT: () => this.CONSUME(tokens.Minus) }]),
+  );
+
+  private multiplicativeOperator = this.RULE("multiplicativeOperator", () => {
+    this.OR([
+      { ALT: () => this.CONSUME(tokens.Multiplication) },
+      { ALT: () => this.CONSUME(tokens.Division) },
+      { ALT: () => this.CONSUME(tokens.Modulo) },
+    ]);
+  });
+
+  private prefixOperator = this.RULE("prefixOperator", () =>
+    this.OR2([
+      { ALT: () => this.CONSUME(tokens.DoublePlus) },
+      { ALT: () => this.CONSUME(tokens.DoubleMinus) },
+    ]),
+  );
+
+  private postfixOperator = this.RULE("postfixOperator", () =>
+    this.OR2([
+      { ALT: () => this.CONSUME(tokens.DoublePlus) },
+      { ALT: () => this.CONSUME(tokens.DoubleMinus) },
+    ]),
+  );
+
+  private unaryOperator = this.RULE("unaryOperator", () => {
+    this.OR3([
+      { ALT: () => this.CONSUME(tokens.Tilda) },
+      { ALT: () => this.CONSUME(tokens.Exclamation) },
+      { ALT: () => this.CONSUME(tokens.Plus) },
+      { ALT: () => this.CONSUME(tokens.Minus) },
+    ]);
+  });
+
+  /**
+   * Function parameters declaration
+   */
+  private functionParameterDeclarationList = this.RULE("functionParameterDeclarationList", () => {
+    this.CONSUME(tokens.ParenthesisOpen);
+    this.OR([
+      { ALT: () => this.CONSUME(tokens.Void) },
+      {
+        ALT: () =>
+          this.MANY_SEP({
+            SEP: tokens.Comma,
+            DEF: () => this.SUBRULE(this.functionParameterDeclaration),
+          }),
+      },
+    ]);
+    this.CONSUME(tokens.ParenthesisClose);
+  });
+
+  /**
+   * Single function parameter declaration
+   */
+  private functionParameterDeclaration = this.RULE("functionParameterDeclaration", () => {
+    this.MANY(() => this.SUBRULE(this.variableModifier));
+    this.SUBRULE(this.typeNameWithoutVoid); // Parameter type
+    this.OPTION(() => this.CONSUME(tokens.BinaryAnd));
+    this.CONSUME1(tokens.Identifier); // Parameter name
+    this.OPTION2(() => this.SUBRULE(this.anyArraySelector));
+  });
+
+  /**
+   * Represents any number, in any representation (binary, octal, decimal, hexadecimal)
+   */
+  private number = this.RULE("number", () => {
+    this.OR([
+      { ALT: () => this.CONSUME(tokens.NumberBinaryLiteral) },
+      { ALT: () => this.CONSUME(tokens.NumberOctalLiteral) },
+      { ALT: () => this.CONSUME(tokens.NumberDecimalLiteral) },
+      { ALT: () => this.CONSUME(tokens.NumberHexadecimalLiteral) },
+      { ALT: () => this.CONSUME(tokens.NumberHexadecimalLiteral2) },
+    ]);
+  });
+
+  /**
+   * Represents any type (void being included)
+   */
+  private typeName = this.RULE("typeName", () => {
+    this.OR([
+      { ALT: () => this.CONSUME(tokens.Void) },
+      { ALT: () => this.SUBRULE(this.typeNameWithoutVoid) },
+    ]);
+  });
+
+  /**
+   * Represents any concrete type (void being excluded)
+   */
+  private typeNameWithoutVoid = this.RULE("typeNameWithoutVoid", () => {
+    this.OR2([
+      { ALT: () => this.CONSUME(tokens.Signed) },
+      { ALT: () => this.CONSUME(tokens.Unsigned) },
+      { ALT: () => this.CONSUME(tokens.Struct) },
+      { ALT: () => {} },
+    ]);
+    this.CONSUME2(tokens.Identifier);
+    this.OPTION(() => this.SUBRULE(this.emptyArraySelector));
+  });
+
+  private simpleValue = this.RULE("simpleValue", () => {
+    this.OR([
+      { ALT: () => this.CONSUME(tokens.Identifier) },
+      { ALT: () => this.SUBRULE(this.number) },
+      { ALT: () => this.CONSUME(tokens.StringLiteral) },
+      { ALT: () => this.SUBRULE(this.boolean) },
+    ]);
+  });
+
+  private boolean = this.RULE("boolean", () => {
+    this.OR([{ ALT: () => this.CONSUME(tokens.True) }, { ALT: () => this.CONSUME(tokens.False) }]);
+  });
+  public constructor() {
     super(_.values(tokens), {
       recoveryEnabled: false,
       maxLookahead: 5,
@@ -16,703 +731,6 @@ export class SweetscapeParser extends CstParser {
         expressionOrTypeName: { OR: true },
         castExpression: { OR: true },
       },
-    });
-
-    const $ = this;
-
-    $.RULE("definition", () => $.MANY(() => $.SUBRULE($.topLevelStatement)));
-
-    $.RULE("topLevelStatement", () => {
-      $.OR([
-        {
-          GATE: () => $.BACKTRACK($.functionDeclarationStatement),
-          ALT: () => $.SUBRULE($.functionDeclarationStatement),
-        },
-        {
-          GATE: () => $.BACKTRACK($.statement),
-          ALT: () => $.SUBRULE($.statement),
-        },
-      ]);
-    });
-
-    $.RULE("statementList", () => $.MANY(() => $.SUBRULE($.statement)));
-
-    $.RULE("block", () => {
-      $.CONSUME(tokens.CurlyBraceOpen);
-      $.SUBRULE($.statementList);
-      $.CONSUME(tokens.CurlyBraceClose);
-    });
-
-    $.RULE("statement", () => {
-      $.OR([
-        { ALT: () => $.SUBRULE($.block) },
-        { ALT: () => $.SUBRULE($.expressionStatement) },
-        { ALT: () => $.SUBRULE($.localVariableDeclarationStatement) },
-        { ALT: () => $.SUBRULE($.typedefStatement) },
-        { ALT: () => $.SUBRULE($.structStatement) },
-        { ALT: () => $.SUBRULE($.enumStatement) },
-        { ALT: () => $.SUBRULE($.ifStatement) },
-        { ALT: () => $.SUBRULE($.whileStatement) },
-        { ALT: () => $.SUBRULE($.doWhileStatement) },
-        { ALT: () => $.SUBRULE($.forStatement) },
-        { ALT: () => $.SUBRULE($.switchStatement) },
-        { ALT: () => $.SUBRULE($.returnStatement) },
-        { ALT: () => $.SUBRULE($.breakStatement) },
-        { ALT: () => $.CONSUME(tokens.SemiColon) },
-      ]);
-    });
-
-    $.RULE("functionDeclarationStatement", () => {
-      $.SUBRULE($.typeName);
-      $.CONSUME1(tokens.Identifier); // Function name
-      $.SUBRULE($.functionParameterDeclarationList);
-      $.OR([{ ALT: () => $.SUBRULE($.block) }, { ALT: () => $.CONSUME(tokens.SemiColon) }]);
-    });
-
-    $.RULE("localVariableDeclarationStatement", () => {
-      $.MANY(() => $.SUBRULE($.variableModifier));
-      $.SUBRULE($.typeName);
-      $.OR([
-        { ALT: () => $.SUBRULE($.variableDeclarators) },
-        {
-          ALT: () => {
-            $.SUBRULE2($.bitfieldRest);
-            $.OPTION(() => $.SUBRULE($.annotations));
-          },
-        },
-      ]);
-      $.CONSUME(tokens.SemiColon);
-    });
-
-    $.RULE("bitfieldRest", () => {
-      $.CONSUME(tokens.Colon);
-      $.SUBRULE($.additiveExpression);
-    });
-
-    $.RULE("typedefStatement", () => {
-      $.CONSUME(tokens.Typedef);
-      $.SUBRULE($.typeName); // Type
-      $.CONSUME2(tokens.Identifier); // Alias
-      $.OPTION4(() => $.SUBRULE($.arraySelector));
-      $.OPTION2(() => $.SUBRULE($.annotations));
-      $.CONSUME(tokens.SemiColon);
-    });
-
-    $.RULE("structStatement", () => {
-      $.OPTION(() => $.CONSUME(tokens.Typedef));
-      $.OR2([{ ALT: () => $.CONSUME(tokens.Struct) }, { ALT: () => $.CONSUME(tokens.Union) }]);
-      $.OPTION2(() => $.CONSUME(tokens.Identifier)); // Alias
-      $.OPTION3(() => {
-        $.SUBRULE2($.structDeclaration);
-        $.OPTION4(() => $.SUBRULE($.variableDeclarator));
-      });
-      $.CONSUME(tokens.SemiColon);
-    });
-
-    $.RULE("enumStatement", () => {
-      $.OPTION(() => $.CONSUME(tokens.Typedef));
-      $.CONSUME(tokens.Enum);
-      $.OPTION2(() => {
-        $.CONSUME(tokens.Less);
-        $.SUBRULE($.typeName);
-        $.CONSUME(tokens.Greater);
-      });
-      $.OR([
-        {
-          ALT: () => {
-            $.CONSUME1(tokens.Identifier); // Type name
-            $.OPTION6(() => $.SUBRULE($.enumDeclaration));
-            $.OPTION4(() => $.SUBRULE($.variableDeclarator));
-          },
-        },
-        {
-          ALT: () => {
-            $.SUBRULE2($.enumDeclaration);
-            $.OPTION5(() => $.SUBRULE2($.variableDeclarators));
-          },
-        },
-      ]);
-      $.CONSUME(tokens.SemiColon);
-    });
-
-    $.RULE("structDeclaration", () => {
-      $.OPTION(() => $.SUBRULE($.functionParameterDeclarationList));
-      $.SUBRULE($.block);
-    });
-
-    $.RULE("enumDeclaration", () => {
-      $.CONSUME(tokens.CurlyBraceOpen);
-      $.SUBRULE($.enumElementDeclaration);
-      $.MANY(() => {
-        $.CONSUME(tokens.Comma);
-        $.SUBRULE2($.enumElementDeclaration);
-      });
-      $.OPTION2(() => $.CONSUME2(tokens.Comma));
-      $.CONSUME(tokens.CurlyBraceClose);
-    });
-
-    $.RULE("enumElementDeclaration", () => {
-      $.CONSUME(tokens.Identifier);
-      $.OPTION(() => {
-        $.CONSUME(tokens.Equals);
-        $.SUBRULE($.assignmentExpression);
-      });
-    });
-
-    $.RULE("annotations", () => {
-      $.CONSUME(tokens.Less);
-      $.MANY_SEP({
-        SEP: tokens.Comma,
-        DEF: () => $.SUBRULE($.annotation),
-      });
-      $.CONSUME(tokens.Greater);
-    });
-
-    $.RULE("annotation", () => {
-      $.CONSUME(tokens.Identifier); // Key
-      $.CONSUME(tokens.Equals);
-      $.SUBRULE($.simpleValue);
-    });
-
-    $.RULE("ifStatement", () => {
-      $.CONSUME(tokens.If);
-      $.SUBRULE($.parExpression);
-      $.SUBRULE($.statement);
-      $.OPTION(() => {
-        $.CONSUME(tokens.Else);
-        $.SUBRULE2($.statement);
-      });
-    });
-
-    $.RULE("doWhileStatement", () => {
-      $.CONSUME(tokens.Do);
-      $.SUBRULE($.statement);
-      $.CONSUME(tokens.While);
-      $.SUBRULE($.parExpression);
-      $.CONSUME(tokens.SemiColon);
-    });
-
-    $.RULE("whileStatement", () => {
-      $.CONSUME(tokens.While);
-      $.SUBRULE($.parExpression);
-      $.SUBRULE($.statement);
-    });
-
-    $.RULE("forStatement", () => {
-      $.CONSUME(tokens.For);
-      $.CONSUME(tokens.ParenthesisOpen);
-      $.SUBRULE($.forInitUpdate);
-      $.CONSUME2(tokens.SemiColon);
-      $.SUBRULE($.assignmentExpression);
-      $.CONSUME3(tokens.SemiColon);
-      $.SUBRULE2($.forInitUpdate);
-      $.CONSUME(tokens.ParenthesisClose);
-      $.SUBRULE($.statement);
-    });
-
-    $.RULE("forInitUpdate", () => {
-      $.MANY_SEP({
-        SEP: tokens.Comma,
-        DEF: () => $.SUBRULE($.assignmentExpression),
-      });
-    });
-
-    $.RULE("switchStatement", () => {
-      $.CONSUME(tokens.Switch);
-      $.SUBRULE($.parExpression);
-      $.CONSUME(tokens.CurlyBraceOpen);
-      $.MANY(() => $.SUBRULE($.switchBlockStatementGroup));
-      $.CONSUME(tokens.CurlyBraceClose);
-    });
-
-    $.RULE("switchBlockStatementGroup", () => {
-      $.SUBRULE($.switchLabels);
-      $.SUBRULE($.statementList);
-    });
-
-    $.RULE("switchLabels", () => {
-      $.MANY(() => {
-        $.OR([
-          {
-            ALT: () => {
-              $.CONSUME(tokens.Case);
-              $.SUBRULE($.simpleValue);
-            },
-          },
-          { ALT: () => $.CONSUME(tokens.Default) },
-        ]);
-        $.CONSUME(tokens.Colon);
-      });
-    });
-
-    $.RULE("breakStatement", () => {
-      $.CONSUME(tokens.Break);
-      $.CONSUME(tokens.SemiColon);
-    });
-
-    $.RULE("returnStatement", () => {
-      $.CONSUME(tokens.Return);
-      $.OPTION(() => $.SUBRULE($.assignmentExpression));
-      $.CONSUME(tokens.SemiColon);
-    });
-
-    $.RULE("parExpression", () => {
-      $.CONSUME(tokens.ParenthesisOpen);
-      $.SUBRULE($.assignmentExpression);
-      $.CONSUME(tokens.ParenthesisClose);
-    });
-
-    $.RULE("expressionOrTypeName", () => {
-      $.OR([
-        { ALT: () => $.SUBRULE($.assignmentExpression) },
-        {
-          GATE: () => $.LA(1).tokenType !== tokens.Identifier,
-          ALT: () => $.SUBRULE($.typeNameWithoutVoid),
-        },
-      ]);
-    });
-
-    $.RULE("expressionStatement", () => {
-      $.SUBRULE($.assignmentExpression);
-      $.CONSUME(tokens.SemiColon);
-    });
-
-    /**
-     * Level 0 precedence: assignment expressions
-     */
-    $.RULE("assignmentExpression", () => {
-      $.SUBRULE($.ternaryExpression);
-      $.MANY(() => {
-        $.SUBRULE($.assignmentOperator);
-        $.SUBRULE1($.ternaryExpression);
-      });
-    });
-
-    /**
-     * Level 1 precedence: ternary
-     */
-    $.RULE("ternaryExpression", () => {
-      $.SUBRULE($.booleanOrExpression);
-      $.OPTION(() => {
-        $.CONSUME(tokens.Question);
-        $.SUBRULE($.assignmentExpression);
-        $.CONSUME(tokens.Colon);
-        $.SUBRULE2($.ternaryExpression);
-      });
-    });
-
-    /**
-     * Level 2 precedence: boolean or (||)
-     */
-    $.RULE("booleanOrExpression", () => {
-      $.SUBRULE($.booleanAndExpression);
-      $.MANY(() => {
-        $.CONSUME(tokens.BooleanOr);
-        $.SUBRULE2($.booleanAndExpression);
-      });
-    });
-
-    /**
-     * Level 3 precedence: boolean and (&&)
-     */
-    $.RULE("booleanAndExpression", () => {
-      $.SUBRULE($.binaryOrExpression);
-      $.MANY(() => {
-        $.CONSUME(tokens.BooleanAnd);
-        $.SUBRULE2($.binaryOrExpression);
-      });
-    });
-
-    /**
-     * Level 4 precedence: binary or (|)
-     */
-    $.RULE("binaryOrExpression", () => {
-      $.SUBRULE($.binaryXorExpression);
-      $.MANY(() => {
-        $.CONSUME(tokens.BinaryOr);
-        $.SUBRULE2($.binaryXorExpression);
-      });
-    });
-
-    /**
-     * Level 5 precedence: binary xor (^)
-     */
-    $.RULE("binaryXorExpression", () => {
-      $.SUBRULE($.binaryAndExpression);
-      $.MANY(() => {
-        $.CONSUME(tokens.BinaryXor);
-        $.SUBRULE2($.binaryAndExpression);
-      });
-    });
-
-    /**
-     * Level 6 precedence: binary and (&)
-     */
-    $.RULE("binaryAndExpression", () => {
-      $.SUBRULE($.equalityExpression);
-      $.MANY(() => {
-        $.CONSUME(tokens.BinaryAnd);
-        $.SUBRULE2($.equalityExpression);
-      });
-    });
-
-    /**
-     * Level 7 precedence: equality (== !=)
-     */
-    $.RULE("equalityExpression", () => {
-      $.SUBRULE($.relationalExpression);
-      $.MANY(() => {
-        $.SUBRULE($.equalityOperator);
-        $.SUBRULE2($.relationalExpression);
-      });
-    });
-
-    /**
-     * Level 8 precedence: relational (< <= > >=)
-     */
-    $.RULE("relationalExpression", () => {
-      $.SUBRULE($.shiftExpression);
-      $.OPTION(() => {
-        $.SUBRULE($.relationalOperator);
-        $.SUBRULE2($.shiftExpression);
-      });
-    });
-
-    /**
-     * Level 9 precedence: shift (<< >> >>>)
-     */
-    $.RULE("shiftExpression", () => {
-      $.SUBRULE($.additiveExpression);
-      $.MANY(() => {
-        $.SUBRULE($.shiftOperator);
-        $.SUBRULE2($.additiveExpression);
-      });
-    });
-
-    /**
-     * Level 10 precedence: additive (+ -)
-     */
-    $.RULE("additiveExpression", () => {
-      $.SUBRULE($.multiplicativeExpression);
-      $.MANY(() => {
-        $.SUBRULE($.additiveOperator);
-        $.SUBRULE2($.multiplicativeExpression);
-      });
-    });
-
-    /**
-     * Level 11 precedence: multiplicative (* / %)
-     */
-    $.RULE("multiplicativeExpression", () => {
-      $.SUBRULE($.castExpression);
-      $.MANY(() => {
-        $.SUBRULE($.multiplicativeOperator);
-        $.SUBRULE2($.castExpression);
-      });
-    });
-
-    /**
-     * Level 12 precedence: cast (type)
-     */
-    $.RULE("castExpression", () => {
-      $.OR([
-        {
-          GATE: () => $.BACKTRACK($.castOperation),
-          ALT: () => $.SUBRULE($.castOperation),
-        },
-        {
-          GATE: () => $.BACKTRACK($.prefixExpression),
-          ALT: () => $.SUBRULE($.prefixExpression),
-        },
-      ]);
-    });
-
-    $.RULE("castOperation", () => {
-      $.CONSUME(tokens.ParenthesisOpen);
-      $.SUBRULE($.typeNameWithoutVoid);
-      $.CONSUME(tokens.ParenthesisClose);
-      $.SUBRULE($.prefixExpression);
-    });
-
-    /**
-     * Level 13 precedence: prefix (++ -- + - ! ~)
-     */
-    $.RULE("prefixExpression", () => {
-      $.OR([
-        { ALT: () => $.SUBRULE($.postfixExpression) },
-        {
-          ALT: () => {
-            $.SUBRULE($.prefixOperator);
-            $.SUBRULE($.prefixExpression);
-          },
-        },
-        {
-          ALT: () => {
-            $.SUBRULE($.unaryOperator);
-            $.SUBRULE($.castExpression);
-          },
-        },
-      ]);
-    });
-
-    /**
-     * Level 14 precedence: postfix (++ --)
-     */
-    $.RULE("postfixExpression", () => {
-      $.SUBRULE($.callExpression);
-      $.MANY(() => $.SUBRULE($.postfixOperator));
-    });
-
-    /**
-     * Level 15 precedence: access (array object parentheses)
-     */
-    $.RULE("callExpression", () => {
-      $.SUBRULE($.memberExpression);
-      $.MANY(() => $.SUBRULE($.callExpressionRest));
-    });
-
-    $.RULE("callExpressionRest", () => {
-      $.OR([
-        { ALT: () => $.SUBRULE($.arguments) },
-        { ALT: () => $.SUBRULE($.arraySelector) },
-        { ALT: () => $.SUBRULE($.propertyAccess) },
-      ]);
-    });
-
-    $.RULE("memberExpression", () => {
-      $.SUBRULE($.primaryExpression);
-      $.MANY(() => $.SUBRULE($.memberExpressionRest));
-    });
-
-    $.RULE("memberExpressionRest", () => {
-      $.OR([{ ALT: () => $.SUBRULE($.arraySelector) }, { ALT: () => $.SUBRULE($.propertyAccess) }]);
-    });
-
-    $.RULE("propertyAccess", () => {
-      $.CONSUME(tokens.Period);
-      $.CONSUME(tokens.Identifier);
-    });
-
-    $.RULE("primaryExpression", () => {
-      $.OR([
-        { ALT: () => $.SUBRULE($.simpleValue) },
-        {
-          ALT: () => {
-            $.CONSUME(tokens.Sizeof);
-            $.CONSUME(tokens.ParenthesisOpen);
-            $.SUBRULE($.expressionOrTypeName);
-            $.CONSUME(tokens.ParenthesisClose);
-          },
-        },
-        { ALT: () => $.SUBRULE($.parExpression) },
-      ]);
-    });
-
-    $.RULE("variableModifier", () => {
-      $.OR([{ ALT: () => $.CONSUME(tokens.Local) }, { ALT: () => $.CONSUME(tokens.Const) }]);
-    });
-
-    $.RULE("variableDeclarators", () => {
-      $.AT_LEAST_ONE_SEP({
-        SEP: tokens.Comma,
-        DEF: () => $.SUBRULE($.variableDeclarator),
-      });
-    });
-
-    $.RULE("variableDeclarator", () => {
-      $.CONSUME(tokens.Identifier);
-      $.SUBRULE($.variableDeclaratorRest);
-      $.OPTION(() => $.SUBRULE($.bitfieldRest));
-      $.OPTION2(() => $.SUBRULE($.annotations));
-    });
-
-    $.RULE("variableDeclaratorRest", () => {
-      // Be careful to avoid duplication with the function declaration rule
-      $.OPTION(() => $.SUBRULE($.arguments));
-      $.OPTION1(() => $.SUBRULE($.anyArraySelector));
-      $.OPTION3(() => $.SUBRULE($.annotations));
-      $.OPTION2(() => {
-        $.CONSUME(tokens.Equals);
-        $.SUBRULE($.variableInitializer);
-      });
-    });
-
-    $.RULE("variableInitializer", () => {
-      $.OR([{ ALT: () => $.SUBRULE($.assignmentExpression) }, { ALT: () => $.SUBRULE($.arrayInitializer) }]);
-    });
-
-    $.RULE("arrayInitializer", () => {
-      $.CONSUME(tokens.CurlyBraceOpen);
-      // No trailing comma supported
-      $.AT_LEAST_ONE_SEP({ SEP: tokens.Comma, DEF: () => $.SUBRULE2($.assignmentExpression) });
-      $.CONSUME(tokens.CurlyBraceClose);
-    });
-
-    $.RULE("arraySelector", () => {
-      $.CONSUME(tokens.BracketOpen);
-      $.SUBRULE($.assignmentExpression);
-      $.CONSUME(tokens.BracketClose);
-    });
-
-    $.RULE("anyArraySelector", () => {
-      $.OR([{ ALT: () => $.SUBRULE($.arraySelector) }, { ALT: () => $.SUBRULE($.emptyArraySelector) }]);
-    });
-
-    $.RULE("emptyArraySelector", () => {
-      $.CONSUME(tokens.BracketOpen);
-      $.CONSUME(tokens.BracketClose);
-    });
-
-    $.RULE("arguments", () => {
-      $.CONSUME(tokens.ParenthesisOpen);
-      $.MANY_SEP({
-        SEP: tokens.Comma,
-        DEF: () => $.SUBRULE($.assignmentExpression),
-      });
-      $.CONSUME(tokens.ParenthesisClose);
-    });
-
-    $.RULE("assignmentOperator", () => {
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.Equals) },
-        { ALT: () => $.CONSUME(tokens.MultiplicationEquals) },
-        { ALT: () => $.CONSUME(tokens.DivisionEquals) },
-        { ALT: () => $.CONSUME(tokens.ModuloEquals) },
-        { ALT: () => $.CONSUME(tokens.PlusEquals) },
-        { ALT: () => $.CONSUME(tokens.MinusEquals) },
-        { ALT: () => $.CONSUME(tokens.ShiftLeftEquals) },
-        { ALT: () => $.CONSUME(tokens.ShiftRightEquals) },
-        { ALT: () => $.CONSUME(tokens.UnsignedShiftRightEquals) },
-        { ALT: () => $.CONSUME(tokens.BinaryAndEquals) },
-        { ALT: () => $.CONSUME(tokens.BinaryXorEquals) },
-        { ALT: () => $.CONSUME(tokens.BinaryOrEquals) },
-      ]);
-    });
-
-    $.RULE("equalityOperator", () =>
-      $.OR([{ ALT: () => $.CONSUME(tokens.DoubleEquals) }, { ALT: () => $.CONSUME(tokens.Different) }]),
-    );
-
-    $.RULE("relationalOperator", () => {
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.Greater) },
-        { ALT: () => $.CONSUME(tokens.Less) },
-        { ALT: () => $.CONSUME(tokens.GreaterOrEqual) },
-        { ALT: () => $.CONSUME(tokens.LessOrEqual) },
-      ]);
-    });
-
-    $.RULE("shiftOperator", () => {
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.ShiftLeft) },
-        { ALT: () => $.CONSUME(tokens.ShiftRight) },
-        { ALT: () => $.CONSUME(tokens.UnsignedShiftRight) },
-      ]);
-    });
-
-    $.RULE("additiveOperator", () =>
-      $.OR([{ ALT: () => $.CONSUME(tokens.Plus) }, { ALT: () => $.CONSUME(tokens.Minus) }]),
-    );
-
-    $.RULE("multiplicativeOperator", () => {
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.Multiplication) },
-        { ALT: () => $.CONSUME(tokens.Division) },
-        { ALT: () => $.CONSUME(tokens.Modulo) },
-      ]);
-    });
-
-    $.RULE("prefixOperator", () =>
-      $.OR2([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }]),
-    );
-
-    $.RULE("postfixOperator", () =>
-      $.OR2([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }]),
-    );
-
-    $.RULE("unaryOperator", () => {
-      $.OR3([
-        { ALT: () => $.CONSUME(tokens.Tilda) },
-        { ALT: () => $.CONSUME(tokens.Exclamation) },
-        { ALT: () => $.CONSUME(tokens.Plus) },
-        { ALT: () => $.CONSUME(tokens.Minus) },
-      ]);
-    });
-
-    /**
-     * Function parameters declaration
-     */
-    $.RULE("functionParameterDeclarationList", () => {
-      $.CONSUME(tokens.ParenthesisOpen);
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.Void) },
-        {
-          ALT: () =>
-            $.MANY_SEP({
-              SEP: tokens.Comma,
-              DEF: () => $.SUBRULE($.functionParameterDeclaration),
-            }),
-        },
-      ]);
-      $.CONSUME(tokens.ParenthesisClose);
-    });
-
-    /**
-     * Single function parameter declaration
-     */
-    $.RULE("functionParameterDeclaration", () => {
-      $.MANY(() => $.SUBRULE($.variableModifier));
-      $.SUBRULE($.typeNameWithoutVoid); // Parameter type
-      $.OPTION(() => $.CONSUME(tokens.BinaryAnd));
-      $.CONSUME1(tokens.Identifier); // Parameter name
-      $.OPTION2(() => $.SUBRULE($.anyArraySelector));
-    });
-
-    /**
-     * Represents any number, in any representation (binary, octal, decimal, hexadecimal)
-     */
-    $.RULE("number", () => {
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.NumberBinaryLiteral) },
-        { ALT: () => $.CONSUME(tokens.NumberOctalLiteral) },
-        { ALT: () => $.CONSUME(tokens.NumberDecimalLiteral) },
-        { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteral) },
-        { ALT: () => $.CONSUME(tokens.NumberHexadecimalLiteral2) },
-      ]);
-    });
-
-    /**
-     * Represents any type (void being included)
-     */
-    $.RULE("typeName", () => {
-      $.OR([{ ALT: () => $.CONSUME(tokens.Void) }, { ALT: () => $.SUBRULE($.typeNameWithoutVoid) }]);
-    });
-
-    /**
-     * Represents any concrete type (void being excluded)
-     */
-    $.RULE("typeNameWithoutVoid", () => {
-      $.OR2([
-        { ALT: () => $.CONSUME(tokens.Signed) },
-        { ALT: () => $.CONSUME(tokens.Unsigned) },
-        { ALT: () => $.CONSUME(tokens.Struct) },
-        { ALT: () => {} },
-      ]);
-      $.CONSUME2(tokens.Identifier);
-      $.OPTION(() => $.SUBRULE($.emptyArraySelector));
-    });
-
-    $.RULE("simpleValue", () => {
-      $.OR([
-        { ALT: () => $.CONSUME(tokens.Identifier) },
-        { ALT: () => $.SUBRULE($.number) },
-        { ALT: () => $.CONSUME(tokens.StringLiteral) },
-        { ALT: () => $.SUBRULE($.boolean) },
-      ]);
-    });
-
-    $.RULE("boolean", () => {
-      $.OR([{ ALT: () => $.CONSUME(tokens.True) }, { ALT: () => $.CONSUME(tokens.False) }]);
     });
 
     this.performSelfAnalysis();
