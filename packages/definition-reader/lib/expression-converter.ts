@@ -2,16 +2,16 @@
 
 /* eslint-disable no-param-reassign */
 
-const _ = require("lodash");
-const esprima = require("esprima");
-const escodegen = require("escodegen");
+import escodegen from "escodegen";
+import esprima from "esprima";
+import _ from "lodash";
 
-class ExpressionConverter {
-  transformCodeToFunction(code) {
+export class ExpressionConverter {
+  public transformCodeToFunction(code) {
     return `(function() { return ${this.convert(code)}; })()`;
   }
 
-  convert(source) {
+  public convert(source) {
     const ast = esprima.parseScript(source);
     if (!_.isArray(ast.body)) {
       throw new Error("AST body is not an array");
@@ -28,7 +28,7 @@ class ExpressionConverter {
     return generatedSource;
   }
 
-  processExpression(expression) {
+  public processExpression(expression) {
     if (!expression || expression.generated) {
       return expression;
     }
@@ -77,7 +77,7 @@ class ExpressionConverter {
               "sqrt",
               "tan",
             ],
-            expression.callee.name
+            expression.callee.name,
           )
         ) {
           expression.callee = this.generateBuiltinFunctionScopeGetNode(expression.callee.name);
@@ -99,31 +99,31 @@ class ExpressionConverter {
       } else {
         throw new Error(`Only top-level functions are supported, received ${callee.type}`);
       }
-      expression.arguments = _.map(expression.arguments, arg => this.processExpression(arg));
+      expression.arguments = _.map(expression.arguments, (arg) => this.processExpression(arg));
     }
     if (expression.type === esprima.Syntax.ArrayExpression) {
-      expression.elements = _.map(expression.elements, el => this.processExpression(el));
+      expression.elements = _.map(expression.elements, (el) => this.processExpression(el));
     }
     return expression;
   }
 
-  generateVariableScopeGetNode(name) {
+  public generateVariableScopeGetNode(name) {
     return this.generateGetNode("variables", name);
   }
 
-  generateFunctionScopeGetNode(name) {
+  public generateFunctionScopeGetNode(name) {
     return this.generateGetNode("functions", name);
   }
 
-  generateTopLevelFunctionScopeGetNode(name) {
+  public generateTopLevelFunctionScopeGetNode(name) {
     return this.generateFunctionCallNode("stream", name);
   }
 
-  generateBuiltinFunctionScopeGetNode(name) {
+  public generateBuiltinFunctionScopeGetNode(name) {
     return this.generateFunctionCallNode("utils", name);
   }
 
-  generateFunctionCallNode(objectName, functionName) {
+  public generateFunctionCallNode(objectName, functionName) {
     return {
       type: esprima.Syntax.MemberExpression,
       generated: true,
@@ -146,7 +146,7 @@ class ExpressionConverter {
     };
   }
 
-  generateGetNode(objectName, propertyName) {
+  public generateGetNode(objectName, propertyName) {
     return {
       type: esprima.Syntax.CallExpression,
       generated: true,
@@ -179,5 +179,3 @@ class ExpressionConverter {
     };
   }
 }
-
-module.exports = ExpressionConverter;

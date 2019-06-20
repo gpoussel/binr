@@ -1,9 +1,13 @@
 "use strict";
 
-const Type = require("./type");
+import { Type } from "./type";
 
-class CStringType extends Type {
-  read(buffer) {
+export class CStringType extends Type {
+  public constructor(typeRestriction) {
+    super();
+    // TODO
+  }
+  public read(buffer) {
     let str = "";
     let byte = buffer.readUnsignedByte();
     while (byte !== 0) {
@@ -13,5 +17,3 @@ class CStringType extends Type {
     return str;
   }
 }
-
-module.exports = CStringType;

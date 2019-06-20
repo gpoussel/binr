@@ -1,18 +1,17 @@
 "use strict";
 
-const _ = require("lodash");
+import _ from "lodash";
 
-const Type = require("./type");
+import { Type } from "./type";
 
-class CharArrayType extends Type {
+export class CharArrayType extends Type {
+  private arrayType: any;
   constructor(arrayType) {
     super();
     this.arrayType = arrayType;
   }
 
-  read(buffer, environment) {
+  public read(buffer, environment) {
     return _.join(this.arrayType.read(buffer, environment), "");
   }
 }
-
-module.exports = CharArrayType;

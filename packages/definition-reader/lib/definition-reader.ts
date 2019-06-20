@@ -1,12 +1,12 @@
 "use strict";
 
-const _ = require("lodash");
+import _ from "lodash";
 
-const { IfNode, BlockNode, FieldNode, SwitchNode } = require("./nodes");
-const { DefinitionLexer } = require("./definition-lexer");
-const DefinitionParser = require("./definition-parser");
-const DefinitionValidator = require("./definition-validator");
-const DefinitionBuilder = require("./definition-builder");
+import { DefinitionBuilder } from "./definition-builder";
+import { DefinitionLexer } from "./definition-lexer";
+import { DefinitionParser } from "./definition-parser";
+import { DefinitionValidator } from "./definition-validator";
+import { BlockNode, FieldNode, IfNode, SwitchNode } from "./nodes";
 
 /**
  * This is the mapping between Binr symbols and Javascript ones
@@ -16,21 +16,25 @@ const SYMBOL_MAPPING = {
   "!=": "!==",
 };
 
-class DefinitionReader {
+export class DefinitionReader {
+  private lexer: DefinitionLexer;
+  private validator: DefinitionValidator;
+  private builder: DefinitionBuilder;
+
   constructor() {
     this.lexer = new DefinitionLexer();
     this.validator = new DefinitionValidator();
     this.builder = new DefinitionBuilder();
   }
 
-  readInput(input) {
+  public readInput(input) {
     const ast = this.readAst(input);
 
     this.validator.validate(ast);
     return this.builder.build(ast);
   }
 
-  readAst(input) {
+  public readAst(input) {
     if (!_.isString(input)) {
       throw new Error("input must be a string");
     }
@@ -58,25 +62,25 @@ class DefinitionReader {
         this.validateVisitor();
       }
 
-      definition(ctx) {
+      public definition(ctx) {
         return {
           headers: _.map(ctx.headerClause, this.visit.bind(this)),
           structures: _.map(
-            _.filter(ctx.topLevelClause, c => _.has(c, "children.structureClause")),
-            this.visit.bind(this)
+            _.filter(ctx.topLevelClause, (c) => _.has(c, "children.structureClause")),
+            this.visit.bind(this),
           ),
           enumerations: _.map(
-            _.filter(ctx.topLevelClause, c => _.has(c, "children.enumClause")),
-            this.visit.bind(this)
+            _.filter(ctx.topLevelClause, (c) => _.has(c, "children.enumClause")),
+            this.visit.bind(this),
           ),
           bitmasks: _.map(
-            _.filter(ctx.topLevelClause, c => _.has(c, "children.bitmaskClause")),
-            this.visit.bind(this)
+            _.filter(ctx.topLevelClause, (c) => _.has(c, "children.bitmaskClause")),
+            this.visit.bind(this),
           ),
         };
       }
 
-      topLevelClause(ctx) {
+      public topLevelClause(ctx) {
         const annotations = _.map(ctx.annotationClause, this.visit.bind(this));
         if (_.has(ctx, "structureClause")) {
           const { name, exported, statements } = this.visit(ctx.structureClause);
@@ -107,7 +111,7 @@ class DefinitionReader {
         }
       }
 
-      headerClause(ctx) {
+      public headerClause(ctx) {
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
         const value = this.visit(_.first(ctx.valueClause));
         return {
@@ -116,7 +120,7 @@ class DefinitionReader {
         };
       }
 
-      annotationClause(ctx) {
+      public annotationClause(ctx) {
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
         const value = this.visit(_.first(ctx.valueClause));
         return {
@@ -125,9 +129,9 @@ class DefinitionReader {
         };
       }
 
-      enumClause(ctx) {
+      public enumClause(ctx) {
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-        const entries = _.times(ctx.IdentifierToken.length - 1, i => ({
+        const entries = _.times(ctx.IdentifierToken.length - 1, (i) => ({
           key: this.getIdentifierName(ctx.IdentifierToken[i + 1]),
           value: this.visit(ctx.numberClause[i]),
         }));
@@ -139,9 +143,9 @@ class DefinitionReader {
         };
       }
 
-      bitmaskClause(ctx) {
+      public bitmaskClause(ctx) {
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-        const entries = _.times(ctx.IdentifierToken.length - 1, i => ({
+        const entries = _.times(ctx.IdentifierToken.length - 1, (i) => ({
           key: this.getIdentifierName(ctx.IdentifierToken[i + 1]),
           value: this.visit(ctx.numberClause[i]),
         }));
@@ -153,7 +157,7 @@ class DefinitionReader {
         };
       }
 
-      structureClause(ctx) {
+      public structureClause(ctx) {
         const exported = _.has(ctx, "ExportToken");
         const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
         const statements = _.map(ctx.statementClause, this.visit.bind(this));
@@ -164,7 +168,7 @@ class DefinitionReader {
         };
       }
 
-      statementClause(ctx) {
+      public statementClause(ctx) {
         if (_.has(ctx, "fieldClause")) {
           return this.visit(ctx.fieldClause);
         }
@@ -179,25 +183,25 @@ class DefinitionReader {
         }
       }
 
-      IfStatement(ctx) {
+      public IfStatement(ctx) {
         return new IfNode(
           this.visit(_.first(ctx.Expression)),
           this.visit(_.first(ctx.statementClause)),
-          _.size(ctx.statementClause) > 1 ? this.visit(_.get(ctx.statementClause, 1)) : undefined
+          _.size(ctx.statementClause) > 1 ? this.visit(_.get(ctx.statementClause, 1)) : undefined,
         );
       }
 
-      BlockStatement(ctx) {
+      public BlockStatement(ctx) {
         return new BlockNode(_.map(ctx.statementClause, this.visit.bind(this)));
       }
 
-      SwitchStatement(ctx) {
+      public SwitchStatement(ctx) {
         const testExpression = this.visit(_.first(ctx.Expression));
         const switchClauses = _.map(ctx.switchInnerClause, this.visit.bind(this));
         return new SwitchNode(testExpression, switchClauses);
       }
 
-      switchInnerClause(ctx) {
+      public switchInnerClause(ctx) {
         const value = this.visit(_.first(ctx.valueClause));
         const statement = this.visit(_.first(ctx.BlockStatement));
         return {
@@ -206,7 +210,7 @@ class DefinitionReader {
         };
       }
 
-      fieldClause(ctx) {
+      public fieldClause(ctx) {
         const type = this.visit(ctx.typeReferenceClause);
         const name = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
         const annotations = _.map(ctx.annotationClause, this.visit.bind(this));
@@ -221,7 +225,7 @@ class DefinitionReader {
         return fieldResult;
       }
 
-      typeReferenceClause(ctx) {
+      public typeReferenceClause(ctx) {
         const type = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
         if (_.has(ctx, "ColonToken")) {
           const typeRestriction = this.visit(_.first(ctx.numberClause));
@@ -235,7 +239,7 @@ class DefinitionReader {
         };
       }
 
-      valueClause(ctx) {
+      public valueClause(ctx) {
         if (_.has(ctx, "StringLiteralToken")) {
           return JSON.parse(_.first(ctx.StringLiteralToken).image);
         }
@@ -249,21 +253,21 @@ class DefinitionReader {
         return this.visit(_.first(ctx.numberClause));
       }
 
-      BoxMemberExpression(ctx) {
+      public BoxMemberExpression(ctx) {
         return `[${this.visit(ctx.Expression)}]`;
       }
 
-      BoxMemberUntilExpression(ctx) {
+      public BoxMemberUntilExpression(ctx) {
         return this.visit(ctx.Expression);
       }
 
-      Expression(ctx) {
+      public Expression(ctx) {
         if (_.has(ctx, "AssignmentExpression")) {
           return _.join(_.map(ctx.AssignmentExpression, this.visit.bind(this)), ", ");
         }
       }
 
-      AssignmentExpression(ctx) {
+      public AssignmentExpression(ctx) {
         if (_.has(ctx, "QuestionToken")) {
           const ifElseClause = _.map(ctx.AssignmentExpression, this.visit.bind(this)).join(" : ");
           return `${this.visit(ctx.BinaryExpression)} ? ${ifElseClause}`;
@@ -273,7 +277,7 @@ class DefinitionReader {
         }
       }
 
-      BinaryExpression(ctx) {
+      public BinaryExpression(ctx) {
         const result = [this.visit(_.first(ctx.UnaryExpression))];
         _.each(ctx.ExpressionToken, (token, i) => {
           const tokenName = _.first(_.keys(token.children));
@@ -285,7 +289,7 @@ class DefinitionReader {
         return _.join(result, " ");
       }
 
-      UnaryExpression(ctx) {
+      public UnaryExpression(ctx) {
         if (_.has(ctx, "PostfixExpression")) {
           return this.visit(ctx.PostfixExpression);
         }
@@ -309,7 +313,7 @@ class DefinitionReader {
         }
       }
 
-      PostfixExpression(ctx) {
+      public PostfixExpression(ctx) {
         if (_.has(ctx, "MemberCallNewExpression")) {
           const plusPlusSuffix = _.has(ctx, "DoublePlusToken") ? "++" : "";
           const minusMinusSuffix = _.has(ctx, "DoubleMinusToken") ? "--" : "";
@@ -317,7 +321,7 @@ class DefinitionReader {
         }
       }
 
-      MemberCallNewExpression(ctx) {
+      public MemberCallNewExpression(ctx) {
         if (_.has(ctx, "PrimaryExpression")) {
           return (
             this.visit(ctx.PrimaryExpression) +
@@ -326,7 +330,7 @@ class DefinitionReader {
         }
       }
 
-      MemberCallNewExpressionExtension(ctx) {
+      public MemberCallNewExpressionExtension(ctx) {
         if (_.has(ctx, "BoxMemberExpression")) {
           return this.visit(ctx.BoxMemberExpression);
         }
@@ -338,17 +342,17 @@ class DefinitionReader {
         }
       }
 
-      Arguments(ctx) {
+      public Arguments(ctx) {
         return `(${_.join(_.map(ctx.AssignmentExpression, this.visit.bind(this)))})`;
       }
 
-      DotMemberExpression(ctx) {
+      public DotMemberExpression(ctx) {
         if (_.has(ctx, "IdentifierToken")) {
           return `.${this.getIdentifierName(_.first(ctx.IdentifierToken))}`;
         }
       }
 
-      PrimaryExpression(ctx) {
+      public PrimaryExpression(ctx) {
         if (_.has(ctx, "numberClause")) {
           return this.visit(_.first(ctx.numberClause));
         }
@@ -366,11 +370,11 @@ class DefinitionReader {
         }
       }
 
-      ArrayLiteral(ctx) {
+      public ArrayLiteral(ctx) {
         return `[${_.join(_.map(ctx.ArrayLiteralContent, this.visit.bind(this)), "")}]`;
       }
 
-      ArrayLiteralContent(ctx) {
+      public ArrayLiteralContent(ctx) {
         if (_.has(ctx, "ElementList")) {
           return this.visit(ctx.ElementList);
         }
@@ -379,27 +383,27 @@ class DefinitionReader {
         }
       }
 
-      ElementList(ctx) {
+      public ElementList(ctx) {
         const firstElement = this.visit(ctx.AssignmentExpression);
         const otherElements = _.join(_.map(ctx.ElementListEntry, this.visit.bind(this)), "");
         return firstElement + otherElements;
       }
 
-      ElementListEntry(ctx) {
+      public ElementListEntry(ctx) {
         const elision = this.visit(ctx.Elision);
         const entry = this.visit(ctx.AssignmentExpression);
         return elision + entry;
       }
 
-      Elision(ctx) {
+      public Elision(ctx) {
         return _.repeat(",", _.size(ctx.CommaToken));
       }
 
-      ParenthesisExpression(ctx) {
+      public ParenthesisExpression(ctx) {
         return `(${this.visit(ctx.Expression)})`;
       }
 
-      numberClause(ctx) {
+      public numberClause(ctx) {
         if (_.has(ctx, "NumberDecimalLiteralToken")) {
           return parseInt(_.first(ctx.NumberDecimalLiteralToken).image, 10);
         }
@@ -411,7 +415,7 @@ class DefinitionReader {
         }
       }
 
-      getIdentifierName(identifier) {
+      public getIdentifierName(identifier) {
         return identifier.image;
       }
     }
@@ -420,5 +424,3 @@ class DefinitionReader {
     return visitor.visit(parsingResult);
   }
 }
-
-module.exports = DefinitionReader;

@@ -1,16 +1,15 @@
 "use strict";
 
-const Type = require("./type");
+import { Type } from "./type";
 
-class IntType extends Type {
+export class IntType extends Type {
+  private size: any;
   constructor(size) {
     super();
     this.size = size;
   }
 
-  read(buffer) {
+  public read(buffer) {
     return buffer.readInt(this.size);
   }
 }
-
-module.exports = IntType;

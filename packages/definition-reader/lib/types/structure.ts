@@ -1,28 +1,27 @@
 "use strict";
 
-const assert = require("assert");
-const _ = require("lodash");
+import assert from "assert";
+import _ from "lodash";
 
-const { ValueAggregator } = require("@binr/shared");
+import { ValueAggregator } from "@binr/shared";
 
-const Type = require("./type");
+import { Type } from "./type";
 
-class StructureType extends Type {
+export class StructureType extends Type {
+  private structure: any;
   constructor(structure) {
     super();
     assert(!_.isUndefined(structure));
     this.structure = structure;
   }
 
-  read(buffer, environment) {
+  public read(buffer, environment) {
     const valueAggregator = new ValueAggregator();
     const nestedEnvironment = environment.nestedScope();
-    _.each(this.structure.statements, statement => {
+    _.each(this.structure.statements, (statement) => {
       buffer.setEndianness(this.structure.endianness);
       statement.read(buffer, nestedEnvironment, valueAggregator);
     });
     return valueAggregator.build();
   }
 }
-
-module.exports = StructureType;

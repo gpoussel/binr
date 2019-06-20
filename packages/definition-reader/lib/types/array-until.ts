@@ -1,20 +1,22 @@
 "use strict";
 
-const _ = require("lodash");
-const assert = require("assert");
+import assert from "assert";
+import _ from "lodash";
 
-const { ExpressionEvaluator } = require("@binr/shared");
+import { ExpressionEvaluator } from "@binr/shared";
 
-const Type = require("./type");
+import { Type } from "./type";
 
-class ArrayUntilType extends Type {
+export class ArrayUntilType extends Type {
+  private innerType: any;
+  private untilExpression: any;
   constructor(innerType, untilExpression) {
     super();
     this.innerType = innerType;
     this.untilExpression = untilExpression;
   }
 
-  read(buffer, environment) {
+  public read(buffer, environment) {
     const evaluator = new ExpressionEvaluator();
     assert(_.isString(this.untilExpression), "untilExpression must be a string");
     const values = [];
@@ -29,12 +31,10 @@ class ArrayUntilType extends Type {
     return values;
   }
 
-  readSingleElement(buffer, environment) {
+  public readSingleElement(buffer, environment) {
     return {
       element: this.innerType.read(buffer, environment),
       nestedEnvironment: environment,
     };
   }
 }
-
-module.exports = ArrayUntilType;

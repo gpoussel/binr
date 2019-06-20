@@ -1,30 +1,28 @@
 "use strict";
 
-const _ = require("lodash");
+import _ from "lodash";
 _.mixin(require("lodash-inflection"));
 
-const { builtInTypes } = require("./types");
-const { FieldNode } = require("./nodes");
+import { FieldNode } from "./nodes";
+import { builtInTypes } from "./types";
 
-class DefinitionValidator {
-  validate(ast) {
+export class DefinitionValidator {
+  public validate(ast) {
     const errors = [];
     this.validateHeaders(ast.headers, errors);
-    this.validateEnumerations(ast.enumerations, errors);
-    this.validateBitmasks(ast.bitmasks, errors);
     const enumerationNames = _.map(ast.enumerations, "name");
     const bitmaskNames = _.map(ast.bitmasks, "name");
     this.validateStructures(ast.structures, _.union(enumerationNames, bitmaskNames), errors);
     if (!_.isEmpty(errors)) {
       const errorCount = _("error").pluralize(errors.length, true);
-      const errorContent = errors.map(s => `\t${s}`).join("\n");
+      const errorContent = errors.map((s) => `\t${s}`).join("\n");
       throw new Error(`Validation error:\n${errorCount} found:\n${errorContent}`);
     }
   }
 
-  validateHeaders(headers, errors) {
+  public validateHeaders(headers, errors) {
     const headerNames = [];
-    _.each(headers, h => {
+    _.each(headers, (h) => {
       if (_.includes(headerNames, h.name)) {
         errors.push(`Header ${h.name} is defined twice.`);
         return;
@@ -33,7 +31,7 @@ class DefinitionValidator {
     });
   }
 
-  validateStructures(structures, definedNames, errors) {
+  public validateStructures(structures, definedNames, errors) {
     if (_.isEmpty(structures)) {
       errors.push("No structure defined");
     }
@@ -41,7 +39,7 @@ class DefinitionValidator {
     // First iterate to get all structure names
     // That will help to validate field types
     const structureNames = [];
-    _.each(structures, structure => {
+    _.each(structures, (structure) => {
       if (_.includes(structureNames, structure.name)) {
         errors.push(`Duplicate structure name '${structure.name}'`);
         return;
@@ -57,28 +55,14 @@ class DefinitionValidator {
       structureNames.push(structure.name);
     });
     const typeNames = _.union(structureNames, definedNames);
-    _.each(structures, structure => {
+    _.each(structures, (structure) => {
       this.validateStructure(structure, errors, typeNames);
     });
   }
 
-  validateEnumerations(/* enumerations, errors */) {
-    // TODO: Perform enumeration validation
-    // 1. Check name is unique among all enumerations
-    // 2. Check no duplicated value (numeric) in an enumeration
-    // 3. Check no duplicated key (string) in an enumeration
-  }
-
-  validateBitmasks(/* bitmasks, errors */) {
-    // TODO: Perform bitmask validation
-    // 1. Check name is unique among all bitmasks
-    // 2. Check no overlapping value in the bitmask
-    // 3. Check no duplicated key  in the bitmask
-  }
-
-  validateStructure(structure, errors, typeNames) {
+  public validateStructure(structure, errors, typeNames) {
     const fieldNames = [];
-    _.each(structure.statements, statement => {
+    _.each(structure.statements, (statement) => {
       if (!(statement instanceof FieldNode)) {
         // FIXME: Ignore non-fields for the validation step.
         // This not-implemented validation slows down development of new
@@ -95,7 +79,7 @@ class DefinitionValidator {
     });
   }
 
-  validateField(field, errors, typeNames) {
+  public validateField(field, errors, typeNames) {
     const { type } = field;
     const builtInType = _.has(builtInTypes, type.type);
     const definedType = _.includes(typeNames, type.type);
@@ -116,5 +100,3 @@ class DefinitionValidator {
     }
   }
 }
-
-module.exports = DefinitionValidator;

@@ -1,8 +1,8 @@
 "use strict";
 
-const _ = require("lodash");
+import _ from "lodash";
 
-const ExpressionConverter = require("../lib/expression-converter");
+import { ExpressionConverter } from "../lib/expression-converter";
 
 describe("ExpressionConverter", () => {
   test("converts simple expressions", () => {
@@ -32,16 +32,16 @@ describe("ExpressionConverter", () => {
         "[1][0]",
         "[,a, c ][1]",
       ],
-      entry => {
+      (entry) => {
         const result = converter.convert(entry);
         expect(result).toBeDefined();
-      }
+      },
     );
   });
 
   test("rejects expressions with side-effects", () => {
     const converter = new ExpressionConverter();
-    _.each(["a++", "a--", "++a", "--a"], entry => {
+    _.each(["a++", "a--", "++a", "--a"], (entry) => {
       expect(() => converter.convert(entry)).toThrow(/supported/);
     });
   });
@@ -49,7 +49,7 @@ describe("ExpressionConverter", () => {
   test("rejects invalid input", () => {
     const converter = new ExpressionConverter();
     expect(() => converter.convert("function a() {}")).toThrow(/expression/);
-    expect(() => converter.convert("const a = require('fs'); a();")).toThrow(/body size/);
+    expect(() => converter.convert("import a from('fs'); a();")).toThrow(/body size/);
     expect(() => converter.convert("")).toThrow(/body size/);
   });
 

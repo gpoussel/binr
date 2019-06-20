@@ -1,6 +1,6 @@
 "use strict";
 
-const assert = require("assert");
+import assert from "assert";
 
 export class Structure {
   private name: string;
@@ -12,12 +12,12 @@ export class Structure {
     this.statements = statements;
   }
 
-  setEndianness(endianness) {
+  public setEndianness(endianness) {
     assert(endianness === "big" || endianness === "little");
     this.endianness = endianness;
   }
 
-  getEndianness() {
+  public getEndianness() {
     return this.endianness;
   }
 }

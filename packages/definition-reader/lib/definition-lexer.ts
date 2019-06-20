@@ -1,8 +1,8 @@
 "use strict";
 
-const _ = require("lodash");
-const chevrotain = require("chevrotain");
-const escapeRegexp = require("escape-string-regexp");
+import chevrotain from "chevrotain";
+import escapeRegexp from "escape-string-regexp";
+import _ from "lodash";
 
 const { createToken, Lexer } = chevrotain;
 
@@ -125,8 +125,8 @@ const symbolTokens = _.fromPairs(
         name: `${name}Token`,
         pattern: new RegExp(escapeRegexp(keyword)),
       }),
-    ]
-  )
+    ],
+  ),
 );
 
 const keywordTokens = _.fromPairs(
@@ -150,11 +150,11 @@ const keywordTokens = _.fromPairs(
         name: `${name}Token`,
         pattern: new RegExp(escapeRegexp(keyword)),
       }),
-    ]
-  )
+    ],
+  ),
 );
 
-const tokens = {
+export const tokens = {
   // Whitespaces
   WhitespaceToken,
 
@@ -178,15 +178,10 @@ const tokens = {
   NumberDecimalLiteralToken,
 };
 
-class DefinitionLexer extends Lexer {
+export class DefinitionLexer extends Lexer {
   constructor() {
     super(_.values(tokens), {
       ensureOptimizations: true,
     });
   }
 }
-
-module.exports = {
-  DefinitionLexer,
-  tokens,
-};

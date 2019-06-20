@@ -1,7 +1,7 @@
 "use strict";
 
-const DefinitionBuilder = require("../lib/definition-builder");
-const { FieldNode } = require("../lib/nodes");
+import { DefinitionBuilder } from "../lib/definition-builder";
+import { FieldNode } from "../lib/nodes";
 
 describe("DefinitionBuilder", () => {
   test("throws an error when circular dependencies are found", () => {

@@ -1,10 +1,10 @@
 "use strict";
 
-const _ = require("lodash");
-const chevrotain = require("chevrotain");
-const { tokens } = require("./definition-lexer");
+import chevrotain, { CstNode } from "chevrotain";
+import _ from "lodash";
+import { tokens } from "./definition-lexer";
 
-class DefinitionParser extends chevrotain.Parser {
+export class DefinitionParser extends chevrotain.Parser {
   constructor() {
     super(_.values(tokens), {
       recoveryEnabled: true,
@@ -137,7 +137,7 @@ class DefinitionParser extends chevrotain.Parser {
             {
               ALT: () => $.SUBRULE($.fieldClause),
             },
-          ])
+          ]),
       );
     });
 
@@ -242,7 +242,7 @@ class DefinitionParser extends chevrotain.Parser {
             {
               ALT: () => $.SUBRULE($.ParenthesisExpression),
             },
-          ])
+          ]),
       );
     });
     $.RULE("ParenthesisExpression", () => {
@@ -367,7 +367,7 @@ class DefinitionParser extends chevrotain.Parser {
                   {
                     ALT: () => $.CONSUME(tokens.ExclamationToken),
                   },
-                ])
+                ]),
             );
             $.SUBRULE($.UnaryExpression);
           },
@@ -438,7 +438,7 @@ class DefinitionParser extends chevrotain.Parser {
             {
               ALT: () => $.CONSUME(tokens.ModuloToken),
             },
-          ])
+          ]),
       );
     });
 
@@ -458,6 +458,7 @@ class DefinitionParser extends chevrotain.Parser {
 
     this.performSelfAnalysis();
   }
+  public definition(): CstNode[] {
+    throw new Error("Method not implemented.");
+  }
 }
-
-module.exports = DefinitionParser;

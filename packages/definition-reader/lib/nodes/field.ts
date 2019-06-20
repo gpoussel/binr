@@ -1,23 +1,29 @@
 "use strict";
 
-const _ = require("lodash");
-const { FieldStatement } = require("@binr/model");
-const ExpressionConverter = require("../expression-converter");
-const Node = require("./node");
-const {
-  builtInTypes,
-  StructureType,
-  EnumerationType,
-  BitmaskType,
+import { FieldStatement } from "@binr/model";
+import _ from "lodash";
+import { ExpressionConverter } from "../expression-converter";
+import {
   ArrayType,
-  CharArrayType,
   ArrayUntilType,
-} = require("../types");
+  BitmaskType,
+  builtInTypes,
+  CharArrayType,
+  EnumerationType,
+  StructureType,
+} from "../types";
+import { Node } from "./node";
 
-const getBuiltInType = type => builtInTypes[type.type](type);
+const getBuiltInType = (type) => builtInTypes[type.type](type);
 
-class FieldNode extends Node {
-  constructor(type, name, annotations) {
+export class FieldNode extends Node {
+  public name: any;
+  private type: any;
+  private annotations: any;
+  private converter: ExpressionConverter;
+  private arrayDefinition: any;
+  private arrayUntilDefinition: any;
+  constructor(type, name, annotations?) {
     super();
     this.type = type;
     this.name = name;
@@ -25,15 +31,15 @@ class FieldNode extends Node {
     this.converter = new ExpressionConverter();
   }
 
-  setArrayDefinition(arrayDefinition) {
+  public setArrayDefinition(arrayDefinition) {
     this.arrayDefinition = arrayDefinition;
   }
 
-  setArrayUntilDefinition(arrayUntilDefinition) {
+  public setArrayUntilDefinition(arrayUntilDefinition) {
     this.arrayUntilDefinition = arrayUntilDefinition;
   }
 
-  buildStatement(builtElements) {
+  public buildStatement(builtElements) {
     const typeName = this.type.type;
     let type;
     if (_.has(builtInTypes, typeName)) {
@@ -66,18 +72,16 @@ class FieldNode extends Node {
       this.name,
       type,
       _.fromPairs(
-        _.map(this.annotations, annotation => {
+        _.map(this.annotations, (annotation) => {
           if (annotation.name === "ignore") {
             return ["ignore", annotation.value];
           }
-        }).filter(pair => pair[0])
-      )
+        }).filter((pair) => pair[0]),
+      ),
     );
   }
 
-  getTypes() {
+  public getTypes() {
     return [this.type];
   }
 }
-
-module.exports = FieldNode;

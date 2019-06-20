@@ -1,20 +1,22 @@
 "use strict";
 
-const _ = require("lodash");
-const assert = require("assert");
+import assert from "assert";
+import _ from "lodash";
 
-const { ExpressionEvaluator } = require("@binr/shared");
+import { ExpressionEvaluator } from "@binr/shared";
 
-const Type = require("./type");
+import { Type } from "./type";
 
-class ArrayType extends Type {
+export class ArrayType extends Type {
+  private innerType: any;
+  private sizeExpression: any;
   constructor(innerType, sizeExpression) {
     super();
     this.innerType = innerType;
     this.sizeExpression = sizeExpression;
   }
 
-  read(buffer, environment) {
+  public read(buffer, environment) {
     const evaluator = new ExpressionEvaluator();
     assert(_.isString(this.sizeExpression), "sizeExpression must be a string");
     const size = evaluator.evaluate(this.sizeExpression, environment);
@@ -25,5 +27,3 @@ class ArrayType extends Type {
     });
   }
 }
-
-module.exports = ArrayType;
