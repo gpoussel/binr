@@ -1,8 +1,8 @@
 "use strict";
 
-const _ = require("lodash");
-const SweetscapeLexer = require("../lib/sweetscape/sweetscape-lexer");
-const SweetscapeParser = require("../lib/sweetscape/sweetscape-parser");
+import _ from "lodash";
+import { SweetscapeLexer } from "../lib/sweetscape/sweetscape-lexer";
+import { SweetscapeParser } from "../lib/sweetscape/sweetscape-parser";
 
 /**
  * This function executes the parser over input and returns the parser itself (holding the parsing result)
@@ -68,13 +68,13 @@ describe("Sweetscape Parser", () => {
       { name: "array variable definition", input: "int[] a;" },
       { name: "array variable definition with initializer", input: "int[] a = { 1 , 2 };" },
     ],
-    testDefinition => {
+    (testDefinition) => {
       test(`parses statement (${testDefinition.name})`, () => {
         const parsingResult = parse(testDefinition.input);
         const statement = parsingResult.statement();
         expect(cleanupResult(statement)).toMatchSnapshot();
       });
-    }
+    },
   );
   _.each(
     [
@@ -96,13 +96,13 @@ describe("Sweetscape Parser", () => {
       { name: "cast", input: "(int) b" },
       { name: "parenthesized expression", input: "(a + b)" },
     ],
-    testDefinition => {
+    (testDefinition) => {
       test(`parses expression (${testDefinition.name})`, () => {
         const parsingResult = parse(testDefinition.input);
         const statement = parsingResult.assignmentExpression();
         expect(cleanupResult(statement)).toMatchSnapshot();
       });
-    }
+    },
   );
   _.each(
     [
@@ -112,12 +112,12 @@ describe("Sweetscape Parser", () => {
       { name: "operator priority with cast", input: "(int) fn(a) + 1" },
       { name: "or-and mixed", input: "a && b || c || d" },
     ],
-    testDefinition => {
+    (testDefinition) => {
       test(`parses complex expression (${testDefinition.name})`, () => {
         const parsingResult = parse(testDefinition.input);
         const statement = parsingResult.assignmentExpression();
         expect(cleanupResult(statement)).toMatchSnapshot();
       });
-    }
+    },
   );
 });

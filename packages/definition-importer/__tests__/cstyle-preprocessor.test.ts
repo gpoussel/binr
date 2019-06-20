@@ -1,6 +1,6 @@
 "use strict";
 
-const CStylePreprocessor = require("../lib/common/cstyle-preprocessor");
+import { CStylePreprocessor } from "../lib/common/cstyle-preprocessor";
 
 describe("C-Style preprocessor", () => {
   const preprocessor = new CStylePreprocessor();

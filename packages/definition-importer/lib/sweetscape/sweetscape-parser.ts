@@ -6,30 +6,7 @@ import _ from "lodash";
 import { tokens } from "./sweetscape-tokens";
 
 export class SweetscapeParser extends CstParser {
-  private definition = this.RULE("definition", () => this.MANY(() => this.SUBRULE(this.topLevelStatement)));
-
-  private topLevelStatement = this.RULE("topLevelStatement", () => {
-    this.OR([
-      {
-        GATE: () => this.BACKTRACK(this.functionDeclarationStatement),
-        ALT: () => this.SUBRULE(this.functionDeclarationStatement),
-      },
-      {
-        GATE: () => this.BACKTRACK(this.statement),
-        ALT: () => this.SUBRULE(this.statement),
-      },
-    ]);
-  });
-
-  private statementList = this.RULE("statementList", () => this.MANY(() => this.SUBRULE(this.statement)));
-
-  private block = this.RULE("block", () => {
-    this.CONSUME(tokens.CurlyBraceOpen);
-    this.SUBRULE(this.statementList);
-    this.CONSUME(tokens.CurlyBraceClose);
-  });
-
-  private statement = this.RULE("statement", () => {
+  public statement = this.RULE("statement", () => {
     this.OR([
       { ALT: () => this.SUBRULE(this.block) },
       { ALT: () => this.SUBRULE(this.expressionStatement) },
@@ -46,6 +23,39 @@ export class SweetscapeParser extends CstParser {
       { ALT: () => this.SUBRULE(this.breakStatement) },
       { ALT: () => this.CONSUME(tokens.SemiColon) },
     ]);
+  });
+
+  /**
+   * Level 0 precedence: assignment expressions
+   */
+  public assignmentExpression = this.RULE("assignmentExpression", () => {
+    this.SUBRULE(this.ternaryExpression);
+    this.MANY(() => {
+      this.SUBRULE(this.assignmentOperator);
+      this.SUBRULE1(this.ternaryExpression);
+    });
+  });
+  private definition = this.RULE("definition", () => this.MANY(() => this.SUBRULE(this.topLevelStatement)));
+
+  private topLevelStatement = this.RULE("topLevelStatement", () => {
+    this.OR([
+      {
+        GATE: this.BACKTRACK(this.functionDeclarationStatement),
+        ALT: () => this.SUBRULE(this.functionDeclarationStatement),
+      },
+      {
+        GATE: this.BACKTRACK(this.statement),
+        ALT: () => this.SUBRULE(this.statement),
+      },
+    ]);
+  });
+
+  private statementList = this.RULE("statementList", () => this.MANY(() => this.SUBRULE(this.statement)));
+
+  private block = this.RULE("block", () => {
+    this.CONSUME(tokens.CurlyBraceOpen);
+    this.SUBRULE(this.statementList);
+    this.CONSUME(tokens.CurlyBraceClose);
   });
 
   private functionDeclarationStatement = this.RULE("functionDeclarationStatement", () => {
@@ -264,17 +274,6 @@ export class SweetscapeParser extends CstParser {
   });
 
   /**
-   * Level 0 precedence: assignment expressions
-   */
-  private assignmentExpression = this.RULE("assignmentExpression", () => {
-    this.SUBRULE(this.ternaryExpression);
-    this.MANY(() => {
-      this.SUBRULE(this.assignmentOperator);
-      this.SUBRULE1(this.ternaryExpression);
-    });
-  });
-
-  /**
    * Level 1 precedence: ternary
    */
   private ternaryExpression = this.RULE("ternaryExpression", () => {
@@ -403,11 +402,11 @@ export class SweetscapeParser extends CstParser {
   private castExpression = this.RULE("castExpression", () => {
     this.OR([
       {
-        GATE: () => this.BACKTRACK(this.castOperation),
+        GATE: this.BACKTRACK(this.castOperation),
         ALT: () => this.SUBRULE(this.castOperation),
       },
       {
-        GATE: () => this.BACKTRACK(this.prefixExpression),
+        GATE: this.BACKTRACK(this.prefixExpression),
         ALT: () => this.SUBRULE(this.prefixExpression),
       },
     ]);

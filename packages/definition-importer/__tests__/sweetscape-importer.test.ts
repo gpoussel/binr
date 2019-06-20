@@ -1,10 +1,10 @@
 "use strict";
 
-const SweetscapeImporter = require("../lib/sweetscape/sweetscape-importer");
-const { iterateStructures, iterateScripts, getSingleStructure } = require("./utils/010-structures");
+import { SweetscapeDefinitionImporter } from "../lib/sweetscape/sweetscape-importer";
+import { getSingleStructure, iterateScripts, iterateStructures } from "./utils/010-structures";
 
 describe("Sweetscape Importer", () => {
-  const importer = new SweetscapeImporter();
+  const importer = new SweetscapeDefinitionImporter();
 
   test("creates basic definitions", () => {
     expect(importer.readInput("if (a && b || c || d) { foo(); }")).toMatchSnapshot();
@@ -18,7 +18,7 @@ describe("Sweetscape Importer", () => {
     expect(definition).toBeDefined();
   });
 
-  test("creates all 010 sample structures", done => {
+  test("creates all 010 sample structures", (done) => {
     // We are keeping the state right there, so we can stop the iteration
     // as soon as we got a failure
     let hasFailed = false;
@@ -34,11 +34,11 @@ describe("Sweetscape Importer", () => {
         }
       },
       done,
-      () => !hasFailed
+      () => !hasFailed,
     );
   }, 45000);
 
-  test("creates all 010 sample scripts", done => {
+  test("creates all 010 sample scripts", (done) => {
     // We are keeping the state right there, so we can stop the iteration
     // as soon as we got a failure
     let hasFailed = false;
@@ -58,14 +58,14 @@ describe("Sweetscape Importer", () => {
         }
       },
       done,
-      () => !hasFailed
+      () => !hasFailed,
     );
   }, 45000);
 
   /**
    * This test exists because the EXE.bt contains many different elements.
    */
-  test("creates EXE definition", done => {
+  test("creates EXE definition", (done) => {
     iterateStructures(
       (name, input) => {
         const definition = importer.readInput(input);
@@ -77,14 +77,14 @@ describe("Sweetscape Importer", () => {
         expect(content).toMatchSnapshot();
       },
       done,
-      name => name === "EXE.bt"
+      (name) => name === "EXE.bt",
     );
   });
 
   /**
    * This test exists because the DEX.bt contains many different elements.
    */
-  test("creates DEX definition", done => {
+  test("creates DEX definition", (done) => {
     iterateStructures(
       (name, input) => {
         const definition = importer.readInput(input);
@@ -96,14 +96,14 @@ describe("Sweetscape Importer", () => {
         expect(content).toMatchSnapshot();
       },
       done,
-      name => name === "DEX.bt"
+      (name) => name === "DEX.bt",
     );
   });
 
   /**
    * This test exists for completeness (annotations on typedef statement)
    */
-  test("creates DDS definition", done => {
+  test("creates DDS definition", (done) => {
     iterateStructures(
       (name, input) => {
         const definition = importer.readInput(input);
@@ -115,14 +115,14 @@ describe("Sweetscape Importer", () => {
         expect(content).toMatchSnapshot();
       },
       done,
-      name => name === "DDS.bt"
+      (name) => name === "DDS.bt",
     );
   });
 
   /**
    * This test exists for completeness (empty statement, with a single semi-colon)
    */
-  test("creates CAP definition", done => {
+  test("creates CAP definition", (done) => {
     iterateStructures(
       (name, input) => {
         const definition = importer.readInput(input);
@@ -134,14 +134,14 @@ describe("Sweetscape Importer", () => {
         expect(content).toMatchSnapshot();
       },
       done,
-      name => name === "CAP.bt"
+      (name) => name === "CAP.bt",
     );
   });
 
   /**
    * This test exists for completeness (const variable)
    */
-  test("creates 010 definition", done => {
+  test("creates 010 definition", (done) => {
     iterateStructures(
       (name, input) => {
         const definition = importer.readInput(input);
@@ -153,7 +153,7 @@ describe("Sweetscape Importer", () => {
         expect(content).toMatchSnapshot();
       },
       done,
-      name => name === "010.bt"
+      (name) => name === "010.bt",
     );
   });
 });

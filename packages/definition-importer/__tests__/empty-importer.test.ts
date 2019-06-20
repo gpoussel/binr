@@ -1,6 +1,6 @@
 "use strict";
 
-const Importer = require("../lib/importer");
+import { Importer } from "../lib/importer";
 
 /**
  * This test only exists to reach a maximum line coverage on the code.
@@ -15,7 +15,7 @@ describe("Default Importer", () => {
 
   test("rejects invalid pre-processor", () => {
     const importer = new Importer();
-    importer.performPreprocessing = input => 4;
+    importer.performPreprocessing = (input) => 4;
     expect(() => importer.readInput("")).toThrow(/string/);
   });
 
@@ -34,7 +34,7 @@ describe("Default Importer", () => {
       visit: () => ({}),
     });
     expect(() => importer.readInput("")).toThrow(/build/i);
-    importer.build = input => input;
+    importer.build = (input) => input;
     expect(importer.readInput("")).toEqual({});
   });
 
@@ -55,7 +55,7 @@ describe("Default Importer", () => {
     importer.getVisitor = () => ({
       visit: () => ({}),
     });
-    importer.build = input => input;
+    importer.build = (input) => input;
     expect(() => importer.readInput("")).toThrow(/test error/i);
   });
 
