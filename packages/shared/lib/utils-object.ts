@@ -1,63 +1,61 @@
 "use strict";
 
-const _ = require("lodash");
+import _ from "lodash";
 
-class UtilsObject {
-  min(...args) {
+export class UtilsObject {
+  public min(...args) {
     return _.min(args);
   }
 
-  max(...args) {
+  public max(...args) {
     return _.max(args);
   }
 
-  abs(arg) {
+  public abs(arg) {
     return Math.abs(arg);
   }
 
-  ceil(arg) {
+  public ceil(arg) {
     return Math.ceil(arg);
   }
 
-  floor(arg) {
+  public floor(arg) {
     return Math.floor(arg);
   }
 
-  round(arg) {
+  public round(arg) {
     return Math.round(arg);
   }
 
-  random(arg) {
+  public random(arg) {
     return Math.floor(Math.random() * (arg + 1));
   }
 
-  pow(number, exp) {
-    return number ** exp;
+  public pow(operand, exp) {
+    return operand ** exp;
   }
 
-  sqrt(arg) {
+  public sqrt(arg) {
     return Math.sqrt(arg);
   }
 
-  exp(arg) {
+  public exp(arg) {
     return Math.exp(arg);
   }
 
-  log(arg) {
+  public log(arg) {
     return Math.log(arg);
   }
 
-  cos(arg) {
+  public cos(arg) {
     return Math.cos(arg);
   }
 
-  sin(arg) {
+  public sin(arg) {
     return Math.sin(arg);
   }
 
-  tan(arg) {
+  public tan(arg) {
     return Math.tan(arg);
   }
 }
-
-module.exports = UtilsObject;

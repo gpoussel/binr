@@ -1,27 +1,25 @@
 "use strict";
 
-const _ = require("lodash");
-const assert = require("assert");
+import assert from "assert";
+import _ from "lodash";
 
-class FunctionScope {
+export class FunctionScope {
+  private functions: {};
+  private parentScope: FunctionScope;
+
   constructor() {
     this.functions = {};
   }
 
-  get(name) {
+  public get(name) {
     if (_.has(this.functions, name)) {
       return _.get(this.functions, name);
-    }
-    if (!_.isUndefined(this.parentScope)) {
-      return this.parentScope.get(name);
     }
     throw new Error(`Undefined function ${name} in scope`);
   }
 
-  put(name, value) {
+  public put(name, value) {
     assert(!_.has(this.functions, name), `Function named '${name}' is already present in scope`);
     this.functions[name] = value;
   }
 }
-
-module.exports = FunctionScope;

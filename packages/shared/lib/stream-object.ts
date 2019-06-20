@@ -3,30 +3,30 @@
 /**
  * This object is exposed in structure definition through "_" global variable
  */
-class StreamObject {
+export class StreamObject {
+  private bufferWrapper: any;
+
   constructor(bufferWrapper) {
     this.bufferWrapper = bufferWrapper;
   }
 
-  eof() {
+  public eof() {
     return this.bufferWrapper.cursor === this.bufferWrapper.buffer.length;
   }
 
-  size() {
+  public size() {
     return this.bufferWrapper.buffer.length;
   }
 
-  seek(pos) {
+  public seek(pos) {
     this.bufferWrapper.seek(pos);
   }
 
-  skip(pos) {
+  public skip(pos) {
     this.bufferWrapper.skip(pos);
   }
 
-  tell() {
+  public tell() {
     return this.bufferWrapper.buffer.cursor;
   }
 }
-
-module.exports = StreamObject;

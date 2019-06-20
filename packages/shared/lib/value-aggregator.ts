@@ -1,19 +1,19 @@
 "use strict";
 
-const _ = require("lodash");
+import _ from "lodash";
 
-class ValueAggregator {
+export class ValueAggregator {
+  private value: {};
+
   constructor() {
     this.value = {};
   }
 
-  set(key, value) {
+  public set(key, value) {
     this.value[key] = value;
   }
 
-  build() {
+  public build() {
     return _.clone(this.value);
   }
 }
-
-module.exports = ValueAggregator;
