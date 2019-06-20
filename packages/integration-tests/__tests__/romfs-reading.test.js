@@ -19,16 +19,6 @@ describe("ROMFS reading", () => {
     const binaryReader = new BinaryReader();
     const value = binaryReader.read(sampleRomfsBuffer, romfsDefinition, "RomfsFile");
     expect(value).toBeDefined();
-    const { header, entry } = value;
-    expect(header).toBeDefined();
-    expect(header.magicBytes).toEqual("-rom1fs-");
-    expect(header.size).toBe(272);
-    expect(header.checksum).toBe(1391339101);
-    expect(header.volumeName).toEqual("DEFALIGNED");
-
-    expect(entry).toBeDefined();
-
-    const { header: entryHeader } = entry;
-    expect(entryHeader).toBeDefined();
+    expect(value).toMatchSnapshot();
   });
 });

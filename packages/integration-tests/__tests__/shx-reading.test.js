@@ -20,29 +20,6 @@ describe("SHX reading", () => {
     const binaryReader = new BinaryReader();
     const shxValue = binaryReader.read(shxBuffer, shxDefinition, "ShxFile");
     expect(shxValue).toBeDefined();
-
-    expect(shxValue.fileHeader).toBeDefined();
-    expect(shxValue.fileHeader.code).toBe(0x270a);
-    expect(shxValue.fileHeader.length).toBe(2786);
-
-    expect(shxValue.header).toBeDefined();
-    expect(shxValue.header.version).toBe(1000);
-    expect(shxValue.header.xMin).toBeCloseTo(-122.70948, 4);
-    expect(shxValue.header.yMin).toBeCloseTo(32.9493, 4);
-    expect(shxValue.header.xMax).toBeCloseTo(-67.81417, 4);
-    expect(shxValue.header.yMax).toBeCloseTo(48.605, 4);
-    expect(shxValue.header.zMin).toBe(0);
-    expect(shxValue.header.zMax).toBe(0);
-    expect(shxValue.header.mMin).toBe(0);
-    expect(shxValue.header.mMax).toBe(0);
-
-    expect(shxValue.recordIndexes).toHaveLength(684);
-    const firstRecordIndex = shxValue.recordIndexes[0];
-    expect(firstRecordIndex.offset).toBe(50);
-    expect(firstRecordIndex.length).toBe(10);
-
-    const lastRecordIndex = shxValue.recordIndexes[683];
-    expect(lastRecordIndex.offset).toBe(9612);
-    expect(lastRecordIndex.length).toBe(10);
+    expect(shxValue).toMatchSnapshot();
   });
 });

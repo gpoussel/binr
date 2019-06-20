@@ -20,6 +20,6 @@ describe("TORRENT reading", () => {
     const binaryReader = new BinaryReader();
     const torrentValue = binaryReader.read(torrentBuffer, torrentDefinition, "TorrentFile");
     expect(torrentValue).toBeDefined();
-    expect(torrentValue.identifier).toBe("d");
+    expect(torrentValue).toMatchSnapshot();
   });
 });

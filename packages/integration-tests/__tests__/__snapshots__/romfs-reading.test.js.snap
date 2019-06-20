@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ROMFS reading reads ROMFS file 1`] = `
+Object {
+  "entry": Object {
+    "header": Object {},
+  },
+  "header": Object {
+    "checksum": 1391339101,
+    "magicBytes": "-rom1fs-",
+    "size": 272,
+    "volumeName": "DEFALIGNED",
+  },
+}
+`;

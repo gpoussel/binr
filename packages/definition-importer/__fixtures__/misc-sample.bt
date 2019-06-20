@@ -1,0 +1,9 @@
+// PlusToken in prefix operator
+local int a = +(b - 1);
+
+// Unsigned-shift-right
+local int b = 64 >>> 1;
+b >>>= 1;
+
+// Modulo-assignment
+a %= b;
