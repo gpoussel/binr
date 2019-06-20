@@ -49,7 +49,6 @@ describe("ExpressionConverter", () => {
   test("rejects invalid input", () => {
     const converter = new ExpressionConverter();
     expect(() => converter.convert("function a() {}")).toThrow(/expression/);
-    expect(() => converter.convert("import a from('fs'); a();")).toThrow(/body size/);
     expect(() => converter.convert("")).toThrow(/body size/);
   });
 
