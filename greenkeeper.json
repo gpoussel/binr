@@ -1,0 +1,14 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/binary-reader/package.json",
+        "packages/definition-importer/package.json",
+        "packages/definition-reader/package.json",
+        "packages/model/package.json",
+        "packages/shared/package.json"
+      ]
+    }
+  }
+}
