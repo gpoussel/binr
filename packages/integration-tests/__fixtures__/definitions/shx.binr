@@ -31,24 +31,24 @@ enum ShapeType extends int:32 {
 struct Header {
     int:32 version; // corresponds to s4le value of 1000
     ShapeType shapeType;
-	double xMin;
-	double yMin;
-	double xMax;
-	double yMax;
-	double zMin;
-	double zMax;
-	double mMin;
-	double mMax;
+    double xMin;
+    double yMin;
+    double xMax;
+    double yMax;
+    double zMin;
+    double zMax;
+    double mMin;
+    double mMax;
 }
 
 @endianness("big")
 struct RecordIndex {
-	int:32 offset;
-	int:32 length;
+    int:32 offset;
+    int:32 length;
 }
 
 struct ShxFile {
     FileHeader fileHeader;
     Header header;
-	RecordIndex recordIndexes[((fileHeader.length - 50) * 2) / 8];
+    RecordIndex recordIndexes[((fileHeader.length - 50) * 2) / 8];
 }
