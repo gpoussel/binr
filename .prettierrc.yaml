@@ -1,3 +1,6 @@
 # https://prettier.io/docs/en/options.html
-printWidth: 110 # keep in sync with .eslintrc.yaml max-len
-trailingComma: es5
+arrowParens: always
+printWidth: 110
+singleQuote: false
+tabWidth: 2
+trailingComma: all

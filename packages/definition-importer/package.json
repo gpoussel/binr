@@ -24,7 +24,8 @@
     "url": "git+https://github.com/gpoussel/binr.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "tsc": "tsc"
   },
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
@@ -35,7 +36,6 @@
     "gunzip-maybe": "^1.4.1",
     "lerna": "^3.10.8",
     "lodash": "^4.17.11",
-    "string-enum": "^1.2.1",
     "tar-stream": "^2.1.0"
   }
 }

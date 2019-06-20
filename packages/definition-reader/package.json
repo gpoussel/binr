@@ -21,7 +21,8 @@
     "url": "git+https://github.com/gpoussel/binr.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "tsc": "tsc"
   },
   "bugs": {
     "url": "https://github.com/gpoussel/binr/issues"
@@ -30,7 +31,7 @@
     "@binr/model": "^1.0.0",
     "@binr/shared": "^1.0.0",
     "chevrotain": "^4.2.0",
-    "escape-string-regexp": "^1.0.5",
+    "escape-string-regexp": "^2.0.0",
     "escodegen": "^1.11.0",
     "esprima": "^4.0.1",
     "lodash": "^4.17.11",
