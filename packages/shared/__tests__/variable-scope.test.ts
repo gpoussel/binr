@@ -1,11 +1,10 @@
 "use strict";
 
-const VariableScope = require("../lib/variable-scope");
+import { VariableScope } from "../lib/variable-scope";
 
 describe("VariableScope", () => {
   test("throws an error on invalid argument", () => {
     const variableScope = new VariableScope();
-    expect(() => variableScope.get()).toThrow();
     expect(() => variableScope.get("a")).toThrow();
   });
 

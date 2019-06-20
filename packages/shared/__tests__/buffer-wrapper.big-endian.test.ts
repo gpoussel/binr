@@ -1,6 +1,6 @@
 "use strict";
 
-const BufferWrapper = require("../lib/buffer-wrapper");
+import { BufferWrapper } from "../lib/buffer-wrapper";
 
 describe("BufferWrapper, big endian", () => {
   test("read basic types on big-endian buffer", () => {

@@ -1,6 +1,6 @@
 "use strict";
 
-const UtilsObject = require("../lib/utils-object");
+import { UtilsObject } from "../lib/utils-object";
 
 describe("UtilsObject", () => {
   const utils = new UtilsObject();

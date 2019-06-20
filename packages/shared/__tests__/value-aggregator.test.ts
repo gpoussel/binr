@@ -1,6 +1,6 @@
 "use strict";
 
-const ValueAggregator = require("../lib/value-aggregator");
+import { ValueAggregator } from "../lib/value-aggregator";
 
 describe("ValueAggregator", () => {
   test("basic set & build", () => {
