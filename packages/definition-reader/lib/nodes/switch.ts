@@ -6,6 +6,9 @@ import { ExpressionConverter } from "../expression-converter";
 import { Node } from "./node";
 
 export class SwitchNode extends Node {
+  private test: any;
+  private clauses: any;
+  private converter: ExpressionConverter;
   constructor(test, clauses) {
     super();
     this.test = test;

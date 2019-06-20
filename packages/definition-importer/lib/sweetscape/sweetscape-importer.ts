@@ -6,26 +6,25 @@ const SweetscapeParser = require("./sweetscape-parser");
 const CStylePreprocessor = require("../common/cstyle-preprocessor");
 const { getVisitor } = require("./sweetscape-visitor");
 
-class SweetscapeDefinitionImporter extends Importer {
-  getLexer() {
+export class SweetscapeDefinitionImporter extends Importer {
+  public getLexer() {
     return new SweetscapeLexer();
   }
 
-  getParser() {
+  public getParser() {
     return new SweetscapeParser();
   }
 
-  getVisitor(parser) {
+  public getVisitor(parser) {
     return getVisitor(parser);
   }
 
-  performPreprocessing(input) {
+  public performPreprocessing(input) {
     const preprocessor = new CStylePreprocessor();
     return preprocessor.preprocess(input);
   }
 
-  build(ast) {
+  public build(ast) {
     return ast;
   }
 }
-module.exports = SweetscapeDefinitionImporter;

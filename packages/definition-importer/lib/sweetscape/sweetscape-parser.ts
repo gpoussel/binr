@@ -6,7 +6,7 @@ const { tokens } = require("./sweetscape-tokens");
 
 const { Parser } = chevrotain;
 
-class SweetscapeParser extends Parser {
+export class SweetscapeParser extends Parser {
   constructor() {
     super(_.values(tokens), {
       recoveryEnabled: false,
@@ -591,7 +591,7 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("equalityOperator", () =>
-      $.OR([{ ALT: () => $.CONSUME(tokens.DoubleEquals) }, { ALT: () => $.CONSUME(tokens.Different) }])
+      $.OR([{ ALT: () => $.CONSUME(tokens.DoubleEquals) }, { ALT: () => $.CONSUME(tokens.Different) }]),
     );
 
     $.RULE("relationalOperator", () => {
@@ -612,7 +612,7 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("additiveOperator", () =>
-      $.OR([{ ALT: () => $.CONSUME(tokens.Plus) }, { ALT: () => $.CONSUME(tokens.Minus) }])
+      $.OR([{ ALT: () => $.CONSUME(tokens.Plus) }, { ALT: () => $.CONSUME(tokens.Minus) }]),
     );
 
     $.RULE("multiplicativeOperator", () => {
@@ -624,11 +624,11 @@ class SweetscapeParser extends Parser {
     });
 
     $.RULE("prefixOperator", () =>
-      $.OR2([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }])
+      $.OR2([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }]),
     );
 
     $.RULE("postfixOperator", () =>
-      $.OR2([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }])
+      $.OR2([{ ALT: () => $.CONSUME(tokens.DoublePlus) }, { ALT: () => $.CONSUME(tokens.DoubleMinus) }]),
     );
 
     $.RULE("unaryOperator", () => {
@@ -719,4 +719,3 @@ class SweetscapeParser extends Parser {
     this.performSelfAnalysis();
   }
 }
-module.exports = SweetscapeParser;

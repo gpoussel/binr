@@ -6,8 +6,8 @@ const assert = require("assert");
 const { StructureType } = require("@binr/definition-reader");
 const { BufferWrapper, Environment, StreamObject } = require("@binr/shared");
 
-class BinaryReader {
-  read(binaryBuffer, definition, providedStructureName = undefined) {
+export class BinaryReader {
+  public read(binaryBuffer, definition, providedStructureName = undefined) {
     assert(_.isObject(definition), "definition must be an object");
     assert(_.isBuffer(binaryBuffer), "binaryBuffer must be a buffer");
 
@@ -17,14 +17,14 @@ class BinaryReader {
       // Otherwise that's an error
       assert(
         _.get(definition, "structures.length") === 1,
-        "No 'structureName' provided: structures.length must be === 1"
+        "No 'structureName' provided: structures.length must be === 1",
       );
       mainStructureName = _.first(definition.structures).name;
     } else {
       mainStructureName = providedStructureName;
     }
 
-    const mainStructure = _.find(definition.structures, s => s.name === mainStructureName);
+    const mainStructure = _.find(definition.structures, (s) => s.name === mainStructureName);
     assert(!_.isUndefined(mainStructure), `Main structure '${mainStructureName}' not found`);
 
     const structureType = new StructureType(mainStructure);
@@ -36,5 +36,3 @@ class BinaryReader {
     return structureType.read(bufferWrapper, environment);
   }
 }
-
-module.exports = BinaryReader;

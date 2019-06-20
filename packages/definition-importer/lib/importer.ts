@@ -1,7 +1,7 @@
 const _ = require("lodash");
 
-class Importer {
-  readInput(input) {
+export class Importer {
+  public readInput(input) {
     if (!_.isString(input)) {
       throw new Error("input must be a string");
     }
@@ -16,11 +16,11 @@ class Importer {
     return this.build(ast);
   }
 
-  performPreprocessing(input) {
+  public performPreprocessing(input) {
     return input;
   }
 
-  readAst(input) {
+  public readAst(input) {
     const lexingResult = this.getLexer().tokenize(input);
     if (!_.isEmpty(lexingResult.errors)) {
       throw new Error(`Got an error while lexing input: ${_.first(lexingResult.errors).message}`);
@@ -43,21 +43,19 @@ class Importer {
     return this.getVisitor(parser).visit(parsingResult);
   }
 
-  getLexer() {
+  public getLexer(): any {
     throw new Error("getLexer(): not yet implemented");
   }
 
-  getParser() {
+  public getParser(): any {
     throw new Error("getParser(): not yet implemented");
   }
 
-  getVisitor(parser) {
+  public getVisitor(parser): any {
     throw new Error("getVisitor(): not yet implemented");
   }
 
-  build(ast) {
+  public build(ast): any {
     throw new Error("build(): not yet implemented");
   }
 }
-
-module.exports = Importer;

@@ -1,12 +1,12 @@
 const _ = require("lodash");
 
-class CStylePreprocessor {
-  preprocess(input) {
+export class CStylePreprocessor {
+  public preprocess(input) {
     const lines = [];
     const definitions = {};
     const conditionStack = [];
 
-    const replaceDefinitions = inputLine => {
+    const replaceDefinitions = (inputLine) => {
       let updatedLine = inputLine;
       _.each(definitions, (value, key) => {
         updatedLine = updatedLine.replace(new RegExp(`\\b${key}\\b`, "g"), value);
@@ -14,7 +14,7 @@ class CStylePreprocessor {
       return updatedLine;
     };
 
-    _.each(_.split(input, /\r?\n/), line => {
+    _.each(_.split(input, /\r?\n/), (line) => {
       if (line.match(/^[ \t]*#.*$/)) {
         // This line is a directive and will never be in the output
         const [directiveName, firstArgument, ...otherArguments] = _.split(_.trim(line), /\s+/);
@@ -44,7 +44,7 @@ class CStylePreprocessor {
       } else {
         const conditionMatch = _.every(
           conditionStack,
-          condition => _.has(definitions, condition.variable) === condition.positive
+          (condition) => _.has(definitions, condition.variable) === condition.positive,
         );
         if (conditionMatch) {
           lines.push(replaceDefinitions(line));
@@ -54,5 +54,3 @@ class CStylePreprocessor {
     return _.join(lines, "\n");
   }
 }
-
-module.exports = CStylePreprocessor;

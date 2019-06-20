@@ -6,11 +6,10 @@ const { tokens } = require("./sweetscape-tokens");
 
 const { Lexer } = chevrotain;
 
-class SweetscapeLexer extends Lexer {
+export class SweetscapeLexer extends Lexer {
   constructor() {
     super(_.values(tokens), {
       ensureOptimizations: true,
     });
   }
 }
-module.exports = SweetscapeLexer;

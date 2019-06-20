@@ -5,7 +5,7 @@ const chevrotain = require("chevrotain");
 const escapeRegexp = require("escape-string-regexp");
 const SEnum = require("string-enum");
 
-const TokenName = SEnum(
+export const TokenName = SEnum(
   "Whitespace",
   "EscapedLineBreak",
   "SingleLineComment",
@@ -86,7 +86,7 @@ const TokenName = SEnum(
   "NumberHexadecimalLiteral2",
   "NumberBinaryLiteral",
   "NumberOctalLiteral",
-  "NumberDecimalLiteral"
+  "NumberDecimalLiteral",
 );
 
 const tokenInfos = [];
@@ -199,11 +199,11 @@ _.each(
     { name: TokenName.Comma, symbol: "," },
     { name: TokenName.At, symbol: "@" },
   ],
-  symbolInfo =>
+  (symbolInfo) =>
     tokenInfos.push({
       name: symbolInfo.name,
       pattern: new RegExp(escapeRegexp(symbolInfo.symbol)),
-    })
+    }),
 );
 
 /**
@@ -245,12 +245,12 @@ _.each(
     // Special functions
     { name: TokenName.Sizeof, keyword: "sizeof" },
   ],
-  keywordInfo =>
+  (keywordInfo) =>
     tokenInfos.push({
       name: keywordInfo.name,
       pattern: new RegExp(keywordInfo.keyword),
       longer_alt: TokenName.Identifier,
-    })
+    }),
 );
 
 tokenInfos.push({
@@ -291,11 +291,11 @@ tokenInfos.push({
 
 // Some tokens, with a "longer_alt" attribute set, have to be created after other ones
 const createdTokens = {};
-_.map(_.filter(tokenInfos, tokenInfo => !_.has(tokenInfo, "longer_alt")), tokenInfo => {
+_.map(_.filter(tokenInfos, (tokenInfo) => !_.has(tokenInfo, "longer_alt")), (tokenInfo) => {
   createdTokens[tokenInfo.name] = chevrotain.createToken(tokenInfo);
 });
 
-const remainingTokens = _.filter(tokenInfos, tokenInfo => _.has(tokenInfo, "longer_alt"));
+const remainingTokens = _.filter(tokenInfos, (tokenInfo) => _.has(tokenInfo, "longer_alt"));
 while (!_.isEmpty(remainingTokens)) {
   for (let i = 0; i < remainingTokens.length; i += 1) {
     const remainingToken = remainingTokens[i];
@@ -312,7 +312,6 @@ while (!_.isEmpty(remainingTokens)) {
 // At this point, all tokens have been created
 // But the order or creation (in the "createdTokens" array) is not the correct order of tokens
 // So we have to iterate through "tokenInfos" one last time
-module.exports = {
-  TokenName,
-  tokens: _.fromPairs(_.map(tokenInfos, tokenInfo => [tokenInfo.name, createdTokens[tokenInfo.name]])),
-};
+export const tokens = _.fromPairs(
+  _.map(tokenInfos, (tokenInfo) => [tokenInfo.name, createdTokens[tokenInfo.name]]),
+);
