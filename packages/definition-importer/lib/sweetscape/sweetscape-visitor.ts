@@ -130,7 +130,7 @@ export function getVisitor(parser) {
       if (_.has(ctx, "anyArraySelector")) {
         _.assign(type, this.visit(ctx.anyArraySelector));
       }
-      const result = {
+      const result: any = {
         type,
         reference: _.has(ctx, "BinaryAnd"),
         name: getIdentifier(ctx.Identifier),
@@ -172,7 +172,7 @@ export function getVisitor(parser) {
     }
 
     public returnStatement(ctx) {
-      const result = {
+      const result: any = {
         type: "returnStatement",
       };
       if (_.has(ctx, "assignmentExpression")) {
@@ -234,7 +234,7 @@ export function getVisitor(parser) {
     }
 
     public localVariableDeclarationStatement(ctx) {
-      const result = {
+      const result: any = {
         type: "variableDeclaration",
         variableType: this.visit(ctx.typeName),
         annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
@@ -269,7 +269,7 @@ export function getVisitor(parser) {
     }
 
     public typedefStatement(ctx) {
-      const result = {
+      const result: any = {
         type: "typeAlias",
         name: this.visit(ctx.typeName),
         alias: getIdentifier(ctx.Identifier),
@@ -290,7 +290,7 @@ export function getVisitor(parser) {
 
     public ifStatement(ctx) {
       const statements = _.map(ctx.statement, this.visit.bind(this));
-      const result = {
+      const result: any = {
         type: "ifStatement",
         condition: this.visit(ctx.parExpression),
         trueStatement: _.first(statements),
@@ -303,7 +303,7 @@ export function getVisitor(parser) {
 
     public structStatement(ctx) {
       const type = _.has(ctx, "Struct") ? "structDeclaration" : "unionDeclaration";
-      const result = {
+      const result: any = {
         type,
       };
       if (_.has(ctx, "structDeclaration")) {
@@ -317,7 +317,7 @@ export function getVisitor(parser) {
     }
 
     public enumStatement(ctx) {
-      const result = {
+      const result: any = {
         type: "enumDeclaration",
       };
       if (_.has(ctx, "typeName")) {
@@ -339,7 +339,7 @@ export function getVisitor(parser) {
     }
 
     public variableDeclarator(ctx) {
-      const result = {
+      const result: any = {
         name: getIdentifier(ctx.Identifier),
         annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
@@ -351,7 +351,7 @@ export function getVisitor(parser) {
     }
 
     public structDeclaration(ctx) {
-      const result = {
+      const result: any = {
         body: this.visit(ctx.block),
       };
       if (_.has(ctx, "functionParameterDeclarationList")) {
@@ -361,7 +361,7 @@ export function getVisitor(parser) {
     }
 
     public variableDeclaratorRest(ctx) {
-      const result = {};
+      const result: any = {};
       if (_.has(ctx, "annotations")) {
         result.annotations = this.visit(ctx.annotations);
       }
@@ -395,7 +395,7 @@ export function getVisitor(parser) {
     public ternaryExpression(ctx) {
       const condition = this.visit(ctx.booleanOrExpression);
       if (_.has(ctx, "assignmentExpression")) {
-        const result = {
+        const result: any = {
           type: "ternaryExpression",
           condition,
           trueStatement: this.visit(_.first(ctx.assignmentExpression)),
@@ -526,7 +526,7 @@ export function getVisitor(parser) {
     }
 
     public callExpression(ctx) {
-      const memberResult = this.visit(ctx.memberExpression);
+      const memberResult: any = this.visit(ctx.memberExpression);
       let currentExpression = memberResult;
       _.each(ctx.callExpressionRest, (expressionRest) => {
         const { children: expressionRestChildren } = expressionRest;
@@ -562,7 +562,7 @@ export function getVisitor(parser) {
     }
 
     public memberExpression(ctx) {
-      const primaryResult = this.visit(ctx.primaryExpression);
+      const primaryResult: any = this.visit(ctx.primaryExpression);
       let currentExpression = primaryResult;
       _.each(ctx.memberExpressionRest, (expressionRest) => {
         const { children: expressionRestChildren } = expressionRest;
@@ -697,7 +697,7 @@ export function getVisitor(parser) {
     }
 
     public enumElementDeclaration(ctx) {
-      const result = {
+      const result: any = {
         name: getIdentifier(ctx.Identifier),
       };
       if (_.has(ctx, "assignmentExpression")) {

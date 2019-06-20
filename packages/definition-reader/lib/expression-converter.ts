@@ -3,7 +3,7 @@
 /* eslint-disable no-param-reassign */
 
 import escodegen from "escodegen";
-import esprima from "esprima";
+import { parseScript, Syntax } from "esprima";
 import _ from "lodash";
 
 export class ExpressionConverter {
@@ -12,7 +12,7 @@ export class ExpressionConverter {
   }
 
   public convert(source) {
-    const ast = esprima.parseScript(source);
+    const ast = parseScript(source);
     if (!_.isArray(ast.body)) {
       throw new Error("AST body is not an array");
     }
@@ -20,7 +20,7 @@ export class ExpressionConverter {
       throw new Error("AST body size shall be 1");
     }
     const bodyExpression = ast.body[0];
-    if (bodyExpression.type !== esprima.Syntax.ExpressionStatement) {
+    if (bodyExpression.type !== Syntax.ExpressionStatement) {
       throw new Error("body shall be an expression");
     }
     bodyExpression.expression = this.processExpression(bodyExpression.expression);
@@ -32,33 +32,30 @@ export class ExpressionConverter {
     if (!expression || expression.generated) {
       return expression;
     }
-    if (expression.type === esprima.Syntax.UpdateExpression) {
+    if (expression.type === Syntax.UpdateExpression) {
       throw new Error("UpdateExpression not supported");
     }
-    if (expression.type === esprima.Syntax.Identifier) {
+    if (expression.type === Syntax.Identifier) {
       return this.generateVariableScopeGetNode(expression.name);
     }
-    if (expression.type === esprima.Syntax.MemberExpression) {
+    if (expression.type === Syntax.MemberExpression) {
       expression.object = this.processExpression(expression.object);
     }
-    if (expression.type === esprima.Syntax.ConditionalExpression) {
+    if (expression.type === Syntax.ConditionalExpression) {
       expression.test = this.processExpression(expression.test);
       expression.consequent = this.processExpression(expression.consequent);
       expression.alternate = this.processExpression(expression.alternate);
     }
-    if (
-      expression.type === esprima.Syntax.LogicalExpression ||
-      expression.type === esprima.Syntax.BinaryExpression
-    ) {
+    if (expression.type === Syntax.LogicalExpression || expression.type === Syntax.BinaryExpression) {
       expression.left = this.processExpression(expression.left);
       expression.right = this.processExpression(expression.right);
     }
-    if (expression.type === esprima.Syntax.UnaryExpression) {
+    if (expression.type === Syntax.UnaryExpression) {
       expression.argument = this.processExpression(expression.argument);
     }
-    if (expression.type === esprima.Syntax.CallExpression) {
+    if (expression.type === Syntax.CallExpression) {
       const { callee } = expression;
-      if (callee.type === esprima.Syntax.Identifier) {
+      if (callee.type === Syntax.Identifier) {
         // Top-level functions: that's fine
         if (
           _.includes(
@@ -84,13 +81,9 @@ export class ExpressionConverter {
         } else {
           expression.callee = this.generateFunctionScopeGetNode(expression.callee.name);
         }
-      } else if (callee.type === esprima.Syntax.MemberExpression) {
+      } else if (callee.type === Syntax.MemberExpression) {
         const { object, property } = callee;
-        if (
-          object.type === esprima.Syntax.Identifier &&
-          object.name === "_" &&
-          property.type === esprima.Syntax.Identifier
-        ) {
+        if (object.type === Syntax.Identifier && object.name === "_" && property.type === Syntax.Identifier) {
           // Function on _ object: that's a global function
           expression.callee = this.generateTopLevelFunctionScopeGetNode(property.name);
         } else {
@@ -101,7 +94,7 @@ export class ExpressionConverter {
       }
       expression.arguments = _.map(expression.arguments, (arg) => this.processExpression(arg));
     }
-    if (expression.type === esprima.Syntax.ArrayExpression) {
+    if (expression.type === Syntax.ArrayExpression) {
       expression.elements = _.map(expression.elements, (el) => this.processExpression(el));
     }
     return expression;
@@ -125,22 +118,22 @@ export class ExpressionConverter {
 
   public generateFunctionCallNode(objectName, functionName) {
     return {
-      type: esprima.Syntax.MemberExpression,
+      type: Syntax.MemberExpression,
       generated: true,
       object: {
-        type: esprima.Syntax.MemberExpression,
+        type: Syntax.MemberExpression,
         generated: true,
         object: {
-          type: esprima.Syntax.Identifier,
+          type: Syntax.Identifier,
           name: "env",
         },
         property: {
-          type: esprima.Syntax.Identifier,
+          type: Syntax.Identifier,
           name: objectName,
         },
       },
       property: {
-        type: esprima.Syntax.Identifier,
+        type: Syntax.Identifier,
         name: functionName,
       },
     };
@@ -148,31 +141,31 @@ export class ExpressionConverter {
 
   public generateGetNode(objectName, propertyName) {
     return {
-      type: esprima.Syntax.CallExpression,
+      type: Syntax.CallExpression,
       generated: true,
       callee: {
-        type: esprima.Syntax.MemberExpression,
+        type: Syntax.MemberExpression,
         generated: true,
         object: {
-          type: esprima.Syntax.MemberExpression,
+          type: Syntax.MemberExpression,
           generated: true,
           object: {
-            type: esprima.Syntax.Identifier,
+            type: Syntax.Identifier,
             name: "env",
           },
           property: {
-            type: esprima.Syntax.Identifier,
+            type: Syntax.Identifier,
             name: objectName,
           },
         },
         property: {
-          type: esprima.Syntax.Identifier,
+          type: Syntax.Identifier,
           name: "get",
         },
       },
       arguments: [
         {
-          type: esprima.Syntax.Literal,
+          type: Syntax.Literal,
           value: propertyName,
         },
       ],
