@@ -6,12 +6,12 @@ import { UintType } from "./uint";
 import { WCharType } from "./wchar";
 
 export const builtInTypes = {
-  char: (type) => new CharType(type.typeRestriction),
-  cstring: (type) => new CStringType(type.typeRestriction),
+  char: () => new CharType(),
+  cstring: () => new CStringType(),
   double: () => new DoubleType(),
   int: (type) => new IntType(type.typeRestriction),
   uint: (type) => new UintType(type.typeRestriction),
-  wchar: (type) => new WCharType(type.typeRestriction),
+  wchar: () => new WCharType(),
 };
 
 export { CharType, CStringType, DoubleType, IntType, UintType, WCharType };

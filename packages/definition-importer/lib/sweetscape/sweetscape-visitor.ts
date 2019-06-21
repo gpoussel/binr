@@ -195,7 +195,7 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public breakStatement(ctx) {
+    public breakStatement() {
       return {
         type: "breakStatement",
       };

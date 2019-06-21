@@ -52,10 +52,10 @@ export class Importer {
   }
 
   public getVisitor(parser): any {
-    throw new Error("getVisitor(): not yet implemented");
+    throw new Error(`getVisitor(): not yet implemented (parser = ${parser})`);
   }
 
   public build(ast): any {
-    throw new Error("build(): not yet implemented");
+    throw new Error(`build(): not yet implemented (ast = ${ast})`);
   }
 }

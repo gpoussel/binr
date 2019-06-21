@@ -1,9 +1,8 @@
 import { Type } from "./type";
 
 export class CharType extends Type {
-  public constructor(typeRestriction) {
+  public constructor() {
     super();
-    // TODO
   }
 
   public read(buffer) {
