@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { each } from "lodash";
 
 import { Type } from "./type";
 
@@ -14,7 +14,7 @@ export class BitmaskType extends Type {
   public read(buffer, environment) {
     const value = this.parentType.read(buffer, environment);
     const matchedItems = [];
-    _.each(this.bitmask.entries, (entry) => {
+    each(this.bitmask.entries, (entry) => {
       if ((value & entry.value) !== 0) {
         matchedItems.push(entry.key);
       }

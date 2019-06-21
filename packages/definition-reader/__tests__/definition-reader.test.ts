@@ -1,5 +1,5 @@
 import { ExpressionEvaluator, FunctionScope, VariableScope } from "@binr/shared";
-import _ from "lodash";
+import { each, first } from "lodash";
 import { DefinitionReader } from "../lib/definition-reader";
 
 function createAndCallParser(input) {
@@ -11,7 +11,7 @@ function createAndCallParser(input) {
 
 describe("DefinitionReader", () => {
   test("throws an error on invalid input type", () => {
-    _.each([null, 123, (a) => a], (value) => {
+    each([null, 123, (a) => a], (value) => {
       expect(createAndCallParser(value)).toThrow(/input/);
     });
   });
@@ -21,13 +21,13 @@ describe("DefinitionReader", () => {
   });
 
   test("throws an error when parsing invalid input", () => {
-    _.each(["#bar", "struct {}", "123", "beep", "##"], (value) => {
+    each(["#bar", "struct {}", "123", "beep", "##"], (value) => {
       expect(createAndCallParser(value)).toThrow(/parsing/);
     });
   });
 
   test("throws an error on invalid content", () => {
-    _.each(
+    each(
       [
         "struct a {} struct a {}",
         "struct a {int a; int a;}",
@@ -46,20 +46,20 @@ describe("DefinitionReader", () => {
   });
 
   test("accepts minimal input", () => {
-    _.each(['#set "foo" struct a {}', "#set 32 struct b {}", "struct a {}"], (value) => {
+    each(['#set "foo" struct a {}', "#set 32 struct b {}", "struct a {}"], (value) => {
       expect(createAndCallParser(value)()).toBeDefined();
     });
   });
 
   test("accepts field annotations", () => {
-    _.each(["struct a { @ignore(false) int b; @ignore(true) int c; }"], (value) => {
+    each(["struct a { @ignore(false) int b; @ignore(true) int c; }"], (value) => {
       expect(createAndCallParser(value)()).toBeDefined();
     });
   });
 
   test("accepts expression", () => {
     const evaluator = new ExpressionEvaluator();
-    _.each(
+    each(
       [
         "2+3",
         "ar[0].c",
@@ -85,7 +85,7 @@ describe("DefinitionReader", () => {
       (value) => {
         const result = createAndCallParser(`struct a { int foo[${value}]; }`)();
         expect(result).toBeDefined();
-        const resultFn = _.first(_.first(result.structures).statements).type.sizeExpression;
+        const resultFn = first(first(result.structures).statements).type.sizeExpression;
         expect(resultFn).toBeDefined();
         const variableScope = new VariableScope();
         variableScope.put("a", 1);
@@ -116,19 +116,19 @@ describe("DefinitionReader", () => {
   test("accepts == and ||", () => {
     const result = createAndCallParser("struct a { int foo[1 == 2 || 3 == 4]; }")();
     expect(result).toBeDefined();
-    const resultFn = _.first(_.first(result.structures).statements).type.sizeExpression;
+    const resultFn = first(first(result.structures).statements).type.sizeExpression;
     expect(resultFn).toBeDefined();
     expect(resultFn).toContain("==");
     expect(resultFn).toContain("||");
   });
 
   test("rejects unsupported expression", () => {
-    _.each(["a++", "a--", "++a", "--a"], (value) => {
+    each(["a++", "a--", "++a", "--a"], (value) => {
       expect(createAndCallParser(`struct a { int foo[${value}]; }`)).toThrow(/supported/);
     });
   });
   test("rejects invalid expression", () => {
-    _.each(["+", "())"], (value) => {
+    each(["+", "())"], (value) => {
       expect(createAndCallParser(`struct a { int foo[${value}]; }`)).toThrow(/parsing/);
     });
   });

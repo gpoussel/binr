@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { each, filter, first, get, has, join, keys, map, repeat, size, times } from "lodash";
 import { BlockNode, FieldNode, IfNode, SwitchNode } from "./nodes";
 
 /**
@@ -18,25 +18,25 @@ export function getVisitor(parser) {
 
     public definition(ctx) {
       return {
-        headers: _.map(ctx.headerClause, this.visit.bind(this)),
-        structures: _.map(
-          _.filter(ctx.topLevelClause, (c) => _.has(c, "children.structureClause")),
+        headers: map(ctx.headerClause, this.visit.bind(this)),
+        structures: map(
+          filter(ctx.topLevelClause, (c) => has(c, "children.structureClause")),
           this.visit.bind(this),
         ),
-        enumerations: _.map(
-          _.filter(ctx.topLevelClause, (c) => _.has(c, "children.enumClause")),
+        enumerations: map(
+          filter(ctx.topLevelClause, (c) => has(c, "children.enumClause")),
           this.visit.bind(this),
         ),
-        bitmasks: _.map(
-          _.filter(ctx.topLevelClause, (c) => _.has(c, "children.bitmaskClause")),
+        bitmasks: map(
+          filter(ctx.topLevelClause, (c) => has(c, "children.bitmaskClause")),
           this.visit.bind(this),
         ),
       };
     }
 
     public topLevelClause(ctx) {
-      const annotations = _.map(ctx.annotationClause, this.visit.bind(this));
-      if (_.has(ctx, "structureClause")) {
+      const annotations = map(ctx.annotationClause, this.visit.bind(this));
+      if (has(ctx, "structureClause")) {
         const { name, exported, statements } = this.visit(ctx.structureClause);
         return {
           name,
@@ -45,7 +45,7 @@ export function getVisitor(parser) {
           annotations,
         };
       }
-      if (_.has(ctx, "enumClause")) {
+      if (has(ctx, "enumClause")) {
         const { name, entries, parentType } = this.visit(ctx.enumClause);
         return {
           name,
@@ -54,7 +54,7 @@ export function getVisitor(parser) {
           annotations,
         };
       }
-      if (_.has(ctx, "bitmaskClause")) {
+      if (has(ctx, "bitmaskClause")) {
         const { name, entries, parentType } = this.visit(ctx.bitmaskClause);
         return {
           name,
@@ -66,8 +66,8 @@ export function getVisitor(parser) {
     }
 
     public headerClause(ctx) {
-      const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-      const value = this.visit(_.first(ctx.valueClause));
+      const name = this.getIdentifierName(first(ctx.IdentifierToken));
+      const value = this.visit(first(ctx.valueClause));
       return {
         name,
         value,
@@ -75,8 +75,8 @@ export function getVisitor(parser) {
     }
 
     public annotationClause(ctx) {
-      const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-      const value = this.visit(_.first(ctx.valueClause));
+      const name = this.getIdentifierName(first(ctx.IdentifierToken));
+      const value = this.visit(first(ctx.valueClause));
       return {
         name,
         value,
@@ -84,8 +84,8 @@ export function getVisitor(parser) {
     }
 
     public enumClause(ctx) {
-      const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-      const entries = _.times(ctx.IdentifierToken.length - 1, (i) => ({
+      const name = this.getIdentifierName(first(ctx.IdentifierToken));
+      const entries = times(ctx.IdentifierToken.length - 1, (i) => ({
         key: this.getIdentifierName(ctx.IdentifierToken[i + 1]),
         value: this.visit(ctx.numberClause[i]),
       }));
@@ -98,8 +98,8 @@ export function getVisitor(parser) {
     }
 
     public bitmaskClause(ctx) {
-      const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-      const entries = _.times(ctx.IdentifierToken.length - 1, (i) => ({
+      const name = this.getIdentifierName(first(ctx.IdentifierToken));
+      const entries = times(ctx.IdentifierToken.length - 1, (i) => ({
         key: this.getIdentifierName(ctx.IdentifierToken[i + 1]),
         value: this.visit(ctx.numberClause[i]),
       }));
@@ -112,9 +112,9 @@ export function getVisitor(parser) {
     }
 
     public structureClause(ctx) {
-      const exported = _.has(ctx, "ExportToken");
-      const name = this.getIdentifierName(_.first(ctx.IdentifierToken));
-      const statements = _.map(ctx.statementClause, this.visit.bind(this));
+      const exported = has(ctx, "ExportToken");
+      const name = this.getIdentifierName(first(ctx.IdentifierToken));
+      const statements = map(ctx.statementClause, this.visit.bind(this));
       return {
         name,
         exported,
@@ -123,41 +123,41 @@ export function getVisitor(parser) {
     }
 
     public statementClause(ctx) {
-      if (_.has(ctx, "fieldClause")) {
+      if (has(ctx, "fieldClause")) {
         return this.visit(ctx.fieldClause);
       }
-      if (_.has(ctx, "IfStatement")) {
+      if (has(ctx, "IfStatement")) {
         return this.visit(ctx.IfStatement);
       }
-      if (_.has(ctx, "BlockStatement")) {
+      if (has(ctx, "BlockStatement")) {
         return this.visit(ctx.BlockStatement);
       }
-      if (_.has(ctx, "SwitchStatement")) {
+      if (has(ctx, "SwitchStatement")) {
         return this.visit(ctx.SwitchStatement);
       }
     }
 
     public IfStatement(ctx) {
       return new IfNode(
-        this.visit(_.first(ctx.Expression)),
-        this.visit(_.first(ctx.statementClause)),
-        _.size(ctx.statementClause) > 1 ? this.visit(_.get(ctx.statementClause, 1)) : undefined,
+        this.visit(first(ctx.Expression)),
+        this.visit(first(ctx.statementClause)),
+        size(ctx.statementClause) > 1 ? this.visit(get(ctx.statementClause, 1)) : undefined,
       );
     }
 
     public BlockStatement(ctx) {
-      return new BlockNode(_.map(ctx.statementClause, this.visit.bind(this)));
+      return new BlockNode(map(ctx.statementClause, this.visit.bind(this)));
     }
 
     public SwitchStatement(ctx) {
-      const testExpression = this.visit(_.first(ctx.Expression));
-      const switchClauses = _.map(ctx.switchInnerClause, this.visit.bind(this));
+      const testExpression = this.visit(first(ctx.Expression));
+      const switchClauses = map(ctx.switchInnerClause, this.visit.bind(this));
       return new SwitchNode(testExpression, switchClauses);
     }
 
     public switchInnerClause(ctx) {
-      const value = this.visit(_.first(ctx.valueClause));
-      const statement = this.visit(_.first(ctx.BlockStatement));
+      const value = this.visit(first(ctx.valueClause));
+      const statement = this.visit(first(ctx.BlockStatement));
       return {
         value,
         statement,
@@ -166,23 +166,23 @@ export function getVisitor(parser) {
 
     public fieldClause(ctx) {
       const type = this.visit(ctx.typeReferenceClause);
-      const name = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
-      const annotations = _.map(ctx.annotationClause, this.visit.bind(this));
+      const name = this.getIdentifierName(get(ctx.IdentifierToken, 0));
+      const annotations = map(ctx.annotationClause, this.visit.bind(this));
       const fieldResult = new FieldNode(type, name, annotations);
-      if (_.has(ctx, "BoxMemberExpression")) {
-        const boxMemberDefinition = this.visit(_.first(ctx.BoxMemberExpression));
+      if (has(ctx, "BoxMemberExpression")) {
+        const boxMemberDefinition = this.visit(first(ctx.BoxMemberExpression));
         fieldResult.setArrayDefinition(boxMemberDefinition.substr(1, boxMemberDefinition.length - 2));
       }
-      if (_.has(ctx, "BoxMemberUntilExpression")) {
-        fieldResult.setArrayUntilDefinition(this.visit(_.first(ctx.BoxMemberUntilExpression)));
+      if (has(ctx, "BoxMemberUntilExpression")) {
+        fieldResult.setArrayUntilDefinition(this.visit(first(ctx.BoxMemberUntilExpression)));
       }
       return fieldResult;
     }
 
     public typeReferenceClause(ctx) {
-      const type = this.getIdentifierName(_.get(ctx.IdentifierToken, 0));
-      if (_.has(ctx, "ColonToken")) {
-        const typeRestriction = this.visit(_.first(ctx.numberClause));
+      const type = this.getIdentifierName(get(ctx.IdentifierToken, 0));
+      if (has(ctx, "ColonToken")) {
+        const typeRestriction = this.visit(first(ctx.numberClause));
         return {
           type,
           typeRestriction,
@@ -194,17 +194,17 @@ export function getVisitor(parser) {
     }
 
     public valueClause(ctx) {
-      if (_.has(ctx, "StringLiteralToken")) {
-        return JSON.parse(_.first(ctx.StringLiteralToken).image);
+      if (has(ctx, "StringLiteralToken")) {
+        return JSON.parse(first(ctx.StringLiteralToken).image);
       }
-      if (_.has(ctx, "TrueToken")) {
+      if (has(ctx, "TrueToken")) {
         return true;
       }
-      if (_.has(ctx, "FalseToken")) {
+      if (has(ctx, "FalseToken")) {
         return false;
       }
       // That's a number
-      return this.visit(_.first(ctx.numberClause));
+      return this.visit(first(ctx.numberClause));
     }
 
     public BoxMemberExpression(ctx) {
@@ -216,130 +216,130 @@ export function getVisitor(parser) {
     }
 
     public Expression(ctx) {
-      if (_.has(ctx, "AssignmentExpression")) {
-        return _.join(_.map(ctx.AssignmentExpression, this.visit.bind(this)), ", ");
+      if (has(ctx, "AssignmentExpression")) {
+        return join(map(ctx.AssignmentExpression, this.visit.bind(this)), ", ");
       }
     }
 
     public AssignmentExpression(ctx) {
-      if (_.has(ctx, "QuestionToken")) {
-        const ifElseClause = _.map(ctx.AssignmentExpression, this.visit.bind(this)).join(" : ");
+      if (has(ctx, "QuestionToken")) {
+        const ifElseClause = map(ctx.AssignmentExpression, this.visit.bind(this)).join(" : ");
         return `${this.visit(ctx.BinaryExpression)} ? ${ifElseClause}`;
       }
-      if (_.has(ctx, "BinaryExpression")) {
+      if (has(ctx, "BinaryExpression")) {
         return this.visit(ctx.BinaryExpression);
       }
     }
 
     public BinaryExpression(ctx) {
-      const result = [this.visit(_.first(ctx.UnaryExpression))];
-      _.each(ctx.ExpressionToken, (token, i) => {
-        const tokenName = _.first(_.keys(token.children));
-        const tokenSymbol = _.first(token.children[tokenName]).image;
+      const result = [this.visit(first(ctx.UnaryExpression))];
+      each(ctx.ExpressionToken, (token, i) => {
+        const tokenName = first(keys(token.children));
+        const tokenSymbol = first(token.children[tokenName]).image;
         const childExpression = this.visit(ctx.UnaryExpression[i + 1]);
-        result.push(_.get(SYMBOL_MAPPING, tokenSymbol, tokenSymbol));
+        result.push(get(SYMBOL_MAPPING, tokenSymbol, tokenSymbol));
         result.push(childExpression);
       });
-      return _.join(result, " ");
+      return join(result, " ");
     }
 
     public UnaryExpression(ctx) {
-      if (_.has(ctx, "PostfixExpression")) {
+      if (has(ctx, "PostfixExpression")) {
         return this.visit(ctx.PostfixExpression);
       }
-      if (_.has(ctx, "DoublePlusToken")) {
+      if (has(ctx, "DoublePlusToken")) {
         return `++${this.visit(ctx.UnaryExpression)}`;
       }
-      if (_.has(ctx, "DoubleMinusToken")) {
+      if (has(ctx, "DoubleMinusToken")) {
         return `--${this.visit(ctx.UnaryExpression)}`;
       }
-      if (_.has(ctx, "PlusToken")) {
+      if (has(ctx, "PlusToken")) {
         return `+${this.visit(ctx.UnaryExpression)}`;
       }
-      if (_.has(ctx, "MinusToken")) {
+      if (has(ctx, "MinusToken")) {
         return `-${this.visit(ctx.UnaryExpression)}`;
       }
-      if (_.has(ctx, "TildaToken")) {
+      if (has(ctx, "TildaToken")) {
         return `~${this.visit(ctx.UnaryExpression)}`;
       }
-      if (_.has(ctx, "ExclamationToken")) {
+      if (has(ctx, "ExclamationToken")) {
         return `!${this.visit(ctx.UnaryExpression)}`;
       }
     }
 
     public PostfixExpression(ctx) {
-      if (_.has(ctx, "MemberCallNewExpression")) {
-        const plusPlusSuffix = _.has(ctx, "DoublePlusToken") ? "++" : "";
-        const minusMinusSuffix = _.has(ctx, "DoubleMinusToken") ? "--" : "";
+      if (has(ctx, "MemberCallNewExpression")) {
+        const plusPlusSuffix = has(ctx, "DoublePlusToken") ? "++" : "";
+        const minusMinusSuffix = has(ctx, "DoubleMinusToken") ? "--" : "";
         return this.visit(ctx.MemberCallNewExpression) + plusPlusSuffix + minusMinusSuffix;
       }
     }
 
     public MemberCallNewExpression(ctx) {
-      if (_.has(ctx, "PrimaryExpression")) {
+      if (has(ctx, "PrimaryExpression")) {
         return (
           this.visit(ctx.PrimaryExpression) +
-          _.join(_.map(ctx.MemberCallNewExpressionExtension, this.visit.bind(this)), "")
+          join(map(ctx.MemberCallNewExpressionExtension, this.visit.bind(this)), "")
         );
       }
     }
 
     public MemberCallNewExpressionExtension(ctx) {
-      if (_.has(ctx, "BoxMemberExpression")) {
+      if (has(ctx, "BoxMemberExpression")) {
         return this.visit(ctx.BoxMemberExpression);
       }
-      if (_.has(ctx, "DotMemberExpression")) {
+      if (has(ctx, "DotMemberExpression")) {
         return this.visit(ctx.DotMemberExpression);
       }
-      if (_.has(ctx, "Arguments")) {
+      if (has(ctx, "Arguments")) {
         return this.visit(ctx.Arguments);
       }
     }
 
     public Arguments(ctx) {
-      return `(${_.join(_.map(ctx.AssignmentExpression, this.visit.bind(this)))})`;
+      return `(${join(map(ctx.AssignmentExpression, this.visit.bind(this)))})`;
     }
 
     public DotMemberExpression(ctx) {
-      if (_.has(ctx, "IdentifierToken")) {
-        return `.${this.getIdentifierName(_.first(ctx.IdentifierToken))}`;
+      if (has(ctx, "IdentifierToken")) {
+        return `.${this.getIdentifierName(first(ctx.IdentifierToken))}`;
       }
     }
 
     public PrimaryExpression(ctx) {
-      if (_.has(ctx, "numberClause")) {
-        return this.visit(_.first(ctx.numberClause));
+      if (has(ctx, "numberClause")) {
+        return this.visit(first(ctx.numberClause));
       }
-      if (_.has(ctx, "IdentifierToken")) {
-        return this.getIdentifierName(_.first(ctx.IdentifierToken));
+      if (has(ctx, "IdentifierToken")) {
+        return this.getIdentifierName(first(ctx.IdentifierToken));
       }
-      if (_.has(ctx, "ParenthesisExpression")) {
+      if (has(ctx, "ParenthesisExpression")) {
         return this.visit(ctx.ParenthesisExpression);
       }
-      if (_.has(ctx, "ArrayLiteral")) {
+      if (has(ctx, "ArrayLiteral")) {
         return this.visit(ctx.ArrayLiteral);
       }
-      if (_.has(ctx, "StringLiteralToken")) {
-        return _.first(ctx.StringLiteralToken).image;
+      if (has(ctx, "StringLiteralToken")) {
+        return first(ctx.StringLiteralToken).image;
       }
     }
 
     public ArrayLiteral(ctx) {
-      return `[${_.join(_.map(ctx.ArrayLiteralContent, this.visit.bind(this)), "")}]`;
+      return `[${join(map(ctx.ArrayLiteralContent, this.visit.bind(this)), "")}]`;
     }
 
     public ArrayLiteralContent(ctx) {
-      if (_.has(ctx, "ElementList")) {
+      if (has(ctx, "ElementList")) {
         return this.visit(ctx.ElementList);
       }
-      if (_.has(ctx, "Elision")) {
+      if (has(ctx, "Elision")) {
         return this.visit(ctx.Elision);
       }
     }
 
     public ElementList(ctx) {
       const firstElement = this.visit(ctx.AssignmentExpression);
-      const otherElements = _.join(_.map(ctx.ElementListEntry, this.visit.bind(this)), "");
+      const otherElements = join(map(ctx.ElementListEntry, this.visit.bind(this)), "");
       return firstElement + otherElements;
     }
 
@@ -350,7 +350,7 @@ export function getVisitor(parser) {
     }
 
     public Elision(ctx) {
-      return _.repeat(",", _.size(ctx.CommaToken));
+      return repeat(",", size(ctx.CommaToken));
     }
 
     public ParenthesisExpression(ctx) {
@@ -358,14 +358,14 @@ export function getVisitor(parser) {
     }
 
     public numberClause(ctx) {
-      if (_.has(ctx, "NumberDecimalLiteralToken")) {
-        return parseInt(_.first(ctx.NumberDecimalLiteralToken).image, 10);
+      if (has(ctx, "NumberDecimalLiteralToken")) {
+        return parseInt(first(ctx.NumberDecimalLiteralToken).image, 10);
       }
-      if (_.has(ctx, "NumberHexadecimalLiteralToken")) {
-        return parseInt(_.first(ctx.NumberHexadecimalLiteralToken).image.substring(2), 16);
+      if (has(ctx, "NumberHexadecimalLiteralToken")) {
+        return parseInt(first(ctx.NumberHexadecimalLiteralToken).image.substring(2), 16);
       }
-      if (_.has(ctx, "NumberBinaryLiteralToken")) {
-        return parseInt(_.first(ctx.NumberBinaryLiteralToken).image.substring(2), 2);
+      if (has(ctx, "NumberBinaryLiteralToken")) {
+        return parseInt(first(ctx.NumberBinaryLiteralToken).image.substring(2), 2);
       }
     }
 

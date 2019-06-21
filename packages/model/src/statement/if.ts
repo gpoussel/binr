@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { isUndefined } from "lodash";
 
 import { ExpressionEvaluator } from "@binr/shared";
 
@@ -21,7 +21,7 @@ export class IfStatement extends Statement {
     const testResult = evaluator.evaluate(this.testCode, environment);
     if (testResult) {
       this.consequentStatement.read(buffer, environment, valueAggregator);
-    } else if (!_.isUndefined(this.alternateStatement)) {
+    } else if (!isUndefined(this.alternateStatement)) {
       this.alternateStatement.read(buffer, environment, valueAggregator);
     }
   }

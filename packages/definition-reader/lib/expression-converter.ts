@@ -1,8 +1,6 @@
-/* eslint-disable no-param-reassign */
-
-import escodegen from "escodegen";
+import * as escodegen from "escodegen";
 import { parseScript, Syntax } from "esprima";
-import _ from "lodash";
+import { includes, isArray, map, size } from "lodash";
 
 export class ExpressionConverter {
   public transformCodeToFunction(code) {
@@ -11,10 +9,10 @@ export class ExpressionConverter {
 
   public convert(source) {
     const ast = parseScript(source);
-    if (!_.isArray(ast.body)) {
+    if (!isArray(ast.body)) {
       throw new Error("AST body is not an array");
     }
-    if (_.size(ast.body) !== 1) {
+    if (size(ast.body) !== 1) {
       throw new Error("AST body size shall be 1");
     }
     const bodyExpression = ast.body[0];
@@ -55,7 +53,7 @@ export class ExpressionConverter {
       const { callee } = expression;
       if (callee.type === Syntax.Identifier) {
         // Top-level functions: that's fine
-        const builtInFunction = _.includes(
+        const builtInFunction = includes(
           ["abs", "ceil", "cos", "exp", "floor", "log", "max", "min", "pow", "random", "sin", "sqrt", "tan"],
           expression.callee.name,
         );
@@ -73,10 +71,10 @@ export class ExpressionConverter {
       } else {
         throw new Error(`Only top-level functions are supported, received ${callee.type}`);
       }
-      expression.arguments = _.map(expression.arguments, (arg) => this.processExpression(arg));
+      expression.arguments = map(expression.arguments, (arg) => this.processExpression(arg));
     }
     if (expression.type === Syntax.ArrayExpression) {
-      expression.elements = _.map(expression.elements, (el) => this.processExpression(el));
+      expression.elements = map(expression.elements, (el) => this.processExpression(el));
     }
     return expression;
   }

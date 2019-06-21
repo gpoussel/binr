@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { each, first, has, isArray, isEmpty, isObject, map, size } from "lodash";
 import { SweetscapeLexer } from "../lib/sweetscape/sweetscape-lexer";
 import { SweetscapeParser } from "../lib/sweetscape/sweetscape-parser";
 
@@ -12,8 +12,8 @@ function parse(input) {
   const parser = new SweetscapeParser();
 
   const lexingResult = lexer.tokenize(input);
-  if (!_.isEmpty(lexingResult.errors)) {
-    throw new Error(`Got an error while lexing input: ${_.first(lexingResult.errors).message}`);
+  if (!isEmpty(lexingResult.errors)) {
+    throw new Error(`Got an error while lexing input: ${first(lexingResult.errors).message}`);
   }
   parser.input = lexingResult.tokens;
   return parser;
@@ -25,27 +25,27 @@ function parse(input) {
  * @return {object} cleaned-up objeects
  */
 function cleanupResult(object) {
-  if (_.has(object, "tokenType")) {
+  if (has(object, "tokenType")) {
     // This is a token, and we don't want to serialize all its properties
     return { TOKEN: object.tokenType.tokenName, content: object.image };
   }
-  _.each(object, (value, key) => {
-    if (_.isArray(value)) {
-      object[key] = _.size(value) === 1 ? cleanupResult(_.first(value)) : _.map(value, cleanupResult);
-    } else if (_.isObject(value)) {
+  each(object, (value, key) => {
+    if (isArray(value)) {
+      object[key] = size(value) === 1 ? cleanupResult(first(value)) : map(value, cleanupResult);
+    } else if (isObject(value)) {
       const result = cleanupResult(value);
       object[key] = result;
     }
   });
 
-  if (_.has(object, "children")) {
+  if (has(object, "children")) {
     return object.children;
   }
   return object;
 }
 
 describe("Sweetscape Parser", () => {
-  _.each(
+  each(
     [
       { name: "variable definition", input: "int a;" },
       { name: "several variable definitions", input: "int a, b;" },
@@ -69,7 +69,7 @@ describe("Sweetscape Parser", () => {
       });
     },
   );
-  _.each(
+  each(
     [
       { name: "hex number 1", input: "0x20" },
       { name: "hex number 2", input: "20h" },
@@ -97,7 +97,7 @@ describe("Sweetscape Parser", () => {
       });
     },
   );
-  _.each(
+  each(
     [
       { name: "operator priority", input: "a * b + c" },
       { name: "operator priority with parenthesis", input: "(a * b) + c" },

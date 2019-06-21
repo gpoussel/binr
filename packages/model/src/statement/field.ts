@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { get } from "lodash";
 
 import { Statement } from "./statement";
 
@@ -16,7 +16,7 @@ export class FieldStatement extends Statement {
 
   public read(buffer, environment, valueAggregator) {
     const readValue = this.type.read(buffer, environment);
-    const ignore = _.get(this.meta, "ignore", false);
+    const ignore = get(this.meta, "ignore", false);
     if (!ignore) {
       valueAggregator.set(this.name, readValue);
       environment.variables.put(this.name, readValue);

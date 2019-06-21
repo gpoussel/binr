@@ -1,17 +1,33 @@
-import _ from "lodash";
+import {
+  assign,
+  concat,
+  each,
+  filter,
+  find,
+  first,
+  get,
+  has,
+  isEmpty,
+  join,
+  keys,
+  last,
+  map,
+  parseInt,
+  size,
+} from "lodash";
 
 function getFirstTokenImage(ctx) {
-  return _.first(_.get(ctx, _.first(_.keys(ctx)))).image;
+  return first(get(ctx, first(keys(ctx)))).image;
 }
 
 function createBinaryExpressions(expressions, operators) {
-  if (_.isEmpty(operators) && _.size(expressions) === 1) {
+  if (isEmpty(operators) && size(expressions) === 1) {
     // In that case, we cannot create a binary expression
     // We can just return the only expression provided
-    return _.first(expressions);
+    return first(expressions);
   }
   // N expressions and (N - 1) operators
-  let currentExpression = _.first(expressions);
+  let currentExpression = first(expressions);
   for (let i = 1; i < expressions.length; i += 1) {
     currentExpression = {
       type: "binaryExpression",
@@ -25,7 +41,7 @@ function createBinaryExpressions(expressions, operators) {
 
 function getString(stringLiteralToken) {
   // We cannot use JSON.parse here, because JSON does not support single-quote delimited strings
-  let finalString = _.first(stringLiteralToken).image;
+  let finalString = first(stringLiteralToken).image;
   if (finalString.charAt(0) === "L") {
     // Wide-char strings can start with an L (outside quotes)
     finalString = finalString.substr(1);
@@ -47,7 +63,7 @@ function getString(stringLiteralToken) {
 }
 
 function getIdentifier(identifierToken) {
-  return _.first(identifierToken).image;
+  return first(identifierToken).image;
 }
 
 export function getVisitor(parser) {
@@ -60,16 +76,16 @@ export function getVisitor(parser) {
     public definition(ctx) {
       return {
         type: "definition",
-        content: _.map(ctx.topLevelStatement, this.visit.bind(this)),
+        content: map(ctx.topLevelStatement, this.visit.bind(this)),
       };
     }
 
     public topLevelStatement(ctx) {
-      if (_.has(ctx, "statement")) {
+      if (has(ctx, "statement")) {
         // Statement at the top-level
         return this.visit(ctx.statement);
       }
-      if (_.has(ctx, "functionDeclarationStatement")) {
+      if (has(ctx, "functionDeclarationStatement")) {
         return this.visit(ctx.functionDeclarationStatement);
       }
       throw new Error();
@@ -77,7 +93,7 @@ export function getVisitor(parser) {
 
     public functionDeclarationStatement(ctx) {
       const { typeName, Identifier: identifiers, functionParameterDeclarationList } = ctx;
-      const forwardDeclaration = _.has(ctx, "SemiColon");
+      const forwardDeclaration = has(ctx, "SemiColon");
       return {
         type: "functionDeclaration",
         returnType: this.visit(typeName),
@@ -89,10 +105,10 @@ export function getVisitor(parser) {
     }
 
     public typeName(ctx) {
-      if (_.has(ctx, "typeNameWithoutVoid")) {
+      if (has(ctx, "typeNameWithoutVoid")) {
         return this.visit(ctx.typeNameWithoutVoid);
       }
-      if (_.has(ctx, "Void")) {
+      if (has(ctx, "Void")) {
         return {
           name: "void",
         };
@@ -103,38 +119,38 @@ export function getVisitor(parser) {
     public typeNameWithoutVoid(ctx) {
       const simpleName = getIdentifier(ctx.Identifier);
       const nameParts = [];
-      if (_.has(ctx, "Signed")) {
+      if (has(ctx, "Signed")) {
         nameParts.push("signed");
       }
-      if (_.has(ctx, "Unsigned")) {
+      if (has(ctx, "Unsigned")) {
         nameParts.push("unsigned");
       }
       nameParts.push(simpleName);
       return {
-        name: _.join(nameParts, " "),
-        array: _.has(ctx, "emptyArraySelector"),
+        name: join(nameParts, " "),
+        array: has(ctx, "emptyArraySelector"),
       };
     }
 
     public functionParameterDeclarationList(ctx) {
-      if (_.has(ctx, "Void")) {
+      if (has(ctx, "Void")) {
         return [];
       }
-      return _.map(ctx.functionParameterDeclaration, this.visit.bind(this));
+      return map(ctx.functionParameterDeclaration, this.visit.bind(this));
     }
 
     public functionParameterDeclaration(ctx) {
       const type = this.visit(ctx.typeNameWithoutVoid);
-      if (_.has(ctx, "anyArraySelector")) {
-        _.assign(type, this.visit(ctx.anyArraySelector));
+      if (has(ctx, "anyArraySelector")) {
+        assign(type, this.visit(ctx.anyArraySelector));
       }
       const result: any = {
         type,
-        reference: _.has(ctx, "BinaryAnd"),
+        reference: has(ctx, "BinaryAnd"),
         name: getIdentifier(ctx.Identifier),
       };
-      _.each(ctx.variableModifier, (modifier) => {
-        _.assign(result, this.visit(modifier));
+      each(ctx.variableModifier, (modifier) => {
+        assign(result, this.visit(modifier));
       });
       return result;
     }
@@ -144,7 +160,7 @@ export function getVisitor(parser) {
     }
 
     public statement(ctx) {
-      const matchingStatementType = _.filter(
+      const matchingStatementType = filter(
         [
           "block",
           "expressionStatement",
@@ -160,9 +176,9 @@ export function getVisitor(parser) {
           "returnStatement",
           "breakStatement",
         ],
-        (statementType) => _.has(ctx, statementType),
+        (statementType) => has(ctx, statementType),
       );
-      if (_.isEmpty(matchingStatementType)) {
+      if (isEmpty(matchingStatementType)) {
         // Just a semi-colon
         return { type: "emptyStatement" };
       }
@@ -173,7 +189,7 @@ export function getVisitor(parser) {
       const result: any = {
         type: "returnStatement",
       };
-      if (_.has(ctx, "assignmentExpression")) {
+      if (has(ctx, "assignmentExpression")) {
         result.assignmentExpression = this.visit(ctx.assignmentExpression);
       }
       return result;
@@ -204,7 +220,7 @@ export function getVisitor(parser) {
     public switchStatement(ctx) {
       return {
         type: "switchStatement",
-        statements: _.map(ctx.switchBlockStatementGroup, this.visit.bind(this)),
+        statements: map(ctx.switchBlockStatementGroup, this.visit.bind(this)),
       };
     }
 
@@ -216,16 +232,16 @@ export function getVisitor(parser) {
     }
 
     public switchLabels(ctx) {
-      const stringLiterals = _.map(ctx.simpleValue, this.visit.bind(this));
-      const defaultStatement = _.has(ctx, "Default") ? [{ type: "defaultStatement" }] : [];
-      return _.concat(stringLiterals, defaultStatement);
+      const stringLiterals = map(ctx.simpleValue, this.visit.bind(this));
+      const defaultStatement = has(ctx, "Default") ? [{ type: "defaultStatement" }] : [];
+      return concat(stringLiterals, defaultStatement);
     }
 
     public forStatement(ctx) {
       return {
         type: "forStatement",
-        initialization: this.visit(_.first(ctx.forInitUpdate)),
-        increment: this.visit(_.last(ctx.forInitUpdate)),
+        initialization: this.visit(first(ctx.forInitUpdate)),
+        increment: this.visit(last(ctx.forInitUpdate)),
         body: this.visit(ctx.statement),
         condition: this.visit(ctx.assignmentExpression),
       };
@@ -235,32 +251,32 @@ export function getVisitor(parser) {
       const result: any = {
         type: "variableDeclaration",
         variableType: this.visit(ctx.typeName),
-        annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
+        annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
-      _.each(ctx.variableModifier, (modifier) => {
-        _.assign(result, this.visit(modifier));
+      each(ctx.variableModifier, (modifier) => {
+        assign(result, this.visit(modifier));
       });
-      if (_.has(ctx, "bitfieldRest")) {
+      if (has(ctx, "bitfieldRest")) {
         result.bits = this.visit(ctx.bitfieldRest);
       }
-      if (_.has(ctx, "variableDeclarators")) {
+      if (has(ctx, "variableDeclarators")) {
         result.declarations = this.visit(ctx.variableDeclarators);
       }
-      if (_.has(ctx, "annotations")) {
+      if (has(ctx, "annotations")) {
         result.annotations = this.visit(ctx.annotations);
       }
       return result;
     }
 
     public variableDeclarators(ctx) {
-      return _.map(ctx.variableDeclarator, this.visit.bind(this));
+      return map(ctx.variableDeclarator, this.visit.bind(this));
     }
 
     public variableModifier(ctx) {
-      if (_.has(ctx, "Local")) {
+      if (has(ctx, "Local")) {
         return { local: true };
       }
-      if (_.has(ctx, "Const")) {
+      if (has(ctx, "Const")) {
         return { const: true };
       }
       throw new Error();
@@ -271,9 +287,9 @@ export function getVisitor(parser) {
         type: "typeAlias",
         name: this.visit(ctx.typeName),
         alias: getIdentifier(ctx.Identifier),
-        annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
+        annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
-      if (_.has(ctx, "arraySelector")) {
+      if (has(ctx, "arraySelector")) {
         result.arraySelector = this.visit(ctx.arraySelector);
       }
       return result;
@@ -282,33 +298,33 @@ export function getVisitor(parser) {
     public statementList(ctx) {
       return {
         type: "statementList",
-        statements: _.map(ctx.statement, this.visit.bind(this)),
+        statements: map(ctx.statement, this.visit.bind(this)),
       };
     }
 
     public ifStatement(ctx) {
-      const statements = _.map(ctx.statement, this.visit.bind(this));
+      const statements = map(ctx.statement, this.visit.bind(this));
       const result: any = {
         type: "ifStatement",
         condition: this.visit(ctx.parExpression),
-        trueStatement: _.first(statements),
+        trueStatement: first(statements),
       };
-      if (_.size(statements) > 1) {
+      if (size(statements) > 1) {
         [, result.falseStatement] = statements;
       }
       return result;
     }
 
     public structStatement(ctx) {
-      const type = _.has(ctx, "Struct") ? "structDeclaration" : "unionDeclaration";
+      const type = has(ctx, "Struct") ? "structDeclaration" : "unionDeclaration";
       const result: any = {
         type,
       };
-      if (_.has(ctx, "structDeclaration")) {
+      if (has(ctx, "structDeclaration")) {
         result.declaration = this.visit(ctx.structDeclaration);
       }
-      _.assign(result, this.visit(ctx.variableDeclarator));
-      if (_.has(ctx, "Identifier")) {
+      assign(result, this.visit(ctx.variableDeclarator));
+      if (has(ctx, "Identifier")) {
         result.alias = getIdentifier(ctx.Identifier);
       }
       return result;
@@ -318,19 +334,19 @@ export function getVisitor(parser) {
       const result: any = {
         type: "enumDeclaration",
       };
-      if (_.has(ctx, "typeName")) {
+      if (has(ctx, "typeName")) {
         result.baseType = this.visit(ctx.typeName);
       }
-      if (_.has(ctx, "Identifier")) {
+      if (has(ctx, "Identifier")) {
         result.alias = getIdentifier(ctx.Identifier);
       }
-      if (_.has(ctx, "variableDeclarators")) {
+      if (has(ctx, "variableDeclarators")) {
         result.declarations = this.visit(ctx.variableDeclarators);
       }
-      if (_.has(ctx, "variableDeclarator")) {
+      if (has(ctx, "variableDeclarator")) {
         result.name = this.visit(ctx.variableDeclarator);
       }
-      if (_.has(ctx, "enumDeclaration")) {
+      if (has(ctx, "enumDeclaration")) {
         result.declarations = this.visit(ctx.enumDeclaration);
       }
       return result;
@@ -339,10 +355,10 @@ export function getVisitor(parser) {
     public variableDeclarator(ctx) {
       const result: any = {
         name: getIdentifier(ctx.Identifier),
-        annotations: _.has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
+        annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
-      _.assign(result, this.visit(ctx.variableDeclaratorRest));
-      if (_.has(ctx, "bitfieldRest")) {
+      assign(result, this.visit(ctx.variableDeclaratorRest));
+      if (has(ctx, "bitfieldRest")) {
         result.bits = this.visit(ctx.bitfieldRest);
       }
       return result;
@@ -352,7 +368,7 @@ export function getVisitor(parser) {
       const result: any = {
         body: this.visit(ctx.block),
       };
-      if (_.has(ctx, "functionParameterDeclarationList")) {
+      if (has(ctx, "functionParameterDeclarationList")) {
         result.parameters = this.visit(ctx.functionParameterDeclarationList);
       }
       return result;
@@ -360,17 +376,17 @@ export function getVisitor(parser) {
 
     public variableDeclaratorRest(ctx) {
       const result: any = {};
-      if (_.has(ctx, "annotations")) {
+      if (has(ctx, "annotations")) {
         result.annotations = this.visit(ctx.annotations);
       }
-      if (_.has(ctx, "arguments")) {
+      if (has(ctx, "arguments")) {
         result.arguments = this.visit(ctx.arguments);
       }
-      if (_.has(ctx, "anyArraySelector")) {
+      if (has(ctx, "anyArraySelector")) {
         const anyArraySelector = this.visit(ctx.anyArraySelector);
-        _.assign(result, anyArraySelector);
+        assign(result, anyArraySelector);
       }
-      if (_.has(ctx, "variableInitializer")) {
+      if (has(ctx, "variableInitializer")) {
         result.initializer = this.visit(ctx.variableInitializer);
       }
       return result;
@@ -385,20 +401,20 @@ export function getVisitor(parser) {
     }
 
     public assignmentExpression(ctx) {
-      const operators = _.map(ctx.assignmentOperator, this.visit.bind(this));
-      const expressions = _.map(ctx.ternaryExpression, this.visit.bind(this));
+      const operators = map(ctx.assignmentOperator, this.visit.bind(this));
+      const expressions = map(ctx.ternaryExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public ternaryExpression(ctx) {
       const condition = this.visit(ctx.booleanOrExpression);
-      if (_.has(ctx, "assignmentExpression")) {
+      if (has(ctx, "assignmentExpression")) {
         const result: any = {
           type: "ternaryExpression",
           condition,
-          trueStatement: this.visit(_.first(ctx.assignmentExpression)),
+          trueStatement: this.visit(first(ctx.assignmentExpression)),
         };
-        if (_.has(ctx, "ternaryExpression")) {
+        if (has(ctx, "ternaryExpression")) {
           result.falseStatement = this.visit(ctx.ternaryExpression);
         }
         return result;
@@ -408,70 +424,70 @@ export function getVisitor(parser) {
     }
 
     public booleanOrExpression(ctx) {
-      const operators = _.map(ctx.BooleanOr, (token) => token.image);
-      const expressions = _.map(ctx.booleanAndExpression, this.visit.bind(this));
+      const operators = map(ctx.BooleanOr, (token) => token.image);
+      const expressions = map(ctx.booleanAndExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public booleanAndExpression(ctx) {
-      const operators = _.map(ctx.BooleanAnd, (token) => token.image);
-      const expressions = _.map(ctx.binaryOrExpression, this.visit.bind(this));
+      const operators = map(ctx.BooleanAnd, (token) => token.image);
+      const expressions = map(ctx.binaryOrExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public binaryOrExpression(ctx) {
-      const operators = _.map(ctx.BinaryOr, (token) => token.image);
-      const expressions = _.map(ctx.binaryXorExpression, this.visit.bind(this));
+      const operators = map(ctx.BinaryOr, (token) => token.image);
+      const expressions = map(ctx.binaryXorExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public binaryXorExpression(ctx) {
-      const operators = _.map(ctx.BinaryXor, (token) => token.image);
-      const expressions = _.map(ctx.binaryAndExpression, this.visit.bind(this));
+      const operators = map(ctx.BinaryXor, (token) => token.image);
+      const expressions = map(ctx.binaryAndExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public binaryAndExpression(ctx) {
-      const operators = _.map(ctx.BinaryAnd, (token) => token.image);
-      const expressions = _.map(ctx.equalityExpression, this.visit.bind(this));
+      const operators = map(ctx.BinaryAnd, (token) => token.image);
+      const expressions = map(ctx.equalityExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public equalityExpression(ctx) {
-      const operators = _.map(ctx.equalityOperator, this.visit.bind(this));
-      const expressions = _.map(ctx.relationalExpression, this.visit.bind(this));
+      const operators = map(ctx.equalityOperator, this.visit.bind(this));
+      const expressions = map(ctx.relationalExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public relationalExpression(ctx) {
-      const operators = _.map(ctx.relationalOperator, this.visit.bind(this));
-      const expressions = _.map(ctx.shiftExpression, this.visit.bind(this));
+      const operators = map(ctx.relationalOperator, this.visit.bind(this));
+      const expressions = map(ctx.shiftExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public shiftExpression(ctx) {
-      const operators = _.map(ctx.shiftOperator, this.visit.bind(this));
-      const expressions = _.map(ctx.additiveExpression, this.visit.bind(this));
+      const operators = map(ctx.shiftOperator, this.visit.bind(this));
+      const expressions = map(ctx.additiveExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public additiveExpression(ctx) {
-      const operators = _.map(ctx.additiveOperator, this.visit.bind(this));
-      const expressions = _.map(ctx.multiplicativeExpression, this.visit.bind(this));
+      const operators = map(ctx.additiveOperator, this.visit.bind(this));
+      const expressions = map(ctx.multiplicativeExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public multiplicativeExpression(ctx) {
-      const operators = _.map(ctx.multiplicativeOperator, this.visit.bind(this));
-      const expressions = _.map(ctx.castExpression, this.visit.bind(this));
+      const operators = map(ctx.multiplicativeOperator, this.visit.bind(this));
+      const expressions = map(ctx.castExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
     public castExpression(ctx) {
-      if (_.has(ctx, "castOperation")) {
+      if (has(ctx, "castOperation")) {
         return this.visit(ctx.castOperation);
       }
-      if (_.has(ctx, "prefixExpression")) {
+      if (has(ctx, "prefixExpression")) {
         return this.visit(ctx.prefixExpression);
       }
       throw new Error();
@@ -486,17 +502,17 @@ export function getVisitor(parser) {
     }
 
     public prefixExpression(ctx) {
-      if (_.has(ctx, "postfixExpression")) {
+      if (has(ctx, "postfixExpression")) {
         return this.visit(ctx.postfixExpression);
       }
-      if (_.has(ctx, "prefixOperator")) {
+      if (has(ctx, "prefixOperator")) {
         return {
           type: "prefixExpression",
           expression: this.visit(ctx.castExpression),
           operator: this.visit(ctx.prefixOperator),
         };
       }
-      if (_.has(ctx, "unaryOperator")) {
+      if (has(ctx, "unaryOperator")) {
         return {
           type: "unaryExpression",
           expression: this.visit(ctx.castExpression),
@@ -508,9 +524,9 @@ export function getVisitor(parser) {
 
     public postfixExpression(ctx) {
       const expression = this.visit(ctx.callExpression);
-      if (_.has(ctx, "postfixOperator")) {
+      if (has(ctx, "postfixOperator")) {
         let currentExpression = expression;
-        _.each(_.map(ctx.postfixOperator, this.visit.bind(this)), (operator) => {
+        each(map(ctx.postfixOperator, this.visit.bind(this)), (operator) => {
           currentExpression = {
             type: "postfixExpression",
             expression: currentExpression,
@@ -526,23 +542,23 @@ export function getVisitor(parser) {
     public callExpression(ctx) {
       const memberResult: any = this.visit(ctx.memberExpression);
       let currentExpression = memberResult;
-      _.each(ctx.callExpressionRest, (expressionRest) => {
+      each(ctx.callExpressionRest, (expressionRest) => {
         const { children: expressionRestChildren } = expressionRest;
-        if (_.has(expressionRestChildren, "arguments")) {
+        if (has(expressionRestChildren, "arguments")) {
           // That's a function call
           currentExpression = {
             type: "functionCallExpression",
             name: currentExpression,
             arguments: this.visit(expressionRestChildren.arguments),
           };
-        } else if (_.has(expressionRestChildren, "arraySelector")) {
+        } else if (has(expressionRestChildren, "arraySelector")) {
           // That's an array index
           currentExpression = {
             type: "arrayIndexExpression",
             expression: currentExpression,
             index: this.visit(expressionRestChildren.arraySelector),
           };
-        } else if (_.has(expressionRestChildren, "propertyAccess")) {
+        } else if (has(expressionRestChildren, "propertyAccess")) {
           currentExpression = {
             type: "propertyAccessExpression",
             expression: currentExpression,
@@ -562,16 +578,16 @@ export function getVisitor(parser) {
     public memberExpression(ctx) {
       const primaryResult: any = this.visit(ctx.primaryExpression);
       let currentExpression = primaryResult;
-      _.each(ctx.memberExpressionRest, (expressionRest) => {
+      each(ctx.memberExpressionRest, (expressionRest) => {
         const { children: expressionRestChildren } = expressionRest;
-        if (_.has(expressionRestChildren, "arraySelector")) {
+        if (has(expressionRestChildren, "arraySelector")) {
           // That's an array index
           currentExpression = {
             type: "arrayIndexExpression",
             expression: currentExpression,
             index: this.visit(expressionRestChildren.arraySelector),
           };
-        } else if (_.has(expressionRestChildren, "propertyAccess")) {
+        } else if (has(expressionRestChildren, "propertyAccess")) {
           currentExpression = {
             type: "propertyAccessExpression",
             expression: currentExpression,
@@ -585,10 +601,10 @@ export function getVisitor(parser) {
     }
 
     public primaryExpression(ctx) {
-      if (_.has(ctx, "simpleValue")) {
+      if (has(ctx, "simpleValue")) {
         return this.visit(ctx.simpleValue);
       }
-      if (_.has(ctx, "expressionOrTypeName")) {
+      if (has(ctx, "expressionOrTypeName")) {
         // Sizeof expression
         return {
           type: "sizeofExpression",
@@ -636,40 +652,38 @@ export function getVisitor(parser) {
 
     public number(ctx) {
       const tokenDefinitions = [
-        { tokenName: "NumberBinaryLiteral", convert: (value) => _.parseInt(value.substring(2), 2) },
-        { tokenName: "NumberOctalLiteral", convert: (value) => _.parseInt(value, 8) },
-        { tokenName: "NumberDecimalLiteral", convert: (value) => _.parseInt(value, 10) },
+        { tokenName: "NumberBinaryLiteral", convert: (value) => parseInt(value.substring(2), 2) },
+        { tokenName: "NumberOctalLiteral", convert: (value) => parseInt(value, 8) },
+        { tokenName: "NumberDecimalLiteral", convert: (value) => parseInt(value, 10) },
         {
           tokenName: "NumberHexadecimalLiteral",
-          convert: (value) => _.parseInt(value.substring(2).replace(/L$/, ""), 16),
+          convert: (value) => parseInt(value.substring(2).replace(/L$/, ""), 16),
         },
         {
           tokenName: "NumberHexadecimalLiteral2",
-          convert: (value) => _.parseInt(value.replace(/h$/, ""), 16),
+          convert: (value) => parseInt(value.replace(/h$/, ""), 16),
         },
       ];
-      const actualToken = _.find(tokenDefinitions, (tokenDefinition) =>
-        _.has(ctx, tokenDefinition.tokenName),
-      );
-      return actualToken.convert(_.first(ctx[actualToken.tokenName]).image);
+      const actualToken = find(tokenDefinitions, (tokenDefinition) => has(ctx, tokenDefinition.tokenName));
+      return actualToken.convert(first(ctx[actualToken.tokenName]).image);
     }
 
     public expressionOrTypeName(ctx) {
-      if (_.has(ctx, "assignmentExpression")) {
+      if (has(ctx, "assignmentExpression")) {
         return this.visit(ctx.assignmentExpression);
       }
-      if (_.has(ctx, "typeNameWithoutVoid")) {
+      if (has(ctx, "typeNameWithoutVoid")) {
         return this.visit(ctx.typeNameWithoutVoid);
       }
       throw new Error();
     }
 
     public arguments(ctx) {
-      return _.map(ctx.assignmentExpression, this.visit.bind(this));
+      return map(ctx.assignmentExpression, this.visit.bind(this));
     }
 
     public annotations(ctx) {
-      return _.map(ctx.annotation, this.visit.bind(this));
+      return map(ctx.annotation, this.visit.bind(this));
     }
 
     public annotation(ctx) {
@@ -682,7 +696,7 @@ export function getVisitor(parser) {
     public arrayInitializer(ctx) {
       return {
         type: "arrayDeclaration",
-        values: _.map(ctx.assignmentExpression, this.visit.bind(this)),
+        values: map(ctx.assignmentExpression, this.visit.bind(this)),
       };
     }
 
@@ -691,14 +705,14 @@ export function getVisitor(parser) {
     }
 
     public enumDeclaration(ctx) {
-      return _.map(ctx.enumElementDeclaration, this.visit.bind(this));
+      return map(ctx.enumElementDeclaration, this.visit.bind(this));
     }
 
     public enumElementDeclaration(ctx) {
       const result: any = {
         name: getIdentifier(ctx.Identifier),
       };
-      if (_.has(ctx, "assignmentExpression")) {
+      if (has(ctx, "assignmentExpression")) {
         result.value = this.visit(ctx.assignmentExpression);
       }
       return result;
@@ -707,7 +721,7 @@ export function getVisitor(parser) {
     public forInitUpdate(ctx) {
       return {
         type: "commaExpression",
-        expressions: _.map(ctx.assignmentExpression, this.visit.bind(this)),
+        expressions: map(ctx.assignmentExpression, this.visit.bind(this)),
       };
     }
 
@@ -716,12 +730,12 @@ export function getVisitor(parser) {
     }
 
     public anyArraySelector(ctx) {
-      if (_.has(ctx, "emptyArraySelector")) {
+      if (has(ctx, "emptyArraySelector")) {
         return {
           array: true,
         };
       }
-      if (_.has(ctx, "arraySelector")) {
+      if (has(ctx, "arraySelector")) {
         return {
           array: true,
           arraySelector: this.visit(ctx.arraySelector),
@@ -731,35 +745,35 @@ export function getVisitor(parser) {
     }
 
     public variableInitializer(ctx) {
-      if (_.has(ctx, "assignmentExpression")) {
+      if (has(ctx, "assignmentExpression")) {
         return this.visit(ctx.assignmentExpression);
       }
-      if (_.has(ctx, "arrayInitializer")) {
+      if (has(ctx, "arrayInitializer")) {
         return this.visit(ctx.arrayInitializer);
       }
       throw new Error();
     }
 
     public simpleValue(ctx) {
-      if (_.has(ctx, "number")) {
+      if (has(ctx, "number")) {
         return {
           type: "number",
           value: this.visit(ctx.number),
         };
       }
-      if (_.has(ctx, "boolean")) {
+      if (has(ctx, "boolean")) {
         return {
           type: "boolean",
           value: this.visit(ctx.boolean),
         };
       }
-      if (_.has(ctx, "Identifier")) {
+      if (has(ctx, "Identifier")) {
         return {
           type: "identifier",
           name: getIdentifier(ctx.Identifier),
         };
       }
-      if (_.has(ctx, "StringLiteral")) {
+      if (has(ctx, "StringLiteral")) {
         return {
           type: "string",
           string: getString(ctx.StringLiteral),
@@ -769,10 +783,10 @@ export function getVisitor(parser) {
     }
 
     public boolean(ctx) {
-      if (_.has(ctx, "True")) {
+      if (has(ctx, "True")) {
         return true;
       }
-      if (_.has(ctx, "False")) {
+      if (has(ctx, "False")) {
         return false;
       }
       throw new Error();

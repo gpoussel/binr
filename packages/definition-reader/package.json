@@ -35,6 +35,6 @@
     "escodegen": "^1.11.0",
     "esprima": "^4.0.1",
     "lodash": "^4.17.11",
-    "lodash-inflection": "^1.5.0"
+    "pluralize": "^8.0.0"
   }
 }

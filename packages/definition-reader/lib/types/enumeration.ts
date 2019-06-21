@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { find, get } from "lodash";
 
 import { Type } from "./type";
 
@@ -13,7 +13,7 @@ export class EnumerationType extends Type {
 
   public read(buffer, environment) {
     const value = this.parentType.read(buffer, environment);
-    const matchingEntry = _.find(this.enumeration.entries, (entry) => entry.value === value);
-    return _.get(matchingEntry, "key");
+    const matchingEntry = find(this.enumeration.entries, (entry) => entry.value === value);
+    return get(matchingEntry, "key");
   }
 }

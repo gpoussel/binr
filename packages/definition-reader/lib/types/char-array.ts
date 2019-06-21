@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { join } from "lodash";
 
 import { Type } from "./type";
 
@@ -10,6 +10,6 @@ export class CharArrayType extends Type {
   }
 
   public read(buffer, environment) {
-    return _.join(this.arrayType.read(buffer, environment), "");
+    return join(this.arrayType.read(buffer, environment), "");
   }
 }

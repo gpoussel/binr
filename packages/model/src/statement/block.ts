@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { each } from "lodash";
 
 import { Statement } from "./statement";
 
@@ -11,6 +11,6 @@ export class BlockStatement extends Statement {
   }
 
   public read(buffer, environment, valueAggregator) {
-    _.each(this.innerStatements, (s) => s.read(buffer, environment, valueAggregator));
+    each(this.innerStatements, (s) => s.read(buffer, environment, valueAggregator));
   }
 }

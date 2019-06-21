@@ -1,5 +1,5 @@
 import { IfStatement } from "@binr/model";
-import _ from "lodash";
+import { concat, has, isUndefined } from "lodash";
 import { ExpressionConverter } from "../expression-converter";
 import { Node } from "./node";
 
@@ -21,13 +21,13 @@ export class IfNode extends Node {
     const testCode = this.converter.transformCodeToFunction(this.test);
     const consequentStatement = this.consequent.buildStatement(builtElements);
     const alternateStatement =
-      _.has(this, "alternate") && !_.isUndefined(this.alternate)
+      has(this, "alternate") && !isUndefined(this.alternate)
         ? this.alternate.buildStatement(builtElements)
         : undefined;
     return new IfStatement(testCode, consequentStatement, alternateStatement);
   }
 
   public getTypes() {
-    return _.concat(this.consequent.getTypes(), this.alternate ? this.alternate.getTypes() : []);
+    return concat(this.consequent.getTypes(), this.alternate ? this.alternate.getTypes() : []);
   }
 }

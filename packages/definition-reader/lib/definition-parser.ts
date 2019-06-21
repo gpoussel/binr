@@ -1,5 +1,5 @@
 import { CstParser } from "chevrotain";
-import _ from "lodash";
+import { values } from "lodash";
 import { tokens } from "./definition-lexer";
 
 export class DefinitionParser extends CstParser {
@@ -413,7 +413,7 @@ export class DefinitionParser extends CstParser {
   });
 
   constructor() {
-    super(_.values(tokens), {
+    super(values(tokens), {
       recoveryEnabled: true,
     });
     this.c1 = undefined;

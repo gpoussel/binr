@@ -1,4 +1,5 @@
 import { FunctionScope } from "./function-scope";
+import { UtilsObject } from "./utils-object";
 import { VariableScope } from "./variable-scope";
 
 export class Environment {
@@ -14,5 +15,9 @@ export class Environment {
 
   public nestedScope() {
     return new Environment(this.stream, new VariableScope(this.variables), this.functions);
+  }
+
+  public get utils(): UtilsObject {
+    return new UtilsObject();
   }
 }

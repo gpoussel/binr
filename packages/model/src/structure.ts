@@ -1,4 +1,4 @@
-import assert from "assert";
+import * as assert from "assert";
 
 export class Structure {
   private _name: string;
@@ -15,7 +15,7 @@ export class Structure {
     this._endianness = endianness;
   }
 
-  public getEndianness() {
+  get endianness(): string {
     return this._endianness;
   }
 

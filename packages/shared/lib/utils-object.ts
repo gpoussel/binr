@@ -1,12 +1,12 @@
-import _ from "lodash";
+import { max, min } from "lodash";
 
 export class UtilsObject {
   public min(...args) {
-    return _.min(args);
+    return min(args);
   }
 
   public max(...args) {
-    return _.max(args);
+    return max(args);
   }
 
   public abs(arg) {

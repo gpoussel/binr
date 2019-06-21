@@ -1,18 +1,18 @@
 import { Bitmask, BitmaskEntry, Definition, EnumEntry, Enumeration, Structure } from "@binr/model";
-import _ from "lodash";
+import { clone, defaultTo, each, find, get, has, includes, keyBy, map, remove, values } from "lodash";
 import { builtInTypes } from "./types";
 
 export class DefinitionBuilder {
   public build(ast) {
-    const enumerations = _.keyBy(_.map(ast.enumerations, (e) => this.buildEnumeration(e)), "name");
-    const bitmasks = _.keyBy(_.map(ast.bitmasks, (e) => this.buildBitmask(e)), "name");
+    const enumerations = keyBy(map(ast.enumerations, (e) => this.buildEnumeration(e)), "name");
+    const bitmasks = keyBy(map(ast.bitmasks, (e) => this.buildBitmask(e)), "name");
     const builtElements = {
       enumerations,
       bitmasks,
     };
     const endiannessHeader = ast.headers.find((h) => h.name === "endianness");
-    const globalEndianness = _.get(endiannessHeader, "value", "big");
-    const structures = _.values(this.buildAllStructures(globalEndianness, ast.structures, builtElements));
+    const globalEndianness = get(endiannessHeader, "value", "big");
+    const structures = values(this.buildAllStructures(globalEndianness, ast.structures, builtElements));
     return new Definition(structures, enumerations, bitmasks);
   }
 
@@ -26,29 +26,29 @@ export class DefinitionBuilder {
    */
   public buildAllStructures(globalEndianness, structures, builtElements) {
     const builtStructures = {};
-    const structuresToProcess = _.clone(structures);
+    const structuresToProcess = clone(structures);
     while (structuresToProcess.length > 0) {
       const builtStructuresDuringThisTurn = [];
 
       // We have to check if any field depends on a structure not built yet
-      _.each(structuresToProcess, (structureToProcess) => {
+      each(structuresToProcess, (structureToProcess) => {
         let readyToBuild = true;
-        _.each(structureToProcess.statements, (statement) => {
-          _.each(statement.getTypes(), (type) => {
+        each(structureToProcess.statements, (statement) => {
+          each(statement.getTypes(), (type) => {
             const typeName = type.type;
-            if (_.has(builtInTypes, typeName)) {
+            if (has(builtInTypes, typeName)) {
               // Built-in type
               return;
             }
-            if (_.has(builtElements.bitmasks, typeName)) {
+            if (has(builtElements.bitmasks, typeName)) {
               // Bitmask
               return;
             }
-            if (_.has(builtElements.enumerations, typeName)) {
+            if (has(builtElements.enumerations, typeName)) {
               // Enumeration
               return;
             }
-            if (_.has(builtStructures, typeName)) {
+            if (has(builtStructures, typeName)) {
               // Structure already built
               return;
             }
@@ -74,7 +74,7 @@ export class DefinitionBuilder {
         }
       });
 
-      _.remove(structuresToProcess, (s) => _.includes(builtStructuresDuringThisTurn, s));
+      remove(structuresToProcess, (s) => includes(builtStructuresDuringThisTurn, s));
 
       if (builtStructuresDuringThisTurn.length === 0) {
         // We have just met a circular dependency, since we have just performed
@@ -89,21 +89,21 @@ export class DefinitionBuilder {
   public buildStructure(globalEndianness, builtElements, structure) {
     const structureObject = new Structure(
       structure.name,
-      _.map(structure.statements, (s) => s.buildStatement(builtElements)),
+      map(structure.statements, (s) => s.buildStatement(builtElements)),
     );
-    const endiannessAnnotation = _.find(structure.annotations, (h) => h.name === "endianness");
-    const structureEndianness = _.get(endiannessAnnotation, "value", globalEndianness);
-    structureObject.setEndianness(_.defaultTo(structureEndianness));
+    const endiannessAnnotation = find(structure.annotations, (h) => h.name === "endianness");
+    const structureEndianness = get(endiannessAnnotation, "value", globalEndianness);
+    structureObject.setEndianness(defaultTo(structureEndianness, globalEndianness));
     return structureObject;
   }
 
   public buildEnumeration(enumeration) {
-    const entries = _.map(enumeration.entries, this.buildEnumEntry.bind(this));
+    const entries = map(enumeration.entries, this.buildEnumEntry.bind(this));
     return new Enumeration(enumeration.name, enumeration.parentType, entries);
   }
 
   public buildBitmask(bitmask) {
-    const entries = _.map(bitmask.entries, this.buildBitmaskEntry.bind(this));
+    const entries = map(bitmask.entries, this.buildBitmaskEntry.bind(this));
     return new Bitmask(bitmask.name, bitmask.parentType, entries);
   }
 

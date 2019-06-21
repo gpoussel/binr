@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { clone } from "lodash";
 
 export class ValueAggregator {
   private value: {};
@@ -12,6 +12,6 @@ export class ValueAggregator {
   }
 
   public build() {
-    return _.clone(this.value);
+    return clone(this.value);
   }
 }

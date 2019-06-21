@@ -1,5 +1,5 @@
 import { BlockStatement, IfStatement } from "@binr/model";
-import _ from "lodash";
+import { flatMap, forEachRight, isEmpty, isString } from "lodash";
 import { ExpressionConverter } from "../expression-converter";
 import { Node } from "./node";
 
@@ -15,12 +15,12 @@ export class SwitchNode extends Node {
   }
 
   public buildStatement(builtElements) {
-    if (_.isEmpty(this.clauses)) {
+    if (isEmpty(this.clauses)) {
       // That's an empty switch, so convert it to a block statement without content
       return new BlockStatement([]);
     }
     let currentStatement;
-    _.forEachRight(this.clauses, (clause) => {
+    forEachRight(this.clauses, (clause) => {
       const statement = clause.statement.buildStatement(builtElements);
       const testCondition = this.getTestCondition(clause.value);
       currentStatement = new IfStatement(testCondition, statement, currentStatement);
@@ -29,11 +29,11 @@ export class SwitchNode extends Node {
   }
 
   public getTypes() {
-    return _.flatMap(this.clauses, (clause) => clause.statement.getTypes());
+    return flatMap(this.clauses, (clause) => clause.statement.getTypes());
   }
 
   public getTestCondition(value) {
-    const transformedValue = _.isString(value) ? `"${value}"` : value;
+    const transformedValue = isString(value) ? `"${value}"` : value;
     return this.converter.transformCodeToFunction(`${this.test} === ${transformedValue}`);
   }
 }

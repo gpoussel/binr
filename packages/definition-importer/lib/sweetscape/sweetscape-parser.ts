@@ -1,6 +1,6 @@
 import { CstParser } from "chevrotain";
 
-import _ from "lodash";
+import { values } from "lodash";
 import { tokens } from "./sweetscape-tokens";
 
 export class SweetscapeParser extends CstParser {
@@ -720,7 +720,7 @@ export class SweetscapeParser extends CstParser {
     this.OR([{ ALT: () => this.CONSUME(tokens.True) }, { ALT: () => this.CONSUME(tokens.False) }]);
   });
   public constructor() {
-    super(_.values(tokens), {
+    super(values(tokens), {
       recoveryEnabled: false,
       maxLookahead: 5,
       outputCst: true,

@@ -1,5 +1,5 @@
-import assert from "assert";
-import _ from "lodash";
+import * as assert from "assert";
+import { isString } from "lodash";
 
 import { ExpressionEvaluator } from "@binr/shared";
 
@@ -16,7 +16,7 @@ export class ArrayUntilType extends Type {
 
   public read(buffer, environment) {
     const evaluator = new ExpressionEvaluator();
-    assert(_.isString(this.untilExpression), "untilExpression must be a string");
+    assert(isString(this.untilExpression), "untilExpression must be a string");
     const values = [];
 
     let { element, nestedEnvironment } = this.readSingleElement(buffer, environment);

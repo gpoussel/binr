@@ -1,5 +1,5 @@
-import assert from "assert";
-import _ from "lodash";
+import * as assert from "assert";
+import { isInteger, isString, times } from "lodash";
 
 import { ExpressionEvaluator } from "@binr/shared";
 
@@ -16,11 +16,11 @@ export class ArrayType extends Type {
 
   public read(buffer, environment) {
     const evaluator = new ExpressionEvaluator();
-    assert(_.isString(this.sizeExpression), "sizeExpression must be a string");
+    assert(isString(this.sizeExpression), "sizeExpression must be a string");
     const size = evaluator.evaluate(this.sizeExpression, environment);
-    assert(_.isInteger(size), `evaluated size must be an integer and got: ${size}`);
+    assert(isInteger(size), `evaluated size must be an integer and got: ${size}`);
     assert(size >= 0, `evaluated size must be positive and got ${size}`);
-    return _.times(size, () => {
+    return times(size, () => {
       return this.innerType.read(buffer, environment);
     });
   }

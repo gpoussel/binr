@@ -1,5 +1,5 @@
-import assert from "assert";
-import _ from "lodash";
+import * as assert from "assert";
+import { includes, isBuffer, isUndefined, times } from "lodash";
 
 export class BufferWrapper {
   private buffer: Buffer;
@@ -9,7 +9,7 @@ export class BufferWrapper {
   private endianness: string; // TODO enumeration
 
   constructor(buffer, endianness) {
-    assert(_.isBuffer(buffer), "'buffer' argument must be a buffer");
+    assert(isBuffer(buffer), "'buffer' argument must be a buffer");
 
     this.buffer = buffer;
     this.cursor = 0;
@@ -42,7 +42,7 @@ export class BufferWrapper {
     if (length === 8) {
       return this.readUnsignedByte();
     }
-    if (_.includes([16, 32], length)) {
+    if (includes([16, 32], length)) {
       return this.readAndIncrementOffset(length, "readUInt");
     }
     if (length < 8) {
@@ -62,7 +62,7 @@ export class BufferWrapper {
     if (length === 8) {
       return this.readSignedByte();
     }
-    if (_.includes([16, 32], length)) {
+    if (includes([16, 32], length)) {
       return this.readAndIncrementOffset(length, "readInt");
     }
     if (length < 8) {
@@ -107,7 +107,7 @@ export class BufferWrapper {
   public readBytes(count, fn) {
     assert(count > 0, "count must be > 0");
     const bytes = [];
-    _.times(count, () => {
+    times(count, () => {
       bytes.push(fn());
     });
     return bytes;
@@ -128,7 +128,7 @@ export class BufferWrapper {
   }
 
   public readByteForBitsetIfNecessary(fn) {
-    if (_.isUndefined(this.currentByte)) {
+    if (isUndefined(this.currentByte)) {
       this.currentByte = fn();
       this.positionInCurrentByte = 0;
     }
@@ -140,7 +140,7 @@ export class BufferWrapper {
 
   public setEndianness(endianness) {
     assert(
-      _.includes(["big", "little"], endianness),
+      includes(["big", "little"], endianness),
       `'endianness' must be either 'big' or 'little', found: ${endianness}`,
     );
     this.endianness = endianness;

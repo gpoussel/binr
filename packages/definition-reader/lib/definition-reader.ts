@@ -1,5 +1,4 @@
-import _ from "lodash";
-
+import { first, isEmpty, isString } from "lodash";
 import { DefinitionBuilder } from "./definition-builder";
 import { DefinitionLexer } from "./definition-lexer";
 import { DefinitionParser } from "./definition-parser";
@@ -25,21 +24,21 @@ export class DefinitionReader {
   }
 
   public readAst(input) {
-    if (!_.isString(input)) {
+    if (!isString(input)) {
       throw new Error("input must be a string");
     }
 
     const lexingResult = this.lexer.tokenize(input);
-    if (!_.isEmpty(lexingResult.errors)) {
-      throw new Error(`Got an error while lexing input: ${_.first(lexingResult.errors).message}`);
+    if (!isEmpty(lexingResult.errors)) {
+      throw new Error(`Got an error while lexing input: ${first(lexingResult.errors).message}`);
     }
 
     const parser = new DefinitionParser();
     parser.input = lexingResult.tokens;
     const parsingResult = parser.definition();
 
-    if (!_.isEmpty(parser.errors)) {
-      const firstError = _.first(parser.errors);
+    if (!isEmpty(parser.errors)) {
+      const firstError = first(parser.errors);
       const tokenPosition = `${firstError.token.startLine}:${firstError.token.startColumn}`;
       const tokenDetails = `(token ${firstError.token.image} at ${tokenPosition})`;
       const message = `${firstError.name}: ${firstError.message} ${tokenDetails}`;

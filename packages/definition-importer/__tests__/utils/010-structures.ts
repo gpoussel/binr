@@ -1,7 +1,7 @@
-import fs from "fs";
-import gunzip from "gunzip-maybe";
-import _ from "lodash";
-import tar from "tar-stream";
+import * as fs from "fs";
+import * as gunzip from "gunzip-maybe";
+import { isUndefined, join } from "lodash";
+import * as tar from "tar-stream";
 
 const structureFolder = `${__dirname}/../../__fixtures__/`;
 
@@ -17,8 +17,8 @@ export function iterateArchive(filename, iteratee, done, filter) {
     const chunks = [];
     stream.on("data", (chunk) => chunks.push(chunk));
     stream.once("end", () => {
-      const buffer = _.join(chunks, "");
-      if (_.isUndefined(filter) || filter(header.name)) {
+      const buffer = join(chunks, "");
+      if (isUndefined(filter) || filter(header.name)) {
         iteratee(header.name, buffer);
       }
       next();
