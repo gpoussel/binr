@@ -195,7 +195,7 @@ export function getVisitor(parser) {
 
     public valueClause(ctx) {
       if (has(ctx, "StringLiteralToken")) {
-        return JSON.parse(first(ctx.StringLiteralToken).image);
+        return JSON.parse(ctx.StringLiteralToken[0].image);
       }
       if (has(ctx, "TrueToken")) {
         return true;
@@ -234,8 +234,8 @@ export function getVisitor(parser) {
     public BinaryExpression(ctx) {
       const result = [this.visit(first(ctx.UnaryExpression))];
       each(ctx.ExpressionToken, (token, i) => {
-        const tokenName = first(keys(token.children));
-        const tokenSymbol = first(token.children[tokenName]).image;
+        const tokenName = keys(token.children)[0];
+        const tokenSymbol = token.children[tokenName][0].image;
         const childExpression = this.visit(ctx.UnaryExpression[i + 1]);
         result.push(get(SYMBOL_MAPPING, tokenSymbol, tokenSymbol));
         result.push(childExpression);
@@ -320,7 +320,7 @@ export function getVisitor(parser) {
         return this.visit(ctx.ArrayLiteral);
       }
       if (has(ctx, "StringLiteralToken")) {
-        return first(ctx.StringLiteralToken).image;
+        return ctx.StringLiteralToken[0].image;
       }
     }
 
@@ -359,13 +359,13 @@ export function getVisitor(parser) {
 
     public numberClause(ctx) {
       if (has(ctx, "NumberDecimalLiteralToken")) {
-        return parseInt(first(ctx.NumberDecimalLiteralToken).image, 10);
+        return parseInt(ctx.NumberDecimalLiteralToken[0].image, 10);
       }
       if (has(ctx, "NumberHexadecimalLiteralToken")) {
-        return parseInt(first(ctx.NumberHexadecimalLiteralToken).image.substring(2), 16);
+        return parseInt(ctx.NumberHexadecimalLiteralToken[0].image.substring(2), 16);
       }
       if (has(ctx, "NumberBinaryLiteralToken")) {
-        return parseInt(first(ctx.NumberBinaryLiteralToken).image.substring(2), 2);
+        return parseInt(ctx.NumberBinaryLiteralToken[0].image.substring(2), 2);
       }
     }
 

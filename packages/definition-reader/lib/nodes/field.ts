@@ -1,5 +1,5 @@
 import { FieldStatement } from "@binr/model";
-import { fromPairs, get, has, includes, isUndefined, map } from "lodash";
+import { filter, fromPairs, get, has, includes, isUndefined, map } from "lodash";
 import { ExpressionConverter } from "../expression-converter";
 import {
   ArrayType,
@@ -70,11 +70,9 @@ export class FieldNode extends Node {
       this.name,
       type,
       fromPairs(
-        map(this.annotations, (annotation) => {
-          if (annotation.name === "ignore") {
-            return ["ignore", annotation.value];
-          }
-        }).filter((pair) => pair[0]),
+        map(filter(this.annotations, (annotation) => annotation.name === "ignore"), (annotation) => {
+          return ["ignore", annotation.value];
+        }),
       ),
     );
   }

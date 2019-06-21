@@ -6,9 +6,9 @@ interface ICondition {
 }
 
 export class CStylePreprocessor {
-  public preprocess(input) {
+  public preprocess(input: string) {
     const lines: string[] = [];
-    const definitions = {};
+    const definitions: { [key: string]: string } = {};
     const conditionStack: ICondition[] = [];
 
     each(split(input, /\r?\n/), (line) => {
@@ -31,7 +31,7 @@ export class CStylePreprocessor {
           if (isEmpty(conditionStack)) {
             throw new Error("Cannot use #else outside #ifdef");
           }
-          const topCondition = last(conditionStack);
+          const topCondition = last(conditionStack)!;
           topCondition.positive = !topCondition.positive;
         } else if (directiveName === "#endif") {
           conditionStack.pop();

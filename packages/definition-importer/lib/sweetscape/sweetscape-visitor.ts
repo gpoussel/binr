@@ -1,3 +1,4 @@
+import { CstParser } from "chevrotain";
 import {
   assign,
   concat,
@@ -10,17 +11,16 @@ import {
   isEmpty,
   join,
   keys,
-  last,
   map,
   parseInt,
   size,
 } from "lodash";
 
-function getFirstTokenImage(ctx) {
-  return first(get(ctx, first(keys(ctx)))).image;
+function getFirstTokenImage(ctx: { [key: string]: any[] }) {
+  return first(get(ctx, first(keys(ctx))!)).image;
 }
 
-function createBinaryExpressions(expressions, operators) {
+function createBinaryExpressions(expressions: any[], operators: any[]) {
   if (isEmpty(operators) && size(expressions) === 1) {
     // In that case, we cannot create a binary expression
     // We can just return the only expression provided
@@ -39,7 +39,7 @@ function createBinaryExpressions(expressions, operators) {
   return currentExpression;
 }
 
-function getString(stringLiteralToken) {
+function getString(stringLiteralToken: any[]) {
   // We cannot use JSON.parse here, because JSON does not support single-quote delimited strings
   let finalString = first(stringLiteralToken).image;
   if (finalString.charAt(0) === "L") {
@@ -62,25 +62,25 @@ function getString(stringLiteralToken) {
   }
 }
 
-function getIdentifier(identifierToken) {
+function getIdentifier(identifierToken: any[]) {
   return first(identifierToken).image;
 }
 
-export function getVisitor(parser) {
+export function getVisitor(parser: CstParser) {
   class Visitor extends parser.getBaseCstVisitorConstructorWithDefaults() {
     constructor() {
       super();
       this.validateVisitor();
     }
 
-    public definition(ctx) {
+    public definition(ctx: any) {
       return {
         type: "definition",
         content: map(ctx.topLevelStatement, this.visit.bind(this)),
       };
     }
 
-    public topLevelStatement(ctx) {
+    public topLevelStatement(ctx: any) {
       if (has(ctx, "statement")) {
         // Statement at the top-level
         return this.visit(ctx.statement);
@@ -91,7 +91,7 @@ export function getVisitor(parser) {
       throw new Error();
     }
 
-    public functionDeclarationStatement(ctx) {
+    public functionDeclarationStatement(ctx: any) {
       const { typeName, Identifier: identifiers, functionParameterDeclarationList } = ctx;
       const forwardDeclaration = has(ctx, "SemiColon");
       return {
@@ -104,7 +104,7 @@ export function getVisitor(parser) {
       };
     }
 
-    public typeName(ctx) {
+    public typeName(ctx: any) {
       if (has(ctx, "typeNameWithoutVoid")) {
         return this.visit(ctx.typeNameWithoutVoid);
       }
@@ -116,7 +116,7 @@ export function getVisitor(parser) {
       throw new Error();
     }
 
-    public typeNameWithoutVoid(ctx) {
+    public typeNameWithoutVoid(ctx: any) {
       const simpleName = getIdentifier(ctx.Identifier);
       const nameParts: string[] = [];
       if (has(ctx, "Signed")) {
@@ -132,14 +132,14 @@ export function getVisitor(parser) {
       };
     }
 
-    public functionParameterDeclarationList(ctx) {
+    public functionParameterDeclarationList(ctx: any) {
       if (has(ctx, "Void")) {
         return [];
       }
       return map(ctx.functionParameterDeclaration, this.visit.bind(this));
     }
 
-    public functionParameterDeclaration(ctx) {
+    public functionParameterDeclaration(ctx: any) {
       const type = this.visit(ctx.typeNameWithoutVoid);
       if (has(ctx, "anyArraySelector")) {
         assign(type, this.visit(ctx.anyArraySelector));
@@ -155,11 +155,11 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public block(ctx) {
+    public block(ctx: any) {
       return this.visit(ctx.statementList);
     }
 
-    public statement(ctx) {
+    public statement(ctx: any) {
       const matchingStatementType = filter(
         [
           "block",
@@ -182,10 +182,10 @@ export function getVisitor(parser) {
         // Just a semi-colon
         return { type: "emptyStatement" };
       }
-      return this.visit(ctx[matchingStatementType]);
+      return this.visit(ctx[first(matchingStatementType)!]);
     }
 
-    public returnStatement(ctx) {
+    public returnStatement(ctx: any) {
       const result: any = {
         type: "returnStatement",
       };
@@ -201,7 +201,7 @@ export function getVisitor(parser) {
       };
     }
 
-    public whileStatement(ctx) {
+    public whileStatement(ctx: any) {
       return {
         type: "whileStatement",
         condition: this.visit(ctx.parExpression),
@@ -209,7 +209,7 @@ export function getVisitor(parser) {
       };
     }
 
-    public doWhileStatement(ctx) {
+    public doWhileStatement(ctx: any) {
       return {
         type: "doWhileStatement",
         condition: this.visit(ctx.parExpression),
@@ -217,37 +217,37 @@ export function getVisitor(parser) {
       };
     }
 
-    public switchStatement(ctx) {
+    public switchStatement(ctx: any) {
       return {
         type: "switchStatement",
         statements: map(ctx.switchBlockStatementGroup, this.visit.bind(this)),
       };
     }
 
-    public switchBlockStatementGroup(ctx) {
+    public switchBlockStatementGroup(ctx: any) {
       return {
         labels: this.visit(ctx.switchLabels),
         body: this.visit(ctx.statementList),
       };
     }
 
-    public switchLabels(ctx) {
+    public switchLabels(ctx: any) {
       const stringLiterals = map(ctx.simpleValue, this.visit.bind(this));
       const defaultStatement = has(ctx, "Default") ? [{ type: "defaultStatement" }] : [];
       return concat(stringLiterals, defaultStatement);
     }
 
-    public forStatement(ctx) {
+    public forStatement(ctx: any) {
       return {
         type: "forStatement",
-        initialization: this.visit(first(ctx.forInitUpdate)),
-        increment: this.visit(last(ctx.forInitUpdate)),
+        initialization: this.visit(ctx.forInitUpdate[0]),
+        increment: this.visit(ctx.forInitUpdate[1]),
         body: this.visit(ctx.statement),
         condition: this.visit(ctx.assignmentExpression),
       };
     }
 
-    public localVariableDeclarationStatement(ctx) {
+    public localVariableDeclarationStatement(ctx: any) {
       const result: any = {
         type: "variableDeclaration",
         variableType: this.visit(ctx.typeName),
@@ -268,11 +268,11 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public variableDeclarators(ctx) {
+    public variableDeclarators(ctx: any) {
       return map(ctx.variableDeclarator, this.visit.bind(this));
     }
 
-    public variableModifier(ctx) {
+    public variableModifier(ctx: any) {
       if (has(ctx, "Local")) {
         return { local: true };
       }
@@ -282,7 +282,7 @@ export function getVisitor(parser) {
       throw new Error();
     }
 
-    public typedefStatement(ctx) {
+    public typedefStatement(ctx: any) {
       const result: any = {
         type: "typeAlias",
         name: this.visit(ctx.typeName),
@@ -295,14 +295,14 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public statementList(ctx) {
+    public statementList(ctx: any) {
       return {
         type: "statementList",
         statements: map(ctx.statement, this.visit.bind(this)),
       };
     }
 
-    public ifStatement(ctx) {
+    public ifStatement(ctx: any) {
       const statements = map(ctx.statement, this.visit.bind(this));
       const result: any = {
         type: "ifStatement",
@@ -315,7 +315,7 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public structStatement(ctx) {
+    public structStatement(ctx: any) {
       const type = has(ctx, "Struct") ? "structDeclaration" : "unionDeclaration";
       const result: any = {
         type,
@@ -330,7 +330,7 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public enumStatement(ctx) {
+    public enumStatement(ctx: any) {
       const result: any = {
         type: "enumDeclaration",
       };
@@ -352,7 +352,7 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public variableDeclarator(ctx) {
+    public variableDeclarator(ctx: any) {
       const result: any = {
         name: getIdentifier(ctx.Identifier),
         annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
@@ -364,7 +364,7 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public structDeclaration(ctx) {
+    public structDeclaration(ctx: any) {
       const result: any = {
         body: this.visit(ctx.block),
       };
@@ -374,7 +374,7 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public variableDeclaratorRest(ctx) {
+    public variableDeclaratorRest(ctx: any) {
       const result: any = {};
       if (has(ctx, "annotations")) {
         result.annotations = this.visit(ctx.annotations);
@@ -392,27 +392,27 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public expressionStatement(ctx) {
+    public expressionStatement(ctx: any) {
       return this.visit(ctx.assignmentExpression);
     }
 
-    public parExpression(ctx) {
+    public parExpression(ctx: any) {
       return this.visit(ctx.assignmentExpression);
     }
 
-    public assignmentExpression(ctx) {
+    public assignmentExpression(ctx: any) {
       const operators = map(ctx.assignmentOperator, this.visit.bind(this));
       const expressions = map(ctx.ternaryExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public ternaryExpression(ctx) {
+    public ternaryExpression(ctx: any) {
       const condition = this.visit(ctx.booleanOrExpression);
       if (has(ctx, "assignmentExpression")) {
         const result: any = {
           type: "ternaryExpression",
           condition,
-          trueStatement: this.visit(first(ctx.assignmentExpression)),
+          trueStatement: this.visit(ctx.assignmentExpression[0]),
         };
         if (has(ctx, "ternaryExpression")) {
           result.falseStatement = this.visit(ctx.ternaryExpression);
@@ -423,67 +423,67 @@ export function getVisitor(parser) {
       return condition;
     }
 
-    public booleanOrExpression(ctx) {
+    public booleanOrExpression(ctx: any) {
       const operators = map(ctx.BooleanOr, (token) => token.image);
       const expressions = map(ctx.booleanAndExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public booleanAndExpression(ctx) {
+    public booleanAndExpression(ctx: any) {
       const operators = map(ctx.BooleanAnd, (token) => token.image);
       const expressions = map(ctx.binaryOrExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public binaryOrExpression(ctx) {
+    public binaryOrExpression(ctx: any) {
       const operators = map(ctx.BinaryOr, (token) => token.image);
       const expressions = map(ctx.binaryXorExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public binaryXorExpression(ctx) {
+    public binaryXorExpression(ctx: any) {
       const operators = map(ctx.BinaryXor, (token) => token.image);
       const expressions = map(ctx.binaryAndExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public binaryAndExpression(ctx) {
+    public binaryAndExpression(ctx: any) {
       const operators = map(ctx.BinaryAnd, (token) => token.image);
       const expressions = map(ctx.equalityExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public equalityExpression(ctx) {
+    public equalityExpression(ctx: any) {
       const operators = map(ctx.equalityOperator, this.visit.bind(this));
       const expressions = map(ctx.relationalExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public relationalExpression(ctx) {
+    public relationalExpression(ctx: any) {
       const operators = map(ctx.relationalOperator, this.visit.bind(this));
       const expressions = map(ctx.shiftExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public shiftExpression(ctx) {
+    public shiftExpression(ctx: any) {
       const operators = map(ctx.shiftOperator, this.visit.bind(this));
       const expressions = map(ctx.additiveExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public additiveExpression(ctx) {
+    public additiveExpression(ctx: any) {
       const operators = map(ctx.additiveOperator, this.visit.bind(this));
       const expressions = map(ctx.multiplicativeExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public multiplicativeExpression(ctx) {
+    public multiplicativeExpression(ctx: any) {
       const operators = map(ctx.multiplicativeOperator, this.visit.bind(this));
       const expressions = map(ctx.castExpression, this.visit.bind(this));
       return createBinaryExpressions(expressions, operators);
     }
 
-    public castExpression(ctx) {
+    public castExpression(ctx: any) {
       if (has(ctx, "castOperation")) {
         return this.visit(ctx.castOperation);
       }
@@ -493,7 +493,7 @@ export function getVisitor(parser) {
       throw new Error();
     }
 
-    public castOperation(ctx) {
+    public castOperation(ctx: any) {
       return {
         type: "castExpression",
         typeName: this.visit(ctx.typeNameWithoutVoid),
@@ -501,7 +501,7 @@ export function getVisitor(parser) {
       };
     }
 
-    public prefixExpression(ctx) {
+    public prefixExpression(ctx: any) {
       if (has(ctx, "postfixExpression")) {
         return this.visit(ctx.postfixExpression);
       }
@@ -522,7 +522,7 @@ export function getVisitor(parser) {
       throw new Error();
     }
 
-    public postfixExpression(ctx) {
+    public postfixExpression(ctx: any) {
       const expression = this.visit(ctx.callExpression);
       if (has(ctx, "postfixOperator")) {
         let currentExpression = expression;
@@ -539,7 +539,7 @@ export function getVisitor(parser) {
       return expression;
     }
 
-    public callExpression(ctx) {
+    public callExpression(ctx: any) {
       const memberResult: any = this.visit(ctx.memberExpression);
       let currentExpression = memberResult;
       each(ctx.callExpressionRest, (expressionRest) => {
@@ -571,11 +571,11 @@ export function getVisitor(parser) {
       return currentExpression;
     }
 
-    public propertyAccess(ctx) {
+    public propertyAccess(ctx: any) {
       return getIdentifier(ctx.Identifier);
     }
 
-    public memberExpression(ctx) {
+    public memberExpression(ctx: any) {
       const primaryResult: any = this.visit(ctx.primaryExpression);
       let currentExpression = primaryResult;
       each(ctx.memberExpressionRest, (expressionRest) => {
@@ -600,7 +600,7 @@ export function getVisitor(parser) {
       return currentExpression;
     }
 
-    public primaryExpression(ctx) {
+    public primaryExpression(ctx: any) {
       if (has(ctx, "simpleValue")) {
         return this.visit(ctx.simpleValue);
       }
@@ -614,61 +614,61 @@ export function getVisitor(parser) {
       return this.visit(ctx.parExpression);
     }
 
-    public assignmentOperator(ctx) {
+    public assignmentOperator(ctx: any) {
       return getFirstTokenImage(ctx);
     }
 
-    public equalityOperator(ctx) {
+    public equalityOperator(ctx: any) {
       return getFirstTokenImage(ctx);
     }
 
-    public relationalOperator(ctx) {
+    public relationalOperator(ctx: any) {
       return getFirstTokenImage(ctx);
     }
 
-    public shiftOperator(ctx) {
+    public shiftOperator(ctx: any) {
       return getFirstTokenImage(ctx);
     }
 
-    public additiveOperator(ctx) {
+    public additiveOperator(ctx: any) {
       return getFirstTokenImage(ctx);
     }
 
-    public multiplicativeOperator(ctx) {
+    public multiplicativeOperator(ctx: any) {
       return getFirstTokenImage(ctx);
     }
 
-    public prefixOperator(ctx) {
+    public prefixOperator(ctx: any) {
       return getFirstTokenImage(ctx);
     }
 
-    public postfixOperator(ctx) {
+    public postfixOperator(ctx: any) {
       return getFirstTokenImage(ctx);
     }
 
-    public unaryOperator(ctx) {
+    public unaryOperator(ctx: any) {
       return getFirstTokenImage(ctx);
     }
 
-    public number(ctx) {
+    public number(ctx: { [key: string]: any[] }) {
       const tokenDefinitions = [
-        { tokenName: "NumberBinaryLiteral", convert: (value) => parseInt(value.substring(2), 2) },
-        { tokenName: "NumberOctalLiteral", convert: (value) => parseInt(value, 8) },
-        { tokenName: "NumberDecimalLiteral", convert: (value) => parseInt(value, 10) },
+        { tokenName: "NumberBinaryLiteral", convert: (value: string) => parseInt(value.substring(2), 2) },
+        { tokenName: "NumberOctalLiteral", convert: (value: string) => parseInt(value, 8) },
+        { tokenName: "NumberDecimalLiteral", convert: (value: string) => parseInt(value, 10) },
         {
           tokenName: "NumberHexadecimalLiteral",
-          convert: (value) => parseInt(value.substring(2).replace(/L$/, ""), 16),
+          convert: (value: string) => parseInt(value.substring(2).replace(/L$/, ""), 16),
         },
         {
           tokenName: "NumberHexadecimalLiteral2",
-          convert: (value) => parseInt(value.replace(/h$/, ""), 16),
+          convert: (value: string) => parseInt(value.replace(/h$/, ""), 16),
         },
       ];
       const actualToken = find(tokenDefinitions, (tokenDefinition) => has(ctx, tokenDefinition.tokenName));
-      return actualToken.convert(first(ctx[actualToken.tokenName]).image);
+      return actualToken!.convert(first(ctx[actualToken!.tokenName]).image);
     }
 
-    public expressionOrTypeName(ctx) {
+    public expressionOrTypeName(ctx: any) {
       if (has(ctx, "assignmentExpression")) {
         return this.visit(ctx.assignmentExpression);
       }
@@ -678,37 +678,37 @@ export function getVisitor(parser) {
       throw new Error();
     }
 
-    public arguments(ctx) {
+    public arguments(ctx: any) {
       return map(ctx.assignmentExpression, this.visit.bind(this));
     }
 
-    public annotations(ctx) {
+    public annotations(ctx: any) {
       return map(ctx.annotation, this.visit.bind(this));
     }
 
-    public annotation(ctx) {
+    public annotation(ctx: any) {
       return {
         key: getIdentifier(ctx.Identifier),
         value: this.visit(ctx.simpleValue),
       };
     }
 
-    public arrayInitializer(ctx) {
+    public arrayInitializer(ctx: any) {
       return {
         type: "arrayDeclaration",
         values: map(ctx.assignmentExpression, this.visit.bind(this)),
       };
     }
 
-    public bitfieldRest(ctx) {
+    public bitfieldRest(ctx: any) {
       return this.visit(ctx.additiveExpression);
     }
 
-    public enumDeclaration(ctx) {
+    public enumDeclaration(ctx: any) {
       return map(ctx.enumElementDeclaration, this.visit.bind(this));
     }
 
-    public enumElementDeclaration(ctx) {
+    public enumElementDeclaration(ctx: any) {
       const result: any = {
         name: getIdentifier(ctx.Identifier),
       };
@@ -718,18 +718,18 @@ export function getVisitor(parser) {
       return result;
     }
 
-    public forInitUpdate(ctx) {
+    public forInitUpdate(ctx: any) {
       return {
         type: "commaExpression",
         expressions: map(ctx.assignmentExpression, this.visit.bind(this)),
       };
     }
 
-    public arraySelector(ctx) {
+    public arraySelector(ctx: any) {
       return this.visit(ctx.assignmentExpression);
     }
 
-    public anyArraySelector(ctx) {
+    public anyArraySelector(ctx: any) {
       if (has(ctx, "emptyArraySelector")) {
         return {
           array: true,
@@ -744,7 +744,7 @@ export function getVisitor(parser) {
       throw new Error();
     }
 
-    public variableInitializer(ctx) {
+    public variableInitializer(ctx: any) {
       if (has(ctx, "assignmentExpression")) {
         return this.visit(ctx.assignmentExpression);
       }
@@ -754,7 +754,7 @@ export function getVisitor(parser) {
       throw new Error();
     }
 
-    public simpleValue(ctx) {
+    public simpleValue(ctx: any) {
       if (has(ctx, "number")) {
         return {
           type: "number",
@@ -782,7 +782,7 @@ export function getVisitor(parser) {
       throw new Error();
     }
 
-    public boolean(ctx) {
+    public boolean(ctx: any) {
       if (has(ctx, "True")) {
         return true;
       }

@@ -1,4 +1,4 @@
-import { createToken, Lexer } from "chevrotain";
+import { createToken, Lexer, TokenType } from "chevrotain";
 import * as escapeStringRegexp from "escape-string-regexp";
 import { fromPairs, map, values } from "lodash";
 
@@ -150,7 +150,7 @@ const keywordTokens = fromPairs(
   ),
 );
 
-export const tokens = {
+export const tokens: { [key: string]: TokenType } = {
   // Whitespaces
   WhitespaceToken,
 

@@ -1,7 +1,8 @@
-import { first, get, isEmpty, isString } from "lodash";
+import { CstParser, IRecognitionException, Lexer } from "chevrotain";
+import { first, get, isEmpty, isString, join, map } from "lodash";
 
 export class Importer {
-  public readInput(input) {
+  public readInput(input: string) {
     if (!isString(input)) {
       throw new Error("input must be a string");
     }
@@ -16,22 +17,27 @@ export class Importer {
     return this.build(ast);
   }
 
-  public performPreprocessing(input) {
+  public performPreprocessing(input: string) {
     return input;
   }
 
-  public readAst(input) {
+  public readAst(input: string) {
     const lexingResult = this.getLexer().tokenize(input);
     if (!isEmpty(lexingResult.errors)) {
-      throw new Error(`Got an error while lexing input: ${first(lexingResult.errors).message}`);
+      throw new Error(
+        `Got an error while lexing input: ${join(map(lexingResult.errors, (err) => err.message), ", ")}`,
+      );
     }
 
-    const parser = this.getParser();
+    const parser = this.getParser() as any;
     parser.input = lexingResult.tokens;
+
+    // TODO typesafe with "definition"?
     const parsingResult = parser.definition();
 
-    if (!isEmpty(parser.errors)) {
-      const firstError = first(parser.errors);
+    const errors: IRecognitionException[] = parser.errors;
+    if (!isEmpty(errors)) {
+      const firstError: IRecognitionException = first(errors)!;
       const tokenPosition = `${firstError.token.startLine}:${firstError.token.startColumn}`;
       const tokenName = get(firstError, "token.tokenType.tokenName");
       const tokenImage = get(firstError, "token.image");
@@ -43,19 +49,19 @@ export class Importer {
     return this.getVisitor(parser).visit(parsingResult);
   }
 
-  public getLexer(): any {
+  public getLexer(): Lexer {
     throw new Error("getLexer(): not yet implemented");
   }
 
-  public getParser(): any {
+  public getParser(): CstParser {
     throw new Error("getParser(): not yet implemented");
   }
 
-  public getVisitor(parser): any {
+  public getVisitor(parser: CstParser): any {
     throw new Error(`getVisitor(): not yet implemented (parser = ${parser})`);
   }
 
-  public build(ast): any {
+  public build(ast: any): any {
     throw new Error(`build(): not yet implemented (ast = ${ast})`);
   }
 }

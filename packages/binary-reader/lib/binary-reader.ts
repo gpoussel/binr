@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import { find, first, get, isBuffer, isObject, isUndefined } from "lodash";
+import { find, get, isBuffer, isObject, isUndefined } from "lodash";
 
 import { StructureType } from "@binr/definition-reader";
 import { BufferWrapper, Environment, StreamObject } from "@binr/shared";
@@ -17,7 +17,7 @@ export class BinaryReader {
         get(definition, "structures.length") === 1,
         "No 'structureName' provided: structures.length must be === 1",
       );
-      mainStructureName = first(definition.structures).name;
+      mainStructureName = definition.structures[0].name;
     } else {
       mainStructureName = providedStructureName;
     }

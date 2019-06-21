@@ -30,7 +30,7 @@ export class DefinitionReader {
 
     const lexingResult = this.lexer.tokenize(input);
     if (!isEmpty(lexingResult.errors)) {
-      throw new Error(`Got an error while lexing input: ${first(lexingResult.errors).message}`);
+      throw new Error(`Got an error while lexing input: ${first(lexingResult.errors)!.message}`);
     }
 
     const parser = new DefinitionParser();
@@ -38,7 +38,7 @@ export class DefinitionReader {
     const parsingResult = parser.definition();
 
     if (!isEmpty(parser.errors)) {
-      const firstError = first(parser.errors);
+      const firstError = first(parser.errors)!;
       const tokenPosition = `${firstError.token.startLine}:${firstError.token.startColumn}`;
       const tokenDetails = `(token ${firstError.token.image} at ${tokenPosition})`;
       const message = `${firstError.name}: ${firstError.message} ${tokenDetails}`;

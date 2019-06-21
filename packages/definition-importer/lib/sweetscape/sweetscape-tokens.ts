@@ -1,4 +1,4 @@
-import { createToken, Lexer } from "chevrotain";
+import { createToken, ITokenConfig, Lexer, TokenType } from "chevrotain";
 import * as escapeStringRegexp from "escape-string-regexp";
 import { each, filter, fromPairs, has, isEmpty, map } from "lodash";
 
@@ -294,19 +294,22 @@ tokenInfos.push({
 });
 
 // Some tokens, with a "longer_alt" attribute set, have to be created after other ones
-const createdTokens = {};
+const createdTokens: { [key: string]: TokenType } = {};
 map(filter(tokenInfos, (tokenInfo) => !has(tokenInfo, "longer_alt")), (tokenInfo) => {
-  createdTokens[tokenInfo.name] = createToken(tokenInfo);
+  createdTokens[tokenInfo.name] = createToken(tokenInfo as ITokenConfig);
 });
 
 const remainingTokens = filter(tokenInfos, (tokenInfo) => has(tokenInfo, "longer_alt"));
 while (!isEmpty(remainingTokens)) {
   for (let i = 0; i < remainingTokens.length; i += 1) {
     const remainingToken = remainingTokens[i];
-    if (has(createdTokens, remainingToken.longer_alt)) {
+    if (has(createdTokens, remainingToken.longer_alt!)) {
       // The "longer_alt" references an already created token, so we can create the current one immediately
-      remainingToken.longer_alt = createdTokens[remainingToken.longer_alt];
-      createdTokens[remainingToken.name] = createToken(remainingToken);
+      createdTokens[remainingToken.name] = createToken({
+        name: remainingToken.name,
+        longer_alt: createdTokens[remainingToken.longer_alt!],
+        pattern: remainingToken.pattern,
+      });
       remainingTokens.splice(i, 1);
       i -= 1;
     }
