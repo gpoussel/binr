@@ -1,5 +1,3 @@
-"use strict";
-
 export * from "./node";
 export * from "./if";
 export * from "./block";

@@ -1,30 +1,27 @@
-"use strict";
-
-import _ from "lodash";
-import lodashInflection from "lodash-inflection";
-_.mixin(lodashInflection);
+import { each, has, includes, isEmpty, map, union } from "lodash";
+import * as pluralize from "pluralize";
 
 import { FieldNode } from "./nodes";
 import { builtInTypes } from "./types";
 
 export class DefinitionValidator {
-  public validate(ast) {
-    const errors = [];
+  public validate(ast: any) {
+    const errors: string[] = [];
     this.validateHeaders(ast.headers, errors);
-    const enumerationNames = _.map(ast.enumerations, "name");
-    const bitmaskNames = _.map(ast.bitmasks, "name");
-    this.validateStructures(ast.structures, _.union(enumerationNames, bitmaskNames), errors);
-    if (!_.isEmpty(errors)) {
-      const errorCount = _("error").pluralize(errors.length, true);
+    const enumerationNames = map(ast.enumerations, "name");
+    const bitmaskNames = map(ast.bitmasks, "name");
+    this.validateStructures(ast.structures, union(enumerationNames, bitmaskNames), errors);
+    if (!isEmpty(errors)) {
+      const errorCount = pluralize("error", errors.length, true);
       const errorContent = errors.map((s) => `\t${s}`).join("\n");
       throw new Error(`Validation error:\n${errorCount} found:\n${errorContent}`);
     }
   }
 
-  public validateHeaders(headers, errors) {
-    const headerNames = [];
-    _.each(headers, (h) => {
-      if (_.includes(headerNames, h.name)) {
+  public validateHeaders(headers: any[], errors: string[]) {
+    const headerNames: string[] = [];
+    each(headers, (h) => {
+      if (includes(headerNames, h.name)) {
         errors.push(`Header ${h.name} is defined twice.`);
         return;
       }
@@ -32,45 +29,45 @@ export class DefinitionValidator {
     });
   }
 
-  public validateStructures(structures, definedNames, errors) {
-    if (_.isEmpty(structures)) {
+  public validateStructures(structures: any[], definedNames: any[], errors: string[]) {
+    if (isEmpty(structures)) {
       errors.push("No structure defined");
     }
 
     // First iterate to get all structure names
     // That will help to validate field types
-    const structureNames = [];
-    _.each(structures, (structure) => {
-      if (_.includes(structureNames, structure.name)) {
+    const structureNames: string[] = [];
+    each(structures, (structure) => {
+      if (includes(structureNames, structure.name)) {
         errors.push(`Duplicate structure name '${structure.name}'`);
         return;
       }
-      if (_.includes(definedNames, structure.name)) {
+      if (includes(definedNames, structure.name)) {
         errors.push(`Structure name '${structure.name}' is already defined`);
         return;
       }
-      if (_.has(builtInTypes, structure.name)) {
+      if (has(builtInTypes, structure.name)) {
         errors.push(`Structure ${structure.name} has invalid name: reserved type`);
         return;
       }
       structureNames.push(structure.name);
     });
-    const typeNames = _.union(structureNames, definedNames);
-    _.each(structures, (structure) => {
+    const typeNames = union(structureNames, definedNames);
+    each(structures, (structure) => {
       this.validateStructure(structure, errors, typeNames);
     });
   }
 
-  public validateStructure(structure, errors, typeNames) {
-    const fieldNames = [];
-    _.each(structure.statements, (statement) => {
+  public validateStructure(structure: any, errors: string[], typeNames: string[]) {
+    const fieldNames: string[] = [];
+    each(structure.statements, (statement) => {
       if (!(statement instanceof FieldNode)) {
         // FIXME: Ignore non-fields for the validation step.
         // This not-implemented validation slows down development of new
         // features. It shall be postponed later.
         return;
       }
-      if (_.includes(fieldNames, statement.name)) {
+      if (includes(fieldNames, statement.name)) {
         errors.push(`Duplicate field name '${statement.name}' in structure '${structure.name}'`);
         return;
       }
@@ -80,15 +77,15 @@ export class DefinitionValidator {
     });
   }
 
-  public validateField(field, errors, typeNames) {
+  public validateField(field: any, errors: string[], typeNames: string[]) {
     const { type } = field;
-    const builtInType = _.has(builtInTypes, type.type);
-    const definedType = _.includes(typeNames, type.type);
+    const builtInType = has(builtInTypes, type.type);
+    const definedType = includes(typeNames, type.type);
     if (!builtInType && !definedType) {
       errors.push(`Unknown type '${type.type}' for field '${field.name}'`);
     }
 
-    const hasTypeRestriction = _.has(type, "typeRestriction");
+    const hasTypeRestriction = has(type, "typeRestriction");
     if (hasTypeRestriction) {
       if (type.typeRestriction <= 0 || type.typeRestriction > 64) {
         errors.push(`Field ${field.name} size must be between 0 and 64`);
@@ -96,7 +93,7 @@ export class DefinitionValidator {
     }
 
     const fieldsWithoutTypeRestriction = ["string", "char"];
-    if (_.includes(fieldsWithoutTypeRestriction, type.type) && hasTypeRestriction) {
+    if (includes(fieldsWithoutTypeRestriction, type.type) && hasTypeRestriction) {
       errors.push(`Field ${field.name} (type: ${type.type}) must not have type restriction`);
     }
   }

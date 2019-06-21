@@ -1,8 +1,6 @@
-"use strict";
-
 import { CstParser } from "chevrotain";
 
-import _ from "lodash";
+import { values } from "lodash";
 import { tokens } from "./sweetscape-tokens";
 
 export class SweetscapeParser extends CstParser {
@@ -35,7 +33,7 @@ export class SweetscapeParser extends CstParser {
       this.SUBRULE1(this.ternaryExpression);
     });
   });
-  private definition = this.RULE("definition", () => this.MANY(() => this.SUBRULE(this.topLevelStatement)));
+  public definition = this.RULE("definition", () => this.MANY(() => this.SUBRULE(this.topLevelStatement)));
 
   private topLevelStatement = this.RULE("topLevelStatement", () => {
     this.OR([
@@ -698,14 +696,15 @@ export class SweetscapeParser extends CstParser {
    * Represents any concrete type (void being excluded)
    */
   private typeNameWithoutVoid = this.RULE("typeNameWithoutVoid", () => {
-    this.OR2([
-      { ALT: () => this.CONSUME(tokens.Signed) },
-      { ALT: () => this.CONSUME(tokens.Unsigned) },
-      { ALT: () => this.CONSUME(tokens.Struct) },
-      { ALT: () => {} },
-    ]);
+    this.OPTION(() =>
+      this.OR2([
+        { ALT: () => this.CONSUME(tokens.Signed) },
+        { ALT: () => this.CONSUME(tokens.Unsigned) },
+        { ALT: () => this.CONSUME(tokens.Struct) },
+      ]),
+    );
     this.CONSUME2(tokens.Identifier);
-    this.OPTION(() => this.SUBRULE(this.emptyArraySelector));
+    this.OPTION2(() => this.SUBRULE(this.emptyArraySelector));
   });
 
   private simpleValue = this.RULE("simpleValue", () => {
@@ -721,7 +720,7 @@ export class SweetscapeParser extends CstParser {
     this.OR([{ ALT: () => this.CONSUME(tokens.True) }, { ALT: () => this.CONSUME(tokens.False) }]);
   });
   public constructor() {
-    super(_.values(tokens), {
+    super(values(tokens), {
       recoveryEnabled: false,
       maxLookahead: 5,
       outputCst: true,

@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@binr/shared": "^1.0.0",
+    "@types/lodash": "^4.14.134",
     "lodash": "^4.17.11"
   }
 }

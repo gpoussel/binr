@@ -1,26 +1,18 @@
-"use strict";
-
 import { Bitmask, BitmaskEntry, Definition, EnumEntry, Enumeration, Structure } from "@binr/model";
-import _ from "lodash";
-import { ExpressionConverter } from "./expression-converter";
+import { clone, defaultTo, each, find, get, has, includes, keyBy, map, remove, values } from "lodash";
 import { builtInTypes } from "./types";
 
 export class DefinitionBuilder {
-  private converter: ExpressionConverter;
-  constructor() {
-    this.converter = new ExpressionConverter();
-  }
-
-  public build(ast) {
-    const enumerations = _.keyBy(_.map(ast.enumerations, (e) => this.buildEnumeration(e)), "name");
-    const bitmasks = _.keyBy(_.map(ast.bitmasks, (e) => this.buildBitmask(e)), "name");
+  public build(ast: any) {
+    const enumerations = map(ast.enumerations, (e) => this.buildEnumeration(e));
+    const bitmasks = map(ast.bitmasks, (e) => this.buildBitmask(e));
     const builtElements = {
-      enumerations,
-      bitmasks,
+      enumerations: keyBy(enumerations, "name"),
+      bitmasks: keyBy(bitmasks, "name"),
     };
-    const endiannessHeader = ast.headers.find((h) => h.name === "endianness");
-    const globalEndianness = _.get(endiannessHeader, "value", "big");
-    const structures = _.values(this.buildAllStructures(globalEndianness, ast.structures, builtElements));
+    const endiannessHeader = ast.headers.find((h: any) => h.name === "endianness");
+    const globalEndianness = get(endiannessHeader, "value", "big");
+    const structures = values(this.buildAllStructures(globalEndianness, ast.structures, builtElements));
     return new Definition(structures, enumerations, bitmasks);
   }
 
@@ -32,31 +24,38 @@ export class DefinitionBuilder {
    * @param {array} builtElements all elements already built in this definition
    * @return {array} all structures
    */
-  public buildAllStructures(globalEndianness, structures, builtElements) {
-    const builtStructures = {};
-    const structuresToProcess = _.clone(structures);
+  public buildAllStructures(
+    globalEndianness: string,
+    structures: any[],
+    builtElements: {
+      enumerations: { [key: string]: Enumeration };
+      bitmasks: { [key: string]: Bitmask };
+    },
+  ): { [key: string]: Structure } {
+    const builtStructures: { [key: string]: Structure } = {};
+    const structuresToProcess = clone(structures);
     while (structuresToProcess.length > 0) {
-      const builtStructuresDuringThisTurn = [];
+      const builtStructuresDuringThisTurn: any[] = [];
 
       // We have to check if any field depends on a structure not built yet
-      _.each(structuresToProcess, (structureToProcess) => {
+      each(structuresToProcess, (structureToProcess) => {
         let readyToBuild = true;
-        _.each(structureToProcess.statements, (statement) => {
-          _.each(statement.getTypes(), (type) => {
+        each(structureToProcess.statements, (statement) => {
+          each(statement.getTypes(), (type) => {
             const typeName = type.type;
-            if (_.has(builtInTypes, typeName)) {
+            if (has(builtInTypes, typeName)) {
               // Built-in type
               return;
             }
-            if (_.has(builtElements.bitmasks, typeName)) {
+            if (has(builtElements.bitmasks, typeName)) {
               // Bitmask
               return;
             }
-            if (_.has(builtElements.enumerations, typeName)) {
+            if (has(builtElements.enumerations, typeName)) {
               // Enumeration
               return;
             }
-            if (_.has(builtStructures, typeName)) {
+            if (has(builtStructures, typeName)) {
               // Structure already built
               return;
             }
@@ -82,7 +81,7 @@ export class DefinitionBuilder {
         }
       });
 
-      _.remove(structuresToProcess, (s) => _.includes(builtStructuresDuringThisTurn, s));
+      remove(structuresToProcess, (s) => includes(builtStructuresDuringThisTurn, s));
 
       if (builtStructuresDuringThisTurn.length === 0) {
         // We have just met a circular dependency, since we have just performed
@@ -94,32 +93,40 @@ export class DefinitionBuilder {
     return builtStructures;
   }
 
-  public buildStructure(globalEndianness, builtElements, structure) {
+  public buildStructure(
+    globalEndianness: string,
+    builtElements: {
+      structures: { [key: string]: Structure };
+      enumerations: { [key: string]: Enumeration };
+      bitmasks: { [key: string]: Bitmask };
+    },
+    structure: any,
+  ): Structure {
     const structureObject = new Structure(
       structure.name,
-      _.map(structure.statements, (s) => s.buildStatement(builtElements)),
+      map(structure.statements, (s) => s.buildStatement(builtElements)),
     );
-    const endiannessAnnotation = _.find(structure.annotations, (h) => h.name === "endianness");
-    const structureEndianness = _.get(endiannessAnnotation, "value", globalEndianness);
-    structureObject.setEndianness(_.defaultTo(structureEndianness));
+    const endiannessAnnotation = find(structure.annotations, (h) => h.name === "endianness");
+    const structureEndianness = get(endiannessAnnotation, "value", globalEndianness);
+    structureObject.setEndianness(defaultTo(structureEndianness, globalEndianness));
     return structureObject;
   }
 
-  public buildEnumeration(enumeration) {
-    const entries = _.map(enumeration.entries, this.buildEnumEntry.bind(this));
+  public buildEnumeration(enumeration: any): Enumeration {
+    const entries = map(enumeration.entries, this.buildEnumEntry);
     return new Enumeration(enumeration.name, enumeration.parentType, entries);
   }
 
-  public buildBitmask(bitmask) {
-    const entries = _.map(bitmask.entries, this.buildBitmaskEntry.bind(this));
+  public buildBitmask(bitmask: any): Bitmask {
+    const entries = map(bitmask.entries, this.buildBitmaskEntry);
     return new Bitmask(bitmask.name, bitmask.parentType, entries);
   }
 
-  public buildEnumEntry(entry) {
+  public buildEnumEntry(entry: any): EnumEntry {
     return new EnumEntry(entry.key, entry.value);
   }
 
-  public buildBitmaskEntry(entry) {
+  public buildBitmaskEntry(entry: any): BitmaskEntry {
     return new BitmaskEntry(entry.key, entry.value);
   }
 }

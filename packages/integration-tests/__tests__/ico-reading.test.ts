@@ -1,10 +1,8 @@
-"use strict";
-
-const _ = require("lodash");
+import _ from "lodash";
 
 import { BinaryReader } from "@binr/binary-reader";
 import { DefinitionReader } from "@binr/definition-reader";
-import fs from "fs";
+import * as fs from "fs";
 
 const pathToBinaryFixtures = `${__dirname}/../__fixtures__/binaries`;
 const pathToDefinitionFixtures = `${__dirname}/../__fixtures__/definitions`;

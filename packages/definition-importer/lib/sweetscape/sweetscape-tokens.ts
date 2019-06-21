@@ -1,8 +1,6 @@
-"use strict";
-
-import { createToken, Lexer } from "chevrotain";
-import escapeRegexp from "escape-string-regexp";
-import _ from "lodash";
+import { createToken, ITokenConfig, Lexer, TokenType } from "chevrotain";
+import * as escapeStringRegexp from "escape-string-regexp";
+import { each, filter, fromPairs, has, isEmpty, map } from "lodash";
 
 export enum TokenName {
   Whitespace = "Whitespace",
@@ -88,7 +86,14 @@ export enum TokenName {
   NumberDecimalLiteral = "NumberDecimalLiteral",
 }
 
-const tokenInfos = [];
+interface ITokenInfo {
+  name: string;
+  pattern: RegExp;
+  group?: string;
+  longer_alt?: string;
+}
+
+const tokenInfos: ITokenInfo[] = [];
 
 /**
  * Whitespaces
@@ -130,7 +135,7 @@ tokenInfos.push({
  * All characters (or set of characters) considered as symbols
  * in the language.
  */
-_.each(
+each(
   [
     // Assignment operators
     { name: TokenName.MultiplicationEquals, symbol: "*=" },
@@ -201,14 +206,14 @@ _.each(
   (symbolInfo) =>
     tokenInfos.push({
       name: symbolInfo.name,
-      pattern: new RegExp(escapeRegexp(symbolInfo.symbol)),
+      pattern: new RegExp(escapeStringRegexp(symbolInfo.symbol)),
     }),
 );
 
 /**
  * All "special" identifiers, considered as keywords in the grammar
  */
-_.each(
+each(
   [
     // Modifiers
     { name: TokenName.Local, keyword: "local" },
@@ -289,19 +294,22 @@ tokenInfos.push({
 });
 
 // Some tokens, with a "longer_alt" attribute set, have to be created after other ones
-const createdTokens = {};
-_.map(_.filter(tokenInfos, (tokenInfo) => !_.has(tokenInfo, "longer_alt")), (tokenInfo) => {
-  createdTokens[tokenInfo.name] = createToken(tokenInfo);
+const createdTokens: { [key: string]: TokenType } = {};
+map(filter(tokenInfos, (tokenInfo) => !has(tokenInfo, "longer_alt")), (tokenInfo) => {
+  createdTokens[tokenInfo.name] = createToken(tokenInfo as ITokenConfig);
 });
 
-const remainingTokens = _.filter(tokenInfos, (tokenInfo) => _.has(tokenInfo, "longer_alt"));
-while (!_.isEmpty(remainingTokens)) {
+const remainingTokens = filter(tokenInfos, (tokenInfo) => has(tokenInfo, "longer_alt"));
+while (!isEmpty(remainingTokens)) {
   for (let i = 0; i < remainingTokens.length; i += 1) {
     const remainingToken = remainingTokens[i];
-    if (_.has(createdTokens, remainingToken.longer_alt)) {
+    if (has(createdTokens, remainingToken.longer_alt!)) {
       // The "longer_alt" references an already created token, so we can create the current one immediately
-      remainingToken.longer_alt = createdTokens[remainingToken.longer_alt];
-      createdTokens[remainingToken.name] = createToken(remainingToken);
+      createdTokens[remainingToken.name] = createToken({
+        name: remainingToken.name,
+        longer_alt: createdTokens[remainingToken.longer_alt!],
+        pattern: remainingToken.pattern,
+      });
       remainingTokens.splice(i, 1);
       i -= 1;
     }
@@ -311,6 +319,6 @@ while (!_.isEmpty(remainingTokens)) {
 // At this point, all tokens have been created
 // But the order or creation (in the "createdTokens" array) is not the correct order of tokens
 // So we have to iterate through "tokenInfos" one last time
-export const tokens = _.fromPairs(
-  _.map(tokenInfos, (tokenInfo) => [tokenInfo.name, createdTokens[tokenInfo.name]]),
+export const tokens = fromPairs(
+  map(tokenInfos, (tokenInfo) => [tokenInfo.name, createdTokens[tokenInfo.name]]),
 );

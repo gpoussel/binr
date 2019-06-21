@@ -1,10 +1,6 @@
-"use strict";
-
-import chevrotain from "chevrotain";
-import escapeRegexp from "escape-string-regexp";
-import _ from "lodash";
-
-const { createToken, Lexer } = chevrotain;
+import { createToken, Lexer, TokenType } from "chevrotain";
+import * as escapeStringRegexp from "escape-string-regexp";
+import { fromPairs, map, values } from "lodash";
 
 const WhitespaceToken = createToken({
   name: "WhitespaceToken",
@@ -49,8 +45,8 @@ const NumberDecimalLiteralToken = createToken({
   pattern: /-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?/,
 });
 
-const symbolTokens = _.fromPairs(
-  _.map(
+const symbolTokens = fromPairs(
+  map(
     {
       // Assignment operators
       MultiplicationEquals: "*=",
@@ -123,14 +119,14 @@ const symbolTokens = _.fromPairs(
       `${name}Token`,
       createToken({
         name: `${name}Token`,
-        pattern: new RegExp(escapeRegexp(keyword)),
+        pattern: new RegExp(escapeStringRegexp(keyword)),
       }),
     ],
   ),
 );
 
-const keywordTokens = _.fromPairs(
-  _.map(
+const keywordTokens = fromPairs(
+  map(
     {
       True: "true",
       False: "false",
@@ -148,13 +144,13 @@ const keywordTokens = _.fromPairs(
       `${name}Token`,
       createToken({
         name: `${name}Token`,
-        pattern: new RegExp(escapeRegexp(keyword)),
+        pattern: new RegExp(escapeStringRegexp(keyword)),
       }),
     ],
   ),
 );
 
-export const tokens = {
+export const tokens: { [key: string]: TokenType } = {
   // Whitespaces
   WhitespaceToken,
 
@@ -180,7 +176,7 @@ export const tokens = {
 
 export class DefinitionLexer extends Lexer {
   constructor() {
-    super(_.values(tokens), {
+    super(values(tokens), {
       ensureOptimizations: true,
     });
   }

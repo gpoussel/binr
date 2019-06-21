@@ -1,14 +1,12 @@
-"use strict";
-
+import { BufferWrapper } from "@binr/shared";
 import { Type } from "./type";
 
 export class CharType extends Type {
-  public constructor(typeRestriction) {
+  public constructor() {
     super();
-    // TODO
   }
 
-  public read(buffer) {
+  public read(buffer: BufferWrapper) {
     return buffer.readAsciiString(1);
   }
 }

@@ -1,5 +1,4 @@
-"use strict";
-
+import { CstParser } from "chevrotain";
 import { CStylePreprocessor } from "..//common/cstyle-preprocessor";
 import { Importer } from "../importer";
 import { SweetscapeLexer } from "./sweetscape-lexer";
@@ -15,16 +14,16 @@ export class SweetscapeDefinitionImporter extends Importer {
     return new SweetscapeParser();
   }
 
-  public getVisitor(parser) {
+  public getVisitor(parser: CstParser) {
     return getVisitor(parser);
   }
 
-  public performPreprocessing(input) {
+  public performPreprocessing(input: string) {
     const preprocessor = new CStylePreprocessor();
     return preprocessor.preprocess(input);
   }
 
-  public build(ast) {
+  public build(ast: any) {
     return ast;
   }
 }

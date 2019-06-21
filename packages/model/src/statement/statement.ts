@@ -1,3 +1,9 @@
-"use strict";
+import { BufferWrapper, Environment, ValueAggregator } from "@binr/shared";
 
-export class Statement {}
+export abstract class Statement {
+  public abstract read(
+    buffer: BufferWrapper,
+    environment: Environment,
+    valueAggregator: ValueAggregator,
+  ): void;
+}

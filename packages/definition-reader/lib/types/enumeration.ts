@@ -1,21 +1,21 @@
-"use strict";
+import { find, get } from "lodash";
 
-import _ from "lodash";
-
+import { Enumeration } from "@binr/model";
+import { BufferWrapper, Environment } from "@binr/shared";
 import { Type } from "./type";
 
 export class EnumerationType extends Type {
-  private parentType: any;
+  private parentType: Type;
   private enumeration: any;
-  constructor(parentType, enumeration) {
+  constructor(parentType: Type, enumeration: Enumeration) {
     super();
     this.parentType = parentType;
     this.enumeration = enumeration;
   }
 
-  public read(buffer, environment) {
+  public read(buffer: BufferWrapper, environment: Environment) {
     const value = this.parentType.read(buffer, environment);
-    const matchingEntry = _.find(this.enumeration.entries, (entry) => entry.value === value);
-    return _.get(matchingEntry, "key");
+    const matchingEntry = find(this.enumeration.entries, (entry) => entry.value === value);
+    return get(matchingEntry, "key");
   }
 }

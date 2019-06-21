@@ -1,5 +1,3 @@
-"use strict";
-
 import { BufferWrapper } from "../lib/buffer-wrapper";
 
 describe("BufferWrapper, little endian", () => {

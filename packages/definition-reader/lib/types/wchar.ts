@@ -1,13 +1,11 @@
-"use strict";
-
+import { BufferWrapper } from "@binr/shared";
 import { Type } from "./type";
 
 export class WCharType extends Type {
-  public constructor(typeRestriction) {
+  public constructor() {
     super();
-    // TODO
   }
-  public read(buffer) {
+  public read(buffer: BufferWrapper) {
     return buffer.readUtf16String(2);
   }
 }

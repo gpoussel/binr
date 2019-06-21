@@ -1,22 +1,18 @@
-"use strict";
-
-/* eslint-disable no-param-reassign */
-
-import escodegen from "escodegen";
+import * as escodegen from "escodegen";
 import { parseScript, Syntax } from "esprima";
-import _ from "lodash";
+import { includes, isArray, map, size } from "lodash";
 
 export class ExpressionConverter {
-  public transformCodeToFunction(code) {
+  public transformCodeToFunction(code: string) {
     return `(function() { return ${this.convert(code)}; })()`;
   }
 
-  public convert(source) {
+  public convert(source: string) {
     const ast = parseScript(source);
-    if (!_.isArray(ast.body)) {
+    if (!isArray(ast.body)) {
       throw new Error("AST body is not an array");
     }
-    if (_.size(ast.body) !== 1) {
+    if (size(ast.body) !== 1) {
       throw new Error("AST body size shall be 1");
     }
     const bodyExpression = ast.body[0];
@@ -28,7 +24,7 @@ export class ExpressionConverter {
     return generatedSource;
   }
 
-  public processExpression(expression) {
+  public processExpression(expression: any) {
     if (!expression || expression.generated) {
       return expression;
     }
@@ -57,30 +53,13 @@ export class ExpressionConverter {
       const { callee } = expression;
       if (callee.type === Syntax.Identifier) {
         // Top-level functions: that's fine
-        if (
-          _.includes(
-            [
-              "abs",
-              "ceil",
-              "cos",
-              "exp",
-              "floor",
-              "log",
-              "max",
-              "min",
-              "pow",
-              "random",
-              "sin",
-              "sqrt",
-              "tan",
-            ],
-            expression.callee.name,
-          )
-        ) {
-          expression.callee = this.generateBuiltinFunctionScopeGetNode(expression.callee.name);
-        } else {
-          expression.callee = this.generateFunctionScopeGetNode(expression.callee.name);
-        }
+        const builtInFunction = includes(
+          ["abs", "ceil", "cos", "exp", "floor", "log", "max", "min", "pow", "random", "sin", "sqrt", "tan"],
+          expression.callee.name,
+        );
+        expression.callee = builtInFunction
+          ? this.generateBuiltinFunctionScopeGetNode(expression.callee.name)
+          : this.generateFunctionScopeGetNode(expression.callee.name);
       } else if (callee.type === Syntax.MemberExpression) {
         const { object, property } = callee;
         if (object.type === Syntax.Identifier && object.name === "_" && property.type === Syntax.Identifier) {
@@ -92,31 +71,31 @@ export class ExpressionConverter {
       } else {
         throw new Error(`Only top-level functions are supported, received ${callee.type}`);
       }
-      expression.arguments = _.map(expression.arguments, (arg) => this.processExpression(arg));
+      expression.arguments = map(expression.arguments, (arg) => this.processExpression(arg));
     }
     if (expression.type === Syntax.ArrayExpression) {
-      expression.elements = _.map(expression.elements, (el) => this.processExpression(el));
+      expression.elements = map(expression.elements, (el) => this.processExpression(el));
     }
     return expression;
   }
 
-  public generateVariableScopeGetNode(name) {
+  public generateVariableScopeGetNode(name: string) {
     return this.generateGetNode("variables", name);
   }
 
-  public generateFunctionScopeGetNode(name) {
+  public generateFunctionScopeGetNode(name: string) {
     return this.generateGetNode("functions", name);
   }
 
-  public generateTopLevelFunctionScopeGetNode(name) {
+  public generateTopLevelFunctionScopeGetNode(name: string) {
     return this.generateFunctionCallNode("stream", name);
   }
 
-  public generateBuiltinFunctionScopeGetNode(name) {
+  public generateBuiltinFunctionScopeGetNode(name: string) {
     return this.generateFunctionCallNode("utils", name);
   }
 
-  public generateFunctionCallNode(objectName, functionName) {
+  public generateFunctionCallNode(objectName: string, functionName: string) {
     return {
       type: Syntax.MemberExpression,
       generated: true,
@@ -139,7 +118,7 @@ export class ExpressionConverter {
     };
   }
 
-  public generateGetNode(objectName, propertyName) {
+  public generateGetNode(objectName: string, propertyName: string) {
     return {
       type: Syntax.CallExpression,
       generated: true,

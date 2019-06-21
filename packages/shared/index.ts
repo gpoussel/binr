@@ -1,5 +1,3 @@
-"use strict";
-
 export * from "./lib/buffer-wrapper";
 export * from "./lib/environment";
 export * from "./lib/expression-evaluator";

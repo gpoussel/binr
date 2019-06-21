@@ -1,14 +1,15 @@
-import _ from "lodash";
+import { CstParser, IRecognitionException, Lexer } from "chevrotain";
+import { first, get, isEmpty, isString, join, map } from "lodash";
 
 export class Importer {
-  public readInput(input) {
-    if (!_.isString(input)) {
+  public readInput(input: string) {
+    if (!isString(input)) {
       throw new Error("input must be a string");
     }
 
     const preprocessed = this.performPreprocessing(input);
 
-    if (!_.isString(preprocessed)) {
+    if (!isString(preprocessed)) {
       throw new Error("input must be a string");
     }
 
@@ -16,25 +17,30 @@ export class Importer {
     return this.build(ast);
   }
 
-  public performPreprocessing(input) {
+  public performPreprocessing(input: string) {
     return input;
   }
 
-  public readAst(input) {
+  public readAst(input: string) {
     const lexingResult = this.getLexer().tokenize(input);
-    if (!_.isEmpty(lexingResult.errors)) {
-      throw new Error(`Got an error while lexing input: ${_.first(lexingResult.errors).message}`);
+    if (!isEmpty(lexingResult.errors)) {
+      throw new Error(
+        `Got an error while lexing input: ${join(map(lexingResult.errors, (err) => err.message), ", ")}`,
+      );
     }
 
-    const parser = this.getParser();
+    const parser = this.getParser() as any;
     parser.input = lexingResult.tokens;
+
+    // TODO typesafe with "definition"?
     const parsingResult = parser.definition();
 
-    if (!_.isEmpty(parser.errors)) {
-      const firstError = _.first(parser.errors);
+    const errors: IRecognitionException[] = parser.errors;
+    if (!isEmpty(errors)) {
+      const firstError: IRecognitionException = first(errors)!;
       const tokenPosition = `${firstError.token.startLine}:${firstError.token.startColumn}`;
-      const tokenName = _.get(firstError, "token.tokenType.tokenName");
-      const tokenImage = _.get(firstError, "token.image");
+      const tokenName = get(firstError, "token.tokenType.tokenName");
+      const tokenImage = get(firstError, "token.image");
       const tokenDetails = `(token ${tokenName} "${tokenImage}" at ${tokenPosition})`;
       const message = `${firstError.name}: ${firstError.message} ${tokenDetails}`;
       throw new Error(`Got an error while parsing input: ${message}`);
@@ -43,19 +49,19 @@ export class Importer {
     return this.getVisitor(parser).visit(parsingResult);
   }
 
-  public getLexer(): any {
+  public getLexer(): Lexer {
     throw new Error("getLexer(): not yet implemented");
   }
 
-  public getParser(): any {
+  public getParser(): CstParser {
     throw new Error("getParser(): not yet implemented");
   }
 
-  public getVisitor(parser): any {
-    throw new Error("getVisitor(): not yet implemented");
+  public getVisitor(parser: CstParser): any {
+    throw new Error(`getVisitor(): not yet implemented (parser = ${parser})`);
   }
 
-  public build(ast): any {
-    throw new Error("build(): not yet implemented");
+  public build(ast: any): any {
+    throw new Error(`build(): not yet implemented (ast = ${ast})`);
   }
 }

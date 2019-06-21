@@ -1,12 +1,10 @@
-"use strict";
-
-import vm from "vm";
+import { createContext, runInNewContext } from "vm";
 
 export class ExpressionEvaluator {
-  public evaluate(code, env) {
-    const globalObject = vm.createContext({
+  public evaluate(code: string, env: { [key: string]: any }) {
+    const globalObject = createContext({
       env,
     });
-    return vm.runInNewContext(code, globalObject);
+    return runInNewContext(code, globalObject);
   }
 }

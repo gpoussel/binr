@@ -1,13 +1,11 @@
-"use strict";
-
-import _ from "lodash";
+import { each } from "lodash";
 
 import { ExpressionConverter } from "../lib/expression-converter";
 
 describe("ExpressionConverter", () => {
   test("converts simple expressions", () => {
     const converter = new ExpressionConverter();
-    _.each(
+    each(
       [
         "2+3",
         "a, b",
@@ -41,7 +39,7 @@ describe("ExpressionConverter", () => {
 
   test("rejects expressions with side-effects", () => {
     const converter = new ExpressionConverter();
-    _.each(["a++", "a--", "++a", "--a"], (entry) => {
+    each(["a++", "a--", "++a", "--a"], (entry) => {
       expect(() => converter.convert(entry)).toThrow(/supported/);
     });
   });

@@ -1,5 +1,3 @@
-"use strict";
-
 import { CStylePreprocessor } from "../lib/common/cstyle-preprocessor";
 
 describe("C-Style preprocessor", () => {

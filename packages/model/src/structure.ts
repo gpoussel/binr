@@ -1,23 +1,30 @@
-"use strict";
-
-import assert from "assert";
+import * as assert from "assert";
+import { Statement } from "./statement/statement";
 
 export class Structure {
-  private name: string;
-  private statements: any[];
-  private endianness: string;
+  private _name: string;
+  private _statements: Statement[];
+  private _endianness: string | undefined;
 
-  constructor(name, statements) {
-    this.name = name;
-    this.statements = statements;
+  constructor(name: string, statements: Statement[]) {
+    this._name = name;
+    this._statements = statements;
   }
 
-  public setEndianness(endianness) {
+  public setEndianness(endianness: string) {
     assert(endianness === "big" || endianness === "little");
-    this.endianness = endianness;
+    this._endianness = endianness;
   }
 
-  public getEndianness() {
-    return this.endianness;
+  get endianness(): string | undefined {
+    return this._endianness;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  get statements(): Statement[] {
+    return this._statements;
   }
 }

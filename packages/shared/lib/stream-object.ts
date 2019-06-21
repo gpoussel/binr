@@ -1,12 +1,12 @@
-"use strict";
+import { BufferWrapper } from "./buffer-wrapper";
 
 /**
  * This object is exposed in structure definition through "_" global variable
  */
 export class StreamObject {
-  private bufferWrapper: any;
+  private bufferWrapper: BufferWrapper;
 
-  constructor(bufferWrapper) {
+  constructor(bufferWrapper: BufferWrapper) {
     this.bufferWrapper = bufferWrapper;
   }
 
@@ -18,15 +18,15 @@ export class StreamObject {
     return this.bufferWrapper.buffer.length;
   }
 
-  public seek(pos) {
+  public seek(pos: number) {
     this.bufferWrapper.seek(pos);
   }
 
-  public skip(pos) {
+  public skip(pos: number) {
     this.bufferWrapper.skip(pos);
   }
 
   public tell() {
-    return this.bufferWrapper.buffer.cursor;
+    return this.bufferWrapper.cursor;
   }
 }

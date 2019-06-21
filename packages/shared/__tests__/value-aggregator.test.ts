@@ -1,5 +1,3 @@
-"use strict";
-
 import { ValueAggregator } from "../lib/value-aggregator";
 
 describe("ValueAggregator", () => {
