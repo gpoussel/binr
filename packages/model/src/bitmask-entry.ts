@@ -2,7 +2,7 @@ export class BitmaskEntry {
   private _key: string;
   private _value: any;
 
-  constructor(key, value) {
+  constructor(key: string, value: any) {
     this._key = key;
     this._value = value;
   }

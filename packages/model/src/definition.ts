@@ -1,23 +1,27 @@
-export class Definition {
-  private _structures: any[];
-  private _enumerations: any[];
-  private _bitmasks: any[];
+import { Bitmask } from "./bitmask";
+import { Enumeration } from "./enumeration";
+import { Structure } from "./structure";
 
-  constructor(structures, enumerations, bitmasks) {
+export class Definition {
+  private _structures: Structure[];
+  private _enumerations: Enumeration[];
+  private _bitmasks: Bitmask[];
+
+  constructor(structures: Structure[], enumerations: Enumeration[], bitmasks: Bitmask[]) {
     this._structures = structures;
     this._enumerations = enumerations;
     this._bitmasks = bitmasks;
   }
 
-  get structures(): any[] {
+  get structures(): Structure[] {
     return this._structures;
   }
 
-  get enumerations(): any[] {
+  get enumerations(): Enumeration[] {
     return this._enumerations;
   }
 
-  get bitmasks(): any[] {
+  get bitmasks(): Bitmask[] {
     return this._bitmasks;
   }
 }

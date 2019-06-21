@@ -3,11 +3,15 @@ import { UtilsObject } from "./utils-object";
 import { VariableScope } from "./variable-scope";
 
 export class Environment {
-  private stream: any;
-  private variables: VariableScope;
-  private functions: FunctionScope;
 
-  constructor(stream, variables?, functions?) {
+  public get utils(): UtilsObject {
+    return new UtilsObject();
+  }
+  public variables: VariableScope;
+  public functions: FunctionScope;
+  private stream: any;
+
+  constructor(stream: any, variables?: VariableScope, functions?: FunctionScope) {
     this.stream = stream;
     this.variables = variables || new VariableScope();
     this.functions = functions || new FunctionScope();
@@ -15,9 +19,5 @@ export class Environment {
 
   public nestedScope() {
     return new Environment(this.stream, new VariableScope(this.variables), this.functions);
-  }
-
-  public get utils(): UtilsObject {
-    return new UtilsObject();
   }
 }

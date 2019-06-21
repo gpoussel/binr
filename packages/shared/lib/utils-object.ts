@@ -1,59 +1,59 @@
 import { max, min } from "lodash";
 
 export class UtilsObject {
-  public min(...args) {
+  public min(...args: number[]) {
     return min(args);
   }
 
-  public max(...args) {
+  public max(...args: number[]) {
     return max(args);
   }
 
-  public abs(arg) {
+  public abs(arg: number) {
     return Math.abs(arg);
   }
 
-  public ceil(arg) {
+  public ceil(arg: number) {
     return Math.ceil(arg);
   }
 
-  public floor(arg) {
+  public floor(arg: number) {
     return Math.floor(arg);
   }
 
-  public round(arg) {
+  public round(arg: number) {
     return Math.round(arg);
   }
 
-  public random(arg) {
+  public random(arg: number) {
     return Math.floor(Math.random() * (arg + 1));
   }
 
-  public pow(operand, exp) {
+  public pow(operand: number, exp: number) {
     return operand ** exp;
   }
 
-  public sqrt(arg) {
+  public sqrt(arg: number) {
     return Math.sqrt(arg);
   }
 
-  public exp(arg) {
+  public exp(arg: number) {
     return Math.exp(arg);
   }
 
-  public log(arg) {
+  public log(arg: number) {
     return Math.log(arg);
   }
 
-  public cos(arg) {
+  public cos(arg: number) {
     return Math.cos(arg);
   }
 
-  public sin(arg) {
+  public sin(arg: number) {
     return Math.sin(arg);
   }
 
-  public tan(arg) {
+  public tan(arg: number) {
     return Math.tan(arg);
   }
 }

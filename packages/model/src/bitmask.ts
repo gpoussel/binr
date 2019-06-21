@@ -1,9 +1,11 @@
+import { BitmaskEntry } from "./bitmask-entry";
+
 export class Bitmask {
   private _name: string;
   private _parentType: any;
-  private _entries: any[];
+  private _entries: BitmaskEntry[];
 
-  constructor(name, parentType, entries) {
+  constructor(name: string, parentType: any, entries: BitmaskEntry[]) {
     this._name = name;
     this._parentType = parentType;
     this._entries = entries;
@@ -17,7 +19,7 @@ export class Bitmask {
     return this._parentType;
   }
 
-  get entries(): any[] {
+  get entries(): BitmaskEntry[] {
     return this._entries;
   }
 }

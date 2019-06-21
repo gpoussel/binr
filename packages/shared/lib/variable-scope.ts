@@ -3,14 +3,14 @@ import { get, has, isUndefined } from "lodash";
 
 export class VariableScope {
   private parentScope: VariableScope | undefined;
-  private variables: {};
+  private variables: { [key: string]: any };
 
   constructor(parentScope?: VariableScope) {
     this.parentScope = parentScope;
     this.variables = {};
   }
 
-  public get(name) {
+  public get(name: string): any {
     if (has(this.variables, name)) {
       return get(this.variables, name);
     }
@@ -20,7 +20,7 @@ export class VariableScope {
     throw new Error(`Undefined variable ${name} in the current scope`);
   }
 
-  public put(name, value) {
+  public put(name: string, value: any) {
     assert(!has(this.variables, name), `Variable named '${name}' is already present in current scope`);
     this.variables[name] = value;
   }
