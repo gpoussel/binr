@@ -55,30 +55,13 @@ export class ExpressionConverter {
       const { callee } = expression;
       if (callee.type === Syntax.Identifier) {
         // Top-level functions: that's fine
-        if (
-          _.includes(
-            [
-              "abs",
-              "ceil",
-              "cos",
-              "exp",
-              "floor",
-              "log",
-              "max",
-              "min",
-              "pow",
-              "random",
-              "sin",
-              "sqrt",
-              "tan",
-            ],
-            expression.callee.name,
-          )
-        ) {
-          expression.callee = this.generateBuiltinFunctionScopeGetNode(expression.callee.name);
-        } else {
-          expression.callee = this.generateFunctionScopeGetNode(expression.callee.name);
-        }
+        const builtInFunction = _.includes(
+          ["abs", "ceil", "cos", "exp", "floor", "log", "max", "min", "pow", "random", "sin", "sqrt", "tan"],
+          expression.callee.name,
+        );
+        expression.callee = builtInFunction
+          ? this.generateBuiltinFunctionScopeGetNode(expression.callee.name)
+          : this.generateFunctionScopeGetNode(expression.callee.name);
       } else if (callee.type === Syntax.MemberExpression) {
         const { object, property } = callee;
         if (object.type === Syntax.Identifier && object.name === "_" && property.type === Syntax.Identifier) {

@@ -31,12 +31,7 @@ function cleanupResult(object) {
   }
   _.each(object, (value, key) => {
     if (_.isArray(value)) {
-      if (_.size(value) === 1) {
-        // To improve readability, remove the array and put a single object
-        object[key] = cleanupResult(_.first(value));
-      } else {
-        object[key] = _.map(value, cleanupResult);
-      }
+      object[key] = _.size(value) === 1 ? cleanupResult(_.first(value)) : _.map(value, cleanupResult);
     } else if (_.isObject(value)) {
       const result = cleanupResult(value);
       object[key] = result;

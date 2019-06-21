@@ -1,4 +1,4 @@
-const _ = require("lodash");
+import _ from "lodash";
 
 import { BinaryReader } from "@binr/binary-reader";
 import { DefinitionReader } from "@binr/definition-reader";

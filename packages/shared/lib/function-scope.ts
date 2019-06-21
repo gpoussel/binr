@@ -3,7 +3,6 @@ import _ from "lodash";
 
 export class FunctionScope {
   private functions: {};
-  private parentScope: FunctionScope;
 
   constructor() {
     this.functions = {};

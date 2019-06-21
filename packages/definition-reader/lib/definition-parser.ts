@@ -1,4 +1,4 @@
-import { CstNode, CstParser } from "chevrotain";
+import { CstParser } from "chevrotain";
 import _ from "lodash";
 import { tokens } from "./definition-lexer";
 
@@ -15,7 +15,6 @@ export class DefinitionParser extends CstParser {
   private c2: any;
   private c3: any;
   private c4: any;
-  private c5: any;
 
   private topLevelClause = this.RULE("topLevelClause", () => {
     this.MANY2(() => {
@@ -216,8 +215,8 @@ export class DefinitionParser extends CstParser {
 
   private PrimaryExpression = this.RULE("PrimaryExpression", () => {
     this.OR(
-      this.c5 ||
-        (this.c5 = [
+      this.c4 ||
+        (this.c4 = [
           {
             ALT: () => this.CONSUME(tokens.IdentifierToken),
           },
@@ -421,7 +420,7 @@ export class DefinitionParser extends CstParser {
     this.c2 = undefined;
     this.c3 = undefined;
     this.c4 = undefined;
-    this.c5 = undefined;
+    this.c4 = undefined;
 
     this.performSelfAnalysis();
   }

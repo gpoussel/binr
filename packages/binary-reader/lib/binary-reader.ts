@@ -5,7 +5,7 @@ import { StructureType } from "@binr/definition-reader";
 import { BufferWrapper, Environment, StreamObject } from "@binr/shared";
 
 export class BinaryReader {
-  public read(binaryBuffer, definition, providedStructureName = undefined) {
+  public read(binaryBuffer, definition, providedStructureName?) {
     assert(_.isObject(definition), "definition must be an object");
     assert(_.isBuffer(binaryBuffer), "binaryBuffer must be a buffer");
 

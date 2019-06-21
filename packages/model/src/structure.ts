@@ -1,21 +1,29 @@
 import assert from "assert";
 
 export class Structure {
-  private name: string;
-  private statements: any[];
-  private endianness: string;
+  private _name: string;
+  private _statements: any[];
+  private _endianness: string;
 
   constructor(name, statements) {
-    this.name = name;
-    this.statements = statements;
+    this._name = name;
+    this._statements = statements;
   }
 
   public setEndianness(endianness) {
     assert(endianness === "big" || endianness === "little");
-    this.endianness = endianness;
+    this._endianness = endianness;
   }
 
   public getEndianness() {
-    return this.endianness;
+    return this._endianness;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  get statements(): any[] {
+    return this._statements;
   }
 }

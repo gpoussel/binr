@@ -1,14 +1,8 @@
 import { Bitmask, BitmaskEntry, Definition, EnumEntry, Enumeration, Structure } from "@binr/model";
 import _ from "lodash";
-import { ExpressionConverter } from "./expression-converter";
 import { builtInTypes } from "./types";
 
 export class DefinitionBuilder {
-  private converter: ExpressionConverter;
-  constructor() {
-    this.converter = new ExpressionConverter();
-  }
-
   public build(ast) {
     const enumerations = _.keyBy(_.map(ast.enumerations, (e) => this.buildEnumeration(e)), "name");
     const bitmasks = _.keyBy(_.map(ast.bitmasks, (e) => this.buildBitmask(e)), "name");
