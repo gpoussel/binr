@@ -5,17 +5,21 @@ export class BufferWrapper {
   private buffer: Buffer;
   private cursor: number;
   private positionInCurrentByte: number;
-  private currentByte: number;
+  private currentByte: number | undefined;
   private endianness: string; // TODO enumeration
 
   constructor(buffer, endianness) {
     assert(isBuffer(buffer), "'buffer' argument must be a buffer");
+    assert(
+      includes(["big", "little"], endianness),
+      `'endianness' must be either 'big' or 'little', found: ${endianness}`,
+    );
 
     this.buffer = buffer;
     this.cursor = 0;
     this.currentByte = undefined;
     this.positionInCurrentByte = 0;
-    this.setEndianness(endianness);
+    this.endianness = endianness;
   }
 
   public skip(length) {
@@ -50,7 +54,7 @@ export class BufferWrapper {
       if (this.positionInCurrentByte + length > 8) {
         throw new Error(`Invalid byte offset position = ${this.positionInCurrentByte}, length = ${length}`);
       }
-      const value = (this.currentByte >> (8 - length - this.positionInCurrentByte)) & ((1 << length) - 1);
+      const value = (this.currentByte! >> (8 - length - this.positionInCurrentByte)) & ((1 << length) - 1);
       this.positionInCurrentByte += length;
       this.resetBitsetIfNecessary();
       return value;
@@ -70,7 +74,7 @@ export class BufferWrapper {
       if (this.positionInCurrentByte + length > 8) {
         throw new Error(`Invalid byte offset position = ${this.positionInCurrentByte}, length = ${length}`);
       }
-      const value = (this.currentByte >> (8 - length - this.positionInCurrentByte)) & ((1 << length) - 1);
+      const value = (this.currentByte! >> (8 - length - this.positionInCurrentByte)) & ((1 << length) - 1);
       this.positionInCurrentByte += length;
       this.resetBitsetIfNecessary();
       return value;
@@ -106,7 +110,7 @@ export class BufferWrapper {
 
   public readBytes(count, fn) {
     assert(count > 0, "count must be > 0");
-    const bytes = [];
+    const bytes: number[] = [];
     times(count, () => {
       bytes.push(fn());
     });

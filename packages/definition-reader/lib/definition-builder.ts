@@ -28,7 +28,7 @@ export class DefinitionBuilder {
     const builtStructures = {};
     const structuresToProcess = clone(structures);
     while (structuresToProcess.length > 0) {
-      const builtStructuresDuringThisTurn = [];
+      const builtStructuresDuringThisTurn: any[] = [];
 
       // We have to check if any field depends on a structure not built yet
       each(structuresToProcess, (structureToProcess) => {

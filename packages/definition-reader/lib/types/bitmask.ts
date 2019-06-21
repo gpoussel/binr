@@ -13,7 +13,7 @@ export class BitmaskType extends Type {
 
   public read(buffer, environment) {
     const value = this.parentType.read(buffer, environment);
-    const matchedItems = [];
+    const matchedItems: any[] = [];
     each(this.bitmask.entries, (entry) => {
       if ((value & entry.value) !== 0) {
         matchedItems.push(entry.key);

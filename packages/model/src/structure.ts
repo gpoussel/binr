@@ -3,7 +3,7 @@ import * as assert from "assert";
 export class Structure {
   private _name: string;
   private _statements: any[];
-  private _endianness: string;
+  private _endianness: string | undefined;
 
   constructor(name, statements) {
     this._name = name;
@@ -15,7 +15,7 @@ export class Structure {
     this._endianness = endianness;
   }
 
-  get endianness(): string {
+  get endianness(): string | undefined {
     return this._endianness;
   }
 

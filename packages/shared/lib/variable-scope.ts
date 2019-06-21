@@ -2,14 +2,11 @@ import * as assert from "assert";
 import { get, has, isUndefined } from "lodash";
 
 export class VariableScope {
-  private parentScope: VariableScope;
+  private parentScope: VariableScope | undefined;
   private variables: {};
 
   constructor(parentScope?: VariableScope) {
-    if (!isUndefined(parentScope)) {
-      assert(parentScope instanceof VariableScope, "parentScope must be an instance of VariableScope");
-      this.parentScope = parentScope;
-    }
+    this.parentScope = parentScope;
     this.variables = {};
   }
 
@@ -18,7 +15,7 @@ export class VariableScope {
       return get(this.variables, name);
     }
     if (!isUndefined(this.parentScope)) {
-      return this.parentScope.get(name);
+      return this.parentScope!.get(name);
     }
     throw new Error(`Undefined variable ${name} in the current scope`);
   }

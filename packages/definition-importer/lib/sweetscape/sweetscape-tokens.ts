@@ -86,7 +86,14 @@ export enum TokenName {
   NumberDecimalLiteral = "NumberDecimalLiteral",
 }
 
-const tokenInfos = [];
+interface ITokenInfo {
+  name: string;
+  pattern: RegExp;
+  group?: string;
+  longer_alt?: string;
+}
+
+const tokenInfos: ITokenInfo[] = [];
 
 /**
  * Whitespaces

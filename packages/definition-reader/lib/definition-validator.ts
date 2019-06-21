@@ -19,7 +19,7 @@ export class DefinitionValidator {
   }
 
   public validateHeaders(headers, errors) {
-    const headerNames = [];
+    const headerNames: string[] = [];
     each(headers, (h) => {
       if (includes(headerNames, h.name)) {
         errors.push(`Header ${h.name} is defined twice.`);
@@ -36,7 +36,7 @@ export class DefinitionValidator {
 
     // First iterate to get all structure names
     // That will help to validate field types
-    const structureNames = [];
+    const structureNames: string[] = [];
     each(structures, (structure) => {
       if (includes(structureNames, structure.name)) {
         errors.push(`Duplicate structure name '${structure.name}'`);
@@ -59,7 +59,7 @@ export class DefinitionValidator {
   }
 
   public validateStructure(structure, errors, typeNames) {
-    const fieldNames = [];
+    const fieldNames: string[] = [];
     each(structure.statements, (statement) => {
       if (!(statement instanceof FieldNode)) {
         // FIXME: Ignore non-fields for the validation step.

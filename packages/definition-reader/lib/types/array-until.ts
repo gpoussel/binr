@@ -17,7 +17,7 @@ export class ArrayUntilType extends Type {
   public read(buffer, environment) {
     const evaluator = new ExpressionEvaluator();
     assert(isString(this.untilExpression), "untilExpression must be a string");
-    const values = [];
+    const values: any[] = [];
 
     let { element, nestedEnvironment } = this.readSingleElement(buffer, environment);
     values.push(element);

@@ -118,7 +118,7 @@ export function getVisitor(parser) {
 
     public typeNameWithoutVoid(ctx) {
       const simpleName = getIdentifier(ctx.Identifier);
-      const nameParts = [];
+      const nameParts: string[] = [];
       if (has(ctx, "Signed")) {
         nameParts.push("signed");
       }

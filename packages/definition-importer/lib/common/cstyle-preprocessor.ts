@@ -1,18 +1,15 @@
 import { each, every, has, isEmpty, isUndefined, join, last, split, trim } from "lodash";
 
+interface ICondition {
+  positive: boolean;
+  variable: string;
+}
+
 export class CStylePreprocessor {
   public preprocess(input) {
-    const lines = [];
+    const lines: string[] = [];
     const definitions = {};
-    const conditionStack = [];
-
-    const replaceDefinitions = (inputLine) => {
-      let updatedLine = inputLine;
-      each(definitions, (value, key) => {
-        updatedLine = updatedLine.replace(new RegExp(`\\b${key}\\b`, "g"), value);
-      });
-      return updatedLine;
-    };
+    const conditionStack: ICondition[] = [];
 
     each(split(input, /\r?\n/), (line) => {
       if (line.match(/^[ \t]*#.*$/)) {
@@ -25,7 +22,7 @@ export class CStylePreprocessor {
           const content = join(otherArguments, " ");
           // Unfortunately, there is an edge case where the content has a comment inside
           const contentWithoutComment = content.replace(new RegExp("\\s*//.*$"), "");
-          definitions[firstArgument] = replaceDefinitions(contentWithoutComment);
+          definitions[firstArgument] = this.replaceDefinitions(definitions, contentWithoutComment);
         } else if (directiveName === "#ifdef") {
           conditionStack.push({ positive: true, variable: firstArgument });
         } else if (directiveName === "#ifndef") {
@@ -47,10 +44,17 @@ export class CStylePreprocessor {
           (condition) => has(definitions, condition.variable) === condition.positive,
         );
         if (conditionMatch) {
-          lines.push(replaceDefinitions(line));
+          lines.push(this.replaceDefinitions(definitions, line));
         }
       }
     });
     return join(lines, "\n");
+  }
+  private replaceDefinitions(definitions: {}, inputLine: string): string {
+    let updatedLine = inputLine;
+    each(definitions, (value, key) => {
+      updatedLine = updatedLine.replace(new RegExp(`\\b${key}\\b`, "g"), value);
+    });
+    return updatedLine;
   }
 }
