@@ -7,13 +7,13 @@ import { SweetscapeParser } from "../lib/sweetscape/sweetscape-parser";
  * @param {string} input input text representing the input definition
  * @return {object} parsing result
  */
-function parse(input) {
+function parse(input: string) {
   const lexer = new SweetscapeLexer();
   const parser = new SweetscapeParser();
 
   const lexingResult = lexer.tokenize(input);
   if (!isEmpty(lexingResult.errors)) {
-    throw new Error(`Got an error while lexing input: ${first(lexingResult.errors).message}`);
+    throw new Error(`Got an error while lexing input: ${lexingResult.errors[0].message}`);
   }
   parser.input = lexingResult.tokens;
   return parser;
@@ -24,7 +24,7 @@ function parse(input) {
  * @param {object} object input object (parsing result)
  * @return {object} cleaned-up objeects
  */
-function cleanupResult(object) {
+function cleanupResult(object: any) {
   if (has(object, "tokenType")) {
     // This is a token, and we don't want to serialize all its properties
     return { TOKEN: object.tokenType.tokenName, content: object.image };

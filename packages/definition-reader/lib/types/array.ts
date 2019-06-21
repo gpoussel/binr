@@ -1,20 +1,20 @@
 import * as assert from "assert";
 import { isInteger, isString, times } from "lodash";
 
-import { ExpressionEvaluator } from "@binr/shared";
+import { BufferWrapper, Environment, ExpressionEvaluator } from "@binr/shared";
 
 import { Type } from "./type";
 
 export class ArrayType extends Type {
-  private innerType: any;
+  private innerType: Type;
   private sizeExpression: any;
-  constructor(innerType, sizeExpression) {
+  constructor(innerType: Type, sizeExpression: string) {
     super();
     this.innerType = innerType;
     this.sizeExpression = sizeExpression;
   }
 
-  public read(buffer, environment) {
+  public read(buffer: BufferWrapper, environment: Environment) {
     const evaluator = new ExpressionEvaluator();
     assert(isString(this.sizeExpression), "sizeExpression must be a string");
     const size = evaluator.evaluate(this.sizeExpression, environment);

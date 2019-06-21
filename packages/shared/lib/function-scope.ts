@@ -2,7 +2,7 @@ import * as assert from "assert";
 import { get, has } from "lodash";
 
 export class FunctionScope {
-  private functions: { [key: string]: Function };
+  private functions: { [key: string]: () => void };
 
   constructor() {
     this.functions = {};
@@ -15,7 +15,7 @@ export class FunctionScope {
     throw new Error(`Undefined function ${name} in scope`);
   }
 
-  public put(name: string, value: Function) {
+  public put(name: string, value: () => void) {
     assert(!has(this.functions, name), `Function named '${name}' is already present in scope`);
     this.functions[name] = value;
   }

@@ -1,17 +1,19 @@
 import { each } from "lodash";
 
+import { Bitmask } from "@binr/model";
+import { BufferWrapper, Environment } from "@binr/shared";
 import { Type } from "./type";
 
 export class BitmaskType extends Type {
-  private parentType: any;
+  private parentType: Type;
   private bitmask: any;
-  constructor(parentType, bitmask) {
+  constructor(parentType: Type, bitmask: Bitmask) {
     super();
     this.parentType = parentType;
     this.bitmask = bitmask;
   }
 
-  public read(buffer, environment) {
+  public read(buffer: BufferWrapper, environment: Environment) {
     const value = this.parentType.read(buffer, environment);
     const matchedItems: any[] = [];
     each(this.bitmask.entries, (entry) => {

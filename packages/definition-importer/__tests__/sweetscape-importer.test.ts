@@ -21,7 +21,7 @@ describe("Sweetscape Importer", () => {
     // as soon as we got a failure
     let hasFailed = false;
     iterateStructures(
-      (name, input) => {
+      (name: string, input: string) => {
         try {
           const definition = importer.readInput(input);
           expect(definition).toBeDefined();
@@ -41,7 +41,7 @@ describe("Sweetscape Importer", () => {
     // as soon as we got a failure
     let hasFailed = false;
     iterateScripts(
-      (name, input) => {
+      (name: string, input: string) => {
         if (name === "CountBlocks.1sc") {
           // For an unknown reason, this script contains a typo (line 127), so we can't parse it
           return;
@@ -65,7 +65,7 @@ describe("Sweetscape Importer", () => {
    */
   test("creates EXE definition", (done) => {
     iterateStructures(
-      (name, input) => {
+      (name: string, input: string) => {
         const definition = importer.readInput(input);
         expect(definition).toBeDefined();
         expect(definition.type).toEqual("definition");
@@ -76,7 +76,7 @@ describe("Sweetscape Importer", () => {
         expect(content).toMatchSnapshot();
       },
       done,
-      (name) => name === "EXE.bt",
+      (name: string) => name === "EXE.bt",
     );
   });
 
@@ -85,7 +85,7 @@ describe("Sweetscape Importer", () => {
    */
   test("creates DEX definition", (done) => {
     iterateStructures(
-      (name, input) => {
+      (name: string, input: string) => {
         const definition = importer.readInput(input);
         expect(definition).toBeDefined();
         expect(definition.type).toEqual("definition");
@@ -96,7 +96,7 @@ describe("Sweetscape Importer", () => {
         expect(content).toMatchSnapshot();
       },
       done,
-      (name) => name === "DEX.bt",
+      (name: string) => name === "DEX.bt",
     );
   });
 
@@ -105,7 +105,7 @@ describe("Sweetscape Importer", () => {
    */
   test("creates DDS definition", (done) => {
     iterateStructures(
-      (name, input) => {
+      (name: string, input: string) => {
         const definition = importer.readInput(input);
         expect(definition).toBeDefined();
         expect(definition.type).toEqual("definition");
@@ -116,7 +116,7 @@ describe("Sweetscape Importer", () => {
         expect(content).toMatchSnapshot();
       },
       done,
-      (name) => name === "DDS.bt",
+      (name: string) => name === "DDS.bt",
     );
   });
 
@@ -125,7 +125,7 @@ describe("Sweetscape Importer", () => {
    */
   test("creates CAP definition", (done) => {
     iterateStructures(
-      (name, input) => {
+      (name: string, input: string) => {
         const definition = importer.readInput(input);
         expect(definition).toBeDefined();
         expect(definition.type).toEqual("definition");
@@ -136,7 +136,7 @@ describe("Sweetscape Importer", () => {
         expect(content).toMatchSnapshot();
       },
       done,
-      (name) => name === "CAP.bt",
+      (name: string) => name === "CAP.bt",
     );
   });
 
@@ -145,7 +145,7 @@ describe("Sweetscape Importer", () => {
    */
   test("creates 010 definition", (done) => {
     iterateStructures(
-      (name, input) => {
+      (name: string, input: string) => {
         const definition = importer.readInput(input);
         expect(definition).toBeDefined();
         expect(definition.type).toEqual("definition");
@@ -156,7 +156,7 @@ describe("Sweetscape Importer", () => {
         expect(content).toMatchSnapshot();
       },
       done,
-      (name) => name === "010.bt",
+      (name: string) => name === "010.bt",
     );
   });
 });

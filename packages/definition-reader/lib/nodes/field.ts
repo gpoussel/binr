@@ -12,16 +12,16 @@ import {
 } from "../types";
 import { Node } from "./node";
 
-const getBuiltInType = (type) => builtInTypes[type.type](type);
+const getBuiltInType = (type: any) => (builtInTypes as any)[type.type](type);
 
 export class FieldNode extends Node {
   public name: any;
   private type: any;
   private annotations: any;
   private converter: ExpressionConverter;
-  private arrayDefinition: any;
-  private arrayUntilDefinition: any;
-  constructor(type, name, annotations?) {
+  private arrayDefinition: string | undefined;
+  private arrayUntilDefinition: string | undefined;
+  constructor(type: any, name: string, annotations?: any[]) {
     super();
     this.type = type;
     this.name = name;
@@ -29,15 +29,15 @@ export class FieldNode extends Node {
     this.converter = new ExpressionConverter();
   }
 
-  public setArrayDefinition(arrayDefinition) {
+  public setArrayDefinition(arrayDefinition: string) {
     this.arrayDefinition = arrayDefinition;
   }
 
-  public setArrayUntilDefinition(arrayUntilDefinition) {
+  public setArrayUntilDefinition(arrayUntilDefinition: string) {
     this.arrayUntilDefinition = arrayUntilDefinition;
   }
 
-  public buildStatement(builtElements) {
+  public buildStatement(builtElements: any) {
     const typeName = this.type.type;
     let type;
     if (has(builtInTypes, typeName)) {
@@ -55,7 +55,7 @@ export class FieldNode extends Node {
       type = new BitmaskType(getBuiltInType(bitmask.parentType), bitmask);
     }
     if (has(this, "arrayDefinition")) {
-      const definitionCode = this.converter.transformCodeToFunction(this.arrayDefinition);
+      const definitionCode = this.converter.transformCodeToFunction(this.arrayDefinition!);
       type = new ArrayType(type, definitionCode);
       if (includes(["char", "wchar"], typeName)) {
         // Special case for array of characters, that shall be read as strings
@@ -63,7 +63,7 @@ export class FieldNode extends Node {
       }
     }
     if (has(this, "arrayUntilDefinition")) {
-      const definitionCode = this.converter.transformCodeToFunction(this.arrayUntilDefinition);
+      const definitionCode = this.converter.transformCodeToFunction(this.arrayUntilDefinition!);
       type = new ArrayUntilType(type, definitionCode);
     }
     return new FieldStatement(

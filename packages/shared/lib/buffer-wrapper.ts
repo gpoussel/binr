@@ -82,7 +82,9 @@ export class BufferWrapper {
   }
 
   public readDouble() {
-    const value = (this.isBigEndian() ? this.buffer.readDoubleBE : this.buffer.readDoubleLE)(this.cursor);
+    const value = this.isBigEndian()
+      ? this.buffer.readDoubleBE(this.cursor)
+      : this.buffer.readDoubleLE(this.cursor);
     this.cursor += 8;
     return value;
   }

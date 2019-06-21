@@ -3,7 +3,6 @@ import { UtilsObject } from "./utils-object";
 import { VariableScope } from "./variable-scope";
 
 export class Environment {
-
   public get utils(): UtilsObject {
     return new UtilsObject();
   }

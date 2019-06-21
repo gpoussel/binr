@@ -3,11 +3,11 @@ import { parseScript, Syntax } from "esprima";
 import { includes, isArray, map, size } from "lodash";
 
 export class ExpressionConverter {
-  public transformCodeToFunction(code) {
+  public transformCodeToFunction(code: string) {
     return `(function() { return ${this.convert(code)}; })()`;
   }
 
-  public convert(source) {
+  public convert(source: string) {
     const ast = parseScript(source);
     if (!isArray(ast.body)) {
       throw new Error("AST body is not an array");
@@ -24,7 +24,7 @@ export class ExpressionConverter {
     return generatedSource;
   }
 
-  public processExpression(expression) {
+  public processExpression(expression: any) {
     if (!expression || expression.generated) {
       return expression;
     }
@@ -79,23 +79,23 @@ export class ExpressionConverter {
     return expression;
   }
 
-  public generateVariableScopeGetNode(name) {
+  public generateVariableScopeGetNode(name: string) {
     return this.generateGetNode("variables", name);
   }
 
-  public generateFunctionScopeGetNode(name) {
+  public generateFunctionScopeGetNode(name: string) {
     return this.generateGetNode("functions", name);
   }
 
-  public generateTopLevelFunctionScopeGetNode(name) {
+  public generateTopLevelFunctionScopeGetNode(name: string) {
     return this.generateFunctionCallNode("stream", name);
   }
 
-  public generateBuiltinFunctionScopeGetNode(name) {
+  public generateBuiltinFunctionScopeGetNode(name: string) {
     return this.generateFunctionCallNode("utils", name);
   }
 
-  public generateFunctionCallNode(objectName, functionName) {
+  public generateFunctionCallNode(objectName: string, functionName: string) {
     return {
       type: Syntax.MemberExpression,
       generated: true,
@@ -118,7 +118,7 @@ export class ExpressionConverter {
     };
   }
 
-  public generateGetNode(objectName, propertyName) {
+  public generateGetNode(objectName: string, propertyName: string) {
     return {
       type: Syntax.CallExpression,
       generated: true,

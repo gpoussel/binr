@@ -4,6 +4,7 @@ export * from "./src/enumeration";
 export * from "./src/enum-entry";
 export * from "./src/bitmask";
 export * from "./src/bitmask-entry";
+export * from "./src/statement/statement";
 export * from "./src/statement/field";
 export * from "./src/statement/if";
 export * from "./src/statement/block";

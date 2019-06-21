@@ -1,4 +1,4 @@
-import { first, isEmpty, isString } from "lodash";
+import { first, isEmpty } from "lodash";
 import { DefinitionBuilder } from "./definition-builder";
 import { DefinitionLexer } from "./definition-lexer";
 import { DefinitionParser } from "./definition-parser";
@@ -16,18 +16,14 @@ export class DefinitionReader {
     this.builder = new DefinitionBuilder();
   }
 
-  public readInput(input) {
+  public readInput(input: string) {
     const ast = this.readAst(input);
 
     this.validator.validate(ast);
     return this.builder.build(ast);
   }
 
-  public readAst(input) {
-    if (!isString(input)) {
-      throw new Error("input must be a string");
-    }
-
+  public readAst(input: string) {
     const lexingResult = this.lexer.tokenize(input);
     if (!isEmpty(lexingResult.errors)) {
       throw new Error(`Got an error while lexing input: ${first(lexingResult.errors)!.message}`);

@@ -5,8 +5,8 @@ import { FieldNode } from "./nodes";
 import { builtInTypes } from "./types";
 
 export class DefinitionValidator {
-  public validate(ast) {
-    const errors = [];
+  public validate(ast: any) {
+    const errors: string[] = [];
     this.validateHeaders(ast.headers, errors);
     const enumerationNames = map(ast.enumerations, "name");
     const bitmaskNames = map(ast.bitmasks, "name");
@@ -18,7 +18,7 @@ export class DefinitionValidator {
     }
   }
 
-  public validateHeaders(headers, errors) {
+  public validateHeaders(headers: any[], errors: string[]) {
     const headerNames: string[] = [];
     each(headers, (h) => {
       if (includes(headerNames, h.name)) {
@@ -29,7 +29,7 @@ export class DefinitionValidator {
     });
   }
 
-  public validateStructures(structures, definedNames, errors) {
+  public validateStructures(structures: any[], definedNames: any[], errors: string[]) {
     if (isEmpty(structures)) {
       errors.push("No structure defined");
     }
@@ -58,7 +58,7 @@ export class DefinitionValidator {
     });
   }
 
-  public validateStructure(structure, errors, typeNames) {
+  public validateStructure(structure: any, errors: string[], typeNames: string[]) {
     const fieldNames: string[] = [];
     each(structure.statements, (statement) => {
       if (!(statement instanceof FieldNode)) {
@@ -77,7 +77,7 @@ export class DefinitionValidator {
     });
   }
 
-  public validateField(field, errors, typeNames) {
+  public validateField(field: any, errors: string[], typeNames: string[]) {
     const { type } = field;
     const builtInType = has(builtInTypes, type.type);
     const definedType = includes(typeNames, type.type);

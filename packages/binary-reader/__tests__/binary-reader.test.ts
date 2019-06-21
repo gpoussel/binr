@@ -2,7 +2,7 @@ import { Definition, Structure } from "@binr/model";
 import { BinaryReader } from "../lib/binary-reader";
 
 const createEmptyBuffer = () => Buffer.from([]);
-const createEmptyStructure = (name) => {
+const createEmptyStructure = (name: string) => {
   const structure = new Structure(name, []);
   structure.setEndianness("big");
   return structure;

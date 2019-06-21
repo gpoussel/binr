@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "lib": ["es6"],
     "module": "commonjs",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "noImplicitReturns": false,
     "noImplicitThis": true,
     "noFallthroughCasesInSwitch": true,

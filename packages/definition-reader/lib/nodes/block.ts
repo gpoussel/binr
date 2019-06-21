@@ -3,13 +3,13 @@ import { flatMap, map } from "lodash";
 import { Node } from "./node";
 
 export class BlockNode extends Node {
-  private innerNodes: any;
-  constructor(innerNodes) {
+  private innerNodes: Node[];
+  constructor(innerNodes: Node[]) {
     super();
     this.innerNodes = innerNodes;
   }
 
-  public buildStatement(builtElements) {
+  public buildStatement(builtElements: any) {
     return new BlockStatement(
       map(this.innerNodes, (innerStatement) => innerStatement.buildStatement(builtElements)),
     );

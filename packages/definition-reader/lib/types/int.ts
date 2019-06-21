@@ -1,13 +1,14 @@
+import { BufferWrapper } from "@binr/shared";
 import { Type } from "./type";
 
 export class IntType extends Type {
-  private size: any;
-  constructor(size) {
+  private size: number;
+  constructor(size: number) {
     super();
     this.size = size;
   }
 
-  public read(buffer) {
+  public read(buffer: BufferWrapper) {
     return buffer.readInt(this.size);
   }
 }

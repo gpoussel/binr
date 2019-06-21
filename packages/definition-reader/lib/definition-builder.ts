@@ -3,14 +3,14 @@ import { clone, defaultTo, each, find, get, has, includes, keyBy, map, remove, v
 import { builtInTypes } from "./types";
 
 export class DefinitionBuilder {
-  public build(ast) {
-    const enumerations = keyBy(map(ast.enumerations, (e) => this.buildEnumeration(e)), "name");
-    const bitmasks = keyBy(map(ast.bitmasks, (e) => this.buildBitmask(e)), "name");
+  public build(ast: any) {
+    const enumerations = map(ast.enumerations, (e) => this.buildEnumeration(e));
+    const bitmasks = map(ast.bitmasks, (e) => this.buildBitmask(e));
     const builtElements = {
-      enumerations,
-      bitmasks,
+      enumerations: keyBy(enumerations, "name"),
+      bitmasks: keyBy(bitmasks, "name"),
     };
-    const endiannessHeader = ast.headers.find((h) => h.name === "endianness");
+    const endiannessHeader = ast.headers.find((h: any) => h.name === "endianness");
     const globalEndianness = get(endiannessHeader, "value", "big");
     const structures = values(this.buildAllStructures(globalEndianness, ast.structures, builtElements));
     return new Definition(structures, enumerations, bitmasks);
@@ -24,8 +24,15 @@ export class DefinitionBuilder {
    * @param {array} builtElements all elements already built in this definition
    * @return {array} all structures
    */
-  public buildAllStructures(globalEndianness, structures, builtElements) {
-    const builtStructures = {};
+  public buildAllStructures(
+    globalEndianness: string,
+    structures: any[],
+    builtElements: {
+      enumerations: { [key: string]: Enumeration };
+      bitmasks: { [key: string]: Bitmask };
+    },
+  ): { [key: string]: Structure } {
+    const builtStructures: { [key: string]: Structure } = {};
     const structuresToProcess = clone(structures);
     while (structuresToProcess.length > 0) {
       const builtStructuresDuringThisTurn: any[] = [];
@@ -86,7 +93,15 @@ export class DefinitionBuilder {
     return builtStructures;
   }
 
-  public buildStructure(globalEndianness, builtElements, structure) {
+  public buildStructure(
+    globalEndianness: string,
+    builtElements: {
+      structures: { [key: string]: Structure };
+      enumerations: { [key: string]: Enumeration };
+      bitmasks: { [key: string]: Bitmask };
+    },
+    structure: any,
+  ): Structure {
     const structureObject = new Structure(
       structure.name,
       map(structure.statements, (s) => s.buildStatement(builtElements)),
@@ -97,21 +112,21 @@ export class DefinitionBuilder {
     return structureObject;
   }
 
-  public buildEnumeration(enumeration) {
-    const entries = map(enumeration.entries, this.buildEnumEntry.bind(this));
+  public buildEnumeration(enumeration: any): Enumeration {
+    const entries = map(enumeration.entries, this.buildEnumEntry);
     return new Enumeration(enumeration.name, enumeration.parentType, entries);
   }
 
-  public buildBitmask(bitmask) {
-    const entries = map(bitmask.entries, this.buildBitmaskEntry.bind(this));
+  public buildBitmask(bitmask: any): Bitmask {
+    const entries = map(bitmask.entries, this.buildBitmaskEntry);
     return new Bitmask(bitmask.name, bitmask.parentType, entries);
   }
 
-  public buildEnumEntry(entry) {
+  public buildEnumEntry(entry: any): EnumEntry {
     return new EnumEntry(entry.key, entry.value);
   }
 
-  public buildBitmaskEntry(entry) {
+  public buildBitmaskEntry(entry: any): BitmaskEntry {
     return new BitmaskEntry(entry.key, entry.value);
   }
 }

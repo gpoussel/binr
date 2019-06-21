@@ -1,15 +1,21 @@
 import * as fs from "fs";
+// @ts-ignore
 import * as gunzip from "gunzip-maybe";
 import { isUndefined, join } from "lodash";
 import * as tar from "tar-stream";
 
 const structureFolder = `${__dirname}/../../__fixtures__/`;
 
-export function getSingleStructure(name) {
+export function getSingleStructure(name: string) {
   return fs.readFileSync(`${structureFolder}/${name}.bt`, "UTF-8");
 }
 
-export function iterateArchive(filename, iteratee, done, filter) {
+export function iterateArchive(
+  filename: string,
+  iteratee: (name: string, buffer: string) => void,
+  done: () => void,
+  filter: (name: string) => boolean,
+) {
   const readStream = fs.createReadStream(`${structureFolder}/${filename}`);
   const extract = tar.extract();
 
@@ -31,10 +37,18 @@ export function iterateArchive(filename, iteratee, done, filter) {
   readStream.pipe(gunzip()).pipe(extract);
 }
 
-export function iterateStructures(iteratee, done, filter) {
+export function iterateStructures(
+  iteratee: (name: string, buffer: string) => void,
+  done: () => void,
+  filter: (name: string) => boolean,
+) {
   return iterateArchive("010-structures.tar.gz", iteratee, done, filter);
 }
 
-export function iterateScripts(iteratee, done, filter) {
+export function iterateScripts(
+  iteratee: (name: string, buffer: string) => void,
+  done: () => void,
+  filter: (name: string) => boolean,
+) {
   return iterateArchive("010-scripts.tar.gz", iteratee, done, filter);
 }

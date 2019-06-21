@@ -5,11 +5,11 @@ import { Node } from "./node";
 
 export class IfNode extends Node {
   private test: any;
-  private consequent: any;
-  private alternate: any;
+  private consequent: Node;
+  private alternate: Node;
   private converter: any;
 
-  constructor(test, consequent, alternate) {
+  constructor(test: string, consequent: Node, alternate: Node) {
     super();
     this.test = test;
     this.consequent = consequent;
@@ -17,7 +17,7 @@ export class IfNode extends Node {
     this.converter = new ExpressionConverter();
   }
 
-  public buildStatement(builtElements) {
+  public buildStatement(builtElements: any) {
     const testCode = this.converter.transformCodeToFunction(this.test);
     const consequentStatement = this.consequent.buildStatement(builtElements);
     const alternateStatement =

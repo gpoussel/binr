@@ -7,17 +7,23 @@ describe("DefinitionBuilder", () => {
     const structure1 = {
       name: "Structure1",
       statements: [
-        new FieldNode("s2", {
-          type: "Structure2",
-        }),
+        new FieldNode(
+          {
+            type: "Structure2",
+          },
+          "s2",
+        ),
       ],
     };
     const structure2 = {
       name: "Structure2",
       statements: [
-        new FieldNode("s1", {
-          type: "Structure1",
-        }),
+        new FieldNode(
+          {
+            type: "Structure1",
+          },
+          "s1",
+        ),
       ],
     };
     const ast = {
@@ -34,9 +40,12 @@ describe("DefinitionBuilder", () => {
     const structure1 = {
       name: "Structure1",
       statements: [
-        new FieldNode("s2", {
-          type: "WTF",
-        }),
+        new FieldNode(
+          {
+            type: "WTF",
+          },
+          "s2",
+        ),
       ],
     };
     const ast = {
