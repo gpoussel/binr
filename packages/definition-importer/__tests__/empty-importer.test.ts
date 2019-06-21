@@ -13,7 +13,7 @@ describe("Default Importer", () => {
 
   test("rejects invalid pre-processor", () => {
     const importer = new Importer();
-    importer.performPreprocessing = (input) => 4;
+    importer.performPreprocessing = () => 4;
     expect(() => importer.readInput("")).toThrow(/string/);
   });
 

@@ -71,6 +71,7 @@ describe("Sweetscape Importer", () => {
         expect(definition.type).toEqual("definition");
         const { content } = definition;
 
+        expect(name).toBe("EXE.bt");
         expect(content).toHaveLength(93);
         expect(content).toMatchSnapshot();
       },
@@ -90,6 +91,7 @@ describe("Sweetscape Importer", () => {
         expect(definition.type).toEqual("definition");
         const { content } = definition;
 
+        expect(name).toBe("DEX.bt");
         expect(content).toHaveLength(155);
         expect(content).toMatchSnapshot();
       },
@@ -109,6 +111,7 @@ describe("Sweetscape Importer", () => {
         expect(definition.type).toEqual("definition");
         const { content } = definition;
 
+        expect(name).toBe("DDS.bt");
         expect(content).toHaveLength(14);
         expect(content).toMatchSnapshot();
       },
@@ -128,6 +131,7 @@ describe("Sweetscape Importer", () => {
         expect(definition.type).toEqual("definition");
         const { content } = definition;
 
+        expect(name).toBe("CAP.bt");
         expect(content).toHaveLength(81);
         expect(content).toMatchSnapshot();
       },
@@ -147,6 +151,7 @@ describe("Sweetscape Importer", () => {
         expect(definition.type).toEqual("definition");
         const { content } = definition;
 
+        expect(name).toBe("010.bt");
         expect(content).toHaveLength(13);
         expect(content).toMatchSnapshot();
       },

@@ -14,7 +14,7 @@ export function iterateArchive(filename, iteratee, done, filter) {
   const extract = tar.extract();
 
   extract.on("entry", (header, stream, next) => {
-    const chunks = [];
+    const chunks: string[] = [];
     stream.on("data", (chunk) => chunks.push(chunk));
     stream.once("end", () => {
       const buffer = join(chunks, "");
