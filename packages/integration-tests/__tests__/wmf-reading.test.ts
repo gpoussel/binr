@@ -1,5 +1,3 @@
-"use strict";
-
 import { BinaryReader } from "@binr/binary-reader";
 import { DefinitionReader } from "@binr/definition-reader";
 import fs from "fs";

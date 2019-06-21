@@ -1,5 +1,3 @@
-"use strict";
-
 import _ from "lodash";
 import { SweetscapeLexer } from "../lib/sweetscape/sweetscape-lexer";
 import { SweetscapeParser } from "../lib/sweetscape/sweetscape-parser";

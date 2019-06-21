@@ -1,5 +1,3 @@
-"use strict";
-
 import { Type } from "./type";
 
 export class WCharType extends Type {

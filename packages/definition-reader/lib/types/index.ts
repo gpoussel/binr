@@ -1,5 +1,3 @@
-"use strict";
-
 import { CharType } from "./char";
 import { CStringType } from "./cstring";
 import { DoubleType } from "./double";

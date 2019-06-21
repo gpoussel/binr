@@ -1,5 +1,3 @@
-"use strict";
-
 import { Bitmask, BitmaskEntry, Definition, EnumEntry, Enumeration, Structure } from "@binr/model";
 import _ from "lodash";
 import { ExpressionConverter } from "./expression-converter";

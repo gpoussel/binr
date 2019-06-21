@@ -1,5 +1,3 @@
-"use strict";
-
 import { UtilsObject } from "../lib/utils-object";
 
 describe("UtilsObject", () => {

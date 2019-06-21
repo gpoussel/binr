@@ -1,5 +1,3 @@
-"use strict";
-
 import { CstNode, CstParser } from "chevrotain";
 import _ from "lodash";
 import { tokens } from "./definition-lexer";

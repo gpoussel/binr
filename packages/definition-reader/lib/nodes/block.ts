@@ -1,5 +1,3 @@
-"use strict";
-
 import { BlockStatement } from "@binr/model";
 import _ from "lodash";
 import { Node } from "./node";

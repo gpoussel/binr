@@ -1,5 +1,3 @@
-"use strict";
-
 import { VariableScope } from "../lib/variable-scope";
 
 describe("VariableScope", () => {

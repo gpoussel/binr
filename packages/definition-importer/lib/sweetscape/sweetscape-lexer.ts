@@ -1,5 +1,3 @@
-"use strict";
-
 import { Lexer } from "chevrotain";
 import _ from "lodash";
 import { tokens } from "./sweetscape-tokens";

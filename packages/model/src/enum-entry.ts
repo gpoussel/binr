@@ -1,5 +1,3 @@
-"use strict";
-
 export class EnumEntry {
   private key: string;
   private value: any;

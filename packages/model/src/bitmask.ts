@@ -1,5 +1,3 @@
-"use strict";
-
 export class Bitmask {
   private name: string;
   private parentType: any;

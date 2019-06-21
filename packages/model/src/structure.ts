@@ -1,5 +1,3 @@
-"use strict";
-
 import assert from "assert";
 
 export class Structure {

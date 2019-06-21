@@ -1,5 +1,3 @@
-"use strict";
-
 /* eslint-disable no-param-reassign */
 
 import escodegen from "escodegen";

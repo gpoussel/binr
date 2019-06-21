@@ -1,5 +1,3 @@
-"use strict";
-
 import { FunctionScope } from "./function-scope";
 import { UtilsObject } from "./utils-object";
 import { VariableScope } from "./variable-scope";

@@ -1,5 +1,3 @@
-"use strict";
-
 import { DefinitionBuilder } from "../lib/definition-builder";
 import { FieldNode } from "../lib/nodes";
 

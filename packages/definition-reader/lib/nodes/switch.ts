@@ -1,5 +1,3 @@
-"use strict";
-
 import { BlockStatement, IfStatement } from "@binr/model";
 import _ from "lodash";
 import { ExpressionConverter } from "../expression-converter";

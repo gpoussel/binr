@@ -1,5 +1,3 @@
-"use strict";
-
 import { SweetscapeDefinitionImporter } from "../lib/sweetscape/sweetscape-importer";
 import { getSingleStructure, iterateScripts, iterateStructures } from "./utils/010-structures";
 

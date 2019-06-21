@@ -1,5 +1,3 @@
-"use strict";
-
 export class BitmaskEntry {
   private key: string;
   private value: any;

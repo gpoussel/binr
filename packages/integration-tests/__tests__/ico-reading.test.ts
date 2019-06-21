@@ -1,5 +1,3 @@
-"use strict";
-
 const _ = require("lodash");
 
 import { BinaryReader } from "@binr/binary-reader";

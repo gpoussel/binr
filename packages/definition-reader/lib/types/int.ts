@@ -1,5 +1,3 @@
-"use strict";
-
 import { Type } from "./type";
 
 export class IntType extends Type {

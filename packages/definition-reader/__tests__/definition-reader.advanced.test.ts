@@ -1,5 +1,3 @@
-"use strict";
-
 import fs from "fs";
 import _ from "lodash";
 import { DefinitionReader } from "../lib/definition-reader";

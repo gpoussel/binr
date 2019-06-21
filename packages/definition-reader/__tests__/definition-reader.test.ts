@@ -1,5 +1,3 @@
-"use strict";
-
 import { ExpressionEvaluator, FunctionScope, VariableScope } from "@binr/shared";
 import _ from "lodash";
 import { DefinitionReader } from "../lib/definition-reader";

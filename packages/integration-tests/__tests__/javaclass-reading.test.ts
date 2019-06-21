@@ -1,5 +1,3 @@
-"use strict";
-
 import fs from "fs";
 const _ = require("lodash");
 import { BinaryReader } from "@binr/binary-reader";

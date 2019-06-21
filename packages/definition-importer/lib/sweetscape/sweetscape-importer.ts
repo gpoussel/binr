@@ -1,5 +1,3 @@
-"use strict";
-
 import { CStylePreprocessor } from "..//common/cstyle-preprocessor";
 import { Importer } from "../importer";
 import { SweetscapeLexer } from "./sweetscape-lexer";

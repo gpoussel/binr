@@ -1,5 +1,3 @@
-"use strict";
-
 import { Definition, Structure } from "@binr/model";
 import { BinaryReader } from "../lib/binary-reader";
 

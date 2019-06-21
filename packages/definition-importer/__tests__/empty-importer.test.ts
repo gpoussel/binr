@@ -1,5 +1,3 @@
-"use strict";
-
 import { Importer } from "../lib/importer";
 
 /**

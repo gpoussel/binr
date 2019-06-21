@@ -1,5 +1,3 @@
-"use strict";
-
 export class Enumeration {
   private name: string;
   private parentType: any;

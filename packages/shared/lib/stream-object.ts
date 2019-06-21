@@ -1,5 +1,3 @@
-"use strict";
-
 /**
  * This object is exposed in structure definition through "_" global variable
  */

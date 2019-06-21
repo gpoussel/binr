@@ -1,5 +1,3 @@
-"use strict";
-
 export class Definition {
   private _structures: any[];
   private enumerations: any[];

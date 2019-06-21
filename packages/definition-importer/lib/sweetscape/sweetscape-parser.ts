@@ -1,5 +1,3 @@
-"use strict";
-
 import { CstParser } from "chevrotain";
 
 import _ from "lodash";

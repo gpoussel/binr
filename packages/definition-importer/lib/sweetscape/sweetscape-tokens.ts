@@ -1,5 +1,3 @@
-"use strict";
-
 import { createToken, Lexer } from "chevrotain";
 import escapeRegexp from "escape-string-regexp";
 import _ from "lodash";
