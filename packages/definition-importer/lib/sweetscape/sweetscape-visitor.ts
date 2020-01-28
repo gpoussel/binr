@@ -94,15 +94,15 @@ export function getVisitor(parser: CstParser) {
     }
 
     public typeName(ctx: any) {
-      if (has(ctx, "typeNameWithoutVoid")) {
-        return this.visit(ctx.typeNameWithoutVoid);
-      }
-      if (has(ctx, "Void")) {
-        return {
-          name: "void",
-        };
-      }
-      throw new Error();
+      return this.visitChoices(ctx, [
+        { name: "typeNameWithoutVoid", build: () => this.visit(ctx.typeNameWithoutVoid) },
+        {
+          name: "Void",
+          build: () => ({
+            name: "void",
+          }),
+        },
+      ]);
     }
 
     public typeNameWithoutVoid(ctx: any) {
@@ -468,24 +468,25 @@ export function getVisitor(parser: CstParser) {
     }
 
     public prefixExpression(ctx: any) {
-      if (has(ctx, "postfixExpression")) {
-        return this.visit(ctx.postfixExpression);
-      }
-      if (has(ctx, "prefixOperator")) {
-        return {
-          type: "prefixExpression",
-          expression: this.visit(ctx.castExpression),
-          operator: this.visit(ctx.prefixOperator),
-        };
-      }
-      if (has(ctx, "unaryOperator")) {
-        return {
-          type: "unaryExpression",
-          expression: this.visit(ctx.castExpression),
-          operator: this.visit(ctx.unaryOperator),
-        };
-      }
-      throw new Error();
+      return this.visitChoices(ctx, [
+        { name: "postfixExpression", build: () => this.visit(ctx.postfixExpression) },
+        {
+          name: "prefixOperator",
+          build: () => ({
+            type: "prefixExpression",
+            expression: this.visit(ctx.castExpression),
+            operator: this.visit(ctx.prefixOperator),
+          }),
+        },
+        {
+          name: "unaryOperator",
+          build: () => ({
+            type: "unaryExpression",
+            expression: this.visit(ctx.castExpression),
+            operator: this.visit(ctx.unaryOperator),
+          }),
+        },
+      ]);
     }
 
     public postfixExpression(ctx: any) {
@@ -567,17 +568,17 @@ export function getVisitor(parser: CstParser) {
     }
 
     public primaryExpression(ctx: any) {
-      if (has(ctx, "simpleValue")) {
-        return this.visit(ctx.simpleValue);
-      }
-      if (has(ctx, "expressionOrTypeName")) {
-        // Sizeof expression
-        return {
-          type: "sizeofExpression",
-          operand: this.visit(ctx.expressionOrTypeName),
-        };
-      }
-      return this.visit(ctx.parExpression);
+      return this.visitChoices(ctx, [
+        { name: "simpleValue", build: () => this.visit(ctx.simpleValue) },
+        {
+          name: "expressionOrTypeName",
+          build: () => ({
+            type: "sizeofExpression",
+            operand: this.visit(ctx.expressionOrTypeName),
+          }),
+        },
+        { name: "parExpression", build: () => this.visit(ctx.parExpression) },
+      ]);
     }
 
     public assignmentOperator(ctx: any) {
@@ -616,7 +617,7 @@ export function getVisitor(parser: CstParser) {
       return getFirstTokenImage(ctx);
     }
 
-    public number(ctx: { [key: string]: any[] }) {
+    public number(ctx: { [key: string]: any[] }): number {
       return this.visitChoices(ctx, [
         {
           name: "NumberBinaryLiteral",
@@ -694,18 +695,16 @@ export function getVisitor(parser: CstParser) {
     }
 
     public anyArraySelector(ctx: any) {
-      if (has(ctx, "emptyArraySelector")) {
-        return {
-          array: true,
-        };
-      }
-      if (has(ctx, "arraySelector")) {
-        return {
-          array: true,
-          arraySelector: this.visit(ctx.arraySelector),
-        };
-      }
-      throw new Error();
+      return this.visitChoices(ctx, [
+        { name: "emptyArraySelector", build: () => ({ array: true }) },
+        {
+          name: "arraySelector",
+          build: () => ({
+            array: true,
+            arraySelector: this.visit(ctx.arraySelector),
+          }),
+        },
+      ]);
     }
 
     public variableInitializer(ctx: any) {
@@ -721,7 +720,7 @@ export function getVisitor(parser: CstParser) {
       ]);
     }
 
-    public boolean(ctx: any) {
+    public boolean(ctx: any): boolean {
       return this.visitChoices(ctx, [
         { name: "True", build: () => true },
         { name: "False", build: () => false },
