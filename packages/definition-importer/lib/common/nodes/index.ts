@@ -5,6 +5,7 @@ import { Expression } from "./expression";
 import { Node } from "./node";
 import { Statement } from "./statement";
 import { VariableDeclarationStatement } from "./variable-declaration-statement";
+import { VariableModifier } from "./variable-modifier";
 
 export {
   BlockStatement,
@@ -14,4 +15,5 @@ export {
   Node,
   Statement,
   VariableDeclarationStatement,
+  VariableModifier,
 };

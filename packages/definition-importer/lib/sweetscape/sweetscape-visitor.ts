@@ -20,6 +20,7 @@ import {
   Statement,
   ExpressionStatement,
   VariableDeclarationStatement,
+  VariableModifier,
 } from "../common/nodes";
 
 function getFirstTokenImage(ctx: { [key: string]: any[] }) {
@@ -246,7 +247,7 @@ export function getVisitor(parser: CstParser) {
     public localVariableDeclarationStatement(ctx: any): VariableDeclarationStatement {
       return new VariableDeclarationStatement(
         this.visit(ctx.typeName),
-        this.visitAll(ctx, "modifier"),
+        this.visitAll(ctx, "variableModifier"),
         this.visitIfPresent(ctx, "bitfieldRest"),
         this.visitIfPresent(ctx, "variableDeclarators"),
         this.visitAll(ctx, "annotations"),
@@ -257,12 +258,12 @@ export function getVisitor(parser: CstParser) {
       return this.visitAll(ctx, "variableDeclarator");
     }
 
-    public variableModifier(ctx: any) {
+    public variableModifier(ctx: any): VariableModifier {
       if (has(ctx, "Local")) {
-        return { local: true };
+        return VariableModifier.LOCAL;
       }
       if (has(ctx, "Const")) {
-        return { const: true };
+        return VariableModifier.CONST;
       }
       throw new Error();
     }
