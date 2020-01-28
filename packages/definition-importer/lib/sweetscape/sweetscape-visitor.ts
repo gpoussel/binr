@@ -14,9 +14,7 @@ import {
   parseInt,
   size,
 } from "lodash";
-import { Definition } from "../common/nodes";
-import { BlockStatement } from "../common/nodes/block-statement";
-import { Statement } from "../common/nodes/statement";
+import { BlockStatement, Definition, Statement, ExpressionStatement } from "../common/nodes";
 
 function getFirstTokenImage(ctx: { [key: string]: any[] }) {
   return first(get(ctx, first(keys(ctx))!)).image;
@@ -79,7 +77,7 @@ export function getVisitor(parser: CstParser) {
       return new Definition(this.visitAll(ctx, "topLevelStatement"));
     }
 
-    public topLevelStatement(ctx: any) {
+    public topLevelStatement(ctx: any): Statement {
       return this.visitFirst(ctx, "statement", "functionDeclarationStatement");
     }
 
@@ -254,9 +252,6 @@ export function getVisitor(parser: CstParser) {
       if (has(ctx, "variableDeclarators")) {
         result.declarations = this.visit(ctx.variableDeclarators);
       }
-      if (has(ctx, "annotations")) {
-        result.annotations = this.visit(ctx.annotations);
-      }
       return result;
     }
 
@@ -382,7 +377,7 @@ export function getVisitor(parser: CstParser) {
     }
 
     public expressionStatement(ctx: any) {
-      return this.visit(ctx.assignmentExpression);
+      return new ExpressionStatement(this.visit(ctx.assignmentExpression));
     }
 
     public parExpression(ctx: any) {
@@ -767,7 +762,7 @@ export function getVisitor(parser: CstParser) {
       return map(get(ctx, propertyName), this.visit.bind(this));
     }
 
-    private visitFirst(ctx: any, ...propertyNames: string[]): any[] {
+    private visitFirst(ctx: any, ...propertyNames: string[]): any {
       for (let i = 0; i < propertyNames.length; ++i) {
         if (has(ctx, propertyNames[i])) {
           return this.visit(get(ctx, propertyNames[i]));
