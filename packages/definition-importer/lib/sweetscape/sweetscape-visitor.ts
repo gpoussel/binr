@@ -22,8 +22,9 @@ import {
   VariableModifier,
   VoidType,
   UnaryExpression,
+  Type,
+  TernaryExpression,
 } from "../common/nodes";
-import { Type } from "../common/nodes/type";
 
 const OPERATORS = {
   BinaryAnd: Operator.BINARY_AND,
@@ -415,21 +416,18 @@ export function getVisitor(parser: CstParser) {
       return createBinaryExpressions(expressions, operators);
     }
 
-    public ternaryExpression(ctx: any) {
+    public ternaryExpression(ctx: any): Expression {
       const condition = this.visit(ctx.booleanOrExpression);
-      if (has(ctx, "assignmentExpression")) {
-        const result: any = {
-          type: "ternaryExpression",
-          condition,
-          trueStatement: this.visit(ctx.assignmentExpression[0]),
-        };
-        if (has(ctx, "ternaryExpression")) {
-          result.falseStatement = this.visit(ctx.ternaryExpression);
-        }
-        return result;
+      if (!has(ctx, "assignmentExpression")) {
+        // Without ternary operators, the condition is in fact the expression itself
+        return condition;
       }
-      // Without ternary operators, the condition is in fact the expression itself
-      return condition;
+      const trueExpression = this.visit(ctx.assignmentExpression[0]);
+      if (!has(ctx, "ternaryExpression")) {
+        return new TernaryExpression(condition, trueExpression);
+      }
+      const falseExpression = this.visit(ctx.ternaryExpression);
+      return new TernaryExpression(condition, trueExpression, falseExpression);
     }
 
     public booleanOrExpression(ctx: any): Expression {

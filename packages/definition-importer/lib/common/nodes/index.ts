@@ -14,6 +14,8 @@ import { NumberValue } from "./number-value";
 import { Operator } from "./operator";
 import { Statement } from "./statement";
 import { StringValue } from "./string-value";
+import { TernaryExpression } from "./ternary-expression";
+import { Type } from "./type";
 import { TypeModifier } from "./type-modifier";
 import { UnaryExpression } from "./unary-expression";
 import { Value } from "./value";
@@ -38,6 +40,8 @@ export {
   Operator,
   Statement,
   StringValue,
+  TernaryExpression,
+  Type,
   TypeModifier,
   UnaryExpression,
   Value,
