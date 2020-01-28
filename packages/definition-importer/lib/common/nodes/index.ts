@@ -32,6 +32,7 @@ import { PropertyAccessExpression } from "./property-access-expression";
 import { ArrayInitializationExpression } from "./array-initialization-expression";
 import { BreakStatement } from "./break-statement";
 import { ReturnStatement } from "./return-statement";
+import { WhileStatement } from "./while-statement";
 
 export {
   Annotation,
@@ -68,4 +69,5 @@ export {
   PropertyAccessExpression,
   ArrayInitializationExpression,
   ReturnStatement,
+  WhileStatement,
 };

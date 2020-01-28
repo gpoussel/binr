@@ -34,6 +34,7 @@ import {
   ArrayInitializationExpression,
   BreakStatement,
   ReturnStatement,
+  WhileStatement,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -233,12 +234,8 @@ export function getVisitor(parser: CstParser) {
       return new EmptyStatement();
     }
 
-    public whileStatement(ctx: any) {
-      return {
-        type: "whileStatement",
-        condition: this.visit(ctx.parExpression),
-        body: this.visit(ctx.statement),
-      };
+    public whileStatement(ctx: any): WhileStatement {
+      return new WhileStatement(this.visit(ctx.parExpression), this.visit(ctx.statement));
     }
 
     public doWhileStatement(ctx: any) {
