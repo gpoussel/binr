@@ -24,6 +24,7 @@ import {
   UnaryExpression,
   Type,
   TernaryExpression,
+  PostfixExpression,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -490,7 +491,7 @@ export function getVisitor(parser: CstParser) {
       return createBinaryExpressions(expressions, operators);
     }
 
-    public castExpression(ctx: any) {
+    public castExpression(ctx: any): Expression {
       return this.visitFirst(ctx, "castOperation", "prefixExpression");
     }
 
@@ -516,21 +517,17 @@ export function getVisitor(parser: CstParser) {
       ]);
     }
 
-    public postfixExpression(ctx: any) {
+    public postfixExpression(ctx: any): Expression {
       const expression = this.visit(ctx.callExpression);
-      if (has(ctx, "postfixOperator")) {
-        let currentExpression = expression;
-        each(this.visitAll(ctx, "postfixOperator"), (operator) => {
-          currentExpression = {
-            type: "postfixExpression",
-            expression: currentExpression,
-            operator,
-          };
-        });
-        return currentExpression;
+      if (!has(ctx, "postfixOperator")) {
+        // Without operator, the expression is the result
+        return expression;
       }
-      // Without operator, the expression is the result
-      return expression;
+      let currentExpression = expression;
+      each(this.visitAll(ctx, "postfixOperator"), (operator) => {
+        currentExpression = new PostfixExpression(currentExpression, operator);
+      });
+      return currentExpression;
     }
 
     public callExpression(ctx: any) {
