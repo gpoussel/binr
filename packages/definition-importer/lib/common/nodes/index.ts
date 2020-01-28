@@ -30,6 +30,7 @@ import { FunctionCallExpression } from "./function-call-expression";
 import { ArrayIndexExpression } from "./array-index-expression";
 import { PropertyAccessExpression } from "./property-access-expression";
 import { ArrayInitializationExpression } from "./array-initialization-expression";
+import { BreakStatement } from "./break-statement";
 
 export {
   Annotation,
@@ -37,6 +38,7 @@ export {
   BlockStatement,
   BooleanValue,
   CastExpression,
+  BreakStatement,
   CommaExpression,
   PostfixExpression,
   PrefixExpression,

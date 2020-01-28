@@ -32,6 +32,7 @@ import {
   ArrayIndexExpression,
   PropertyAccessExpression,
   ArrayInitializationExpression,
+  BreakStatement,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -226,10 +227,8 @@ export function getVisitor(parser: CstParser) {
       return result;
     }
 
-    public breakStatement() {
-      return {
-        type: "breakStatement",
-      };
+    public breakStatement(): BreakStatement {
+      return new BreakStatement();
     }
 
     public emptyStatement(): EmptyStatement {
