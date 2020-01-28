@@ -1,9 +1,9 @@
-import { FieldStatement } from "@binr/model";
+import { FieldStatement, Definition } from "@binr/model";
 import { ExpressionEvaluator, FunctionScope, VariableScope } from "@binr/shared";
 import { each } from "lodash";
 import { DefinitionReader } from "../lib/definition-reader";
 
-function createAndCallParser(input: string) {
+function createAndCallParser(input: string): () => Definition {
   return () => {
     const reader = new DefinitionReader();
     return reader.readInput(input);
@@ -49,6 +49,22 @@ describe("DefinitionReader", () => {
   test("accepts field annotations", () => {
     each(["struct a { @ignore(false) int b; @ignore(true) int c; }"], (value: string) => {
       expect(createAndCallParser(value)()).toBeDefined();
+    });
+  });
+
+  test("accepts bitmasks", () => {
+    each(["bitmask foo extends int:16 { A = 10 } struct A {}"], (value: string) => {
+      const result = createAndCallParser(value)();
+      expect(result).toBeDefined();
+      expect(result.bitmasks).toHaveLength(1);
+    });
+  });
+
+  test("accepts enumerations", () => {
+    each(["enum foo extends int:16 { A = 10 } struct A {}"], (value: string) => {
+      const result = createAndCallParser(value)();
+      expect(result).toBeDefined();
+      expect(result.enumerations).toHaveLength(1);
     });
   });
 
