@@ -36,16 +36,19 @@ export class SweetscapeParser extends CstParser {
   public definition = this.RULE("definition", () => this.MANY(() => this.SUBRULE(this.topLevelStatement)));
 
   private topLevelStatement = this.RULE("topLevelStatement", () => {
-    this.OR([
-      {
-        GATE: this.BACKTRACK(this.functionDeclarationStatement),
-        ALT: () => this.SUBRULE(this.functionDeclarationStatement),
-      },
-      {
-        GATE: this.BACKTRACK(this.statement),
-        ALT: () => this.SUBRULE(this.statement),
-      },
-    ]);
+    this.OR({
+      DEF: [
+        {
+          GATE: this.BACKTRACK(this.functionDeclarationStatement),
+          ALT: () => this.SUBRULE(this.functionDeclarationStatement),
+        },
+        {
+          GATE: this.BACKTRACK(this.statement),
+          ALT: () => this.SUBRULE(this.statement),
+        },
+      ],
+      IGNORE_AMBIGUITIES: true,
+    });
   });
 
   private statementList = this.RULE("statementList", () => this.MANY(() => this.SUBRULE(this.statement)));
@@ -257,13 +260,16 @@ export class SweetscapeParser extends CstParser {
   });
 
   private expressionOrTypeName = this.RULE("expressionOrTypeName", () => {
-    this.OR([
-      { ALT: () => this.SUBRULE(this.assignmentExpression) },
-      {
-        GATE: () => this.LA(1).tokenType !== tokens.Identifier,
-        ALT: () => this.SUBRULE(this.typeNameWithoutVoid),
-      },
-    ]);
+    this.OR({
+      DEF: [
+        { ALT: () => this.SUBRULE(this.assignmentExpression) },
+        {
+          GATE: () => this.LA(1).tokenType !== tokens.Identifier,
+          ALT: () => this.SUBRULE(this.typeNameWithoutVoid),
+        },
+      ],
+      IGNORE_AMBIGUITIES: true,
+    });
   });
 
   private expressionStatement = this.RULE("expressionStatement", () => {
@@ -398,16 +404,19 @@ export class SweetscapeParser extends CstParser {
    * Level 12 precedence: cast (type)
    */
   private castExpression = this.RULE("castExpression", () => {
-    this.OR([
-      {
-        GATE: this.BACKTRACK(this.castOperation),
-        ALT: () => this.SUBRULE(this.castOperation),
-      },
-      {
-        GATE: this.BACKTRACK(this.prefixExpression),
-        ALT: () => this.SUBRULE(this.prefixExpression),
-      },
-    ]);
+    this.OR({
+      DEF: [
+        {
+          GATE: this.BACKTRACK(this.castOperation),
+          ALT: () => this.SUBRULE(this.castOperation),
+        },
+        {
+          GATE: this.BACKTRACK(this.prefixExpression),
+          ALT: () => this.SUBRULE(this.prefixExpression),
+        },
+      ],
+      IGNORE_AMBIGUITIES: true,
+    });
   });
 
   private castOperation = this.RULE("castOperation", () => {
@@ -724,11 +733,6 @@ export class SweetscapeParser extends CstParser {
       recoveryEnabled: false,
       maxLookahead: 5,
       outputCst: true,
-      ignoredIssues: {
-        topLevelStatement: { OR: true },
-        expressionOrTypeName: { OR: true },
-        castExpression: { OR: true },
-      },
     });
 
     this.performSelfAnalysis();
