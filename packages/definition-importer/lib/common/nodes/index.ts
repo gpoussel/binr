@@ -25,6 +25,7 @@ import { VariableModifier } from "./variable-modifier";
 import { VoidType } from "./void-type";
 import { PostfixExpression } from "./postfix-expression";
 import { PrefixExpression } from "./prefix-expression";
+import { CommaExpression } from "./comma-expression";
 
 export {
   Annotation,
@@ -32,6 +33,7 @@ export {
   BlockStatement,
   BooleanValue,
   CastExpression,
+  CommaExpression,
   PostfixExpression,
   PrefixExpression,
   Definition,

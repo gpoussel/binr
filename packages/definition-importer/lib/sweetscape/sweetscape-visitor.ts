@@ -27,6 +27,7 @@ import {
   VariableDeclarationStatement,
   VariableModifier,
   VoidType,
+  CommaExpression,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -702,11 +703,8 @@ export function getVisitor(parser: CstParser) {
       return result;
     }
 
-    public forInitUpdate(ctx: any) {
-      return {
-        type: "commaExpression",
-        expressions: this.visitAll(ctx, "assignmentExpression"),
-      };
+    public forInitUpdate(ctx: any): CommaExpression {
+      return new CommaExpression(this.visitAll(ctx, "assignmentExpression"));
     }
 
     public arraySelector(ctx: any) {
