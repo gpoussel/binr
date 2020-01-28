@@ -29,6 +29,7 @@ import {
   VoidType,
   CommaExpression,
   FunctionCallExpression,
+  ArrayIndexExpression,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -543,11 +544,10 @@ export function getVisitor(parser: CstParser) {
           );
         } else if (has(expressionRestChildren, "arraySelector")) {
           // That's an array index
-          currentExpression = {
-            type: "arrayIndexExpression",
-            expression: currentExpression,
-            index: this.visit(expressionRestChildren.arraySelector),
-          };
+          currentExpression = new ArrayIndexExpression(
+            currentExpression,
+            this.visit(expressionRestChildren.arraySelector),
+          );
         } else if (has(expressionRestChildren, "propertyAccess")) {
           currentExpression = {
             type: "propertyAccessExpression",
@@ -572,11 +572,10 @@ export function getVisitor(parser: CstParser) {
         const { children: expressionRestChildren } = expressionRest;
         if (has(expressionRestChildren, "arraySelector")) {
           // That's an array index
-          currentExpression = {
-            type: "arrayIndexExpression",
-            expression: currentExpression,
-            index: this.visit(expressionRestChildren.arraySelector),
-          };
+          currentExpression = new ArrayIndexExpression(
+            currentExpression,
+            this.visit(expressionRestChildren.arraySelector),
+          );
         } else if (has(expressionRestChildren, "propertyAccess")) {
           currentExpression = {
             type: "propertyAccessExpression",
@@ -707,7 +706,7 @@ export function getVisitor(parser: CstParser) {
       return new CommaExpression(this.visitAll(ctx, "assignmentExpression"));
     }
 
-    public arraySelector(ctx: any) {
+    public arraySelector(ctx: any): Expression {
       return this.visit(ctx.assignmentExpression);
     }
 

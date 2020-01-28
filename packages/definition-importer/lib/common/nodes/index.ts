@@ -27,6 +27,7 @@ import { PostfixExpression } from "./postfix-expression";
 import { PrefixExpression } from "./prefix-expression";
 import { CommaExpression } from "./comma-expression";
 import { FunctionCallExpression } from "./function-call-expression";
+import { ArrayIndexExpression } from "./array-index-expression";
 
 export {
   Annotation,
@@ -40,6 +41,7 @@ export {
   Definition,
   EmptyStatement,
   FunctionCallExpression,
+  ArrayIndexExpression,
   Expression,
   ExpressionStatement,
   IdentifierValue,
