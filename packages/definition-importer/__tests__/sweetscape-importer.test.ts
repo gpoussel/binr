@@ -30,6 +30,7 @@ describe("Sweetscape Importer", () => {
         try {
           const definition = importer.readInput(input);
           expect(definition).toBeDefined();
+          expect(definition).toMatchSnapshot(name);
         } catch (e) {
           e.message = `[${name}] ${e.message}`;
           done.fail(e);
@@ -54,6 +55,7 @@ describe("Sweetscape Importer", () => {
         try {
           const definition = importer.readInput(input);
           expect(definition).toBeDefined();
+          expect(definition).toMatchSnapshot(name);
         } catch (e) {
           e.message = `[${name}] ${e.message}`;
           done.fail(e);

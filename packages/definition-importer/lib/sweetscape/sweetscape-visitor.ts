@@ -74,8 +74,12 @@ export function getVisitor(parser: CstParser) {
       this.validateVisitor();
     }
 
+    private visitAll(ctx: any, propertyName: string): any[] {
+      return map(get(ctx, propertyName), this.visit.bind(this));
+    }
+
     public definition(ctx: any): Definition {
-      return new Definition(map(ctx.topLevelStatement, this.visit.bind(this)));
+      return new Definition(this.visitAll(ctx, "topLevelStatement"));
     }
 
     public topLevelStatement(ctx: any) {
