@@ -55,4 +55,10 @@ describe("UtilsObject", () => {
   test("implements log function", () => {
     expect(utils.log(12)).toBe(Math.log(12));
   });
+
+  test("implements trigonometric functions", () => {
+    expect(utils.cos(1)).toEqual(Math.cos(1));
+    expect(utils.sin(1)).toEqual(Math.sin(1));
+    expect(utils.tan(1)).toEqual(Math.tan(1));
+  });
 });
