@@ -37,6 +37,7 @@ import {
   WhileStatement,
   DoWhileStatement,
   ForStatement,
+  IfStatement,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -312,16 +313,13 @@ export function getVisitor(parser: CstParser) {
     }
 
     public ifStatement(ctx: any) {
+      const condition = this.visit(ctx.parExpression);
       const statements = this.visitAll(ctx, "statement");
-      const result: any = {
-        type: "ifStatement",
-        condition: this.visit(ctx.parExpression),
-        trueStatement: first(statements),
-      };
-      if (size(statements) > 1) {
-        [, result.falseStatement] = statements;
+      if (size(statements) === 1) {
+        // No "else" statement
+        return new IfStatement(condition, statements[0]);
       }
-      return result;
+      return new IfStatement(condition, statements[0], statements[1]);
     }
 
     public structStatement(ctx: any) {
