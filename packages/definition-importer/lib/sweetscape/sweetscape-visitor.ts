@@ -15,6 +15,8 @@ import {
   size,
 } from "lodash";
 import { Definition } from "../common/nodes";
+import { BlockStatement } from "../common/nodes/block-statement";
+import { Statement } from "../common/nodes/statement";
 
 function getFirstTokenImage(ctx: { [key: string]: any[] }) {
   return first(get(ctx, first(keys(ctx))!)).image;
@@ -145,8 +147,8 @@ export function getVisitor(parser: CstParser) {
       return result;
     }
 
-    public block(ctx: any) {
-      return this.visit(ctx.statementList);
+    public block(ctx: any): BlockStatement {
+      return new BlockStatement(this.visit(ctx.statementList));
     }
 
     public statement(ctx: any) {
@@ -285,11 +287,8 @@ export function getVisitor(parser: CstParser) {
       return result;
     }
 
-    public statementList(ctx: any) {
-      return {
-        type: "statementList",
-        statements: this.visitAll(ctx, "statement"),
-      };
+    public statementList(ctx: any): Statement[] {
+      return this.visitAll(ctx, "statement");
     }
 
     public ifStatement(ctx: any) {
