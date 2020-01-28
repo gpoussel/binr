@@ -28,6 +28,7 @@ import {
   VariableModifier,
   VoidType,
   CommaExpression,
+  FunctionCallExpression,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -529,18 +530,17 @@ export function getVisitor(parser: CstParser) {
       return currentExpression;
     }
 
-    public callExpression(ctx: any) {
-      const memberResult: any = this.visit(ctx.memberExpression);
-      let currentExpression = memberResult;
+    public callExpression(ctx: any): Expression {
+      const memberResult: Expression = this.visit(ctx.memberExpression);
+      let currentExpression: Expression = memberResult;
       each(ctx.callExpressionRest, (expressionRest) => {
         const { children: expressionRestChildren } = expressionRest;
         if (has(expressionRestChildren, "arguments")) {
           // That's a function call
-          currentExpression = {
-            type: "functionCallExpression",
-            name: currentExpression,
-            arguments: this.visit(expressionRestChildren.arguments),
-          };
+          currentExpression = new FunctionCallExpression(
+            currentExpression,
+            this.visit(expressionRestChildren.arguments),
+          );
         } else if (has(expressionRestChildren, "arraySelector")) {
           // That's an array index
           currentExpression = {
@@ -666,7 +666,7 @@ export function getVisitor(parser: CstParser) {
       return this.visitFirst(ctx, "assignmentExpression", "typeNameWithoutVoid");
     }
 
-    public arguments(ctx: any) {
+    public arguments(ctx: any): Expression[] {
       return this.visitAll(ctx, "assignmentExpression");
     }
 

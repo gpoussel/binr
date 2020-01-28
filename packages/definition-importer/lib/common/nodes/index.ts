@@ -26,6 +26,7 @@ import { VoidType } from "./void-type";
 import { PostfixExpression } from "./postfix-expression";
 import { PrefixExpression } from "./prefix-expression";
 import { CommaExpression } from "./comma-expression";
+import { FunctionCallExpression } from "./function-call-expression";
 
 export {
   Annotation,
@@ -38,6 +39,7 @@ export {
   PrefixExpression,
   Definition,
   EmptyStatement,
+  FunctionCallExpression,
   Expression,
   ExpressionStatement,
   IdentifierValue,
