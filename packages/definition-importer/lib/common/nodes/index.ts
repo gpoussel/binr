@@ -23,6 +23,7 @@ import { VariableDeclarationStatement } from "./variable-declaration-statement";
 import { VariableModifier } from "./variable-modifier";
 import { VoidType } from "./void-type";
 import { PostfixExpression } from "./postfix-expression";
+import { PrefixExpression } from "./prefix-expression";
 
 export {
   Annotation,
@@ -31,6 +32,7 @@ export {
   BooleanValue,
   CastExpression,
   PostfixExpression,
+  PrefixExpression,
   Definition,
   EmptyStatement,
   Expression,

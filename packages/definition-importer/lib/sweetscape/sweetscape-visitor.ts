@@ -25,6 +25,7 @@ import {
   Type,
   TernaryExpression,
   PostfixExpression,
+  PrefixExpression,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -407,7 +408,7 @@ export function getVisitor(parser: CstParser) {
       return new ExpressionStatement(this.visit(ctx.assignmentExpression));
     }
 
-    public parExpression(ctx: any) {
+    public parExpression(ctx: any): Expression {
       return this.visit(ctx.assignmentExpression);
     }
 
@@ -499,16 +500,12 @@ export function getVisitor(parser: CstParser) {
       return new CastExpression(this.visit(ctx.prefixExpression), this.visit(ctx.typeNameWithoutVoid));
     }
 
-    public prefixExpression(ctx: any) {
+    public prefixExpression(ctx: any): Expression {
       return this.visitChoices(ctx, [
         { name: "postfixExpression", build: () => this.visit(ctx.postfixExpression) },
         {
           name: "prefixOperator",
-          build: () => ({
-            type: "prefixExpression",
-            expression: this.visit(ctx.castExpression),
-            operator: this.visit(ctx.prefixOperator),
-          }),
+          build: () => new PrefixExpression(this.visit(ctx.prefixExpression), this.visit(ctx.prefixOperator)),
         },
         {
           name: "unaryOperator",
