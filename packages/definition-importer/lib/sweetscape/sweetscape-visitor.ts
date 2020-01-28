@@ -250,7 +250,7 @@ export function getVisitor(parser: CstParser) {
         this.visitAll(ctx, "variableModifier"),
         this.visitIfPresent(ctx, "bitfieldRest"),
         this.visitIfPresent(ctx, "variableDeclarators"),
-        this.visitAll(ctx, "annotations"),
+        this.visitIfPresent(ctx, "annotations", []),
       );
     }
 
@@ -757,8 +757,8 @@ export function getVisitor(parser: CstParser) {
       throw new Error();
     }
 
-    private visitIfPresent(ctx: any, propertyName: string): any {
-      return has(ctx, propertyName) ? this.visit(get(ctx, propertyName)) : undefined;
+    private visitIfPresent(ctx: any, propertyName: string, defaultValue?: any): any {
+      return has(ctx, propertyName) ? this.visit(get(ctx, propertyName)) : defaultValue;
     }
 
     private visitAll(ctx: any, propertyName: string): any[] {

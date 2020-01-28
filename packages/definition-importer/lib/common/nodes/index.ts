@@ -1,3 +1,4 @@
+import { Annotation } from "./annotation";
 import { BlockStatement } from "./block-statement";
 import { Definition } from "./definition";
 import { ExpressionStatement } from "./expression-statement";
@@ -8,6 +9,7 @@ import { VariableDeclarationStatement } from "./variable-declaration-statement";
 import { VariableModifier } from "./variable-modifier";
 
 export {
+  Annotation,
   BlockStatement,
   Definition,
   ExpressionStatement,
