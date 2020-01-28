@@ -25,7 +25,10 @@ export class Importer {
     const lexingResult = this.getLexer().tokenize(input);
     if (!isEmpty(lexingResult.errors)) {
       throw new Error(
-        `Got an error while lexing input: ${join(map(lexingResult.errors, (err) => err.message), ", ")}`,
+        `Got an error while lexing input: ${join(
+          map(lexingResult.errors, (err) => err.message),
+          ", ",
+        )}`,
       );
     }
 
@@ -39,7 +42,7 @@ export class Importer {
     if (!isEmpty(errors)) {
       const firstError: IRecognitionException = first(errors)!;
       const tokenPosition = `${firstError.token.startLine}:${firstError.token.startColumn}`;
-      const tokenName = get(firstError, "token.tokenType.tokenName");
+      const tokenName = get(firstError, "token.tokenType.name");
       const tokenImage = get(firstError, "token.image");
       const tokenDetails = `(token ${tokenName} "${tokenImage}" at ${tokenPosition})`;
       const message = `${firstError.name}: ${firstError.message} ${tokenDetails}`;

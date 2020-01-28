@@ -27,7 +27,7 @@ function parse(input: string) {
 function cleanupResult(object: any) {
   if (has(object, "tokenType")) {
     // This is a token, and we don't want to serialize all its properties
-    return { TOKEN: object.tokenType.tokenName, content: object.image };
+    return { TOKEN: object.tokenType.name, content: object.image };
   }
   each(object, (value, key) => {
     if (isArray(value)) {
