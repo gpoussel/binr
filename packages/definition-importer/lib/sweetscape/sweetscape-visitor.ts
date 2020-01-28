@@ -78,19 +78,23 @@ export function getVisitor(parser: CstParser) {
       return map(get(ctx, propertyName), this.visit.bind(this));
     }
 
+    private visitFirst(ctx: any, ...propertyNames: string[]): any[] {
+      for (let i = 0; i < propertyNames.length; ++i) {
+        if (has(ctx, propertyNames[i])) {
+          return this.visit(get(ctx, propertyNames[i]));
+        }
+      }
+      throw new Error(
+        `Context does not contain expected property name (expected: ${propertyNames}, was: ${keys(ctx)})`,
+      );
+    }
+
     public definition(ctx: any): Definition {
       return new Definition(this.visitAll(ctx, "topLevelStatement"));
     }
 
     public topLevelStatement(ctx: any) {
-      if (has(ctx, "statement")) {
-        // Statement at the top-level
-        return this.visit(ctx.statement);
-      }
-      if (has(ctx, "functionDeclarationStatement")) {
-        return this.visit(ctx.functionDeclarationStatement);
-      }
-      throw new Error();
+      return this.visitFirst(ctx, "statement", "functionDeclarationStatement");
     }
 
     public functionDeclarationStatement(ctx: any) {
@@ -486,13 +490,7 @@ export function getVisitor(parser: CstParser) {
     }
 
     public castExpression(ctx: any) {
-      if (has(ctx, "castOperation")) {
-        return this.visit(ctx.castOperation);
-      }
-      if (has(ctx, "prefixExpression")) {
-        return this.visit(ctx.prefixExpression);
-      }
-      throw new Error();
+      return this.visitFirst(ctx, "castOperation", "prefixExpression");
     }
 
     public castOperation(ctx: any) {
@@ -671,13 +669,7 @@ export function getVisitor(parser: CstParser) {
     }
 
     public expressionOrTypeName(ctx: any) {
-      if (has(ctx, "assignmentExpression")) {
-        return this.visit(ctx.assignmentExpression);
-      }
-      if (has(ctx, "typeNameWithoutVoid")) {
-        return this.visit(ctx.typeNameWithoutVoid);
-      }
-      throw new Error();
+      return this.visitFirst(ctx, "assignmentExpression", "typeNameWithoutVoid");
     }
 
     public arguments(ctx: any) {
@@ -747,13 +739,7 @@ export function getVisitor(parser: CstParser) {
     }
 
     public variableInitializer(ctx: any) {
-      if (has(ctx, "assignmentExpression")) {
-        return this.visit(ctx.assignmentExpression);
-      }
-      if (has(ctx, "arrayInitializer")) {
-        return this.visit(ctx.arrayInitializer);
-      }
-      throw new Error();
+      return this.visitFirst(ctx, "assignmentExpression", "arrayInitializer");
     }
 
     public simpleValue(ctx: any) {
