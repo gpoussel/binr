@@ -4,7 +4,7 @@ export class IdentifierValue extends Value {
   private _name: string;
 
   public constructor(name: string) {
-    super("identifierValue");
+    super();
     this._name = name;
   }
 

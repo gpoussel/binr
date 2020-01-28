@@ -5,7 +5,7 @@ export class ExpressionStatement extends Statement {
   private _expression: Expression;
 
   public constructor(expression: Expression) {
-    super("expressionStatement");
+    super();
     this._expression = expression;
   }
 

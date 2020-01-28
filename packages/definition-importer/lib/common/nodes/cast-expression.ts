@@ -5,7 +5,7 @@ export class CastExpression extends Expression {
   private _innerExpression: Expression;
 
   public constructor(castExpression: Expression, innerExpression: Expression) {
-    super("castExpression");
+    super();
     this._castExpression = castExpression;
     this._innerExpression = innerExpression;
   }

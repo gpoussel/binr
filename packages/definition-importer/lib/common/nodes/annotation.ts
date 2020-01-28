@@ -6,7 +6,7 @@ export class Annotation extends Node {
   private _value: Value;
 
   public constructor(key: string, value: Value) {
-    super("annotation");
+    super();
     this._key = key;
     this._value = value;
   }

@@ -4,7 +4,7 @@ export class NumberValue extends Value {
   private _value: number;
 
   public constructor(value: number) {
-    super("numberValue");
+    super();
     this._value = value;
   }
 

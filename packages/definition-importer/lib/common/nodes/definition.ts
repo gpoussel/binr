@@ -5,7 +5,7 @@ export class Definition extends Node {
   private _content: Statement[];
 
   public constructor(content: Statement[]) {
-    super("definition");
+    super();
     this._content = content;
   }
 

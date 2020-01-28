@@ -4,7 +4,7 @@ export class StringValue extends Value {
   private _value: string;
 
   public constructor(value: string) {
-    super("stringValue");
+    super();
     this._value = value;
   }
 

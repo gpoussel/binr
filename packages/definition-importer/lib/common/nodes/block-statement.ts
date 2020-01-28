@@ -4,7 +4,7 @@ export class BlockStatement extends Statement {
   private _content: Statement[];
 
   public constructor(content: Statement[]) {
-    super("blockStatement");
+    super();
     this._content = content;
   }
 

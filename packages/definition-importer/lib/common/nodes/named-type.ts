@@ -7,7 +7,7 @@ export class NamedType extends Type {
   private _array: boolean;
 
   public constructor(name: string, modifiers: TypeModifier[], array: boolean) {
-    super("namedType");
+    super();
     this._name = name;
     this._modifiers = modifiers;
     this._array = array;

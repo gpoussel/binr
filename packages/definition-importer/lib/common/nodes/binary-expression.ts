@@ -7,7 +7,7 @@ export class BinaryExpression extends Expression {
   private _operator: Operator;
 
   public constructor(left: Expression, right: Expression, operator: Operator) {
-    super("binaryExpression");
+    super();
     this._left = left;
     this._right = right;
     this._operator = operator;

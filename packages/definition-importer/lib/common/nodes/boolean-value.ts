@@ -4,7 +4,7 @@ export class BooleanValue extends Value {
   private _value: boolean;
 
   public constructor(value: boolean) {
-    super("booleanValue");
+    super();
     this._value = value;
   }
 

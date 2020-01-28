@@ -16,7 +16,7 @@ export class VariableDeclarationStatement extends Statement {
     variableDeclarators: any,
     annotations: any,
   ) {
-    super("variableDeclarationStatement");
+    super();
     this._variableType = variableType;
     this._modifiers = modifiers;
     this._bitfield = bitfield;
