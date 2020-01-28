@@ -31,6 +31,7 @@ import { ArrayIndexExpression } from "./array-index-expression";
 import { PropertyAccessExpression } from "./property-access-expression";
 import { ArrayInitializationExpression } from "./array-initialization-expression";
 import { BreakStatement } from "./break-statement";
+import { ReturnStatement } from "./return-statement";
 
 export {
   Annotation,
@@ -66,4 +67,5 @@ export {
   VoidType,
   PropertyAccessExpression,
   ArrayInitializationExpression,
+  ReturnStatement,
 };

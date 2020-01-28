@@ -33,6 +33,7 @@ import {
   PropertyAccessExpression,
   ArrayInitializationExpression,
   BreakStatement,
+  ReturnStatement,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -217,14 +218,11 @@ export function getVisitor(parser: CstParser) {
       );
     }
 
-    public returnStatement(ctx: any) {
-      const result: any = {
-        type: "returnStatement",
-      };
-      if (has(ctx, "assignmentExpression")) {
-        result.assignmentExpression = this.visit(ctx.assignmentExpression);
+    public returnStatement(ctx: any): ReturnStatement {
+      if (!has(ctx, "assignmentExpression")) {
+        return new ReturnStatement();
       }
-      return result;
+      return new ReturnStatement(this.visit(ctx.assignmentExpression));
     }
 
     public breakStatement(): BreakStatement {
