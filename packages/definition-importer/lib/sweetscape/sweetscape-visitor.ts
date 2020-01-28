@@ -1,5 +1,5 @@
 import { CstParser } from "chevrotain";
-import { assign, concat, each, first, get, has, isEmpty, join, keys, map, parseInt, size } from "lodash";
+import { assign, concat, each, first, get, has, isEmpty, keys, map, parseInt, size } from "lodash";
 import {
   Annotation,
   BlockStatement,
@@ -17,7 +17,12 @@ import {
   Expression,
   BinaryExpression,
   Operator,
+  CastExpression,
+  TypeModifier,
+  NamedType,
+  VoidType,
 } from "../common/nodes";
+import { Type } from "../common/nodes/type";
 
 const OPERATORS = {
   BinaryAnd: Operator.BINARY_AND,
@@ -131,32 +136,27 @@ export function getVisitor(parser: CstParser) {
       };
     }
 
-    public typeName(ctx: any) {
+    public typeName(ctx: any): Type {
       return this.visitChoices(ctx, [
         { name: "typeNameWithoutVoid", build: () => this.visit(ctx.typeNameWithoutVoid) },
         {
           name: "Void",
-          build: () => ({
-            name: "void",
-          }),
+          build: () => new VoidType(),
         },
       ]);
     }
 
-    public typeNameWithoutVoid(ctx: any) {
+    public typeNameWithoutVoid(ctx: any): NamedType {
       const simpleName = getIdentifier(ctx.Identifier);
-      const nameParts: string[] = [];
+      const modifiers: TypeModifier[] = [];
       if (has(ctx, "Signed")) {
-        nameParts.push("signed");
+        modifiers.push(TypeModifier.SIGNED);
       }
       if (has(ctx, "Unsigned")) {
-        nameParts.push("unsigned");
+        modifiers.push(TypeModifier.UNSIGNED);
       }
-      nameParts.push(simpleName);
-      return {
-        name: join(nameParts, " "),
-        array: has(ctx, "emptyArraySelector"),
-      };
+      const array: boolean = has(ctx, "emptyArraySelector");
+      return new NamedType(simpleName, modifiers, array);
     }
 
     public functionParameterDeclarationList(ctx: any) {
@@ -495,12 +495,8 @@ export function getVisitor(parser: CstParser) {
       return this.visitFirst(ctx, "castOperation", "prefixExpression");
     }
 
-    public castOperation(ctx: any) {
-      return {
-        type: "castExpression",
-        typeName: this.visit(ctx.typeNameWithoutVoid),
-        expression: this.visit(ctx.prefixExpression),
-      };
+    public castOperation(ctx: any): CastExpression {
+      return new CastExpression(this.visit(ctx.prefixExpression), this.visit(ctx.typeNameWithoutVoid));
     }
 
     public prefixExpression(ctx: any) {

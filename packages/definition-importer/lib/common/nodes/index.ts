@@ -15,10 +15,16 @@ import { Value } from "./value";
 import { VariableDeclarationStatement } from "./variable-declaration-statement";
 import { VariableModifier } from "./variable-modifier";
 import { Operator } from "./operator";
+import { CastExpression } from "./cast-expression";
+import { TypeModifier } from "./type-modifier";
+import { NamedType } from "./named-type";
+import { VoidType } from "./void-type";
 
 export {
   Annotation,
+  TypeModifier,
   BinaryExpression,
+  CastExpression,
   BlockStatement,
   BooleanValue,
   Definition,
@@ -34,4 +40,6 @@ export {
   Value,
   VariableDeclarationStatement,
   VariableModifier,
+  NamedType,
+  VoidType,
 };
