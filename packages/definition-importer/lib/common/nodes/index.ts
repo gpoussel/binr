@@ -34,6 +34,7 @@ import { BreakStatement } from "./break-statement";
 import { ReturnStatement } from "./return-statement";
 import { WhileStatement } from "./while-statement";
 import { DoWhileStatement } from "./do-while-statement";
+import { ForStatement } from "./for-statement";
 
 export {
   Annotation,
@@ -72,4 +73,5 @@ export {
   ReturnStatement,
   WhileStatement,
   DoWhileStatement,
+  ForStatement,
 };

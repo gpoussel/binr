@@ -36,6 +36,7 @@ import {
   ReturnStatement,
   WhileStatement,
   DoWhileStatement,
+  ForStatement,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -200,7 +201,7 @@ export function getVisitor(parser: CstParser) {
       return new BlockStatement(this.visit(ctx.statementList));
     }
 
-    public statement(ctx: any) {
+    public statement(ctx: any): Statement {
       return this.visitFirst(
         ctx,
         "block",
@@ -263,14 +264,13 @@ export function getVisitor(parser: CstParser) {
       return concat(stringLiterals, defaultStatement);
     }
 
-    public forStatement(ctx: any) {
-      return {
-        type: "forStatement",
-        initialization: this.visit(ctx.forInitUpdate[0]),
-        increment: this.visit(ctx.forInitUpdate[1]),
-        body: this.visit(ctx.statement),
-        condition: this.visit(ctx.assignmentExpression),
-      };
+    public forStatement(ctx: any): ForStatement {
+      return new ForStatement(
+        this.visit(ctx.forInitUpdate[0]),
+        this.visit(ctx.assignmentExpression),
+        this.visit(ctx.forInitUpdate[1]),
+        this.visit(ctx.statement),
+      );
     }
 
     public localVariableDeclarationStatement(ctx: any): VariableDeclarationStatement {
