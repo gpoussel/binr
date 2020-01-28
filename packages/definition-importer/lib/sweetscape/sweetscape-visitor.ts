@@ -15,6 +15,7 @@ import {
   parseInt,
   size,
 } from "lodash";
+import { Definition } from "../common/nodes";
 
 function getFirstTokenImage(ctx: { [key: string]: any[] }) {
   return first(get(ctx, first(keys(ctx))!)).image;
@@ -73,11 +74,8 @@ export function getVisitor(parser: CstParser) {
       this.validateVisitor();
     }
 
-    public definition(ctx: any) {
-      return {
-        type: "definition",
-        content: map(ctx.topLevelStatement, this.visit.bind(this)),
-      };
+    public definition(ctx: any): Definition {
+      return new Definition(map(ctx.topLevelStatement, this.visit.bind(this)));
     }
 
     public topLevelStatement(ctx: any) {

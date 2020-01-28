@@ -1,8 +1,9 @@
 import { CstParser, IRecognitionException, Lexer } from "chevrotain";
 import { first, get, isEmpty, isString, join, map } from "lodash";
+import { Definition } from "./common/nodes";
 
 export class Importer {
-  public readInput(input: string) {
+  public readInput(input: string): Definition {
     if (!isString(input)) {
       throw new Error("input must be a string");
     }
@@ -64,7 +65,7 @@ export class Importer {
     throw new Error(`getVisitor(): not yet implemented (parser = ${parser})`);
   }
 
-  public build(ast: any): any {
+  public build(ast: Definition): any {
     throw new Error(`build(): not yet implemented (ast = ${ast})`);
   }
 }

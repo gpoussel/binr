@@ -57084,8 +57084,8 @@ Array [
 `;
 
 exports[`Sweetscape Importer creates basic definitions 1`] = `
-Object {
-  "content": Array [
+Definition {
+  "_content": Array [
     Object {
       "condition": Object {
         "left": Object {
@@ -57131,6 +57131,6 @@ Object {
       "type": "ifStatement",
     },
   ],
-  "type": "definition",
+  "_type": "definition",
 }
 `;
