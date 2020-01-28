@@ -14,7 +14,13 @@ import {
   parseInt,
   size,
 } from "lodash";
-import { BlockStatement, Definition, Statement, ExpressionStatement } from "../common/nodes";
+import {
+  BlockStatement,
+  Definition,
+  Statement,
+  ExpressionStatement,
+  VariableDeclarationStatement,
+} from "../common/nodes";
 
 function getFirstTokenImage(ctx: { [key: string]: any[] }) {
   return first(get(ctx, first(keys(ctx))!)).image;
@@ -237,22 +243,14 @@ export function getVisitor(parser: CstParser) {
       };
     }
 
-    public localVariableDeclarationStatement(ctx: any) {
-      const result: any = {
-        type: "variableDeclaration",
-        variableType: this.visit(ctx.typeName),
-        annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
-      };
-      each(ctx.variableModifier, (modifier) => {
-        assign(result, this.visit(modifier));
-      });
-      if (has(ctx, "bitfieldRest")) {
-        result.bits = this.visit(ctx.bitfieldRest);
-      }
-      if (has(ctx, "variableDeclarators")) {
-        result.declarations = this.visit(ctx.variableDeclarators);
-      }
-      return result;
+    public localVariableDeclarationStatement(ctx: any): VariableDeclarationStatement {
+      return new VariableDeclarationStatement(
+        this.visit(ctx.typeName),
+        this.visitAll(ctx, "modifier"),
+        this.visitIfPresent(ctx, "bitfieldRest"),
+        this.visitIfPresent(ctx, "variableDeclarators"),
+        this.visitAll(ctx, "annotations"),
+      );
     }
 
     public variableDeclarators(ctx: any) {
@@ -756,6 +754,10 @@ export function getVisitor(parser: CstParser) {
         return false;
       }
       throw new Error();
+    }
+
+    private visitIfPresent(ctx: any, propertyName: string): any {
+      return has(ctx, propertyName) ? this.visit(get(ctx, propertyName)) : undefined;
     }
 
     private visitAll(ctx: any, propertyName: string): any[] {
