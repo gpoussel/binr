@@ -30,6 +30,7 @@ import {
   CommaExpression,
   FunctionCallExpression,
   ArrayIndexExpression,
+  PropertyAccessExpression,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -112,7 +113,7 @@ function getString(stringLiteralToken: any[]) {
   }
 }
 
-function getIdentifier(identifierToken: any[]) {
+function getIdentifier(identifierToken: any[]): string {
   return first(identifierToken).image;
 }
 
@@ -549,11 +550,10 @@ export function getVisitor(parser: CstParser) {
             this.visit(expressionRestChildren.arraySelector),
           );
         } else if (has(expressionRestChildren, "propertyAccess")) {
-          currentExpression = {
-            type: "propertyAccessExpression",
-            expression: currentExpression,
-            name: this.visit(expressionRestChildren.propertyAccess),
-          };
+          currentExpression = new PropertyAccessExpression(
+            currentExpression,
+            this.visit(expressionRestChildren.propertyAccess),
+          );
         } else {
           throw new Error();
         }
@@ -561,7 +561,7 @@ export function getVisitor(parser: CstParser) {
       return currentExpression;
     }
 
-    public propertyAccess(ctx: any) {
+    public propertyAccess(ctx: any): string {
       return getIdentifier(ctx.Identifier);
     }
 
@@ -577,11 +577,10 @@ export function getVisitor(parser: CstParser) {
             this.visit(expressionRestChildren.arraySelector),
           );
         } else if (has(expressionRestChildren, "propertyAccess")) {
-          currentExpression = {
-            type: "propertyAccessExpression",
-            expression: currentExpression,
-            name: this.visit(expressionRestChildren.propertyAccess),
-          };
+          currentExpression = new PropertyAccessExpression(
+            currentExpression,
+            this.visit(expressionRestChildren.propertyAccess),
+          );
         } else {
           throw new Error();
         }
@@ -589,7 +588,7 @@ export function getVisitor(parser: CstParser) {
       return currentExpression;
     }
 
-    public primaryExpression(ctx: any) {
+    public primaryExpression(ctx: any): Expression {
       return this.visitChoices(ctx, [
         { name: "simpleValue", build: () => this.visit(ctx.simpleValue) },
         {

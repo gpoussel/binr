@@ -28,6 +28,7 @@ import { PrefixExpression } from "./prefix-expression";
 import { CommaExpression } from "./comma-expression";
 import { FunctionCallExpression } from "./function-call-expression";
 import { ArrayIndexExpression } from "./array-index-expression";
+import { PropertyAccessExpression } from "./property-access-expression";
 
 export {
   Annotation,
@@ -60,4 +61,5 @@ export {
   VariableDeclarationStatement,
   VariableModifier,
   VoidType,
+  PropertyAccessExpression,
 };
