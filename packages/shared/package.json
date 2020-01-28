@@ -25,8 +25,8 @@
     "node": ">=9.11.2"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.134",
-    "lodash": "^4.17.11",
+    "@types/lodash": "^4.14.149",
+    "lodash": "^4.17.15",
     "vm": "^0.1.0"
   }
 }
