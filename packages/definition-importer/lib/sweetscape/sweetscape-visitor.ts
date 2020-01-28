@@ -3,7 +3,6 @@ import {
   assign,
   concat,
   each,
-  filter,
   find,
   first,
   get,
@@ -151,29 +150,23 @@ export function getVisitor(parser: CstParser) {
     }
 
     public statement(ctx: any) {
-      const matchingStatementType = filter(
-        [
-          "block",
-          "expressionStatement",
-          "localVariableDeclarationStatement",
-          "typedefStatement",
-          "structStatement",
-          "enumStatement",
-          "ifStatement",
-          "whileStatement",
-          "doWhileStatement",
-          "forStatement",
-          "switchStatement",
-          "returnStatement",
-          "breakStatement",
-        ],
-        (statementType) => has(ctx, statementType),
+      return this.visitFirst(
+        ctx,
+        "block",
+        "expressionStatement",
+        "localVariableDeclarationStatement",
+        "typedefStatement",
+        "structStatement",
+        "enumStatement",
+        "ifStatement",
+        "whileStatement",
+        "doWhileStatement",
+        "forStatement",
+        "switchStatement",
+        "returnStatement",
+        "breakStatement",
+        "emptyStatement",
       );
-      if (isEmpty(matchingStatementType)) {
-        // Just a semi-colon
-        return { type: "emptyStatement" };
-      }
-      return this.visit(ctx[first(matchingStatementType)!]);
     }
 
     public returnStatement(ctx: any) {
@@ -189,6 +182,12 @@ export function getVisitor(parser: CstParser) {
     public breakStatement() {
       return {
         type: "breakStatement",
+      };
+    }
+
+    public emptyStatement() {
+      return {
+        type: "emptyStatement",
       };
     }
 

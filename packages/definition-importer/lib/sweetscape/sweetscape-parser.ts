@@ -19,7 +19,7 @@ export class SweetscapeParser extends CstParser {
       { ALT: () => this.SUBRULE(this.switchStatement) },
       { ALT: () => this.SUBRULE(this.returnStatement) },
       { ALT: () => this.SUBRULE(this.breakStatement) },
-      { ALT: () => this.CONSUME(tokens.SemiColon) },
+      { ALT: () => this.SUBRULE(this.emptyStatement) },
     ]);
   });
 
@@ -244,6 +244,10 @@ export class SweetscapeParser extends CstParser {
 
   private breakStatement = this.RULE("breakStatement", () => {
     this.CONSUME(tokens.Break);
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private emptyStatement = this.RULE("emptyStatement", () => {
     this.CONSUME(tokens.SemiColon);
   });
 
