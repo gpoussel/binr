@@ -1,19 +1,5 @@
 import { CstParser } from "chevrotain";
-import {
-  assign,
-  concat,
-  each,
-  find,
-  first,
-  get,
-  has,
-  isEmpty,
-  join,
-  keys,
-  map,
-  parseInt,
-  size,
-} from "lodash";
+import { assign, concat, each, first, get, has, isEmpty, join, keys, map, parseInt, size } from "lodash";
 import {
   Annotation,
   BlockStatement,
@@ -265,13 +251,10 @@ export function getVisitor(parser: CstParser) {
     }
 
     public variableModifier(ctx: any): VariableModifier {
-      if (has(ctx, "Local")) {
-        return VariableModifier.LOCAL;
-      }
-      if (has(ctx, "Const")) {
-        return VariableModifier.CONST;
-      }
-      throw new Error();
+      return this.visitChoices(ctx, [
+        { name: "Local", build: () => VariableModifier.LOCAL },
+        { name: "Const", build: () => VariableModifier.CONST },
+      ]);
     }
 
     public typedefStatement(ctx: any) {
@@ -634,21 +617,28 @@ export function getVisitor(parser: CstParser) {
     }
 
     public number(ctx: { [key: string]: any[] }) {
-      const tokenDefinitions = [
-        { tokenName: "NumberBinaryLiteral", convert: (value: string) => parseInt(value.substring(2), 2) },
-        { tokenName: "NumberOctalLiteral", convert: (value: string) => parseInt(value, 8) },
-        { tokenName: "NumberDecimalLiteral", convert: (value: string) => parseInt(value, 10) },
+      return this.visitChoices(ctx, [
         {
-          tokenName: "NumberHexadecimalLiteral",
-          convert: (value: string) => parseInt(value.substring(2).replace(/[Lu]$/, ""), 16),
+          name: "NumberBinaryLiteral",
+          build: (value: any[]) => parseInt(first(value).image.substring(2), 2),
+        },
+        { name: "NumberOctalLiteral", build: (value: any[]) => parseInt(first(value).image, 8) },
+        { name: "NumberDecimalLiteral", build: (value: any[]) => parseInt(first(value).image, 10) },
+        {
+          name: "NumberHexadecimalLiteral",
+          build: (value: any[]) =>
+            parseInt(
+              first(value)
+                .image.substring(2)
+                .replace(/[Lu]$/, ""),
+              16,
+            ),
         },
         {
-          tokenName: "NumberHexadecimalLiteral2",
-          convert: (value: string) => parseInt(value.replace(/h$/, ""), 16),
+          name: "NumberHexadecimalLiteral2",
+          build: (value: any[]) => parseInt(first(value).image.replace(/h$/, ""), 16),
         },
-      ];
-      const actualToken = find(tokenDefinitions, (tokenDefinition) => has(ctx, tokenDefinition.tokenName));
-      return actualToken!.convert(first(ctx[actualToken!.tokenName]).image);
+      ]);
     }
 
     public expressionOrTypeName(ctx: any) {
@@ -723,19 +713,12 @@ export function getVisitor(parser: CstParser) {
     }
 
     public simpleValue(ctx: any): Value {
-      if (has(ctx, "number")) {
-        return new NumberValue(this.visit(ctx.number));
-      }
-      if (has(ctx, "boolean")) {
-        return new BooleanValue(this.visit(ctx.boolean));
-      }
-      if (has(ctx, "Identifier")) {
-        return new IdentifierValue(getIdentifier(ctx.Identifier));
-      }
-      if (has(ctx, "StringLiteral")) {
-        return new StringValue(getString(ctx.StringLiteral));
-      }
-      throw new Error();
+      return this.visitChoices(ctx, [
+        { name: "number", build: () => new NumberValue(this.visit(ctx.number)) },
+        { name: "boolean", build: () => new BooleanValue(this.visit(ctx.boolean)) },
+        { name: "Identifier", build: () => new IdentifierValue(getIdentifier(ctx.Identifier)) },
+        { name: "StringLiteral", build: () => new StringValue(getString(ctx.StringLiteral)) },
+      ]);
     }
 
     public boolean(ctx: any) {
