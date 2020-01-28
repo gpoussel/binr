@@ -400,7 +400,7 @@ export function getVisitor(parser: CstParser) {
       return result;
     }
 
-    public expressionStatement(ctx: any) {
+    public expressionStatement(ctx: any): ExpressionStatement {
       return new ExpressionStatement(this.visit(ctx.assignmentExpression));
     }
 
@@ -408,7 +408,7 @@ export function getVisitor(parser: CstParser) {
       return this.visit(ctx.assignmentExpression);
     }
 
-    public assignmentExpression(ctx: any) {
+    public assignmentExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "ternaryExpression");
       const operators = this.visitAll(ctx, "assignmentOperator");
       return createBinaryExpressions(expressions, operators);
@@ -431,61 +431,61 @@ export function getVisitor(parser: CstParser) {
       return condition;
     }
 
-    public booleanOrExpression(ctx: any) {
+    public booleanOrExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "booleanAndExpression");
       const operators = map(ctx.BooleanOr, () => Operator.BOOLEAN_OR);
       return createBinaryExpressions(expressions, operators);
     }
 
-    public booleanAndExpression(ctx: any) {
+    public booleanAndExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "binaryOrExpression");
       const operators = map(ctx.BooleanAnd, () => Operator.BOOLEAN_AND);
       return createBinaryExpressions(expressions, operators);
     }
 
-    public binaryOrExpression(ctx: any) {
+    public binaryOrExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "binaryXorExpression");
       const operators = map(ctx.BinaryOr, () => Operator.BINARY_OR);
       return createBinaryExpressions(expressions, operators);
     }
 
-    public binaryXorExpression(ctx: any) {
+    public binaryXorExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "binaryAndExpression");
       const operators = map(ctx.BinaryXor, () => Operator.BINARY_XOR);
       return createBinaryExpressions(expressions, operators);
     }
 
-    public binaryAndExpression(ctx: any) {
+    public binaryAndExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "equalityExpression");
       const operators = map(ctx.BinaryAnd, () => Operator.BINARY_AND);
       return createBinaryExpressions(expressions, operators);
     }
 
-    public equalityExpression(ctx: any) {
+    public equalityExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "relationalExpression");
       const operators = this.visitAll(ctx, "equalityOperator");
       return createBinaryExpressions(expressions, operators);
     }
 
-    public relationalExpression(ctx: any) {
+    public relationalExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "shiftExpression");
       const operators = this.visitAll(ctx, "relationalOperator");
       return createBinaryExpressions(expressions, operators);
     }
 
-    public shiftExpression(ctx: any) {
+    public shiftExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "additiveExpression");
       const operators = this.visitAll(ctx, "shiftOperator");
       return createBinaryExpressions(expressions, operators);
     }
 
-    public additiveExpression(ctx: any) {
+    public additiveExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "multiplicativeExpression");
       const operators = this.visitAll(ctx, "additiveOperator");
       return createBinaryExpressions(expressions, operators);
     }
 
-    public multiplicativeExpression(ctx: any) {
+    public multiplicativeExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "castExpression");
       const operators = this.visitAll(ctx, "multiplicativeOperator");
       return createBinaryExpressions(expressions, operators);
