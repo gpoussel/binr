@@ -15,12 +15,18 @@ import {
   size,
 } from "lodash";
 import {
+  Annotation,
   BlockStatement,
+  BooleanValue,
   Definition,
-  Statement,
   ExpressionStatement,
+  Statement,
+  StringValue,
+  Value,
   VariableDeclarationStatement,
   VariableModifier,
+  IdentifierValue,
+  NumberValue,
 } from "../common/nodes";
 
 function getFirstTokenImage(ctx: { [key: string]: any[] }) {
@@ -634,7 +640,7 @@ export function getVisitor(parser: CstParser) {
         { tokenName: "NumberDecimalLiteral", convert: (value: string) => parseInt(value, 10) },
         {
           tokenName: "NumberHexadecimalLiteral",
-          convert: (value: string) => parseInt(value.substring(2).replace(/L$/, ""), 16),
+          convert: (value: string) => parseInt(value.substring(2).replace(/[Lu]$/, ""), 16),
         },
         {
           tokenName: "NumberHexadecimalLiteral2",
@@ -653,15 +659,12 @@ export function getVisitor(parser: CstParser) {
       return this.visitAll(ctx, "assignmentExpression");
     }
 
-    public annotations(ctx: any) {
+    public annotations(ctx: any): Annotation[] {
       return this.visitAll(ctx, "annotation");
     }
 
-    public annotation(ctx: any) {
-      return {
-        key: getIdentifier(ctx.Identifier),
-        value: this.visit(ctx.simpleValue),
-      };
+    public annotation(ctx: any): Annotation {
+      return new Annotation(getIdentifier(ctx.Identifier), this.visit(ctx.simpleValue));
     }
 
     public arrayInitializer(ctx: any) {
@@ -719,42 +722,27 @@ export function getVisitor(parser: CstParser) {
       return this.visitFirst(ctx, "assignmentExpression", "arrayInitializer");
     }
 
-    public simpleValue(ctx: any) {
+    public simpleValue(ctx: any): Value {
       if (has(ctx, "number")) {
-        return {
-          type: "number",
-          value: this.visit(ctx.number),
-        };
+        return new NumberValue(this.visit(ctx.number));
       }
       if (has(ctx, "boolean")) {
-        return {
-          type: "boolean",
-          value: this.visit(ctx.boolean),
-        };
+        return new BooleanValue(this.visit(ctx.boolean));
       }
       if (has(ctx, "Identifier")) {
-        return {
-          type: "identifier",
-          name: getIdentifier(ctx.Identifier),
-        };
+        return new IdentifierValue(getIdentifier(ctx.Identifier));
       }
       if (has(ctx, "StringLiteral")) {
-        return {
-          type: "string",
-          string: getString(ctx.StringLiteral),
-        };
+        return new StringValue(getString(ctx.StringLiteral));
       }
       throw new Error();
     }
 
     public boolean(ctx: any) {
-      if (has(ctx, "True")) {
-        return true;
-      }
-      if (has(ctx, "False")) {
-        return false;
-      }
-      throw new Error();
+      return this.visitChoices(ctx, [
+        { name: "True", build: () => true },
+        { name: "False", build: () => false },
+      ]);
     }
 
     private visitIfPresent(ctx: any, propertyName: string, defaultValue?: any): any {
@@ -774,6 +762,15 @@ export function getVisitor(parser: CstParser) {
       throw new Error(
         `Context does not contain expected property name (expected: ${propertyNames}, was: ${keys(ctx)})`,
       );
+    }
+
+    private visitChoices(ctx: any, choices: { name: string; build: (value: any) => any }[]): any {
+      for (let i = 0; i < choices.length; ++i) {
+        if (has(ctx, choices[i].name)) {
+          return choices[i].build(get(ctx, choices[i].name));
+        }
+      }
+      throw new Error();
     }
   }
 
