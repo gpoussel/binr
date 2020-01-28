@@ -33,6 +33,7 @@ import { ArrayInitializationExpression } from "./array-initialization-expression
 import { BreakStatement } from "./break-statement";
 import { ReturnStatement } from "./return-statement";
 import { WhileStatement } from "./while-statement";
+import { DoWhileStatement } from "./do-while-statement";
 
 export {
   Annotation,
@@ -70,4 +71,5 @@ export {
   ArrayInitializationExpression,
   ReturnStatement,
   WhileStatement,
+  DoWhileStatement,
 };

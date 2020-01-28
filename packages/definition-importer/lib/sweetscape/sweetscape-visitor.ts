@@ -35,6 +35,7 @@ import {
   BreakStatement,
   ReturnStatement,
   WhileStatement,
+  DoWhileStatement,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -238,12 +239,8 @@ export function getVisitor(parser: CstParser) {
       return new WhileStatement(this.visit(ctx.parExpression), this.visit(ctx.statement));
     }
 
-    public doWhileStatement(ctx: any) {
-      return {
-        type: "doWhileStatement",
-        condition: this.visit(ctx.parExpression),
-        body: this.visit(ctx.statement),
-      };
+    public doWhileStatement(ctx: any): DoWhileStatement {
+      return new DoWhileStatement(this.visit(ctx.parExpression), this.visit(ctx.statement));
     }
 
     public switchStatement(ctx: any) {
