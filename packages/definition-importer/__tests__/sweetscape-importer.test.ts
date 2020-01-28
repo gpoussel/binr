@@ -1,5 +1,10 @@
 import { SweetscapeDefinitionImporter } from "../lib/sweetscape/sweetscape-importer";
-import { getSingleStructure, iterateScripts, iterateStructures } from "./utils/010-structures";
+import {
+  getSingleStructure,
+  getSingleStructureInArchive,
+  iterateScripts,
+  iterateStructures,
+} from "./utils/010-structures";
 
 describe("Sweetscape Importer", () => {
   const importer = new SweetscapeDefinitionImporter();
@@ -64,19 +69,18 @@ describe("Sweetscape Importer", () => {
    * This test exists because the EXE.bt contains many different elements.
    */
   test("creates EXE definition", (done) => {
-    iterateStructures(
-      (name: string, input: string) => {
+    getSingleStructureInArchive(
+      "EXE.bt",
+      (input) => {
         const definition = importer.readInput(input);
         expect(definition).toBeDefined();
         expect(definition.type).toEqual("definition");
-        const { content } = definition;
 
-        expect(name).toBe("EXE.bt");
+        const { content } = definition;
         expect(content).toHaveLength(93);
         expect(content).toMatchSnapshot();
       },
       done,
-      (name: string) => name === "EXE.bt",
     );
   });
 
@@ -84,19 +88,18 @@ describe("Sweetscape Importer", () => {
    * This test exists because the DEX.bt contains many different elements.
    */
   test("creates DEX definition", (done) => {
-    iterateStructures(
-      (name: string, input: string) => {
+    getSingleStructureInArchive(
+      "DEX.bt",
+      (input) => {
         const definition = importer.readInput(input);
         expect(definition).toBeDefined();
         expect(definition.type).toEqual("definition");
-        const { content } = definition;
 
-        expect(name).toBe("DEX.bt");
+        const { content } = definition;
         expect(content).toHaveLength(155);
         expect(content).toMatchSnapshot();
       },
       done,
-      (name: string) => name === "DEX.bt",
     );
   });
 
@@ -104,19 +107,18 @@ describe("Sweetscape Importer", () => {
    * This test exists for completeness (annotations on typedef statement)
    */
   test("creates DDS definition", (done) => {
-    iterateStructures(
-      (name: string, input: string) => {
+    getSingleStructureInArchive(
+      "DDS.bt",
+      (input) => {
         const definition = importer.readInput(input);
         expect(definition).toBeDefined();
         expect(definition.type).toEqual("definition");
-        const { content } = definition;
 
-        expect(name).toBe("DDS.bt");
+        const { content } = definition;
         expect(content).toHaveLength(14);
         expect(content).toMatchSnapshot();
       },
       done,
-      (name: string) => name === "DDS.bt",
     );
   });
 
@@ -124,19 +126,18 @@ describe("Sweetscape Importer", () => {
    * This test exists for completeness (empty statement, with a single semi-colon)
    */
   test("creates CAP definition", (done) => {
-    iterateStructures(
-      (name: string, input: string) => {
+    getSingleStructureInArchive(
+      "CAP.bt",
+      (input) => {
         const definition = importer.readInput(input);
         expect(definition).toBeDefined();
         expect(definition.type).toEqual("definition");
-        const { content } = definition;
 
-        expect(name).toBe("CAP.bt");
+        const { content } = definition;
         expect(content).toHaveLength(81);
         expect(content).toMatchSnapshot();
       },
       done,
-      (name: string) => name === "CAP.bt",
     );
   });
 
@@ -144,19 +145,18 @@ describe("Sweetscape Importer", () => {
    * This test exists for completeness (const variable)
    */
   test("creates 010 definition", (done) => {
-    iterateStructures(
-      (name: string, input: string) => {
+    getSingleStructureInArchive(
+      "010.bt",
+      (input) => {
         const definition = importer.readInput(input);
         expect(definition).toBeDefined();
         expect(definition.type).toEqual("definition");
-        const { content } = definition;
 
-        expect(name).toBe("010.bt");
+        const { content } = definition;
         expect(content).toHaveLength(13);
         expect(content).toMatchSnapshot();
       },
       done,
-      (name: string) => name === "010.bt",
     );
   });
 });

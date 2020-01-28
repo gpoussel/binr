@@ -45,6 +45,18 @@ export function iterateStructures(
   return iterateArchive("010-structures.tar.gz", iteratee, done, filter);
 }
 
+export function getSingleStructureInArchive(
+  name: string,
+  iteratee: (input: string) => void,
+  done: () => void,
+) {
+  return iterateStructures(
+    (_name: string, buffer: string) => iteratee(buffer),
+    done,
+    (structureName) => structureName === name,
+  );
+}
+
 export function iterateScripts(
   iteratee: (name: string, buffer: string) => void,
   done: () => void,
