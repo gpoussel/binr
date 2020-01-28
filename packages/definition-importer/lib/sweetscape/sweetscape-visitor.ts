@@ -2,25 +2,26 @@ import { CstParser } from "chevrotain";
 import { assign, concat, each, first, get, has, isEmpty, keys, map, parseInt, size } from "lodash";
 import {
   Annotation,
+  BinaryExpression,
   BlockStatement,
   BooleanValue,
+  CastExpression,
   Definition,
+  EmptyStatement,
+  Expression,
   ExpressionStatement,
+  IdentifierValue,
+  NamedType,
+  NumberValue,
+  Operator,
   Statement,
   StringValue,
+  TypeModifier,
   Value,
   VariableDeclarationStatement,
   VariableModifier,
-  IdentifierValue,
-  NumberValue,
-  EmptyStatement,
-  Expression,
-  BinaryExpression,
-  Operator,
-  CastExpression,
-  TypeModifier,
-  NamedType,
   VoidType,
+  UnaryExpression,
 } from "../common/nodes";
 import { Type } from "../common/nodes/type";
 
@@ -512,11 +513,7 @@ export function getVisitor(parser: CstParser) {
         },
         {
           name: "unaryOperator",
-          build: () => ({
-            type: "unaryExpression",
-            expression: this.visit(ctx.castExpression),
-            operator: this.visit(ctx.unaryOperator),
-          }),
+          build: () => new UnaryExpression(this.visit(ctx.castExpression), this.visit(ctx.unaryOperator)),
         },
       ]);
     }
