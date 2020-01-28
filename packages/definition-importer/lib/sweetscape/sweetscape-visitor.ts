@@ -31,6 +31,7 @@ import {
   FunctionCallExpression,
   ArrayIndexExpression,
   PropertyAccessExpression,
+  ArrayInitializationExpression,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -565,7 +566,7 @@ export function getVisitor(parser: CstParser) {
       return getIdentifier(ctx.Identifier);
     }
 
-    public memberExpression(ctx: any) {
+    public memberExpression(ctx: any): Expression {
       const primaryResult: any = this.visit(ctx.primaryExpression);
       let currentExpression = primaryResult;
       each(ctx.memberExpressionRest, (expressionRest) => {
@@ -660,7 +661,7 @@ export function getVisitor(parser: CstParser) {
       ]);
     }
 
-    public expressionOrTypeName(ctx: any) {
+    public expressionOrTypeName(ctx: any): Expression | Type {
       return this.visitFirst(ctx, "assignmentExpression", "typeNameWithoutVoid");
     }
 
@@ -676,11 +677,8 @@ export function getVisitor(parser: CstParser) {
       return new Annotation(getIdentifier(ctx.Identifier), this.visit(ctx.simpleValue));
     }
 
-    public arrayInitializer(ctx: any) {
-      return {
-        type: "arrayDeclaration",
-        values: this.visitAll(ctx, "assignmentExpression"),
-      };
+    public arrayInitializer(ctx: any): ArrayInitializationExpression {
+      return new ArrayInitializationExpression(this.visitAll(ctx, "assignmentExpression"));
     }
 
     public bitfieldRest(ctx: any) {
@@ -722,7 +720,7 @@ export function getVisitor(parser: CstParser) {
       ]);
     }
 
-    public variableInitializer(ctx: any) {
+    public variableInitializer(ctx: any): Expression {
       return this.visitFirst(ctx, "assignmentExpression", "arrayInitializer");
     }
 

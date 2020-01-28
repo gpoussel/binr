@@ -29,6 +29,7 @@ import { CommaExpression } from "./comma-expression";
 import { FunctionCallExpression } from "./function-call-expression";
 import { ArrayIndexExpression } from "./array-index-expression";
 import { PropertyAccessExpression } from "./property-access-expression";
+import { ArrayInitializationExpression } from "./array-initialization-expression";
 
 export {
   Annotation,
@@ -62,4 +63,5 @@ export {
   VariableModifier,
   VoidType,
   PropertyAccessExpression,
+  ArrayInitializationExpression,
 };
