@@ -36,6 +36,11 @@ import { WhileStatement } from "./while-statement";
 import { DoWhileStatement } from "./do-while-statement";
 import { ForStatement } from "./for-statement";
 import { IfStatement } from "./if-statement";
+import { CaseSwitchElement } from "./case-switch-element";
+import { DefaultSwitchLabel } from "./default-switch-label";
+import { SwitchLabel } from "./switch-label";
+import { SwitchStatement } from "./switch-statement";
+import { ValueSwitchLabel } from "./value-switch-label";
 
 export {
   Annotation,
@@ -76,4 +81,9 @@ export {
   DoWhileStatement,
   ForStatement,
   IfStatement,
+  CaseSwitchElement,
+  DefaultSwitchLabel,
+  SwitchLabel,
+  SwitchStatement,
+  ValueSwitchLabel,
 };

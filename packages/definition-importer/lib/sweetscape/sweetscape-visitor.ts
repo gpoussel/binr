@@ -1,5 +1,5 @@
 import { CstParser } from "chevrotain";
-import { assign, concat, each, first, get, has, isEmpty, keys, map, parseInt, size } from "lodash";
+import { assign, each, first, get, has, isEmpty, keys, map, parseInt, size } from "lodash";
 import {
   Annotation,
   BinaryExpression,
@@ -38,6 +38,11 @@ import {
   DoWhileStatement,
   ForStatement,
   IfStatement,
+  SwitchStatement,
+  CaseSwitchElement,
+  SwitchLabel,
+  ValueSwitchLabel,
+  DefaultSwitchLabel,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -245,24 +250,23 @@ export function getVisitor(parser: CstParser) {
       return new DoWhileStatement(this.visit(ctx.parExpression), this.visit(ctx.statement));
     }
 
-    public switchStatement(ctx: any) {
-      return {
-        type: "switchStatement",
-        statements: this.visitAll(ctx, "switchBlockStatementGroup"),
-      };
+    public switchStatement(ctx: any): SwitchStatement {
+      return new SwitchStatement(this.visitAll(ctx, "switchBlockStatementGroup"));
     }
 
-    public switchBlockStatementGroup(ctx: any) {
-      return {
-        labels: this.visit(ctx.switchLabels),
-        body: this.visit(ctx.statementList),
-      };
+    public switchBlockStatementGroup(ctx: any): CaseSwitchElement {
+      return new CaseSwitchElement(this.visit(ctx.switchLabels), this.visit(ctx.statementList));
     }
 
-    public switchLabels(ctx: any) {
-      const stringLiterals = this.visitAll(ctx, "simpleValue");
-      const defaultStatement = has(ctx, "Default") ? [{ type: "defaultStatement" }] : [];
-      return concat(stringLiterals, defaultStatement);
+    public switchLabels(ctx: any): SwitchLabel[] {
+      const values: SwitchLabel[] = map(
+        this.visitAll(ctx, "simpleValue"),
+        (value) => new ValueSwitchLabel(value),
+      );
+      if (has(ctx, "Default")) {
+        values.push(new DefaultSwitchLabel());
+      }
+      return values;
     }
 
     public forStatement(ctx: any): ForStatement {
@@ -312,7 +316,7 @@ export function getVisitor(parser: CstParser) {
       return this.visitAll(ctx, "statement");
     }
 
-    public ifStatement(ctx: any) {
+    public ifStatement(ctx: any): IfStatement {
       const condition = this.visit(ctx.parExpression);
       const statements = this.visitAll(ctx, "statement");
       if (size(statements) === 1) {
