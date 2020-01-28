@@ -14,18 +14,19 @@ import {
   NamedType,
   NumberValue,
   Operator,
+  PostfixExpression,
+  PrefixExpression,
+  SizeofExpression,
   Statement,
   StringValue,
+  TernaryExpression,
+  Type,
   TypeModifier,
+  UnaryExpression,
   Value,
   VariableDeclarationStatement,
   VariableModifier,
   VoidType,
-  UnaryExpression,
-  Type,
-  TernaryExpression,
-  PostfixExpression,
-  PrefixExpression,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -593,10 +594,7 @@ export function getVisitor(parser: CstParser) {
         { name: "simpleValue", build: () => this.visit(ctx.simpleValue) },
         {
           name: "expressionOrTypeName",
-          build: () => ({
-            type: "sizeofExpression",
-            operand: this.visit(ctx.expressionOrTypeName),
-          }),
+          build: () => new SizeofExpression(this.visit(ctx.expressionOrTypeName)),
         },
         { name: "parExpression", build: () => this.visit(ctx.parExpression) },
       ]);

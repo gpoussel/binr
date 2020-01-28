@@ -14,6 +14,7 @@ import { NumberValue } from "./number-value";
 import { Operator } from "./operator";
 import { Statement } from "./statement";
 import { StringValue } from "./string-value";
+import { SizeofExpression } from "./sizeof-expression";
 import { TernaryExpression } from "./ternary-expression";
 import { Type } from "./type";
 import { TypeModifier } from "./type-modifier";
@@ -42,6 +43,7 @@ export {
   Node,
   NumberValue,
   Operator,
+  SizeofExpression,
   Statement,
   StringValue,
   TernaryExpression,
