@@ -74,21 +74,6 @@ export function getVisitor(parser: CstParser) {
       this.validateVisitor();
     }
 
-    private visitAll(ctx: any, propertyName: string): any[] {
-      return map(get(ctx, propertyName), this.visit.bind(this));
-    }
-
-    private visitFirst(ctx: any, ...propertyNames: string[]): any[] {
-      for (let i = 0; i < propertyNames.length; ++i) {
-        if (has(ctx, propertyNames[i])) {
-          return this.visit(get(ctx, propertyNames[i]));
-        }
-      }
-      throw new Error(
-        `Context does not contain expected property name (expected: ${propertyNames}, was: ${keys(ctx)})`,
-      );
-    }
-
     public definition(ctx: any): Definition {
       return new Definition(this.visitAll(ctx, "topLevelStatement"));
     }
@@ -142,7 +127,7 @@ export function getVisitor(parser: CstParser) {
       if (has(ctx, "Void")) {
         return [];
       }
-      return map(ctx.functionParameterDeclaration, this.visit.bind(this));
+      return this.visitAll(ctx, "functionParameterDeclaration");
     }
 
     public functionParameterDeclaration(ctx: any) {
@@ -226,7 +211,7 @@ export function getVisitor(parser: CstParser) {
     public switchStatement(ctx: any) {
       return {
         type: "switchStatement",
-        statements: map(ctx.switchBlockStatementGroup, this.visit.bind(this)),
+        statements: this.visitAll(ctx, "switchBlockStatementGroup"),
       };
     }
 
@@ -238,7 +223,7 @@ export function getVisitor(parser: CstParser) {
     }
 
     public switchLabels(ctx: any) {
-      const stringLiterals = map(ctx.simpleValue, this.visit.bind(this));
+      const stringLiterals = this.visitAll(ctx, "simpleValue");
       const defaultStatement = has(ctx, "Default") ? [{ type: "defaultStatement" }] : [];
       return concat(stringLiterals, defaultStatement);
     }
@@ -275,7 +260,7 @@ export function getVisitor(parser: CstParser) {
     }
 
     public variableDeclarators(ctx: any) {
-      return map(ctx.variableDeclarator, this.visit.bind(this));
+      return this.visitAll(ctx, "variableDeclarator");
     }
 
     public variableModifier(ctx: any) {
@@ -304,12 +289,12 @@ export function getVisitor(parser: CstParser) {
     public statementList(ctx: any) {
       return {
         type: "statementList",
-        statements: map(ctx.statement, this.visit.bind(this)),
+        statements: this.visitAll(ctx, "statement"),
       };
     }
 
     public ifStatement(ctx: any) {
-      const statements = map(ctx.statement, this.visit.bind(this));
+      const statements = this.visitAll(ctx, "statement");
       const result: any = {
         type: "ifStatement",
         condition: this.visit(ctx.parExpression),
@@ -407,8 +392,8 @@ export function getVisitor(parser: CstParser) {
     }
 
     public assignmentExpression(ctx: any) {
-      const operators = map(ctx.assignmentOperator, this.visit.bind(this));
-      const expressions = map(ctx.ternaryExpression, this.visit.bind(this));
+      const operators = this.visitAll(ctx, "assignmentOperator");
+      const expressions = this.visitAll(ctx, "ternaryExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
@@ -431,61 +416,61 @@ export function getVisitor(parser: CstParser) {
 
     public booleanOrExpression(ctx: any) {
       const operators = map(ctx.BooleanOr, (token) => token.image);
-      const expressions = map(ctx.booleanAndExpression, this.visit.bind(this));
+      const expressions = this.visitAll(ctx, "booleanAndExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
     public booleanAndExpression(ctx: any) {
       const operators = map(ctx.BooleanAnd, (token) => token.image);
-      const expressions = map(ctx.binaryOrExpression, this.visit.bind(this));
+      const expressions = this.visitAll(ctx, "binaryOrExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
     public binaryOrExpression(ctx: any) {
       const operators = map(ctx.BinaryOr, (token) => token.image);
-      const expressions = map(ctx.binaryXorExpression, this.visit.bind(this));
+      const expressions = this.visitAll(ctx, "binaryXorExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
     public binaryXorExpression(ctx: any) {
       const operators = map(ctx.BinaryXor, (token) => token.image);
-      const expressions = map(ctx.binaryAndExpression, this.visit.bind(this));
+      const expressions = this.visitAll(ctx, "binaryAndExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
     public binaryAndExpression(ctx: any) {
       const operators = map(ctx.BinaryAnd, (token) => token.image);
-      const expressions = map(ctx.equalityExpression, this.visit.bind(this));
+      const expressions = this.visitAll(ctx, "equalityExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
     public equalityExpression(ctx: any) {
-      const operators = map(ctx.equalityOperator, this.visit.bind(this));
-      const expressions = map(ctx.relationalExpression, this.visit.bind(this));
+      const operators = this.visitAll(ctx, "equalityOperator");
+      const expressions = this.visitAll(ctx, "relationalExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
     public relationalExpression(ctx: any) {
-      const operators = map(ctx.relationalOperator, this.visit.bind(this));
-      const expressions = map(ctx.shiftExpression, this.visit.bind(this));
+      const operators = this.visitAll(ctx, "relationalOperator");
+      const expressions = this.visitAll(ctx, "shiftExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
     public shiftExpression(ctx: any) {
-      const operators = map(ctx.shiftOperator, this.visit.bind(this));
-      const expressions = map(ctx.additiveExpression, this.visit.bind(this));
+      const operators = this.visitAll(ctx, "shiftOperator");
+      const expressions = this.visitAll(ctx, "additiveExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
     public additiveExpression(ctx: any) {
-      const operators = map(ctx.additiveOperator, this.visit.bind(this));
-      const expressions = map(ctx.multiplicativeExpression, this.visit.bind(this));
+      const operators = this.visitAll(ctx, "additiveOperator");
+      const expressions = this.visitAll(ctx, "multiplicativeExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
     public multiplicativeExpression(ctx: any) {
-      const operators = map(ctx.multiplicativeOperator, this.visit.bind(this));
-      const expressions = map(ctx.castExpression, this.visit.bind(this));
+      const operators = this.visitAll(ctx, "multiplicativeOperator");
+      const expressions = this.visitAll(ctx, "castExpression");
       return createBinaryExpressions(expressions, operators);
     }
 
@@ -526,7 +511,7 @@ export function getVisitor(parser: CstParser) {
       const expression = this.visit(ctx.callExpression);
       if (has(ctx, "postfixOperator")) {
         let currentExpression = expression;
-        each(map(ctx.postfixOperator, this.visit.bind(this)), (operator) => {
+        each(this.visitAll(ctx, "postfixOperator"), (operator) => {
           currentExpression = {
             type: "postfixExpression",
             expression: currentExpression,
@@ -673,11 +658,11 @@ export function getVisitor(parser: CstParser) {
     }
 
     public arguments(ctx: any) {
-      return map(ctx.assignmentExpression, this.visit.bind(this));
+      return this.visitAll(ctx, "assignmentExpression");
     }
 
     public annotations(ctx: any) {
-      return map(ctx.annotation, this.visit.bind(this));
+      return this.visitAll(ctx, "annotation");
     }
 
     public annotation(ctx: any) {
@@ -690,7 +675,7 @@ export function getVisitor(parser: CstParser) {
     public arrayInitializer(ctx: any) {
       return {
         type: "arrayDeclaration",
-        values: map(ctx.assignmentExpression, this.visit.bind(this)),
+        values: this.visitAll(ctx, "assignmentExpression"),
       };
     }
 
@@ -699,7 +684,7 @@ export function getVisitor(parser: CstParser) {
     }
 
     public enumDeclaration(ctx: any) {
-      return map(ctx.enumElementDeclaration, this.visit.bind(this));
+      return this.visitAll(ctx, "enumElementDeclaration");
     }
 
     public enumElementDeclaration(ctx: any) {
@@ -715,7 +700,7 @@ export function getVisitor(parser: CstParser) {
     public forInitUpdate(ctx: any) {
       return {
         type: "commaExpression",
-        expressions: map(ctx.assignmentExpression, this.visit.bind(this)),
+        expressions: this.visitAll(ctx, "assignmentExpression"),
       };
     }
 
@@ -778,6 +763,21 @@ export function getVisitor(parser: CstParser) {
         return false;
       }
       throw new Error();
+    }
+
+    private visitAll(ctx: any, propertyName: string): any[] {
+      return map(get(ctx, propertyName), this.visit.bind(this));
+    }
+
+    private visitFirst(ctx: any, ...propertyNames: string[]): any[] {
+      for (let i = 0; i < propertyNames.length; ++i) {
+        if (has(ctx, propertyNames[i])) {
+          return this.visit(get(ctx, propertyNames[i]));
+        }
+      }
+      throw new Error(
+        `Context does not contain expected property name (expected: ${propertyNames}, was: ${keys(ctx)})`,
+      );
     }
   }
 
