@@ -13,27 +13,65 @@ import {
   VariableModifier,
   IdentifierValue,
   NumberValue,
+  EmptyStatement,
+  Expression,
+  BinaryExpression,
+  Operator,
 } from "../common/nodes";
 
-function getFirstTokenImage(ctx: { [key: string]: any[] }) {
-  return first(get(ctx, first(keys(ctx))!)).image;
+const OPERATORS = {
+  BinaryAnd: Operator.BINARY_AND,
+  BinaryAndEquals: Operator.BINARY_AND_EQUALS,
+  BinaryOr: Operator.BINARY_OR,
+  BinaryOrEquals: Operator.BINARY_OR_EQUALS,
+  BinaryXor: Operator.BINARY_XOR,
+  BinaryXorEquals: Operator.BINARY_XOR_EQUALS,
+  BooleanAnd: Operator.BOOLEAN_AND,
+  BooleanOr: Operator.BOOLEAN_OR,
+  Different: Operator.DIFFERENT,
+  Division: Operator.DIVISION,
+  DivisionEquals: Operator.DIVISION_EQUALS,
+  DoubleArrow: Operator.DOUBLE_ARROW,
+  DoubleEquals: Operator.DOUBLE_EQUALS,
+  DoubleMinus: Operator.DOUBLE_MINUS,
+  DoublePlus: Operator.DOUBLE_PLUS,
+  Equals: Operator.EQUALS,
+  Exclamation: Operator.EXCLAMATION,
+  Greater: Operator.GREATER,
+  GreaterOrEqual: Operator.GREATER_OR_EQUAL,
+  Less: Operator.LESS,
+  LessOrEqual: Operator.LESS_OR_EQUAL,
+  Minus: Operator.MINUS,
+  MinusEquals: Operator.MINUS_EQUALS,
+  Modulo: Operator.MODULO,
+  ModuloEquals: Operator.MODULO_EQUALS,
+  Multiplication: Operator.MULTIPLICATION,
+  MultiplicationEquals: Operator.MULTIPLICATION_EQUALS,
+  Plus: Operator.PLUS,
+  PlusEquals: Operator.PLUS_EQUALS,
+  ShiftLeft: Operator.SHIFT_LEFT,
+  ShiftLeftEquals: Operator.SHIFT_LEFT_EQUALS,
+  ShiftRight: Operator.SHIFT_RIGHT,
+  ShiftRightEquals: Operator.SHIFT_RIGHT_EQUALS,
+  Tilda: Operator.TILDA,
+  UnsignedShiftRight: Operator.UNSIGNED_SHIFT_RIGHT,
+  UnsignedShiftRightEquals: Operator.UNSIGNED_SHIFT_RIGHT_EQUALS,
+};
+
+function getOperator(ctx: any): Operator {
+  return get(OPERATORS, keys(ctx)[0]);
 }
 
-function createBinaryExpressions(expressions: any[], operators: any[]) {
+function createBinaryExpressions(expressions: Expression[], operators: Operator[]): Expression {
   if (isEmpty(operators) && size(expressions) === 1) {
     // In that case, we cannot create a binary expression
     // We can just return the only expression provided
-    return first(expressions);
+    return expressions[0];
   }
   // N expressions and (N - 1) operators
-  let currentExpression = first(expressions);
-  for (let i = 1; i < expressions.length; i += 1) {
-    currentExpression = {
-      type: "binaryExpression",
-      left: currentExpression,
-      right: expressions[i],
-      operator: operators[i - 1],
-    };
+  let currentExpression: Expression = expressions[0];
+  for (let i = 1; i < expressions.length; i++) {
+    currentExpression = new BinaryExpression(currentExpression, expressions[i], operators[i - 1]);
   }
   return currentExpression;
 }
@@ -184,10 +222,8 @@ export function getVisitor(parser: CstParser) {
       };
     }
 
-    public emptyStatement() {
-      return {
-        type: "emptyStatement",
-      };
+    public emptyStatement(): EmptyStatement {
+      return new EmptyStatement();
     }
 
     public whileStatement(ctx: any) {
@@ -373,8 +409,8 @@ export function getVisitor(parser: CstParser) {
     }
 
     public assignmentExpression(ctx: any) {
-      const operators = this.visitAll(ctx, "assignmentOperator");
       const expressions = this.visitAll(ctx, "ternaryExpression");
+      const operators = this.visitAll(ctx, "assignmentOperator");
       return createBinaryExpressions(expressions, operators);
     }
 
@@ -396,62 +432,62 @@ export function getVisitor(parser: CstParser) {
     }
 
     public booleanOrExpression(ctx: any) {
-      const operators = map(ctx.BooleanOr, (token) => token.image);
       const expressions = this.visitAll(ctx, "booleanAndExpression");
+      const operators = map(ctx.BooleanOr, () => Operator.BOOLEAN_OR);
       return createBinaryExpressions(expressions, operators);
     }
 
     public booleanAndExpression(ctx: any) {
-      const operators = map(ctx.BooleanAnd, (token) => token.image);
       const expressions = this.visitAll(ctx, "binaryOrExpression");
+      const operators = map(ctx.BooleanAnd, () => Operator.BOOLEAN_AND);
       return createBinaryExpressions(expressions, operators);
     }
 
     public binaryOrExpression(ctx: any) {
-      const operators = map(ctx.BinaryOr, (token) => token.image);
       const expressions = this.visitAll(ctx, "binaryXorExpression");
+      const operators = map(ctx.BinaryOr, () => Operator.BINARY_OR);
       return createBinaryExpressions(expressions, operators);
     }
 
     public binaryXorExpression(ctx: any) {
-      const operators = map(ctx.BinaryXor, (token) => token.image);
       const expressions = this.visitAll(ctx, "binaryAndExpression");
+      const operators = map(ctx.BinaryXor, () => Operator.BINARY_XOR);
       return createBinaryExpressions(expressions, operators);
     }
 
     public binaryAndExpression(ctx: any) {
-      const operators = map(ctx.BinaryAnd, (token) => token.image);
       const expressions = this.visitAll(ctx, "equalityExpression");
+      const operators = map(ctx.BinaryAnd, () => Operator.BINARY_AND);
       return createBinaryExpressions(expressions, operators);
     }
 
     public equalityExpression(ctx: any) {
-      const operators = this.visitAll(ctx, "equalityOperator");
       const expressions = this.visitAll(ctx, "relationalExpression");
+      const operators = this.visitAll(ctx, "equalityOperator");
       return createBinaryExpressions(expressions, operators);
     }
 
     public relationalExpression(ctx: any) {
-      const operators = this.visitAll(ctx, "relationalOperator");
       const expressions = this.visitAll(ctx, "shiftExpression");
+      const operators = this.visitAll(ctx, "relationalOperator");
       return createBinaryExpressions(expressions, operators);
     }
 
     public shiftExpression(ctx: any) {
-      const operators = this.visitAll(ctx, "shiftOperator");
       const expressions = this.visitAll(ctx, "additiveExpression");
+      const operators = this.visitAll(ctx, "shiftOperator");
       return createBinaryExpressions(expressions, operators);
     }
 
     public additiveExpression(ctx: any) {
-      const operators = this.visitAll(ctx, "additiveOperator");
       const expressions = this.visitAll(ctx, "multiplicativeExpression");
+      const operators = this.visitAll(ctx, "additiveOperator");
       return createBinaryExpressions(expressions, operators);
     }
 
     public multiplicativeExpression(ctx: any) {
-      const operators = this.visitAll(ctx, "multiplicativeOperator");
       const expressions = this.visitAll(ctx, "castExpression");
+      const operators = this.visitAll(ctx, "multiplicativeOperator");
       return createBinaryExpressions(expressions, operators);
     }
 
@@ -581,40 +617,40 @@ export function getVisitor(parser: CstParser) {
       ]);
     }
 
-    public assignmentOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
+    public assignmentOperator(ctx: any): Operator {
+      return getOperator(ctx);
     }
 
-    public equalityOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
+    public equalityOperator(ctx: any): Operator {
+      return getOperator(ctx);
     }
 
-    public relationalOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
+    public relationalOperator(ctx: any): Operator {
+      return getOperator(ctx);
     }
 
-    public shiftOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
+    public shiftOperator(ctx: any): Operator {
+      return getOperator(ctx);
     }
 
-    public additiveOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
+    public additiveOperator(ctx: any): Operator {
+      return getOperator(ctx);
     }
 
-    public multiplicativeOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
+    public multiplicativeOperator(ctx: any): Operator {
+      return getOperator(ctx);
     }
 
-    public prefixOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
+    public prefixOperator(ctx: any): Operator {
+      return getOperator(ctx);
     }
 
-    public postfixOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
+    public postfixOperator(ctx: any): Operator {
+      return getOperator(ctx);
     }
 
-    public unaryOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
+    public unaryOperator(ctx: any): Operator {
+      return getOperator(ctx);
     }
 
     public number(ctx: { [key: string]: any[] }): number {
