@@ -40,6 +40,7 @@ export class Importer {
 
     const errors: IRecognitionException[] = parser.errors;
     if (!isEmpty(errors)) {
+      console.log(errors);
       const firstError: IRecognitionException = first(errors)!;
       const tokenPosition = `${firstError.token.startLine}:${firstError.token.startColumn}`;
       const tokenName = get(firstError, "token.tokenType.name");
