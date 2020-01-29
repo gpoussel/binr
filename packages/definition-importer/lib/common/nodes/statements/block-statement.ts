@@ -1,11 +1,8 @@
 import { Statement } from "./statement";
 
 export class BlockStatement extends Statement {
-  private _content: Statement[];
-
-  public constructor(content: Statement[]) {
+  public constructor(private _content: Statement[]) {
     super();
-    this._content = content;
   }
 
   public get content(): Statement[] {

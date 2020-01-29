@@ -2,11 +2,8 @@ import { SwitchLabel } from "./switch-label";
 import { Value } from "./value";
 
 export class ValueSwitchLabel extends SwitchLabel {
-  private _value: Value;
-
-  public constructor(value: Value) {
+  public constructor(private _value: Value) {
     super();
-    this._value = value;
   }
 
   public get value(): Value {

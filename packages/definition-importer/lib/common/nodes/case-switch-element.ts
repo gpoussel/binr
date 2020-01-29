@@ -3,13 +3,8 @@ import { Statement } from "./statements";
 import { SwitchLabel } from "./switch-label";
 
 export class CaseSwitchElement extends Node {
-  private _labels: SwitchLabel[];
-  private _statements: Statement[];
-
-  public constructor(labels: SwitchLabel[], statements: Statement[]) {
+  public constructor(private _labels: SwitchLabel[], private _statements: Statement[]) {
     super();
-    this._labels = labels;
-    this._statements = statements;
   }
 
   public get labels(): SwitchLabel[] {

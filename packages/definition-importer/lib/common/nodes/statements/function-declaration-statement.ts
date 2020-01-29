@@ -4,25 +4,14 @@ import { BlockStatement } from "./block-statement";
 import { Statement } from "./statement";
 
 export class FunctionDeclarationStatement extends Statement {
-  private _returnType: Type;
-  private _name: string;
-  private _parameters: ParameterDeclaration[];
-  private _forwardDeclaration: boolean;
-  private _body: BlockStatement;
-
   public constructor(
-    returnType: Type,
-    name: string,
-    parameters: ParameterDeclaration[],
-    forwardDeclaration: boolean,
-    body: BlockStatement,
+    private _returnType: Type,
+    private _name: string,
+    private _parameters: ParameterDeclaration[],
+    private _forwardDeclaration: boolean,
+    private _body: BlockStatement,
   ) {
     super();
-    this._returnType = returnType;
-    this._name = name;
-    this._parameters = parameters;
-    this._forwardDeclaration = forwardDeclaration;
-    this._body = body;
   }
 
   public get returnType(): Type {

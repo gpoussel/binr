@@ -1,16 +1,13 @@
-import { Expression } from "../expression";
+import { Expression } from "../expressions";
 import { Statement } from "./statement";
 
 export class IfStatement extends Statement {
-  private _condition: Expression;
-  private _trueStatement: Statement;
-  private _falseStatement: Statement | undefined;
-
-  public constructor(condition: Expression, trueStatement: Statement, falseStatement?: Statement) {
+  public constructor(
+    private _condition: Expression,
+    private _trueStatement: Statement,
+    private _falseStatement?: Statement,
+  ) {
     super();
-    this._condition = condition;
-    this._trueStatement = trueStatement;
-    this._falseStatement = falseStatement;
   }
 
   public get condition(): Expression {

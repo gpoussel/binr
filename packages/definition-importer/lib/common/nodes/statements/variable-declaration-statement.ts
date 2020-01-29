@@ -1,30 +1,19 @@
 import { Annotation } from "../annotation";
-import { Expression } from "../expression";
+import { Expression } from "../expressions";
 import { Type } from "../type";
 import { VariableDeclaration } from "../variable-declaration";
 import { VariableModifier } from "../variable-modifier";
 import { Statement } from "./statement";
 
 export class VariableDeclarationStatement extends Statement {
-  private _variableType: Type;
-  private _modifiers: VariableModifier[];
-  private _bitfield: Expression;
-  private _variableDeclarations: VariableDeclaration[];
-  private _annotations: Annotation[];
-
   public constructor(
-    variableType: Type,
-    modifiers: VariableModifier[],
-    bitfield: Expression,
-    variableDeclarations: VariableDeclaration[],
-    annotations: Annotation[],
+    private _variableType: Type,
+    private _modifiers: VariableModifier[],
+    private _bitfield: Expression,
+    private _variableDeclarations: VariableDeclaration[],
+    private _annotations: Annotation[],
   ) {
     super();
-    this._variableType = variableType;
-    this._modifiers = modifiers;
-    this._bitfield = bitfield;
-    this._variableDeclarations = variableDeclarations;
-    this._annotations = annotations;
   }
 
   public get variableType(): Type {

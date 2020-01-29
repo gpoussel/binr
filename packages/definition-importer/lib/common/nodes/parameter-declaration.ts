@@ -4,25 +4,14 @@ import { Node } from "./node";
 import { VariableModifier } from "./variable-modifier";
 
 export class ParameterDeclaration extends Node {
-  private _type: NamedType;
-  private _name: string;
-  private _arraySelector: ArraySelector;
-  private _byReference: boolean;
-  private _modifiers: VariableModifier[];
-
   public constructor(
-    type: NamedType,
-    name: string,
-    arraySelector: ArraySelector,
-    byReference: boolean,
-    modifiers: VariableModifier[],
+    private _type: NamedType,
+    private _name: string,
+    private _arraySelector: ArraySelector,
+    private _byReference: boolean,
+    private _modifiers: VariableModifier[],
   ) {
     super();
-    this._type = type;
-    this._name = name;
-    this._arraySelector = arraySelector;
-    this._byReference = byReference;
-    this._modifiers = modifiers;
   }
 
   public get type(): NamedType {

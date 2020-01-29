@@ -2,13 +2,8 @@ import { Node } from "./node";
 import { Value } from "./value";
 
 export class Annotation extends Node {
-  private _key: string;
-  private _value: Value;
-
-  public constructor(key: string, value: Value) {
+  public constructor(private _key: string, private _value: Value) {
     super();
-    this._key = key;
-    this._value = value;
   }
 
   public get key() {

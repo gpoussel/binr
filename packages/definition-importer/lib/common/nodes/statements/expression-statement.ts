@@ -1,12 +1,9 @@
-import { Expression } from "../expression";
+import { Expression } from "../expressions";
 import { Statement } from "./statement";
 
 export class ExpressionStatement extends Statement {
-  private _expression: Expression;
-
-  public constructor(expression: Expression) {
+  public constructor(private _expression: Expression) {
     super();
-    this._expression = expression;
   }
 
   public get expression(): Expression {

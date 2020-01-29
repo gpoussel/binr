@@ -2,15 +2,8 @@ import { Type } from "./type";
 import { TypeModifier } from "./type-modifier";
 
 export class NamedType extends Type {
-  private _name: string;
-  private _modifiers: TypeModifier[];
-  private _array: boolean;
-
-  public constructor(name: string, modifiers: TypeModifier[], array: boolean) {
+  public constructor(private _name: string, private _modifiers: TypeModifier[], private _array: boolean) {
     super();
-    this._name = name;
-    this._modifiers = modifiers;
-    this._array = array;
   }
 
   public get name() {

@@ -1,24 +1,15 @@
-import { Expression } from "../expression";
+import { Expression } from "../expressions";
 import { Statement } from "./statement";
 import { CommaExpression } from "..";
 
 export class ForStatement extends Statement {
-  private _initialization: CommaExpression;
-  private _condition: Expression;
-  private _incremnt: CommaExpression;
-  private _body: Statement;
-
   public constructor(
-    initialization: CommaExpression,
-    condition: Expression,
-    increment: CommaExpression,
-    body: Statement,
+    private _initialization: CommaExpression,
+    private _condition: Expression,
+    private _increment: CommaExpression,
+    private _body: Statement,
   ) {
     super();
-    this._initialization = initialization;
-    this._condition = condition;
-    this._incremnt = increment;
-    this._body = body;
   }
 
   public get initialization(): CommaExpression {
@@ -30,7 +21,7 @@ export class ForStatement extends Statement {
   }
 
   public get increment(): CommaExpression {
-    return this._incremnt;
+    return this._increment;
   }
 
   public get body(): Statement {

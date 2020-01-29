@@ -1,11 +1,8 @@
 import { Value } from "./value";
 
 export class IdentifierValue extends Value {
-  private _name: string;
-
-  public constructor(name: string) {
+  public constructor(private _name: string) {
     super();
-    this._name = name;
   }
 
   public get name() {

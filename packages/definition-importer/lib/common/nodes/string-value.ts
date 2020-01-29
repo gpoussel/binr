@@ -1,11 +1,8 @@
 import { Value } from "./value";
 
 export class StringValue extends Value {
-  private _value: string;
-
-  public constructor(value: string) {
+  public constructor(private _value: string) {
     super();
-    this._value = value;
   }
 
   public get value() {

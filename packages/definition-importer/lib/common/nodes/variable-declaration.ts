@@ -4,28 +4,15 @@ import { Expression } from "./expressions";
 import { Node } from "./node";
 
 export class VariableDeclaration extends Node {
-  private _name: string;
-  private _bitfield: Expression;
-  private _arraySelector: ArraySelector;
-  private _typeArguments: Expression[];
-  private _initializationExpression: Expression;
-  private _annotations: Annotation[];
-
   public constructor(
-    name: string,
-    bitfield: Expression,
-    arraySelector: ArraySelector,
-    typeArguments: Expression[],
-    initializationExpression: Expression,
-    annotations: Annotation[],
+    private _name: string,
+    private _bitfield: Expression,
+    private _arraySelector: ArraySelector,
+    private _typeArguments: Expression[],
+    private _initializationExpression: Expression,
+    private _annotations: Annotation[],
   ) {
     super();
-    this._name = name;
-    this._bitfield = bitfield;
-    this._arraySelector = arraySelector;
-    this._typeArguments = typeArguments;
-    this._initializationExpression = initializationExpression;
-    this._annotations = annotations;
   }
 
   public get name(): string {

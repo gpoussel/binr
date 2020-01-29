@@ -2,13 +2,8 @@ import { Operator } from "../operator";
 import { Expression } from "./expression";
 
 export class UnaryExpression extends Expression {
-  private _innerExpression: Expression;
-  private _operator: Operator;
-
-  public constructor(innerExpression: Expression, operator: Operator) {
+  public constructor(private _innerExpression: Expression, private _operator: Operator) {
     super();
-    this._innerExpression = innerExpression;
-    this._operator = operator;
   }
 
   public get innerExpression() {
