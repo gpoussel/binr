@@ -135,9 +135,13 @@ function createAssignmentExpressions(expressions: Expression[], operators: Assig
     return expressions[0];
   }
   // N expressions and (N - 1) operators
-  let currentExpression: Expression = expressions[0];
+  let currentExpression: Expression = expressions[expressions.length - 1];
   for (let i = 1; i < expressions.length; i++) {
-    currentExpression = new AssignmentExpression(currentExpression, expressions[i], operators[i - 1]);
+    currentExpression = new AssignmentExpression(
+      expressions[expressions.length - i - 1],
+      currentExpression,
+      operators[operators.length - i],
+    );
   }
   return currentExpression;
 }
