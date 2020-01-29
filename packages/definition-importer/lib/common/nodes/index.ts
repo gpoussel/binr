@@ -46,6 +46,7 @@ import { VariableDeclaration } from "./variable-declaration";
 import { ArraySelector } from "./array-selector";
 import { ExpressionArraySelector } from "./expression-array-selector";
 import { EmptyArraySelector } from "./empty-array-selector";
+import { EnumDeclarationElement } from "./enum-declaration-element";
 
 export {
   Annotation,
@@ -96,4 +97,5 @@ export {
   ArraySelector,
   EmptyArraySelector,
   ExpressionArraySelector,
+  EnumDeclarationElement,
 };

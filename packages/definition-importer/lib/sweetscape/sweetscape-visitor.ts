@@ -1,5 +1,18 @@
 import { CstParser } from "chevrotain";
-import { assign, each, first, concat, get, has, isEmpty, keys, map, parseInt, size } from "lodash";
+import {
+  assign,
+  each,
+  first,
+  concat,
+  get,
+  has,
+  isEmpty,
+  keys,
+  map,
+  parseInt,
+  size,
+  isUndefined,
+} from "lodash";
 import {
   Annotation,
   BinaryExpression,
@@ -48,6 +61,7 @@ import {
   ArraySelector,
   EmptyArraySelector,
   ExpressionArraySelector,
+  EnumDeclarationElement,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -347,24 +361,18 @@ export function getVisitor(parser: CstParser) {
     }
 
     public enumStatement(ctx: any): EnumDeclarationStatement {
-      const result: any = {
-        type: "enumDeclaration",
-      };
-      if (has(ctx, "variableDeclarators")) {
-        result.declarations = this.visit(ctx.variableDeclarators);
-      }
-      if (has(ctx, "variableDeclarator")) {
-        result.name = this.visit(ctx.variableDeclarator);
-      }
-      if (has(ctx, "enumDeclaration")) {
-        result.declarations = this.visit(ctx.enumDeclaration);
-      }
-      // TODO variableDeclarators
-      // TODO variableDeclarator
-      // TODO enumDeclaration
       const typeName = this.visitIfPresent(ctx, "typeName");
-      const alias = has(ctx, "Identifier") ? result.alias : undefined;
-      return new EnumDeclarationStatement(typeName, alias);
+      const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
+      const declarations = this.visitIfPresent(ctx, "enumDeclaration", []);
+      const variableDeclarations = this.visitChoices(
+        ctx,
+        [
+          { name: "variableDeclarators", build: () => this.visitAll(ctx, "variableDeclarators") },
+          { name: "variableDeclarator", build: () => [this.visit(ctx.variableDeclarator)] },
+        ],
+        () => [],
+      );
+      return new EnumDeclarationStatement(typeName, alias, declarations, variableDeclarations);
     }
 
     public variableDeclarator(ctx: any): VariableDeclaration {
@@ -394,14 +402,6 @@ export function getVisitor(parser: CstParser) {
       };
       if (has(ctx, "functionParameterDeclarationList")) {
         result.parameters = this.visit(ctx.functionParameterDeclarationList);
-      }
-      return result;
-    }
-
-    public variableDeclaratorRest(ctx: any) {
-      const result: any = {};
-      if (has(ctx, "arguments")) {
-        result.arguments = this.visit(ctx.arguments);
       }
       return result;
     }
@@ -681,18 +681,15 @@ export function getVisitor(parser: CstParser) {
       return this.visit(ctx.additiveExpression);
     }
 
-    public enumDeclaration(ctx: any) {
+    public enumDeclaration(ctx: any): EnumDeclarationElement[] {
       return this.visitAll(ctx, "enumElementDeclaration");
     }
 
-    public enumElementDeclaration(ctx: any) {
-      const result: any = {
-        name: getIdentifier(ctx.Identifier),
-      };
-      if (has(ctx, "assignmentExpression")) {
-        result.value = this.visit(ctx.assignmentExpression);
-      }
-      return result;
+    public enumElementDeclaration(ctx: any): EnumDeclarationElement {
+      return new EnumDeclarationElement(
+        getIdentifier(ctx.Identifier),
+        this.visitIfPresent(ctx, "assignmentExpression"),
+      );
     }
 
     public forInitUpdate(ctx: any): CommaExpression {
@@ -752,11 +749,18 @@ export function getVisitor(parser: CstParser) {
       );
     }
 
-    private visitChoices(ctx: any, choices: { name: string; build: (value: any) => any }[]): any {
+    private visitChoices(
+      ctx: any,
+      choices: { name: string; build: (value: any) => any }[],
+      defaultBuilder?: () => any,
+    ): any {
       for (let i = 0; i < choices.length; ++i) {
         if (has(ctx, choices[i].name)) {
           return choices[i].build(get(ctx, choices[i].name));
         }
+      }
+      if (!isUndefined(defaultBuilder)) {
+        return defaultBuilder();
       }
       throw new Error();
     }
