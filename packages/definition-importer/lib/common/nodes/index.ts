@@ -16,6 +16,7 @@ export * from "./operator";
 export * from "./parameter-declaration";
 export * from "./statements";
 export * from "./string-value";
+export * from "./struct-reference-type";
 export * from "./switch-label";
 export * from "./type-modifier";
 export * from "./type";

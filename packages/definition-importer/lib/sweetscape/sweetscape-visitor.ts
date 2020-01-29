@@ -40,6 +40,7 @@ import {
   Statement,
   StringValue,
   StructDeclarationStatement,
+  StructReferenceType,
   SwitchLabel,
   SwitchStatement,
   TernaryExpression,
@@ -175,8 +176,12 @@ export function getVisitor(parser: CstParser) {
       ]);
     }
 
-    public typeNameWithoutVoid(ctx: any): NamedType {
-      const simpleName = getIdentifier(ctx.Identifier);
+    public typeNameWithoutVoid(ctx: any): Type {
+      const name = getIdentifier(ctx.Identifier);
+      if (has(ctx, "Struct")) {
+        return new StructReferenceType(name);
+      }
+
       const modifiers: TypeModifier[] = [];
       if (has(ctx, "Signed")) {
         modifiers.push(TypeModifier.SIGNED);
@@ -185,7 +190,7 @@ export function getVisitor(parser: CstParser) {
         modifiers.push(TypeModifier.UNSIGNED);
       }
       const array: boolean = has(ctx, "emptyArraySelector");
-      return new NamedType(simpleName, modifiers, array);
+      return new NamedType(name, modifiers, array);
     }
 
     public functionParameterDeclarationList(ctx: any): ParameterDeclaration[] {
@@ -216,6 +221,7 @@ export function getVisitor(parser: CstParser) {
         "localVariableDeclarationStatement",
         "typedefStatement",
         "structStatement",
+        "structVariableStatement",
         "enumStatement",
         "ifStatement",
         "whileStatement",
@@ -333,6 +339,16 @@ export function getVisitor(parser: CstParser) {
         return new StructDeclarationStatement(alias, variableDeclaration, parameters, body);
       }
       return new UnionDeclarationStatement(alias, variableDeclaration, parameters, body);
+    }
+
+    public structVariableStatement(ctx: any): StructDeclarationStatement | UnionDeclarationStatement {
+      const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
+      const variableDeclaration = this.visit(ctx.variableDeclarator);
+
+      if (has(ctx, "Struct")) {
+        return new StructDeclarationStatement(alias, variableDeclaration, [], new BlockStatement([]));
+      }
+      return new UnionDeclarationStatement(alias, variableDeclaration, [], new BlockStatement([]));
     }
 
     public enumStatement(ctx: any): EnumDeclarationStatement {

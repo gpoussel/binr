@@ -7,8 +7,8 @@ export class TypedefStatement extends Statement {
   public constructor(
     private _type: Type,
     private _alias: string,
-    private _arraySelector: ArraySelector,
-    private _annotations: Annotation[],
+    private _arraySelector?: ArraySelector,
+    private _annotations: Annotation[] = [],
   ) {
     super();
   }
@@ -21,7 +21,7 @@ export class TypedefStatement extends Statement {
     return this._alias;
   }
 
-  public get arraySelector(): ArraySelector {
+  public get arraySelector(): ArraySelector | undefined {
     return this._arraySelector;
   }
 
