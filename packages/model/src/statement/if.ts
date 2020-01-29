@@ -1,6 +1,5 @@
-import { isUndefined } from "lodash";
-
 import { BufferWrapper, Environment, ExpressionEvaluator, ValueAggregator } from "@binr/shared";
+import { isUndefined } from "lodash";
 
 import { Statement } from "./statement";
 

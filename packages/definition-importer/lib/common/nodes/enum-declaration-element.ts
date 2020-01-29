@@ -1,5 +1,5 @@
-import { Node } from "./node";
 import { Expression } from "./expression";
+import { Node } from "./node";
 
 export class EnumDeclarationElement extends Node {
   private _name: string;

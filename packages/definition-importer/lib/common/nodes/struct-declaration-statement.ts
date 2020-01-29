@@ -1,7 +1,7 @@
+import { BlockStatement } from "./block-statement";
+import { ParameterDeclaration } from "./parameter-declaration";
 import { Statement } from "./statement";
 import { VariableDeclaration } from "./variable-declaration";
-import { ParameterDeclaration } from "./parameter-declaration";
-import { BlockStatement } from "./block-statement";
 
 export class StructDeclarationStatement extends Statement {
   private _alias: string | undefined;

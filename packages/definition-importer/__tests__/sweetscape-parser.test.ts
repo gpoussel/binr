@@ -1,4 +1,5 @@
 import { each, first, has, isArray, isEmpty, isObject, map, size } from "lodash";
+
 import { SweetscapeLexer } from "../lib/sweetscape/sweetscape-lexer";
 import { SweetscapeParser } from "../lib/sweetscape/sweetscape-parser";
 

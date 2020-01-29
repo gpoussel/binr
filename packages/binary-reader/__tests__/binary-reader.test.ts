@@ -1,4 +1,5 @@
 import { Definition, Structure } from "@binr/model";
+
 import { BinaryReader } from "../lib/binary-reader";
 
 const createEmptyBuffer = () => Buffer.from([]);

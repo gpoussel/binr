@@ -1,5 +1,5 @@
-import { Value } from "./value";
 import { SwitchLabel } from "./switch-label";
+import { Value } from "./value";
 
 export class ValueSwitchLabel extends SwitchLabel {
   private _value: Value;

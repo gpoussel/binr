@@ -1,5 +1,6 @@
 import { BlockStatement } from "@binr/model";
 import { flatMap, map } from "lodash";
+
 import { Node } from "./node";
 
 export class BlockNode extends Node {

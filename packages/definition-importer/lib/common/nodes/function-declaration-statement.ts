@@ -1,7 +1,7 @@
-import { Statement } from "./statement";
-import { Type } from "./type";
 import { BlockStatement } from "./block-statement";
 import { ParameterDeclaration } from "./parameter-declaration";
+import { Statement } from "./statement";
+import { Type } from "./type";
 
 export class FunctionDeclarationStatement extends Statement {
   private _returnType: Type;

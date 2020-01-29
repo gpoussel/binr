@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import { isString } from "lodash";
 
 import { BufferWrapper, Environment, ExpressionEvaluator } from "@binr/shared";
+import { isString } from "lodash";
 
 import { Type } from "./type";
 

@@ -1,4 +1,4 @@
-import { createToken, ITokenConfig, Lexer, TokenType } from "chevrotain";
+import { ITokenConfig, Lexer, TokenType, createToken } from "chevrotain";
 import * as escapeStringRegexp from "escape-string-regexp";
 import { each, filter, fromPairs, has, isEmpty, map } from "lodash";
 

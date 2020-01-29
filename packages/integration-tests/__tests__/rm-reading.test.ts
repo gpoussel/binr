@@ -1,6 +1,7 @@
+import * as fs from "fs";
+
 import { BinaryReader } from "@binr/binary-reader";
 import { DefinitionReader } from "@binr/definition-reader";
-import * as fs from "fs";
 
 const pathToBinaryFixtures = `${__dirname}/../__fixtures__/binaries`;
 const pathToDefinitionFixtures = `${__dirname}/../__fixtures__/definitions`;

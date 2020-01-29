@@ -1,5 +1,5 @@
-import { Statement } from "./statement";
 import { Expression } from "./expression";
+import { Statement } from "./statement";
 import { CommaExpression } from ".";
 
 export class ForStatement extends Statement {

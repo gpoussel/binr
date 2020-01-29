@@ -1,4 +1,5 @@
 import { first, isEmpty } from "lodash";
+
 import { DefinitionBuilder } from "./definition-builder";
 import { DefinitionLexer } from "./definition-lexer";
 import { DefinitionParser } from "./definition-parser";

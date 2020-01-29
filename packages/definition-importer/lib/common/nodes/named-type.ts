@@ -1,5 +1,5 @@
-import { TypeModifier } from "./type-modifier";
 import { Type } from "./type";
+import { TypeModifier } from "./type-modifier";
 
 export class NamedType extends Type {
   private _name: string;

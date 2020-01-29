@@ -1,5 +1,6 @@
 import { CstParser } from "chevrotain";
 import { values } from "lodash";
+
 import { tokens } from "./definition-lexer";
 
 export class DefinitionParser extends CstParser {

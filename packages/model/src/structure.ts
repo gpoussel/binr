@@ -1,4 +1,5 @@
 import * as assert from "assert";
+
 import { Statement } from "./statement/statement";
 
 export class Structure {

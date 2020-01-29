@@ -1,7 +1,9 @@
+import * as assert from "assert";
+
 import { Structure } from "@binr/model";
 import { BufferWrapper, Environment, ValueAggregator } from "@binr/shared";
-import * as assert from "assert";
 import { each, isUndefined } from "lodash";
+
 import { Type } from "./type";
 
 export class StructureType extends Type {

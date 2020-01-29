@@ -1,4 +1,5 @@
 import { CstParser } from "chevrotain";
+
 import { CStylePreprocessor } from "../common/cstyle-preprocessor";
 import { Importer } from "../importer";
 import { SweetscapeDefinitionBuilder } from "./sweetscape-builder";

@@ -1,5 +1,5 @@
-import { Statement } from "./statement";
 import { CaseSwitchElement } from "./case-switch-element";
+import { Statement } from "./statement";
 
 export class SwitchStatement extends Statement {
   private _caseSwitchElements: CaseSwitchElement[];

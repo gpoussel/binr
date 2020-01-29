@@ -1,7 +1,7 @@
-import { Statement } from "./statement";
-import { ArraySelector } from "./array-selector";
-import { Type } from "./type";
 import { Annotation } from "./annotation";
+import { ArraySelector } from "./array-selector";
+import { Statement } from "./statement";
+import { Type } from "./type";
 
 export class TypedefStatement extends Statement {
   private _type: Type;

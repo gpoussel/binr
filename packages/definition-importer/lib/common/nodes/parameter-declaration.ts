@@ -1,6 +1,6 @@
-import { Node } from "./node";
 import { ArraySelector } from "./array-selector";
 import { NamedType } from "./named-type";
+import { Node } from "./node";
 import { VariableModifier } from "./variable-modifier";
 
 export class ParameterDeclaration extends Node {

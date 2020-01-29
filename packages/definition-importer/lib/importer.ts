@@ -1,5 +1,6 @@
 import { CstParser, IRecognitionException, Lexer } from "chevrotain";
 import { first, get, isEmpty, isString, join, map } from "lodash";
+
 import { Definition } from "./common/nodes";
 
 export class Importer {

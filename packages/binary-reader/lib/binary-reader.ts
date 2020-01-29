@@ -1,9 +1,9 @@
 import * as assert from "assert";
-import { find, get, isBuffer, isObject, isUndefined } from "lodash";
 
 import { StructureType } from "@binr/definition-reader";
 import { Definition } from "@binr/model";
 import { BufferWrapper, Environment, StreamObject } from "@binr/shared";
+import { find, get, isBuffer, isObject, isUndefined } from "lodash";
 
 export class BinaryReader {
   public read(binaryBuffer: Buffer, definition: Definition, providedStructureName?: string) {

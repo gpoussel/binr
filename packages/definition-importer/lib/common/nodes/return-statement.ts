@@ -1,5 +1,5 @@
-import { Statement } from "./statement";
 import { Expression } from "./expression";
+import { Statement } from "./statement";
 
 export class ReturnStatement extends Statement {
   private _expression: Expression | undefined;

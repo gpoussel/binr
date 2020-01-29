@@ -1,9 +1,9 @@
-import { Statement } from "./statement";
-import { VariableModifier } from "./variable-modifier";
-import { Type } from "./type";
 import { Annotation } from "./annotation";
 import { Expression } from "./expression";
+import { Statement } from "./statement";
+import { Type } from "./type";
 import { VariableDeclaration } from "./variable-declaration";
+import { VariableModifier } from "./variable-modifier";
 
 export class VariableDeclarationStatement extends Statement {
   private _variableType: Type;

@@ -1,6 +1,6 @@
 import { CstParser } from "chevrotain";
-
 import { values } from "lodash";
+
 import { tokens } from "./sweetscape-tokens";
 
 export class SweetscapeParser extends CstParser {

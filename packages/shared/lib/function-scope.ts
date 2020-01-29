@@ -1,4 +1,5 @@
 import * as assert from "assert";
+
 import { get, has } from "lodash";
 
 export class FunctionScope {

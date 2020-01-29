@@ -1,7 +1,7 @@
 import { each, find } from "lodash";
 
 import { SweetscapeDefinitionImporter } from "../lib/sweetscape/sweetscape-importer";
-import { getSingleStructure, getArchiveEntries } from "./utils/010-structures";
+import { getArchiveEntries, getSingleStructure } from "./utils/010-structures";
 
 const SCRIPT_NAMES = [
   "AlpineAPN.1sc",

@@ -1,5 +1,6 @@
 import { CstParser } from "chevrotain";
 import { each, filter, get, has, join, keys, map, repeat, size, times } from "lodash";
+
 import { BlockNode, FieldNode, IfNode, SwitchNode } from "./nodes";
 
 /**

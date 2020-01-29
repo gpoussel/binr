@@ -1,5 +1,7 @@
 import * as fs from "fs";
+
 import { each } from "lodash";
+
 import { DefinitionReader } from "../lib/definition-reader";
 
 const pathToFixtures = `${__dirname}/../__fixtures__/`;
