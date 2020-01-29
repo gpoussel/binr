@@ -20,6 +20,7 @@
     "test": "jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "test:watch": "jest --watch --verbose",
+    "test:watch:snapshot": "jest --watch --verbose --update-snapshot",
     "test:watch:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --watch --runInBand",
     "test:coverage": "jest --coverage",
     "tsc": "npx lerna run tsc"
