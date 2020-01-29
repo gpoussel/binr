@@ -70,9 +70,12 @@ export class FieldNode extends Node {
       this.name,
       type,
       fromPairs(
-        map(filter(this.annotations, (annotation) => annotation.name === "ignore"), (annotation) => {
-          return ["ignore", annotation.value];
-        }),
+        map(
+          filter(this.annotations, (annotation) => annotation.name === "ignore"),
+          (annotation) => {
+            return ["ignore", annotation.value];
+          },
+        ),
       ),
     );
   }

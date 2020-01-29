@@ -295,9 +295,12 @@ tokenInfos.push({
 
 // Some tokens, with a "longer_alt" attribute set, have to be created after other ones
 const createdTokens: { [key: string]: TokenType } = {};
-map(filter(tokenInfos, (tokenInfo) => !has(tokenInfo, "longer_alt")), (tokenInfo) => {
-  createdTokens[tokenInfo.name] = createToken(tokenInfo as ITokenConfig);
-});
+map(
+  filter(tokenInfos, (tokenInfo) => !has(tokenInfo, "longer_alt")),
+  (tokenInfo) => {
+    createdTokens[tokenInfo.name] = createToken(tokenInfo as ITokenConfig);
+  },
+);
 
 const remainingTokens = filter(tokenInfos, (tokenInfo) => has(tokenInfo, "longer_alt"));
 while (!isEmpty(remainingTokens)) {
