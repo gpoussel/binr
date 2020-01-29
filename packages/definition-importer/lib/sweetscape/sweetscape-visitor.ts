@@ -368,21 +368,24 @@ export function getVisitor(parser: CstParser) {
     }
 
     public variableDeclarator(ctx: any): VariableDeclaration {
-      const result: any = {};
-      if (has(ctx, "bitfieldRest")) {
-        result.bits = this.visit(ctx.bitfieldRest);
-      }
-      // TODO variableDeclaratorRest.arguments
-      // TODO bitfieldRest
       const name = getIdentifier(ctx.Identifier);
       const variableDeclaratorRestCtx = get(first(get(ctx, "variableDeclaratorRest")), "children");
       const annotations = concat(
         this.visitIfPresent(ctx, "annotations", []),
         this.visitIfPresent(variableDeclaratorRestCtx, "annotations", []),
       );
+      const bitfield = this.visitIfPresent(ctx, "bitfieldRest");
       const arraySelector = this.visitIfPresent(variableDeclaratorRestCtx, "anyArraySelector");
+      const typeArguments = this.visitIfPresent(variableDeclaratorRestCtx, "arguments", []);
       const initializationExpression = this.visitIfPresent(variableDeclaratorRestCtx, "variableInitializer");
-      return new VariableDeclaration(name, arraySelector, initializationExpression, annotations);
+      return new VariableDeclaration(
+        name,
+        bitfield,
+        arraySelector,
+        typeArguments,
+        initializationExpression,
+        annotations,
+      );
     }
 
     public structDeclaration(ctx: any) {
@@ -399,10 +402,6 @@ export function getVisitor(parser: CstParser) {
       const result: any = {};
       if (has(ctx, "arguments")) {
         result.arguments = this.visit(ctx.arguments);
-      }
-      if (has(ctx, "anyArraySelector")) {
-        const anyArraySelector = this.visit(ctx.anyArraySelector);
-        assign(result, anyArraySelector);
       }
       return result;
     }
@@ -678,7 +677,7 @@ export function getVisitor(parser: CstParser) {
       return new ArrayInitializationExpression(this.visitAll(ctx, "assignmentExpression"));
     }
 
-    public bitfieldRest(ctx: any) {
+    public bitfieldRest(ctx: any): Expression {
       return this.visit(ctx.additiveExpression);
     }
 
