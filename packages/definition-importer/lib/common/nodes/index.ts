@@ -47,6 +47,7 @@ import { ArraySelector } from "./array-selector";
 import { ExpressionArraySelector } from "./expression-array-selector";
 import { EmptyArraySelector } from "./empty-array-selector";
 import { EnumDeclarationElement } from "./enum-declaration-element";
+import { TypedefStatement } from "./typedef-statement";
 
 export {
   Annotation,
@@ -98,4 +99,5 @@ export {
   EmptyArraySelector,
   ExpressionArraySelector,
   EnumDeclarationElement,
+  TypedefStatement,
 };

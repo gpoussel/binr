@@ -62,6 +62,7 @@ import {
   EmptyArraySelector,
   ExpressionArraySelector,
   EnumDeclarationElement,
+  TypedefStatement,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -318,17 +319,12 @@ export function getVisitor(parser: CstParser) {
       ]);
     }
 
-    public typedefStatement(ctx: any) {
-      const result: any = {
-        type: "typeAlias",
-        name: this.visit(ctx.typeName),
-        alias: getIdentifier(ctx.Identifier),
-        annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
-      };
-      if (has(ctx, "arraySelector")) {
-        result.arraySelector = this.visit(ctx.arraySelector);
-      }
-      return result;
+    public typedefStatement(ctx: any): TypedefStatement {
+      const type = this.visit(ctx.typeName);
+      const alias = getIdentifier(ctx.Identifier);
+      const arraySelector = this.visitIfPresent(ctx, "arraySelector");
+      const annotations = this.visitIfPresent(ctx, "annotations", []);
+      return new TypedefStatement(type, alias, arraySelector, annotations);
     }
 
     public statementList(ctx: any): Statement[] {
