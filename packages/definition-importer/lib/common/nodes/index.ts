@@ -42,7 +42,7 @@ import { SwitchLabel } from "./switch-label";
 import { SwitchStatement } from "./switch-statement";
 import { ValueSwitchLabel } from "./value-switch-label";
 import { EnumDeclarationStatement } from "./enum-declaration-statement";
-import { VariableDeclarator } from "./variable-declarator";
+import { VariableDeclaration } from "./variable-declaration";
 
 export {
   Annotation,
@@ -89,5 +89,5 @@ export {
   SwitchStatement,
   ValueSwitchLabel,
   EnumDeclarationStatement,
-  VariableDeclarator,
+  VariableDeclaration,
 };

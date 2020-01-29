@@ -1,7 +1,7 @@
 import { Node } from "./node";
 import { Annotation } from "./annotation";
 
-export class VariableDeclarator extends Node {
+export class VariableDeclaration extends Node {
   private _name: string;
   private _annotations: Annotation[];
 

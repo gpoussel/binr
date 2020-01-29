@@ -44,7 +44,7 @@ import {
   ValueSwitchLabel,
   DefaultSwitchLabel,
   EnumDeclarationStatement,
-  VariableDeclarator,
+  VariableDeclaration,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -290,7 +290,7 @@ export function getVisitor(parser: CstParser) {
       );
     }
 
-    public variableDeclarators(ctx: any): VariableDeclarator[] {
+    public variableDeclarators(ctx: any): VariableDeclaration[] {
       return this.visitAll(ctx, "variableDeclarator");
     }
 
@@ -364,7 +364,7 @@ export function getVisitor(parser: CstParser) {
       return new EnumDeclarationStatement(typeName, alias);
     }
 
-    public variableDeclarator(ctx: any): VariableDeclarator {
+    public variableDeclarator(ctx: any): VariableDeclaration {
       const result: any = {
         annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
@@ -376,7 +376,7 @@ export function getVisitor(parser: CstParser) {
       // TODO bitfieldRest
       const name = getIdentifier(ctx.Identifier);
       const annotations = this.visitIfPresent(ctx, "annotations", []);
-      return new VariableDeclarator(name, annotations);
+      return new VariableDeclaration(name, annotations);
     }
 
     public structDeclaration(ctx: any) {
