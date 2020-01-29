@@ -1,4 +1,4 @@
-import { Type } from "../type";
+import { Type } from "../types";
 import { Expression } from "./expression";
 
 export class SizeofExpression extends Expression {

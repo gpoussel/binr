@@ -1,5 +1,5 @@
 import { EnumDeclarationElement } from "../enum-declaration-element";
-import { Type } from "../type";
+import { Type } from "../types";
 import { VariableDeclaration } from "../variable-declaration";
 import { Statement } from "./statement";
 
