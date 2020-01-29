@@ -1,18 +1,5 @@
 import { CstParser } from "chevrotain";
-import {
-  assign,
-  each,
-  first,
-  concat,
-  get,
-  has,
-  isEmpty,
-  keys,
-  map,
-  parseInt,
-  size,
-  isUndefined,
-} from "lodash";
+import { each, first, concat, get, has, isEmpty, keys, map, parseInt, size, isUndefined } from "lodash";
 import {
   Annotation,
   BinaryExpression,
@@ -63,6 +50,10 @@ import {
   ExpressionArraySelector,
   EnumDeclarationElement,
   TypedefStatement,
+  StructDeclarationStatement,
+  ParameterDeclaration,
+  UnionDeclarationStatement,
+  FunctionDeclarationStatement,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -164,17 +155,13 @@ export function getVisitor(parser: CstParser) {
       return this.visitFirst(ctx, "statement", "functionDeclarationStatement");
     }
 
-    public functionDeclarationStatement(ctx: any) {
-      const { typeName, Identifier: identifiers, functionParameterDeclarationList } = ctx;
+    public functionDeclarationStatement(ctx: any): FunctionDeclarationStatement {
+      const returnType = this.visit(ctx.typeName);
+      const name = getIdentifier(ctx.Identifier);
       const forwardDeclaration = has(ctx, "SemiColon");
-      return {
-        type: "functionDeclaration",
-        returnType: this.visit(typeName),
-        name: getIdentifier(identifiers),
-        parameters: this.visit(functionParameterDeclarationList),
-        forwardDeclaration,
-        content: forwardDeclaration ? {} : this.visit(ctx.block),
-      };
+      const body = this.visitIfPresent(ctx, "block");
+      const parameters = this.visit(ctx.functionParameterDeclarationList);
+      return new FunctionDeclarationStatement(returnType, name, parameters, forwardDeclaration, body);
     }
 
     public typeName(ctx: any): Type {
@@ -200,27 +187,20 @@ export function getVisitor(parser: CstParser) {
       return new NamedType(simpleName, modifiers, array);
     }
 
-    public functionParameterDeclarationList(ctx: any) {
+    public functionParameterDeclarationList(ctx: any): ParameterDeclaration[] {
       if (has(ctx, "Void")) {
         return [];
       }
       return this.visitAll(ctx, "functionParameterDeclaration");
     }
 
-    public functionParameterDeclaration(ctx: any) {
+    public functionParameterDeclaration(ctx: any): ParameterDeclaration {
       const type = this.visit(ctx.typeNameWithoutVoid);
-      if (has(ctx, "anyArraySelector")) {
-        assign(type, this.visit(ctx.anyArraySelector));
-      }
-      const result: any = {
-        type,
-        reference: has(ctx, "BinaryAnd"),
-        name: getIdentifier(ctx.Identifier),
-      };
-      each(ctx.variableModifier, (modifier) => {
-        assign(result, this.visit(modifier));
-      });
-      return result;
+      const name = getIdentifier(ctx.Identifier);
+      const arraySelector = this.visitIfPresent(ctx, "anyArraySelector");
+      const byReference = has(ctx, "BinaryAnd");
+      const modifiers = this.visitAll(ctx, "modifier");
+      return new ParameterDeclaration(type, name, arraySelector, byReference, modifiers);
     }
 
     public block(ctx: any): BlockStatement {
@@ -341,19 +321,17 @@ export function getVisitor(parser: CstParser) {
       return new IfStatement(condition, statements[0], statements[1]);
     }
 
-    public structStatement(ctx: any) {
-      const type = has(ctx, "Struct") ? "structDeclaration" : "unionDeclaration";
-      const result: any = {
-        type,
-      };
-      if (has(ctx, "structDeclaration")) {
-        result.declaration = this.visit(ctx.structDeclaration);
+    public structStatement(ctx: any): StructDeclarationStatement | UnionDeclarationStatement {
+      const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
+      const variableDeclaration = this.visit(ctx.variableDeclarator);
+      const declarationCtx = get(first(get(ctx, "structDeclaration")), "children");
+      const parameters = this.visitIfPresent(declarationCtx, "functionParameterDeclarationList", []);
+      const body = this.visitIfPresent(declarationCtx, "block");
+
+      if (has(ctx, "Struct")) {
+        return new StructDeclarationStatement(alias, variableDeclaration, parameters, body);
       }
-      assign(result, this.visit(ctx.variableDeclarator));
-      if (has(ctx, "Identifier")) {
-        result.alias = getIdentifier(ctx.Identifier);
-      }
-      return result;
+      return new UnionDeclarationStatement(alias, variableDeclaration, parameters, body);
     }
 
     public enumStatement(ctx: any): EnumDeclarationStatement {
@@ -390,16 +368,6 @@ export function getVisitor(parser: CstParser) {
         initializationExpression,
         annotations,
       );
-    }
-
-    public structDeclaration(ctx: any) {
-      const result: any = {
-        body: this.visit(ctx.block),
-      };
-      if (has(ctx, "functionParameterDeclarationList")) {
-        result.parameters = this.visit(ctx.functionParameterDeclarationList);
-      }
-      return result;
     }
 
     public expressionStatement(ctx: any): ExpressionStatement {

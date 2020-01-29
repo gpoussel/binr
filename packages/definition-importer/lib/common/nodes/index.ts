@@ -48,6 +48,10 @@ import { ExpressionArraySelector } from "./expression-array-selector";
 import { EmptyArraySelector } from "./empty-array-selector";
 import { EnumDeclarationElement } from "./enum-declaration-element";
 import { TypedefStatement } from "./typedef-statement";
+import { StructDeclarationStatement } from "./struct-declaration-statement";
+import { UnionDeclarationStatement } from "./union-declaration-statement";
+import { ParameterDeclaration } from "./parameter-declaration";
+import { FunctionDeclarationStatement } from "./function-declaration-statement";
 
 export {
   Annotation,
@@ -100,4 +104,8 @@ export {
   ExpressionArraySelector,
   EnumDeclarationElement,
   TypedefStatement,
+  StructDeclarationStatement,
+  UnionDeclarationStatement,
+  ParameterDeclaration,
+  FunctionDeclarationStatement,
 };
