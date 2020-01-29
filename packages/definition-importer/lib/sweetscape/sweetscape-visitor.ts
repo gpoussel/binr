@@ -43,6 +43,8 @@ import {
   SwitchLabel,
   ValueSwitchLabel,
   DefaultSwitchLabel,
+  EnumDeclarationStatement,
+  VariableDeclarator,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -288,7 +290,7 @@ export function getVisitor(parser: CstParser) {
       );
     }
 
-    public variableDeclarators(ctx: any) {
+    public variableDeclarators(ctx: any): VariableDeclarator[] {
       return this.visitAll(ctx, "variableDeclarator");
     }
 
@@ -341,16 +343,10 @@ export function getVisitor(parser: CstParser) {
       return result;
     }
 
-    public enumStatement(ctx: any) {
+    public enumStatement(ctx: any): EnumDeclarationStatement {
       const result: any = {
         type: "enumDeclaration",
       };
-      if (has(ctx, "typeName")) {
-        result.baseType = this.visit(ctx.typeName);
-      }
-      if (has(ctx, "Identifier")) {
-        result.alias = getIdentifier(ctx.Identifier);
-      }
       if (has(ctx, "variableDeclarators")) {
         result.declarations = this.visit(ctx.variableDeclarators);
       }
@@ -360,19 +356,27 @@ export function getVisitor(parser: CstParser) {
       if (has(ctx, "enumDeclaration")) {
         result.declarations = this.visit(ctx.enumDeclaration);
       }
-      return result;
+      // TODO variableDeclarators
+      // TODO variableDeclarator
+      // TODO enumDeclaration
+      const typeName = this.visitIfPresent(ctx, "typeName");
+      const alias = has(ctx, "Identifier") ? result.alias : undefined;
+      return new EnumDeclarationStatement(typeName, alias);
     }
 
-    public variableDeclarator(ctx: any) {
+    public variableDeclarator(ctx: any): VariableDeclarator {
       const result: any = {
-        name: getIdentifier(ctx.Identifier),
         annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
       };
       assign(result, this.visit(ctx.variableDeclaratorRest));
       if (has(ctx, "bitfieldRest")) {
         result.bits = this.visit(ctx.bitfieldRest);
       }
-      return result;
+      // TODO variableDeclaratorRest
+      // TODO bitfieldRest
+      const name = getIdentifier(ctx.Identifier);
+      const annotations = this.visitIfPresent(ctx, "annotations", []);
+      return new VariableDeclarator(name, annotations);
     }
 
     public structDeclaration(ctx: any) {
