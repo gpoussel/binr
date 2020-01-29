@@ -1,5 +1,5 @@
 import { CstParser } from "chevrotain";
-import { assign, each, first, get, has, isEmpty, keys, map, parseInt, size } from "lodash";
+import { assign, each, first, concat, get, has, isEmpty, keys, map, parseInt, size } from "lodash";
 import {
   Annotation,
   BinaryExpression,
@@ -45,6 +45,9 @@ import {
   DefaultSwitchLabel,
   EnumDeclarationStatement,
   VariableDeclaration,
+  ArraySelector,
+  EmptyArraySelector,
+  ExpressionArraySelector,
 } from "../common/nodes";
 
 const OPERATORS = {
@@ -365,18 +368,21 @@ export function getVisitor(parser: CstParser) {
     }
 
     public variableDeclarator(ctx: any): VariableDeclaration {
-      const result: any = {
-        annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
-      };
+      const result: any = {};
       assign(result, this.visit(ctx.variableDeclaratorRest));
       if (has(ctx, "bitfieldRest")) {
         result.bits = this.visit(ctx.bitfieldRest);
       }
-      // TODO variableDeclaratorRest
+      // TODO variableDeclaratorRest.arguments
+      // TODO variableDeclaratorRest.variableInitializer
       // TODO bitfieldRest
       const name = getIdentifier(ctx.Identifier);
-      const annotations = this.visitIfPresent(ctx, "annotations", []);
-      return new VariableDeclaration(name, annotations);
+      const annotations = concat(
+        this.visitIfPresent(ctx, "annotations", []),
+        this.visitIfPresent(ctx, "variableDeclaratorRest.annotations", []),
+      );
+      const arraySelector = this.visitIfPresent(ctx, "variableDeclaratorRest.anyArraySelector");
+      return new VariableDeclaration(name, arraySelector, annotations);
     }
 
     public structDeclaration(ctx: any) {
@@ -391,9 +397,6 @@ export function getVisitor(parser: CstParser) {
 
     public variableDeclaratorRest(ctx: any) {
       const result: any = {};
-      if (has(ctx, "annotations")) {
-        result.annotations = this.visit(ctx.annotations);
-      }
       if (has(ctx, "arguments")) {
         result.arguments = this.visit(ctx.arguments);
       }
@@ -704,15 +707,12 @@ export function getVisitor(parser: CstParser) {
       return this.visit(ctx.assignmentExpression);
     }
 
-    public anyArraySelector(ctx: any) {
+    public anyArraySelector(ctx: any): ArraySelector {
       return this.visitChoices(ctx, [
-        { name: "emptyArraySelector", build: () => ({ array: true }) },
+        { name: "emptyArraySelector", build: () => new EmptyArraySelector() },
         {
           name: "arraySelector",
-          build: () => ({
-            array: true,
-            arraySelector: this.visit(ctx.arraySelector),
-          }),
+          build: () => new ExpressionArraySelector(this.visit(ctx.arraySelector)),
         },
       ]);
     }

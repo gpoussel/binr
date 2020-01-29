@@ -43,6 +43,9 @@ import { SwitchStatement } from "./switch-statement";
 import { ValueSwitchLabel } from "./value-switch-label";
 import { EnumDeclarationStatement } from "./enum-declaration-statement";
 import { VariableDeclaration } from "./variable-declaration";
+import { ArraySelector } from "./array-selector";
+import { ExpressionArraySelector } from "./expression-array-selector";
+import { EmptyArraySelector } from "./empty-array-selector";
 
 export {
   Annotation,
@@ -90,4 +93,7 @@ export {
   ValueSwitchLabel,
   EnumDeclarationStatement,
   VariableDeclaration,
+  ArraySelector,
+  EmptyArraySelector,
+  ExpressionArraySelector,
 };
