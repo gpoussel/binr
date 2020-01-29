@@ -3,9 +3,9 @@ import { Expression } from "./expression";
 export class TernaryExpression extends Expression {
   private _condition: Expression;
   private _trueExpression: Expression;
-  private _falseExpression: Expression | undefined;
+  private _falseExpression: Expression;
 
-  public constructor(condition: Expression, trueExpression: Expression, falseExpression?: Expression) {
+  public constructor(condition: Expression, trueExpression: Expression, falseExpression: Expression) {
     super();
     this._condition = condition;
     this._trueExpression = trueExpression;
@@ -20,7 +20,7 @@ export class TernaryExpression extends Expression {
     return this._trueExpression;
   }
 
-  public get falseExpression(): Expression | undefined {
+  public get falseExpression(): Expression {
     return this._falseExpression;
   }
 }

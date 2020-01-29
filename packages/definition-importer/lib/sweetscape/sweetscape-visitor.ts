@@ -392,9 +392,6 @@ export function getVisitor(parser: CstParser) {
         return condition;
       }
       const trueExpression = this.visit(ctx.assignmentExpression[0]);
-      if (!has(ctx, "ternaryExpression")) {
-        return new TernaryExpression(condition, trueExpression);
-      }
       const falseExpression = this.visit(ctx.ternaryExpression);
       return new TernaryExpression(condition, trueExpression, falseExpression);
     }
