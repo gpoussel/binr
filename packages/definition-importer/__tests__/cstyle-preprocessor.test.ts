@@ -10,7 +10,9 @@ b
 c`;
     const result = preprocessor.preprocess(input);
     expect(result).toEqual(`a
+
 b
+
 c`);
   });
 
@@ -22,7 +24,9 @@ b
 c`;
     const result = preprocessor.preprocess(input);
     expect(result).toEqual(`a
+
 b
+
 c`);
   });
 
@@ -36,7 +40,8 @@ define(A)
 A_B
 c`;
     const result = preprocessor.preprocess(input);
-    expect(result).toEqual(`a
+    expect(result).toEqual(`
+a
 b
 AA
 Aa
@@ -52,7 +57,10 @@ B
 #endif
 C`;
     const result = preprocessor.preprocess(input);
-    expect(result).toEqual(`B
+    expect(result).toEqual(`
+
+B
+
 C`);
   });
 
@@ -69,8 +77,17 @@ D
 C
 #endif`;
     const result = preprocessor.preprocess(input);
-    expect(result).toEqual(`B
-C`);
+    expect(result).toEqual(`
+
+B
+
+
+
+
+
+
+C
+`);
   });
 
   test("handles duplicated #define", () => {
@@ -88,18 +105,25 @@ A
   });
 
   test("handles escaped line breaks", () => {
-    const input = `#define A a+\
-b \
+    const input = `#define A a+\\
+b \\
 c
-A`;
-    expect(preprocessor.preprocess(input)).toEqual("a+b c");
+A
+A A`;
+    expect(preprocessor.preprocess(input)).toEqual(`
+
+
+a+b c
+a+b c a+b c`);
   });
 
   test("handles constants in constants", () => {
     const input = `#define A a
 #define ADDITION A+A
 ADDITION`;
-    expect(preprocessor.preprocess(input)).toEqual("a+a");
+    expect(preprocessor.preprocess(input)).toEqual(`
+
+a+a`);
   });
 
   test("supports #ifndef #else #endif", () => {
@@ -115,7 +139,16 @@ D
 C
 #endif`;
     const result = preprocessor.preprocess(input);
-    expect(result).toEqual(`D
-D`);
+    expect(result).toEqual(`
+
+
+
+D
+
+
+D
+
+
+`);
   });
 });
