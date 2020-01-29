@@ -270,7 +270,7 @@ tokenInfos.push({
 
 tokenInfos.push({
   name: TokenName.NumberHexadecimalLiteral,
-  pattern: /0x[A-F0-9]+L?/i,
+  pattern: /0x[A-F0-9]+[Lu]?/i,
 });
 
 tokenInfos.push({
