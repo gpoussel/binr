@@ -1,24 +1,20 @@
+import { Annotation } from "../annotation";
 import { ParameterDeclaration } from "../parameter-declaration";
-import { VariableDeclaration } from "../variable-declaration";
 import { BlockStatement } from "./block-statement";
 import { Statement } from "./statement";
 
 export class StructDeclarationStatement extends Statement {
   public constructor(
-    private _alias: string | undefined,
-    private _variableDeclaration: VariableDeclaration,
+    private _name: string | undefined,
     private _parameters: ParameterDeclaration[],
     private _body: BlockStatement,
+    private _annotations: Annotation[],
   ) {
     super();
   }
 
-  public get alias(): string | undefined {
-    return this._alias;
-  }
-
-  public get variableDeclaration(): VariableDeclaration {
-    return this._variableDeclaration;
+  public get name(): string | undefined {
+    return this._name;
   }
 
   public get parameters(): ParameterDeclaration[] {
@@ -27,5 +23,9 @@ export class StructDeclarationStatement extends Statement {
 
   public get body(): BlockStatement {
     return this._body;
+  }
+
+  public get annotations(): Annotation[] {
+    return this._annotations;
   }
 }

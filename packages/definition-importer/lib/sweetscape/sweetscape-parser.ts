@@ -10,7 +10,8 @@ export class SweetscapeParser extends CstParser {
       { ALT: () => this.SUBRULE(this.expressionStatement) },
       { ALT: () => this.SUBRULE(this.localVariableDeclarationStatement) },
       { ALT: () => this.SUBRULE(this.typedefStatement) },
-      { ALT: () => this.SUBRULE(this.structStatement) },
+      { ALT: () => this.SUBRULE(this.inlineStructStatement) },
+      { ALT: () => this.SUBRULE(this.structDeclarationStatement) },
       { ALT: () => this.SUBRULE(this.forwardStructDeclarationStatement) },
       { ALT: () => this.SUBRULE(this.enumStatement) },
       { ALT: () => this.SUBRULE(this.ifStatement) },
@@ -96,12 +97,21 @@ export class SweetscapeParser extends CstParser {
     this.CONSUME(tokens.SemiColon);
   });
 
-  private structStatement = this.RULE("structStatement", () => {
-    this.OPTION(() => this.CONSUME(tokens.Typedef));
+  private inlineStructStatement = this.RULE("inlineStructStatement", () => {
     this.OR2([{ ALT: () => this.CONSUME(tokens.Struct) }, { ALT: () => this.CONSUME(tokens.Union) }]);
     this.OPTION2(() => this.CONSUME(tokens.Identifier)); // Alias
     this.SUBRULE2(this.structDeclaration);
     this.OPTION4(() => this.SUBRULE(this.variableDeclarator));
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private structDeclarationStatement = this.RULE("structDeclarationStatement", () => {
+    this.CONSUME(tokens.Typedef);
+    this.OR2([{ ALT: () => this.CONSUME(tokens.Struct) }, { ALT: () => this.CONSUME(tokens.Union) }]);
+    this.OPTION3(() => this.CONSUME3(tokens.Identifier));
+    this.SUBRULE2(this.structDeclaration);
+    this.OPTION2(() => this.CONSUME2(tokens.Identifier));
+    this.OPTION(() => this.SUBRULE(this.annotations));
     this.CONSUME(tokens.SemiColon);
   });
 

@@ -29,6 +29,8 @@ import {
   FunctionDeclarationStatement,
   IdentifierValue,
   IfStatement,
+  InlineStructDeclarationStatement,
+  InlineUnionDeclarationStatement,
   NamedType,
   NumberValue,
   Operator,
@@ -221,7 +223,8 @@ export function getVisitor(parser: CstParser) {
         "expressionStatement",
         "localVariableDeclarationStatement",
         "typedefStatement",
-        "structStatement",
+        "inlineStructStatement",
+        "structDeclarationStatement",
         "forwardStructDeclarationStatement",
         "enumStatement",
         "ifStatement",
@@ -329,7 +332,9 @@ export function getVisitor(parser: CstParser) {
       return new IfStatement(condition, statements[0], statements[1]);
     }
 
-    public structStatement(ctx: any): StructDeclarationStatement | UnionDeclarationStatement {
+    public inlineStructStatement(
+      ctx: any,
+    ): InlineStructDeclarationStatement | InlineUnionDeclarationStatement {
       const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
       const variableDeclaration = this.visit(ctx.variableDeclarator);
       const declarationCtx = get(first(get(ctx, "structDeclaration")), "children");
@@ -337,9 +342,30 @@ export function getVisitor(parser: CstParser) {
       const body = this.visitIfPresent(declarationCtx, "block");
 
       if (has(ctx, "Struct")) {
-        return new StructDeclarationStatement(alias, variableDeclaration, parameters, body);
+        return new InlineStructDeclarationStatement(alias, variableDeclaration, parameters, body);
       }
-      return new UnionDeclarationStatement(alias, variableDeclaration, parameters, body);
+      return new InlineUnionDeclarationStatement(alias, variableDeclaration, parameters, body);
+    }
+
+    public structDeclarationStatement(ctx: any): StructDeclarationStatement | UnionDeclarationStatement {
+      let name;
+      if (size(ctx.Identifier) === 1) {
+        // Single name: that's easy
+        name = getIdentifier(ctx.Identifier);
+      } else if (size(ctx.Identifier) === 2) {
+        name = ctx.Identifier[1].Image;
+      } else {
+        throw new Error();
+      }
+      const annotations = this.visitIfPresent(ctx, "annotations", []);
+      const declarationCtx = get(first(get(ctx, "structDeclaration")), "children");
+      const parameters = this.visitIfPresent(declarationCtx, "functionParameterDeclarationList", []);
+      const body = this.visitIfPresent(declarationCtx, "block");
+
+      if (has(ctx, "Struct")) {
+        return new StructDeclarationStatement(name, parameters, body, annotations);
+      }
+      return new UnionDeclarationStatement(name, parameters, body, annotations);
     }
 
     public forwardStructDeclarationStatement(ctx: any): ForwardStructDeclarationStatement {
