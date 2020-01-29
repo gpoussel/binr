@@ -304,7 +304,6 @@ Array [
   "struct: WideString",
   "struct: SyntaxStyle",
   "struct: CustomColor",
-  "enum: NATIVE_SETTINGS",
 ]
 `;
 
@@ -330,7 +329,6 @@ Array [
   "function: to_uint64",
   "function: uint64_read",
   "function: ReadUInt64_",
-  "enum: NID_",
   "function: PeekNID",
   "function: RequireNID",
   "function: EffectiveEND",
@@ -361,7 +359,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure ADF.bt 1`] = `
 Array [
-  "enum: BLOCKINFO",
   "struct: BOOTBLOCK",
   "struct: ROOTBLOCK",
   "struct: BITMAPBLOCK",
@@ -423,10 +420,9 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure AndroidResource.bt 1`] = `
 Array [
-  "enum: undefined",
-  "enum: undefined",
+  "enum: PUBLIC_RESOURCE_ID",
+  "enum: RES_TYPE",
   "struct: ResChunk_header",
-  "enum: undefined",
   "struct: ResStringPool_header",
   "struct: ResStringPool_ref",
   "function: readString",
@@ -480,11 +476,11 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure AndroidVBMeta.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: AvbVBMetaImageFlags",
   "struct: AvbVBMetaImageHeader",
   "struct: AvbRSAPublicKeyHeader",
   "struct: publickey",
-  "enum: undefined",
+  "enum: AvbDescriptorTag",
   "struct: AvbDescriptor",
   "struct: AvbHashDescriptor",
   "struct: AvbHashtreeDescriptor",
@@ -510,7 +506,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure BPlist.bt 1`] = `
 Array [
-  "enum: EntryType",
   "struct: Trailer",
   "struct: Int",
   "struct: Real",
@@ -537,7 +532,6 @@ Array [
 exports[`Sweetscape Importer reads top-level elements in structure BSON.bt 1`] = `
 Array [
   "struct: CountedString",
-  "enum: Type",
   "struct: BinaryData",
   "struct: Document",
 ]
@@ -577,8 +571,8 @@ Array [
   "function: queue_push_method",
   "function: queue_pop_method",
   "function: queue_peek_method",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: COMPTYPE",
+  "enum: JVCODE",
   "struct: PACKAGE_INFO",
   "struct: PACKAGE_NAME_INFO",
   "struct: STATIC_FIELD_SIZE_INFO",
@@ -651,9 +645,9 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure CLASS.bt 1`] = `
 Array [
-  "enum: eACCESS_FLAGS",
+  "enum: AF",
   "function: read_AF",
-  "enum: eCP_CONST",
+  "enum: CP_CONST",
   "struct: cp_info",
   "function: read_cp_info",
   "struct: attribute_info",
@@ -666,12 +660,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure CLASSAdv.bt 1`] = `
 Array [
-  "enum: Constant_pool",
-  "enum: access_property_flags",
-  "enum: enum_type",
-  "enum: enum_opcodes",
-  "enum: enum_array_type",
-  "enum: enum_opcodes_body_type",
   "struct: annotation",
   "struct: element_value",
   "struct: verification_type_info",
@@ -716,7 +704,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure CRX.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: COMPTYPE",
   "struct: ZIPFILERECORD",
   "struct: ZIPDIRENTRY",
   "struct: ZIPDIGITALSIG",
@@ -743,8 +731,8 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure Cryptfs.bt 1`] = `
 Array [
-  "enum: undefined",
-  "enum: undefined",
+  "enum: CRYPT_TYPE",
+  "enum: KDF_TYPE",
 ]
 `;
 
@@ -780,7 +768,7 @@ Array [
   "struct: sleb128",
   "function: sleb128_value",
   "function: SLeb128Read",
-  "enum: undefined",
+  "enum: VALUE",
   "struct: EncodedValue",
   "function: EncodedValueRead",
   "function: EncodedValueValue",
@@ -793,7 +781,7 @@ Array [
   "struct: encoded_annotation",
   "function: EncodedAnnotationRead",
   "struct: header_item",
-  "enum: undefined",
+  "enum: DEX_OPT_FLAGS",
   "struct: dexopt_header_item",
   "function: DexOptFlagsRead",
   "struct: string_item",
@@ -831,7 +819,7 @@ Array [
   "function: MethodAnnotationRead",
   "struct: parameter_annotation",
   "function: ParameterAnnotationRead",
-  "enum: undefined",
+  "enum: VISIBILITY",
   "struct: annotation_item",
   "function: AnnotationItemRead",
   "struct: annotation_off_item",
@@ -842,10 +830,10 @@ Array [
   "function: AnnotationsDirectoryItemRead",
   "struct: annotation_set_ref_item",
   "struct: annotation_set_ref_list",
-  "enum: undefined",
+  "enum: ACCESS_FLAGS",
   "function: AccessFlagsRead",
   "function: AccessFlagsReadUleb",
-  "enum: undefined",
+  "enum: AF_TYPE",
   "function: GetFriendlyAccessFlag",
   "function: GetFriendlyAccessFlags",
   "struct: encoded_field",
@@ -874,8 +862,7 @@ Array [
   "function: EncodedTypeAddrPairRead",
   "struct: encoded_array_item",
   "function: EncodedArrayItemRead",
-  "enum: TYPE_CODES",
-  "enum: undefined",
+  "enum: DBG_OPCODE",
   "struct: debug_opcode",
   "function: DebugOpcodeRead",
   "struct: debug_info_item",
@@ -898,7 +885,7 @@ Array [
   "function: GetLongTypeById",
   "function: GetMethodById",
   "function: GetFieldById",
-  "enum: undefined",
+  "enum: DEX_CHUNK_TYPE",
   "struct: dexopt_opt_chunk",
   "struct: dexopt_opt_table",
   "function: DexoptOptTableRead",
@@ -911,7 +898,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure DMP.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: e_DumpType",
   "struct: _PHYSICAL_MEMORY_RUN32",
   "struct: _PHYSICAL_MEMORY_DESCRIPTOR32",
   "struct: _EXCEPTION_RECORD32",
@@ -920,15 +907,15 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure Drive.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: boolean",
   "function: IsExactlyOneBitSet",
   "function: BytesPerSectorToBytesPerSectorShift",
   "function: BytesPerSectorShiftToBytesPerSector",
   "function: IsValidBytesPerSectorShift",
-  "enum: undefined",
+  "enum: PARTITION_SYSTEMID",
   "function: ReadPARTITION_SYSTEMID",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: MEDIA",
+  "enum: BOOTINDICATOR",
   "struct: GUID",
   "function: ReadGUID",
   "function: WriteGUID",
@@ -938,19 +925,19 @@ Array [
   "function: ReadPARTITION_ENTRY",
   "struct: MASTER_BOOT_RECORD",
   "struct: EXTENDED_PARTITION",
-  "enum: undefined",
+  "enum: EFI_TYPE",
   "struct: EFI_PARTITION_ENTRY",
   "function: ReadEFI_PARTITION_ENTRY",
   "struct: EFI_PARTITION",
-  "enum: undefined",
+  "enum: FILE_SYSTEM_TYPE",
   "function: ReadFILE_SYSTEM_TYPE",
   "struct: IFS_BOOTSECTOR",
   "function: Calculate_IFS_BOOTSECTOR_Checksum",
   "function: IsValidIfsBootsector",
   "struct: IFS_DRIVE",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: EXFAT_MEDIA_TYPE",
+  "enum: EXFAT_CLUSTER_INFO",
+  "enum: EXFAT_DIRENTRY_TYPE",
   "function: ReadEXFAT_CLUSTER_INFO",
   "function: ReadEXFAT_OEM_PARAMETER_TEMPLATE",
   "function: ReadEXFAT_BOOT_CHECKSUM_SECTOR",
@@ -1043,17 +1030,17 @@ Array [
   "struct: EXFAT_DATA",
   "struct: EXFAT_DIRECTORY_CONTENTS",
   "struct: EXFAT_DRIVE",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: FAT12_MEDIA_TYPE",
+  "enum: FAT12_PARTITION_STATE",
+  "enum: FAT12_CLUSTER_INFO",
   "function: ReadFAT12_CLUSTER_INFO",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: FAT16_MEDIA_TYPE",
+  "enum: FAT16_PARTITION_STATE",
+  "enum: FAT16_CLUSTER_INFO",
   "function: ReadFAT16_CLUSTER_INFO",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: FAT32_MEDIA_TYPE",
+  "enum: FAT32_PARTITION_STATE",
+  "enum: FAT32_CLUSTER_INFO",
   "function: ReadFAT32_CLUSTER_INFO",
   "struct: FAT12_FAT_TABLE",
   "function: ReadFAT12_FAT_TABLE",
@@ -1066,7 +1053,7 @@ Array [
   "function: ReadFAT_BOOTSECTOR_CountOfDataClusters",
   "function: IsValidFatBootSector",
   "struct: FAT_DRIVE",
-  "enum: undefined",
+  "enum: FAT_ATTR_TYPE",
   "function: ReadFAT_ATTR_TYPE",
   "struct: FAT_SHORTENTRY",
   "function: ReadFAT_SHORTENTRY_Filename",
@@ -1093,9 +1080,9 @@ Array [
   "function: SizeFAT_DIRECTORY",
   "struct: NTFS_BOOTSECTOR",
   "function: IsValidNtfsBootSector",
-  "enum: undefined",
+  "enum: NTFS_ATTR_TYPE",
   "struct: NTFS_ATTR_STANDARD",
-  "enum: undefined",
+  "enum: NTFS_NAMESPACE",
   "struct: NTFS_FILE_FLAGS",
   "function: ReadNTFS_FILE_FLAGS",
   "struct: NTFS_ATTR_FILE_NAME",
@@ -1127,8 +1114,8 @@ Array [
   "struct: HFS_ForkData",
   "function: HFSTimeRead",
   "function: HFSTimeWrite",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: HFS_CatalogNodeID",
+  "enum: HFS_RecordType",
   "struct: HFS_VolumeHeader",
   "function: IsValidHfsBootSector",
   "struct: HFS_UniStr255",
@@ -1154,7 +1141,7 @@ Array [
   "function: ReadHFSFile",
   "struct: HFS_CatalogRecord",
   "function: ReadHFSCatalogRecord",
-  "enum: undefined",
+  "enum: HFS_NodeKind",
   "struct: HFS_BTNodeDescriptor",
   "struct: HFS_BTHeaderRec",
   "struct: HFS_BTHeaderNode",
@@ -1185,10 +1172,6 @@ Array [
   "function: StringToEISAId",
   "struct: Timing",
   "function: TimingToString",
-  "enum: DescriptorType",
-  "enum: FormatCode",
-  "enum: BlockType",
-  "enum: SVDIndex",
   "struct: SVD",
   "function: SVDToString",
   "function: SPAToString",
@@ -1212,20 +1195,20 @@ Array [
 exports[`Sweetscape Importer reads top-level elements in structure ELF.bt 1`] = `
 Array [
   "function: PrintWarning",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: ei_class_2_e",
+  "enum: ei_data_e",
+  "enum: ei_version_e",
+  "enum: ei_osabi_e",
   "struct: e_ident_t",
   "function: VAddr32",
   "function: VAddr64",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: e_type32_e",
+  "enum: e_machine32_e",
+  "enum: e_version32_e",
+  "enum: p_type32_e",
+  "enum: p_flags32_e",
+  "enum: s_name32_e",
+  "enum: s_type32_e",
   "function: ReservedSectionName",
   "struct: program_table_entry32_t",
   "struct: program_table_entry64_t",
@@ -1233,8 +1216,8 @@ Array [
   "function: ProgramFlags",
   "function: ProgramInfo64",
   "function: ProgramInfo32",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: s_flags32_e",
+  "enum: s_flags64_e",
   "struct: s_name32_t",
   "function: SectionName",
   "struct: section_table_entry64_t",
@@ -1243,8 +1226,8 @@ Array [
   "function: SectionName32",
   "struct: sym_name32_t",
   "function: SymbolName",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: sym_info_bind_e",
+  "enum: sym_info_type_e",
   "struct: sym_info_t",
   "function: SymInfoEnums",
   "struct: Elf64_Sym_fixed",
@@ -1262,7 +1245,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure EMF.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: RecordType",
   "struct: SIZEL",
   "struct: RECTL",
   "struct: Header",
@@ -1278,7 +1261,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure EOT.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: TTEMBED",
   "struct: embedded_opentype_file",
 ]
 `;
@@ -1300,14 +1283,14 @@ Array [
   "struct: IMAGE_DOS_HEADER",
   "struct: RICH_HEADER",
   "struct: IMAGE_DOS_STUB",
-  "enum: undefined",
+  "enum: IMAGE_MACHINE",
   "struct: FILE_CHARACTERISTICS",
   "struct: IMAGE_FILE_HEADER",
   "struct: IMAGE_DATA_DIRECTORY",
   "struct: IMAGE_DATA_DIRECTORY_ARRAY",
-  "enum: undefined",
+  "enum: IMAGE_SUBSYSTEM",
   "struct: DLL_CHARACTERISTICS",
-  "enum: undefined",
+  "enum: OPTIONAL_MAGIC",
   "struct: IMAGE_OPTIONAL_HEADER32",
   "struct: IMAGE_OPTIONAL_HEADER64",
   "struct: IMAGE_NT_HEADERS",
@@ -1408,10 +1391,10 @@ exports[`Sweetscape Importer reads top-level elements in structure FTS.bt 1`] = 
 Array [
   "struct: FTS_HEADER",
   "function: ProcessPageBreakMarker",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: Markers",
+  "enum: MetaProperties",
+  "enum: PropertyType",
+  "enum: PropertyTags",
   "struct: NAMED_PROPERTY_INFO",
   "function: BinaryChunk",
   "function: PropertyValue",
@@ -1431,7 +1414,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure GGPK.bt 1`] = `
 Array [
-  "enum: Tag",
   "struct: GGPK",
   "struct: File",
   "struct: Directory",
@@ -1453,9 +1435,9 @@ Array [
 exports[`Sweetscape Importer reads top-level elements in structure GZip.bt 1`] = `
 Array [
   "function: MAGICRead",
-  "enum: undefined",
+  "enum: COMPRESSION",
   "struct: FLAGS",
-  "enum: undefined",
+  "enum: OS",
   "struct: gzip_header",
 ]
 `;
@@ -1547,7 +1529,6 @@ exports[`Sweetscape Importer reads top-level elements in structure IGI2_WAV.bt 1
 
 exports[`Sweetscape Importer reads top-level elements in structure ISO.bt 1`] = `
 Array [
-  "enum: CharSetEnum",
   "function: RestoreEndian",
   "function: BlockPos",
   "function: ToCommaNumString",
@@ -1585,7 +1566,6 @@ Array [
   "function: ReadDirectoryRecord",
   "struct: PathTable",
   "function: ReadPathTable",
-  "enum: VolumeDescriptorTypeEnum",
   "struct: VolumeDescriptor_",
   "function: ReadVolumeDescriptor",
   "struct: BootRecordDescriptor_",
@@ -1634,23 +1614,18 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure JPG.bt 1`] = `
 Array [
-  "enum: IFD_dirtype",
   "function: Stack_push",
   "function: Stack_pop",
   "function: Stack_top",
   "function: ReadStringN",
   "function: ChangeColor",
-  "enum: tagID",
-  "enum: tagExifTag",
-  "enum: GeoTag",
-  "enum: tagCasioTag2",
+  "enum: M_ID",
+  "enum: ExifTag",
+  "enum: CasioTag2",
   "struct: CifDirEntry",
-  "enum: CIFFTagStg",
-  "enum: CIFFTagDataType",
-  "enum: CIFFTagType",
   "function: ReadCifDirEntry",
   "struct: CDIR",
-  "enum: tagDataFormat",
+  "enum: DataFormat",
   "struct: DIRENTRY",
   "function: ReadDirEntry",
   "struct: IFD",
@@ -1766,7 +1741,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure LZ4.bt 1`] = `
 Array [
-  "enum: LZ4F_Block_Max_Size",
   "struct: LZ4F_Header_Flags",
   "struct: LZ4F_Header_BlockDescriptor",
   "struct: LZ4F_Header",
@@ -1777,14 +1751,14 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure LuaJIT.bt 1`] = `
 Array [
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: FLAG",
+  "enum: PROTO_FLAG",
+  "enum: VARNAME_TYPE",
+  "enum: BCDUMP_KGC_TYPE",
+  "enum: BCDUMP_KTAB_TYPE",
+  "enum: INSTRUCTION_OPCODES",
+  "enum: BCMode",
+  "enum: MMS",
   "struct: uleb128",
   "struct: uleb128_33",
   "function: uleb128_33_value",
@@ -1838,9 +1812,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure Luac.bt 1`] = `
 Array [
-  "enum: OpCode",
-  "enum: LUA_DATATYPE",
-  "enum: OpMode",
   "function: ISK",
   "function: INDEXK",
   "function: CC",
@@ -1894,11 +1865,11 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure MFT.bt 1`] = `
 Array [
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: HeaderFlags",
+  "enum: ResidentFlag",
+  "enum: FileNameType",
+  "enum: AttributeFlag",
+  "enum: AttribType",
   "struct: Attribute",
   "struct: END_OF_ATTRIBUTES",
   "struct: SECURITY_DESCRIPTOR",
@@ -1924,16 +1895,10 @@ Array [
   "struct: ri",
   "function: checkpdfheader",
   "struct: PalmDatabaseFormat",
-  "enum: eCompression",
-  "enum: encryptionType",
-  "enum: TextEncoding",
-  "enum: MobiType",
   "struct: PalmDOCheader",
-  "enum: eMBHflags",
+  "enum: MBHflags",
   "function: readMBHflags",
   "struct: MobiHeader",
-  "enum: TextToSpeach",
-  "enum: CreatorSoftware",
   "struct: EXTHrecord",
   "struct: ExthHeader",
   "struct: FLISRECORD",
@@ -1952,7 +1917,6 @@ exports[`Sweetscape Importer reads top-level elements in structure MP3.bt 1`] = 
 Array [
   "struct: synchsafe_integer",
   "function: read_synchsafe_integer",
-  "enum: ID3_GENRES",
   "struct: ID3v1_TAG",
   "struct: ID3v2_HEADER",
   "struct: ID3v2_EXTENDED_HEADER",
@@ -1966,8 +1930,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure MP4.bt 1`] = `
 Array [
-  "enum: qtlang",
-  "enum: qtgfxmode",
   "function: ContentSize",
   "function: BoxSize",
   "function: ReadFP16",
@@ -2042,25 +2004,25 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure MachO.bt 1`] = `
 Array [
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: Magic",
+  "enum: CpuType",
+  "enum: FileType",
+  "enum: i386ThreadFlavor",
   "struct: i386ThreadState",
-  "enum: undefined",
+  "enum: x86ThreadFlavor",
   "struct: x86ThreadState",
-  "enum: undefined",
+  "enum: PPCThreadFlavor",
   "struct: ARMThreadState",
   "struct: PPCThreadState",
-  "enum: undefined",
+  "enum: Flags",
   "struct: Fat_Arch",
   "struct: Header",
   "function: HeaderRead",
-  "enum: undefined",
+  "enum: LoadCommandType",
   "function: LoadCommandTypeRead",
   "struct: Section",
   "struct: Section64",
-  "enum: undefined",
+  "enum: SegmentFlags",
   "struct: LoadCommandString",
   "function: LoadCommandStringRead",
   "function: UuidRead",
@@ -2081,7 +2043,6 @@ exports[`Sweetscape Importer reads top-level elements in structure MifareUltrali
 exports[`Sweetscape Importer reads top-level elements in structure Modo.bt 1`] = `
 Array [
   "function: readsubchunks",
-  "enum: undefined",
   "struct: uv_t",
   "struct: IFFHEADER",
   "function: IFFHEADER_Read",
@@ -2273,7 +2234,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure NDS.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: NDSRegion",
   "struct: NDS_header",
   "struct: FAT_NITRO",
   "struct: FNT_MAIN",
@@ -2351,11 +2312,11 @@ Array [
   "struct: FvarTable",
   "struct: GvarTable",
   "struct: PrepTable",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: PlatformId",
+  "enum: UnicodeEncodingId",
+  "enum: WindowsEncodingId",
+  "enum: IsoEncodingId",
+  "enum: NameId",
   "function: IsUnicodePlatformEncoding",
   "function: EncodingId",
   "struct: NameTableNameRecord",
@@ -2422,7 +2383,7 @@ Array [
   "struct: ChainingSubtable",
   "struct: ExtensionLookupSubtable",
   "struct: ReverseChainingSubtable",
-  "enum: undefined",
+  "enum: ValueRecordFormat",
   "struct: ValueRecord",
   "struct: SinglePositioningSubtable",
   "struct: PairPositioningSubtable",
@@ -2458,11 +2419,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure OrCAD_LIB.bt 1`] = `
 Array [
-  "enum: YesNo",
-  "enum: Vtype",
-  "enum: ptype",
-  "enum: pquad",
-  "enum: pside",
   "struct: sText",
   "struct: fTxt",
   "struct: Coord",
@@ -2479,17 +2435,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure OrCAD_SCH.bt 1`] = `
 Array [
-  "enum: fType",
-  "enum: YesNo",
-  "enum: paper",
-  "enum: rotate",
-  "enum: primT",
-  "enum: IOtype",
-  "enum: Pstyle",
-  "enum: side",
-  "enum: PStype",
-  "enum: align",
-  "enum: Btype",
   "struct: sText",
   "struct: fTxt",
   "struct: Coord",
@@ -2538,10 +2483,10 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure PCAPNG.bt 1`] = `
 Array [
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: BYTE_ORDER",
+  "enum: BLOCK_TYPE",
+  "enum: LINK_CODE",
+  "enum: NRES_TYPE",
   "struct: NRES_RECORD",
   "function: Read_NRES_RECORD",
   "function: BlockLabel",
@@ -2581,14 +2526,12 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure PCX.bt 1`] = `
 Array [
-  "enum: PCX_TYPE",
   "struct: PCX",
 ]
 `;
 
 exports[`Sweetscape Importer reads top-level elements in structure PDF.bt 1`] = `
 Array [
-  "enum: int",
   "struct: PDFObj",
   "function: ReadPDFObj",
   "struct: PDFHeader",
@@ -2629,16 +2572,16 @@ exports[`Sweetscape Importer reads top-level elements in structure PNG.bt 1`] = 
 Array [
   "function: error_message",
   "struct: PNG_SIGNATURE",
-  "enum: pngColorSpaceType",
-  "enum: pngCompressionMethod",
-  "enum: pngFilterMethod",
-  "enum: pngInterlaceMethod",
+  "enum: PNG_COLOR_SPACE_TYPE",
+  "enum: PNG_COMPR_METHOD",
+  "enum: PNG_FILTER_METHOD",
+  "enum: PNG_INTERLACE_METHOD",
   "struct: PNG_PALETTE_PIXEL",
   "struct: PNG_POINT",
-  "enum: undefined",
+  "enum: PNG_SRGB_CHUNK_DATA",
   "struct: PNG_ICCP_CHUNK_DATA",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: APNG_DISPOSE_OP",
+  "enum: APNG_BLEND_OP",
   "union: CTYPE",
   "function: readCTYPE",
   "struct: PNG_CHUNK_IHDR",
@@ -2674,10 +2617,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure PYC.bt 1`] = `
 Array [
-  "enum: MagicValue",
-  "enum: ObjType",
   "struct: Magic",
-  "enum: OpCode",
   "struct: Instruction",
   "struct: Code",
   "function: Opcode2Opname",
@@ -2689,7 +2629,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure Picolog_PLW.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: t_unit",
   "struct: t_hdr",
   "struct: t_plw_frame",
   "struct: t_plw_frames",
@@ -2742,16 +2682,11 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure RAR.bt 1`] = `
 Array [
-  "enum: RarBlockType",
-  "enum: OsType",
-  "enum: PackMethod",
-  "enum: SubType_OldStyle",
   "struct: UnixStyleAttrs",
   "struct: DosFileAttrs",
   "struct: WinFileAttrs",
   "struct: CommonBlockFlags",
   "struct: MainHeadFlags",
-  "enum: FileDictType",
   "struct: FileHeadFlags",
   "struct: RarBlock",
   "struct: FileHeadBlock",
@@ -2823,7 +2758,7 @@ Array [
   "function: ReadRomFSString",
   "function: WriteRomFSString",
   "struct: RomFSHeader",
-  "enum: rom_fs_entry_type",
+  "enum: RomFSEntryType",
   "struct: RomFSObjectHdr",
   "function: ReadRomFSObjectHdr",
   "function: ReadNextHeader",
@@ -2838,8 +2773,8 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure RegistryDhcpInterfaceOptions.bt 1`] = `
 Array [
-  "enum: e_tag",
-  "enum: e_netbios_node_type",
+  "enum: s_tag",
+  "enum: s_netbios_node_type",
   "struct: s_marker",
   "struct: s_ipv4",
   "function: show_ipv4",
@@ -2880,7 +2815,6 @@ Array [
 exports[`Sweetscape Importer reads top-level elements in structure SCP.bt 1`] = `
 Array [
   "function: ReadVersion",
-  "enum: DiskType",
   "function: ReadFlags",
   "struct: RevInfo",
   "struct: TrackHeader",
@@ -2892,15 +2826,15 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure SF2.bt 1`] = `
 Array [
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: SFSampleLink",
+  "enum: SFGenerator",
+  "enum: SFGeneralController",
+  "enum: SFControllerPalette",
+  "enum: SFControllerDirection",
+  "enum: SFControllerPolarity",
+  "enum: SFControllerType",
   "struct: SFModulator",
-  "enum: undefined",
+  "enum: SFTransform",
   "struct: rangesType",
   "union: genAmountType",
   "struct: sfVersionTag",
@@ -2940,9 +2874,9 @@ exports[`Sweetscape Importer reads top-level elements in structure SHP.bt 1`] = 
 Array [
   "struct: POINT",
   "function: getPOINT",
-  "enum: undefined",
+  "enum: PATCH",
   "function: GetByteSize",
-  "enum: undefined",
+  "enum: SHAPE",
   "struct: RECORD",
   "function: getRECORD",
   "struct: HEADER",
@@ -3126,21 +3060,21 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure TIF.bt 1`] = `
 Array [
-  "enum: eTAG",
-  "enum: eTAGTYPE",
-  "enum: eCOMP",
-  "enum: ePHOTO",
-  "enum: eRES",
-  "enum: eKEYGeoTiff",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: TAG",
+  "enum: TAGTYPE",
+  "enum: COMP",
+  "enum: PHOTO",
+  "enum: RES",
+  "enum: GeoKEYlabel",
+  "enum: modeltype_t",
+  "enum: rastertype_t",
+  "enum: LinearUnitCode_t",
+  "enum: AngularUnitCode_t",
+  "enum: GCSCode_t",
+  "enum: DatumCode_t",
+  "enum: EllipsoidCode_t",
+  "enum: PrimeMeridianCode_t",
+  "enum: CTCode_t",
   "struct: GEOKEY",
   "function: readGEOKEY",
   "struct: GEOKEYDIR",
@@ -3160,10 +3094,10 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure TNEF.bt 1`] = `
 Array [
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: ATTNAME",
+  "enum: LEVELID",
+  "enum: AttrDataType",
+  "enum: MAPIAttrName",
   "struct: MAPIAttrData",
   "struct: MAPIAttr",
   "function: _MAPIAttrName",
@@ -3175,9 +3109,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure TOC.bt 1`] = `
 Array [
-  "enum: type",
-  "enum: class",
-  "enum: stat",
   "struct: TOChdr",
   "struct: TOCmsg",
 ]
@@ -3272,15 +3203,15 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure ThumbCache.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: WINDOWS_VERSION",
   "function: read_WINDOWS_VERSION",
-  "enum: undefined",
+  "enum: WINDOWS_VISTA_THUMBCACHE_TYPE",
   "function: read_WINDOWS_VISTA_THUMBCACHE_TYPE",
-  "enum: undefined",
+  "enum: WINDOWS_8_THUMBCACHE_TYPE",
   "function: read_WINDOWS_8_THUMBCACHE_TYPE",
-  "enum: undefined",
+  "enum: WINDOWS_8_1_THUMBCACHE_TYPE",
   "function: read_WINDOWS_8_1_THUMBCACHE_TYPE",
-  "enum: undefined",
+  "enum: WINDOWS_10_THUMBCACHE_TYPE",
   "function: read_WINDOWS_10_THUMBCACHE_TYPE",
   "struct: WINDOWS_VISTA_CMMM_RECORD",
   "function: Read_WINDOWS_VISTA_CMMM_RECORD",
@@ -3322,7 +3253,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure UTMP.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: LOGIN_TYPE",
   "struct: exit_status",
   "struct: utmp",
 ]
@@ -3336,8 +3267,6 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure VHD.bt 1`] = `
 Array [
-  "enum: OS",
-  "enum: DISK",
   "struct: FOOTER",
   "function: statecheck",
   "function: feaRead",
@@ -3361,7 +3290,7 @@ Array [
   "struct: sleb128",
   "function: sleb128_value",
   "function: SLeb128Read",
-  "enum: undefined",
+  "enum: SECTION_TYPE",
   "struct: _ModuleHeader",
   "function: _HeaderInfo",
   "struct: _FunctionImportEntryData",
@@ -3466,7 +3395,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure ZIP.bt 1`] = `
 Array [
-  "enum: undefined",
+  "enum: COMPTYPE",
   "struct: ZIPFILERECORD",
   "struct: ZIPDIRENTRY",
   "struct: ZIPDIGITALSIG",
@@ -3480,22 +3409,22 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure ZIPAdv.bt 1`] = `
 Array [
-  "enum: undefined",
-  "enum: undefined",
+  "enum: SignatureTYPE",
+  "enum: HOSTOSTYPE",
   "function: read_VERSIONTYPE",
   "struct: VERECORD",
   "function: read_VERECORD",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: COMPTYPE",
+  "enum: FLAGTYPE",
   "function: read_FLAGTYPE",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
-  "enum: undefined",
+  "enum: HEADERFLAG",
+  "enum: ALGFLAG",
+  "enum: AESMODE",
+  "enum: PRCFLAG",
   "struct: EXTRAFIELD",
   "function: read_EXTRAFIELD",
   "struct: EXTRA64FIELD",
-  "enum: undefined",
+  "enum: FILEATTRIBUTE",
   "function: read_FILEATTRIBUTE",
   "struct: ZIPDATADESCR",
   "struct: ZIPFILERECORD",

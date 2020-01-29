@@ -31,6 +31,7 @@ import {
   IdentifierValue,
   IfElseStatement,
   IfStatement,
+  InlineEnumDeclarationStatement,
   InlineStructDeclarationStatement,
   InlineUnionDeclarationStatement,
   NamedType,
@@ -254,7 +255,8 @@ export function getVisitor(parser: CstParser) {
         "inlineStructStatement",
         "structDeclarationStatement",
         "forwardStructDeclarationStatement",
-        "enumStatement",
+        "inlineEnumStatement",
+        "enumDeclarationStatement",
         "ifStatement",
         "whileStatement",
         "doWhileStatement",
@@ -388,6 +390,7 @@ export function getVisitor(parser: CstParser) {
         // Single name: that's easy
         name = getIdentifier(ctx.Identifier);
       } else if (size(ctx.Identifier) === 2) {
+        // Ignore the first name: useless
         name = ctx.Identifier[1].image;
       } else {
         throw new Error();
@@ -407,7 +410,7 @@ export function getVisitor(parser: CstParser) {
       return new ForwardStructDeclarationStatement(getIdentifier(ctx.Identifier));
     }
 
-    public enumStatement(ctx: any): EnumDeclarationStatement {
+    public inlineEnumStatement(ctx: any): InlineEnumDeclarationStatement {
       const typeName = this.visitIfPresent(ctx, "typeName");
       const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
       const declarations = this.visitIfPresent(ctx, "enumDeclaration", []);
@@ -419,7 +422,24 @@ export function getVisitor(parser: CstParser) {
         ],
         () => [],
       );
-      return new EnumDeclarationStatement(typeName, alias, declarations, variableDeclarations);
+      return new InlineEnumDeclarationStatement(typeName, alias, declarations, variableDeclarations);
+    }
+
+    public enumDeclarationStatement(ctx: any): EnumDeclarationStatement {
+      let name;
+      if (size(ctx.Identifier) === 1) {
+        // Single name: that's easy
+        name = getIdentifier(ctx.Identifier);
+      } else if (size(ctx.Identifier) === 2) {
+        // Ignore the first name: useless
+        name = ctx.Identifier[1].image;
+      } else {
+        throw new Error();
+      }
+      const annotations = this.visitIfPresent(ctx, "annotations", []);
+      const typeName = this.visitIfPresent(ctx, "typeName");
+      const declarations = this.visitIfPresent(ctx, "enumDeclaration", []);
+      return new EnumDeclarationStatement(typeName, name, declarations, annotations);
     }
 
     public variableDeclarator(ctx: any): VariableDeclaration {

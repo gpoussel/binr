@@ -11,6 +11,7 @@ import {
   FunctionDeclarationStatement,
   IfElseStatement,
   IfStatement,
+  InlineEnumDeclarationStatement,
   InlineStructDeclarationStatement,
   Node,
   ReturnStatement,
@@ -30,7 +31,7 @@ function visit(node: Node): string[] {
   } else if (node instanceof FunctionDeclarationStatement) {
     return [`function: ${node.name}`];
   } else if (node instanceof EnumDeclarationStatement) {
-    return [`enum: ${node.alias}`];
+    return [`enum: ${node.name}`];
   } else if (node instanceof StructDeclarationStatement) {
     return [`struct: ${node.name}`];
   } else if (node instanceof UnionDeclarationStatement) {
@@ -44,6 +45,7 @@ function visit(node: Node): string[] {
     node instanceof IfElseStatement ||
     node instanceof EmptyStatement ||
     node instanceof InlineStructDeclarationStatement ||
+    node instanceof InlineEnumDeclarationStatement ||
     node instanceof ForStatement ||
     node instanceof ReturnStatement ||
     node instanceof ForwardStructDeclarationStatement ||
