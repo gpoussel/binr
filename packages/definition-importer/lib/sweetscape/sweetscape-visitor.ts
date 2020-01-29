@@ -21,6 +21,7 @@ import {
   EmptyStatement,
   EnumDeclarationElement,
   EnumDeclarationStatement,
+  EnumReferenceType,
   Expression,
   ExpressionArraySelector,
   ExpressionStatement,
@@ -212,6 +213,9 @@ export function getVisitor(parser: CstParser) {
       const name = getIdentifier(ctx.Identifier);
       if (has(ctx, "Struct")) {
         return new StructReferenceType(name);
+      }
+      if (has(ctx, "Enum")) {
+        return new EnumReferenceType(name);
       }
 
       const modifiers: TypeModifier[] = [];
@@ -414,14 +418,7 @@ export function getVisitor(parser: CstParser) {
       const typeName = this.visitIfPresent(ctx, "typeName");
       const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
       const declarations = this.visitIfPresent(ctx, "enumDeclaration", []);
-      const variableDeclarations = this.visitChoices(
-        ctx,
-        [
-          { name: "variableDeclarators", build: () => this.visitAll(ctx, "variableDeclarators") },
-          { name: "variableDeclarator", build: () => [this.visit(ctx.variableDeclarator)] },
-        ],
-        () => [],
-      );
+      const variableDeclarations = this.visitIfPresent(ctx, "variableDeclarators", []);
       return new InlineEnumDeclarationStatement(typeName, alias, declarations, variableDeclarations);
     }
 

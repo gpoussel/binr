@@ -129,21 +129,9 @@ export class SweetscapeParser extends CstParser {
       this.SUBRULE(this.typeName);
       this.CONSUME(tokens.Greater);
     });
-    this.OR([
-      {
-        ALT: () => {
-          this.CONSUME1(tokens.Identifier); // Type name
-          this.OPTION6(() => this.SUBRULE(this.enumDeclaration));
-          this.OPTION4(() => this.SUBRULE(this.variableDeclarator));
-        },
-      },
-      {
-        ALT: () => {
-          this.SUBRULE2(this.enumDeclaration);
-          this.OPTION5(() => this.SUBRULE2(this.variableDeclarators));
-        },
-      },
-    ]);
+    this.OPTION(() => this.CONSUME(tokens.Identifier)); // Alias
+    this.SUBRULE2(this.enumDeclaration);
+    this.OPTION3(() => this.SUBRULE(this.variableDeclarators));
     this.CONSUME(tokens.SemiColon);
   });
 
@@ -744,6 +732,7 @@ export class SweetscapeParser extends CstParser {
         { ALT: () => this.CONSUME(tokens.Signed) },
         { ALT: () => this.CONSUME(tokens.Unsigned) },
         { ALT: () => this.CONSUME(tokens.Struct) },
+        { ALT: () => this.CONSUME(tokens.Enum) },
       ]),
     );
     this.CONSUME2(tokens.Identifier);
