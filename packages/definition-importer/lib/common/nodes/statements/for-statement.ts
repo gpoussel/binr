@@ -1,6 +1,6 @@
-import { Expression } from "./expression";
+import { Expression } from "../expression";
 import { Statement } from "./statement";
-import { CommaExpression } from ".";
+import { CommaExpression } from "..";
 
 export class ForStatement extends Statement {
   private _initialization: CommaExpression;

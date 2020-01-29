@@ -1,5 +1,5 @@
 import { Node } from "./node";
-import { Statement } from "./statement";
+import { Statement } from "./statements/statement";
 
 export class Definition extends Node {
   private _content: Statement[];

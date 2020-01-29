@@ -1,4 +1,4 @@
-import { Expression } from "./expression";
+import { Expression } from "../expression";
 import { Statement } from "./statement";
 
 export class IfStatement extends Statement {

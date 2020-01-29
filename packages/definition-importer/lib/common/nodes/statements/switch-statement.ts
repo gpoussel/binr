@@ -1,4 +1,4 @@
-import { CaseSwitchElement } from "./case-switch-element";
+import { CaseSwitchElement } from "../case-switch-element";
 import { Statement } from "./statement";
 
 export class SwitchStatement extends Statement {

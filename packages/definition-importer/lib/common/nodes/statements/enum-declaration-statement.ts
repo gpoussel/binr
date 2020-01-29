@@ -1,7 +1,7 @@
-import { EnumDeclarationElement } from "./enum-declaration-element";
+import { EnumDeclarationElement } from "../enum-declaration-element";
+import { Type } from "../type";
+import { VariableDeclaration } from "../variable-declaration";
 import { Statement } from "./statement";
-import { Type } from "./type";
-import { VariableDeclaration } from "./variable-declaration";
 
 export class EnumDeclarationStatement extends Statement {
   private _baseType: Type;

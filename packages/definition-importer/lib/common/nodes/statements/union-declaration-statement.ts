@@ -1,7 +1,7 @@
+import { ParameterDeclaration } from "../parameter-declaration";
+import { VariableDeclaration } from "../variable-declaration";
 import { BlockStatement } from "./block-statement";
-import { ParameterDeclaration } from "./parameter-declaration";
 import { Statement } from "./statement";
-import { VariableDeclaration } from "./variable-declaration";
 
 export class UnionDeclarationStatement extends Statement {
   private _alias: string | undefined;
