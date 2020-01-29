@@ -28,6 +28,7 @@ import {
   FunctionCallExpression,
   FunctionDeclarationStatement,
   IdentifierValue,
+  IfElseStatement,
   IfStatement,
   InlineStructDeclarationStatement,
   InlineUnionDeclarationStatement,
@@ -322,14 +323,14 @@ export function getVisitor(parser: CstParser) {
       return this.visitAll(ctx, "statement");
     }
 
-    public ifStatement(ctx: any): IfStatement {
+    public ifStatement(ctx: any): IfStatement | IfElseStatement {
       const condition = this.visit(ctx.parExpression);
       const statements = this.visitAll(ctx, "statement");
       if (size(statements) === 1) {
         // No "else" statement
         return new IfStatement(condition, statements[0]);
       }
-      return new IfStatement(condition, statements[0], statements[1]);
+      return new IfElseStatement(condition, statements[0], statements[1]);
     }
 
     public inlineStructStatement(ctx: any): Statement {
