@@ -107,7 +107,7 @@ export class SweetscapeParser extends CstParser {
 
   private structVariableStatement = this.RULE("structVariableStatement", () => {
     this.OR2([{ ALT: () => this.CONSUME(tokens.Struct) }, { ALT: () => this.CONSUME(tokens.Union) }]);
-    this.OPTION2(() => this.CONSUME(tokens.Identifier)); // Alias
+    this.CONSUME(tokens.Identifier); // Structure name
     this.CONSUME(tokens.SemiColon);
   });
 
