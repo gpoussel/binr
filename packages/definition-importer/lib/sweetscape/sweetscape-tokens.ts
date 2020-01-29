@@ -270,7 +270,7 @@ tokenInfos.push({
 
 tokenInfos.push({
   name: TokenName.NumberHexadecimalLiteral,
-  pattern: /0x[A-F0-9]+L?/i,
+  pattern: /0x[A-F0-9]+[Lu]?/i,
 });
 
 tokenInfos.push({
@@ -295,9 +295,12 @@ tokenInfos.push({
 
 // Some tokens, with a "longer_alt" attribute set, have to be created after other ones
 const createdTokens: { [key: string]: TokenType } = {};
-map(filter(tokenInfos, (tokenInfo) => !has(tokenInfo, "longer_alt")), (tokenInfo) => {
-  createdTokens[tokenInfo.name] = createToken(tokenInfo as ITokenConfig);
-});
+map(
+  filter(tokenInfos, (tokenInfo) => !has(tokenInfo, "longer_alt")),
+  (tokenInfo) => {
+    createdTokens[tokenInfo.name] = createToken(tokenInfo as ITokenConfig);
+  },
+);
 
 const remainingTokens = filter(tokenInfos, (tokenInfo) => has(tokenInfo, "longer_alt"));
 while (!isEmpty(remainingTokens)) {

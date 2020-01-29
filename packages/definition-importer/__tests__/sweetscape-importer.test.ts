@@ -77,7 +77,7 @@ describe("Sweetscape Importer", () => {
         expect(definition.type).toEqual("definition");
 
         const { content } = definition;
-        expect(content).toHaveLength(93);
+        expect(content).toHaveLength(97);
         expect(content).toMatchSnapshot();
       },
       done,
