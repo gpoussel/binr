@@ -1,6 +1,6 @@
 import { Annotation } from "./annotation";
 import { ArraySelector } from "./array-selector";
-import { Expression } from "./expression";
+import { Expression } from "./expressions";
 import { Node } from "./node";
 
 export class VariableDeclaration extends Node {

@@ -1,4 +1,4 @@
-import { Expression } from "./expression";
+import { Expression } from "./expressions";
 import { Node } from "./node";
 
 export class EnumDeclarationElement extends Node {

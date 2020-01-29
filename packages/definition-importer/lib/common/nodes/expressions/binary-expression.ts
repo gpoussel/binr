@@ -1,5 +1,5 @@
+import { Operator } from "../operator";
 import { Expression } from "./expression";
-import { Operator } from "./operator";
 
 export class BinaryExpression extends Expression {
   private _left: Expression;

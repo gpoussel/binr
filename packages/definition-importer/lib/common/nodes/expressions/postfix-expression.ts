@@ -1,7 +1,7 @@
+import { Operator } from "../operator";
 import { Expression } from "./expression";
-import { Operator } from "./operator";
 
-export class UnaryExpression extends Expression {
+export class PostfixExpression extends Expression {
   private _innerExpression: Expression;
   private _operator: Operator;
 

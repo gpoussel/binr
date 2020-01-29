@@ -1,4 +1,4 @@
-import { Expression } from "../expression";
+import { Expression } from "../expressions";
 import { Statement } from "./statement";
 
 export class DoWhileStatement extends Statement {

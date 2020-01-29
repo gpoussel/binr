@@ -1,6 +1,6 @@
 import { Node } from "./node";
+import { Statement } from "./statements";
 import { SwitchLabel } from "./switch-label";
-import { Statement } from ".";
 
 export class CaseSwitchElement extends Node {
   private _labels: SwitchLabel[];

@@ -1,5 +1,5 @@
 import { ArraySelector } from "./array-selector";
-import { Expression } from "./expression";
+import { Expression } from "./expressions";
 
 export class ExpressionArraySelector extends ArraySelector {
   private _innerExpression: Expression;
