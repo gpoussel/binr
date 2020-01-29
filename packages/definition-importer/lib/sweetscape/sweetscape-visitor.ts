@@ -369,20 +369,20 @@ export function getVisitor(parser: CstParser) {
 
     public variableDeclarator(ctx: any): VariableDeclaration {
       const result: any = {};
-      assign(result, this.visit(ctx.variableDeclaratorRest));
       if (has(ctx, "bitfieldRest")) {
         result.bits = this.visit(ctx.bitfieldRest);
       }
       // TODO variableDeclaratorRest.arguments
-      // TODO variableDeclaratorRest.variableInitializer
       // TODO bitfieldRest
       const name = getIdentifier(ctx.Identifier);
+      const variableDeclaratorRestCtx = get(first(get(ctx, "variableDeclaratorRest")), "children");
       const annotations = concat(
         this.visitIfPresent(ctx, "annotations", []),
-        this.visitIfPresent(ctx, "variableDeclaratorRest.annotations", []),
+        this.visitIfPresent(variableDeclaratorRestCtx, "annotations", []),
       );
-      const arraySelector = this.visitIfPresent(ctx, "variableDeclaratorRest.anyArraySelector");
-      return new VariableDeclaration(name, arraySelector, annotations);
+      const arraySelector = this.visitIfPresent(variableDeclaratorRestCtx, "anyArraySelector");
+      const initializationExpression = this.visitIfPresent(variableDeclaratorRestCtx, "variableInitializer");
+      return new VariableDeclaration(name, arraySelector, initializationExpression, annotations);
     }
 
     public structDeclaration(ctx: any) {
@@ -403,9 +403,6 @@ export function getVisitor(parser: CstParser) {
       if (has(ctx, "anyArraySelector")) {
         const anyArraySelector = this.visit(ctx.anyArraySelector);
         assign(result, anyArraySelector);
-      }
-      if (has(ctx, "variableInitializer")) {
-        result.initializer = this.visit(ctx.variableInitializer);
       }
       return result;
     }
