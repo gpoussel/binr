@@ -160,4 +160,11 @@ A B`;
 //#define B b
 a B`);
   });
+
+  test("supports spaces before #define", () => {
+    const input = `   #define A a
+A A`;
+    expect(preprocessor.preprocess(input)).toEqual(`
+a a`);
+  });
 });

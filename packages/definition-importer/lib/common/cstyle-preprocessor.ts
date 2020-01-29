@@ -83,7 +83,7 @@ export class CStylePreprocessor {
     return updatedLine;
   }
   private readDirective(line: string) {
-    let state = 0;
+    let state = -1;
     let i = 0;
     let firstWord = "";
     let secondWord = "";
@@ -91,7 +91,12 @@ export class CStylePreprocessor {
     while (i < line.length) {
       const char = line.charAt(i);
       const space = char === " " || char === "\t" || char === "\n" || char === "\r";
-      if (state === 0) {
+      if (state === -1) {
+        if (!space) {
+          firstWord += char;
+          state = 0;
+        }
+      } else if (state === 0) {
         if (space) {
           state = 1;
         } else {
