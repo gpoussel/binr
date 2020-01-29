@@ -9,21 +9,21 @@ export class VariableDeclarationStatement extends Statement {
   private _variableType: Type;
   private _modifiers: VariableModifier[];
   private _bitfield: Expression;
-  private _variableDeclarators: VariableDeclaration[];
+  private _variableDeclarations: VariableDeclaration[];
   private _annotations: Annotation[];
 
   public constructor(
     variableType: Type,
     modifiers: VariableModifier[],
     bitfield: Expression,
-    variableDeclarators: VariableDeclaration[],
+    variableDeclarations: VariableDeclaration[],
     annotations: Annotation[],
   ) {
     super();
     this._variableType = variableType;
     this._modifiers = modifiers;
     this._bitfield = bitfield;
-    this._variableDeclarators = variableDeclarators;
+    this._variableDeclarations = variableDeclarations;
     this._annotations = annotations;
   }
 
@@ -36,8 +36,8 @@ export class VariableDeclarationStatement extends Statement {
   public get bitfield(): Expression {
     return this._bitfield;
   }
-  public get variableDeclarators(): VariableDeclaration[] {
-    return this._variableDeclarators;
+  public get variableDeclarations(): VariableDeclaration[] {
+    return this._variableDeclarations;
   }
   public get annotations(): Annotation[] {
     return this._annotations;
