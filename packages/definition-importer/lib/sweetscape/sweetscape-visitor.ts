@@ -332,14 +332,21 @@ export function getVisitor(parser: CstParser) {
       return new IfStatement(condition, statements[0], statements[1]);
     }
 
-    public inlineStructStatement(
-      ctx: any,
-    ): InlineStructDeclarationStatement | InlineUnionDeclarationStatement {
-      const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
-      const variableDeclaration = this.visit(ctx.variableDeclarator);
+    public inlineStructStatement(ctx: any): Statement {
       const declarationCtx = get(first(get(ctx, "structDeclaration")), "children");
       const parameters = this.visitIfPresent(declarationCtx, "functionParameterDeclarationList", []);
       const body = this.visitIfPresent(declarationCtx, "block");
+      if (!has(ctx, "variableDeclarator")) {
+        // An inline declaration without variable is in fact a declaration
+        const name = getIdentifier(ctx.Identifier);
+
+        if (has(ctx, "Struct")) {
+          return new StructDeclarationStatement(name, parameters, body);
+        }
+        return new UnionDeclarationStatement(name, parameters, body);
+      }
+      const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
+      const variableDeclaration = this.visit(ctx.variableDeclarator);
 
       if (has(ctx, "Struct")) {
         return new InlineStructDeclarationStatement(alias, variableDeclaration, parameters, body);
@@ -353,7 +360,7 @@ export function getVisitor(parser: CstParser) {
         // Single name: that's easy
         name = getIdentifier(ctx.Identifier);
       } else if (size(ctx.Identifier) === 2) {
-        name = ctx.Identifier[1].Image;
+        name = ctx.Identifier[1].image;
       } else {
         throw new Error();
       }

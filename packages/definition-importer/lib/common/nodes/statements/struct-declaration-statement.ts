@@ -8,7 +8,7 @@ export class StructDeclarationStatement extends Statement {
     private _name: string | undefined,
     private _parameters: ParameterDeclaration[],
     private _body: BlockStatement,
-    private _annotations: Annotation[],
+    private _annotations: Annotation[] = [],
   ) {
     super();
   }
