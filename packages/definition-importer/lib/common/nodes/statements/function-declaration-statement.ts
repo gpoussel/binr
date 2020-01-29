@@ -1,5 +1,5 @@
 import { ParameterDeclaration } from "../parameter-declaration";
-import { Type } from "../type";
+import { Type } from "../types";
 import { BlockStatement } from "./block-statement";
 import { Statement } from "./statement";
 

@@ -1,6 +1,6 @@
 import { Annotation } from "../annotation";
 import { ArraySelector } from "../array-selector";
-import { Type } from "../type";
+import { Type } from "../types";
 import { Statement } from "./statement";
 
 export class TypedefStatement extends Statement {

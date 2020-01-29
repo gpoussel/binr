@@ -1,6 +1,6 @@
 import { Annotation } from "../annotation";
 import { Expression } from "../expressions";
-import { Type } from "../type";
+import { Type } from "../types";
 import { VariableDeclaration } from "../variable-declaration";
 import { VariableModifier } from "../variable-modifier";
 import { Statement } from "./statement";

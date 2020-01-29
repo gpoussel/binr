@@ -6,6 +6,7 @@ import {
   ArrayIndexExpression,
   ArrayInitializationExpression,
   ArraySelector,
+  AssignmentOperator,
   BinaryExpression,
   BlockStatement,
   BooleanValue,
@@ -61,47 +62,56 @@ import {
   VoidType,
   WhileStatement,
 } from "../common/nodes";
+import { AssignmentExpression } from "../common/nodes/expressions/assignment-expression";
 
 const OPERATORS = {
   BinaryAnd: Operator.BINARY_AND,
   BinaryAndEquals: Operator.BINARY_AND_EQUALS,
   BinaryOr: Operator.BINARY_OR,
-  BinaryOrEquals: Operator.BINARY_OR_EQUALS,
   BinaryXor: Operator.BINARY_XOR,
-  BinaryXorEquals: Operator.BINARY_XOR_EQUALS,
   BooleanAnd: Operator.BOOLEAN_AND,
   BooleanOr: Operator.BOOLEAN_OR,
   Different: Operator.DIFFERENT,
   Division: Operator.DIVISION,
-  DivisionEquals: Operator.DIVISION_EQUALS,
   DoubleEquals: Operator.DOUBLE_EQUALS,
   DoubleMinus: Operator.DOUBLE_MINUS,
   DoublePlus: Operator.DOUBLE_PLUS,
-  Equals: Operator.EQUALS,
   Exclamation: Operator.EXCLAMATION,
   Greater: Operator.GREATER,
   GreaterOrEqual: Operator.GREATER_OR_EQUAL,
   Less: Operator.LESS,
   LessOrEqual: Operator.LESS_OR_EQUAL,
   Minus: Operator.MINUS,
-  MinusEquals: Operator.MINUS_EQUALS,
   Modulo: Operator.MODULO,
-  ModuloEquals: Operator.MODULO_EQUALS,
   Multiplication: Operator.MULTIPLICATION,
-  MultiplicationEquals: Operator.MULTIPLICATION_EQUALS,
   Plus: Operator.PLUS,
-  PlusEquals: Operator.PLUS_EQUALS,
   ShiftLeft: Operator.SHIFT_LEFT,
-  ShiftLeftEquals: Operator.SHIFT_LEFT_EQUALS,
   ShiftRight: Operator.SHIFT_RIGHT,
-  ShiftRightEquals: Operator.SHIFT_RIGHT_EQUALS,
   Tilda: Operator.TILDA,
   UnsignedShiftRight: Operator.UNSIGNED_SHIFT_RIGHT,
-  UnsignedShiftRightEquals: Operator.UNSIGNED_SHIFT_RIGHT_EQUALS,
+};
+
+const ASSIGNMENT_OPERATORS = {
+  BinaryAndEquals: AssignmentOperator.BINARY_AND_EQUALS,
+  BinaryOrEquals: AssignmentOperator.BINARY_OR_EQUALS,
+  BinaryXorEquals: AssignmentOperator.BINARY_XOR_EQUALS,
+  DivisionEquals: AssignmentOperator.DIVISION_EQUALS,
+  Equals: AssignmentOperator.EQUALS,
+  MinusEquals: AssignmentOperator.MINUS_EQUALS,
+  ModuloEquals: AssignmentOperator.MODULO_EQUALS,
+  MultiplicationEquals: AssignmentOperator.MULTIPLICATION_EQUALS,
+  PlusEquals: AssignmentOperator.PLUS_EQUALS,
+  ShiftLeftEquals: AssignmentOperator.SHIFT_LEFT_EQUALS,
+  ShiftRightEquals: AssignmentOperator.SHIFT_RIGHT_EQUALS,
+  UnsignedShiftRightEquals: AssignmentOperator.UNSIGNED_SHIFT_RIGHT_EQUALS,
 };
 
 function getOperator(ctx: any): Operator {
   return get(OPERATORS, keys(ctx)[0]);
+}
+
+function getAssignmentOperator(ctx: any): AssignmentOperator {
+  return get(ASSIGNMENT_OPERATORS, keys(ctx)[0]);
 }
 
 function createBinaryExpressions(expressions: Expression[], operators: Operator[]): Expression {
@@ -114,6 +124,20 @@ function createBinaryExpressions(expressions: Expression[], operators: Operator[
   let currentExpression: Expression = expressions[0];
   for (let i = 1; i < expressions.length; i++) {
     currentExpression = new BinaryExpression(currentExpression, expressions[i], operators[i - 1]);
+  }
+  return currentExpression;
+}
+
+function createAssignmentExpressions(expressions: Expression[], operators: AssignmentOperator[]): Expression {
+  if (isEmpty(operators) && size(expressions) === 1) {
+    // In that case, we cannot create a binary expression
+    // We can just return the only expression provided
+    return expressions[0];
+  }
+  // N expressions and (N - 1) operators
+  let currentExpression: Expression = expressions[0];
+  for (let i = 1; i < expressions.length; i++) {
+    currentExpression = new AssignmentExpression(currentExpression, expressions[i], operators[i - 1]);
   }
   return currentExpression;
 }
@@ -426,7 +450,11 @@ export function getVisitor(parser: CstParser) {
     public assignmentExpression(ctx: any): Expression {
       const expressions = this.visitAll(ctx, "ternaryExpression");
       const operators = this.visitAll(ctx, "assignmentOperator");
-      return createBinaryExpressions(expressions, operators);
+      if (isEmpty(operators)) {
+        // This is not an assignment, only an expression
+        return first(expressions);
+      }
+      return createAssignmentExpressions(expressions, operators);
     }
 
     public ternaryExpression(ctx: any): Expression {
@@ -602,8 +630,8 @@ export function getVisitor(parser: CstParser) {
       ]);
     }
 
-    public assignmentOperator(ctx: any): Operator {
-      return getOperator(ctx);
+    public assignmentOperator(ctx: any): AssignmentOperator {
+      return getAssignmentOperator(ctx);
     }
 
     public equalityOperator(ctx: any): Operator {

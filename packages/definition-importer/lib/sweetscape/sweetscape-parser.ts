@@ -594,18 +594,18 @@ export class SweetscapeParser extends CstParser {
 
   private assignmentOperator = this.RULE("assignmentOperator", () => {
     this.OR([
-      { ALT: () => this.CONSUME(tokens.Equals) },
-      { ALT: () => this.CONSUME(tokens.MultiplicationEquals) },
+      { ALT: () => this.CONSUME(tokens.BinaryAndEquals) },
+      { ALT: () => this.CONSUME(tokens.BinaryOrEquals) },
+      { ALT: () => this.CONSUME(tokens.BinaryXorEquals) },
       { ALT: () => this.CONSUME(tokens.DivisionEquals) },
-      { ALT: () => this.CONSUME(tokens.ModuloEquals) },
-      { ALT: () => this.CONSUME(tokens.PlusEquals) },
+      { ALT: () => this.CONSUME(tokens.Equals) },
       { ALT: () => this.CONSUME(tokens.MinusEquals) },
+      { ALT: () => this.CONSUME(tokens.ModuloEquals) },
+      { ALT: () => this.CONSUME(tokens.MultiplicationEquals) },
+      { ALT: () => this.CONSUME(tokens.PlusEquals) },
       { ALT: () => this.CONSUME(tokens.ShiftLeftEquals) },
       { ALT: () => this.CONSUME(tokens.ShiftRightEquals) },
       { ALT: () => this.CONSUME(tokens.UnsignedShiftRightEquals) },
-      { ALT: () => this.CONSUME(tokens.BinaryAndEquals) },
-      { ALT: () => this.CONSUME(tokens.BinaryXorEquals) },
-      { ALT: () => this.CONSUME(tokens.BinaryOrEquals) },
     ]);
   });
 

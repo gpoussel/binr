@@ -1,5 +1,6 @@
 export * from "./annotation";
 export * from "./array-selector";
+export * from "./assignment-operator";
 export * from "./case-switch-element";
 export * from "./default-switch-label";
 export * from "./definition";
@@ -12,8 +13,8 @@ export * from "./operator";
 export * from "./parameter-declaration";
 export * from "./statements";
 export * from "./switch-label";
-export * from "./types/type-modifier";
 export * from "./types";
+export * from "./types/type-modifier";
 export * from "./value-switch-label";
 export * from "./values";
 export * from "./variable-declaration";
