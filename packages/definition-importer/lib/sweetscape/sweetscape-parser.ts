@@ -11,7 +11,7 @@ export class SweetscapeParser extends CstParser {
       { ALT: () => this.SUBRULE(this.localVariableDeclarationStatement) },
       { ALT: () => this.SUBRULE(this.typedefStatement) },
       { ALT: () => this.SUBRULE(this.structStatement) },
-      { ALT: () => this.SUBRULE(this.structVariableStatement) },
+      { ALT: () => this.SUBRULE(this.forwardStructDeclarationStatement) },
       { ALT: () => this.SUBRULE(this.enumStatement) },
       { ALT: () => this.SUBRULE(this.ifStatement) },
       { ALT: () => this.SUBRULE(this.whileStatement) },
@@ -105,8 +105,8 @@ export class SweetscapeParser extends CstParser {
     this.CONSUME(tokens.SemiColon);
   });
 
-  private structVariableStatement = this.RULE("structVariableStatement", () => {
-    this.OR2([{ ALT: () => this.CONSUME(tokens.Struct) }, { ALT: () => this.CONSUME(tokens.Union) }]);
+  private forwardStructDeclarationStatement = this.RULE("forwardStructDeclarationStatement", () => {
+    this.CONSUME(tokens.Struct);
     this.CONSUME(tokens.Identifier); // Structure name
     this.CONSUME(tokens.SemiColon);
   });

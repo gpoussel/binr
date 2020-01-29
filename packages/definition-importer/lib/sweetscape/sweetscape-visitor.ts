@@ -24,6 +24,7 @@ import {
   ExpressionArraySelector,
   ExpressionStatement,
   ForStatement,
+  ForwardStructDeclarationStatement,
   FunctionCallExpression,
   FunctionDeclarationStatement,
   IdentifierValue,
@@ -221,7 +222,7 @@ export function getVisitor(parser: CstParser) {
         "localVariableDeclarationStatement",
         "typedefStatement",
         "structStatement",
-        "structVariableStatement",
+        "forwardStructDeclarationStatement",
         "enumStatement",
         "ifStatement",
         "whileStatement",
@@ -341,14 +342,8 @@ export function getVisitor(parser: CstParser) {
       return new UnionDeclarationStatement(alias, variableDeclaration, parameters, body);
     }
 
-    public structVariableStatement(ctx: any): StructDeclarationStatement | UnionDeclarationStatement {
-      const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
-      const variableDeclaration = this.visit(ctx.variableDeclarator);
-
-      if (has(ctx, "Struct")) {
-        return new StructDeclarationStatement(alias, variableDeclaration, [], new BlockStatement([]));
-      }
-      return new UnionDeclarationStatement(alias, variableDeclaration, [], new BlockStatement([]));
+    public forwardStructDeclarationStatement(ctx: any): ForwardStructDeclarationStatement {
+      return new ForwardStructDeclarationStatement(getIdentifier(ctx.Identifier));
     }
 
     public enumStatement(ctx: any): EnumDeclarationStatement {
