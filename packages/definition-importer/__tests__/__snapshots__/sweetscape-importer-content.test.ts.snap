@@ -1,0 +1,3513 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sweetscape Importer reads top-level elements in script AlpineAPN.1sc 1`] = `
+Array [
+  "function: getindex",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script ArrayOfStrings.1sc 1`] = `
+Array [
+  "function: PackString",
+  "function: UnpackString",
+  "function: ClearPackedStrings",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script BatchChecksum.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script BinToI_IToBin.1sc 1`] = `
+Array [
+  "function: IToBin",
+  "function: BinToI",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script BracketMatch.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script CSVDeleteColumn.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script CmpLines.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script ConvertBytesToInts.1sc 1`] = `
+Array [
+  "function: ConvertBytesToInts",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script CopyAsAsm.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script CopyAsBinary.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script CopyAsCpp.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script CopyAsHex.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script CopyAsPascal.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script CopyAsPython.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script CreateMassData.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script DecodeBase64.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script DelColumn.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script DeleteEmptyLines.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script DexFixer.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script DumpStrings.1sc 1`] = `
+Array [
+  "function: IsPrintable",
+  "function: PrintASCIIString",
+  "function: SearchASCIIStrings",
+  "function: PrintUNICODEString",
+  "function: CheckForUNICODEString",
+  "function: SearchUNICODEStrings",
+  "function: Main",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script EbookClean.1sc 1`] = `
+Array [
+  "function: myGetFileTodo",
+  "function: doCommonReplace",
+  "function: doSelectedReplace",
+  "function: myReplaceAll",
+  "function: myFileSelect",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script EncodeBase64.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script Entropy.1sc 1`] = `
+Array [
+  "function: NegateDouble",
+  "function: CalculateEntropy",
+  "function: Main",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script Find_Diff_Down.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script Find_Diff_Down_RE.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script Find_Diff_Up.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script Find_Diff_Up_RE.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script Find_and_Bookmark.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script FindAllClipboardBytes.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script FindBookmarksNearCursor.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script FindClipboardBytes.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script FindLongLines.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script Fuzzer.1sc 1`] = `
+Array [
+  "function: RandomNumber",
+  "function: HexDigitToInt",
+  "function: HexToInt",
+  "function: Main",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script GUID.1sc 1`] = `
+Array [
+  "function: ReadGUID123",
+  "function: ReadGUID4",
+  "function: FormatGUID",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script GetFileIndexOrName.1sc 1`] = `
+Array [
+  "function: get_filename",
+  "function: get_fileindex",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script HexToAsciiString.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script ImportBookmarksCSV.1sc 1`] = `
+Array [
+  "function: scanline",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script ImportFindAllCSV.1sc 1`] = `
+Array [
+  "function: f",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script InsertTiffTag.1sc 1`] = `
+Array [
+  "function: addToOffsetsAfter",
+  "function: getTagNumber",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script Interleave.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script IsASCII.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script JoinFile.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script Js-unicode-escape.1sc 1`] = `
+Array [
+  "function: Main",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script Js-unicode-unescape.1sc 1`] = `
+Array [
+  "function: ConvertHexDigit",
+  "function: JSunescape",
+  "function: Main",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script MultiplePaste.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script NibblesReverse.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script ParseCSV.1sc 1`] = `
+Array [
+  "function: TrimWhiteSpaces",
+  "function: FindFields",
+  "function: GetField",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script Patchmaker.1sc 1`] = `
+Array [
+  "function: PatchMaker",
+  "function: Main",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script QuickSort.1sc 1`] = `
+Array [
+  "function: quicksort",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script QuickSort2.1sc 1`] = `
+Array [
+  "function: QuickSort2",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script Randomize.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script RecordSearch.1sc 1`] = `
+Array [
+  "function: Other_Condition",
+  "function: Init_Pattern",
+  "function: RecordSearch",
+  "function: CmpBlock",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script RemoveFromStartToCurrentPosition.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script Rot-13.1sc 1`] = `
+Array [
+  "function: Rot13",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script SectorSearch.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script SelToLowerASCII.1sc 1`] = `
+Array [
+  "function: SelToLowerASCII",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script SelToULowerASCII.1sc 1`] = `
+Array [
+  "function: SelToULowerASCII",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script SelToUpperASCII.1sc 1`] = `
+Array [
+  "function: SelToUpperASCII",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script SimpleEncoder.1sc 1`] = `
+Array [
+  "function: CalculateShift",
+  "function: Main",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script SortLines.1sc 1`] = `
+Array [
+  "function: sortLines",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script SplitFile.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script StringPlus.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script StringReplace.1sc 1`] = `
+Array [
+  "function: str_replace",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script StringReverse.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script TruncateFileFromCurrentPosition.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script URLDecoder.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script Uninterleave.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script XORSelection.1sc 1`] = `
+Array [
+  "function: HexDigitToInt",
+  "function: RemoveWhitespace",
+  "function: Main",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script XORSelectionHex.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in script XORStringBruteForce.1sc 1`] = `
+Array [
+  "function: xorSearch",
+  "function: Main",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in script sWeEtSCApE.1sc 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure 010.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure 010Theme.bt 1`] = `
+Array [
+  "struct: RGBValue",
+  "struct: WideString",
+  "struct: SyntaxStyle",
+  "struct: CustomColor",
+  "enum: NATIVE_SETTINGS",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure 7ZIP.bt 1`] = `
+Array [
+  "function: initCRC",
+  "function: checkCRC",
+  "function: InitArchive",
+  "function: ClearCodecTransients",
+  "function: ClearFolderTransients",
+  "function: InitFoldersTransients",
+  "function: addFolder",
+  "function: StrcatfCommaNum",
+  "function: StrcatfSciBytes",
+  "function: StrcatfNum",
+  "function: StrcatfStr",
+  "function: Indent",
+  "function: checkEOF",
+  "function: PeekByte",
+  "function: PeekUByte",
+  "function: read_uint64",
+  "struct: uint64_",
+  "function: to_uint64",
+  "function: uint64_read",
+  "function: ReadUInt64_",
+  "enum: NID_",
+  "function: PeekNID",
+  "function: RequireNID",
+  "function: EffectiveEND",
+  "function: RequireEND",
+  "struct: Size_",
+  "struct: CRC_",
+  "struct: PackInfo_",
+  "struct: Codec_",
+  "struct: Folder1_",
+  "struct: Folder_",
+  "struct: CodersUnPackSize_",
+  "struct: UnPackInfo_",
+  "struct: NumUnPackStream_",
+  "struct: FilesInfo_",
+  "struct: ArchiveProperties_",
+  "struct: SubStreamsInfo_",
+  "struct: EncodedHeader_",
+  "struct: OtherStreamsInfo_",
+  "struct: AdditionalStreamsInfo_",
+  "struct: MainStreamsInfo_",
+  "struct: Header_",
+  "struct: SignatureHeader_",
+  "struct: Bytes",
+  "struct: uint64_s",
+  "function: bytesToString",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ADF.bt 1`] = `
+Array [
+  "enum: BLOCKINFO",
+  "struct: BOOTBLOCK",
+  "struct: ROOTBLOCK",
+  "struct: BITMAPBLOCK",
+  "struct: BITMAPEXTENSIONBLOCK",
+  "struct: FILEHEADERBLOCK",
+  "struct: FILEEXTENSIONBLOCK",
+  "struct: DATABLOCKOFS",
+  "struct: DATABLOCKFFS",
+  "struct: USERDIRECTORYBLOCK",
+  "function: _initBlockInfo",
+  "function: _printBlockInfoArray",
+  "function: _getFileSystemType",
+  "function: _getDiskFlagsString",
+  "function: _sequentialAproach",
+  "function: _detectBlockType",
+  "function: _followBitmapBlocks",
+  "function: _followDataBlocks",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure AVI.bt 1`] = `
+Array [
+  "struct: WAVEFORMATEX",
+  "struct: MainAVIHeader",
+  "struct: BITMAPINFOHEADER",
+  "struct: RGBQUAD",
+  "struct: BITMAPINFO",
+  "struct: avihHEADER",
+  "struct: AVIStreamHeader",
+  "struct: strhHEADER",
+  "struct: strfHEADER",
+  "struct: strfHEADER_BIH",
+  "struct: strfHEADER_WAVE",
+  "struct: strnHEADER",
+  "struct: genericblock",
+  "struct: LISTHEADER",
+  "struct: JUNKHEADER",
+  "struct: AVIINDEXENTRY",
+  "struct: idx1HEADER",
+  "struct: ROOT",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure AndroidManifest.bt 1`] = `
+Array [
+  "struct: HEADER",
+  "struct: STRING_ITEM",
+  "function: ReadSTRING_ITEM",
+  "struct: STRINGCHUNK",
+  "struct: RESOURCEIDCHUNK",
+  "struct: SNCHUNK",
+  "struct: ENCHUNK",
+  "struct: ATTRIBUTECHUNK",
+  "struct: STCHUNK",
+  "struct: ETCHUNK",
+  "struct: TEXTCHUNK",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure AndroidResource.bt 1`] = `
+Array [
+  "enum: undefined",
+  "enum: undefined",
+  "struct: ResChunk_header",
+  "enum: undefined",
+  "struct: ResStringPool_header",
+  "struct: ResStringPool_ref",
+  "function: readString",
+  "struct: ResStringPool_span",
+  "struct: StringPoolType",
+  "function: ReadResStringPool_string",
+  "struct: XmlResourceMapType",
+  "struct: ResXMLTree_namespaceExt",
+  "function: getString",
+  "struct: ResXMLTree_node",
+  "struct: NamespaceType",
+  "function: NamespaceTypeRead",
+  "struct: ResXMLTree_attrExt",
+  "struct: Res_value",
+  "function: ResvalueRead",
+  "struct: ResXMLTree_attribute",
+  "struct: StartElementType",
+  "struct: ResXMLTree_endElementExt",
+  "struct: EndElementType",
+  "function: printLayer1",
+  "function: printLayer2",
+  "struct: ResXMLTree_cdataExt",
+  "struct: CDataType",
+  "function: XmlType",
+  "struct: ResTable_header",
+  "struct: ResTable_package",
+  "struct: ResTable_typeSpec",
+  "union: ResTable_config",
+  "struct: ResTable_entry",
+  "function: tableEntryRead",
+  "struct: ResTable_ref",
+  "struct: ResTable_map_entry",
+  "struct: ResTable_map",
+  "struct: ResTable_map_entry0",
+  "struct: ResTable_type",
+  "struct: TablePackageType",
+  "function: ResTableType",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure AndroidTrace.bt 1`] = `
+Array [
+  "function: readMyLine",
+  "function: methodId",
+  "function: methodName",
+  "struct: RecordV1",
+  "struct: RecordV2",
+  "struct: RecordV3",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure AndroidVBMeta.bt 1`] = `
+Array [
+  "enum: undefined",
+  "struct: AvbVBMetaImageHeader",
+  "struct: AvbRSAPublicKeyHeader",
+  "struct: publickey",
+  "enum: undefined",
+  "struct: AvbDescriptor",
+  "struct: AvbHashDescriptor",
+  "struct: AvbHashtreeDescriptor",
+  "struct: AvbPropertyDescriptor",
+  "struct: AvbKernelCmdlineDescriptor",
+  "struct: AvbChainPartitionDescriptor",
+  "struct: authentication_data",
+  "struct: descriptor_data",
+  "struct: auxiliary_data",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure BMP.bt 1`] = `
+Array [
+  "struct: BITMAPFILEHEADER",
+  "struct: BITMAPINFOHEADER",
+  "struct: RGBQUAD",
+  "struct: RGBTRIPLE",
+  "function: ReadRGBQUAD",
+  "function: ReadRGBTRIPLE",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure BPlist.bt 1`] = `
+Array [
+  "enum: EntryType",
+  "struct: Trailer",
+  "struct: Int",
+  "struct: Real",
+  "struct: Dictionary",
+  "struct: Array",
+  "struct: Set",
+  "struct: ASCIIString",
+  "struct: UNICODEString",
+  "struct: Data",
+  "struct: Uid",
+  "struct: Date",
+  "struct: bplist",
+  "struct: bplist_file",
+  "function: read_Int",
+  "function: read_Int_size",
+  "function: read_string",
+  "function: create_string_comment",
+  "function: create_wstring_comment",
+  "function: read_data",
+  "function: read_offset",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure BSON.bt 1`] = `
+Array [
+  "struct: CountedString",
+  "enum: Type",
+  "struct: BinaryData",
+  "struct: Document",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure BaseMedia.bt 1`] = `
+Array [
+  "struct: Atom",
+  "function: GetAtomSize",
+  "function: GetAtomName",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Bash.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Batch.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure CAB.bt 1`] = `
+Array [
+  "struct: CFHEADER",
+  "struct: CFFOLDER",
+  "struct: CFFILE",
+  "struct: CFDATA",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure CAP.bt 1`] = `
+Array [
+  "function: queue_push_method",
+  "function: queue_pop_method",
+  "function: queue_peek_method",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: PACKAGE_INFO",
+  "struct: PACKAGE_NAME_INFO",
+  "struct: STATIC_FIELD_SIZE_INFO",
+  "struct: CUSTOM_COMPONENT_INFO",
+  "struct: HEADER_COMPONENT",
+  "struct: DIRECTORY_COMPONENT",
+  "struct: APPLET_INFO",
+  "struct: APPLET_COMPONENT",
+  "struct: IMPORT_COMPONENT",
+  "struct: TYPE_DESCRIPTOR",
+  "struct: CLASS_REF",
+  "struct: INTERFACE_NAME_INFO",
+  "struct: IMPLEMENTED_INTERFACE_INFO",
+  "struct: REMOTE_METHOD_INFO",
+  "struct: CONST_CLASSREF_INFO",
+  "struct: CONST_INSTANCEFIELDREF_INFO",
+  "struct: CONST_VIRTUALMETHODREF_INFO",
+  "struct: CONST_SUPERMETHODREF_INFO",
+  "struct: STATIC_FIELD_REF",
+  "struct: INSTANCE_FIELD_REF",
+  "struct: STATIC_METHOD_REF",
+  "struct: CONST_STATICFIELDREF_INFO",
+  "struct: CONST_STATICMETHODREF_INFO",
+  "struct: REMOTE_INTERFACE_INFO",
+  "struct: CLASS_INFO",
+  "struct: INTERFACE_INFO",
+  "struct: CLASS_COMPONENT",
+  "struct: ARRAY_INIT_INFO",
+  "struct: STATICFIELD_COMPONENT",
+  "struct: REFERENCELOC_COMPONENT",
+  "struct: EXPORT_COMPONENT",
+  "struct: EXCEPTION_HANDLER_INFO",
+  "struct: METHOD_HEADER_INFO",
+  "struct: EXTENDED_METHOD_HEADER_INFO",
+  "struct: JAVA_OPCODE",
+  "function: ReadJavaOpcode",
+  "struct: METHOD_COMPONENT",
+  "struct: CP_INFO",
+  "struct: CONSTANT_POOL_COMPONENT",
+  "struct: FIELD_DESCRIPTOR_INFO",
+  "struct: METHOD_DESCRIPTOR_INFO",
+  "struct: CLASS_DESCRIPTOR_INFO",
+  "struct: DESCRIPTOR_COMPONENT",
+  "struct: UTF8_INFO",
+  "struct: FIELD_DEBUG_INFO",
+  "struct: VARIABLE_INFO",
+  "struct: LINE_INFO",
+  "struct: METHOD_DEBUG_INFO",
+  "struct: CLASS_DEBUG_INFO",
+  "struct: DEBUG_COMPONENT",
+  "struct: CAPFILEHEADER",
+  "struct: CAPFILERECORD",
+  "function: SizeCAPFILERECORD",
+  "struct: CAPDIRENTRY",
+  "struct: CAPDIGITALSIG",
+  "struct: CAPDATADESCR",
+  "struct: CAPENDLOCATOR",
+  "function: ReadCAPFILERECORD",
+  "function: ReadCAPDIRENTRY",
+  "function: WriteCAPFILERECORD",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure CDA.bt 1`] = `
+Array [
+  "struct: CDAFILEHEADER",
+  "struct: CDAINFORMATION",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure CLASS.bt 1`] = `
+Array [
+  "enum: eACCESS_FLAGS",
+  "function: read_AF",
+  "enum: eCP_CONST",
+  "struct: cp_info",
+  "function: read_cp_info",
+  "struct: attribute_info",
+  "struct: field_info",
+  "struct: method_info",
+  "struct: JVMClass",
+  "function: read_JVMClass",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure CLASSAdv.bt 1`] = `
+Array [
+  "enum: Constant_pool",
+  "enum: access_property_flags",
+  "enum: enum_type",
+  "enum: enum_opcodes",
+  "enum: enum_array_type",
+  "enum: enum_opcodes_body_type",
+  "struct: annotation",
+  "struct: element_value",
+  "struct: verification_type_info",
+  "struct: stack_map_frame",
+  "struct: opcodes_operation",
+  "struct: attribute_info",
+  "struct: field_info",
+  "struct: method_info",
+  "struct: cp_info",
+  "struct: ClassFile",
+  "function: generator_map_address_constant_pool",
+  "function: find_constant_pool2",
+  "function: get_constant_pool_Utf8",
+  "function: Access_flags",
+  "function: ClassFileOnComment",
+  "function: cp_infoOnSize",
+  "function: cp_infoOnComment",
+  "function: ClassFile_interfaces_OnComment",
+  "function: Class_access_flags_OnComment",
+  "function: Field_access_flags_OnComment",
+  "function: Method_access_flags_OnComment",
+  "function: Nested_Class_access_flags_OnComment",
+  "function: method_info_OnComment",
+  "function: field_info_OnComment",
+  "function: attribute_info_OnComment",
+  "function: attribute_info_InnerClasses_OnComment",
+  "function: attribute_info_LocalVariableTable_OnComment",
+  "function: stack_map_frame_OnComment",
+  "function: annotation_OnComment",
+  "function: Name_OnComment",
+  "function: Name_Exception_OnComment",
+  "function: element_value_OnComment",
+  "function: opcodes_operation_OnComment",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure CPP.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure CRX.bt 1`] = `
+Array [
+  "enum: undefined",
+  "struct: ZIPFILERECORD",
+  "struct: ZIPDIRENTRY",
+  "struct: ZIPDIGITALSIG",
+  "struct: ZIPDATADESCR",
+  "struct: ZIPENDLOCATOR",
+  "function: ReadZIPFILERECORD",
+  "function: ReadZIPDIRENTRY",
+  "function: WriteZIPFILERECORD",
+  "struct: CRXHEADER",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure CSS.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure CSharp.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Cryptfs.bt 1`] = `
+Array [
+  "enum: undefined",
+  "enum: undefined",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure DBF.bt 1`] = `
+Array [
+  "function: yearFrom1900",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure DDS.bt 1`] = `
+Array [
+  "struct: DDS_PIXELFORMAT",
+  "function: ReadDXGIFormat",
+  "function: ReadD3D10ResourceDimension",
+  "function: ReadHeaderFlags",
+  "function: ReadDDSPixelFormatFlags",
+  "function: ReadHeaderCaps",
+  "function: ReadHeaderCaps2",
+  "function: ReadHeader10MiscFlag",
+  "function: ReadHeader10MiscFlags2",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure DEX.bt 1`] = `
+Array [
+  "function: SHA1Read",
+  "struct: dex_magic",
+  "function: DexMagicRead",
+  "struct: uleb128",
+  "function: uleb128_value",
+  "function: uleb128p1_value",
+  "function: ULeb128Read",
+  "struct: sleb128",
+  "function: sleb128_value",
+  "function: SLeb128Read",
+  "enum: undefined",
+  "struct: EncodedValue",
+  "function: EncodedValueRead",
+  "function: EncodedValueValue",
+  "struct: encoded_value",
+  "function: EncodedValueStructRead",
+  "struct: encoded_array",
+  "function: EncodedArrayRead",
+  "struct: annotation_element",
+  "function: AnnotationElementRead",
+  "struct: encoded_annotation",
+  "function: EncodedAnnotationRead",
+  "struct: header_item",
+  "enum: undefined",
+  "struct: dexopt_header_item",
+  "function: DexOptFlagsRead",
+  "struct: string_item",
+  "struct: string_id_item",
+  "function: StringDataReader",
+  "struct: string_id_list",
+  "function: StringIDListRead",
+  "struct: type_id_item",
+  "function: TypeIDRead",
+  "struct: type_id_list",
+  "function: TypeIDListRead",
+  "struct: type_item",
+  "struct: type_item_list",
+  "function: TypeItemRead",
+  "function: TypeItemListRead",
+  "function: GetLongTypeDescriptor",
+  "struct: proto_id_item",
+  "function: ProtoIDItemRead",
+  "struct: proto_id_list",
+  "function: ProtoIDListRead",
+  "function: GetParameterListString",
+  "function: GetPrototypeSignature",
+  "struct: field_id_item",
+  "function: FieldIdItemRead",
+  "struct: field_id_list",
+  "function: FieldIDListRead",
+  "struct: method_id_item",
+  "function: ProtoIdxRead",
+  "function: MethodIdItemRead",
+  "struct: method_id_list",
+  "function: MethodIDListRead",
+  "struct: field_annotation",
+  "function: FieldAnnotationRead",
+  "struct: method_annotation",
+  "function: MethodAnnotationRead",
+  "struct: parameter_annotation",
+  "function: ParameterAnnotationRead",
+  "enum: undefined",
+  "struct: annotation_item",
+  "function: AnnotationItemRead",
+  "struct: annotation_off_item",
+  "function: AnnotationOffItemRead",
+  "struct: annotation_set_item",
+  "function: AnnotationSetItemRead",
+  "struct: annotations_directory_item",
+  "function: AnnotationsDirectoryItemRead",
+  "struct: annotation_set_ref_item",
+  "struct: annotation_set_ref_list",
+  "enum: undefined",
+  "function: AccessFlagsRead",
+  "function: AccessFlagsReadUleb",
+  "enum: undefined",
+  "function: GetFriendlyAccessFlag",
+  "function: GetFriendlyAccessFlags",
+  "struct: encoded_field",
+  "function: EncodedFieldRead",
+  "struct: encoded_field_list",
+  "function: EncodedFieldListRead",
+  "struct: encoded_method",
+  "function: EncodedMethodRead",
+  "struct: encoded_method_list",
+  "function: EncodedMethodListRead",
+  "struct: class_data_item",
+  "function: ClassDataItemRead",
+  "struct: class_def_item",
+  "function: ClassDefItemRead",
+  "function: InterfacesRead",
+  "struct: class_def_item_list",
+  "function: ClassDefItemListRead",
+  "struct: try_item",
+  "struct: encoded_catch_handler",
+  "function: EncodedCatchHandlerRead",
+  "struct: encoded_catch_handler_list",
+  "function: EncodedCatchHandlerListRead",
+  "struct: code_item",
+  "function: CodeItemRead",
+  "struct: encoded_type_addr_pair",
+  "function: EncodedTypeAddrPairRead",
+  "struct: encoded_array_item",
+  "function: EncodedArrayItemRead",
+  "enum: TYPE_CODES",
+  "enum: undefined",
+  "struct: debug_opcode",
+  "function: DebugOpcodeRead",
+  "struct: debug_info_item",
+  "struct: map_item",
+  "function: MapItemRead",
+  "struct: map_list_type",
+  "function: MapListTypeRead",
+  "function: StringIdRead",
+  "function: StringIdReadUleb",
+  "function: StringIdReadUlebp1",
+  "function: TypeIdRead",
+  "function: LongTypeIdRead",
+  "function: LongTypeIdReadUleb",
+  "function: LongTypeIdReadUlebp1",
+  "function: FieldIdRead",
+  "function: MethodIdRead",
+  "function: GetIdAndNameString",
+  "function: GetStringById",
+  "function: GetTypeById",
+  "function: GetLongTypeById",
+  "function: GetMethodById",
+  "function: GetFieldById",
+  "enum: undefined",
+  "struct: dexopt_opt_chunk",
+  "struct: dexopt_opt_table",
+  "function: DexoptOptTableRead",
+  "function: DexOptChunkRead",
+  "struct: dex_class_lookup_entry",
+  "function: DexClassLookupEntryRead",
+  "struct: dex_class_lookup",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure DMP.bt 1`] = `
+Array [
+  "enum: undefined",
+  "struct: _PHYSICAL_MEMORY_RUN32",
+  "struct: _PHYSICAL_MEMORY_DESCRIPTOR32",
+  "struct: _EXCEPTION_RECORD32",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Drive.bt 1`] = `
+Array [
+  "enum: undefined",
+  "function: IsExactlyOneBitSet",
+  "function: BytesPerSectorToBytesPerSectorShift",
+  "function: BytesPerSectorShiftToBytesPerSector",
+  "function: IsValidBytesPerSectorShift",
+  "enum: undefined",
+  "function: ReadPARTITION_SYSTEMID",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: GUID",
+  "function: ReadGUID",
+  "function: WriteGUID",
+  "function: IsValidGuidString",
+  "function: IsGuidNonZero",
+  "struct: PARTITION_ENTRY",
+  "function: ReadPARTITION_ENTRY",
+  "struct: MASTER_BOOT_RECORD",
+  "struct: EXTENDED_PARTITION",
+  "enum: undefined",
+  "struct: EFI_PARTITION_ENTRY",
+  "function: ReadEFI_PARTITION_ENTRY",
+  "struct: EFI_PARTITION",
+  "enum: undefined",
+  "function: ReadFILE_SYSTEM_TYPE",
+  "struct: IFS_BOOTSECTOR",
+  "function: Calculate_IFS_BOOTSECTOR_Checksum",
+  "function: IsValidIfsBootsector",
+  "struct: IFS_DRIVE",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "function: ReadEXFAT_CLUSTER_INFO",
+  "function: ReadEXFAT_OEM_PARAMETER_TEMPLATE",
+  "function: ReadEXFAT_BOOT_CHECKSUM_SECTOR",
+  "function: ReadEXFAT_BOOT_REGION",
+  "function: ReadEXFAT_DIRENTRY_TYPE",
+  "function: GenerateChainedExtent",
+  "function: CalculateExpectedExfatBootRegionChecksumUsingStartPosition",
+  "function: CalculateExpectedExfatBootRegionChecksum",
+  "function: IsValidExfatBootExtendedSector",
+  "function: IsValidExfatBootSector",
+  "function: IsValidExfatBootRegion",
+  "function: IsValidClusterIndex",
+  "function: IsDirectoryEntryUnused",
+  "function: IsDirectoryEntryInUse",
+  "function: IsDirectoryEntryPrimary",
+  "function: IsDirectoryEntrySecondary",
+  "function: IsDirectoryEntryCritical",
+  "function: IsDirectoryEntryBenign",
+  "function: IsDirectoryEntryCriticalPrimary",
+  "function: IsDirectoryEntryCriticalSecondary",
+  "function: IsDirectoryEntryBenignPrimary",
+  "function: IsDirectoryEntryBenignSecondary",
+  "function: ReadEXFAT_CLUSTER_INFO",
+  "function: ReadEXFAT_OEM_PARAMETER_TEMPLATE",
+  "function: ReadEXFAT_BOOT_CHECKSUM_SECTOR",
+  "function: ReadEXFAT_BOOT_REGION",
+  "function: ReadEXFAT_DIRENTRY_TYPE",
+  "function: IsValidExfatBootExtendedSector",
+  "function: IsValidExfatBootSector",
+  "function: IsValidExfatBootRegion",
+  "function: IsClusterIndexSeekable",
+  "function: IsValidClusterIndex",
+  "function: CalculateExpectedExfatBootRegionChecksumUsingStartPosition",
+  "function: CalculateExpectedExfatBootRegionChecksum",
+  "struct: EXFAT_TIMESTAMP",
+  "function: ReadEXFAT_TIMESTAMP",
+  "struct: EXFAT_BOOT_SECTOR",
+  "struct: EXFAT_BOOT_EXTENDED_SECTOR",
+  "struct: EXFAT_OEM_PARAMETER_TEMPLATE",
+  "struct: EXFAT_OEM_FLASH_PARAMETER",
+  "function: IsGuidExfatOemFlashParameter",
+  "struct: EXFAT_BOOT_OEM_PARAMETER_SECTOR",
+  "struct: EXFAT_BOOT_RESERVED_SECTOR",
+  "struct: EXFAT_BOOT_CHECKSUM_SECTOR",
+  "struct: EXFAT_BOOT_REGION",
+  "struct: EXFAT_FAT_TABLE",
+  "struct: EXFAT_EXTENT",
+  "function: ReadEXFAT_EXTENT",
+  "struct: EXFAT_CHAINED_EXTENTS",
+  "function: ReadEXFAT_CHAINED_EXTENTS",
+  "function: GenerateChainedExtent",
+  "struct: EXFAT_DIRENTRY_GENERIC",
+  "function: ReadEXFAT_DIRENTRY_GENERIC",
+  "struct: EXFAT_DIRENTRY_END",
+  "function: ReadEXFAT_DIRENTRY_END",
+  "struct: EXFAT_DIRENTRY_UNUSED",
+  "function: ReadEXFAT_DIRENTRY_UNUSED",
+  "struct: EXFAT_DIRENTRY_GENERIC_PRIMARY",
+  "function: ReadEXFAT_DIRENTRY_GENERIC_PRIMARY",
+  "struct: EXFAT_DIRENTRY_GENERIC_SECONDARY",
+  "function: ReadEXFAT_DIRENTRY_GENERIC_SECONDARY",
+  "struct: EXFAT_DIRENTRY_ALLOCATION_BITMAP",
+  "function: ReadEXFAT_DIRENTRY_ALLOCATION_BITMAP",
+  "struct: EXFAT_DIRENTRY_UPCASE_TABLE",
+  "function: ReadEXFAT_DIRENTRY_UPCASE_TABLE",
+  "struct: EXFAT_DIRENTRY_VOLUME_LABEL",
+  "function: ReadEXFAT_DIRENTRY_VOLUME_LABEL",
+  "struct: EXFAT_DIRENTRY_FILE",
+  "function: ReadEXFAT_DIRENTRY_FILE",
+  "struct: EXFAT_DIRENTRY_FILE_STREAM",
+  "function: ReadEXFAT_DIRENTRY_FILE_STREAM",
+  "struct: EXFAT_DIRENTRY_FILE_NAME",
+  "function: ReadEXFAT_DIRENTRY_FILE_NAME",
+  "struct: EXFAT_DIRENTRY_VOLUME_GUID",
+  "function: ReadEXFAT_DIRENTRY_VOLUME_GUID",
+  "struct: EXFAT_ALLOCATION_BITMAP",
+  "struct: EXFAT_UPCASE_TABLE",
+  "function: GetFilePositionForCluster",
+  "struct: EXFAT_BUFFER",
+  "function: exfat_parse_extents_as_file_data",
+  "function: exfat_add_invalid_directory_entry",
+  "struct: EXFAT_FILE",
+  "function: ReadEXFAT_FILE",
+  "struct: EXFAT_DIRENTRY_SET",
+  "function: ReadEXFAT_DIRENTRY_SET",
+  "function: exfat_parse_directory_entry_set",
+  "function: exfat_calculate_entry_set_checksum",
+  "function: exfat_parse_extents_as_directory",
+  "function: exfat_parse_extents_basic",
+  "struct: EXFAT_DATA",
+  "struct: EXFAT_DIRECTORY_CONTENTS",
+  "struct: EXFAT_DRIVE",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "function: ReadFAT12_CLUSTER_INFO",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "function: ReadFAT16_CLUSTER_INFO",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "function: ReadFAT32_CLUSTER_INFO",
+  "struct: FAT12_FAT_TABLE",
+  "function: ReadFAT12_FAT_TABLE",
+  "struct: FAT16_FAT_TABLE",
+  "struct: FAT32_FAT_TABLE",
+  "function: ReadFAT32_FAT_TABLE",
+  "struct: FAT_BOOTSECTOR",
+  "function: ReadFAT_BOOTSECTOR",
+  "function: ReadFAT_BOOTSECTOR_SectorsRequiredForDataClusters",
+  "function: ReadFAT_BOOTSECTOR_CountOfDataClusters",
+  "function: IsValidFatBootSector",
+  "struct: FAT_DRIVE",
+  "enum: undefined",
+  "function: ReadFAT_ATTR_TYPE",
+  "struct: FAT_SHORTENTRY",
+  "function: ReadFAT_SHORTENTRY_Filename",
+  "function: ReadFAT_SHORTENTRY",
+  "struct: tLFN_RecordSeqNum",
+  "struct: FAT_LONGENTRY",
+  "function: FAT_JumpToCluster",
+  "function: FAT_AddressToCluster",
+  "function: FAT_CheckDirEntryRead",
+  "function: FAT_DirectoryEntryType",
+  "function: FAT_IsDirectoryEntryLFN",
+  "function: FAT_IsDirectoryEntryVolumeID",
+  "struct: FAT_DIRECTORY_ENTRY_SET",
+  "function: ReadFAT_SHORTENTRY_IsDeleted",
+  "function: ReadFAT_DIRECTORY_ENTRY_SET_IsDeleted",
+  "function: ReadFAT_DIRECTORY_ENTRY_SET_IsDirectory",
+  "function: ReadFAT_DIRECTORY_ENTRY_SET_LongFilename",
+  "function: ReadFAT_DIRECTORY_ENTRY_SET",
+  "struct: FAT_FILE_CLUSTER",
+  "function: FAT_CalculateCluster",
+  "struct: FAT_FILE_DATA",
+  "function: SizeFAT_FILE_DATA",
+  "struct: FAT_DIRECTORY",
+  "function: SizeFAT_DIRECTORY",
+  "struct: NTFS_BOOTSECTOR",
+  "function: IsValidNtfsBootSector",
+  "enum: undefined",
+  "struct: NTFS_ATTR_STANDARD",
+  "enum: undefined",
+  "struct: NTFS_FILE_FLAGS",
+  "function: ReadNTFS_FILE_FLAGS",
+  "struct: NTFS_ATTR_FILE_NAME",
+  "struct: NTFS_ATTR_VOLUME_NAME",
+  "struct: NTFS_ATTR_VOLUME_INFO",
+  "struct: NTFS_ATTR_INDEX_ROOT",
+  "struct: NTFS_ATTR_INDEX_ENTRY_HEADER",
+  "struct: NTFS_ATTR_INDEX_ENTRY",
+  "struct: NTFS_INDEX_FILE_NAME_ENTRY",
+  "function: ReadNTFS_INDEX_FILE_NAME_ENTRY",
+  "struct: NTFS_RUN",
+  "struct: NTFS_RUN_LIST",
+  "struct: NTFS_FILE_INDEX",
+  "function: NTFS_LCNToAddress",
+  "struct: NTFS_FILE_BLOCK",
+  "struct: NTFS_FILE_DATA",
+  "struct: NTFS_ATTRIBUTE",
+  "function: ReadNTFS_ATTRIBUTE",
+  "function: NTFS_VCNToLCN",
+  "function: NTFS_ListFiles",
+  "function: NTFS_FindAttribute",
+  "struct: NTFS_DIRECTORY",
+  "struct: NTFS_FILE_RECORD",
+  "function: ReadNTFS_FILE_RECORD",
+  "struct: NTFS_MASTER_FILE_TABLE",
+  "function: ReadNTFS_MASTER_FILE_TABLE",
+  "struct: NTFS_DRIVE",
+  "struct: HFS_ExtentDescriptor",
+  "struct: HFS_ForkData",
+  "function: HFSTimeRead",
+  "function: HFSTimeWrite",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: HFS_VolumeHeader",
+  "function: IsValidHfsBootSector",
+  "struct: HFS_UniStr255",
+  "struct: HFS_BSDInfo",
+  "struct: HFS_Point",
+  "struct: HFS_FileInfo",
+  "struct: HFS_ExtendedFileInfo",
+  "struct: HFS_Rect",
+  "struct: HFS_FolderInfo",
+  "struct: HFS_ExtendedFolderInfo",
+  "struct: HFS_CatalogKey",
+  "function: ReadHFSCatalogKey",
+  "struct: HFS_CatalogFolder",
+  "function: HFS_ListFilesInNode",
+  "function: HFS_ListFiles",
+  "struct: HFS_FolderList",
+  "struct: HFS_Folder",
+  "function: ReadHFSFolder",
+  "struct: HFS_CatalogFile",
+  "struct: HFS_FileBlock",
+  "struct: HFS_FileData",
+  "struct: HFS_File",
+  "function: ReadHFSFile",
+  "struct: HFS_CatalogRecord",
+  "function: ReadHFSCatalogRecord",
+  "enum: undefined",
+  "struct: HFS_BTNodeDescriptor",
+  "struct: HFS_BTHeaderRec",
+  "struct: HFS_BTHeaderNode",
+  "struct: HFS_BTNode",
+  "function: HFS_LocalToDriveBlock",
+  "function: HFS_JumpToCatalogNode",
+  "function: HFS_BlockToAddress",
+  "struct: HFS_Catalog",
+  "struct: HFS_DRIVE",
+  "union: DRIVE_NOT_SUPPORTED",
+  "function: fsrec_is_exfat_bootregion",
+  "function: fsrec_is_exfat",
+  "function: FileSystemRecognizer",
+  "function: PreferredFileSystemTypeFromPartitionSystemID",
+  "function: DetectAndAddFileSystem",
+  "function: UnsupportedPartitionAlreadyExists",
+  "function: AddDriveNotSupportedLocation",
+  "function: PotentialPartitionAlreadyExists",
+  "function: AddPotentialPartitionLocation",
+  "function: ParsePartitionTableEntry",
+  "function: ParseMBR",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure EDID.bt 1`] = `
+Array [
+  "function: EISAIdToString",
+  "function: StringToEISAId",
+  "struct: Timing",
+  "function: TimingToString",
+  "enum: DescriptorType",
+  "enum: FormatCode",
+  "enum: BlockType",
+  "enum: SVDIndex",
+  "struct: SVD",
+  "function: SVDToString",
+  "function: SPAToString",
+  "function: TDMSFreqToString",
+  "function: PixelClockToString",
+  "function: StringToPixelClock",
+  "function: PixelRateToString",
+  "function: StringToPixelRate",
+  "function: BitRateToString",
+  "function: StringToBitRate",
+  "function: LatencyToString",
+  "function: StringToLatency",
+  "struct: DataBlock",
+  "function: DataBlockSize",
+  "struct: ModeLine",
+  "function: ModeLineToString",
+  "function: StringToModeLine",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ELF.bt 1`] = `
+Array [
+  "function: PrintWarning",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: e_ident_t",
+  "function: VAddr32",
+  "function: VAddr64",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "function: ReservedSectionName",
+  "struct: program_table_entry32_t",
+  "struct: program_table_entry64_t",
+  "function: ProgramType",
+  "function: ProgramFlags",
+  "function: ProgramInfo64",
+  "function: ProgramInfo32",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: s_name32_t",
+  "function: SectionName",
+  "struct: section_table_entry64_t",
+  "struct: section_table_entry32_t",
+  "function: SectionName64",
+  "function: SectionName32",
+  "struct: sym_name32_t",
+  "function: SymbolName",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: sym_info_t",
+  "function: SymInfoEnums",
+  "struct: Elf64_Sym_fixed",
+  "struct: Elf32_Sym_fixed",
+  "struct: Elf64_Sym",
+  "struct: Elf32_Sym",
+  "function: SymbolName64",
+  "function: SymbolName32",
+  "function: FindNamedSection",
+  "function: FindNamedSectionBlock",
+  "function: SectionHasData",
+  "function: SectionVAddrOffset",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure EMF.bt 1`] = `
+Array [
+  "enum: undefined",
+  "struct: SIZEL",
+  "struct: RECTL",
+  "struct: Header",
+  "struct: Description",
+  "struct: RGBQUAD",
+  "struct: BITMAPINFOHEADER",
+  "struct: BITMAPINFO",
+  "struct: EMR_SETDIBITSTODEVICE",
+  "struct: Record",
+  "struct: PaletteEntry",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure EOT.bt 1`] = `
+Array [
+  "enum: undefined",
+  "struct: embedded_opentype_file",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure EVSB.bt 1`] = `
+Array [
+  "struct: Sync_Segment_Even",
+  "struct: Sync_Segment_Odd",
+  "struct: Data_Segment_Even",
+  "struct: Data_Segment_Odd",
+  "struct: Field_Even",
+  "struct: Field_Odd",
+  "struct: Frame",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure EXE.bt 1`] = `
+Array [
+  "struct: IMAGE_DOS_HEADER",
+  "struct: RICH_HEADER",
+  "struct: IMAGE_DOS_STUB",
+  "enum: undefined",
+  "struct: FILE_CHARACTERISTICS",
+  "struct: IMAGE_FILE_HEADER",
+  "struct: IMAGE_DATA_DIRECTORY",
+  "struct: IMAGE_DATA_DIRECTORY_ARRAY",
+  "enum: undefined",
+  "struct: DLL_CHARACTERISTICS",
+  "enum: undefined",
+  "struct: IMAGE_OPTIONAL_HEADER32",
+  "struct: IMAGE_OPTIONAL_HEADER64",
+  "struct: IMAGE_NT_HEADERS",
+  "struct: SECTION_CHARACTERISTICS",
+  "struct: IMAGE_SECTION_HEADER",
+  "struct: IMAGE_SECTION_DATA",
+  "struct: IMAGE_IMPORT_BY_NAME",
+  "struct: IMAGE_IMPORT_DESCRIPTOR",
+  "struct: IMAGE_EXPORT_BY_NAME",
+  "struct: IMAGE_EXPORT_DIRECTORY",
+  "struct: pascal_wstring_t",
+  "struct: RESOURCE_DIRECTORY_STRINGS",
+  "struct: RESOURCE_DATA_ENTRY",
+  "struct: RESOURCE_DIRECTORY_ENTRY",
+  "struct: RESOURCE_DIRECTORY_TABLE",
+  "struct: IMAGE_BASE_RELOCATION",
+  "struct: BASE_RELOCATION_TABLE",
+  "function: ParseEAT",
+  "function: ParseIAT",
+  "function: ParseResource",
+  "function: ParseException",
+  "function: ParseSecurity",
+  "function: ParseBaseReloc",
+  "function: ParseDebug",
+  "function: ParseTLS",
+  "function: ParseBoundImport",
+  "function: ParseDelayImport",
+  "function: RVA2FOA",
+  "function: CalcImageNtHeadersSize",
+  "function: ReadImageSectionHeader",
+  "function: ReadSectionData",
+  "function: ReadImageImportDescriptor",
+  "function: ReadExportByName",
+  "function: GetRichIdVersionString",
+  "function: ReadRichEntryIdVersion",
+  "function: ReadRichEntryCount",
+  "function: LocationRVA",
+  "function: CommentRVA2FOA",
+  "function: CommentRVAString",
+  "function: CommentImageImportByName",
+  "function: CommentExportByName",
+  "function: CommentExportDirectory",
+  "function: CommentBaseRelocBlock",
+  "function: CommentImageBaseRelocation",
+  "function: CommentResourceNameOffset",
+  "function: GetNameEntries",
+  "function: GetLevel",
+  "function: GetType",
+  "function: CommentIntegerID",
+  "function: CommentResourceDirectoryString",
+  "function: CommentResourceDirectoryTable",
+  "function: GetEntryIntegerID",
+  "function: GetEntryIsNameEntry",
+  "function: GetParentTableLevel",
+  "function: IsResourceDirectoryString",
+  "function: CommentBaseRelocationTable",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure EZTap_EZVIEW2.bt 1`] = `
+Array [
+  "struct: t_hdr",
+  "struct: t_flags",
+  "struct: t_ezview2_frame",
+  "function: ReadEZVIEW2_Frame",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure EatonAPR48.bt 1`] = `
+Array [
+  "struct: EatonEEPROMHeader",
+  "struct: EatonEEPROMParams",
+  "struct: EatonEEPROMCalibration",
+  "struct: EatonEEPROM",
+  "function: copy",
+  "function: recompute_checksum",
+  "function: calc_checksum",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ElTorito.bt 1`] = `
+Array [
+  "struct: BOOT_RECORD_DESC",
+  "union: EL_TORITO_ENTRIES",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure FLV.bt 1`] = `
+Array [
+  "struct: HEADER",
+  "struct: Tag",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure FNT.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure FTS.bt 1`] = `
+Array [
+  "struct: FTS_HEADER",
+  "function: ProcessPageBreakMarker",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: NAMED_PROPERTY_INFO",
+  "function: BinaryChunk",
+  "function: PropertyValue",
+  "struct: PROPERTY",
+  "struct: META_PROPERTY",
+  "function: FoldedStructure",
+  "struct: EMBEDDING",
+  "struct: ATTACHMENT",
+  "struct: RECIPIENT",
+  "struct: MESSAGE",
+  "struct: FOLDER",
+  "function: PropertyPreview",
+  "function: PropertyComment",
+  "function: ParseUpto",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure GGPK.bt 1`] = `
+Array [
+  "enum: Tag",
+  "struct: GGPK",
+  "struct: File",
+  "struct: Directory",
+  "struct: Record",
+  "function: RecordRead",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure GIF.bt 1`] = `
+Array [
+  "struct: RGB",
+  "function: ReadRGB",
+  "struct: DATASUBBLOCKS",
+  "struct: GIFHEADER",
+  "struct: LOGICALSCREENDESCRIPTOR",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure GZip.bt 1`] = `
+Array [
+  "function: MAGICRead",
+  "enum: undefined",
+  "struct: FLAGS",
+  "enum: undefined",
+  "struct: gzip_header",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Goclever.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure HFSJournal.bt 1`] = `
+Array [
+  "struct: Header",
+  "struct: BlockInfo",
+  "struct: BlockData",
+  "struct: BlockList",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure HTML.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure HiewCMarkers.bt 1`] = `
+Array [
+  "struct: MARKERS_HEADER",
+  "function: GetClrBlockCnt",
+  "function: GetColour",
+  "function: GetAreaLen",
+  "struct: COLOUR",
+  "function: GetNamesFileName",
+  "function: GetFieldDataFromLine",
+  "function: GetNames",
+  "function: GetBlockNameByAddress",
+  "function: GetNameByAddress",
+  "function: GetCommentByAddress",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ICO.bt 1`] = `
+Array [
+  "struct: ICONDIRENTRY",
+  "struct: ICONDIR",
+  "struct: RGBQUAD",
+  "struct: RGBTRIPLE",
+  "struct: BITMAPINFOHEADER",
+  "struct: IMAGEDATA",
+  "struct: ICONIMAGE",
+  "function: ReadIconDirEntry",
+  "function: ReadDIBHeader",
+  "function: ReadRGBQUAD",
+  "function: ReadRGBTRIPLE",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure IGI2_RES.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure IGI2_SPR.bt 1`] = `
+Array [
+  "struct: ARGB_1555",
+  "struct: ARGB_8888",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure IGI2_TEX.bt 1`] = `
+Array [
+  "struct: ARGB_1555",
+  "struct: ARGB_8888",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure IGI2_THM.bt 1`] = `
+Array [
+  "struct: REAL_32",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure IGI2_TLM.bt 1`] = `
+Array [
+  "struct: ARGB_8888",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure IGI2_TMM.bt 1`] = `
+Array [
+  "struct: INDEX_8",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure IGI2_WAV.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ISO.bt 1`] = `
+Array [
+  "enum: CharSetEnum",
+  "function: RestoreEndian",
+  "function: BlockPos",
+  "function: ToCommaNumString",
+  "function: StrcatfCommaNum",
+  "function: ToColonHexNumString",
+  "function: StrcatfColonHexNum",
+  "function: ToSciBytesString",
+  "function: StrcatfSciBytes",
+  "function: StrTrim",
+  "function: WStrTrim",
+  "function: StrcatfNum",
+  "function: StrcatfStr",
+  "function: ConvertTimeZone15mDateTimeToString",
+  "struct: DigitsZonedDateTime_",
+  "function: ReadDigitsZonedDateTime",
+  "function: StrcatfDigitsZonedDateTime",
+  "struct: BytesZonedDateTime_",
+  "function: ReadBytesZonedDateTime",
+  "function: StrcatfBytesZonedDateTime",
+  "union: Id_",
+  "function: ReadAsciiId",
+  "function: StrcatfAsciiId",
+  "function: IdentifyCharsetFromEscapeSequence",
+  "function: ReadId",
+  "function: StrcatfId",
+  "function: ReadFileId",
+  "function: StrcatfFileId",
+  "struct: uint16_LE_BE_",
+  "function: Read_uint16_LE_BE_",
+  "struct: uint32_LE_BE",
+  "function: Read_uint32_LE_BE",
+  "struct: ExtendedAttributes_",
+  "function: ReadExtendedAttributes",
+  "struct: DirectoryRecord_",
+  "function: ReadDirectoryRecord",
+  "struct: PathTable",
+  "function: ReadPathTable",
+  "enum: VolumeDescriptorTypeEnum",
+  "struct: VolumeDescriptor_",
+  "function: ReadVolumeDescriptor",
+  "struct: BootRecordDescriptor_",
+  "function: ReadBootRecordDescriptor",
+  "struct: VolumeRoot_",
+  "struct: PrimaryVolumeDescriptor_",
+  "function: ReadPrimary",
+  "struct: SupplementaryVolumeDescriptor_",
+  "function: Read_Supplementary",
+  "struct: VolumePartitionDescriptor_",
+  "struct: TerminatorDescriptor_",
+  "function: navigateRoot",
+  "function: navigateDirectories",
+  "function: navigateDirectory",
+  "function: navigatePathTable",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure InspectorDates.bt 1`] = `
+Array [
+  "function: WebkitTimeRead",
+  "function: WebkitTimeWrite",
+  "function: HFSTimeRead",
+  "function: HFSTimeWrite",
+  "function: AppleTimeRead",
+  "function: AppleTimeWrite",
+  "function: PRTimeRead",
+  "function: PRTimeWrite",
+  "function: JavaTimeRead",
+  "function: JavaTimeWrite",
+  "function: GPSTimeRead",
+  "function: GPSTimeWrite",
+  "function: BlackberryDateRead",
+  "function: BlackberryDateWrite",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure InspectorWithMP4DateTime.bt 1`] = `
+Array [
+  "function: leap",
+  "function: daysInYear",
+  "function: MP4_TimeRead",
+  "function: MP4_TimeWrite",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure JPG.bt 1`] = `
+Array [
+  "enum: IFD_dirtype",
+  "function: Stack_push",
+  "function: Stack_pop",
+  "function: Stack_top",
+  "function: ReadStringN",
+  "function: ChangeColor",
+  "enum: tagID",
+  "enum: tagExifTag",
+  "enum: GeoTag",
+  "enum: tagCasioTag2",
+  "struct: CifDirEntry",
+  "enum: CIFFTagStg",
+  "enum: CIFFTagDataType",
+  "enum: CIFFTagType",
+  "function: ReadCifDirEntry",
+  "struct: CDIR",
+  "enum: tagDataFormat",
+  "struct: DIRENTRY",
+  "function: ReadDirEntry",
+  "struct: IFD",
+  "function: ReadAscString1",
+  "function: ReadAscString",
+  "function: ReadURatio",
+  "struct: APP0",
+  "struct: APP1",
+  "struct: APP2",
+  "struct: APP12",
+  "struct: APP13",
+  "struct: APP14",
+  "struct: SOS",
+  "struct: UNKNOWN",
+  "struct: DHT",
+  "struct: DQT",
+  "struct: DRI",
+  "struct: DHP",
+  "struct: SOFx",
+  "struct: COMMENT",
+  "struct: JPGLS",
+  "function: ReadComment",
+  "struct: JPGFILE",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Java.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure JavaScript.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure KryoFlux.bt 1`] = `
+Array [
+  "struct: FluxSequence",
+  "function: ReadFluxSequence",
+  "struct: Flux2",
+  "struct: Nop1",
+  "struct: Nop2",
+  "struct: Nop3",
+  "struct: Ovl16",
+  "struct: Flux3",
+  "struct: OOBInvalid",
+  "struct: OOBStreamInfo",
+  "struct: OOBIndex",
+  "struct: OOBStreamEnd",
+  "function: ReadOOBStreamEnd",
+  "struct: OOBKFInfo",
+  "function: ReadOOBKFInfo",
+  "struct: OOBEOF",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure LNK.bt 1`] = `
+Array [
+  "function: ToggleBackColor",
+  "function: UTCise",
+  "struct: LinkFlags",
+  "struct: FileAttributes",
+  "function: ReadFileAttributes",
+  "struct: FileAttributesL",
+  "function: ReadFileAttributesL",
+  "function: ReadGUID",
+  "struct: ShellLinkHeader",
+  "function: ReadHotKey",
+  "function: ReadCheckHeaderSize",
+  "function: ReadCheckCLSID",
+  "struct: DOSDATETIME",
+  "function: ReadDosDateTime",
+  "struct: ExtraDataBlock",
+  "function: ReadExtraBlock",
+  "struct: IDList",
+  "function: ReadIDList",
+  "function: LookupGUID",
+  "struct: LinkTargetIDList",
+  "function: ReadLinkTargetIDList",
+  "struct: LinkInfoFlags",
+  "struct: VolumeID",
+  "struct: CommonNetworkRelativeLink",
+  "struct: LinkInfo",
+  "struct: StringData",
+  "function: ReadStringData",
+  "struct: EnvironmentVariableDataBlock",
+  "struct: ConsoleDataBlock",
+  "struct: TrackerDataBlock",
+  "struct: ConsoleFEDataBlock",
+  "struct: SpecialFolderDataBlock",
+  "struct: DarwinDataBlock",
+  "struct: IconEnvironmentDataBlock",
+  "struct: ShimDataBlock",
+  "struct: TypedPropertyValue",
+  "struct: PropertyStringValue",
+  "struct: PropertyIntegerValue",
+  "struct: PropertyStoreList",
+  "struct: PropertyStoreDataBlock",
+  "struct: VistaAndAboveIDListDataBlock",
+  "struct: KnownFolderDataBlock",
+  "struct: ExtraData",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure LUKS.bt 1`] = `
+Array [
+  "struct: luks_phdr",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure LZ4.bt 1`] = `
+Array [
+  "enum: LZ4F_Block_Max_Size",
+  "struct: LZ4F_Header_Flags",
+  "struct: LZ4F_Header_BlockDescriptor",
+  "struct: LZ4F_Header",
+  "struct: LZ4F_Data_Block",
+  "struct: LZ4F_Skippable_Frame",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure LuaJIT.bt 1`] = `
+Array [
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: uleb128",
+  "struct: uleb128_33",
+  "function: uleb128_33_value",
+  "function: uleb128_33Read",
+  "function: uleb128_value",
+  "function: uleb128p1_value",
+  "function: ULeb128Read",
+  "struct: sleb128",
+  "function: sleb128_value",
+  "function: SLeb128Read",
+  "struct: TNumber",
+  "function: TNumberRead",
+  "struct: TableItem",
+  "function: TableItemRead",
+  "struct: ArrayItem",
+  "struct: HashItem",
+  "function: HashItemRead",
+  "struct: Table",
+  "struct: ComplexConstant",
+  "function: ComplexConstantRead",
+  "struct: NumericConstant",
+  "function: NumericConstantRead",
+  "struct: Constants",
+  "struct: GlobalHeaderFlags",
+  "function: GlobalHeaderFlagRead",
+  "struct: GlobalHeader",
+  "struct: ProtoFlags",
+  "function: ProtoFlagsRead",
+  "function: InstructionRead",
+  "struct: ProtoHeader",
+  "struct: LineInfo",
+  "struct: UpValueNames",
+  "struct: VarInfo",
+  "function: VarInfoRead",
+  "struct: VarInfos",
+  "struct: DebugInfo",
+  "struct: Instruction",
+  "struct: Proto",
+  "struct: Luajit",
+  "function: LuajitRead",
+  "function: init_modes",
+  "function: get_mode",
+  "function: get_mode_a",
+  "function: get_mode_b",
+  "function: get_mode_c",
+  "function: get_args_count",
+  "function: get_data_from_constants",
+  "function: process_operand",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Luac.bt 1`] = `
+Array [
+  "enum: OpCode",
+  "enum: LUA_DATATYPE",
+  "enum: OpMode",
+  "function: ISK",
+  "function: INDEXK",
+  "function: CC",
+  "function: CV",
+  "struct: lua_Val",
+  "struct: TValue",
+  "function: RegOrConst",
+  "function: RK",
+  "function: opstr",
+  "function: invopstr",
+  "function: GET_OPCODE",
+  "function: GETARG_A",
+  "function: GETARG_B",
+  "function: GETARG_C",
+  "function: GETARG_Bx",
+  "function: GETARG_Ax",
+  "function: GETARG_sBx",
+  "struct: GlobalHeader",
+  "struct: Constant",
+  "function: number2str",
+  "function: numflt2str",
+  "function: numint2str",
+  "function: ConstantRead",
+  "struct: Upvaldesc",
+  "struct: LocVar",
+  "function: LocVarRead",
+  "struct: Constants",
+  "function: DecompileString",
+  "function: DecompileConstant",
+  "struct: Upvaldescs",
+  "function: get_opcode_str",
+  "function: operators",
+  "function: priorities",
+  "function: InstructionRead",
+  "struct: ProtoHeader",
+  "struct: Protos",
+  "struct: Lines",
+  "struct: SourceName",
+  "function: SourceNameRead",
+  "struct: LocVars",
+  "struct: UpValueName",
+  "function: UpValueNameRead",
+  "struct: UpValueNames",
+  "struct: Proto",
+  "function: ProtoRead",
+  "function: get_inst_sz",
+  "function: get_lua_version",
+  "struct: Luac",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure MFT.bt 1`] = `
+Array [
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: Attribute",
+  "struct: END_OF_ATTRIBUTES",
+  "struct: SECURITY_DESCRIPTOR",
+  "struct: STANDARD_INFO",
+  "struct: FILE_NAME",
+  "struct: BITMAP",
+  "struct: DATA",
+  "struct: FileEntry",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure MIDI.bt 1`] = `
+Array [
+  "struct: MidiHeader",
+  "struct: DeltaTime",
+  "struct: MidiMessage",
+  "struct: MidiTrack",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure MOBI.bt 1`] = `
+Array [
+  "struct: ri",
+  "function: checkpdfheader",
+  "struct: PalmDatabaseFormat",
+  "enum: eCompression",
+  "enum: encryptionType",
+  "enum: TextEncoding",
+  "enum: MobiType",
+  "struct: PalmDOCheader",
+  "enum: eMBHflags",
+  "function: readMBHflags",
+  "struct: MobiHeader",
+  "enum: TextToSpeach",
+  "enum: CreatorSoftware",
+  "struct: EXTHrecord",
+  "struct: ExthHeader",
+  "struct: FLISRECORD",
+  "struct: FDSTkf8RECORD",
+  "struct: FCISRECORD",
+  "struct: SRCSRECORD",
+  "struct: DATPRECORD",
+  "struct: BOUNDARYRECORD",
+  "struct: HTML",
+  "struct: INDXRECORD",
+  "struct: ENDRECORD",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure MP3.bt 1`] = `
+Array [
+  "struct: synchsafe_integer",
+  "function: read_synchsafe_integer",
+  "enum: ID3_GENRES",
+  "struct: ID3v1_TAG",
+  "struct: ID3v2_HEADER",
+  "struct: ID3v2_EXTENDED_HEADER",
+  "struct: ID3v2_FRAME",
+  "struct: ID3v2_4_FRAME",
+  "struct: ID3v2_TAG",
+  "struct: MPEG_HEADER",
+  "struct: MPEG_FRAME",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure MP4.bt 1`] = `
+Array [
+  "enum: qtlang",
+  "enum: qtgfxmode",
+  "function: ContentSize",
+  "function: BoxSize",
+  "function: ReadFP16",
+  "function: ReadFP32",
+  "function: ReadFP32uvw",
+  "function: ReadBox",
+  "function: BoxComment",
+  "function: ReadFourCC",
+  "function: ReadBoxHeader",
+  "function: ReadCompatibleBrand",
+  "function: ReadTime",
+  "function: ReadLang",
+  "function: ReadOpcolor",
+  "function: PipeConcat",
+  "function: ReadTkhdFlags",
+  "function: ReadVmhdFlags",
+  "struct: fp16",
+  "struct: fp32",
+  "struct: fp32uvw",
+  "struct: matrix",
+  "struct: fourcc",
+  "struct: boxheader",
+  "struct: compatible_brand",
+  "struct: mp4time",
+  "struct: mp4lang",
+  "struct: qtopcolor",
+  "struct: elst_entry",
+  "struct: tkhd_flags",
+  "struct: vmhd_flags",
+  "struct: str_stsc",
+  "struct: str_stts",
+  "struct: str_stsd",
+  "struct: str_sidx",
+  "struct: mp4box",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure MXF.bt 1`] = `
+Array [
+  "struct: UL",
+  "function: ReadUL",
+  "function: ULCompare",
+  "struct: BerLength",
+  "function: ReadBerLength",
+  "struct: KlvObject",
+  "function: ReadKlvObject",
+  "function: SkipFiller",
+  "struct: EssenceContainer",
+  "function: ReadEssenceContainer",
+  "struct: OperationalPattern",
+  "function: ReadOperationalPattern",
+  "struct: PartitionPack",
+  "struct: Partition",
+  "function: ReadPartition",
+  "struct: LocalTagKey",
+  "function: ReadLocalTagKey",
+  "struct: LocalTag",
+  "struct: IndexTableSegment",
+  "struct: RandomIndexPack",
+  "struct: TimeStamp",
+  "function: ReadTimeStamp",
+  "struct: LocalTagEntry",
+  "function: ReadLocalTagEntry",
+  "struct: Preface",
+  "struct: Metadata",
+  "struct: EssenceData",
+  "struct: EssenceContainerData",
+  "struct: ContentStorage",
+  "struct: MXFFile",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure MachO.bt 1`] = `
+Array [
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: i386ThreadState",
+  "enum: undefined",
+  "struct: x86ThreadState",
+  "enum: undefined",
+  "struct: ARMThreadState",
+  "struct: PPCThreadState",
+  "enum: undefined",
+  "struct: Fat_Arch",
+  "struct: Header",
+  "function: HeaderRead",
+  "enum: undefined",
+  "function: LoadCommandTypeRead",
+  "struct: Section",
+  "struct: Section64",
+  "enum: undefined",
+  "struct: LoadCommandString",
+  "function: LoadCommandStringRead",
+  "function: UuidRead",
+  "struct: Version",
+  "function: VersionRead",
+  "struct: build_tool_version",
+  "struct: LoadCommand",
+  "function: LoadCommandReader",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Mifare1k.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Mifare4k.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure MifareUltralight.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Modo.bt 1`] = `
+Array [
+  "function: readsubchunks",
+  "enum: undefined",
+  "struct: uv_t",
+  "struct: IFFHEADER",
+  "function: IFFHEADER_Read",
+  "struct: PSCR_CHUNK",
+  "function: fn_Read_PSCR",
+  "struct: DESC_CHUNK",
+  "function: DESC_CHUNKRead",
+  "struct: THUM_CHUNK",
+  "struct: PRVW_CHUNK",
+  "function: fn_Read_PRVW",
+  "struct: VRSN_CHUNK",
+  "function: fn_Read_VRSN",
+  "struct: PRNT_CHUNK",
+  "struct: ENCO_CHUNK",
+  "struct: STAG_CHUNK",
+  "function: fn_Read_STAG",
+  "struct: ITEM_CHUNK",
+  "function: fn_Read_ITEM",
+  "struct: ENVL_CHUNK",
+  "function: fn_Read_Type",
+  "struct: ACTN_CHUNK",
+  "function: fn_Read_ACTN",
+  "struct: TAGS_CHUNK",
+  "function: fn_Read_Tagname",
+  "function: fn_Read_TAGS",
+  "struct: channel_name_t",
+  "function: fn_Read_Channel_Name",
+  "struct: CHNM_CHUNK",
+  "function: fn_Read_CHNM",
+  "struct: REFS_CHUNK",
+  "function: fn_Read_Filespec",
+  "struct: LAYR_CHUNK",
+  "function: fn_Read_LAYR",
+  "struct: PNTS_CHUNK",
+  "function: fn_Read_PNTS",
+  "struct: PointIndex_t",
+  "struct: PolyIndex_t",
+  "struct: BBOX_CHUNK",
+  "function: fn_Read_BBOX",
+  "struct: VMPA_CHUNK",
+  "struct: VMAP_TXUV_t",
+  "function: fnRead_TXUV",
+  "struct: VMAP_CHUNK",
+  "function: fn_Read_VMAP",
+  "struct: POLS_CHUNK",
+  "function: fn_Read_PointIndex",
+  "function: fn_Read_PolyIndex",
+  "function: fn_Read_PolyType",
+  "function: fn_Read_POLS",
+  "struct: Disco_MORF_t",
+  "function: fnRead_Disco_MORF",
+  "struct: Disco_TXUV_t",
+  "function: fnRead_Disco_TXUV",
+  "struct: VMAD_CHUNK",
+  "function: fn_Read_VMAD",
+  "struct: VMED_CHUNK",
+  "function: fn_Read_VMED",
+  "struct: PTAG_CHUNK",
+  "function: PTAG_CHUNKRead",
+  "function: fn_Read_PTAG",
+  "struct: _3GRP_CHUNK",
+  "function: fn_Read_3GRP",
+  "struct: _3SRF_CHUNK",
+  "function: fn_Read_3SRF",
+  "struct: VRTS_CHUNK",
+  "function: VRTS_CHUNKread",
+  "struct: TRIS_CHUNK",
+  "function: TRIS_CHUNKread",
+  "struct: VVEC_CHUNK",
+  "function: fn_Read_VVEC",
+  "struct: TTGS_CHUNK",
+  "function: fn_Read_TSTAG",
+  "function: fn_Read_TTGS",
+  "struct: AUTH_CHUNK",
+  "function: AUTH_CHUNKread",
+  "struct: CPYR_CHUNK",
+  "function: CPYR_CHUNKread",
+  "struct: ANNO_CHUNK",
+  "function: ANNO_CHUNKread",
+  "struct: AANI_CHUNK",
+  "struct: APPV_CHUNK",
+  "struct: IASS_XREF_SUBCHUNK",
+  "function: fn_Read_IASS_XREF",
+  "struct: IASS_CHUNK",
+  "function: fn_Read_IASS_Subchunks",
+  "struct: SUBS_LOPT_SUBCHUNK",
+  "struct: SUBS_IREF_SUBCHUNK",
+  "struct: SUBS_CHUNK",
+  "function: fn_Read_SUBS_Subchunks",
+  "struct: XREF_IDEL_SUBCHUNK",
+  "struct: XREF_XMAN_Flags_Mode3_t",
+  "struct: XREF_MAN_Flags_Mode2_t",
+  "function: fn_Read_XREF_MAN_Flags_Mode2_t",
+  "struct: XREF_XMAN_SUBCHUNK",
+  "struct: XREF_CHUNK",
+  "function: fn_Read_XREF_Subchunks",
+  "struct: name_value_pair_float_t",
+  "function: fn_Read_Name_Value_Pair_Float",
+  "struct: name_value_pair_uint_t",
+  "function: fn_Read_Name_Value_Pair_UInt",
+  "struct: DATA_CHUNK",
+  "function: fn_Read_DATA_CHUNK",
+  "function: fn_Chunk_SubChunk_Padding",
+  "struct: BAKE_CHUNK",
+  "struct: ITEM_LINK_SUBCHUNK",
+  "function: fn_Read_ITEM_LINK",
+  "struct: ITEM_CHNL_SUBCHUNK",
+  "function: fn_Read_ITEM_CHNL",
+  "struct: ITEM_CHNS_SUBCHUNK",
+  "function: fn_Read_ITEM_CHNS",
+  "struct: ITEM_CHNV_SUBCHUNK",
+  "function: fn_Read_ITEM_CHNV",
+  "struct: ITEM_LAYR_SUBCHUNK",
+  "struct: ITEM_UCHN_SUBCHUNK",
+  "function: fn_Read_ITEM_UCHN",
+  "struct: ITEM_UNIQ_SUBCHUNK",
+  "function: fn_Read_ITEM_UNIQ",
+  "struct: ITEM_ITAG_SUBCHUNK",
+  "function: fn_Read_ITEM_ITAG",
+  "struct: ITEM_UIDX_SUBCHUNK",
+  "function: fn_Read_ITEM_UIDX",
+  "struct: ITEM_GRAD_SUBCHUNK",
+  "function: fn_Read_ITEM_GRAD",
+  "struct: ITEM_PAKG_SUBCHUNK",
+  "function: fn_Read_ITEM_PAKG",
+  "struct: ITEM_CHAN_SUBCHUNK",
+  "function: fn_Read_ITEM_CHAN",
+  "function: fn_Read_Datatype",
+  "struct: ITEM_XREF_SUBCHUNK",
+  "function: fn_Read_ITEM_XREF",
+  "struct: ITEM_CLNK_SUBCHUNK",
+  "function: fn_Read_ITEM_CLNK",
+  "struct: ITEM_PRVW_SUBCHUNK",
+  "function: fn_Read_ITEM_PRVW",
+  "struct: ITEM_BBOX_SUBCHUNK",
+  "function: fn_Read_ITEM_BBOX",
+  "struct: ITEM_CHNC_SUBCHUNK",
+  "struct: ITEM_VNAM_SUBCHUNK",
+  "function: fn_Read_ITEM_VNAM",
+  "struct: ITEM_BCHN_SUBCHUNK",
+  "struct: ENVL_PRE",
+  "function: fn_Read_ENVL_PRE",
+  "struct: ENVL_POST_SUBCHUNK",
+  "function: fn_Read_ENVL_POST",
+  "struct: ENVL_KEY",
+  "function: fn_Read_ENVL_KEY",
+  "struct: ENVL_IKEY_SUBCHUNK",
+  "function: fn_Read_ENVL_IKEY",
+  "struct: ENVL_TANI_SUBCHUNK",
+  "struct: ENVL_TANO_SUBCHUNK",
+  "function: fnRead_SlopeType",
+  "function: fnRead_WeightType",
+  "struct: ENVL_FLAG_SUBCHUNK",
+  "function: fn_Read_ENVL_FLAG",
+  "struct: ACTN_ITEM_SUBCHUNK",
+  "struct: ACTN_GRAD_SUBCHUNK",
+  "function: fn_Read_ACTN_GRAD",
+  "struct: ACTN_PRNT_SUBCHUNK",
+  "struct: ACTN_CHAN_SUBCHUNK",
+  "function: fn_Read_ACTN_CHAN",
+  "struct: ACTN_CHNS_SUBCHUNK",
+  "function: fn_Read_ACTN_CHNS",
+  "struct: ACTN_CHNN_SUBCHUNK",
+  "function: fn_Read_ACTN_CHNN",
+  "struct: AANI_AAIT_SUBCHUNK",
+  "struct: AANI_AASE_SUBCHUNK",
+  "struct: REFS_IDEL_SUBCHUNK",
+  "struct: REFS_LOPT_SUBCHUNK",
+  "struct: UNKNOWNCHUNK",
+  "struct: UNKNOWNSUBCHUNK",
+  "struct: RGBA",
+  "struct: POINT_t",
+  "function: fn_Read_Point",
+  "struct: VERTDATA",
+  "function: fn_ReadItemSubchunks",
+  "function: fn_Read_ENVL_Subchunks",
+  "function: fn_Read_ACTN_Subchunks",
+  "function: fn_Read_AANI_Subchunks",
+  "function: fn_Read_REFS_Subchunks",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure MongoDBWireProtocol.bt 1`] = `
+Array [
+  "function: ReadData",
+  "function: ReadBson",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure NDS.bt 1`] = `
+Array [
+  "enum: undefined",
+  "struct: NDS_header",
+  "struct: FAT_NITRO",
+  "struct: FNT_MAIN",
+  "struct: FNT_ENTRY",
+  "struct: FNT_SUB",
+  "struct: FNT_NITRO",
+  "struct: OVR_NITRO",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure NTAG215.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure NetflowVersion5.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Nus3Audio.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure OGG.bt 1`] = `
+Array [
+  "struct: PAGE",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure OPCache.bt 1`] = `
+Array [
+  "struct: _meta",
+  "struct: _string",
+  "function: _string_read",
+  "struct: _zval",
+  "struct: _try_catch_element",
+  "struct: _live_range",
+  "union: _node_op",
+  "function: show_val_node_op",
+  "struct: _arg_info",
+  "struct: _op",
+  "function: show_pseudo_op",
+  "struct: _op_array",
+  "struct: Bucket",
+  "struct: HashTable",
+  "struct: _script",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure OpenType.bt 1`] = `
+Array [
+  "function: fixed16_16Read",
+  "function: fixed16_16Write",
+  "function: fixed2_14Read",
+  "function: fixed2_14Write",
+  "struct: OpenTypeFont",
+  "struct: OpenTypeFontCollection",
+  "struct: OpenTypeFontCollectionRecord",
+  "struct: TableRecord",
+  "function: ReadTableRecord",
+  "struct: TableRecordPass0",
+  "struct: HeadTable",
+  "struct: HheaTable",
+  "struct: HmtxTableLongHorzMetric",
+  "struct: HmtxTable",
+  "struct: HdmxTableRecord",
+  "struct: HdmxTable",
+  "struct: VheaTable",
+  "struct: VdmxTableRatio",
+  "struct: VdmxTableRecord",
+  "struct: VdmxTableGroup",
+  "struct: VdmxTable",
+  "struct: VmtxTableLongVertMetric",
+  "struct: VmtxTable",
+  "struct: VorgTable",
+  "struct: LocaTable",
+  "struct: GlyfTableEntry",
+  "struct: GlyfTable",
+  "struct: CvtTable",
+  "struct: FpgmTable",
+  "struct: FmtxTable",
+  "struct: FvarTable",
+  "struct: GvarTable",
+  "struct: PrepTable",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "function: IsUnicodePlatformEncoding",
+  "function: EncodingId",
+  "struct: NameTableNameRecord",
+  "struct: NameTableLangRecord",
+  "struct: NameTable",
+  "struct: CmapFormat4Subheader",
+  "struct: CmapVariationSelectorRecord",
+  "struct: CmapVariationSelectorValueRange",
+  "struct: CmapVariationSelectorTableDefault",
+  "struct: CmapVariationSelectorMapping",
+  "struct: CmapVariationSelectorTableNonDefault",
+  "struct: CmapSubtableGroup",
+  "struct: CmapTableSubtable",
+  "struct: CmapTableRecord",
+  "struct: CmapTable",
+  "struct: MaxpTable",
+  "struct: MetaTable",
+  "struct: MathTable",
+  "struct: PostTable",
+  "struct: SbixTable",
+  "struct: EblcSbitLineMetrics",
+  "struct: EblcBitmapSizeTable",
+  "struct: EblcBigGlyphMetrics",
+  "struct: EblcSmallGlyphMetrics",
+  "struct: EblcIndexSubtableArrayEntry",
+  "struct: EblcIndexSubtable4CodeOffsetPair",
+  "struct: EblcIndexSubtable",
+  "struct: EblcTable",
+  "struct: EbdtTable",
+  "struct: EbscTable",
+  "struct: CffTable",
+  "struct: KernTable",
+  "struct: KernSubtable",
+  "struct: OS_2Table",
+  "struct: PcltTable",
+  "struct: GsubTable",
+  "struct: GposTable",
+  "struct: GdefTable",
+  "struct: JstfTable",
+  "struct: ScriptRecord",
+  "struct: ScriptList",
+  "struct: FeatureRecord",
+  "struct: FeatureList",
+  "struct: FeatureLookupList",
+  "struct: LanguageRecord",
+  "struct: LanguageList",
+  "struct: LanguageFeatureList",
+  "struct: LookupList",
+  "struct: LookupListOffset",
+  "struct: JstfScriptTable",
+  "struct: JstfExtenderGlyph",
+  "struct: LookupTableList",
+  "struct: LookupTableListSubtableOffset",
+  "struct: CoverageTable",
+  "struct: ClassDefinition",
+  "struct: CoverageRangeRecord",
+  "struct: CoverageOffsetList",
+  "struct: SingleSubstitutionSubtable",
+  "struct: MultipleSubstitutionSubtable",
+  "struct: AlternateSubstitutionSubtable",
+  "struct: LigatureSubstitutionSubtable",
+  "struct: ContextLookupRecord",
+  "struct: ContextSubtable",
+  "struct: ChainingSubtable",
+  "struct: ExtensionLookupSubtable",
+  "struct: ReverseChainingSubtable",
+  "enum: undefined",
+  "struct: ValueRecord",
+  "struct: SinglePositioningSubtable",
+  "struct: PairPositioningSubtable",
+  "struct: CursivePositioningSubtable",
+  "struct: MarkToBasePositioningSubtable",
+  "struct: MarkToLigaturePositioningSubtable",
+  "struct: MarkToMarkPositioningSubtable",
+  "struct: AttachmentList",
+  "struct: AttachmentPoint",
+  "struct: LigatureCaretList",
+  "struct: LigatureGlyph",
+  "struct: CaretValue",
+  "struct: MarkGlyphSets",
+  "struct: BaseTable",
+  "struct: BaseAxisTable",
+  "struct: BaseTag",
+  "struct: BaseTagList",
+  "struct: BaseScript",
+  "struct: BaseValues",
+  "struct: FeatureMinMaxRecord",
+  "struct: BaseMinMax",
+  "struct: BaseCoordinate",
+  "struct: DsigTableBlock",
+  "struct: DsigTableRecord",
+  "struct: DsigTable",
+  "struct: LtshTable",
+  "struct: CpalTable",
+  "struct: ColrTable",
+  "struct: SvgTable",
+  "struct: GaspTable",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure OrCAD_LIB.bt 1`] = `
+Array [
+  "enum: YesNo",
+  "enum: Vtype",
+  "enum: ptype",
+  "enum: pquad",
+  "enum: pside",
+  "struct: sText",
+  "struct: fTxt",
+  "struct: Coord",
+  "struct: idxP",
+  "struct: Offsets",
+  "struct: PartDet",
+  "struct: PinDet",
+  "struct: DefPart",
+  "struct: BM",
+  "struct: VM",
+  "function: SORTlist",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure OrCAD_SCH.bt 1`] = `
+Array [
+  "enum: fType",
+  "enum: YesNo",
+  "enum: paper",
+  "enum: rotate",
+  "enum: primT",
+  "enum: IOtype",
+  "enum: Pstyle",
+  "enum: side",
+  "enum: PStype",
+  "enum: align",
+  "enum: Btype",
+  "struct: sText",
+  "struct: fTxt",
+  "struct: Coord",
+  "struct: PartField",
+  "struct: IDstring",
+  "struct: hdrDet",
+  "struct: pP00",
+  "struct: pP01",
+  "struct: pP02",
+  "struct: pP03",
+  "struct: pP05",
+  "struct: pP06",
+  "struct: pP07",
+  "struct: pP08",
+  "struct: pP0A",
+  "struct: Element",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure OscarItem.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure PAL.bt 1`] = `
+Array [
+  "struct: RGBQUAD",
+  "function: ReadRGBQUAD",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure PCAP.bt 1`] = `
+Array [
+  "struct: PCAPHEADER",
+  "struct: MACaddr",
+  "struct: Layer_2",
+  "struct: Dot1q",
+  "struct: IPv4addr",
+  "function: IPv4addrName",
+  "struct: Layer_3",
+  "struct: Layer_4",
+  "function: L4protoName",
+  "struct: PCAPRECORD",
+  "function: PCAPcomments",
+  "function: ReadPCAPRECORD",
+  "function: MACname",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure PCAPNG.bt 1`] = `
+Array [
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: NRES_RECORD",
+  "function: Read_NRES_RECORD",
+  "function: BlockLabel",
+  "function: StrOrUnknown",
+  "function: check_block_lengths",
+  "struct: TimeStamp",
+  "function: Read_TimeStamp",
+  "struct: Options",
+  "function: Read_Option",
+  "function: Read_SHB_Option",
+  "function: Read_IDB_Option",
+  "function: Read_EPB_Option",
+  "function: Read_PB_Option",
+  "function: Read_NRB_Option",
+  "function: Read_ISB_Option",
+  "struct: Block",
+  "function: Read_Block",
+  "struct: SHB",
+  "function: Read_SHB",
+  "function: Read_Section_Length",
+  "struct: IDB",
+  "function: Read_IDB",
+  "struct: EPB",
+  "function: Read_EPB",
+  "struct: NRB",
+  "function: Read_NRB",
+  "struct: ISB",
+  "function: Read_ISB",
+  "struct: SPB",
+  "function: Read_SPB",
+  "struct: PB",
+  "function: Read_PB",
+  "struct: CB",
+  "function: Read_CB",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure PCX.bt 1`] = `
+Array [
+  "enum: PCX_TYPE",
+  "struct: PCX",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure PDF.bt 1`] = `
+Array [
+  "enum: int",
+  "struct: PDFObj",
+  "function: ReadPDFObj",
+  "struct: PDFHeader",
+  "struct: PDFTrailer",
+  "struct: PDFUnknown",
+  "struct: PDFComment",
+  "struct: PDFWhitespace",
+  "struct: PDFXref",
+  "function: FindStartOfObj",
+  "function: FindEOL",
+  "function: FindAllKeywords",
+  "function: MergeKeywords",
+  "function: MergeAndFilterAllKeywords",
+  "function: CalculateSizeWithEOL",
+  "function: PrepareStructures",
+  "function: CreatePDFHeader",
+  "function: CreatePDFTrailer",
+  "function: CreatePDFUnknown",
+  "function: CreatePDFComment",
+  "function: IsWhitespace",
+  "function: CreatePDFWhitespace",
+  "function: StartsWith",
+  "function: CreatePDFXref",
+  "function: CreatePDFObject",
+  "function: ToggleBackColor",
+  "function: CreatePDFStructures",
+  "function: PrintPDFCounters",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure PHP.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure PNG.bt 1`] = `
+Array [
+  "function: error_message",
+  "struct: PNG_SIGNATURE",
+  "enum: pngColorSpaceType",
+  "enum: pngCompressionMethod",
+  "enum: pngFilterMethod",
+  "enum: pngInterlaceMethod",
+  "struct: PNG_PALETTE_PIXEL",
+  "struct: PNG_POINT",
+  "enum: undefined",
+  "struct: PNG_ICCP_CHUNK_DATA",
+  "enum: undefined",
+  "enum: undefined",
+  "union: CTYPE",
+  "function: readCTYPE",
+  "struct: PNG_CHUNK_IHDR",
+  "function: readIHDR",
+  "struct: PNG_CHUNK_TEXT",
+  "function: readtEXt",
+  "struct: PNG_CHUNK_PLTE",
+  "struct: PNG_CHUNK_CHRM",
+  "struct: PNG_CHUNK_SRGB",
+  "struct: PNG_CHUNK_IEXT",
+  "struct: PNG_CHUNK_ZEXT",
+  "struct: PNG_CHUNK_TIME",
+  "struct: PNG_CHUNK_BKGD",
+  "struct: PNG_CHUNK_PHYS",
+  "struct: PNG_CHUNK_SBIT",
+  "struct: PNG_CHUNK_SPLT",
+  "struct: PNG_CHUNK_ACTL",
+  "struct: PNG_CHUNK_FCTL",
+  "struct: PNG_CHUNK_FDAT",
+  "struct: PNG_CHUNK",
+  "function: readCHUNK",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure PSF.bt 1`] = `
+Array [
+  "struct: PSFHeader",
+  "function: get_package_name",
+  "function: get_file_name",
+  "function: get_patch_info",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure PYC.bt 1`] = `
+Array [
+  "enum: MagicValue",
+  "enum: ObjType",
+  "struct: Magic",
+  "enum: OpCode",
+  "struct: Instruction",
+  "struct: Code",
+  "function: Opcode2Opname",
+  "function: ReadInstruction",
+  "struct: LnoTab",
+  "struct: r_object",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Picolog_PLW.bt 1`] = `
+Array [
+  "enum: undefined",
+  "struct: t_hdr",
+  "struct: t_plw_frame",
+  "struct: t_plw_frames",
+  "function: ReadPLW_Frame",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure PowerShell.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Python.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Quake3Arena_BSP.bt 1`] = `
+Array [
+  "struct: lump",
+  "struct: Shader",
+  "struct: Plane",
+  "struct: Node",
+  "struct: Leaf",
+  "struct: Model",
+  "struct: Brush",
+  "struct: BrushSide",
+  "struct: Surface",
+  "struct: Vertex",
+  "function: ReadLumps",
+  "function: ReadShader",
+  "function: ReadPlanes",
+  "function: ReadNodes",
+  "function: ReadLeafs",
+  "function: ReadBrushes",
+  "function: ReadBrushSides",
+  "function: ReadSurfaces",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Quake3Arena_MD3.bt 1`] = `
+Array [
+  "struct: Frame",
+  "struct: Tag",
+  "struct: Surface",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure RAR.bt 1`] = `
+Array [
+  "enum: RarBlockType",
+  "enum: OsType",
+  "enum: PackMethod",
+  "enum: SubType_OldStyle",
+  "struct: UnixStyleAttrs",
+  "struct: DosFileAttrs",
+  "struct: WinFileAttrs",
+  "struct: CommonBlockFlags",
+  "struct: MainHeadFlags",
+  "enum: FileDictType",
+  "struct: FileHeadFlags",
+  "struct: RarBlock",
+  "struct: FileHeadBlock",
+  "struct: OldCommentBlock",
+  "struct: OldSubBlock",
+  "struct: SubBlock",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure RDB.bt 1`] = `
+Array [
+  "struct: RDBFILEHEADER",
+  "struct: RDBFILERECORD",
+  "function: ReadRDBFILERECORD",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure RES.bt 1`] = `
+Array [
+  "struct: DosExeHeader",
+  "struct: DataDirectory",
+  "struct: DataDir",
+  "struct: PeHeader",
+  "struct: OptionalHeader",
+  "struct: SectionTable",
+  "function: GetResourceDirectory",
+  "function: ShowType",
+  "function: ShowName",
+  "function: ShowSName",
+  "function: ShowLanguage",
+  "function: RESfromPEDiscover",
+  "function: GoTo_rsrc_section",
+  "function: Padding4Bytes",
+  "function: VersionInfo",
+  "function: RESfromRESDiscover",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure RIFF.bt 1`] = `
+Array [
+  "struct: CHUNK",
+  "function: ReadCHUNK",
+  "struct: LISTCHUNK",
+  "struct: RIFFHEADER",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure RM.bt 1`] = `
+Array [
+  "struct: RMF",
+  "struct: PROP",
+  "struct: CONT",
+  "struct: MDPR",
+  "struct: DataPacket",
+  "struct: DH",
+  "struct: IndexEntry",
+  "struct: IndexHeader",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ROMFS.bt 1`] = `
+Array [
+  "function: pad16",
+  "function: RomFSCheckMagicBytes",
+  "function: RomFSSBChecksum",
+  "function: RomFSChecksum",
+  "function: RomFSReadStringLength",
+  "struct: RomFSString",
+  "function: ReadRomFSString",
+  "function: WriteRomFSString",
+  "struct: RomFSHeader",
+  "enum: rom_fs_entry_type",
+  "struct: RomFSObjectHdr",
+  "function: ReadRomFSObjectHdr",
+  "function: ReadNextHeader",
+  "function: WriteNextHeader",
+  "function: ValidDirName",
+  "struct: RomFSObject",
+  "function: RomFSTryRecurse",
+  "function: ReadRomFSObject",
+  "function: Recurse",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure RegistryDhcpInterfaceOptions.bt 1`] = `
+Array [
+  "enum: e_tag",
+  "enum: e_netbios_node_type",
+  "struct: s_marker",
+  "struct: s_ipv4",
+  "function: show_ipv4",
+  "function: f_print_ipv4",
+  "struct: s_DhcpOption",
+  "struct: s_binarray",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure RegistryHive.bt 1`] = `
+Array [
+  "struct: REGISTRYHEADER",
+  "struct: NKCELL",
+  "function: ReadNKCell",
+  "struct: VKCELL",
+  "function: ReadVKCell",
+  "struct: ACE",
+  "struct: ACL",
+  "struct: DESCRIPTOR",
+  "struct: SKCELL",
+  "struct: LXOFFSET",
+  "struct: LXLIST",
+  "struct: LILIST",
+  "struct: HBINRECORD",
+  "function: SizeHbinRecord",
+  "function: GetCellSignature",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure RegistryPolicyFile.bt 1`] = `
+Array [
+  "struct: REGISTRY_RECORD",
+  "function: DataValueTypeComment",
+  "function: RegistryRecordComment",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SCP.bt 1`] = `
+Array [
+  "function: ReadVersion",
+  "enum: DiskType",
+  "function: ReadFlags",
+  "struct: RevInfo",
+  "struct: TrackHeader",
+  "struct: FluxData",
+  "function: ReadPStringUTF8",
+  "struct: Footer",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SF2.bt 1`] = `
+Array [
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: SFModulator",
+  "enum: undefined",
+  "struct: rangesType",
+  "union: genAmountType",
+  "struct: sfVersionTag",
+  "struct: sfPresetHeader",
+  "struct: sfPresetBag",
+  "struct: sfModList",
+  "struct: sfGenList",
+  "struct: sfInst",
+  "struct: sfInstBag",
+  "struct: sfInstModList",
+  "struct: sfInstGenList",
+  "struct: sfSample",
+  "struct: ZSTRCk",
+  "struct: sfVersionTagCk",
+  "struct: smplCk",
+  "struct: sm24Ck",
+  "struct: phdrCk",
+  "struct: pbagCk",
+  "struct: pmodCk",
+  "struct: pgenCk",
+  "struct: instCk",
+  "struct: ibagCk",
+  "struct: imodCk",
+  "struct: igenCk",
+  "struct: shdrCk",
+  "struct: UNKNOWNLISTSUBCHUNK",
+  "struct: INFOCk",
+  "struct: sdtaCk",
+  "struct: pdtaCk",
+  "struct: UNKNOWNLISTCHUNK",
+  "struct: UNKNOWNCHUNK",
+  "struct: RIFFHEADER",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SHP.bt 1`] = `
+Array [
+  "struct: POINT",
+  "function: getPOINT",
+  "enum: undefined",
+  "function: GetByteSize",
+  "enum: undefined",
+  "struct: RECORD",
+  "function: getRECORD",
+  "struct: HEADER",
+  "function: getHEADER",
+  "function: setColorEvenOdd",
+  "struct: ESRI_SHAPE",
+  "function: getESRI_SHAPE",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SHX.bt 1`] = `
+Array [
+  "struct: POINT",
+  "function: GetByteSize",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SQL.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SRec.bt 1`] = `
+Array [
+  "struct: SREC",
+  "function: ReadSREC",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SSP.bt 1`] = `
+Array [
+  "function: IP2Str",
+  "struct: SSP_HEADER",
+  "struct: SSP_PACKET",
+  "function: MAC2Str",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure STL.bt 1`] = `
+Array [
+  "struct: STLFILEHEADER",
+  "function: STLFILEHEADERRead",
+  "struct: tVector3f",
+  "function: tVector3fRead",
+  "struct: STLTRIANGLE",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SWF.bt 1`] = `
+Array [
+  "struct: REGISTERPARAM",
+  "struct: CONSTANTPOOL",
+  "struct: PARAMS",
+  "struct: TYPECONST",
+  "struct: ACTIONRECORD",
+  "function: GetActionType",
+  "struct: SI8",
+  "struct: SI16",
+  "struct: SI32",
+  "struct: UI8",
+  "struct: UI16",
+  "struct: UI32",
+  "struct: UI64",
+  "struct: FIXED",
+  "struct: FIXED8",
+  "struct: FLOAT16",
+  "struct: EncodedU32",
+  "struct: STRING",
+  "struct: LANGCODE",
+  "struct: RGB",
+  "struct: RGBA",
+  "struct: ARGB",
+  "struct: RECT",
+  "struct: MATRIX",
+  "struct: ASSETS",
+  "struct: OFFSETANDNAME",
+  "struct: CXFORM",
+  "struct: CXFORMWITHALPHA",
+  "struct: CLIPEVENTFLAGS",
+  "struct: CLIPACTIONRECORD",
+  "struct: CLIPACTIONS",
+  "struct: COLORMATRIXFILTER",
+  "struct: CONVOLUTIONFILTER",
+  "struct: BLURFILTER",
+  "struct: DROPSHADOWFILTER",
+  "struct: GLOWFILTER",
+  "struct: BEVELFILTER",
+  "struct: GRADRECORD",
+  "struct: GRADIENT",
+  "struct: FOCALGRADIENT",
+  "struct: GRADIENTGLOWFILTER",
+  "struct: GRADIENTBEVELFILTER",
+  "struct: FILTER",
+  "struct: FILTERLIST",
+  "struct: FILLSTYLE",
+  "struct: FILLSTYLEARRAY",
+  "struct: LINESTYLE",
+  "struct: LINESTYLE2",
+  "struct: LINESTYLEARRAY",
+  "struct: SHAPERECORD",
+  "function: GetShapeRecordType",
+  "struct: SHAPE",
+  "struct: SHAPEWITHSTYLE",
+  "struct: MORPHGRADRECORD",
+  "struct: MORPHGRADIENT",
+  "struct: MORPHFILLSTYLE",
+  "struct: MORPHLINESTYLE2",
+  "struct: MORPHLINESTYLE",
+  "struct: MORPHLINESTYLES",
+  "struct: MORPHFILLSTYLEARRAY",
+  "struct: PIX15",
+  "struct: PIX24",
+  "struct: COLORMAPDATA",
+  "struct: BITMAPDATA",
+  "struct: ALPHACOLORMAPDATA",
+  "struct: ALPHABITMAPDATA",
+  "struct: BUTTONRECORD",
+  "struct: BUTTONCONDACTION",
+  "struct: SOUNDENVELOPE",
+  "struct: SOUNDINFO",
+  "struct: KERNINGRECORD",
+  "struct: RECORDHEADER",
+  "struct: SWFTAG",
+  "function: GetTagType",
+  "struct: SWFHEADER",
+  "struct: SWF",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SeqBox.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ShpcAnim.bt 1`] = `
+Array [
+  "struct: TpcbFile",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SinclairMicrodrive.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SquashFS.bt 1`] = `
+Array [
+  "struct: SQUASHFS3_SUPER_BLOCK",
+  "struct: SQUASHFS4_SUPER_BLOCK",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure SytosPlus.bt 1`] = `
+Array [
+  "struct: _stFilePath",
+  "struct: _stFILEREC",
+  "struct: _stDIRREC",
+  "struct: _stRECHEAD2",
+  "struct: _stRECORD",
+  "struct: _stHeader",
+  "struct: sytos_backup",
+  "function: fFindHeader",
+  "function: fSeekRecord",
+  "function: fCountRecord",
+  "function: fCleanPath",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure TGA.bt 1`] = `
+Array [
+  "struct: COLORMAPSPECIFICATION",
+  "struct: IMAGESPECIFICATION",
+  "struct: TGAFILEHEADER",
+  "struct: RGB555",
+  "struct: XRGB1555",
+  "struct: RGB888",
+  "struct: ARGB8888",
+  "function: ReadTGAHeader",
+  "function: ReadImageSpecification",
+  "function: ReadRGB555",
+  "function: ReadXRGB1555",
+  "function: ReadRGB888",
+  "function: ReadARGB8888",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure TIF.bt 1`] = `
+Array [
+  "enum: eTAG",
+  "enum: eTAGTYPE",
+  "enum: eCOMP",
+  "enum: ePHOTO",
+  "enum: eRES",
+  "enum: eKEYGeoTiff",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: GEOKEY",
+  "function: readGEOKEY",
+  "struct: GEOKEYDIR",
+  "struct: RATIONAL",
+  "function: readRATIONAL",
+  "function: writeRATIONAL",
+  "struct: SRATIONAL",
+  "function: readSRATIONAL",
+  "function: writeSRATIONAL",
+  "struct: ENT",
+  "function: readENT",
+  "struct: IFD",
+  "function: readIFD",
+  "struct: IFH",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure TNEF.bt 1`] = `
+Array [
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: MAPIAttrData",
+  "struct: MAPIAttr",
+  "function: _MAPIAttrName",
+  "struct: MAPIProperty",
+  "struct: TNEFAttribute",
+  "function: _TNEF_ATTName",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure TOC.bt 1`] = `
+Array [
+  "enum: type",
+  "enum: class",
+  "enum: stat",
+  "struct: TOChdr",
+  "struct: TOCmsg",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure TTF.bt 1`] = `
+Array [
+  "struct: tOffsetTable",
+  "struct: tTable",
+  "function: tTableRead",
+  "struct: tcmap_format0",
+  "struct: tcmap_format4",
+  "struct: tcmap_format6",
+  "struct: tcmap_format8",
+  "struct: tcmap_format12",
+  "struct: tcmap",
+  "struct: thdmx",
+  "function: thdmxRead",
+  "struct: thead",
+  "struct: thhea",
+  "function: thheaRead",
+  "struct: tlongHorMetric",
+  "struct: thmtx",
+  "function: thmtxRead",
+  "struct: tmaxp",
+  "function: tmaxpRead",
+  "struct: tname",
+  "function: NameRecordRead",
+  "function: tnameRead",
+  "struct: tOS_2",
+  "function: tOS_2Read",
+  "struct: tpost",
+  "function: tpostNameRead",
+  "function: tpostRead",
+  "struct: tcvt",
+  "struct: tfpgm",
+  "struct: tloca",
+  "function: tlocaRead",
+  "struct: tSimpleGlyphPoints",
+  "function: tPointsRead",
+  "struct: tSimpleGlyphFlags",
+  "function: tSimpleGlyphFlagsRead",
+  "struct: tSimpleGlyph",
+  "struct: tglyf",
+  "function: tSimpleGlyphRead",
+  "struct: tGDEF",
+  "struct: tprep",
+  "struct: tDSIG",
+  "function: tDSIGRead",
+  "struct: tLangSysTable",
+  "struct: tLangSysRecord",
+  "function: tLangSysRecordRead",
+  "struct: tScriptRecord",
+  "function: tScriptRecordRead",
+  "struct: tScriptList",
+  "function: tScriptListRead",
+  "struct: tFeatureRecord",
+  "function: tFeatureRecordRead",
+  "struct: tFeatureList",
+  "function: tFeatureListRead",
+  "struct: tLookupRecord",
+  "struct: tLookupList",
+  "struct: tGSUBorGPOS",
+  "function: tGSUBorGPOSRead",
+  "function: findTable",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Tacx.bt 1`] = `
+Array [
+  "struct: HEADER",
+  "struct: INFOBLOCK",
+  "struct: GENERALINFO",
+  "struct: PROGRAM",
+  "struct: COURSEINFO",
+  "struct: RLVINFO",
+  "struct: RIDEINFO_100",
+  "struct: RIDEINFO_110",
+  "struct: RIDERINFO",
+  "struct: RIDEDATA",
+  "struct: RLV_MULTICOURSE",
+  "struct: RLV_MULTISECT",
+  "struct: RLV_FRAMEDISTANCE",
+  "struct: RLV_INFOBOX",
+  "struct: GENERAL_INFO_VR",
+  "struct: COURSE_DATA_VR",
+  "struct: RIDEINFO_VR",
+  "struct: RIDEDATA_VR",
+  "struct: LAPDATA",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ThumbCache.bt 1`] = `
+Array [
+  "enum: undefined",
+  "function: read_WINDOWS_VERSION",
+  "enum: undefined",
+  "function: read_WINDOWS_VISTA_THUMBCACHE_TYPE",
+  "enum: undefined",
+  "function: read_WINDOWS_8_THUMBCACHE_TYPE",
+  "enum: undefined",
+  "function: read_WINDOWS_8_1_THUMBCACHE_TYPE",
+  "enum: undefined",
+  "function: read_WINDOWS_10_THUMBCACHE_TYPE",
+  "struct: WINDOWS_VISTA_CMMM_RECORD",
+  "function: Read_WINDOWS_VISTA_CMMM_RECORD",
+  "struct: WINDOWS_7_CMMM_RECORD",
+  "function: Read_WINDOWS_7_CMMM_RECORD",
+  "struct: WINDOWS_10_CMMM_RECORD",
+  "function: Read_WINDOWS_10_CMMM_RECORD",
+  "function: ProcessCMMMFile",
+  "function: IsValidOffset",
+  "function: AddOffset",
+  "struct: WINDOWS_VISTA_IMMM_RECORD",
+  "function: Read_WINDOWS_VISTA_IMMM_RECORD",
+  "struct: WINDOWS_7_IMMM_RECORD",
+  "function: Read_WINDOWS_7_IMMM_RECORD",
+  "struct: WINDOWS_8_1_IMMM_RECORD",
+  "function: Read_WINDOWS_8_1_IMMM_RECORD",
+  "struct: WINDOWS_10_IMMM_RECORD",
+  "function: Read_WINDOWS_10_IMMM_RECORD",
+  "function: ProcessIMMMFile",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure Torrent.bt 1`] = `
+Array [
+  "function: find_next",
+  "struct: sha1",
+  "struct: sha1s",
+  "function: read_sha1",
+  "struct: bencode",
+  "function: read_bencode",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ULP.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure UTMP.bt 1`] = `
+Array [
+  "enum: undefined",
+  "struct: exit_status",
+  "struct: utmp",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure VB.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure VHD.bt 1`] = `
+Array [
+  "enum: OS",
+  "enum: DISK",
+  "struct: FOOTER",
+  "function: statecheck",
+  "function: feaRead",
+  "function: CorrectTime",
+  "function: OffsetCheck",
+  "struct: DYNAMICDISKHDEAR",
+  "function: sizecmt",
+  "function: entryCmt",
+  "struct: TDBATMAP",
+  "struct: DATABLOCK",
+  "function: readData",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure WASM.bt 1`] = `
+Array [
+  "struct: uleb128",
+  "function: uleb128_value",
+  "function: uleb128p1_value",
+  "function: ULeb128Read",
+  "struct: sleb128",
+  "function: sleb128_value",
+  "function: SLeb128Read",
+  "enum: undefined",
+  "struct: _ModuleHeader",
+  "function: _HeaderInfo",
+  "struct: _FunctionImportEntryData",
+  "struct: _ResizableLimits",
+  "struct: _TableType",
+  "struct: _MemoryType",
+  "struct: _GlobalType",
+  "struct: _ImportEntry",
+  "function: _ShowImportName",
+  "struct: _ImportSection",
+  "struct: _FuncType",
+  "struct: _TypeSection",
+  "struct: _FunctionSection",
+  "struct: _TableSection",
+  "struct: _MemorySection",
+  "struct: _InitExpr",
+  "struct: _GlobalEntry",
+  "struct: _GlobalSection",
+  "struct: _ExportEntry",
+  "function: _ShowExportName",
+  "struct: _ExportSection",
+  "struct: _StartSection",
+  "struct: _ElementSegment",
+  "struct: _ElementSection",
+  "struct: _LocalEntry",
+  "struct: _FunctionBody",
+  "struct: _CodeSection",
+  "struct: _DataSegment",
+  "struct: _DataSection",
+  "struct: _Naming",
+  "struct: _NameMap",
+  "struct: _LocalNames",
+  "struct: _LocalNameMap",
+  "struct: _Section",
+  "function: _GetSectionType",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure WAV.bt 1`] = `
+Array [
+  "struct: WAVRIFFHEADER",
+  "struct: FORMATCHUNK",
+  "struct: DATACHUNK",
+  "struct: FACTCHUNK",
+  "struct: CUEPOINT",
+  "struct: CUECHUNK",
+  "struct: LISTSUBCHUNK",
+  "struct: LISTCHUNK",
+  "struct: UNKNOWNCHUNK",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure WAVAdv.bt 1`] = `
+Array [
+  "struct: WAVRIFFHEADER",
+  "struct: FORMATCHUNK",
+  "struct: DATACHUNK",
+  "struct: FACTCHUNK",
+  "struct: CUEPOINT",
+  "struct: CUECHUNK",
+  "struct: LISTSUBCHUNK",
+  "struct: LISTCHUNK",
+  "struct: UNKNOWNCHUNK",
+  "function: WAV_SMPLLOOPS_Cue_ID",
+  "function: WAV_SMPLLOOPS_Play_Count",
+  "function: WAV_SMPLLOOPS_Start",
+  "function: WAV_SMPLLOOPS_End",
+  "function: WAV_SMPLLOOPS_Fraction",
+  "function: WAV_SMPL_SL",
+  "function: WAV_SMPL_SD",
+  "function: WAV_SMPL_SMPTE_Offset",
+  "function: WAV_SMPL_MIDI_Pitch_Fraction",
+  "function: WAV_SMPL_MIDI_Unity_Note",
+  "function: WAV_SMPL_Product",
+  "function: WAV_SMPL_Sample_Period",
+  "function: WAV_SMPL_SMPTE",
+  "function: WAV_SMPL_Manufacturer",
+  "function: WAV_SMPL_Loop_Type",
+  "struct: SMPLLOOPS",
+  "struct: SMPLCHUNK",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure WMF.bt 1`] = `
+Array [
+  "struct: WMFSPECIAL",
+  "struct: WMFHEAD",
+  "struct: WMFRECORD",
+  "function: ReadFunction",
+  "function: CalcCheckSum",
+  "function: CheckFileSize",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure WinhexPos.bt 1`] = `Array []`;
+
+exports[`Sweetscape Importer reads top-level elements in structure XML.bt 1`] = `
+Array [
+  "function: HighlightLineRealtime",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ZIP.bt 1`] = `
+Array [
+  "enum: undefined",
+  "struct: ZIPFILERECORD",
+  "struct: ZIPDIRENTRY",
+  "struct: ZIPDIGITALSIG",
+  "struct: ZIPDATADESCR",
+  "struct: ZIPENDLOCATOR",
+  "function: ReadZIPFILERECORD",
+  "function: ReadZIPDIRENTRY",
+  "function: WriteZIPFILERECORD",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure ZIPAdv.bt 1`] = `
+Array [
+  "enum: undefined",
+  "enum: undefined",
+  "function: read_VERSIONTYPE",
+  "struct: VERECORD",
+  "function: read_VERECORD",
+  "enum: undefined",
+  "enum: undefined",
+  "function: read_FLAGTYPE",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "enum: undefined",
+  "struct: EXTRAFIELD",
+  "function: read_EXTRAFIELD",
+  "struct: EXTRA64FIELD",
+  "enum: undefined",
+  "function: read_FILEATTRIBUTE",
+  "struct: ZIPDATADESCR",
+  "struct: ZIPFILERECORD",
+  "struct: ZIPDIRENTRY",
+  "struct: ZIPDIGITALSIG",
+  "struct: ZIP64ENDLOCATORRECORD",
+  "struct: ZIP64ENDLOCATOR",
+  "struct: ZIPENDLOCATOR",
+  "function: ReadZIPFILERECORD",
+  "function: ReadZIPDIRENTRY",
+  "function: WriteZIPFILERECORD",
+]
+`;
+
+exports[`Sweetscape Importer reads top-level elements in structure iNes.bt 1`] = `Array []`;

@@ -2,16 +2,12 @@ import * as fs from "fs";
 
 // @ts-ignore
 import * as gunzip from "gunzip-maybe";
-import { join } from "lodash";
+import { each, find, join } from "lodash";
 import * as tar from "tar-stream";
 
 const structureFolder = `${__dirname}/../../__fixtures__/`;
 
-export function getSingleStructure(name: string) {
-  return fs.readFileSync(`${structureFolder}/${name}.bt`, "UTF-8");
-}
-
-export async function getArchiveEntries(filename: string) {
+async function getArchiveEntries(filename: string) {
   const readStream = fs.createReadStream(`${structureFolder}/${filename}`);
   return new Promise<any[]>((resolve) => {
     const extract = tar.extract();
@@ -36,7 +32,7 @@ export async function getArchiveEntries(filename: string) {
   });
 }
 
-export const SCRIPT_NAMES = [
+const SCRIPT_NAMES = [
   "AlpineAPN.1sc",
   "ArrayOfStrings.1sc",
   "BatchChecksum.1sc",
@@ -111,7 +107,7 @@ export const SCRIPT_NAMES = [
   "XORStringBruteForce.1sc",
 ];
 
-export const STRUCTURE_NAMES = [
+const STRUCTURE_NAMES = [
   "010.bt",
   "010Theme.bt",
   "7ZIP.bt",
@@ -262,3 +258,45 @@ export const STRUCTURE_NAMES = [
   "ZIPAdv.bt",
   "ZIP.bt",
 ];
+
+export class AssetLoader {
+  private scripts: any[] = [];
+  private structures: any[] = [];
+
+  public constructor() {}
+
+  public load() {
+    const loader = this;
+    return async function(done: () => void) {
+      loader.scripts = await getArchiveEntries("010-scripts.tar.gz");
+      loader.structures = await getArchiveEntries("010-structures.tar.gz");
+      done();
+    };
+  }
+
+  public getSingleStructure(name: string) {
+    return fs.readFileSync(`${structureFolder}/${name}.bt`, "UTF-8");
+  }
+
+  public iterateElements(
+    iteratee: (
+      categoryType: string,
+      elementName: string,
+      getter: () => { name: string; content: string },
+    ) => void,
+  ) {
+    const loader = this;
+    each(
+      [
+        { type: "script", names: SCRIPT_NAMES, load: () => loader.scripts },
+        { type: "structure", names: STRUCTURE_NAMES, load: () => loader.structures },
+      ],
+      (category) => {
+        each(category.names, (elementName) => {
+          iteratee(category.type, elementName, () => find(category.load(), (e) => e.name === elementName));
+        });
+      },
+    );
+    return undefined;
+  }
+}
