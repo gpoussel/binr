@@ -151,4 +151,13 @@ D
 
 `);
   });
+
+  test("supports commented-out #define", () => {
+    const input = `#define A a
+//#define B b
+A B`;
+    expect(preprocessor.preprocess(input)).toEqual(`
+//#define B b
+a B`);
+  });
 });
