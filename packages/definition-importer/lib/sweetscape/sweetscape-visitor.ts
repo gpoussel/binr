@@ -74,7 +74,6 @@ const OPERATORS = {
   Different: Operator.DIFFERENT,
   Division: Operator.DIVISION,
   DivisionEquals: Operator.DIVISION_EQUALS,
-  DoubleArrow: Operator.DOUBLE_ARROW,
   DoubleEquals: Operator.DOUBLE_EQUALS,
   DoubleMinus: Operator.DOUBLE_MINUS,
   DoublePlus: Operator.DOUBLE_PLUS,
