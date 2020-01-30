@@ -1,0 +1,54 @@
+#name "SHX Format (Shape)"
+#extension ".shx"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/SHX.bt
+
+@endianness("big")
+struct FileHeader {
+    int:32 code; // corresponds to s4be value of 9994
+    @ignore(true) int:32 unused[5];
+    uint:32 length;
+}
+
+enum ShapeType extends int:32 {
+    NULL = 0,
+    POINT = 1,
+    POLYLINE = 3,
+    POLYGON = 5,
+    MULTI_POINT = 8,
+    POINT_Z = 11,
+    POLYLINE_Z = 13,
+    POLYGON_Z = 15,
+    MULTI_POINT_Z = 18,
+    POINT_M = 21,
+    POLYLINE_M = 23,
+    POLYGON_M = 25,
+    MULTI_POINT_M = 28,
+    MULTI_PATCH = 31
+}
+
+@endianness("little")
+struct Header {
+    int:32 version; // corresponds to s4le value of 1000
+    ShapeType shapeType;
+    double xMin;
+    double yMin;
+    double xMax;
+    double yMax;
+    double zMin;
+    double zMax;
+    double mMin;
+    double mMax;
+}
+
+@endianness("big")
+struct RecordIndex {
+    int:32 offset;
+    int:32 length;
+}
+
+struct ShxFile {
+    FileHeader fileHeader;
+    Header header;
+    RecordIndex recordIndexes[((fileHeader.length - 50) * 2) / 8];
+}

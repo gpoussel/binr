@@ -1,0 +1,45 @@
+#name "GIF Format"
+#comment "This structure is an example of the \"GIF\" format"
+#extension ".gif"
+#endianness "little"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/GIF.bt
+
+struct Header {
+    // Just using min and max functions, to test them
+    char magic[max(3, min(2, 5))];
+    char version[3];
+}
+
+struct LogicalScreen {
+    uint:16 imageWidth;
+    uint:16 imageHeight;
+    uint:1 globalColorTable;
+    uint:3 colorResolution;
+    uint:1 sort;
+    uint:3 globalColorTableSize;
+    uint:8 backgroundColorIndex;
+    uint:8 pixelAspectRatio;
+}
+
+struct RgbEntry {
+    uint:8 red;
+    uint:8 green;
+    uint:8 blue;
+}
+
+struct Data {
+
+}
+
+export struct GifFile {
+    Header header;
+    LogicalScreen logicalScreen;
+    
+    // Global Color table is only present if logicalScreen.globalColorTable == 1
+    if (logicalScreen.globalColorTable == 1) {
+        RgbEntry globalColorTable[1 << (logicalScreen.globalColorTableSize + 1)];
+    }
+    
+    Data data;
+}

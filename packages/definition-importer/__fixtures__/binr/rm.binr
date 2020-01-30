@@ -1,0 +1,117 @@
+#name "RM Format"
+#extension ".rm"
+#endianness "big"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/RM.bt
+
+struct Header {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:32 fileVersion;
+    uint:32 numberOfHeaders;
+}
+
+struct Properties {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:32 maxBitRate;
+    uint:32 averageBitRate;
+    uint:32 maxDataPacketSize;
+    uint:32 averageDataPacketSize;
+    uint:32 numOfPackets;
+    uint:32 durationInMS;
+    uint:32 playbackSuggestedInMS;
+    uint:32 firstINDXOffset;
+    uint:32 firstDATAOffset;
+    uint:16 numberOfStreams;
+    uint:16 flags;
+}
+
+struct MediaDescription {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:16 numberOfStreams;
+    uint:32 maxBitRate;
+    uint:32 averageBitRate;
+    uint:32 maxDataPacketSize;
+    uint:32 averageDataPacketSize;
+    uint:32 startOffset;
+    uint:32 preroll;
+    uint:32 duration;
+    uint:8 descriptionSize;
+    char description[descriptionSize];
+    uint:8 streamMimeTypeSize;
+    char streamMimeType[streamMimeTypeSize];
+    uint:32 specificTypeDataSize;
+    uint:8 specificTypeData[specificTypeDataSize];
+}
+
+struct DataHeader {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:32 numOfDataPackets;
+    uint:32 nextDataOffset;
+    DataPacket dataPackets[numOfDataPackets];
+}
+
+struct ContentDescription {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:16 titleLength;
+    char title[titleLength];
+    uint:16 authorLength;
+    char author[authorLength];
+    uint:16 copyrightLength;
+    char copyright[copyrightLength];
+    uint:16 commentLength;
+    char comment[commentLength];
+}
+
+struct IndexEntry {
+    uint:16 version;
+    uint:32 timestampInMs;
+    uint:32 offset;
+    uint:32 number;
+}
+
+struct IndexHeader {
+    char type[4];
+    uint:32 size;
+    uint:16 version;
+    uint:32 numberOfEntries;
+    uint:16 numberOfStreams;
+    uint:32 nextIndexOffset;
+    IndexEntry entries[numberOfEntries];
+}
+
+struct DataPacket {
+    uint:16 version;
+    uint:16 size;
+    uint:16 streamNumber;
+    uint:32 timestamp;
+    switch (version) {
+        0 => {
+            uint:8 packetGroup;
+            uint:8 flags;
+        },
+        1 => {
+            uint:16 asmRule;
+            uint:8 asmFlag;
+        }
+    }
+    uint:8 specificData[size - 12];
+}
+
+struct RmFile {
+    Header header;
+    Properties properties;
+    MediaDescription mediaDescription[properties.numberOfStreams];
+    ContentDescription contentDescription;
+    DataHeader dataHeader;
+    IndexHeader indexHeaders[properties.numberOfStreams];
+}

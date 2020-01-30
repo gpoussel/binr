@@ -1,6 +1,268 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BinrDefinitionImporter, advanced parses example format definition 1`] = `
+exports[`BinrDefinitionImporter, advanced parses example format definition (avi.binr) 1`] = `
+Definition {
+  "_content": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          IfElseStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_falseStatement": BlockStatement {
+              "_content": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [],
+            },
+          },
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "Root",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "MainAviHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "AviHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "AviStreamHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "StrhHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          IfElseStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_falseStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+              ],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+              ],
+            },
+          },
+        ],
+      },
+      "_name": "StrnHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "StrfHeaderBih",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          SwitchStatement {
+            "_caseSwitchElements": Array [
+              CaseSwitchElement {
+                "_labels": Array [
+                  ValueSwitchLabel {
+                    "_value": StringValue {
+                      "_value": "hdrl",
+                    },
+                  },
+                ],
+                "_statements": Array [
+                  BlockStatement {
+                    "_content": Array [
+                      undefined,
+                    ],
+                  },
+                ],
+              },
+              CaseSwitchElement {
+                "_labels": Array [
+                  ValueSwitchLabel {
+                    "_value": StringValue {
+                      "_value": "strl",
+                    },
+                  },
+                ],
+                "_statements": Array [
+                  BlockStatement {
+                    "_content": Array [
+                      undefined,
+                      IfElseStatement {
+                        "_condition": CommaExpression {
+                          "_expressions": Array [],
+                        },
+                        "_falseStatement": IfElseStatement {
+                          "_condition": CommaExpression {
+                            "_expressions": Array [],
+                          },
+                          "_falseStatement": BlockStatement {
+                            "_content": Array [],
+                          },
+                          "_trueStatement": BlockStatement {
+                            "_content": Array [],
+                          },
+                        },
+                        "_trueStatement": BlockStatement {
+                          "_content": Array [
+                            undefined,
+                          ],
+                        },
+                      },
+                      undefined,
+                    ],
+                  },
+                ],
+              },
+              CaseSwitchElement {
+                "_labels": Array [
+                  ValueSwitchLabel {
+                    "_value": StringValue {
+                      "_value": "movi",
+                    },
+                  },
+                ],
+                "_statements": Array [
+                  BlockStatement {
+                    "_content": Array [],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "_name": "ListHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+              ],
+            },
+          },
+        ],
+      },
+      "_name": "Block",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "AviFile",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (bmp.binr) 1`] = `
 Definition {
   "_content": Array [
     StructDeclarationStatement {
@@ -51,7 +313,588 @@ Definition {
 }
 `;
 
-exports[`BinrDefinitionImporter, advanced parses example format definition 2`] = `
+exports[`BinrDefinitionImporter, advanced parses example format definition (eot.binr) 1`] = `
+Definition {
+  "_content": Array [
+    undefined,
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "EotFile",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (gif.binr) 1`] = `
+Definition {
+  "_content": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "Header",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "LogicalScreen",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "RgbEntry",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [],
+      },
+      "_name": "Data",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+              ],
+            },
+          },
+          undefined,
+        ],
+      },
+      "_name": "GifFile",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (ico.binr) 1`] = `
+Definition {
+  "_content": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "IconDirEntry",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "IconDir",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "RgbQuad",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "BitmapInfoHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                IfElseStatement {
+                  "_condition": CommaExpression {
+                    "_expressions": Array [],
+                  },
+                  "_falseStatement": BlockStatement {
+                    "_content": Array [
+                      undefined,
+                    ],
+                  },
+                  "_trueStatement": BlockStatement {
+                    "_content": Array [
+                      undefined,
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          IfElseStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_falseStatement": IfElseStatement {
+              "_condition": CommaExpression {
+                "_expressions": Array [],
+              },
+              "_falseStatement": IfElseStatement {
+                "_condition": CommaExpression {
+                  "_expressions": Array [],
+                },
+                "_falseStatement": IfStatement {
+                  "_condition": CommaExpression {
+                    "_expressions": Array [],
+                  },
+                  "_trueStatement": BlockStatement {
+                    "_content": Array [],
+                  },
+                },
+                "_trueStatement": BlockStatement {
+                  "_content": Array [],
+                },
+              },
+              "_trueStatement": BlockStatement {
+                "_content": Array [],
+              },
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [],
+            },
+          },
+        ],
+      },
+      "_name": "ImageData",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "IconImage",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "IcoFile",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (java_class.binr) 1`] = `
+Definition {
+  "_content": Array [
+    EnumDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "uint",
+        },
+        "_size": 8,
+      },
+      "_declarations": Array [
+        EnumDeclarationElement {
+          "_expression": 1,
+          "_name": "TAG_UTF8",
+        },
+        EnumDeclarationElement {
+          "_expression": 3,
+          "_name": "TAG_INTEGER",
+        },
+        EnumDeclarationElement {
+          "_expression": 4,
+          "_name": "TAG_FLOAT",
+        },
+        EnumDeclarationElement {
+          "_expression": 5,
+          "_name": "TAG_LONG",
+        },
+        EnumDeclarationElement {
+          "_expression": 6,
+          "_name": "TAG_DOUBLE",
+        },
+        EnumDeclarationElement {
+          "_expression": 7,
+          "_name": "TAG_CLASS",
+        },
+        EnumDeclarationElement {
+          "_expression": 8,
+          "_name": "TAG_STRING",
+        },
+        EnumDeclarationElement {
+          "_expression": 9,
+          "_name": "TAG_FIELDREF",
+        },
+        EnumDeclarationElement {
+          "_expression": 10,
+          "_name": "TAG_METHODREF",
+        },
+        EnumDeclarationElement {
+          "_expression": 11,
+          "_name": "TAG_INTERFACEMETHODREF",
+        },
+        EnumDeclarationElement {
+          "_expression": 12,
+          "_name": "TAG_NAMEANDTYPE",
+        },
+        EnumDeclarationElement {
+          "_expression": 15,
+          "_name": "TAG_METHODHANDLE_INFO",
+        },
+        EnumDeclarationElement {
+          "_expression": 16,
+          "_name": "TAG_METHODTYPE",
+        },
+        EnumDeclarationElement {
+          "_expression": 18,
+          "_name": "TAG_INVOKEDYNAMIC",
+        },
+      ],
+      "_name": "ConstantPoolTag",
+    },
+    undefined,
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+                undefined,
+              ],
+            },
+          },
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": undefined,
+          },
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+                undefined,
+              ],
+            },
+          },
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": undefined,
+          },
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": undefined,
+          },
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+                undefined,
+              ],
+            },
+          },
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+                undefined,
+              ],
+            },
+          },
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+                undefined,
+              ],
+            },
+          },
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": undefined,
+          },
+          IfStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+                undefined,
+              ],
+            },
+          },
+        ],
+      },
+      "_name": "ConstantPoolInfo",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "FieldInfo",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "MethodInfo",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "AttributeInfo",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "JVMClass",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (manifest.binr) 1`] = `
+Definition {
+  "_content": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "Header",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "StringChunk",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "ManifestFile",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (mft.binr) 1`] = `
 Definition {
   "_content": Array [
     EnumDeclarationStatement {
@@ -92,6 +935,982 @@ Definition {
         ],
       },
       "_name": "FileEntry",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (rar.binr) 1`] = `
+Definition {
+  "_content": Array [
+    EnumDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "uint",
+        },
+        "_size": 8,
+      },
+      "_declarations": Array [
+        EnumDeclarationElement {
+          "_expression": 114,
+          "_name": "MARKER",
+        },
+        EnumDeclarationElement {
+          "_expression": 115,
+          "_name": "ARCHIVE",
+        },
+        EnumDeclarationElement {
+          "_expression": 116,
+          "_name": "FILE_OR_DIR",
+        },
+        EnumDeclarationElement {
+          "_expression": 117,
+          "_name": "COMMENT_OLD",
+        },
+        EnumDeclarationElement {
+          "_expression": 118,
+          "_name": "AV_OLD_1",
+        },
+        EnumDeclarationElement {
+          "_expression": 119,
+          "_name": "SUBBLOCK_OLD",
+        },
+        EnumDeclarationElement {
+          "_expression": 120,
+          "_name": "RR_OLD",
+        },
+        EnumDeclarationElement {
+          "_expression": 121,
+          "_name": "AV_OLD_2",
+        },
+        EnumDeclarationElement {
+          "_expression": 122,
+          "_name": "SUBBLOCK",
+        },
+        EnumDeclarationElement {
+          "_expression": 123,
+          "_name": "_END_",
+        },
+      ],
+      "_name": "RarBlockType",
+    },
+    undefined,
+    undefined,
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          IfElseStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_falseStatement": IfElseStatement {
+              "_condition": CommaExpression {
+                "_expressions": Array [],
+              },
+              "_falseStatement": BlockStatement {
+                "_content": Array [],
+              },
+              "_trueStatement": BlockStatement {
+                "_content": Array [
+                  undefined,
+                ],
+              },
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+              ],
+            },
+          },
+          undefined,
+          IfElseStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_falseStatement": BlockStatement {
+              "_content": Array [],
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [
+                undefined,
+                undefined,
+              ],
+            },
+          },
+        ],
+      },
+      "_name": "RarBlock",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "RarFile",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (rm.binr) 1`] = `
+Definition {
+  "_content": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "Header",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "Properties",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "MediaDescription",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "DataHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "ContentDescription",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "IndexEntry",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "IndexHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          SwitchStatement {
+            "_caseSwitchElements": Array [
+              CaseSwitchElement {
+                "_labels": Array [
+                  ValueSwitchLabel {
+                    "_value": NumberValue {
+                      "_value": 0,
+                    },
+                  },
+                ],
+                "_statements": Array [
+                  BlockStatement {
+                    "_content": Array [
+                      undefined,
+                      undefined,
+                    ],
+                  },
+                ],
+              },
+              CaseSwitchElement {
+                "_labels": Array [
+                  ValueSwitchLabel {
+                    "_value": NumberValue {
+                      "_value": 1,
+                    },
+                  },
+                ],
+                "_statements": Array [
+                  BlockStatement {
+                    "_content": Array [
+                      undefined,
+                      undefined,
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          undefined,
+        ],
+      },
+      "_name": "DataPacket",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "RmFile",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (romfs.binr) 1`] = `
+Definition {
+  "_content": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "RomFSHeader",
+      "_parameters": Array [],
+    },
+    EnumDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "uint",
+        },
+        "_size": 3,
+      },
+      "_declarations": Array [
+        EnumDeclarationElement {
+          "_expression": 0,
+          "_name": "HARD_LINK",
+        },
+        EnumDeclarationElement {
+          "_expression": 1,
+          "_name": "DIRECTORY",
+        },
+        EnumDeclarationElement {
+          "_expression": 2,
+          "_name": "FILE",
+        },
+        EnumDeclarationElement {
+          "_expression": 3,
+          "_name": "SYMLINK",
+        },
+        EnumDeclarationElement {
+          "_expression": 4,
+          "_name": "BLOCK_DEV",
+        },
+        EnumDeclarationElement {
+          "_expression": 5,
+          "_name": "CHAR_DEV",
+        },
+        EnumDeclarationElement {
+          "_expression": 6,
+          "_name": "SOCKET",
+        },
+        EnumDeclarationElement {
+          "_expression": 7,
+          "_name": "FIFO",
+        },
+      ],
+      "_name": "RomFSEntryType",
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [],
+      },
+      "_name": "RomFSObjectHdr",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+        ],
+      },
+      "_name": "RomFSObject",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "RomfsFile",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (shx.binr) 1`] = `
+Definition {
+  "_content": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "FileHeader",
+      "_parameters": Array [],
+    },
+    EnumDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "int",
+        },
+        "_size": 32,
+      },
+      "_declarations": Array [
+        EnumDeclarationElement {
+          "_expression": 0,
+          "_name": "NULL",
+        },
+        EnumDeclarationElement {
+          "_expression": 1,
+          "_name": "POINT",
+        },
+        EnumDeclarationElement {
+          "_expression": 3,
+          "_name": "POLYLINE",
+        },
+        EnumDeclarationElement {
+          "_expression": 5,
+          "_name": "POLYGON",
+        },
+        EnumDeclarationElement {
+          "_expression": 8,
+          "_name": "MULTI_POINT",
+        },
+        EnumDeclarationElement {
+          "_expression": 11,
+          "_name": "POINT_Z",
+        },
+        EnumDeclarationElement {
+          "_expression": 13,
+          "_name": "POLYLINE_Z",
+        },
+        EnumDeclarationElement {
+          "_expression": 15,
+          "_name": "POLYGON_Z",
+        },
+        EnumDeclarationElement {
+          "_expression": 18,
+          "_name": "MULTI_POINT_Z",
+        },
+        EnumDeclarationElement {
+          "_expression": 21,
+          "_name": "POINT_M",
+        },
+        EnumDeclarationElement {
+          "_expression": 23,
+          "_name": "POLYLINE_M",
+        },
+        EnumDeclarationElement {
+          "_expression": 25,
+          "_name": "POLYGON_M",
+        },
+        EnumDeclarationElement {
+          "_expression": 28,
+          "_name": "MULTI_POINT_M",
+        },
+        EnumDeclarationElement {
+          "_expression": 31,
+          "_name": "MULTI_PATCH",
+        },
+      ],
+      "_name": "ShapeType",
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "Header",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "RecordIndex",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "ShxFile",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (torrent.binr) 1`] = `
+Definition {
+  "_content": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          IfElseStatement {
+            "_condition": CommaExpression {
+              "_expressions": Array [],
+            },
+            "_falseStatement": IfElseStatement {
+              "_condition": CommaExpression {
+                "_expressions": Array [],
+              },
+              "_falseStatement": IfElseStatement {
+                "_condition": CommaExpression {
+                  "_expressions": Array [],
+                },
+                "_falseStatement": BlockStatement {
+                  "_content": Array [],
+                },
+                "_trueStatement": BlockStatement {
+                  "_content": Array [],
+                },
+              },
+              "_trueStatement": BlockStatement {
+                "_content": Array [],
+              },
+            },
+            "_trueStatement": BlockStatement {
+              "_content": Array [],
+            },
+          },
+        ],
+      },
+      "_name": "TorrentFile",
+      "_parameters": Array [],
+    },
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition (wmf.binr) 1`] = `
+Definition {
+  "_content": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "SpecialHeader",
+      "_parameters": Array [],
+    },
+    EnumDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "uint",
+        },
+        "_size": 16,
+      },
+      "_declarations": Array [
+        EnumDeclarationElement {
+          "_expression": 1,
+          "_name": "MEMORY",
+        },
+        EnumDeclarationElement {
+          "_expression": 2,
+          "_name": "DISK",
+        },
+      ],
+      "_name": "MetaFileType",
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "Header",
+      "_parameters": Array [],
+    },
+    EnumDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "uint",
+        },
+        "_size": 16,
+      },
+      "_declarations": Array [
+        EnumDeclarationElement {
+          "_expression": 0,
+          "_name": "EOF",
+        },
+        EnumDeclarationElement {
+          "_expression": 53,
+          "_name": "REALIZEPALETTE",
+        },
+        EnumDeclarationElement {
+          "_expression": 55,
+          "_name": "SETPALENTRIES",
+        },
+        EnumDeclarationElement {
+          "_expression": 258,
+          "_name": "SETBKMODE",
+        },
+        EnumDeclarationElement {
+          "_expression": 259,
+          "_name": "SETMAPMODE",
+        },
+        EnumDeclarationElement {
+          "_expression": 260,
+          "_name": "SETROP2",
+        },
+        EnumDeclarationElement {
+          "_expression": 261,
+          "_name": "SETRELABS",
+        },
+        EnumDeclarationElement {
+          "_expression": 262,
+          "_name": "SETPOLYFILLMODE",
+        },
+        EnumDeclarationElement {
+          "_expression": 263,
+          "_name": "SETSTRETCHBLTMODE",
+        },
+        EnumDeclarationElement {
+          "_expression": 264,
+          "_name": "SETTEXTCHAREXTRA",
+        },
+        EnumDeclarationElement {
+          "_expression": 295,
+          "_name": "RESTOREDC",
+        },
+        EnumDeclarationElement {
+          "_expression": 313,
+          "_name": "RESIZEPALETTE",
+        },
+        EnumDeclarationElement {
+          "_expression": 322,
+          "_name": "DIBCREATEPATTERNBRUSH",
+        },
+        EnumDeclarationElement {
+          "_expression": 329,
+          "_name": "SETLAYOUT",
+        },
+        EnumDeclarationElement {
+          "_expression": 513,
+          "_name": "SETBKCOLOR",
+        },
+        EnumDeclarationElement {
+          "_expression": 521,
+          "_name": "SETTEXTCOLOR",
+        },
+        EnumDeclarationElement {
+          "_expression": 529,
+          "_name": "OFFSETVIEWPORTORG",
+        },
+        EnumDeclarationElement {
+          "_expression": 531,
+          "_name": "LINETO",
+        },
+        EnumDeclarationElement {
+          "_expression": 532,
+          "_name": "MOVETO",
+        },
+        EnumDeclarationElement {
+          "_expression": 544,
+          "_name": "OFFSETCLIPRGN",
+        },
+        EnumDeclarationElement {
+          "_expression": 552,
+          "_name": "FILLREGION",
+        },
+        EnumDeclarationElement {
+          "_expression": 561,
+          "_name": "SETMAPPERFLAGS",
+        },
+        EnumDeclarationElement {
+          "_expression": 564,
+          "_name": "SELECTPALETTE",
+        },
+        EnumDeclarationElement {
+          "_expression": 804,
+          "_name": "POLYGON",
+        },
+        EnumDeclarationElement {
+          "_expression": 805,
+          "_name": "POLYLINE",
+        },
+        EnumDeclarationElement {
+          "_expression": 522,
+          "_name": "SETTEXTJUSTIFICATION",
+        },
+        EnumDeclarationElement {
+          "_expression": 523,
+          "_name": "SETWINDOWORG",
+        },
+        EnumDeclarationElement {
+          "_expression": 524,
+          "_name": "SETWINDOWEXT",
+        },
+        EnumDeclarationElement {
+          "_expression": 525,
+          "_name": "SETVIEWPORTORG",
+        },
+        EnumDeclarationElement {
+          "_expression": 526,
+          "_name": "SETVIEWPORTEXT",
+        },
+        EnumDeclarationElement {
+          "_expression": 527,
+          "_name": "OFFSETWINDOWORG",
+        },
+        EnumDeclarationElement {
+          "_expression": 1040,
+          "_name": "SCALEWINDOWEXT",
+        },
+        EnumDeclarationElement {
+          "_expression": 1042,
+          "_name": "SCALEVIEWPORTEXT",
+        },
+        EnumDeclarationElement {
+          "_expression": 1045,
+          "_name": "EXCLUDECLIPRECT",
+        },
+        EnumDeclarationElement {
+          "_expression": 1046,
+          "_name": "INTERSECTCLIPRECT",
+        },
+        EnumDeclarationElement {
+          "_expression": 1048,
+          "_name": "ELLIPSE",
+        },
+        EnumDeclarationElement {
+          "_expression": 1049,
+          "_name": "FLOODFILL",
+        },
+        EnumDeclarationElement {
+          "_expression": 1065,
+          "_name": "FRAMEREGION",
+        },
+        EnumDeclarationElement {
+          "_expression": 1078,
+          "_name": "ANIMATEPALETTE",
+        },
+        EnumDeclarationElement {
+          "_expression": 1313,
+          "_name": "TEXTOUT",
+        },
+        EnumDeclarationElement {
+          "_expression": 1336,
+          "_name": "POLYPOLYGON",
+        },
+        EnumDeclarationElement {
+          "_expression": 1352,
+          "_name": "EXTFLOODFILL",
+        },
+        EnumDeclarationElement {
+          "_expression": 1051,
+          "_name": "RECTANGLE",
+        },
+        EnumDeclarationElement {
+          "_expression": 1055,
+          "_name": "SETPIXEL",
+        },
+        EnumDeclarationElement {
+          "_expression": 1564,
+          "_name": "ROUNDRECT",
+        },
+        EnumDeclarationElement {
+          "_expression": 1565,
+          "_name": "PATBLT",
+        },
+        EnumDeclarationElement {
+          "_expression": 30,
+          "_name": "SAVEDC",
+        },
+        EnumDeclarationElement {
+          "_expression": 2074,
+          "_name": "PIE",
+        },
+        EnumDeclarationElement {
+          "_expression": 2851,
+          "_name": "STRETCHBLT",
+        },
+        EnumDeclarationElement {
+          "_expression": 1574,
+          "_name": "ESCAPE",
+        },
+        EnumDeclarationElement {
+          "_expression": 298,
+          "_name": "INVERTREGION",
+        },
+        EnumDeclarationElement {
+          "_expression": 299,
+          "_name": "PAINTREGION",
+        },
+        EnumDeclarationElement {
+          "_expression": 300,
+          "_name": "SELECTCLIPREGION",
+        },
+        EnumDeclarationElement {
+          "_expression": 301,
+          "_name": "SELECTOBJECT",
+        },
+        EnumDeclarationElement {
+          "_expression": 302,
+          "_name": "SETTEXTALIGN",
+        },
+        EnumDeclarationElement {
+          "_expression": 2071,
+          "_name": "ARC",
+        },
+        EnumDeclarationElement {
+          "_expression": 2096,
+          "_name": "CHORD",
+        },
+        EnumDeclarationElement {
+          "_expression": 2338,
+          "_name": "BITBLT",
+        },
+        EnumDeclarationElement {
+          "_expression": 2610,
+          "_name": "EXTTEXTOUT",
+        },
+        EnumDeclarationElement {
+          "_expression": 3379,
+          "_name": "SETDIBTODEV",
+        },
+        EnumDeclarationElement {
+          "_expression": 2368,
+          "_name": "DIBBITBLT",
+        },
+        EnumDeclarationElement {
+          "_expression": 2881,
+          "_name": "DIBSTRETCHBLT",
+        },
+        EnumDeclarationElement {
+          "_expression": 3907,
+          "_name": "STRETCHDIB",
+        },
+        EnumDeclarationElement {
+          "_expression": 496,
+          "_name": "DELETEOBJECT",
+        },
+        EnumDeclarationElement {
+          "_expression": 247,
+          "_name": "CREATEPALETTE",
+        },
+        EnumDeclarationElement {
+          "_expression": 505,
+          "_name": "CREATEPATTERNBRUSH",
+        },
+        EnumDeclarationElement {
+          "_expression": 762,
+          "_name": "CREATEPENINDIRECT",
+        },
+        EnumDeclarationElement {
+          "_expression": 763,
+          "_name": "CREATEFONTINDIRECT",
+        },
+        EnumDeclarationElement {
+          "_expression": 764,
+          "_name": "CREATEBRUSHINDIRECT",
+        },
+        EnumDeclarationElement {
+          "_expression": 1791,
+          "_name": "CREATEREGION",
+        },
+      ],
+      "_name": "RecordFunction",
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "Record",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "WmfFile",
       "_parameters": Array [],
     },
   ],

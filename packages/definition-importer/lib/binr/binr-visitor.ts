@@ -1,21 +1,28 @@
 import {
   BlockStatement,
+  BooleanValue,
   CaseSwitchElement,
+  CommaExpression,
   Definition,
   EnumDeclarationElement,
   EnumDeclarationStatement,
+  Expression,
   IfElseStatement,
   IfStatement,
   NamedType,
+  NumberValue,
   RestrictedType,
   Statement,
+  StringValue,
   StructDeclarationStatement,
   SwitchStatement,
+  TernaryExpression,
   Type,
+  Value,
   ValueSwitchLabel,
 } from "@binr/ast";
 import { CstParser } from "chevrotain";
-import { get, has, keys, map, size, times } from "lodash";
+import { each, get, has, keys, map, size, times } from "lodash";
 
 export function getVisitor(parser: CstParser) {
   class Visitor extends parser.getBaseCstVisitorConstructorWithDefaults() {
@@ -85,8 +92,49 @@ export function getVisitor(parser: CstParser) {
       const statement = this.visit(ctx.BlockStatement[0]);
       return new CaseSwitchElement([new ValueSwitchLabel(value)], [statement]);
     }
-    // TODO Expression
-    // TODO valueClause
+
+    public Expression(ctx: any): Expression {
+      return this.visit(ctx.AssignmentExpression);
+    }
+
+    public AssignmentExpression(ctx: any): Expression {
+      if (has(ctx, "QuestionToken")) {
+        const condition = this.visit(ctx.BinaryExpression);
+        const trueExpression = this.visit(ctx.AssignmentExpression[0]);
+        const falseExpression = this.visit(ctx.AssignmentExpression[1]);
+        return new TernaryExpression(condition, trueExpression, falseExpression);
+      }
+      return this.visit(ctx.BinaryExpression);
+    }
+
+    public BinaryExpression(ctx: any): Expression {
+      const result = [this.visit(ctx.UnaryExpression[0])];
+      each(ctx.ExpressionToken, (token, i) => {
+        const tokenName = keys(token.children)[0];
+        const tokenSymbol = token.children[tokenName][0].image;
+        const childExpression = this.visit(ctx.UnaryExpression[i + 1]);
+        result.push(get([], tokenSymbol, tokenSymbol));
+        result.push(childExpression);
+      });
+      return new CommaExpression([]);
+    }
+
+    // TODO UnaryExpression
+    // TODO ExpressionToken
+
+    public valueClause(ctx: any): Value {
+      if (has(ctx, "StringLiteralToken")) {
+        return new StringValue(JSON.parse(ctx.StringLiteralToken[0].image));
+      }
+      if (has(ctx, "TrueToken")) {
+        return new BooleanValue(true);
+      }
+      if (has(ctx, "FalseToken")) {
+        return new BooleanValue(false);
+      }
+      // That's a number
+      return new NumberValue(this.visit(ctx.numberClause[0]));
+    }
 
     public numberClause(ctx: any): number {
       if (has(ctx, "NumberDecimalLiteralToken")) {
@@ -185,54 +233,12 @@ export function getVisitor(parser: CstParser) {
       return fieldResult;
     }
 
-    public valueClause(ctx: any) {
-      if (has(ctx, "StringLiteralToken")) {
-        return JSON.parse(ctx.StringLiteralToken[0].image);
-      }
-      if (has(ctx, "TrueToken")) {
-        return true;
-      }
-      if (has(ctx, "FalseToken")) {
-        return false;
-      }
-      // That's a number
-      return this.visit(ctx.numberClause[0]);
-    }
-
     public BoxMemberExpression(ctx: any) {
       return `[${this.visit(ctx.Expression)}]`;
     }
 
     public BoxMemberUntilExpression(ctx: any) {
       return this.visit(ctx.Expression);
-    }
-
-    public Expression(ctx: any) {
-      if (has(ctx, "AssignmentExpression")) {
-        return join(map(ctx.AssignmentExpression, this.visit.bind(this)), ", ");
-      }
-    }
-
-    public AssignmentExpression(ctx: any) {
-      if (has(ctx, "QuestionToken")) {
-        const ifElseClause = map(ctx.AssignmentExpression, this.visit.bind(this)).join(" : ");
-        return `${this.visit(ctx.BinaryExpression)} ? ${ifElseClause}`;
-      }
-      if (has(ctx, "BinaryExpression")) {
-        return this.visit(ctx.BinaryExpression);
-      }
-    }
-
-    public BinaryExpression(ctx: any) {
-      const result = [this.visit(ctx.UnaryExpression[0])];
-      each(ctx.ExpressionToken, (token, i) => {
-        const tokenName = keys(token.children)[0];
-        const tokenSymbol = token.children[tokenName][0].image;
-        const childExpression = this.visit(ctx.UnaryExpression[i + 1]);
-        result.push(get(SYMBOL_MAPPING, tokenSymbol, tokenSymbol));
-        result.push(childExpression);
-      });
-      return join(result, " ");
     }
 
     public UnaryExpression(ctx: any) {

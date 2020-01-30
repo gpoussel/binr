@@ -1,0 +1,18 @@
+#name "Torrent Format"
+#extension ".torrent"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/TORRENT.bt
+
+struct TorrentFile {
+    char identifier;
+    if (identifier == "i") {
+        // Integer
+    } else if (identifier == "l") {
+        // List
+    } else if (identifier == "d") {
+        // Dictionary
+        // TODO: need current byte value
+    } else {
+        // Other
+    }
+}
