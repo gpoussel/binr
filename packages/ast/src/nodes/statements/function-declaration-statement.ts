@@ -34,9 +34,7 @@ export class FunctionDeclarationStatement extends Statement {
     if (visitor.visitFunctionDeclarationStatement(this)) {
       this._returnType.accept(visitor);
       this._parameters.map((s) => s.accept(visitor));
-      if (this._body) {
-        this._body.accept(visitor);
-      }
+      this._body?.accept(visitor);
     }
     visitor.endVisitFunctionDeclarationStatement(this);
   }

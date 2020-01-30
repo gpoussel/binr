@@ -33,9 +33,7 @@ export class TypedefStatement extends Statement {
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitTypedefStatement(this)) {
       this._type.accept(visitor);
-      if (this._arraySelector) {
-        this._arraySelector.accept(visitor);
-      }
+      this._arraySelector?.accept(visitor);
       this._annotations.map((s) => s.accept(visitor));
     }
     visitor.endVisitTypedefStatement(this);

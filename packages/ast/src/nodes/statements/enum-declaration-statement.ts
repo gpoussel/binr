@@ -32,9 +32,7 @@ export class EnumDeclarationStatement extends Statement {
 
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitEnumDeclarationStatement(this)) {
-      if (this._baseType) {
-        this._baseType.accept(visitor);
-      }
+      this._baseType?.accept(visitor);
       this._declarations.map((s) => s.accept(visitor));
       this._annotations.map((s) => s.accept(visitor));
     }

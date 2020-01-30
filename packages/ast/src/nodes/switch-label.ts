@@ -7,7 +7,7 @@ export abstract class SwitchLabel extends Node {}
 export class DefaultSwitchLabel extends SwitchLabel {
   protected accept0(visitor: AstVisitor): void {
     visitor.visitDefaultSwitchLabel(this);
-    visitor.visitDefaultSwitchLabel(this);
+    visitor.endVisitDefaultSwitchLabel(this);
   }
 }
 

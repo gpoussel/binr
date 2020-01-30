@@ -32,9 +32,7 @@ export class InlineEnumDeclarationStatement extends Statement {
 
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitInlineEnumDeclarationStatement(this)) {
-      if (this._baseType) {
-        this._baseType.accept(visitor);
-      }
+      this._baseType?.accept(visitor);
       this._declarations.map((s) => s.accept(visitor));
       this._variableDeclarations.map((s) => s.accept(visitor));
     }

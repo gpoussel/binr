@@ -16,12 +16,9 @@ export class ArrayIndexExpression extends Expression {
 
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitArrayIndexExpression(this)) {
-      if (this._expression) {
-        this._expression.accept(visitor);
-      }
-      if (this._indexExpression) {
-        this._indexExpression.accept(visitor);
-      }
+      this._expression?.accept(visitor);
+      this._indexExpression?.accept(visitor);
     }
+    visitor.endVisitArrayIndexExpression(this);
   }
 }

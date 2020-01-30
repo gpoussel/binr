@@ -17,9 +17,7 @@ export class EnumDeclarationElement extends Node {
 
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitEnumDeclarationElement(this)) {
-      if (this._expression) {
-        this._expression.accept(visitor);
-      }
+      this._expression?.accept(visitor);
     }
     visitor.endVisitEnumDeclarationElement(this);
   }

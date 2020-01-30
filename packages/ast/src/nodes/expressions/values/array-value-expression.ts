@@ -16,7 +16,7 @@ export class ExpressionArrayValueElement extends ArrayValueElement {
 
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitExpressionArrayValueElement(this)) {
-      visitor.visitExpression(this._expression);
+      this._expression.accept(visitor);
     }
     visitor.endVisitExpressionArrayValueElement(this);
   }
@@ -40,7 +40,7 @@ export class ArrayValueExpression extends ValueExpression {
 
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitArrayValueExpression(this)) {
-      this._elements.map((s) => visitor.visitArrayValueElement(s));
+      this._elements.map((s) => s.accept(visitor));
     }
     visitor.endVisitArrayValueExpression(this);
   }

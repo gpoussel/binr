@@ -13,9 +13,7 @@ export class ReturnStatement extends Statement {
 
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitReturnStatement(this)) {
-      if (this._expression) {
-        this._expression.accept(visitor);
-      }
+      this._expression?.accept(visitor);
     }
     visitor.endVisitReturnStatement(this);
   }

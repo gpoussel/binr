@@ -40,9 +40,7 @@ export class VariableDeclarationStatement extends Statement {
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitVariableDeclarationStatement(this)) {
       this._variableType.accept(visitor);
-      if (this._bitfield) {
-        this._bitfield.accept(visitor);
-      }
+      this._bitfield?.accept(visitor);
       this._variableDeclarations.map((s) => s.accept(visitor));
       this._annotations.map((s) => s.accept(visitor));
     }

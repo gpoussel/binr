@@ -42,16 +42,10 @@ export class VariableDeclaration extends Node {
 
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitVariableDeclaration(this)) {
-      if (this._bitfield) {
-        this._bitfield.accept(visitor);
-      }
-      if (this._arraySelector) {
-        this._arraySelector.accept(visitor);
-      }
+      this._bitfield?.accept(visitor);
+      this._arraySelector?.accept(visitor);
       this._typeArguments.map((s) => s.accept(visitor));
-      if (this._initializationExpression) {
-        this._initializationExpression.accept(visitor);
-      }
+      this._initializationExpression?.accept(visitor);
       this._annotations.map((s) => s.accept(visitor));
     }
     visitor.endVisitVariableDeclaration(this);

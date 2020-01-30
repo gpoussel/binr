@@ -38,9 +38,7 @@ export class ParameterDeclaration extends Node {
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitParameterDeclaration(this)) {
       this._type.accept(visitor);
-      if (this._arraySelector) {
-        this._arraySelector.accept(visitor);
-      }
+      this._arraySelector?.accept(visitor);
     }
     visitor.endVisitParameterDeclaration(this);
   }
