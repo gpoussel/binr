@@ -2061,7 +2061,48 @@ Definition {
 exports[`BinrDefinitionImporter, advanced parses example format definition (eot.binr) 1`] = `
 Definition {
   "_content": Array [
-    undefined,
+    BitmaskDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "uint",
+        },
+        "_size": 32,
+      },
+      "_declarations": Array [
+        BitmaskDeclarationElement {
+          "_expression": 1,
+          "_name": "TTEMBED_SUBSET",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 4,
+          "_name": "TTEMBED_TTCOMPRESSED",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 16,
+          "_name": "TTEMBED_FAILIFVARIATIONSIMULATED",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 32,
+          "_name": "TTMBED_EMBEDEUDC",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 64,
+          "_name": "TTEMBED_VALIDATIONTESTS",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 128,
+          "_name": "TTEMBED_WEBOBJECT",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 268435456,
+          "_name": "TTEMBED_XORENCRYPTDATA",
+        },
+      ],
+      "_name": "TTEMBED",
+    },
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -4419,7 +4460,68 @@ Definition {
       ],
       "_name": "ConstantPoolTag",
     },
-    undefined,
+    BitmaskDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "uint",
+        },
+        "_size": 16,
+      },
+      "_declarations": Array [
+        BitmaskDeclarationElement {
+          "_expression": 1,
+          "_name": "ACC_PUBLIC",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 2,
+          "_name": "ACC_PRIVATE",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 4,
+          "_name": "ACC_PROTECTED",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 8,
+          "_name": "ACC_STATIC",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 16,
+          "_name": "ACC_FINAL",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 32,
+          "_name": "ACC_SUPER",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 64,
+          "_name": "ACC_VOLATILE",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 128,
+          "_name": "ACC_TRANSIENT",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 256,
+          "_name": "ACC_NATIVE",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 512,
+          "_name": "ACC_INTERFACE",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 1024,
+          "_name": "ACC_ABSTRACT",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 2048,
+          "_name": "ACC_STRICT",
+        },
+      ],
+      "_name": "AccessFlag",
+    },
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -6093,8 +6195,126 @@ Definition {
       ],
       "_name": "RarBlockType",
     },
-    undefined,
-    undefined,
+    BitmaskDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "uint",
+        },
+        "_size": 16,
+      },
+      "_declarations": Array [
+        BitmaskDeclarationElement {
+          "_expression": 1,
+          "_name": "ARCHIVE_VOLUME",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 2,
+          "_name": "ARCHIVE_COMMENT_PRESENT",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 4,
+          "_name": "ARCHIVE_LOCKED",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 8,
+          "_name": "ARCHIVE_SOLID",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 16,
+          "_name": "NEW_VOLUME_NAMING",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 32,
+          "_name": "AV_PRESENT",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 64,
+          "_name": "RECOVERY_PRESENT",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 128,
+          "_name": "BLOCK_HEADERS_ENCRYPTED",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 256,
+          "_name": "IS_FIRST_VOLUME",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 16384,
+          "_name": "OLD_VERSION_IGNORE",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 32768,
+          "_name": "ADD_SIZE_PRESENT",
+        },
+      ],
+      "_name": "MainHeadFlags",
+    },
+    BitmaskDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "uint",
+        },
+        "_size": 16,
+      },
+      "_declarations": Array [
+        BitmaskDeclarationElement {
+          "_expression": 1,
+          "_name": "from_PREV_VOLUME",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 2,
+          "_name": "to_NEXT_VOLUME",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 4,
+          "_name": "PASSWORD_ENCRYPTED",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 8,
+          "_name": "FILE_COMMENT_PRESENT",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 16,
+          "_name": "SOLID",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 256,
+          "_name": "HIGH_SIZE",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 512,
+          "_name": "has_UNICODE_FILENAME",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 1024,
+          "_name": "ENCRYPTION_SALT",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 2048,
+          "_name": "IS_OLD_FILE_VERSION",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 4096,
+          "_name": "EXTENDED_TIME_INFO",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 16384,
+          "_name": "OLD_VERSION_IGNORE",
+        },
+        BitmaskDeclarationElement {
+          "_expression": 32768,
+          "_name": "ADD_SIZE_PRESENT",
+        },
+      ],
+      "_name": "FileHeadFlags",
+    },
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {

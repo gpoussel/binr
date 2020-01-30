@@ -41,7 +41,24 @@ Definition {
 exports[`BinrDefinitionImporter accepts bitmasks 1`] = `
 Definition {
   "_content": Array [
-    undefined,
+    BitmaskDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "int",
+        },
+        "_size": 16,
+      },
+      "_declarations": Array [
+        BitmaskDeclarationElement {
+          "_expression": 10,
+          "_name": "A",
+        },
+      ],
+      "_name": "foo",
+    },
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {

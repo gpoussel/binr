@@ -1,6 +1,8 @@
 import {
   Annotation,
   ArraySelector,
+  BitmaskDeclarationElement,
+  BitmaskDeclarationStatement,
   BlockStatement,
   BooleanValue,
   CaseSwitchElement,
@@ -66,7 +68,15 @@ export function getVisitor(parser: CstParser) {
         return new EnumDeclarationStatement(parentType, name, entries, annotations);
       }
       if (has(ctx, "bitmaskClause")) {
-        // TODO bitmaskClause
+        const bitmaskCtx = ctx.bitmaskClause[0].children;
+        const name = this.getIdentifierName(bitmaskCtx.IdentifierToken[0]);
+        const entries = times(bitmaskCtx.IdentifierToken.length - 1, (i) => {
+          const key = this.getIdentifierName(bitmaskCtx.IdentifierToken[i + 1]);
+          const value = this.visit(bitmaskCtx.numberClause[i]);
+          return new BitmaskDeclarationElement(key, value);
+        });
+        const parentType = this.visit(bitmaskCtx.typeReferenceClause);
+        return new BitmaskDeclarationStatement(parentType, name, entries, annotations);
       }
       throw new Error();
     }
@@ -295,22 +305,6 @@ export function getVisitor(parser: CstParser) {
       return {
         name,
         value,
-      };
-    }
-
-    
-
-    public bitmaskClause(ctx: any) {
-      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
-      const entries = times(ctx.IdentifierToken.length - 1, (i) => ({
-        key: this.getIdentifierName(ctx.IdentifierToken[i + 1]),
-        value: this.visit(ctx.numberClause[i]),
-      }));
-      const parentType = this.visit(ctx.typeReferenceClause);
-      return {
-        name,
-        entries,
-        parentType,
       };
     }
 

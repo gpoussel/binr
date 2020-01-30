@@ -1,6 +1,7 @@
 export * from "./annotation";
 export * from "./array-selector";
 export * from "./assignment-operator";
+export * from "./bitmask-declaration-element";
 export * from "./case-switch-element";
 export * from "./default-switch-label";
 export * from "./definition";
