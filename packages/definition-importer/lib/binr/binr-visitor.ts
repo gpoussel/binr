@@ -1,15 +1,14 @@
+import {
+  Definition,
+  EnumDeclarationElement,
+  EnumDeclarationStatement,
+  NamedType,
+  RestrictedType,
+  Statement,
+  Type,
+} from "@binr/ast";
 import { CstParser } from "chevrotain";
-import { each, filter, get, has, join, keys, map, repeat, size, times } from "lodash";
-
-import { BlockNode, FieldNode, IfNode, SwitchNode } from "./nodes";
-
-/**
- * This is the mapping between Binr symbols and Javascript ones
- */
-const SYMBOL_MAPPING = {
-  "==": "===",
-  "!=": "!==",
-};
+import { get, has, keys, map, times } from "lodash";
 
 export function getVisitor(parser: CstParser) {
   class Visitor extends parser.getBaseCstVisitorConstructorWithDefaults() {
@@ -18,54 +17,73 @@ export function getVisitor(parser: CstParser) {
       this.validateVisitor();
     }
 
-    public definition(ctx: any) {
-      return {
-        headers: map(ctx.headerClause, this.visit.bind(this)),
-        structures: map(
-          filter(ctx.topLevelClause, (c) => has(c, "children.structureClause")),
-          this.visit.bind(this),
-        ),
-        enumerations: map(
-          filter(ctx.topLevelClause, (c) => has(c, "children.enumClause")),
-          this.visit.bind(this),
-        ),
-        bitmasks: map(
-          filter(ctx.topLevelClause, (c) => has(c, "children.bitmaskClause")),
-          this.visit.bind(this),
-        ),
-      };
+    public definition(ctx: any): Definition {
+      const statements = this.visitAll(ctx, "topLevelClause");
+      return new Definition(statements);
     }
 
-    public topLevelClause(ctx: any) {
-      const annotations = map(ctx.annotationClause, this.visit.bind(this));
-      if (has(ctx, "structureClause")) {
-        const { name, exported, statements } = this.visit(ctx.structureClause);
-        return {
-          name,
-          exported,
-          statements,
-          annotations,
-        };
-      }
-      if (has(ctx, "enumClause")) {
-        const { name, entries, parentType } = this.visit(ctx.enumClause);
-        return {
-          name,
-          entries,
-          parentType,
-          annotations,
-        };
-      }
-      if (has(ctx, "bitmaskClause")) {
-        const { name, entries, parentType } = this.visit(ctx.bitmaskClause);
-        return {
-          name,
-          entries,
-          parentType,
-          annotations,
-        };
-      }
+    public topLevelClause(ctx: any): Statement {
+      // TODO annotationClause (array)
+      return this.visitFirst(ctx, "structureClause", "enumClause", "bitmaskClause");
     }
+
+    public enumClause(ctx: any): EnumDeclarationStatement {
+      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
+      const entries = times(ctx.IdentifierToken.length - 1, (i) => {
+        const key = this.getIdentifierName(ctx.IdentifierToken[i + 1]);
+        const value = this.visit(ctx.numberClause[i]);
+        return new EnumDeclarationElement(key, value);
+      });
+      const parentType = this.visit(ctx.typeReferenceClause);
+      // TODO annotations
+      return new EnumDeclarationStatement(parentType, name, entries, []);
+    }
+
+    public numberClause(ctx: any): number {
+      if (has(ctx, "NumberDecimalLiteralToken")) {
+        return parseInt(ctx.NumberDecimalLiteralToken[0].image, 10);
+      }
+      if (has(ctx, "NumberHexadecimalLiteralToken")) {
+        return parseInt(ctx.NumberHexadecimalLiteralToken[0].image.substring(2), 16);
+      }
+      if (has(ctx, "NumberBinaryLiteralToken")) {
+        return parseInt(ctx.NumberBinaryLiteralToken[0].image.substring(2), 2);
+      }
+      throw new Error();
+    }
+
+    public typeReferenceClause(ctx: any): Type {
+      const type = this.getIdentifierName(get(ctx.IdentifierToken, 0));
+      const baseType = new NamedType(type, [], false);
+      if (has(ctx, "ColonToken")) {
+        const typeRestriction = this.visit(ctx.numberClause[0]);
+        return new RestrictedType(baseType, typeRestriction);
+      }
+      return baseType;
+    }
+
+    private visitAll(ctx: any, propertyName: string): any[] {
+      return map(get(ctx, propertyName), this.visit.bind(this));
+    }
+
+    private visitFirst(ctx: any, ...propertyNames: string[]): any {
+      for (let i = 0; i < propertyNames.length; ++i) {
+        if (has(ctx, propertyNames[i])) {
+          return this.visit(get(ctx, propertyNames[i]));
+        }
+      }
+      throw new Error(
+        `Context does not contain expected property name (expected: ${propertyNames}, was: ${keys(ctx)})`,
+      );
+    }
+
+    private getIdentifierName(identifier: any) {
+      return identifier.image;
+    }
+
+    /*
+
+    
 
     public headerClause(ctx: any) {
       const name = this.getIdentifierName(ctx.IdentifierToken[0]);
@@ -85,19 +103,7 @@ export function getVisitor(parser: CstParser) {
       };
     }
 
-    public enumClause(ctx: any) {
-      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
-      const entries = times(ctx.IdentifierToken.length - 1, (i) => ({
-        key: this.getIdentifierName(ctx.IdentifierToken[i + 1]),
-        value: this.visit(ctx.numberClause[i]),
-      }));
-      const parentType = this.visit(ctx.typeReferenceClause);
-      return {
-        name,
-        entries,
-        parentType,
-      };
-    }
+    
 
     public bitmaskClause(ctx: any) {
       const name = this.getIdentifierName(ctx.IdentifierToken[0]);
@@ -179,20 +185,6 @@ export function getVisitor(parser: CstParser) {
         fieldResult.setArrayUntilDefinition(this.visit(ctx.BoxMemberUntilExpression[0]));
       }
       return fieldResult;
-    }
-
-    public typeReferenceClause(ctx: any) {
-      const type = this.getIdentifierName(get(ctx.IdentifierToken, 0));
-      if (has(ctx, "ColonToken")) {
-        const typeRestriction = this.visit(ctx.numberClause[0]);
-        return {
-          type,
-          typeRestriction,
-        };
-      }
-      return {
-        type,
-      };
     }
 
     public valueClause(ctx: any) {
@@ -358,22 +350,7 @@ export function getVisitor(parser: CstParser) {
     public ParenthesisExpression(ctx: any) {
       return `(${this.visit(ctx.Expression)})`;
     }
-
-    public numberClause(ctx: any) {
-      if (has(ctx, "NumberDecimalLiteralToken")) {
-        return parseInt(ctx.NumberDecimalLiteralToken[0].image, 10);
-      }
-      if (has(ctx, "NumberHexadecimalLiteralToken")) {
-        return parseInt(ctx.NumberHexadecimalLiteralToken[0].image.substring(2), 16);
-      }
-      if (has(ctx, "NumberBinaryLiteralToken")) {
-        return parseInt(ctx.NumberBinaryLiteralToken[0].image.substring(2), 2);
-      }
-    }
-
-    public getIdentifierName(identifier: any) {
-      return identifier.image;
-    }
+    */
   }
   return new Visitor();
 }

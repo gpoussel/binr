@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BinrDefinitionImporter, advanced parses example format definition 1`] = `
+Definition {
+  "_content": Array [
+    undefined,
+    undefined,
+    undefined,
+  ],
+}
+`;
+
+exports[`BinrDefinitionImporter, advanced parses example format definition 2`] = `
+Definition {
+  "_content": Array [
+    EnumDeclarationStatement {
+      "_annotations": Array [],
+      "_baseType": RestrictedType {
+        "_baseType": NamedType {
+          "_array": false,
+          "_modifiers": Array [],
+          "_name": "uint",
+        },
+        "_size": 8,
+      },
+      "_declarations": Array [
+        EnumDeclarationElement {
+          "_expression": 0,
+          "_name": "Posix",
+        },
+        EnumDeclarationElement {
+          "_expression": 1,
+          "_name": "Windows",
+        },
+        EnumDeclarationElement {
+          "_expression": 2,
+          "_name": "Dos",
+        },
+        EnumDeclarationElement {
+          "_expression": 3,
+          "_name": "DosWindows",
+        },
+      ],
+      "_name": "FileNameType",
+    },
+    undefined,
+  ],
+}
+`;

@@ -15,6 +15,7 @@ describe("BinrDefinitionImporter, advanced", () => {
       const importer = new BinrDefinitionImporter();
       const definition = importer.readInput(structure);
       expect(definition).toBeDefined();
+      expect(definition).toMatchSnapshot();
     });
   });
 });
