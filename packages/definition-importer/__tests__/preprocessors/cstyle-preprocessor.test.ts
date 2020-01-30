@@ -1,4 +1,4 @@
-import { CStylePreprocessor } from "../lib/common/cstyle-preprocessor";
+import { CStylePreprocessor } from "../../lib/common/preprocessors";
 
 describe("C-Style preprocessor", () => {
   const preprocessor = new CStylePreprocessor();

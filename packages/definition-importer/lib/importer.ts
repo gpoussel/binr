@@ -3,14 +3,16 @@ import { CstParser, IRecognitionException, Lexer } from "chevrotain";
 import { first, get, isEmpty, isString, join, map } from "lodash";
 
 import { DefinitionBuilder } from "./common/definition-builder";
+import { Preprocessor } from "./common/preprocessors";
 
-export class Importer {
+export abstract class Importer {
   public readInput(input: string): Definition {
     if (!isString(input)) {
       throw new Error("input must be a string");
     }
 
-    const preprocessed = this.performPreprocessing(input);
+    const preprocessor = this.getPreprocessor();
+    const preprocessed = preprocessor.preprocess(input);
 
     if (!isString(preprocessed)) {
       throw new Error("input must be a string");
@@ -18,10 +20,6 @@ export class Importer {
 
     const ast = this.readAst(preprocessed);
     return this.build(ast);
-  }
-
-  public performPreprocessing(input: string) {
-    return input;
   }
 
   public readAst(input: string) {
@@ -54,6 +52,8 @@ export class Importer {
 
     return this.getVisitor(parser).visit(parsingResult);
   }
+
+  abstract getPreprocessor(): Preprocessor;
 
   public build(ast: Definition) {
     const builder = new DefinitionBuilder();

@@ -2,7 +2,32 @@
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (avi.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "AVI Format",
+      },
+    },
+    Annotation {
+      "_key": "comment",
+      "_value": StringValue {
+        "_value": "This structure is an example of the \\"AVI\\" format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".avi",
+      },
+    },
+    Annotation {
+      "_key": "endianness",
+      "_value": StringValue {
+        "_value": "little",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
@@ -1724,7 +1749,20 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (bmp.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "BMP Format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".bmp",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
@@ -2148,7 +2186,32 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (eot.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "EOT Format",
+      },
+    },
+    Annotation {
+      "_key": "comment",
+      "_value": StringValue {
+        "_value": "This structure is an example of the \\"EOT\\" format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".eot",
+      },
+    },
+    Annotation {
+      "_key": "endianness",
+      "_value": StringValue {
+        "_value": "little",
+      },
+    },
+  ],
   "_statements": Array [
     BitmaskDeclarationStatement {
       "_annotations": Array [],
@@ -3205,7 +3268,32 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (gif.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "GIF Format",
+      },
+    },
+    Annotation {
+      "_key": "comment",
+      "_value": StringValue {
+        "_value": "This structure is an example of the \\"GIF\\" format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".gif",
+      },
+    },
+    Annotation {
+      "_key": "endianness",
+      "_value": StringValue {
+        "_value": "little",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
@@ -3695,7 +3783,26 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (ico.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "ICO Format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".ico",
+      },
+    },
+    Annotation {
+      "_key": "endianness",
+      "_value": StringValue {
+        "_value": "little",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
@@ -4655,7 +4762,20 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (java_class.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "CLASS Format (Java Bytecode)",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".class",
+      },
+    },
+  ],
   "_statements": Array [
     EnumDeclarationStatement {
       "_annotations": Array [],
@@ -6093,7 +6213,26 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (manifest.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "Android Manifest Format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".xml",
+      },
+    },
+    Annotation {
+      "_key": "endianness",
+      "_value": StringValue {
+        "_value": "little",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
@@ -6484,7 +6623,20 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (mft.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "NTFS MFT FILE records",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".bin",
+      },
+    },
+  ],
   "_statements": Array [
     EnumDeclarationStatement {
       "_annotations": Array [],
@@ -6551,7 +6703,26 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (rar.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "RAR Format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".rar",
+      },
+    },
+    Annotation {
+      "_key": "endianness",
+      "_value": StringValue {
+        "_value": "little",
+      },
+    },
+  ],
   "_statements": Array [
     EnumDeclarationStatement {
       "_annotations": Array [],
@@ -7036,7 +7207,26 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (rm.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "RM Format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".rm",
+      },
+    },
+    Annotation {
+      "_key": "endianness",
+      "_value": StringValue {
+        "_value": "big",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
@@ -9003,7 +9193,26 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (romfs.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "ROMFS Format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".romfs",
+      },
+    },
+    Annotation {
+      "_key": "endian",
+      "_value": StringValue {
+        "_value": "big",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
@@ -9242,7 +9451,20 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (shx.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "SHX Format (Shape)",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".shx",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [
@@ -9791,7 +10013,20 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (torrent.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "Torrent Format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".torrent",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
@@ -9873,7 +10108,26 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (wmf.binr) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "name",
+      "_value": StringValue {
+        "_value": "WMF Format",
+      },
+    },
+    Annotation {
+      "_key": "extension",
+      "_value": StringValue {
+        "_value": ".wmf",
+      },
+    },
+    Annotation {
+      "_key": "endianness",
+      "_value": StringValue {
+        "_value": "little",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],

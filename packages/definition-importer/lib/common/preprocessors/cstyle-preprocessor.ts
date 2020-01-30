@@ -1,11 +1,13 @@
 import { each, every, has, isEmpty, isUndefined, join, last, split } from "lodash";
 
+import { Preprocessor } from "./preprocessor";
+
 interface ICondition {
   positive: boolean;
   variable: string;
 }
 
-export class CStylePreprocessor {
+export class CStylePreprocessor extends Preprocessor {
   public preprocess(input: string) {
     const lines: string[] = [];
     const definitions: { [key: string]: string } = {};

@@ -1,6 +1,6 @@
 import { CstParser } from "chevrotain";
 
-import { CStylePreprocessor } from "../common/cstyle-preprocessor";
+import { NoopPreprocessor, Preprocessor } from "../common/preprocessors";
 import { Importer } from "../importer";
 import { BinrLexer } from "./binr-lexer";
 import { BinrParser } from "./binr-parser";
@@ -19,8 +19,7 @@ export class BinrDefinitionImporter extends Importer {
     return getVisitor(parser);
   }
 
-  public performPreprocessing(input: string) {
-    const preprocessor = new CStylePreprocessor();
-    return preprocessor.preprocess(input);
+  getPreprocessor(): Preprocessor {
+    return new NoopPreprocessor();
   }
 }

@@ -201,7 +201,14 @@ Definition {
 exports[`BinrDefinitionImporter accepts minimal input (#set "foo"
 struct a {}) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "set",
+      "_value": StringValue {
+        "_value": "foo",
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
@@ -218,7 +225,14 @@ Definition {
 exports[`BinrDefinitionImporter accepts minimal input (#set 32
 struct b {}) 1`] = `
 Definition {
-  "_annotations": Array [],
+  "_annotations": Array [
+    Annotation {
+      "_key": "set",
+      "_value": NumberValue {
+        "_value": 32,
+      },
+    },
+  ],
   "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],

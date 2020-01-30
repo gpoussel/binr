@@ -1,6 +1,6 @@
 import { CstParser } from "chevrotain";
 
-import { CStylePreprocessor } from "../common/cstyle-preprocessor";
+import { CStylePreprocessor, Preprocessor } from "../common/preprocessors";
 import { Importer } from "../importer";
 import { SweetscapeLexer } from "./sweetscape-lexer";
 import { SweetscapeParser } from "./sweetscape-parser";
@@ -19,8 +19,7 @@ export class SweetscapeDefinitionImporter extends Importer {
     return getVisitor(parser);
   }
 
-  public performPreprocessing(input: string) {
-    const preprocessor = new CStylePreprocessor();
-    return preprocessor.preprocess(input);
+  getPreprocessor(): Preprocessor {
+    return new CStylePreprocessor();
   }
 }
