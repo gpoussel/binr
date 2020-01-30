@@ -22,7 +22,15 @@ export abstract class Importer {
     return this.build(ast);
   }
 
-  public readAst(input: string) {
+  abstract getPreprocessor(): Preprocessor;
+
+  abstract getLexer(): Lexer;
+
+  abstract getParser(): CstParser;
+
+  abstract getVisitor(parser: CstParser): any;
+
+  private readAst(input: string): Definition {
     const lexingResult = this.getLexer().tokenize(input);
     if (!isEmpty(lexingResult.errors)) {
       throw new Error(
@@ -52,15 +60,7 @@ export abstract class Importer {
     return this.getVisitor(parser).visit(parsingResult);
   }
 
-  abstract getPreprocessor(): Preprocessor;
-
-  abstract getLexer(): Lexer;
-
-  abstract getParser(): CstParser;
-
-  abstract getVisitor(parser: CstParser): any;
-
-  public build(ast: Definition) {
+  private build(ast: Definition) {
     const builder = new DefinitionBuilder();
     return builder.build(ast);
   }
