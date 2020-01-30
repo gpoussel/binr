@@ -6,10 +6,10 @@ import { Node } from "./node";
 export class VariableDeclaration extends Node {
   public constructor(
     private _name: string,
-    private _bitfield: Expression,
-    private _arraySelector: ArraySelector,
+    private _bitfield: Expression | undefined,
+    private _arraySelector: ArraySelector | undefined,
     private _typeArguments: Expression[],
-    private _initializationExpression: Expression,
+    private _initializationExpression: Expression | undefined,
     private _annotations: Annotation[],
   ) {
     super();
@@ -19,11 +19,11 @@ export class VariableDeclaration extends Node {
     return this._name;
   }
 
-  public get bitfield(): Expression {
+  public get bitfield(): Expression | undefined {
     return this._bitfield;
   }
 
-  public get arraySelector(): ArraySelector {
+  public get arraySelector(): ArraySelector | undefined {
     return this._arraySelector;
   }
 
@@ -31,7 +31,7 @@ export class VariableDeclaration extends Node {
     return this._typeArguments;
   }
 
-  public get initializationExpression(): Expression {
+  public get initializationExpression(): Expression | undefined {
     return this._initializationExpression;
   }
 
