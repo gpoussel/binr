@@ -1,3 +1,5 @@
+import { BaseAstVisitor } from "@binr/ast";
+
 import { SweetscapeDefinitionImporter } from "../../lib/sweetscape/sweetscape-definition-importer";
 import { AssetLoader } from "../utils/010-structures";
 
@@ -25,6 +27,9 @@ describe("Sweetscape Importer", () => {
       const definition = importer.readInput(element.content);
       expect(definition).toBeDefined();
       expect(definition).toMatchSnapshot();
+
+      // Calling the visitor helps us getting a better coverage
+      definition.accept(new BaseAstVisitor());
     });
   });
 });

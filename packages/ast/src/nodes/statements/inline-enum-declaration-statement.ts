@@ -6,7 +6,7 @@ import { Statement } from "./statement";
 
 export class InlineEnumDeclarationStatement extends Statement {
   public constructor(
-    private _baseType: Type,
+    private _baseType: Type | undefined,
     private _alias: string | undefined,
     private _declarations: EnumDeclarationElement[],
     private _variableDeclarations: VariableDeclaration[],
@@ -14,7 +14,7 @@ export class InlineEnumDeclarationStatement extends Statement {
     super();
   }
 
-  public get baseType(): Type {
+  public get baseType(): Type | undefined {
     return this._baseType;
   }
 
@@ -32,7 +32,9 @@ export class InlineEnumDeclarationStatement extends Statement {
 
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitInlineEnumDeclarationStatement(this)) {
-      this._baseType.accept(visitor);
+      if (this._baseType) {
+        this._baseType.accept(visitor);
+      }
       this._declarations.map((s) => s.accept(visitor));
       this._variableDeclarations.map((s) => s.accept(visitor));
     }

@@ -9,8 +9,8 @@ export class FunctionDeclarationStatement extends Statement {
     private _returnType: Type,
     private _name: string,
     private _parameters: ParameterDeclaration[],
-    private _forwardDeclaration: boolean,
-    private _body: BlockStatement,
+    private _forwardDeclaration: boolean, // TODO: to be removed
+    private _body: BlockStatement | undefined,
   ) {
     super();
   }
@@ -31,7 +31,7 @@ export class FunctionDeclarationStatement extends Statement {
     return this._forwardDeclaration;
   }
 
-  public get body(): BlockStatement {
+  public get body(): BlockStatement | undefined {
     return this._body;
   }
 
@@ -39,7 +39,9 @@ export class FunctionDeclarationStatement extends Statement {
     if (visitor.visitFunctionDeclarationStatement(this)) {
       this._returnType.accept(visitor);
       this._parameters.map((s) => s.accept(visitor));
-      this._body.accept(visitor);
+      if (this._body) {
+        this._body.accept(visitor);
+      }
     }
     visitor.endVisitFunctionDeclarationStatement(this);
   }

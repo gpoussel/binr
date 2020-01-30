@@ -330,7 +330,7 @@ export function getVisitor(parser: CstParser) {
         this.visit(ctx.typeName),
         this.visitAll(ctx, "variableModifier"),
         this.visitIfPresent(ctx, "bitfieldRest"),
-        this.visitIfPresent(ctx, "variableDeclarators"),
+        this.visitIfPresent(ctx, "variableDeclarators", []),
         this.visitIfPresent(ctx, "annotations", []),
       );
     }
