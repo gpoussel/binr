@@ -1,5 +1,6 @@
 import {
   Annotation,
+  ArrayIndexExpression,
   ArraySelector,
   ArrayValue,
   ArrayValueElement,
@@ -15,6 +16,7 @@ import {
   Expression,
   ExpressionArraySelector,
   ExpressionArrayValueElement,
+  FunctionCallExpression,
   IdentifierValue,
   IfElseStatement,
   IfStatement,
@@ -23,6 +25,7 @@ import {
   Operator,
   PostfixExpression,
   PrefixExpression,
+  PropertyAccessExpression,
   RestrictedType,
   Statement,
   StringValue,
@@ -215,9 +218,26 @@ export function getVisitor(parser: CstParser) {
     }
 
     public MemberCallNewExpression(ctx: any): Expression {
-      const innerExpression = this.visit(ctx.PrimaryExpression);
+      let currentExpression = this.visit(ctx.PrimaryExpression);
+      each(ctx.MemberCallNewExpressionExtension, (extension) => {
+        const childrenCtx = extension.children;
+        if (has(childrenCtx, "BoxMemberExpression")) {
+          // TODO indexExpression
+          const indexExpression: Expression = new NumberValue(0);
+          currentExpression = new ArrayIndexExpression(currentExpression, indexExpression);
+        } else if (has(childrenCtx, "DotMemberExpression")) {
+          const propertyName = childrenCtx.DotMemberExpression[0].children.IdentifierToken[0].image;
+          currentExpression = new PropertyAccessExpression(currentExpression, propertyName);
+        } else if (has(childrenCtx, "Arguments")) {
+          // TODO Arguments
+          const functionArguments: Expression[] = [];
+          currentExpression = new FunctionCallExpression(currentExpression, functionArguments);
+        } else {
+          throw new Error();
+        }
+      });
       // TODO MemberCallNewExpressionExtension
-      return innerExpression;
+      return currentExpression;
     }
 
     public BoxMemberExpression(ctx: any): ExpressionArraySelector {

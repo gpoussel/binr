@@ -31,8 +31,13 @@ Definition {
           },
           IfElseStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
-                "_name": "id",
+              "_left": ArrayIndexExpression {
+                "_expression": IdentifierValue {
+                  "_name": "id",
+                },
+                "_indexExpression": NumberValue {
+                  "_value": 0,
+                },
               },
               "_operator": 8,
               "_right": StringValue {
@@ -1457,8 +1462,14 @@ Definition {
                       },
                       IfElseStatement {
                         "_condition": BinaryExpression {
-                          "_left": IdentifierValue {
-                            "_name": "strhHeader",
+                          "_left": PropertyAccessExpression {
+                            "_expression": PropertyAccessExpression {
+                              "_expression": IdentifierValue {
+                                "_name": "strhHeader",
+                              },
+                              "_name": "data",
+                            },
+                            "_name": "type",
                           },
                           "_operator": 8,
                           "_right": StringValue {
@@ -1467,8 +1478,14 @@ Definition {
                         },
                         "_falseStatement": IfElseStatement {
                           "_condition": BinaryExpression {
-                            "_left": IdentifierValue {
-                              "_name": "strhHeader",
+                            "_left": PropertyAccessExpression {
+                              "_expression": PropertyAccessExpression {
+                                "_expression": IdentifierValue {
+                                  "_name": "strhHeader",
+                                },
+                                "_name": "data",
+                              },
+                              "_name": "type",
                             },
                             "_operator": 8,
                             "_right": StringValue {
@@ -3150,8 +3167,11 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "max",
+                  "_innerExpression": FunctionCallExpression {
+                    "_callable": IdentifierValue {
+                      "_name": "max",
+                    },
+                    "_functionArguments": Array [],
                   },
                 },
                 "_bitfield": undefined,
@@ -3518,8 +3538,11 @@ Definition {
           },
           IfStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
-                "_name": "logicalScreen",
+              "_left": PropertyAccessExpression {
+                "_expression": IdentifierValue {
+                  "_name": "logicalScreen",
+                },
+                "_name": "globalColorTable",
               },
               "_operator": 8,
               "_right": 1,
@@ -3538,8 +3561,11 @@ Definition {
                           "_left": 1,
                           "_operator": 20,
                           "_right": BinaryExpression {
-                            "_left": IdentifierValue {
-                              "_name": "logicalScreen",
+                            "_left": PropertyAccessExpression {
+                              "_expression": IdentifierValue {
+                                "_name": "logicalScreen",
+                              },
+                              "_name": "globalColorTableSize",
                             },
                             "_operator": 19,
                             "_right": 1,
@@ -4259,15 +4285,21 @@ Definition {
             "_condition": BinaryExpression {
               "_left": BinaryExpression {
                 "_left": BinaryExpression {
-                  "_left": IdentifierValue {
-                    "_name": "header",
+                  "_left": PropertyAccessExpression {
+                    "_expression": IdentifierValue {
+                      "_name": "header",
+                    },
+                    "_name": "bitCount",
                   },
                   "_operator": 6,
                   "_right": 24,
                 },
                 "_operator": 4,
-                "_right": IdentifierValue {
-                  "_name": "header",
+                "_right": PropertyAccessExpression {
+                  "_expression": IdentifierValue {
+                    "_name": "header",
+                  },
+                  "_name": "bitCount",
                 },
               },
               "_operator": 6,
@@ -4277,8 +4309,11 @@ Definition {
               "_content": Array [
                 IfElseStatement {
                   "_condition": BinaryExpression {
-                    "_left": IdentifierValue {
-                      "_name": "header",
+                    "_left": PropertyAccessExpression {
+                      "_expression": IdentifierValue {
+                        "_name": "header",
+                      },
+                      "_name": "clrUsed",
                     },
                     "_operator": 13,
                     "_right": 0,
@@ -4296,8 +4331,11 @@ Definition {
                               "_innerExpression": BinaryExpression {
                                 "_left": 1,
                                 "_operator": 20,
-                                "_right": IdentifierValue {
-                                  "_name": "header",
+                                "_right": PropertyAccessExpression {
+                                  "_expression": IdentifierValue {
+                                    "_name": "header",
+                                  },
+                                  "_name": "bitCount",
                                 },
                               },
                             },
@@ -4325,8 +4363,11 @@ Definition {
                           VariableDeclaration {
                             "_annotations": Array [],
                             "_arraySelector": ExpressionArraySelector {
-                              "_innerExpression": IdentifierValue {
-                                "_name": "header",
+                              "_innerExpression": PropertyAccessExpression {
+                                "_expression": IdentifierValue {
+                                  "_name": "header",
+                                },
+                                "_name": "clrUsed",
                               },
                             },
                             "_bitfield": undefined,
@@ -4349,32 +4390,44 @@ Definition {
           },
           IfElseStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
-                "_name": "header",
+              "_left": PropertyAccessExpression {
+                "_expression": IdentifierValue {
+                  "_name": "header",
+                },
+                "_name": "bitCount",
               },
               "_operator": 15,
               "_right": 8,
             },
             "_falseStatement": IfElseStatement {
               "_condition": BinaryExpression {
-                "_left": IdentifierValue {
-                  "_name": "header",
+                "_left": PropertyAccessExpression {
+                  "_expression": IdentifierValue {
+                    "_name": "header",
+                  },
+                  "_name": "bitCount",
                 },
                 "_operator": 8,
                 "_right": 8,
               },
               "_falseStatement": IfElseStatement {
                 "_condition": BinaryExpression {
-                  "_left": IdentifierValue {
-                    "_name": "header",
+                  "_left": PropertyAccessExpression {
+                    "_expression": IdentifierValue {
+                      "_name": "header",
+                    },
+                    "_name": "bitCount",
                   },
                   "_operator": 8,
                   "_right": 24,
                 },
                 "_falseStatement": IfStatement {
                   "_condition": BinaryExpression {
-                    "_left": IdentifierValue {
-                      "_name": "header",
+                    "_left": PropertyAccessExpression {
+                      "_expression": IdentifierValue {
+                        "_name": "header",
+                      },
+                      "_name": "bitCount",
                     },
                     "_operator": 8,
                     "_right": 32,
@@ -8726,8 +8779,11 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "properties",
+                  "_innerExpression": PropertyAccessExpression {
+                    "_expression": IdentifierValue {
+                      "_name": "properties",
+                    },
+                    "_name": "numberOfStreams",
                   },
                 },
                 "_bitfield": undefined,
@@ -8790,8 +8846,11 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "properties",
+                  "_innerExpression": PropertyAccessExpression {
+                    "_expression": IdentifierValue {
+                      "_name": "properties",
+                    },
+                    "_name": "numberOfStreams",
                   },
                 },
                 "_bitfield": undefined,
@@ -9554,8 +9613,11 @@ Definition {
                   "_innerExpression": BinaryExpression {
                     "_left": BinaryExpression {
                       "_left": BinaryExpression {
-                        "_left": IdentifierValue {
-                          "_name": "fileHeader",
+                        "_left": PropertyAccessExpression {
+                          "_expression": IdentifierValue {
+                            "_name": "fileHeader",
+                          },
+                          "_name": "length",
                         },
                         "_operator": 16,
                         "_right": 50,
@@ -10506,8 +10568,14 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": UntilExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "_",
+                  "_innerExpression": FunctionCallExpression {
+                    "_callable": PropertyAccessExpression {
+                      "_expression": IdentifierValue {
+                        "_name": "_",
+                      },
+                      "_name": "eof",
+                    },
+                    "_functionArguments": Array [],
                   },
                 },
                 "_bitfield": undefined,
