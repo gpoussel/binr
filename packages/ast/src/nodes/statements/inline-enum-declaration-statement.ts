@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { EnumDeclarationElement } from "../enum-declaration-element";
 import { Type } from "../types";
 import { VariableDeclaration } from "../variable-declaration";
@@ -27,5 +28,14 @@ export class InlineEnumDeclarationStatement extends Statement {
 
   public get variableDeclarations(): VariableDeclaration[] {
     return this._variableDeclarations;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitInlineEnumDeclarationStatement(this)) {
+      this._baseType.accept(visitor);
+      this._declarations.map((s) => s.accept(visitor));
+      this._variableDeclarations.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitInlineEnumDeclarationStatement(this);
   }
 }

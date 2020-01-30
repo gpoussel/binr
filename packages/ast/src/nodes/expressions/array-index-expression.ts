@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Expression } from "./expression";
 
 export class ArrayIndexExpression extends Expression {
@@ -11,5 +12,16 @@ export class ArrayIndexExpression extends Expression {
 
   public get indexExpression(): Expression {
     return this._indexExpression;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitArrayIndexExpression(this)) {
+      if (this._expression) {
+        this._expression.accept(visitor);
+      }
+      if (this._indexExpression) {
+        this._indexExpression.accept(visitor);
+      }
+    }
   }
 }

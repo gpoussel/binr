@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Type } from "./type";
 
 export class EnumReferenceType extends Type {
@@ -7,5 +8,10 @@ export class EnumReferenceType extends Type {
 
   public get name(): string {
     return this._name;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    visitor.visitEnumReferenceType(this);
+    visitor.endVisitEnumReferenceType(this);
   }
 }

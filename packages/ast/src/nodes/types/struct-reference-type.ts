@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Type } from "./type";
 
 export class StructReferenceType extends Type {
@@ -7,5 +8,10 @@ export class StructReferenceType extends Type {
 
   public get name(): string {
     return this._name;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    visitor.visitStructReferenceType(this);
+    visitor.endVisitStructReferenceType(this);
   }
 }

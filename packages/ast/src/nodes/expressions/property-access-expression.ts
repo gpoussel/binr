@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Expression } from "./expression";
 
 export class PropertyAccessExpression extends Expression {
@@ -9,7 +10,14 @@ export class PropertyAccessExpression extends Expression {
     return this._expression;
   }
 
-  public get name(): Expression {
+  public get name(): string {
     return this._name;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitPropertyAccessExpression(this)) {
+      this._expression.accept(visitor);
+    }
+    visitor.endVisitPropertyAccessExpression(this);
   }
 }

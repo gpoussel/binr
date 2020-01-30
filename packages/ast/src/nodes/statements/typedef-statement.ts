@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Annotation } from "../annotation";
 import { ArraySelector } from "../array-selector";
 import { Type } from "../types";
@@ -27,5 +28,16 @@ export class TypedefStatement extends Statement {
 
   public get annotations(): Annotation[] {
     return this._annotations;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitTypedefStatement(this)) {
+      this._type.accept(visitor);
+      if (this._arraySelector) {
+        this._arraySelector.accept(visitor);
+      }
+      this._annotations.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitTypedefStatement(this);
   }
 }

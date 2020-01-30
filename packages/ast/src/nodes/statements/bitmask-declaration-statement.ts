@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Annotation } from "../annotation";
 import { BitmaskDeclarationElement } from "../bitmask-declaration-element";
 import { Type } from "../types";
@@ -27,5 +28,14 @@ export class BitmaskDeclarationStatement extends Statement {
 
   public get annotations(): Annotation[] {
     return this._annotations;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitBitmaskDeclarationStatement(this)) {
+      this._baseType.accept(visitor);
+      this._declarations.map((s) => s.accept(visitor));
+      this._annotations.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitBitmaskDeclarationStatement(this);
   }
 }

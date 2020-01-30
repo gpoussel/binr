@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { ParameterDeclaration } from "../parameter-declaration";
 import { VariableDeclaration } from "../variable-declaration";
 import { BlockStatement } from "./block-statement";
@@ -27,5 +28,14 @@ export class InlineUnionDeclarationStatement extends Statement {
 
   public get body(): BlockStatement {
     return this._body;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitInlineUnionDeclarationStatement(this)) {
+      this._variableDeclaration.accept(visitor);
+      this._parameters.map((s) => s.accept(visitor));
+      this._body.accept(visitor);
+    }
+    visitor.endVisitInlineUnionDeclarationStatement(this);
   }
 }

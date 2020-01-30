@@ -1,3 +1,4 @@
+import { AstVisitor } from "../visitor/ast-visitor";
 import { Annotation } from "./annotation";
 import { ArraySelector } from "./array-selector";
 import { Expression } from "./expressions";
@@ -37,5 +38,22 @@ export class VariableDeclaration extends Node {
 
   public get annotations(): Annotation[] {
     return this._annotations;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitVariableDeclaration(this)) {
+      if (this._bitfield) {
+        this._bitfield.accept(visitor);
+      }
+      if (this._arraySelector) {
+        this._arraySelector.accept(visitor);
+      }
+      this._typeArguments.map((s) => s.accept(visitor));
+      if (this._initializationExpression) {
+        this._initializationExpression.accept(visitor);
+      }
+      this._annotations.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitVariableDeclaration(this);
   }
 }

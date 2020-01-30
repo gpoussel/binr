@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Annotation } from "../annotation";
 import { EnumDeclarationElement } from "../enum-declaration-element";
 import { Type } from "../types";
@@ -27,5 +28,14 @@ export class EnumDeclarationStatement extends Statement {
 
   public get annotations(): Annotation[] {
     return this._annotations;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitEnumDeclarationStatement(this)) {
+      this._baseType.accept(visitor);
+      this._declarations.map((s) => s.accept(visitor));
+      this._annotations.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitEnumDeclarationStatement(this);
   }
 }

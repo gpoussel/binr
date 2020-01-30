@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Expression } from "./expression";
 
 export class TernaryExpression extends Expression {
@@ -19,5 +20,14 @@ export class TernaryExpression extends Expression {
 
   public get falseExpression(): Expression {
     return this._falseExpression;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitTernaryExpression(this)) {
+      this._condition.accept(visitor);
+      this._trueExpression.accept(visitor);
+      this._falseExpression.accept(visitor);
+    }
+    visitor.endVisitTernaryExpression(this);
   }
 }

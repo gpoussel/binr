@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Type } from "./type";
 
 export class RestrictedType extends Type {
@@ -11,5 +12,10 @@ export class RestrictedType extends Type {
 
   public get size(): number {
     return this._size;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    visitor.visitRestrictedType(this);
+    visitor.endVisitRestrictedType(this);
   }
 }

@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Type } from "./type";
 import { TypeModifier } from "./type-modifier";
 
@@ -16,5 +17,10 @@ export class NamedType extends Type {
 
   public get array() {
     return this._array;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    visitor.visitNamedType(this);
+    visitor.endVisitNamedType(this);
   }
 }

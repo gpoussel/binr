@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { CaseSwitchElement } from "../case-switch-element";
 import { Expression } from "../expressions";
 import { Statement } from "./statement";
@@ -13,5 +14,13 @@ export class SwitchStatement extends Statement {
 
   public get caseSwitchElements(): CaseSwitchElement[] {
     return this._caseSwitchElements;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitSwitchStatement(this)) {
+      this._testExpression.accept(visitor);
+      this._caseSwitchElements.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitSwitchStatement(this);
   }
 }

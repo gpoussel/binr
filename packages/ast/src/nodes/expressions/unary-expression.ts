@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Operator } from "../operator";
 import { Expression } from "./expression";
 
@@ -12,5 +13,12 @@ export class UnaryExpression extends Expression {
 
   public get operator() {
     return this._operator;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitUnaryExpression(this)) {
+      this._innerExpression.accept(visitor);
+    }
+    visitor.endVisitUnaryExpression(this);
   }
 }

@@ -1,3 +1,4 @@
+import { AstVisitor } from "../visitor/ast-visitor";
 import { ArraySelector } from "./array-selector";
 import { Node } from "./node";
 import { NamedType } from "./types/named-type";
@@ -7,7 +8,7 @@ export class ParameterDeclaration extends Node {
   public constructor(
     private _type: NamedType,
     private _name: string,
-    private _arraySelector: ArraySelector,
+    private _arraySelector: ArraySelector | undefined,
     private _byReference: boolean,
     private _modifiers: VariableModifier[],
   ) {
@@ -22,7 +23,7 @@ export class ParameterDeclaration extends Node {
     return this._name;
   }
 
-  public get arraySelector(): ArraySelector {
+  public get arraySelector(): ArraySelector | undefined {
     return this._arraySelector;
   }
 
@@ -32,5 +33,15 @@ export class ParameterDeclaration extends Node {
 
   public get modifiers(): VariableModifier[] {
     return this._modifiers;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitParameterDeclaration(this)) {
+      this._type.accept(visitor);
+      if (this._arraySelector) {
+        this._arraySelector.accept(visitor);
+      }
+    }
+    visitor.endVisitParameterDeclaration(this);
   }
 }

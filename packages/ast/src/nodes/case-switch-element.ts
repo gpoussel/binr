@@ -1,3 +1,4 @@
+import { AstVisitor } from "../visitor/ast-visitor";
 import { Node } from "./node";
 import { Statement } from "./statements";
 import { SwitchLabel } from "./switch-label";
@@ -13,5 +14,13 @@ export class CaseSwitchElement extends Node {
 
   public get statements(): Statement[] {
     return this._statements;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitCaseSwitchElement(this)) {
+      this._labels.map((s) => s.accept(visitor));
+      this._statements.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitCaseSwitchElement(this);
   }
 }

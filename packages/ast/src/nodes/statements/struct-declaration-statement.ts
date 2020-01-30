@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Annotation } from "../annotation";
 import { ParameterDeclaration } from "../parameter-declaration";
 import { BlockStatement } from "./block-statement";
@@ -27,5 +28,14 @@ export class StructDeclarationStatement extends Statement {
 
   public get annotations(): Annotation[] {
     return this._annotations;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitStructDeclarationStatement(this)) {
+      this._parameters.map((s) => s.accept(visitor));
+      this._body.accept(visitor);
+      this._annotations.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitStructDeclarationStatement(this);
   }
 }

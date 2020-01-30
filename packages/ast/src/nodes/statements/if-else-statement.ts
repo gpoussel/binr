@@ -1,3 +1,4 @@
+import { AstVisitor } from "../../visitor/ast-visitor";
 import { Expression } from "../expressions";
 import { Statement } from "./statement";
 
@@ -20,5 +21,14 @@ export class IfElseStatement extends Statement {
 
   public get falseStatement(): Statement {
     return this._falseStatement;
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitIfElseStatement(this)) {
+      this._condition.accept(visitor);
+      this._trueStatement.accept(visitor);
+      this._falseStatement.accept(visitor);
+    }
+    visitor.endVisitIfElseStatement(this);
   }
 }
