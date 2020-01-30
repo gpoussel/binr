@@ -45,6 +45,9 @@
     "tslint-plugin-prettier": "^2.1.0",
     "typescript": "^3.7.5"
   },
+  "resolutions": {
+    "kind-of": "6.0.3"
+  },
   "importSort": {
     ".ts": {
       "style": "module",
