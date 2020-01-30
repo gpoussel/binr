@@ -2,6 +2,8 @@ import {
   Annotation,
   ArraySelector,
   ArrayValue,
+  ArrayValueElement,
+  BinaryExpression,
   BitmaskDeclarationElement,
   BitmaskDeclarationStatement,
   BlockStatement,
@@ -12,6 +14,7 @@ import {
   EnumDeclarationStatement,
   Expression,
   ExpressionArraySelector,
+  ExpressionArrayValueElement,
   IdentifierValue,
   IfElseStatement,
   IfStatement,
@@ -27,6 +30,7 @@ import {
   SwitchStatement,
   TernaryExpression,
   Type,
+  UndefinedArrayValueElement,
   UntilExpressionArraySelector,
   Value,
   ValueSwitchLabel,
@@ -34,7 +38,27 @@ import {
   VariableDeclarationStatement,
 } from "@binr/ast";
 import { CstParser } from "chevrotain";
-import { get, has, keys, map, size, times } from "lodash";
+import { concat, each, flatMap, get, has, keys, map, size, times } from "lodash";
+
+const OPERATOR_MAPPING: { [key: string]: Operator } = {
+  BooleanOrToken: Operator.BOOLEAN_OR,
+  BooleanAndToken: Operator.BOOLEAN_AND,
+  BinaryOrToken: Operator.BINARY_OR,
+  BinaryXorToken: Operator.BINARY_XOR,
+  BinaryAndToken: Operator.BINARY_AND,
+  DoubleEqualsToken: Operator.DOUBLE_EQUALS,
+  DifferentToken: Operator.DIFFERENT,
+  ShiftRightToken: Operator.SHIFT_RIGHT,
+  ShiftLeftToken: Operator.SHIFT_LEFT,
+  UnsignedShiftRightToken: Operator.UNSIGNED_SHIFT_RIGHT,
+  GreaterToken: Operator.GREATER,
+  LessToken: Operator.LESS,
+  MultiplicationToken: Operator.MULTIPLICATION,
+  DivisionToken: Operator.DIVISION,
+  PlusToken: Operator.PLUS,
+  MinusToken: Operator.MINUS,
+  ModuloToken: Operator.MODULO,
+};
 
 export function getVisitor(parser: CstParser) {
   class Visitor extends parser.getBaseCstVisitorConstructorWithDefaults() {
@@ -148,16 +172,13 @@ export function getVisitor(parser: CstParser) {
     }
 
     public BinaryExpression(ctx: any): Expression {
-      const result = this.visit(ctx.UnaryExpression[0]);
-      // TODO iteration
-      /*each(ctx.ExpressionToken, (token, i) => {
-        const tokenName = keys(token.children)[0];
-        const tokenSymbol = token.children[tokenName][0].image;
+      let currentExpression = this.visit(ctx.UnaryExpression[0]);
+      each(ctx.ExpressionToken, (token, i) => {
+        const operator = this.visit(token);
         const childExpression = this.visit(ctx.UnaryExpression[i + 1]);
-        result.push(get([], tokenSymbol, tokenSymbol));
-        result.push(childExpression);
-      });*/
-      return result;
+        currentExpression = new BinaryExpression(currentExpression, childExpression, operator);
+      });
+      return currentExpression;
     }
 
     public UnaryExpression(ctx: any): Expression {
@@ -230,11 +251,38 @@ export function getVisitor(parser: CstParser) {
     }
 
     public ArrayLiteral(ctx: any): ArrayValue {
-      console.log(ctx);
-      return new ArrayValue([]);
+      return new ArrayValue(flatMap(ctx.ArrayLiteralContent, this.visit.bind(this)));
     }
 
-    // TODO ExpressionToken
+    public ArrayLiteralContent(ctx: any): ArrayValueElement[] {
+      if (has(ctx, "ElementList")) {
+        return this.visit(ctx.ElementList);
+      }
+      if (has(ctx, "Elision")) {
+        return this.visit(ctx.Elision);
+      }
+      throw new Error();
+    }
+
+    public ElementList(ctx: any): ExpressionArrayValueElement[] {
+      return concat(
+        [new ExpressionArrayValueElement(this.visit(ctx.AssignmentExpression))],
+        map(ctx.ElementListEntry, this.visit.bind(this)),
+      );
+    }
+
+    public ElementListEntry(ctx: any): ExpressionArrayValueElement {
+      return new ExpressionArrayValueElement(this.visit(ctx.AssignmentExpression));
+    }
+
+    public Elision(ctx: any): UndefinedArrayValueElement[] {
+      return times(size(ctx.CommaToken), () => new UndefinedArrayValueElement());
+    }
+
+    public ExpressionToken(ctx: any): Operator {
+      const tokenName = keys(ctx)[0];
+      return OPERATOR_MAPPING[tokenName];
+    }
 
     public valueClause(ctx: any): Value {
       if (has(ctx, "StringLiteralToken")) {
@@ -329,32 +377,6 @@ export function getVisitor(parser: CstParser) {
       if (has(ctx, "IdentifierToken")) {
         return `.${this.getIdentifierName(ctx.IdentifierToken[0])}`;
       }
-    }
-
-    public ArrayLiteralContent(ctx: any) {
-      if (has(ctx, "ElementList")) {
-        return this.visit(ctx.ElementList);
-      }
-      if (has(ctx, "Elision")) {
-        return this.visit(ctx.Elision);
-      }
-      throw new Error();
-    }
-
-    public ElementList(ctx: any) {
-      const firstElement = this.visit(ctx.AssignmentExpression);
-      const otherElements = join(map(ctx.ElementListEntry, this.visit.bind(this)), "");
-      return firstElement + otherElements;
-    }
-
-    public ElementListEntry(ctx: any) {
-      const elision = this.visit(ctx.Elision);
-      const entry = this.visit(ctx.AssignmentExpression);
-      return elision + entry;
-    }
-
-    public Elision(ctx: any) {
-      return repeat(",", size(ctx.CommaToken));
     }
 
     */

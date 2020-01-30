@@ -15,7 +15,19 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 1,
+                  "_innerExpression": BinaryExpression {
+                    "_left": BinaryExpression {
+                      "_left": BinaryExpression {
+                        "_left": 1,
+                        "_operator": 8,
+                        "_right": 2,
+                      },
+                      "_operator": 5,
+                      "_right": 3,
+                    },
+                    "_operator": 8,
+                    "_right": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,

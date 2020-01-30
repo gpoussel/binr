@@ -30,8 +30,14 @@ Definition {
             },
           },
           IfElseStatement {
-            "_condition": IdentifierValue {
-              "_name": "id",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "id",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"X\\"",
+              },
             },
             "_falseStatement": BlockStatement {
               "_content": Array [],
@@ -948,8 +954,16 @@ Definition {
             },
           },
           IfElseStatement {
-            "_condition": IdentifierValue {
-              "_name": "datalen",
+            "_condition": BinaryExpression {
+              "_left": BinaryExpression {
+                "_left": IdentifierValue {
+                  "_name": "datalen",
+                },
+                "_operator": 17,
+                "_right": 2,
+              },
+              "_operator": 8,
+              "_right": 1,
             },
             "_falseStatement": BlockStatement {
               "_content": Array [
@@ -989,8 +1003,12 @@ Definition {
                     VariableDeclaration {
                       "_annotations": Array [],
                       "_arraySelector": ExpressionArraySelector {
-                        "_innerExpression": IdentifierValue {
-                          "_name": "datalen",
+                        "_innerExpression": BinaryExpression {
+                          "_left": IdentifierValue {
+                            "_name": "datalen",
+                          },
+                          "_operator": 19,
+                          "_right": 1,
                         },
                       },
                       "_bitfield": undefined,
@@ -1438,12 +1456,24 @@ Definition {
                         },
                       },
                       IfElseStatement {
-                        "_condition": IdentifierValue {
-                          "_name": "strhHeader",
+                        "_condition": BinaryExpression {
+                          "_left": IdentifierValue {
+                            "_name": "strhHeader",
+                          },
+                          "_operator": 8,
+                          "_right": StringValue {
+                            "_value": "\\"vids\\"",
+                          },
                         },
                         "_falseStatement": IfElseStatement {
-                          "_condition": IdentifierValue {
-                            "_name": "strhHeader",
+                          "_condition": BinaryExpression {
+                            "_left": IdentifierValue {
+                              "_name": "strhHeader",
+                            },
+                            "_operator": 8,
+                            "_right": StringValue {
+                              "_value": "\\"auds\\"",
+                            },
                           },
                           "_falseStatement": BlockStatement {
                             "_content": Array [],
@@ -1552,8 +1582,14 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "nheader",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "nheader",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"LIST\\"",
+              },
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
@@ -2519,8 +2555,12 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "familyNameSize",
+                  "_innerExpression": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "familyNameSize",
+                    },
+                    "_operator": 7,
+                    "_right": 2,
                   },
                 },
                 "_bitfield": undefined,
@@ -2596,8 +2636,12 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "styleNameSize",
+                  "_innerExpression": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "styleNameSize",
+                    },
+                    "_operator": 7,
+                    "_right": 2,
                   },
                 },
                 "_bitfield": undefined,
@@ -2673,8 +2717,12 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "versionNameSize",
+                  "_innerExpression": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "versionNameSize",
+                    },
+                    "_operator": 7,
+                    "_right": 2,
                   },
                 },
                 "_bitfield": undefined,
@@ -2750,8 +2798,12 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "fullNameSize",
+                  "_innerExpression": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "fullNameSize",
+                    },
+                    "_operator": 7,
+                    "_right": 2,
                   },
                 },
                 "_bitfield": undefined,
@@ -2827,8 +2879,12 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "rootStringSize",
+                  "_innerExpression": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "rootStringSize",
+                    },
+                    "_operator": 7,
+                    "_right": 2,
                   },
                 },
                 "_bitfield": undefined,
@@ -2950,8 +3006,12 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "signatureSize",
+                  "_innerExpression": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "signatureSize",
+                    },
+                    "_operator": 7,
+                    "_right": 2,
                   },
                 },
                 "_bitfield": undefined,
@@ -3457,8 +3517,12 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "logicalScreen",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "logicalScreen",
+              },
+              "_operator": 8,
+              "_right": 1,
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
@@ -3470,7 +3534,17 @@ Definition {
                     VariableDeclaration {
                       "_annotations": Array [],
                       "_arraySelector": ExpressionArraySelector {
-                        "_innerExpression": 1,
+                        "_innerExpression": BinaryExpression {
+                          "_left": 1,
+                          "_operator": 20,
+                          "_right": BinaryExpression {
+                            "_left": IdentifierValue {
+                              "_name": "logicalScreen",
+                            },
+                            "_operator": 19,
+                            "_right": 1,
+                          },
+                        },
                       },
                       "_bitfield": undefined,
                       "_initializationExpression": undefined,
@@ -4182,14 +4256,32 @@ Definition {
       "_body": BlockStatement {
         "_content": Array [
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "header",
+            "_condition": BinaryExpression {
+              "_left": BinaryExpression {
+                "_left": BinaryExpression {
+                  "_left": IdentifierValue {
+                    "_name": "header",
+                  },
+                  "_operator": 6,
+                  "_right": 24,
+                },
+                "_operator": 4,
+                "_right": IdentifierValue {
+                  "_name": "header",
+                },
+              },
+              "_operator": 6,
+              "_right": 32,
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
                 IfElseStatement {
-                  "_condition": IdentifierValue {
-                    "_name": "header",
+                  "_condition": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "header",
+                    },
+                    "_operator": 13,
+                    "_right": 0,
                   },
                   "_falseStatement": BlockStatement {
                     "_content": Array [
@@ -4201,7 +4293,13 @@ Definition {
                           VariableDeclaration {
                             "_annotations": Array [],
                             "_arraySelector": ExpressionArraySelector {
-                              "_innerExpression": 1,
+                              "_innerExpression": BinaryExpression {
+                                "_left": 1,
+                                "_operator": 20,
+                                "_right": IdentifierValue {
+                                  "_name": "header",
+                                },
+                              },
                             },
                             "_bitfield": undefined,
                             "_initializationExpression": undefined,
@@ -4250,20 +4348,36 @@ Definition {
             },
           },
           IfElseStatement {
-            "_condition": IdentifierValue {
-              "_name": "header",
-            },
-            "_falseStatement": IfElseStatement {
-              "_condition": IdentifierValue {
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
                 "_name": "header",
               },
-              "_falseStatement": IfElseStatement {
-                "_condition": IdentifierValue {
+              "_operator": 15,
+              "_right": 8,
+            },
+            "_falseStatement": IfElseStatement {
+              "_condition": BinaryExpression {
+                "_left": IdentifierValue {
                   "_name": "header",
                 },
-                "_falseStatement": IfStatement {
-                  "_condition": IdentifierValue {
+                "_operator": 8,
+                "_right": 8,
+              },
+              "_falseStatement": IfElseStatement {
+                "_condition": BinaryExpression {
+                  "_left": IdentifierValue {
                     "_name": "header",
+                  },
+                  "_operator": 8,
+                  "_right": 24,
+                },
+                "_falseStatement": IfStatement {
+                  "_condition": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "header",
+                    },
+                    "_operator": 8,
+                    "_right": 32,
                   },
                   "_trueStatement": BlockStatement {
                     "_content": Array [],
@@ -4550,8 +4664,14 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "tag",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "tag",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"TAG_UTF8\\"",
+              },
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
@@ -4606,8 +4726,26 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "tag",
+            "_condition": BinaryExpression {
+              "_left": BinaryExpression {
+                "_left": BinaryExpression {
+                  "_left": IdentifierValue {
+                    "_name": "tag",
+                  },
+                  "_operator": 8,
+                  "_right": StringValue {
+                    "_value": "\\"TAG_INTEGER\\"",
+                  },
+                },
+                "_operator": 5,
+                "_right": IdentifierValue {
+                  "_name": "tag",
+                },
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"TAG_FLOAT\\"",
+              },
             },
             "_trueStatement": VariableDeclarationStatement {
               "_annotations": Array [],
@@ -4636,8 +4774,26 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "tag",
+            "_condition": BinaryExpression {
+              "_left": BinaryExpression {
+                "_left": BinaryExpression {
+                  "_left": IdentifierValue {
+                    "_name": "tag",
+                  },
+                  "_operator": 8,
+                  "_right": StringValue {
+                    "_value": "\\"TAG_LONG\\"",
+                  },
+                },
+                "_operator": 5,
+                "_right": IdentifierValue {
+                  "_name": "tag",
+                },
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"TAG_DOUBLE\\"",
+              },
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
@@ -4691,8 +4847,14 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "tag",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "tag",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"TAG_CLASS\\"",
+              },
             },
             "_trueStatement": VariableDeclarationStatement {
               "_annotations": Array [],
@@ -4719,8 +4881,14 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "tag",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "tag",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"TAG_STRING\\"",
+              },
             },
             "_trueStatement": VariableDeclarationStatement {
               "_annotations": Array [],
@@ -4747,8 +4915,38 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "tag",
+            "_condition": BinaryExpression {
+              "_left": BinaryExpression {
+                "_left": BinaryExpression {
+                  "_left": BinaryExpression {
+                    "_left": BinaryExpression {
+                      "_left": IdentifierValue {
+                        "_name": "tag",
+                      },
+                      "_operator": 8,
+                      "_right": StringValue {
+                        "_value": "\\"TAG_FIELDREF\\"",
+                      },
+                    },
+                    "_operator": 5,
+                    "_right": IdentifierValue {
+                      "_name": "tag",
+                    },
+                  },
+                  "_operator": 8,
+                  "_right": StringValue {
+                    "_value": "\\"TAG_METHODREF\\"",
+                  },
+                },
+                "_operator": 5,
+                "_right": IdentifierValue {
+                  "_name": "tag",
+                },
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"TAG_INTERFACEMETHODREF\\"",
+              },
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
@@ -4802,8 +5000,14 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "tag",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "tag",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"TAG_NAMEANDTYPE\\"",
+              },
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
@@ -4857,8 +5061,14 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "tag",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "tag",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"TAG_METHODHANDLE_INFO\\"",
+              },
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
@@ -4912,8 +5122,14 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "tag",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "tag",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"TAG_METHODTYPE\\"",
+              },
             },
             "_trueStatement": VariableDeclarationStatement {
               "_annotations": Array [],
@@ -4940,8 +5156,14 @@ Definition {
             },
           },
           IfStatement {
-            "_condition": IdentifierValue {
-              "_name": "tag",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "tag",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"TAG_INVOKEDYNAMIC\\"",
+              },
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
@@ -5429,8 +5651,12 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "constantPoolSize",
+                  "_innerExpression": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "constantPoolSize",
+                    },
+                    "_operator": 16,
+                    "_right": 1,
                   },
                 },
                 "_bitfield": undefined,
@@ -6003,8 +6229,28 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "size",
+                  "_innerExpression": BinaryExpression {
+                    "_left": BinaryExpression {
+                      "_left": BinaryExpression {
+                        "_left": BinaryExpression {
+                          "_left": IdentifierValue {
+                            "_name": "size",
+                          },
+                          "_operator": 16,
+                          "_right": 7,
+                        },
+                        "_operator": 16,
+                        "_right": IdentifierValue {
+                          "_name": "stringCount",
+                        },
+                      },
+                      "_operator": 16,
+                      "_right": IdentifierValue {
+                        "_name": "styleCount",
+                      },
+                    },
+                    "_operator": 18,
+                    "_right": 2,
                   },
                 },
                 "_bitfield": undefined,
@@ -6368,12 +6614,24 @@ Definition {
             },
           },
           IfElseStatement {
-            "_condition": IdentifierValue {
-              "_name": "type",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "type",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"ARCHIVE\\"",
+              },
             },
             "_falseStatement": IfElseStatement {
-              "_condition": IdentifierValue {
-                "_name": "type",
+              "_condition": BinaryExpression {
+                "_left": IdentifierValue {
+                  "_name": "type",
+                },
+                "_operator": 8,
+                "_right": StringValue {
+                  "_value": "\\"FILE_OR_DIR\\"",
+                },
               },
               "_falseStatement": BlockStatement {
                 "_content": Array [],
@@ -6452,8 +6710,14 @@ Definition {
             },
           },
           IfElseStatement {
-            "_condition": IdentifierValue {
-              "_name": "type",
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
+                "_name": "type",
+              },
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"ARCHIVE\\"",
+              },
             },
             "_falseStatement": BlockStatement {
               "_content": Array [],
@@ -8382,8 +8646,12 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "size",
+                  "_innerExpression": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "size",
+                    },
+                    "_operator": 16,
+                    "_right": 12,
                   },
                 },
                 "_bitfield": undefined,
@@ -9283,8 +9551,20 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "fileHeader",
+                  "_innerExpression": BinaryExpression {
+                    "_left": BinaryExpression {
+                      "_left": BinaryExpression {
+                        "_left": IdentifierValue {
+                          "_name": "fileHeader",
+                        },
+                        "_operator": 16,
+                        "_right": 50,
+                      },
+                      "_operator": 18,
+                      "_right": 2,
+                    },
+                    "_operator": 7,
+                    "_right": 8,
                   },
                 },
                 "_bitfield": undefined,
@@ -9336,16 +9616,34 @@ Definition {
             },
           },
           IfElseStatement {
-            "_condition": IdentifierValue {
-              "_name": "identifier",
-            },
-            "_falseStatement": IfElseStatement {
-              "_condition": IdentifierValue {
+            "_condition": BinaryExpression {
+              "_left": IdentifierValue {
                 "_name": "identifier",
               },
-              "_falseStatement": IfElseStatement {
-                "_condition": IdentifierValue {
+              "_operator": 8,
+              "_right": StringValue {
+                "_value": "\\"i\\"",
+              },
+            },
+            "_falseStatement": IfElseStatement {
+              "_condition": BinaryExpression {
+                "_left": IdentifierValue {
                   "_name": "identifier",
+                },
+                "_operator": 8,
+                "_right": StringValue {
+                  "_value": "\\"l\\"",
+                },
+              },
+              "_falseStatement": IfElseStatement {
+                "_condition": BinaryExpression {
+                  "_left": IdentifierValue {
+                    "_name": "identifier",
+                  },
+                  "_operator": 8,
+                  "_right": StringValue {
+                    "_value": "\\"d\\"",
+                  },
                 },
                 "_falseStatement": BlockStatement {
                   "_content": Array [],
@@ -10128,8 +10426,12 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
-                    "_name": "size",
+                  "_innerExpression": BinaryExpression {
+                    "_left": IdentifierValue {
+                      "_name": "size",
+                    },
+                    "_operator": 16,
+                    "_right": 3,
                   },
                 },
                 "_bitfield": undefined,
