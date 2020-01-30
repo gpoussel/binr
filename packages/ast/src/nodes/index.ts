@@ -15,6 +15,7 @@ export * from "./statements";
 export * from "./switch-label";
 export * from "./types";
 export * from "./types/type-modifier";
+export * from "./until-expression-array-selector";
 export * from "./value-switch-label";
 export * from "./values";
 export * from "./variable-declaration";

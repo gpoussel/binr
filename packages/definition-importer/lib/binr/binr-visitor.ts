@@ -24,6 +24,7 @@ import {
   SwitchStatement,
   TernaryExpression,
   Type,
+  UntilExpressionArraySelector,
   Value,
   ValueSwitchLabel,
   VariableDeclaration,
@@ -93,9 +94,12 @@ export function getVisitor(parser: CstParser) {
       const type = this.visit(ctx.typeReferenceClause);
       const name = this.getIdentifierName(get(ctx.IdentifierToken, 0));
       const annotations: Annotation[] = this.visitAll(ctx, "annotationClause");
-      const arraySelector: ArraySelector | undefined = has(ctx, "BoxMemberExpression")
-        ? this.visit(ctx.BoxMemberExpression[0])
-        : undefined;
+      let arraySelector: ArraySelector | undefined = undefined;
+      if (has(ctx, "BoxMemberUntilExpression")) {
+        arraySelector = this.visit(ctx.BoxMemberUntilExpression[0]);
+      } else if (has(ctx, "BoxMemberExpression")) {
+        arraySelector = this.visit(ctx.BoxMemberExpression[0]);
+      }
       const declaration: VariableDeclaration = new VariableDeclaration(
         name,
         undefined,
@@ -191,6 +195,9 @@ export function getVisitor(parser: CstParser) {
 
     public BoxMemberExpression(ctx: any): ExpressionArraySelector {
       return new ExpressionArraySelector(this.visit(ctx.Expression));
+    }
+    public BoxMemberUntilExpression(ctx: any): UntilExpressionArraySelector {
+      return new UntilExpressionArraySelector(this.visit(ctx.Expression));
     }
 
     public PrimaryExpression(ctx: any): Expression {

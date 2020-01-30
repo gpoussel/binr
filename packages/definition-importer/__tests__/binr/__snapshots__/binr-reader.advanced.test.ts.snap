@@ -9952,7 +9952,11 @@ Definition {
             "_variableDeclarations": Array [
               VariableDeclaration {
                 "_annotations": Array [],
-                "_arraySelector": undefined,
+                "_arraySelector": UntilExpressionArraySelector {
+                  "_innerExpression": IdentifierValue {
+                    "_name": "_",
+                  },
+                },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
                 "_name": "records",
