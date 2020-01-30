@@ -9,7 +9,6 @@ export class FunctionDeclarationStatement extends Statement {
     private _returnType: Type,
     private _name: string,
     private _parameters: ParameterDeclaration[],
-    private _forwardDeclaration: boolean, // TODO: to be removed
     private _body: BlockStatement | undefined,
   ) {
     super();
@@ -25,10 +24,6 @@ export class FunctionDeclarationStatement extends Statement {
 
   public get parameters(): ParameterDeclaration[] {
     return this._parameters;
-  }
-
-  public get forwardDeclaration(): boolean {
-    return this._forwardDeclaration;
   }
 
   public get body(): BlockStatement | undefined {

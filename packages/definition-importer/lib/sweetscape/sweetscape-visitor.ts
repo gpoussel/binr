@@ -192,10 +192,9 @@ export function getVisitor(parser: CstParser) {
     public functionDeclarationStatement(ctx: any): FunctionDeclarationStatement {
       const returnType = this.visit(ctx.typeName);
       const name = getIdentifier(ctx.Identifier);
-      const forwardDeclaration = has(ctx, "SemiColon");
       const body = this.visitIfPresent(ctx, "block");
       const parameters = this.visit(ctx.functionParameterDeclarationList);
-      return new FunctionDeclarationStatement(returnType, name, parameters, forwardDeclaration, body);
+      return new FunctionDeclarationStatement(returnType, name, parameters, body);
     }
 
     public typeName(ctx: any): Type {
