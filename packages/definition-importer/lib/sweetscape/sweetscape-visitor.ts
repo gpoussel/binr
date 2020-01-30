@@ -1,11 +1,9 @@
-import { CstParser } from "chevrotain";
-import { concat, each, first, get, has, isEmpty, isUndefined, keys, map, parseInt, size } from "lodash";
-
 import {
   Annotation,
   ArrayIndexExpression,
   ArrayInitializationExpression,
   ArraySelector,
+  AssignmentExpression,
   AssignmentOperator,
   BinaryExpression,
   BlockStatement,
@@ -63,8 +61,9 @@ import {
   VariableModifier,
   VoidType,
   WhileStatement,
-} from "../common/nodes";
-import { AssignmentExpression } from "../common/nodes/expressions/assignment-expression";
+} from "@binr/ast";
+import { CstParser } from "chevrotain";
+import { concat, each, first, get, has, isEmpty, isUndefined, keys, map, parseInt, size } from "lodash";
 
 const OPERATORS = {
   BinaryAnd: Operator.BINARY_AND,

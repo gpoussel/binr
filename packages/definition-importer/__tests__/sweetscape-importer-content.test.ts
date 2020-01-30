@@ -1,5 +1,3 @@
-import { flatMap } from "lodash";
-
 import {
   Definition,
   DoWhileStatement,
@@ -21,7 +19,9 @@ import {
   UnionDeclarationStatement,
   VariableDeclarationStatement,
   WhileStatement,
-} from "../lib/common/nodes";
+} from "@binr/ast";
+import { flatMap } from "lodash";
+
 import { SweetscapeDefinitionImporter } from "../lib/sweetscape/sweetscape-importer";
 import { AssetLoader } from "./utils/010-structures";
 

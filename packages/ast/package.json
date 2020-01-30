@@ -1,17 +1,16 @@
 {
-  "name": "@binr/binary-reader",
+  "name": "@binr/ast",
   "version": "1.0.0",
-  "description": "Binary reading library",
+  "description": "AST classes for Binr application",
   "author": "Guillaume Poussel <gpoussel@gmail.com>",
-  "homepage": "https://github.com/gpoussel/binr/tree/master/packages/binary-reader#readme",
+  "homepage": "https://github.com/gpoussel/binr/tree/master/packages/ast#readme",
   "license": "MIT",
   "main": "index.js",
   "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+    "src": "src"
   },
   "files": [
-    "lib"
+    "src"
   ],
   "repository": {
     "type": "git",
@@ -25,12 +24,6 @@
     "url": "https://github.com/gpoussel/binr/issues"
   },
   "dependencies": {
-    "@binr/ast": "^1.0.0",
-    "@binr/definition-reader": "^1.0.0",
-    "@binr/model": "^1.0.0",
-    "@binr/shared": "^1.0.0",
-    "@types/escape-string-regexp": "^2.0.1",
-    "@types/lodash": "^4.14.149",
-    "lodash": "^4.17.15"
+    "@binr/shared": "^1.0.0"
   }
 }

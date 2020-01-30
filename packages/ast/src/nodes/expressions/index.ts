@@ -1,5 +1,6 @@
 export * from "./array-index-expression";
 export * from "./array-initialization-expression";
+export * from "./assignment-expression";
 export * from "./binary-expression";
 export * from "./cast-expression";
 export * from "./comma-expression";

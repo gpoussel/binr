@@ -1,6 +1,6 @@
+import { CommaExpression } from "../../nodes";
 import { Expression } from "../expressions";
 import { Statement } from "./statement";
-import { CommaExpression } from "..";
 
 export class ForStatement extends Statement {
   public constructor(
