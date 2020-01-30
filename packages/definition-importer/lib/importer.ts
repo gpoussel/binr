@@ -36,8 +36,7 @@ export abstract class Importer {
     const parser = this.getParser() as any;
     parser.input = lexingResult.tokens;
 
-    // TODO typesafe with "definition"?
-    const parsingResult = parser.definition();
+    const parsingResult: Definition = parser.definition();
 
     const errors: IRecognitionException[] = parser.errors;
     if (!isEmpty(errors)) {
