@@ -55,20 +55,14 @@ export abstract class Importer {
 
   abstract getPreprocessor(): Preprocessor;
 
+  abstract getLexer(): Lexer;
+
+  abstract getParser(): CstParser;
+
+  abstract getVisitor(parser: CstParser): any;
+
   public build(ast: Definition) {
     const builder = new DefinitionBuilder();
     return builder.build(ast);
-  }
-
-  public getLexer(): Lexer {
-    throw new Error("getLexer(): not yet implemented");
-  }
-
-  public getParser(): CstParser {
-    throw new Error("getParser(): not yet implemented");
-  }
-
-  public getVisitor(parser: CstParser): any {
-    throw new Error(`getVisitor(): not yet implemented (parser = ${parser})`);
   }
 }
