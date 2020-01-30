@@ -79,7 +79,10 @@ export function getVisitor(parser: CstParser) {
       const annotations = this.visitAll(ctx, "annotationClause");
       if (has(ctx, "structureClause")) {
         const structureCtx = ctx.structureClause[0].children;
-        // TODO "exported" flag (ExportToken)
+        if (has(ctx, "ExportToken")) {
+          // "export" is not part of the AST, so we are adding it as an annotation
+          annotations.push(new Annotation("export", new BooleanValue(true)));
+        }
         const name = this.getIdentifierName(structureCtx.IdentifierToken[0]);
         const statements: Statement[] = this.visitAll(structureCtx, "statementClause");
         return new StructDeclarationStatement(name, [], new BlockStatement(statements), annotations);
