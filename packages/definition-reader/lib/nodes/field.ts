@@ -1,14 +1,15 @@
 import { FieldStatement } from "@binr/model";
 import { filter, fromPairs, get, has, includes, isUndefined, map } from "lodash";
+
 import { ExpressionConverter } from "../expression-converter";
 import {
   ArrayType,
   ArrayUntilType,
   BitmaskType,
-  builtInTypes,
   CharArrayType,
   EnumerationType,
   StructureType,
+  builtInTypes,
 } from "../types";
 import { Node } from "./node";
 
@@ -70,9 +71,12 @@ export class FieldNode extends Node {
       this.name,
       type,
       fromPairs(
-        map(filter(this.annotations, (annotation) => annotation.name === "ignore"), (annotation) => {
-          return ["ignore", annotation.value];
-        }),
+        map(
+          filter(this.annotations, (annotation) => annotation.name === "ignore"),
+          (annotation) => {
+            return ["ignore", annotation.value];
+          },
+        ),
       ),
     );
   }

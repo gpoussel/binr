@@ -1,5 +1,5 @@
 import * as escodegen from "escodegen";
-import { parseScript, Syntax } from "esprima";
+import { Syntax, parseScript } from "esprima";
 import { includes, isArray, map, size } from "lodash";
 
 export class ExpressionConverter {

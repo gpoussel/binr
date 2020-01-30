@@ -14,11 +14,12 @@ export const builtInTypes = {
   wchar: () => new WCharType(),
 };
 
-export { CharType, CStringType, DoubleType, IntType, UintType, WCharType };
 export * from "./array-until";
 export * from "./array";
 export * from "./bitmask";
 export * from "./char-array";
+export * from "./char";
+export * from "./cstring";
 export * from "./double";
 export * from "./enumeration";
 export * from "./int";

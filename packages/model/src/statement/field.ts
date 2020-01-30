@@ -1,5 +1,6 @@
 import { BufferWrapper, Environment, ValueAggregator } from "@binr/shared";
 import { get } from "lodash";
+
 import { Statement } from "./statement";
 
 export class FieldStatement extends Statement {

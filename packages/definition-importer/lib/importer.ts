@@ -1,13 +1,18 @@
+import { Definition } from "@binr/ast";
 import { CstParser, IRecognitionException, Lexer } from "chevrotain";
 import { first, get, isEmpty, isString, join, map } from "lodash";
 
-export class Importer {
-  public readInput(input: string) {
+import { DefinitionBuilder } from "./common/definition-builder";
+import { Preprocessor } from "./common/preprocessors";
+
+export abstract class Importer {
+  public readInput(input: string): Definition {
     if (!isString(input)) {
       throw new Error("input must be a string");
     }
 
-    const preprocessed = this.performPreprocessing(input);
+    const preprocessor = this.getPreprocessor();
+    const preprocessed = preprocessor.preprocess(input);
 
     if (!isString(preprocessed)) {
       throw new Error("input must be a string");
@@ -17,11 +22,15 @@ export class Importer {
     return this.build(ast);
   }
 
-  public performPreprocessing(input: string) {
-    return input;
-  }
+  abstract getPreprocessor(): Preprocessor;
 
-  public readAst(input: string) {
+  abstract getLexer(): Lexer;
+
+  abstract getParser(): CstParser;
+
+  abstract getVisitor(parser: CstParser): any;
+
+  private readAst(input: string): Definition {
     const lexingResult = this.getLexer().tokenize(input);
     if (!isEmpty(lexingResult.errors)) {
       throw new Error(
@@ -35,8 +44,7 @@ export class Importer {
     const parser = this.getParser() as any;
     parser.input = lexingResult.tokens;
 
-    // TODO typesafe with "definition"?
-    const parsingResult = parser.definition();
+    const parsingResult: Definition = parser.definition();
 
     const errors: IRecognitionException[] = parser.errors;
     if (!isEmpty(errors)) {
@@ -52,19 +60,8 @@ export class Importer {
     return this.getVisitor(parser).visit(parsingResult);
   }
 
-  public getLexer(): Lexer {
-    throw new Error("getLexer(): not yet implemented");
-  }
-
-  public getParser(): CstParser {
-    throw new Error("getParser(): not yet implemented");
-  }
-
-  public getVisitor(parser: CstParser): any {
-    throw new Error(`getVisitor(): not yet implemented (parser = ${parser})`);
-  }
-
-  public build(ast: any): any {
-    throw new Error(`build(): not yet implemented (ast = ${ast})`);
+  private build(ast: Definition) {
+    const builder = new DefinitionBuilder();
+    return builder.build(ast);
   }
 }

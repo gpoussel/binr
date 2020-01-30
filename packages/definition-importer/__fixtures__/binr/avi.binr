@@ -1,0 +1,124 @@
+#name "AVI Format"
+#comment "This structure is an example of the \"AVI\" format"
+#extension ".avi"
+#endianness "little"
+
+struct Root {
+    char id[4];
+    if (id[3] == "X") {
+        // Big Endian
+    } else {
+        // Little Endian
+    }
+
+    uint:32 datalen;
+    char form[4];
+}
+
+struct MainAviHeader {
+    uint:32 microSecPerFrame;
+    uint:32 maxBytesPerSec;
+    uint:32 reserved1;
+    uint:32 flags;
+    uint:32 totalFrames;
+    uint:32 initialFrames;
+    uint:32 streams;
+    uint:32 suggestedBufferSize;
+    uint:32 width;
+    uint:32 height;
+    uint:32 scale;
+    uint:32 rate;
+    uint:32 start;
+    uint:32 length;
+}
+
+struct AviHeader {
+    char id[4];
+    uint:32 datalen;
+    MainAviHeader data;
+}
+
+struct AviStreamHeader {
+    char   type[4];
+    char   handler[4];
+    uint:32 flags;
+    uint:32 reserved1;
+    uint:32 initialFrames;
+    uint:32 scale;
+    uint:32 rate;
+    uint:32 start;
+    uint:32 length;
+    uint:32 suggestedBufferSize;
+    uint:32 quality;
+    uint:32 sampleSize;
+    uint:32 wQuality;
+    uint:32 wSampleSize;
+}
+
+struct StrhHeader {
+    char id[4];
+    uint:32 datalen;
+    AviStreamHeader data;
+}
+
+struct StrnHeader {
+    char id[4];
+    uint:32 datalen;
+    if (datalen % 2 == 1) {
+        char data[datalen+1];
+    } else {
+        char data[datalen];
+    }
+}
+
+struct StrfHeaderBih {
+    char id[4];
+    uint:32 datalen;
+    uint:32 size;
+    uint:32 width;
+    uint:32 height;
+    uint:16 planes;
+    uint:16 bitCount;
+    uint:32 compression;
+    uint:32 sizeImage;
+    uint:32 xPelsPerMeter;
+    uint:32 yPelsPerMeter;
+    uint:32 clrUsed;
+    uint:32 clrImportant;
+}
+
+struct ListHeader {
+    uint:32 datalen;
+    char type[4];
+    switch (type) {
+        "hdrl" => {
+            AviHeader header;
+        },
+        "strl" => {
+            StrhHeader strhHeader;
+            if (strhHeader.data.type == "vids") {
+                StrfHeaderBih strfHeader;
+            } else if (strhHeader.data.type == "auds") {
+
+            } else {
+
+            }
+            StrnHeader strnHeader;
+        },
+        "movi" => {
+
+        }
+    }
+}
+
+struct Block {
+    char nheader[4];
+    if (nheader == "LIST") {
+        ListHeader list;
+    }
+}
+
+struct AviFile {
+    Root root;
+    Block blocks[2];
+}

@@ -1,0 +1,38 @@
+#name "ROMFS Format"
+#extension ".romfs"
+#endian "big"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/ROMFS.bt
+
+struct RomFSHeader {
+    char magicBytes[8];
+    uint:32 size;
+    int:32 checksum;
+    cstring volumeName;
+}
+
+enum RomFSEntryType extends uint:3 {
+    HARD_LINK = 0,
+    DIRECTORY = 1,
+    FILE = 2,
+    SYMLINK = 3,
+    BLOCK_DEV = 4,
+    CHAR_DEV = 5,
+    SOCKET = 6,
+    FIFO = 7
+}
+
+struct RomFSObjectHdr {
+    // int:28 nextEntryPosition;
+    // int:1 executable;
+    // RomFSEntryType type;
+}
+
+struct RomFSObject {
+    RomFSObjectHdr header;
+}
+
+struct RomfsFile {
+    RomFSHeader header;
+    RomFSObject entry;
+}

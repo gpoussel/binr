@@ -1,0 +1,32 @@
+#name "Android Manifest Format"
+#extension ".xml"
+#endianness "little"
+
+// Source: https://www.sweetscape.com/010editor/repository/files/AndroidManifest.bt
+
+struct Header {
+    uint:32 magicNumber;
+    uint:32 fileSize;
+}
+
+struct StringChunk {
+    uint:32 signature;
+    uint:32 size;
+    uint:32 stringCount;
+    uint:32 styleCount;
+    @ignore(true) uint:32 reserved;
+    uint:32 stringPoolOffset;
+    uint:32 stylePoolOffset;
+    uint:32 stringOffsets[stringCount];
+    uint:32 styleOffsets[styleCount];
+
+    // TODO: Need "for" loop implementation
+    wchar body[(size - 7 - stringCount - styleCount)*2];
+}
+
+struct ManifestFile {
+    Header header;
+    StringChunk stringChunk;
+    
+    // TODO: _.seek(8 + stringChunk.size);
+}

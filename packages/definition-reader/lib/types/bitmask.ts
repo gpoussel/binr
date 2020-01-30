@@ -1,7 +1,7 @@
-import { each } from "lodash";
-
 import { Bitmask } from "@binr/model";
 import { BufferWrapper, Environment } from "@binr/shared";
+import { each } from "lodash";
+
 import { Type } from "./type";
 
 export class BitmaskType extends Type {

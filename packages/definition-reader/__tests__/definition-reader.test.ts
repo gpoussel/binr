@@ -1,6 +1,7 @@
-import { FieldStatement, Definition } from "@binr/model";
+import { Definition, FieldStatement } from "@binr/model";
 import { ExpressionEvaluator, FunctionScope, VariableScope } from "@binr/shared";
 import { each } from "lodash";
+
 import { DefinitionReader } from "../lib/definition-reader";
 
 function createAndCallParser(input: string): () => Definition {

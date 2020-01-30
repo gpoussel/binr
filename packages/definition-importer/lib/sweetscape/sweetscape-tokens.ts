@@ -1,4 +1,4 @@
-import { createToken, ITokenConfig, Lexer, TokenType } from "chevrotain";
+import { ITokenConfig, Lexer, TokenType, createToken } from "chevrotain";
 import * as escapeStringRegexp from "escape-string-regexp";
 import { each, filter, fromPairs, has, isEmpty, map } from "lodash";
 
@@ -47,7 +47,6 @@ export enum TokenName {
   Multiplication = "Multiplication",
   Division = "Division",
   Modulo = "Modulo",
-  DoubleArrow = "DoubleArrow",
   Equals = "Equals",
   Question = "Question",
   Period = "Period",
@@ -194,7 +193,6 @@ each(
     { name: TokenName.Modulo, symbol: "%" },
 
     // Others
-    { name: TokenName.DoubleArrow, symbol: "=>" },
     { name: TokenName.Equals, symbol: "=" },
     { name: TokenName.Question, symbol: "?" },
     { name: TokenName.Period, symbol: "." },

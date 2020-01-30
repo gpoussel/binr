@@ -1,40 +1,148 @@
-import { CstParser } from "chevrotain";
 import {
-  assign,
-  concat,
-  each,
-  filter,
-  find,
-  first,
-  get,
-  has,
-  isEmpty,
-  join,
-  keys,
-  map,
-  parseInt,
-  size,
-} from "lodash";
+  Annotation,
+  ArrayIndexExpression,
+  ArrayInitializationExpression,
+  ArraySelector,
+  AssignmentExpression,
+  AssignmentOperator,
+  BinaryExpression,
+  BlockStatement,
+  BooleanValue,
+  BreakStatement,
+  CaseSwitchElement,
+  CastExpression,
+  CommaExpression,
+  DefaultSwitchLabel,
+  Definition,
+  DoWhileStatement,
+  EmptyArraySelector,
+  EmptyStatement,
+  EnumDeclarationElement,
+  EnumDeclarationStatement,
+  EnumReferenceType,
+  Expression,
+  ExpressionArraySelector,
+  ExpressionStatement,
+  ForStatement,
+  ForwardStructDeclarationStatement,
+  FunctionCallExpression,
+  FunctionDeclarationStatement,
+  IdentifierValue,
+  IfElseStatement,
+  IfStatement,
+  InlineEnumDeclarationStatement,
+  InlineStructDeclarationStatement,
+  InlineUnionDeclarationStatement,
+  NamedType,
+  NumberValue,
+  Operator,
+  ParameterDeclaration,
+  PostfixExpression,
+  PrefixExpression,
+  PropertyAccessExpression,
+  ReturnStatement,
+  SizeofExpression,
+  Statement,
+  StringValue,
+  StructDeclarationStatement,
+  StructReferenceType,
+  SwitchLabel,
+  SwitchStatement,
+  TernaryExpression,
+  Type,
+  TypeModifier,
+  TypedefStatement,
+  UnaryExpression,
+  UnionDeclarationStatement,
+  Value,
+  ValueSwitchLabel,
+  VariableDeclaration,
+  VariableDeclarationStatement,
+  VariableModifier,
+  VoidType,
+  WhileStatement,
+} from "@binr/ast";
+import { CstParser } from "chevrotain";
+import { concat, each, first, get, has, isEmpty, isUndefined, keys, map, parseInt, size } from "lodash";
 
-function getFirstTokenImage(ctx: { [key: string]: any[] }) {
-  return first(get(ctx, first(keys(ctx))!)).image;
+const OPERATORS = {
+  BinaryAnd: Operator.BINARY_AND,
+  BinaryAndEquals: Operator.BINARY_AND_EQUALS,
+  BinaryOr: Operator.BINARY_OR,
+  BinaryXor: Operator.BINARY_XOR,
+  BooleanAnd: Operator.BOOLEAN_AND,
+  BooleanOr: Operator.BOOLEAN_OR,
+  Different: Operator.DIFFERENT,
+  Division: Operator.DIVISION,
+  DoubleEquals: Operator.DOUBLE_EQUALS,
+  DoubleMinus: Operator.DOUBLE_MINUS,
+  DoublePlus: Operator.DOUBLE_PLUS,
+  Exclamation: Operator.EXCLAMATION,
+  Greater: Operator.GREATER,
+  GreaterOrEqual: Operator.GREATER_OR_EQUAL,
+  Less: Operator.LESS,
+  LessOrEqual: Operator.LESS_OR_EQUAL,
+  Minus: Operator.MINUS,
+  Modulo: Operator.MODULO,
+  Multiplication: Operator.MULTIPLICATION,
+  Plus: Operator.PLUS,
+  ShiftLeft: Operator.SHIFT_LEFT,
+  ShiftRight: Operator.SHIFT_RIGHT,
+  Tilda: Operator.TILDA,
+  UnsignedShiftRight: Operator.UNSIGNED_SHIFT_RIGHT,
+};
+
+const ASSIGNMENT_OPERATORS = {
+  BinaryAndEquals: AssignmentOperator.BINARY_AND_EQUALS,
+  BinaryOrEquals: AssignmentOperator.BINARY_OR_EQUALS,
+  BinaryXorEquals: AssignmentOperator.BINARY_XOR_EQUALS,
+  DivisionEquals: AssignmentOperator.DIVISION_EQUALS,
+  Equals: AssignmentOperator.EQUALS,
+  MinusEquals: AssignmentOperator.MINUS_EQUALS,
+  ModuloEquals: AssignmentOperator.MODULO_EQUALS,
+  MultiplicationEquals: AssignmentOperator.MULTIPLICATION_EQUALS,
+  PlusEquals: AssignmentOperator.PLUS_EQUALS,
+  ShiftLeftEquals: AssignmentOperator.SHIFT_LEFT_EQUALS,
+  ShiftRightEquals: AssignmentOperator.SHIFT_RIGHT_EQUALS,
+  UnsignedShiftRightEquals: AssignmentOperator.UNSIGNED_SHIFT_RIGHT_EQUALS,
+};
+
+function getOperator(ctx: any): Operator {
+  return get(OPERATORS, keys(ctx)[0]);
 }
 
-function createBinaryExpressions(expressions: any[], operators: any[]) {
+function getAssignmentOperator(ctx: any): AssignmentOperator {
+  return get(ASSIGNMENT_OPERATORS, keys(ctx)[0]);
+}
+
+function createBinaryExpressions(expressions: Expression[], operators: Operator[]): Expression {
   if (isEmpty(operators) && size(expressions) === 1) {
     // In that case, we cannot create a binary expression
     // We can just return the only expression provided
-    return first(expressions);
+    return expressions[0];
   }
   // N expressions and (N - 1) operators
-  let currentExpression = first(expressions);
-  for (let i = 1; i < expressions.length; i += 1) {
-    currentExpression = {
-      type: "binaryExpression",
-      left: currentExpression,
-      right: expressions[i],
-      operator: operators[i - 1],
-    };
+  let currentExpression: Expression = expressions[0];
+  for (let i = 1; i < expressions.length; i++) {
+    currentExpression = new BinaryExpression(currentExpression, expressions[i], operators[i - 1]);
+  }
+  return currentExpression;
+}
+
+function createAssignmentExpressions(expressions: Expression[], operators: AssignmentOperator[]): Expression {
+  if (isEmpty(operators) && size(expressions) === 1) {
+    // In that case, we cannot create a binary expression
+    // We can just return the only expression provided
+    return expressions[0];
+  }
+  // N expressions and (N - 1) operators
+  let currentExpression: Expression = expressions[expressions.length - 1];
+  for (let i = 1; i < expressions.length; i++) {
+    currentExpression = new AssignmentExpression(
+      expressions[expressions.length - i - 1],
+      currentExpression,
+      operators[operators.length - i],
+    );
   }
   return currentExpression;
 }
@@ -62,7 +170,7 @@ function getString(stringLiteralToken: any[]) {
   }
 }
 
-function getIdentifier(identifierToken: any[]) {
+function getIdentifier(identifierToken: any[]): string {
   return first(identifierToken).image;
 }
 
@@ -73,497 +181,433 @@ export function getVisitor(parser: CstParser) {
       this.validateVisitor();
     }
 
-    public definition(ctx: any) {
-      return {
-        type: "definition",
-        content: map(ctx.topLevelStatement, this.visit.bind(this)),
-      };
+    public definition(ctx: any): Definition {
+      return new Definition(this.visitAll(ctx, "topLevelStatement"), []);
     }
 
-    public topLevelStatement(ctx: any) {
-      if (has(ctx, "statement")) {
-        // Statement at the top-level
-        return this.visit(ctx.statement);
-      }
-      if (has(ctx, "functionDeclarationStatement")) {
-        return this.visit(ctx.functionDeclarationStatement);
-      }
-      throw new Error();
+    public topLevelStatement(ctx: any): Statement {
+      return this.visitFirst(ctx, "statement", "functionDeclarationStatement");
     }
 
-    public functionDeclarationStatement(ctx: any) {
-      const { typeName, Identifier: identifiers, functionParameterDeclarationList } = ctx;
+    public functionDeclarationStatement(ctx: any): FunctionDeclarationStatement {
+      const returnType = this.visit(ctx.typeName);
+      const name = getIdentifier(ctx.Identifier);
       const forwardDeclaration = has(ctx, "SemiColon");
-      return {
-        type: "functionDeclaration",
-        returnType: this.visit(typeName),
-        name: getIdentifier(identifiers),
-        parameters: this.visit(functionParameterDeclarationList),
-        forwardDeclaration,
-        content: forwardDeclaration ? {} : this.visit(ctx.block),
-      };
+      const body = this.visitIfPresent(ctx, "block");
+      const parameters = this.visit(ctx.functionParameterDeclarationList);
+      return new FunctionDeclarationStatement(returnType, name, parameters, forwardDeclaration, body);
     }
 
-    public typeName(ctx: any) {
-      if (has(ctx, "typeNameWithoutVoid")) {
-        return this.visit(ctx.typeNameWithoutVoid);
-      }
-      if (has(ctx, "Void")) {
-        return {
-          name: "void",
-        };
-      }
-      throw new Error();
+    public typeName(ctx: any): Type {
+      return this.visitChoices(ctx, [
+        { name: "typeNameWithoutVoid", build: () => this.visit(ctx.typeNameWithoutVoid) },
+        {
+          name: "Void",
+          build: () => new VoidType(),
+        },
+      ]);
     }
 
-    public typeNameWithoutVoid(ctx: any) {
-      const simpleName = getIdentifier(ctx.Identifier);
-      const nameParts: string[] = [];
+    public typeNameWithoutVoid(ctx: any): Type {
+      const name = getIdentifier(ctx.Identifier);
+      if (has(ctx, "Struct")) {
+        return new StructReferenceType(name);
+      }
+      if (has(ctx, "Enum")) {
+        return new EnumReferenceType(name);
+      }
+
+      const modifiers: TypeModifier[] = [];
       if (has(ctx, "Signed")) {
-        nameParts.push("signed");
+        modifiers.push(TypeModifier.SIGNED);
       }
       if (has(ctx, "Unsigned")) {
-        nameParts.push("unsigned");
+        modifiers.push(TypeModifier.UNSIGNED);
       }
-      nameParts.push(simpleName);
-      return {
-        name: join(nameParts, " "),
-        array: has(ctx, "emptyArraySelector"),
-      };
+      const array: boolean = has(ctx, "emptyArraySelector");
+      return new NamedType(name, modifiers, array);
     }
 
-    public functionParameterDeclarationList(ctx: any) {
+    public functionParameterDeclarationList(ctx: any): ParameterDeclaration[] {
       if (has(ctx, "Void")) {
         return [];
       }
-      return map(ctx.functionParameterDeclaration, this.visit.bind(this));
+      return this.visitAll(ctx, "functionParameterDeclaration");
     }
 
-    public functionParameterDeclaration(ctx: any) {
+    public functionParameterDeclaration(ctx: any): ParameterDeclaration {
       const type = this.visit(ctx.typeNameWithoutVoid);
-      if (has(ctx, "anyArraySelector")) {
-        assign(type, this.visit(ctx.anyArraySelector));
-      }
-      const result: any = {
-        type,
-        reference: has(ctx, "BinaryAnd"),
-        name: getIdentifier(ctx.Identifier),
-      };
-      each(ctx.variableModifier, (modifier) => {
-        assign(result, this.visit(modifier));
-      });
-      return result;
+      const name = getIdentifier(ctx.Identifier);
+      const arraySelector = this.visitIfPresent(ctx, "anyArraySelector");
+      const byReference = has(ctx, "BinaryAnd");
+      const modifiers = this.visitAll(ctx, "modifier");
+      return new ParameterDeclaration(type, name, arraySelector, byReference, modifiers);
     }
 
-    public block(ctx: any) {
-      return this.visit(ctx.statementList);
+    public block(ctx: any): BlockStatement {
+      return new BlockStatement(this.visit(ctx.statementList));
     }
 
-    public statement(ctx: any) {
-      const matchingStatementType = filter(
-        [
-          "block",
-          "expressionStatement",
-          "localVariableDeclarationStatement",
-          "typedefStatement",
-          "structStatement",
-          "enumStatement",
-          "ifStatement",
-          "whileStatement",
-          "doWhileStatement",
-          "forStatement",
-          "switchStatement",
-          "returnStatement",
-          "breakStatement",
-        ],
-        (statementType) => has(ctx, statementType),
+    public statement(ctx: any): Statement {
+      return this.visitFirst(
+        ctx,
+        "block",
+        "expressionStatement",
+        "localVariableDeclarationStatement",
+        "typedefStatement",
+        "inlineStructStatement",
+        "structDeclarationStatement",
+        "forwardStructDeclarationStatement",
+        "inlineEnumStatement",
+        "enumDeclarationStatement",
+        "ifStatement",
+        "whileStatement",
+        "doWhileStatement",
+        "forStatement",
+        "switchStatement",
+        "returnStatement",
+        "breakStatement",
+        "emptyStatement",
       );
-      if (isEmpty(matchingStatementType)) {
-        // Just a semi-colon
-        return { type: "emptyStatement" };
+    }
+
+    public returnStatement(ctx: any): ReturnStatement {
+      if (!has(ctx, "assignmentExpression")) {
+        return new ReturnStatement();
       }
-      return this.visit(ctx[first(matchingStatementType)!]);
+      return new ReturnStatement(this.visit(ctx.assignmentExpression));
     }
 
-    public returnStatement(ctx: any) {
-      const result: any = {
-        type: "returnStatement",
-      };
-      if (has(ctx, "assignmentExpression")) {
-        result.assignmentExpression = this.visit(ctx.assignmentExpression);
+    public breakStatement(): BreakStatement {
+      return new BreakStatement();
+    }
+
+    public emptyStatement(): EmptyStatement {
+      return new EmptyStatement();
+    }
+
+    public whileStatement(ctx: any): WhileStatement {
+      return new WhileStatement(this.visit(ctx.parExpression), this.visit(ctx.statement));
+    }
+
+    public doWhileStatement(ctx: any): DoWhileStatement {
+      return new DoWhileStatement(this.visit(ctx.parExpression), this.visit(ctx.statement));
+    }
+
+    public switchStatement(ctx: any): SwitchStatement {
+      return new SwitchStatement(
+        this.visit(ctx.parExpression),
+        this.visitAll(ctx, "switchBlockStatementGroup"),
+      );
+    }
+
+    public switchBlockStatementGroup(ctx: any): CaseSwitchElement {
+      return new CaseSwitchElement(this.visit(ctx.switchLabels), this.visit(ctx.statementList));
+    }
+
+    public switchLabels(ctx: any): SwitchLabel[] {
+      const values: SwitchLabel[] = map(
+        this.visitAll(ctx, "simpleValue"),
+        (value) => new ValueSwitchLabel(value),
+      );
+      if (has(ctx, "Default")) {
+        values.push(new DefaultSwitchLabel());
       }
-      return result;
+      return values;
     }
 
-    public breakStatement() {
-      return {
-        type: "breakStatement",
-      };
+    public forStatement(ctx: any): ForStatement {
+      return new ForStatement(
+        this.visit(ctx.forInitUpdate[0]),
+        this.visit(ctx.assignmentExpression),
+        this.visit(ctx.forInitUpdate[1]),
+        this.visit(ctx.statement),
+      );
     }
 
-    public whileStatement(ctx: any) {
-      return {
-        type: "whileStatement",
-        condition: this.visit(ctx.parExpression),
-        body: this.visit(ctx.statement),
-      };
+    public localVariableDeclarationStatement(ctx: any): VariableDeclarationStatement {
+      return new VariableDeclarationStatement(
+        this.visit(ctx.typeName),
+        this.visitAll(ctx, "variableModifier"),
+        this.visitIfPresent(ctx, "bitfieldRest"),
+        this.visitIfPresent(ctx, "variableDeclarators"),
+        this.visitIfPresent(ctx, "annotations", []),
+      );
     }
 
-    public doWhileStatement(ctx: any) {
-      return {
-        type: "doWhileStatement",
-        condition: this.visit(ctx.parExpression),
-        body: this.visit(ctx.statement),
-      };
+    public variableDeclarators(ctx: any): VariableDeclaration[] {
+      return this.visitAll(ctx, "variableDeclarator");
     }
 
-    public switchStatement(ctx: any) {
-      return {
-        type: "switchStatement",
-        statements: map(ctx.switchBlockStatementGroup, this.visit.bind(this)),
-      };
+    public variableModifier(ctx: any): VariableModifier {
+      return this.visitChoices(ctx, [
+        { name: "Local", build: () => VariableModifier.LOCAL },
+        { name: "Const", build: () => VariableModifier.CONST },
+      ]);
     }
 
-    public switchBlockStatementGroup(ctx: any) {
-      return {
-        labels: this.visit(ctx.switchLabels),
-        body: this.visit(ctx.statementList),
-      };
+    public typedefStatement(ctx: any): TypedefStatement {
+      const type = this.visit(ctx.typeName);
+      const alias = getIdentifier(ctx.Identifier);
+      const arraySelector = this.visitIfPresent(ctx, "arraySelector");
+      const annotations = this.visitIfPresent(ctx, "annotations", []);
+      return new TypedefStatement(type, alias, arraySelector, annotations);
     }
 
-    public switchLabels(ctx: any) {
-      const stringLiterals = map(ctx.simpleValue, this.visit.bind(this));
-      const defaultStatement = has(ctx, "Default") ? [{ type: "defaultStatement" }] : [];
-      return concat(stringLiterals, defaultStatement);
+    public statementList(ctx: any): Statement[] {
+      return this.visitAll(ctx, "statement");
     }
 
-    public forStatement(ctx: any) {
-      return {
-        type: "forStatement",
-        initialization: this.visit(ctx.forInitUpdate[0]),
-        increment: this.visit(ctx.forInitUpdate[1]),
-        body: this.visit(ctx.statement),
-        condition: this.visit(ctx.assignmentExpression),
-      };
-    }
-
-    public localVariableDeclarationStatement(ctx: any) {
-      const result: any = {
-        type: "variableDeclaration",
-        variableType: this.visit(ctx.typeName),
-        annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
-      };
-      each(ctx.variableModifier, (modifier) => {
-        assign(result, this.visit(modifier));
-      });
-      if (has(ctx, "bitfieldRest")) {
-        result.bits = this.visit(ctx.bitfieldRest);
+    public ifStatement(ctx: any): IfStatement | IfElseStatement {
+      const condition = this.visit(ctx.parExpression);
+      const statements = this.visitAll(ctx, "statement");
+      if (size(statements) === 1) {
+        // No "else" statement
+        return new IfStatement(condition, statements[0]);
       }
-      if (has(ctx, "variableDeclarators")) {
-        result.declarations = this.visit(ctx.variableDeclarators);
-      }
-      if (has(ctx, "annotations")) {
-        result.annotations = this.visit(ctx.annotations);
-      }
-      return result;
+      return new IfElseStatement(condition, statements[0], statements[1]);
     }
 
-    public variableDeclarators(ctx: any) {
-      return map(ctx.variableDeclarator, this.visit.bind(this));
-    }
+    public inlineStructStatement(ctx: any): Statement {
+      const declarationCtx = get(first(get(ctx, "structDeclaration")), "children");
+      const parameters = this.visitIfPresent(declarationCtx, "functionParameterDeclarationList", []);
+      const body = this.visitIfPresent(declarationCtx, "block");
+      if (!has(ctx, "variableDeclarator")) {
+        // An inline declaration without variable is in fact a declaration
+        const name = getIdentifier(ctx.Identifier);
 
-    public variableModifier(ctx: any) {
-      if (has(ctx, "Local")) {
-        return { local: true };
-      }
-      if (has(ctx, "Const")) {
-        return { const: true };
-      }
-      throw new Error();
-    }
-
-    public typedefStatement(ctx: any) {
-      const result: any = {
-        type: "typeAlias",
-        name: this.visit(ctx.typeName),
-        alias: getIdentifier(ctx.Identifier),
-        annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
-      };
-      if (has(ctx, "arraySelector")) {
-        result.arraySelector = this.visit(ctx.arraySelector);
-      }
-      return result;
-    }
-
-    public statementList(ctx: any) {
-      return {
-        type: "statementList",
-        statements: map(ctx.statement, this.visit.bind(this)),
-      };
-    }
-
-    public ifStatement(ctx: any) {
-      const statements = map(ctx.statement, this.visit.bind(this));
-      const result: any = {
-        type: "ifStatement",
-        condition: this.visit(ctx.parExpression),
-        trueStatement: first(statements),
-      };
-      if (size(statements) > 1) {
-        [, result.falseStatement] = statements;
-      }
-      return result;
-    }
-
-    public structStatement(ctx: any) {
-      const type = has(ctx, "Struct") ? "structDeclaration" : "unionDeclaration";
-      const result: any = {
-        type,
-      };
-      if (has(ctx, "structDeclaration")) {
-        result.declaration = this.visit(ctx.structDeclaration);
-      }
-      assign(result, this.visit(ctx.variableDeclarator));
-      if (has(ctx, "Identifier")) {
-        result.alias = getIdentifier(ctx.Identifier);
-      }
-      return result;
-    }
-
-    public enumStatement(ctx: any) {
-      const result: any = {
-        type: "enumDeclaration",
-      };
-      if (has(ctx, "typeName")) {
-        result.baseType = this.visit(ctx.typeName);
-      }
-      if (has(ctx, "Identifier")) {
-        result.alias = getIdentifier(ctx.Identifier);
-      }
-      if (has(ctx, "variableDeclarators")) {
-        result.declarations = this.visit(ctx.variableDeclarators);
-      }
-      if (has(ctx, "variableDeclarator")) {
-        result.name = this.visit(ctx.variableDeclarator);
-      }
-      if (has(ctx, "enumDeclaration")) {
-        result.declarations = this.visit(ctx.enumDeclaration);
-      }
-      return result;
-    }
-
-    public variableDeclarator(ctx: any) {
-      const result: any = {
-        name: getIdentifier(ctx.Identifier),
-        annotations: has(ctx, "annotations") ? this.visit(ctx.annotations) : [],
-      };
-      assign(result, this.visit(ctx.variableDeclaratorRest));
-      if (has(ctx, "bitfieldRest")) {
-        result.bits = this.visit(ctx.bitfieldRest);
-      }
-      return result;
-    }
-
-    public structDeclaration(ctx: any) {
-      const result: any = {
-        body: this.visit(ctx.block),
-      };
-      if (has(ctx, "functionParameterDeclarationList")) {
-        result.parameters = this.visit(ctx.functionParameterDeclarationList);
-      }
-      return result;
-    }
-
-    public variableDeclaratorRest(ctx: any) {
-      const result: any = {};
-      if (has(ctx, "annotations")) {
-        result.annotations = this.visit(ctx.annotations);
-      }
-      if (has(ctx, "arguments")) {
-        result.arguments = this.visit(ctx.arguments);
-      }
-      if (has(ctx, "anyArraySelector")) {
-        const anyArraySelector = this.visit(ctx.anyArraySelector);
-        assign(result, anyArraySelector);
-      }
-      if (has(ctx, "variableInitializer")) {
-        result.initializer = this.visit(ctx.variableInitializer);
-      }
-      return result;
-    }
-
-    public expressionStatement(ctx: any) {
-      return this.visit(ctx.assignmentExpression);
-    }
-
-    public parExpression(ctx: any) {
-      return this.visit(ctx.assignmentExpression);
-    }
-
-    public assignmentExpression(ctx: any) {
-      const operators = map(ctx.assignmentOperator, this.visit.bind(this));
-      const expressions = map(ctx.ternaryExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public ternaryExpression(ctx: any) {
-      const condition = this.visit(ctx.booleanOrExpression);
-      if (has(ctx, "assignmentExpression")) {
-        const result: any = {
-          type: "ternaryExpression",
-          condition,
-          trueStatement: this.visit(ctx.assignmentExpression[0]),
-        };
-        if (has(ctx, "ternaryExpression")) {
-          result.falseStatement = this.visit(ctx.ternaryExpression);
+        if (has(ctx, "Struct")) {
+          return new StructDeclarationStatement(name, parameters, body);
         }
-        return result;
+        return new UnionDeclarationStatement(name, parameters, body);
       }
-      // Without ternary operators, the condition is in fact the expression itself
-      return condition;
-    }
+      const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
+      const variableDeclaration = this.visit(ctx.variableDeclarator);
 
-    public booleanOrExpression(ctx: any) {
-      const operators = map(ctx.BooleanOr, (token) => token.image);
-      const expressions = map(ctx.booleanAndExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public booleanAndExpression(ctx: any) {
-      const operators = map(ctx.BooleanAnd, (token) => token.image);
-      const expressions = map(ctx.binaryOrExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public binaryOrExpression(ctx: any) {
-      const operators = map(ctx.BinaryOr, (token) => token.image);
-      const expressions = map(ctx.binaryXorExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public binaryXorExpression(ctx: any) {
-      const operators = map(ctx.BinaryXor, (token) => token.image);
-      const expressions = map(ctx.binaryAndExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public binaryAndExpression(ctx: any) {
-      const operators = map(ctx.BinaryAnd, (token) => token.image);
-      const expressions = map(ctx.equalityExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public equalityExpression(ctx: any) {
-      const operators = map(ctx.equalityOperator, this.visit.bind(this));
-      const expressions = map(ctx.relationalExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public relationalExpression(ctx: any) {
-      const operators = map(ctx.relationalOperator, this.visit.bind(this));
-      const expressions = map(ctx.shiftExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public shiftExpression(ctx: any) {
-      const operators = map(ctx.shiftOperator, this.visit.bind(this));
-      const expressions = map(ctx.additiveExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public additiveExpression(ctx: any) {
-      const operators = map(ctx.additiveOperator, this.visit.bind(this));
-      const expressions = map(ctx.multiplicativeExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public multiplicativeExpression(ctx: any) {
-      const operators = map(ctx.multiplicativeOperator, this.visit.bind(this));
-      const expressions = map(ctx.castExpression, this.visit.bind(this));
-      return createBinaryExpressions(expressions, operators);
-    }
-
-    public castExpression(ctx: any) {
-      if (has(ctx, "castOperation")) {
-        return this.visit(ctx.castOperation);
+      if (has(ctx, "Struct")) {
+        return new InlineStructDeclarationStatement(alias, variableDeclaration, parameters, body);
       }
-      if (has(ctx, "prefixExpression")) {
-        return this.visit(ctx.prefixExpression);
-      }
-      throw new Error();
+      return new InlineUnionDeclarationStatement(alias, variableDeclaration, parameters, body);
     }
 
-    public castOperation(ctx: any) {
-      return {
-        type: "castExpression",
-        typeName: this.visit(ctx.typeNameWithoutVoid),
-        expression: this.visit(ctx.prefixExpression),
-      };
+    public structDeclarationStatement(ctx: any): StructDeclarationStatement | UnionDeclarationStatement {
+      let name;
+      if (size(ctx.Identifier) === 1) {
+        // Single name: that's easy
+        name = getIdentifier(ctx.Identifier);
+      } else if (size(ctx.Identifier) === 2) {
+        // Ignore the first name: useless
+        name = ctx.Identifier[1].image;
+      } else {
+        throw new Error();
+      }
+      const annotations = this.visitIfPresent(ctx, "annotations", []);
+      const declarationCtx = get(first(get(ctx, "structDeclaration")), "children");
+      const parameters = this.visitIfPresent(declarationCtx, "functionParameterDeclarationList", []);
+      const body = this.visitIfPresent(declarationCtx, "block");
+
+      if (has(ctx, "Struct")) {
+        return new StructDeclarationStatement(name, parameters, body, annotations);
+      }
+      return new UnionDeclarationStatement(name, parameters, body, annotations);
     }
 
-    public prefixExpression(ctx: any) {
-      if (has(ctx, "postfixExpression")) {
-        return this.visit(ctx.postfixExpression);
-      }
-      if (has(ctx, "prefixOperator")) {
-        return {
-          type: "prefixExpression",
-          expression: this.visit(ctx.castExpression),
-          operator: this.visit(ctx.prefixOperator),
-        };
-      }
-      if (has(ctx, "unaryOperator")) {
-        return {
-          type: "unaryExpression",
-          expression: this.visit(ctx.castExpression),
-          operator: this.visit(ctx.unaryOperator),
-        };
-      }
-      throw new Error();
+    public forwardStructDeclarationStatement(ctx: any): ForwardStructDeclarationStatement {
+      return new ForwardStructDeclarationStatement(getIdentifier(ctx.Identifier));
     }
 
-    public postfixExpression(ctx: any) {
+    public inlineEnumStatement(ctx: any): InlineEnumDeclarationStatement {
+      const typeName = this.visitIfPresent(ctx, "typeName");
+      const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
+      const declarations = this.visitIfPresent(ctx, "enumDeclaration", []);
+      const variableDeclarations = this.visitIfPresent(ctx, "variableDeclarators", []);
+      return new InlineEnumDeclarationStatement(typeName, alias, declarations, variableDeclarations);
+    }
+
+    public enumDeclarationStatement(ctx: any): EnumDeclarationStatement {
+      let name;
+      if (size(ctx.Identifier) === 1) {
+        // Single name: that's easy
+        name = getIdentifier(ctx.Identifier);
+      } else if (size(ctx.Identifier) === 2) {
+        // Ignore the first name: useless
+        name = ctx.Identifier[1].image;
+      } else {
+        throw new Error();
+      }
+      const annotations = this.visitIfPresent(ctx, "annotations", []);
+      const typeName = this.visitIfPresent(ctx, "typeName");
+      const declarations = this.visitIfPresent(ctx, "enumDeclaration", []);
+      return new EnumDeclarationStatement(typeName, name, declarations, annotations);
+    }
+
+    public variableDeclarator(ctx: any): VariableDeclaration {
+      const name = getIdentifier(ctx.Identifier);
+      const variableDeclaratorRestCtx = get(first(get(ctx, "variableDeclaratorRest")), "children");
+      const annotations = concat(
+        this.visitIfPresent(ctx, "annotations", []),
+        this.visitIfPresent(variableDeclaratorRestCtx, "annotations", []),
+      );
+      const bitfield = this.visitIfPresent(ctx, "bitfieldRest");
+      const arraySelector = this.visitIfPresent(variableDeclaratorRestCtx, "anyArraySelector");
+      const typeArguments = this.visitIfPresent(variableDeclaratorRestCtx, "arguments", []);
+      const initializationExpression = this.visitIfPresent(variableDeclaratorRestCtx, "variableInitializer");
+      return new VariableDeclaration(
+        name,
+        bitfield,
+        arraySelector,
+        typeArguments,
+        initializationExpression,
+        annotations,
+      );
+    }
+
+    public expressionStatement(ctx: any): ExpressionStatement {
+      return new ExpressionStatement(this.visit(ctx.assignmentExpression));
+    }
+
+    public parExpression(ctx: any): Expression {
+      return this.visit(ctx.assignmentExpression);
+    }
+
+    public assignmentExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "ternaryExpression");
+      const operators = this.visitAll(ctx, "assignmentOperator");
+      if (isEmpty(operators)) {
+        // This is not an assignment, only an expression
+        return first(expressions);
+      }
+      return createAssignmentExpressions(expressions, operators);
+    }
+
+    public ternaryExpression(ctx: any): Expression {
+      const condition = this.visit(ctx.booleanOrExpression);
+      if (!has(ctx, "assignmentExpression")) {
+        // Without ternary operators, the condition is in fact the expression itself
+        return condition;
+      }
+      const trueExpression = this.visit(ctx.assignmentExpression[0]);
+      const falseExpression = this.visit(ctx.ternaryExpression);
+      return new TernaryExpression(condition, trueExpression, falseExpression);
+    }
+
+    public booleanOrExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "booleanAndExpression");
+      const operators = map(ctx.BooleanOr, () => Operator.BOOLEAN_OR);
+      return createBinaryExpressions(expressions, operators);
+    }
+
+    public booleanAndExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "binaryOrExpression");
+      const operators = map(ctx.BooleanAnd, () => Operator.BOOLEAN_AND);
+      return createBinaryExpressions(expressions, operators);
+    }
+
+    public binaryOrExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "binaryXorExpression");
+      const operators = map(ctx.BinaryOr, () => Operator.BINARY_OR);
+      return createBinaryExpressions(expressions, operators);
+    }
+
+    public binaryXorExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "binaryAndExpression");
+      const operators = map(ctx.BinaryXor, () => Operator.BINARY_XOR);
+      return createBinaryExpressions(expressions, operators);
+    }
+
+    public binaryAndExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "equalityExpression");
+      const operators = map(ctx.BinaryAnd, () => Operator.BINARY_AND);
+      return createBinaryExpressions(expressions, operators);
+    }
+
+    public equalityExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "relationalExpression");
+      const operators = this.visitAll(ctx, "equalityOperator");
+      return createBinaryExpressions(expressions, operators);
+    }
+
+    public relationalExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "shiftExpression");
+      const operators = this.visitAll(ctx, "relationalOperator");
+      return createBinaryExpressions(expressions, operators);
+    }
+
+    public shiftExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "additiveExpression");
+      const operators = this.visitAll(ctx, "shiftOperator");
+      return createBinaryExpressions(expressions, operators);
+    }
+
+    public additiveExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "multiplicativeExpression");
+      const operators = this.visitAll(ctx, "additiveOperator");
+      return createBinaryExpressions(expressions, operators);
+    }
+
+    public multiplicativeExpression(ctx: any): Expression {
+      const expressions = this.visitAll(ctx, "castExpression");
+      const operators = this.visitAll(ctx, "multiplicativeOperator");
+      return createBinaryExpressions(expressions, operators);
+    }
+
+    public castExpression(ctx: any): Expression {
+      return this.visitFirst(ctx, "castOperation", "prefixExpression");
+    }
+
+    public castOperation(ctx: any): CastExpression {
+      return new CastExpression(this.visit(ctx.prefixExpression), this.visit(ctx.typeNameWithoutVoid));
+    }
+
+    public prefixExpression(ctx: any): Expression {
+      return this.visitChoices(ctx, [
+        { name: "postfixExpression", build: () => this.visit(ctx.postfixExpression) },
+        {
+          name: "prefixOperator",
+          build: () => new PrefixExpression(this.visit(ctx.prefixExpression), this.visit(ctx.prefixOperator)),
+        },
+        {
+          name: "unaryOperator",
+          build: () => new UnaryExpression(this.visit(ctx.castExpression), this.visit(ctx.unaryOperator)),
+        },
+      ]);
+    }
+
+    public postfixExpression(ctx: any): Expression {
       const expression = this.visit(ctx.callExpression);
-      if (has(ctx, "postfixOperator")) {
-        let currentExpression = expression;
-        each(map(ctx.postfixOperator, this.visit.bind(this)), (operator) => {
-          currentExpression = {
-            type: "postfixExpression",
-            expression: currentExpression,
-            operator,
-          };
-        });
-        return currentExpression;
+      if (!has(ctx, "postfixOperator")) {
+        // Without operator, the expression is the result
+        return expression;
       }
-      // Without operator, the expression is the result
-      return expression;
+      let currentExpression = expression;
+      each(this.visitAll(ctx, "postfixOperator"), (operator) => {
+        currentExpression = new PostfixExpression(currentExpression, operator);
+      });
+      return currentExpression;
     }
 
-    public callExpression(ctx: any) {
-      const memberResult: any = this.visit(ctx.memberExpression);
-      let currentExpression = memberResult;
+    public callExpression(ctx: any): Expression {
+      const memberResult: Expression = this.visit(ctx.memberExpression);
+      let currentExpression: Expression = memberResult;
       each(ctx.callExpressionRest, (expressionRest) => {
         const { children: expressionRestChildren } = expressionRest;
         if (has(expressionRestChildren, "arguments")) {
           // That's a function call
-          currentExpression = {
-            type: "functionCallExpression",
-            name: currentExpression,
-            arguments: this.visit(expressionRestChildren.arguments),
-          };
+          currentExpression = new FunctionCallExpression(
+            currentExpression,
+            this.visit(expressionRestChildren.arguments),
+          );
         } else if (has(expressionRestChildren, "arraySelector")) {
           // That's an array index
-          currentExpression = {
-            type: "arrayIndexExpression",
-            expression: currentExpression,
-            index: this.visit(expressionRestChildren.arraySelector),
-          };
+          currentExpression = new ArrayIndexExpression(
+            currentExpression,
+            this.visit(expressionRestChildren.arraySelector),
+          );
         } else if (has(expressionRestChildren, "propertyAccess")) {
-          currentExpression = {
-            type: "propertyAccessExpression",
-            expression: currentExpression,
-            name: this.visit(expressionRestChildren.propertyAccess),
-          };
+          currentExpression = new PropertyAccessExpression(
+            currentExpression,
+            this.visit(expressionRestChildren.propertyAccess),
+          );
         } else {
           throw new Error();
         }
@@ -571,28 +615,26 @@ export function getVisitor(parser: CstParser) {
       return currentExpression;
     }
 
-    public propertyAccess(ctx: any) {
+    public propertyAccess(ctx: any): string {
       return getIdentifier(ctx.Identifier);
     }
 
-    public memberExpression(ctx: any) {
+    public memberExpression(ctx: any): Expression {
       const primaryResult: any = this.visit(ctx.primaryExpression);
       let currentExpression = primaryResult;
       each(ctx.memberExpressionRest, (expressionRest) => {
         const { children: expressionRestChildren } = expressionRest;
         if (has(expressionRestChildren, "arraySelector")) {
           // That's an array index
-          currentExpression = {
-            type: "arrayIndexExpression",
-            expression: currentExpression,
-            index: this.visit(expressionRestChildren.arraySelector),
-          };
+          currentExpression = new ArrayIndexExpression(
+            currentExpression,
+            this.visit(expressionRestChildren.arraySelector),
+          );
         } else if (has(expressionRestChildren, "propertyAccess")) {
-          currentExpression = {
-            type: "propertyAccessExpression",
-            expression: currentExpression,
-            name: this.visit(expressionRestChildren.propertyAccess),
-          };
+          currentExpression = new PropertyAccessExpression(
+            currentExpression,
+            this.visit(expressionRestChildren.propertyAccess),
+          );
         } else {
           throw new Error();
         }
@@ -600,194 +642,182 @@ export function getVisitor(parser: CstParser) {
       return currentExpression;
     }
 
-    public primaryExpression(ctx: any) {
-      if (has(ctx, "simpleValue")) {
-        return this.visit(ctx.simpleValue);
-      }
-      if (has(ctx, "expressionOrTypeName")) {
-        // Sizeof expression
-        return {
-          type: "sizeofExpression",
-          operand: this.visit(ctx.expressionOrTypeName),
-        };
-      }
-      return this.visit(ctx.parExpression);
-    }
-
-    public assignmentOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
-    }
-
-    public equalityOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
-    }
-
-    public relationalOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
-    }
-
-    public shiftOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
-    }
-
-    public additiveOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
-    }
-
-    public multiplicativeOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
-    }
-
-    public prefixOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
-    }
-
-    public postfixOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
-    }
-
-    public unaryOperator(ctx: any) {
-      return getFirstTokenImage(ctx);
-    }
-
-    public number(ctx: { [key: string]: any[] }) {
-      const tokenDefinitions = [
-        { tokenName: "NumberBinaryLiteral", convert: (value: string) => parseInt(value.substring(2), 2) },
-        { tokenName: "NumberOctalLiteral", convert: (value: string) => parseInt(value, 8) },
-        { tokenName: "NumberDecimalLiteral", convert: (value: string) => parseInt(value, 10) },
+    public primaryExpression(ctx: any): Expression {
+      return this.visitChoices(ctx, [
+        { name: "simpleValue", build: () => this.visit(ctx.simpleValue) },
         {
-          tokenName: "NumberHexadecimalLiteral",
-          convert: (value: string) => parseInt(value.substring(2).replace(/L$/, ""), 16),
+          name: "expressionOrTypeName",
+          build: () => new SizeofExpression(this.visit(ctx.expressionOrTypeName)),
+        },
+        { name: "parExpression", build: () => this.visit(ctx.parExpression) },
+      ]);
+    }
+
+    public assignmentOperator(ctx: any): AssignmentOperator {
+      return getAssignmentOperator(ctx);
+    }
+
+    public equalityOperator(ctx: any): Operator {
+      return getOperator(ctx);
+    }
+
+    public relationalOperator(ctx: any): Operator {
+      return getOperator(ctx);
+    }
+
+    public shiftOperator(ctx: any): Operator {
+      return getOperator(ctx);
+    }
+
+    public additiveOperator(ctx: any): Operator {
+      return getOperator(ctx);
+    }
+
+    public multiplicativeOperator(ctx: any): Operator {
+      return getOperator(ctx);
+    }
+
+    public prefixOperator(ctx: any): Operator {
+      return getOperator(ctx);
+    }
+
+    public postfixOperator(ctx: any): Operator {
+      return getOperator(ctx);
+    }
+
+    public unaryOperator(ctx: any): Operator {
+      return getOperator(ctx);
+    }
+
+    public number(ctx: { [key: string]: any[] }): number {
+      return this.visitChoices(ctx, [
+        {
+          name: "NumberBinaryLiteral",
+          build: (value: any[]) => parseInt(first(value).image.substring(2), 2),
+        },
+        { name: "NumberOctalLiteral", build: (value: any[]) => parseInt(first(value).image, 8) },
+        { name: "NumberDecimalLiteral", build: (value: any[]) => parseInt(first(value).image, 10) },
+        {
+          name: "NumberHexadecimalLiteral",
+          build: (value: any[]) =>
+            parseInt(
+              first(value)
+                .image.substring(2)
+                .replace(/[Lu]$/, ""),
+              16,
+            ),
         },
         {
-          tokenName: "NumberHexadecimalLiteral2",
-          convert: (value: string) => parseInt(value.replace(/h$/, ""), 16),
+          name: "NumberHexadecimalLiteral2",
+          build: (value: any[]) => parseInt(first(value).image.replace(/h$/, ""), 16),
         },
-      ];
-      const actualToken = find(tokenDefinitions, (tokenDefinition) => has(ctx, tokenDefinition.tokenName));
-      return actualToken!.convert(first(ctx[actualToken!.tokenName]).image);
+      ]);
     }
 
-    public expressionOrTypeName(ctx: any) {
-      if (has(ctx, "assignmentExpression")) {
-        return this.visit(ctx.assignmentExpression);
-      }
-      if (has(ctx, "typeNameWithoutVoid")) {
-        return this.visit(ctx.typeNameWithoutVoid);
-      }
-      throw new Error();
+    public expressionOrTypeName(ctx: any): Expression | Type {
+      return this.visitFirst(ctx, "assignmentExpression", "typeNameWithoutVoid");
     }
 
-    public arguments(ctx: any) {
-      return map(ctx.assignmentExpression, this.visit.bind(this));
+    public arguments(ctx: any): Expression[] {
+      return this.visitAll(ctx, "assignmentExpression");
     }
 
-    public annotations(ctx: any) {
-      return map(ctx.annotation, this.visit.bind(this));
+    public annotations(ctx: any): Annotation[] {
+      return this.visitAll(ctx, "annotation");
     }
 
-    public annotation(ctx: any) {
-      return {
-        key: getIdentifier(ctx.Identifier),
-        value: this.visit(ctx.simpleValue),
-      };
+    public annotation(ctx: any): Annotation {
+      return new Annotation(getIdentifier(ctx.Identifier), this.visit(ctx.simpleValue));
     }
 
-    public arrayInitializer(ctx: any) {
-      return {
-        type: "arrayDeclaration",
-        values: map(ctx.assignmentExpression, this.visit.bind(this)),
-      };
+    public arrayInitializer(ctx: any): ArrayInitializationExpression {
+      return new ArrayInitializationExpression(this.visitAll(ctx, "assignmentExpression"));
     }
 
-    public bitfieldRest(ctx: any) {
+    public bitfieldRest(ctx: any): Expression {
       return this.visit(ctx.additiveExpression);
     }
 
-    public enumDeclaration(ctx: any) {
-      return map(ctx.enumElementDeclaration, this.visit.bind(this));
+    public enumDeclaration(ctx: any): EnumDeclarationElement[] {
+      return this.visitAll(ctx, "enumElementDeclaration");
     }
 
-    public enumElementDeclaration(ctx: any) {
-      const result: any = {
-        name: getIdentifier(ctx.Identifier),
-      };
-      if (has(ctx, "assignmentExpression")) {
-        result.value = this.visit(ctx.assignmentExpression);
-      }
-      return result;
+    public enumElementDeclaration(ctx: any): EnumDeclarationElement {
+      return new EnumDeclarationElement(
+        getIdentifier(ctx.Identifier),
+        this.visitIfPresent(ctx, "assignmentExpression"),
+      );
     }
 
-    public forInitUpdate(ctx: any) {
-      return {
-        type: "commaExpression",
-        expressions: map(ctx.assignmentExpression, this.visit.bind(this)),
-      };
+    public forInitUpdate(ctx: any): CommaExpression {
+      return new CommaExpression(this.visitAll(ctx, "assignmentExpression"));
     }
 
-    public arraySelector(ctx: any) {
+    public arraySelector(ctx: any): Expression {
       return this.visit(ctx.assignmentExpression);
     }
 
-    public anyArraySelector(ctx: any) {
-      if (has(ctx, "emptyArraySelector")) {
-        return {
-          array: true,
-        };
-      }
-      if (has(ctx, "arraySelector")) {
-        return {
-          array: true,
-          arraySelector: this.visit(ctx.arraySelector),
-        };
-      }
-      throw new Error();
+    public anyArraySelector(ctx: any): ArraySelector {
+      return this.visitChoices(ctx, [
+        { name: "emptyArraySelector", build: () => new EmptyArraySelector() },
+        {
+          name: "arraySelector",
+          build: () => new ExpressionArraySelector(this.visit(ctx.arraySelector)),
+        },
+      ]);
     }
 
-    public variableInitializer(ctx: any) {
-      if (has(ctx, "assignmentExpression")) {
-        return this.visit(ctx.assignmentExpression);
-      }
-      if (has(ctx, "arrayInitializer")) {
-        return this.visit(ctx.arrayInitializer);
-      }
-      throw new Error();
+    public variableInitializer(ctx: any): Expression {
+      return this.visitFirst(ctx, "assignmentExpression", "arrayInitializer");
     }
 
-    public simpleValue(ctx: any) {
-      if (has(ctx, "number")) {
-        return {
-          type: "number",
-          value: this.visit(ctx.number),
-        };
-      }
-      if (has(ctx, "boolean")) {
-        return {
-          type: "boolean",
-          value: this.visit(ctx.boolean),
-        };
-      }
-      if (has(ctx, "Identifier")) {
-        return {
-          type: "identifier",
-          name: getIdentifier(ctx.Identifier),
-        };
-      }
-      if (has(ctx, "StringLiteral")) {
-        return {
-          type: "string",
-          string: getString(ctx.StringLiteral),
-        };
-      }
-      throw new Error();
+    public simpleValue(ctx: any): Value {
+      return this.visitChoices(ctx, [
+        { name: "number", build: () => new NumberValue(this.visit(ctx.number)) },
+        { name: "boolean", build: () => new BooleanValue(this.visit(ctx.boolean)) },
+        { name: "Identifier", build: () => new IdentifierValue(getIdentifier(ctx.Identifier)) },
+        { name: "StringLiteral", build: () => new StringValue(getString(ctx.StringLiteral)) },
+      ]);
     }
 
-    public boolean(ctx: any) {
-      if (has(ctx, "True")) {
-        return true;
+    public boolean(ctx: any): boolean {
+      return this.visitChoices(ctx, [
+        { name: "True", build: () => true },
+        { name: "False", build: () => false },
+      ]);
+    }
+
+    private visitIfPresent(ctx: any, propertyName: string, defaultValue?: any): any {
+      return has(ctx, propertyName) ? this.visit(get(ctx, propertyName)) : defaultValue;
+    }
+
+    private visitAll(ctx: any, propertyName: string): any[] {
+      return map(get(ctx, propertyName), this.visit.bind(this));
+    }
+
+    private visitFirst(ctx: any, ...propertyNames: string[]): any {
+      for (let i = 0; i < propertyNames.length; ++i) {
+        if (has(ctx, propertyNames[i])) {
+          return this.visit(get(ctx, propertyNames[i]));
+        }
       }
-      if (has(ctx, "False")) {
-        return false;
+      throw new Error(
+        `Context does not contain expected property name (expected: ${propertyNames}, was: ${keys(ctx)})`,
+      );
+    }
+
+    private visitChoices(
+      ctx: any,
+      choices: { name: string; build: (value: any) => any }[],
+      defaultBuilder?: () => any,
+    ): any {
+      for (let i = 0; i < choices.length; ++i) {
+        if (has(ctx, choices[i].name)) {
+          return choices[i].build(get(ctx, choices[i].name));
+        }
+      }
+      if (!isUndefined(defaultBuilder)) {
+        return defaultBuilder();
       }
       throw new Error();
     }

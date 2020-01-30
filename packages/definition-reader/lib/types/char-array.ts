@@ -1,6 +1,6 @@
+import { BufferWrapper, Environment } from "@binr/shared";
 import { join } from "lodash";
 
-import { BufferWrapper, Environment } from "@binr/shared";
 import { Type } from "./type";
 
 export class CharArrayType extends Type {

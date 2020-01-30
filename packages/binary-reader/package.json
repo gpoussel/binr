@@ -25,6 +25,7 @@
     "url": "https://github.com/gpoussel/binr/issues"
   },
   "dependencies": {
+    "@binr/ast": "^1.0.0",
     "@binr/definition-reader": "^1.0.0",
     "@binr/model": "^1.0.0",
     "@binr/shared": "^1.0.0",

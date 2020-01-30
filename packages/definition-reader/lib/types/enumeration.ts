@@ -1,7 +1,7 @@
-import { find, get } from "lodash";
-
 import { Enumeration } from "@binr/model";
 import { BufferWrapper, Environment } from "@binr/shared";
+import { find, get } from "lodash";
+
 import { Type } from "./type";
 
 export class EnumerationType extends Type {

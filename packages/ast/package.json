@@ -1,0 +1,29 @@
+{
+  "name": "@binr/ast",
+  "version": "1.0.0",
+  "description": "AST classes for Binr application",
+  "author": "Guillaume Poussel <gpoussel@gmail.com>",
+  "homepage": "https://github.com/gpoussel/binr/tree/master/packages/ast#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "directories": {
+    "src": "src"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gpoussel/binr.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "tsc": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/gpoussel/binr/issues"
+  },
+  "dependencies": {
+    "@binr/shared": "^1.0.0"
+  }
+}

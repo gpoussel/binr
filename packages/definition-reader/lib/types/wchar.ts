@@ -1,4 +1,5 @@
 import { BufferWrapper } from "@binr/shared";
+
 import { Type } from "./type";
 
 export class WCharType extends Type {

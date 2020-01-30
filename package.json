@@ -20,6 +20,7 @@
     "test": "jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "test:watch": "jest --watch --verbose",
+    "test:watch:snapshot": "jest --watch --verbose --update-snapshot",
     "test:watch:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --watch --runInBand",
     "test:coverage": "jest --coverage",
     "tsc": "npx lerna run tsc"
@@ -33,13 +34,24 @@
   "devDependencies": {
     "@types/jest": "^25.1.0",
     "@types/node": "^13.5.0",
+    "import-sort-style-module": "^6.0.0",
     "jest": "^25.1.0",
     "lerna": "^3.20.2",
     "prettier": "^1.19.1",
+    "prettier-plugin-import-sort": "^0.0.3",
     "ts-jest": "^25.0.0",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.1.0",
     "typescript": "^3.7.5"
+  },
+  "resolutions": {
+    "kind-of": "6.0.3"
+  },
+  "importSort": {
+    ".ts": {
+      "style": "module",
+      "parser": "typescript"
+    }
   }
 }

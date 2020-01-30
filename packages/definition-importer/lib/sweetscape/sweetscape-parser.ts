@@ -1,6 +1,6 @@
 import { CstParser } from "chevrotain";
-
 import { values } from "lodash";
+
 import { tokens } from "./sweetscape-tokens";
 
 export class SweetscapeParser extends CstParser {
@@ -10,8 +10,11 @@ export class SweetscapeParser extends CstParser {
       { ALT: () => this.SUBRULE(this.expressionStatement) },
       { ALT: () => this.SUBRULE(this.localVariableDeclarationStatement) },
       { ALT: () => this.SUBRULE(this.typedefStatement) },
-      { ALT: () => this.SUBRULE(this.structStatement) },
-      { ALT: () => this.SUBRULE(this.enumStatement) },
+      { ALT: () => this.SUBRULE(this.inlineStructStatement) },
+      { ALT: () => this.SUBRULE(this.structDeclarationStatement) },
+      { ALT: () => this.SUBRULE(this.forwardStructDeclarationStatement) },
+      { ALT: () => this.SUBRULE(this.inlineEnumStatement) },
+      { ALT: () => this.SUBRULE(this.enumDeclarationStatement) },
       { ALT: () => this.SUBRULE(this.ifStatement) },
       { ALT: () => this.SUBRULE(this.whileStatement) },
       { ALT: () => this.SUBRULE(this.doWhileStatement) },
@@ -19,7 +22,7 @@ export class SweetscapeParser extends CstParser {
       { ALT: () => this.SUBRULE(this.switchStatement) },
       { ALT: () => this.SUBRULE(this.returnStatement) },
       { ALT: () => this.SUBRULE(this.breakStatement) },
-      { ALT: () => this.CONSUME(tokens.SemiColon) },
+      { ALT: () => this.SUBRULE(this.emptyStatement) },
     ]);
   });
 
@@ -89,46 +92,61 @@ export class SweetscapeParser extends CstParser {
   private typedefStatement = this.RULE("typedefStatement", () => {
     this.CONSUME(tokens.Typedef);
     this.SUBRULE(this.typeName); // Type
-    this.CONSUME2(tokens.Identifier); // Alias
+    this.CONSUME3(tokens.Identifier); // Alias
     this.OPTION4(() => this.SUBRULE(this.arraySelector));
     this.OPTION2(() => this.SUBRULE(this.annotations));
     this.CONSUME(tokens.SemiColon);
   });
 
-  private structStatement = this.RULE("structStatement", () => {
-    this.OPTION(() => this.CONSUME(tokens.Typedef));
+  private inlineStructStatement = this.RULE("inlineStructStatement", () => {
     this.OR2([{ ALT: () => this.CONSUME(tokens.Struct) }, { ALT: () => this.CONSUME(tokens.Union) }]);
     this.OPTION2(() => this.CONSUME(tokens.Identifier)); // Alias
-    this.OPTION3(() => {
-      this.SUBRULE2(this.structDeclaration);
-      this.OPTION4(() => this.SUBRULE(this.variableDeclarator));
-    });
+    this.SUBRULE2(this.structDeclaration);
+    this.OPTION4(() => this.SUBRULE(this.variableDeclarator));
     this.CONSUME(tokens.SemiColon);
   });
 
-  private enumStatement = this.RULE("enumStatement", () => {
-    this.OPTION(() => this.CONSUME(tokens.Typedef));
+  private structDeclarationStatement = this.RULE("structDeclarationStatement", () => {
+    this.CONSUME(tokens.Typedef);
+    this.OR2([{ ALT: () => this.CONSUME(tokens.Struct) }, { ALT: () => this.CONSUME(tokens.Union) }]);
+    this.OPTION3(() => this.CONSUME3(tokens.Identifier));
+    this.SUBRULE2(this.structDeclaration);
+    this.OPTION2(() => this.CONSUME2(tokens.Identifier));
+    this.OPTION(() => this.SUBRULE(this.annotations));
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private forwardStructDeclarationStatement = this.RULE("forwardStructDeclarationStatement", () => {
+    this.CONSUME(tokens.Struct);
+    this.CONSUME(tokens.Identifier); // Structure name
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private inlineEnumStatement = this.RULE("inlineEnumStatement", () => {
     this.CONSUME(tokens.Enum);
     this.OPTION2(() => {
       this.CONSUME(tokens.Less);
       this.SUBRULE(this.typeName);
       this.CONSUME(tokens.Greater);
     });
-    this.OR([
-      {
-        ALT: () => {
-          this.CONSUME1(tokens.Identifier); // Type name
-          this.OPTION6(() => this.SUBRULE(this.enumDeclaration));
-          this.OPTION4(() => this.SUBRULE(this.variableDeclarator));
-        },
-      },
-      {
-        ALT: () => {
-          this.SUBRULE2(this.enumDeclaration);
-          this.OPTION5(() => this.SUBRULE2(this.variableDeclarators));
-        },
-      },
-    ]);
+    this.OPTION(() => this.CONSUME(tokens.Identifier)); // Alias
+    this.SUBRULE2(this.enumDeclaration);
+    this.OPTION3(() => this.SUBRULE(this.variableDeclarators));
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private enumDeclarationStatement = this.RULE("enumDeclarationStatement", () => {
+    this.CONSUME(tokens.Typedef);
+    this.CONSUME(tokens.Enum);
+    this.OPTION4(() => {
+      this.CONSUME(tokens.Less);
+      this.SUBRULE(this.typeName);
+      this.CONSUME(tokens.Greater);
+    });
+    this.OPTION3(() => this.CONSUME3(tokens.Identifier));
+    this.SUBRULE(this.enumDeclaration);
+    this.OPTION2(() => this.CONSUME2(tokens.Identifier));
+    this.OPTION(() => this.SUBRULE(this.annotations));
     this.CONSUME(tokens.SemiColon);
   });
 
@@ -244,6 +262,10 @@ export class SweetscapeParser extends CstParser {
 
   private breakStatement = this.RULE("breakStatement", () => {
     this.CONSUME(tokens.Break);
+    this.CONSUME(tokens.SemiColon);
+  });
+
+  private emptyStatement = this.RULE("emptyStatement", () => {
     this.CONSUME(tokens.SemiColon);
   });
 
@@ -575,18 +597,18 @@ export class SweetscapeParser extends CstParser {
 
   private assignmentOperator = this.RULE("assignmentOperator", () => {
     this.OR([
-      { ALT: () => this.CONSUME(tokens.Equals) },
-      { ALT: () => this.CONSUME(tokens.MultiplicationEquals) },
+      { ALT: () => this.CONSUME(tokens.BinaryAndEquals) },
+      { ALT: () => this.CONSUME(tokens.BinaryOrEquals) },
+      { ALT: () => this.CONSUME(tokens.BinaryXorEquals) },
       { ALT: () => this.CONSUME(tokens.DivisionEquals) },
-      { ALT: () => this.CONSUME(tokens.ModuloEquals) },
-      { ALT: () => this.CONSUME(tokens.PlusEquals) },
+      { ALT: () => this.CONSUME(tokens.Equals) },
       { ALT: () => this.CONSUME(tokens.MinusEquals) },
+      { ALT: () => this.CONSUME(tokens.ModuloEquals) },
+      { ALT: () => this.CONSUME(tokens.MultiplicationEquals) },
+      { ALT: () => this.CONSUME(tokens.PlusEquals) },
       { ALT: () => this.CONSUME(tokens.ShiftLeftEquals) },
       { ALT: () => this.CONSUME(tokens.ShiftRightEquals) },
       { ALT: () => this.CONSUME(tokens.UnsignedShiftRightEquals) },
-      { ALT: () => this.CONSUME(tokens.BinaryAndEquals) },
-      { ALT: () => this.CONSUME(tokens.BinaryXorEquals) },
-      { ALT: () => this.CONSUME(tokens.BinaryOrEquals) },
     ]);
   });
 
@@ -710,6 +732,7 @@ export class SweetscapeParser extends CstParser {
         { ALT: () => this.CONSUME(tokens.Signed) },
         { ALT: () => this.CONSUME(tokens.Unsigned) },
         { ALT: () => this.CONSUME(tokens.Struct) },
+        { ALT: () => this.CONSUME(tokens.Enum) },
       ]),
     );
     this.CONSUME2(tokens.Identifier);

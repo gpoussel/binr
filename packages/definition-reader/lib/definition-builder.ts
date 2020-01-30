@@ -1,5 +1,6 @@
 import { Bitmask, BitmaskEntry, Definition, EnumEntry, Enumeration, Structure } from "@binr/model";
 import { clone, defaultTo, each, find, get, has, includes, keyBy, map, remove, values } from "lodash";
+
 import { builtInTypes } from "./types";
 
 export class DefinitionBuilder {
