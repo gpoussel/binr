@@ -8559,7 +8559,14 @@ exports[`BinrDefinitionImporter, advanced parses example format definition (shx.
 Definition {
   "_content": Array [
     StructDeclarationStatement {
-      "_annotations": Array [],
+      "_annotations": Array [
+        Annotation {
+          "_key": "endianness",
+          "_value": StringValue {
+            "_value": "big",
+          },
+        },
+      ],
       "_body": BlockStatement {
         "_content": Array [
           VariableDeclarationStatement {
@@ -8716,7 +8723,14 @@ Definition {
       "_name": "ShapeType",
     },
     StructDeclarationStatement {
-      "_annotations": Array [],
+      "_annotations": Array [
+        Annotation {
+          "_key": "endianness",
+          "_value": StringValue {
+            "_value": "little",
+          },
+        },
+      ],
       "_body": BlockStatement {
         "_content": Array [
           VariableDeclarationStatement {
@@ -8928,7 +8942,14 @@ Definition {
       "_parameters": Array [],
     },
     StructDeclarationStatement {
-      "_annotations": Array [],
+      "_annotations": Array [
+        Annotation {
+          "_key": "endianness",
+          "_value": StringValue {
+            "_value": "big",
+          },
+        },
+      ],
       "_body": BlockStatement {
         "_content": Array [
           VariableDeclarationStatement {

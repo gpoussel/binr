@@ -46,29 +46,29 @@ export function getVisitor(parser: CstParser) {
     }
 
     public topLevelClause(ctx: any): Statement {
-      // TODO annotationClause (array)
-      // TODO structureClause
-      // TODO bitmaskClause
-      return this.visitFirst(ctx, "structureClause", "enumClause", "bitmaskClause");
-    }
-
-    public structureClause(ctx: any): StructDeclarationStatement {
-      // TODO "exported" flag (ExportToken)
-      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
-      const statements: Statement[] = this.visitAll(ctx, "statementClause");
-      return new StructDeclarationStatement(name, [], new BlockStatement(statements), []);
-    }
-
-    public enumClause(ctx: any): EnumDeclarationStatement {
-      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
-      const entries = times(ctx.IdentifierToken.length - 1, (i) => {
-        const key = this.getIdentifierName(ctx.IdentifierToken[i + 1]);
-        const value = this.visit(ctx.numberClause[i]);
-        return new EnumDeclarationElement(key, value);
-      });
-      const parentType = this.visit(ctx.typeReferenceClause);
-      // TODO annotations
-      return new EnumDeclarationStatement(parentType, name, entries, []);
+      const annotations = this.visitAll(ctx, "annotationClause");
+      if (has(ctx, "structureClause")) {
+        const structureCtx = ctx.structureClause[0].children;
+        // TODO "exported" flag (ExportToken)
+        const name = this.getIdentifierName(structureCtx.IdentifierToken[0]);
+        const statements: Statement[] = this.visitAll(structureCtx, "statementClause");
+        return new StructDeclarationStatement(name, [], new BlockStatement(statements), annotations);
+      }
+      if (has(ctx, "enumClause")) {
+        const enumCtx = ctx.enumClause[0].children;
+        const name = this.getIdentifierName(enumCtx.IdentifierToken[0]);
+        const entries = times(enumCtx.IdentifierToken.length - 1, (i) => {
+          const key = this.getIdentifierName(enumCtx.IdentifierToken[i + 1]);
+          const value = this.visit(enumCtx.numberClause[i]);
+          return new EnumDeclarationElement(key, value);
+        });
+        const parentType = this.visit(enumCtx.typeReferenceClause);
+        return new EnumDeclarationStatement(parentType, name, entries, annotations);
+      }
+      if (has(ctx, "bitmaskClause")) {
+        // TODO bitmaskClause
+      }
+      throw new Error();
     }
 
     public statementClause(ctx: any): Statement {
@@ -312,10 +312,6 @@ export function getVisitor(parser: CstParser) {
         entries,
         parentType,
       };
-    }
-
-    public BoxMemberUntilExpression(ctx: any) {
-      return this.visit(ctx.Expression);
     }
 
     public MemberCallNewExpressionExtension(ctx: any) {
