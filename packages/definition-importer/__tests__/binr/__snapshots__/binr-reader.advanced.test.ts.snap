@@ -2225,31 +2225,45 @@ Definition {
       },
       "_declarations": Array [
         BitmaskDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "TTEMBED_SUBSET",
         },
         BitmaskDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "TTEMBED_TTCOMPRESSED",
         },
         BitmaskDeclarationElement {
-          "_expression": 16,
+          "_expression": NumberValueExpression {
+            "_value": 16,
+          },
           "_name": "TTEMBED_FAILIFVARIATIONSIMULATED",
         },
         BitmaskDeclarationElement {
-          "_expression": 32,
+          "_expression": NumberValueExpression {
+            "_value": 32,
+          },
           "_name": "TTMBED_EMBEDEUDC",
         },
         BitmaskDeclarationElement {
-          "_expression": 64,
+          "_expression": NumberValueExpression {
+            "_value": 64,
+          },
           "_name": "TTEMBED_VALIDATIONTESTS",
         },
         BitmaskDeclarationElement {
-          "_expression": 128,
+          "_expression": NumberValueExpression {
+            "_value": 128,
+          },
           "_name": "TTEMBED_WEBOBJECT",
         },
         BitmaskDeclarationElement {
-          "_expression": 268435456,
+          "_expression": NumberValueExpression {
+            "_value": 268435456,
+          },
           "_name": "TTEMBED_XORENCRYPTDATA",
         },
       ],
@@ -4789,59 +4803,87 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "TAG_UTF8",
         },
         EnumDeclarationElement {
-          "_expression": 3,
+          "_expression": NumberValueExpression {
+            "_value": 3,
+          },
           "_name": "TAG_INTEGER",
         },
         EnumDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "TAG_FLOAT",
         },
         EnumDeclarationElement {
-          "_expression": 5,
+          "_expression": NumberValueExpression {
+            "_value": 5,
+          },
           "_name": "TAG_LONG",
         },
         EnumDeclarationElement {
-          "_expression": 6,
+          "_expression": NumberValueExpression {
+            "_value": 6,
+          },
           "_name": "TAG_DOUBLE",
         },
         EnumDeclarationElement {
-          "_expression": 7,
+          "_expression": NumberValueExpression {
+            "_value": 7,
+          },
           "_name": "TAG_CLASS",
         },
         EnumDeclarationElement {
-          "_expression": 8,
+          "_expression": NumberValueExpression {
+            "_value": 8,
+          },
           "_name": "TAG_STRING",
         },
         EnumDeclarationElement {
-          "_expression": 9,
+          "_expression": NumberValueExpression {
+            "_value": 9,
+          },
           "_name": "TAG_FIELDREF",
         },
         EnumDeclarationElement {
-          "_expression": 10,
+          "_expression": NumberValueExpression {
+            "_value": 10,
+          },
           "_name": "TAG_METHODREF",
         },
         EnumDeclarationElement {
-          "_expression": 11,
+          "_expression": NumberValueExpression {
+            "_value": 11,
+          },
           "_name": "TAG_INTERFACEMETHODREF",
         },
         EnumDeclarationElement {
-          "_expression": 12,
+          "_expression": NumberValueExpression {
+            "_value": 12,
+          },
           "_name": "TAG_NAMEANDTYPE",
         },
         EnumDeclarationElement {
-          "_expression": 15,
+          "_expression": NumberValueExpression {
+            "_value": 15,
+          },
           "_name": "TAG_METHODHANDLE_INFO",
         },
         EnumDeclarationElement {
-          "_expression": 16,
+          "_expression": NumberValueExpression {
+            "_value": 16,
+          },
           "_name": "TAG_METHODTYPE",
         },
         EnumDeclarationElement {
-          "_expression": 18,
+          "_expression": NumberValueExpression {
+            "_value": 18,
+          },
           "_name": "TAG_INVOKEDYNAMIC",
         },
       ],
@@ -4859,51 +4901,75 @@ Definition {
       },
       "_declarations": Array [
         BitmaskDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "ACC_PUBLIC",
         },
         BitmaskDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "ACC_PRIVATE",
         },
         BitmaskDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "ACC_PROTECTED",
         },
         BitmaskDeclarationElement {
-          "_expression": 8,
+          "_expression": NumberValueExpression {
+            "_value": 8,
+          },
           "_name": "ACC_STATIC",
         },
         BitmaskDeclarationElement {
-          "_expression": 16,
+          "_expression": NumberValueExpression {
+            "_value": 16,
+          },
           "_name": "ACC_FINAL",
         },
         BitmaskDeclarationElement {
-          "_expression": 32,
+          "_expression": NumberValueExpression {
+            "_value": 32,
+          },
           "_name": "ACC_SUPER",
         },
         BitmaskDeclarationElement {
-          "_expression": 64,
+          "_expression": NumberValueExpression {
+            "_value": 64,
+          },
           "_name": "ACC_VOLATILE",
         },
         BitmaskDeclarationElement {
-          "_expression": 128,
+          "_expression": NumberValueExpression {
+            "_value": 128,
+          },
           "_name": "ACC_TRANSIENT",
         },
         BitmaskDeclarationElement {
-          "_expression": 256,
+          "_expression": NumberValueExpression {
+            "_value": 256,
+          },
           "_name": "ACC_NATIVE",
         },
         BitmaskDeclarationElement {
-          "_expression": 512,
+          "_expression": NumberValueExpression {
+            "_value": 512,
+          },
           "_name": "ACC_INTERFACE",
         },
         BitmaskDeclarationElement {
-          "_expression": 1024,
+          "_expression": NumberValueExpression {
+            "_value": 1024,
+          },
           "_name": "ACC_ABSTRACT",
         },
         BitmaskDeclarationElement {
-          "_expression": 2048,
+          "_expression": NumberValueExpression {
+            "_value": 2048,
+          },
           "_name": "ACC_STRICT",
         },
       ],
@@ -6650,19 +6716,27 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 0,
+          "_expression": NumberValueExpression {
+            "_value": 0,
+          },
           "_name": "Posix",
         },
         EnumDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "Windows",
         },
         EnumDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "Dos",
         },
         EnumDeclarationElement {
-          "_expression": 3,
+          "_expression": NumberValueExpression {
+            "_value": 3,
+          },
           "_name": "DosWindows",
         },
       ],
@@ -6736,43 +6810,63 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 114,
+          "_expression": NumberValueExpression {
+            "_value": 114,
+          },
           "_name": "MARKER",
         },
         EnumDeclarationElement {
-          "_expression": 115,
+          "_expression": NumberValueExpression {
+            "_value": 115,
+          },
           "_name": "ARCHIVE",
         },
         EnumDeclarationElement {
-          "_expression": 116,
+          "_expression": NumberValueExpression {
+            "_value": 116,
+          },
           "_name": "FILE_OR_DIR",
         },
         EnumDeclarationElement {
-          "_expression": 117,
+          "_expression": NumberValueExpression {
+            "_value": 117,
+          },
           "_name": "COMMENT_OLD",
         },
         EnumDeclarationElement {
-          "_expression": 118,
+          "_expression": NumberValueExpression {
+            "_value": 118,
+          },
           "_name": "AV_OLD_1",
         },
         EnumDeclarationElement {
-          "_expression": 119,
+          "_expression": NumberValueExpression {
+            "_value": 119,
+          },
           "_name": "SUBBLOCK_OLD",
         },
         EnumDeclarationElement {
-          "_expression": 120,
+          "_expression": NumberValueExpression {
+            "_value": 120,
+          },
           "_name": "RR_OLD",
         },
         EnumDeclarationElement {
-          "_expression": 121,
+          "_expression": NumberValueExpression {
+            "_value": 121,
+          },
           "_name": "AV_OLD_2",
         },
         EnumDeclarationElement {
-          "_expression": 122,
+          "_expression": NumberValueExpression {
+            "_value": 122,
+          },
           "_name": "SUBBLOCK",
         },
         EnumDeclarationElement {
-          "_expression": 123,
+          "_expression": NumberValueExpression {
+            "_value": 123,
+          },
           "_name": "_END_",
         },
       ],
@@ -6790,47 +6884,69 @@ Definition {
       },
       "_declarations": Array [
         BitmaskDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "ARCHIVE_VOLUME",
         },
         BitmaskDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "ARCHIVE_COMMENT_PRESENT",
         },
         BitmaskDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "ARCHIVE_LOCKED",
         },
         BitmaskDeclarationElement {
-          "_expression": 8,
+          "_expression": NumberValueExpression {
+            "_value": 8,
+          },
           "_name": "ARCHIVE_SOLID",
         },
         BitmaskDeclarationElement {
-          "_expression": 16,
+          "_expression": NumberValueExpression {
+            "_value": 16,
+          },
           "_name": "NEW_VOLUME_NAMING",
         },
         BitmaskDeclarationElement {
-          "_expression": 32,
+          "_expression": NumberValueExpression {
+            "_value": 32,
+          },
           "_name": "AV_PRESENT",
         },
         BitmaskDeclarationElement {
-          "_expression": 64,
+          "_expression": NumberValueExpression {
+            "_value": 64,
+          },
           "_name": "RECOVERY_PRESENT",
         },
         BitmaskDeclarationElement {
-          "_expression": 128,
+          "_expression": NumberValueExpression {
+            "_value": 128,
+          },
           "_name": "BLOCK_HEADERS_ENCRYPTED",
         },
         BitmaskDeclarationElement {
-          "_expression": 256,
+          "_expression": NumberValueExpression {
+            "_value": 256,
+          },
           "_name": "IS_FIRST_VOLUME",
         },
         BitmaskDeclarationElement {
-          "_expression": 16384,
+          "_expression": NumberValueExpression {
+            "_value": 16384,
+          },
           "_name": "OLD_VERSION_IGNORE",
         },
         BitmaskDeclarationElement {
-          "_expression": 32768,
+          "_expression": NumberValueExpression {
+            "_value": 32768,
+          },
           "_name": "ADD_SIZE_PRESENT",
         },
       ],
@@ -6848,51 +6964,75 @@ Definition {
       },
       "_declarations": Array [
         BitmaskDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "from_PREV_VOLUME",
         },
         BitmaskDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "to_NEXT_VOLUME",
         },
         BitmaskDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "PASSWORD_ENCRYPTED",
         },
         BitmaskDeclarationElement {
-          "_expression": 8,
+          "_expression": NumberValueExpression {
+            "_value": 8,
+          },
           "_name": "FILE_COMMENT_PRESENT",
         },
         BitmaskDeclarationElement {
-          "_expression": 16,
+          "_expression": NumberValueExpression {
+            "_value": 16,
+          },
           "_name": "SOLID",
         },
         BitmaskDeclarationElement {
-          "_expression": 256,
+          "_expression": NumberValueExpression {
+            "_value": 256,
+          },
           "_name": "HIGH_SIZE",
         },
         BitmaskDeclarationElement {
-          "_expression": 512,
+          "_expression": NumberValueExpression {
+            "_value": 512,
+          },
           "_name": "has_UNICODE_FILENAME",
         },
         BitmaskDeclarationElement {
-          "_expression": 1024,
+          "_expression": NumberValueExpression {
+            "_value": 1024,
+          },
           "_name": "ENCRYPTION_SALT",
         },
         BitmaskDeclarationElement {
-          "_expression": 2048,
+          "_expression": NumberValueExpression {
+            "_value": 2048,
+          },
           "_name": "IS_OLD_FILE_VERSION",
         },
         BitmaskDeclarationElement {
-          "_expression": 4096,
+          "_expression": NumberValueExpression {
+            "_value": 4096,
+          },
           "_name": "EXTENDED_TIME_INFO",
         },
         BitmaskDeclarationElement {
-          "_expression": 16384,
+          "_expression": NumberValueExpression {
+            "_value": 16384,
+          },
           "_name": "OLD_VERSION_IGNORE",
         },
         BitmaskDeclarationElement {
-          "_expression": 32768,
+          "_expression": NumberValueExpression {
+            "_value": 32768,
+          },
           "_name": "ADD_SIZE_PRESENT",
         },
       ],
@@ -9325,35 +9465,51 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 0,
+          "_expression": NumberValueExpression {
+            "_value": 0,
+          },
           "_name": "HARD_LINK",
         },
         EnumDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "DIRECTORY",
         },
         EnumDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "FILE",
         },
         EnumDeclarationElement {
-          "_expression": 3,
+          "_expression": NumberValueExpression {
+            "_value": 3,
+          },
           "_name": "SYMLINK",
         },
         EnumDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "BLOCK_DEV",
         },
         EnumDeclarationElement {
-          "_expression": 5,
+          "_expression": NumberValueExpression {
+            "_value": 5,
+          },
           "_name": "CHAR_DEV",
         },
         EnumDeclarationElement {
-          "_expression": 6,
+          "_expression": NumberValueExpression {
+            "_value": 6,
+          },
           "_name": "SOCKET",
         },
         EnumDeclarationElement {
-          "_expression": 7,
+          "_expression": NumberValueExpression {
+            "_value": 7,
+          },
           "_name": "FIFO",
         },
       ],
@@ -9574,59 +9730,87 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 0,
+          "_expression": NumberValueExpression {
+            "_value": 0,
+          },
           "_name": "NULL",
         },
         EnumDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "POINT",
         },
         EnumDeclarationElement {
-          "_expression": 3,
+          "_expression": NumberValueExpression {
+            "_value": 3,
+          },
           "_name": "POLYLINE",
         },
         EnumDeclarationElement {
-          "_expression": 5,
+          "_expression": NumberValueExpression {
+            "_value": 5,
+          },
           "_name": "POLYGON",
         },
         EnumDeclarationElement {
-          "_expression": 8,
+          "_expression": NumberValueExpression {
+            "_value": 8,
+          },
           "_name": "MULTI_POINT",
         },
         EnumDeclarationElement {
-          "_expression": 11,
+          "_expression": NumberValueExpression {
+            "_value": 11,
+          },
           "_name": "POINT_Z",
         },
         EnumDeclarationElement {
-          "_expression": 13,
+          "_expression": NumberValueExpression {
+            "_value": 13,
+          },
           "_name": "POLYLINE_Z",
         },
         EnumDeclarationElement {
-          "_expression": 15,
+          "_expression": NumberValueExpression {
+            "_value": 15,
+          },
           "_name": "POLYGON_Z",
         },
         EnumDeclarationElement {
-          "_expression": 18,
+          "_expression": NumberValueExpression {
+            "_value": 18,
+          },
           "_name": "MULTI_POINT_Z",
         },
         EnumDeclarationElement {
-          "_expression": 21,
+          "_expression": NumberValueExpression {
+            "_value": 21,
+          },
           "_name": "POINT_M",
         },
         EnumDeclarationElement {
-          "_expression": 23,
+          "_expression": NumberValueExpression {
+            "_value": 23,
+          },
           "_name": "POLYLINE_M",
         },
         EnumDeclarationElement {
-          "_expression": 25,
+          "_expression": NumberValueExpression {
+            "_value": 25,
+          },
           "_name": "POLYGON_M",
         },
         EnumDeclarationElement {
-          "_expression": 28,
+          "_expression": NumberValueExpression {
+            "_value": 28,
+          },
           "_name": "MULTI_POINT_M",
         },
         EnumDeclarationElement {
-          "_expression": 31,
+          "_expression": NumberValueExpression {
+            "_value": 31,
+          },
           "_name": "MULTI_PATCH",
         },
       ],
@@ -10357,11 +10541,15 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "MEMORY",
         },
         EnumDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "DISK",
         },
       ],
@@ -10546,283 +10734,423 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 0,
+          "_expression": NumberValueExpression {
+            "_value": 0,
+          },
           "_name": "EOF",
         },
         EnumDeclarationElement {
-          "_expression": 53,
+          "_expression": NumberValueExpression {
+            "_value": 53,
+          },
           "_name": "REALIZEPALETTE",
         },
         EnumDeclarationElement {
-          "_expression": 55,
+          "_expression": NumberValueExpression {
+            "_value": 55,
+          },
           "_name": "SETPALENTRIES",
         },
         EnumDeclarationElement {
-          "_expression": 258,
+          "_expression": NumberValueExpression {
+            "_value": 258,
+          },
           "_name": "SETBKMODE",
         },
         EnumDeclarationElement {
-          "_expression": 259,
+          "_expression": NumberValueExpression {
+            "_value": 259,
+          },
           "_name": "SETMAPMODE",
         },
         EnumDeclarationElement {
-          "_expression": 260,
+          "_expression": NumberValueExpression {
+            "_value": 260,
+          },
           "_name": "SETROP2",
         },
         EnumDeclarationElement {
-          "_expression": 261,
+          "_expression": NumberValueExpression {
+            "_value": 261,
+          },
           "_name": "SETRELABS",
         },
         EnumDeclarationElement {
-          "_expression": 262,
+          "_expression": NumberValueExpression {
+            "_value": 262,
+          },
           "_name": "SETPOLYFILLMODE",
         },
         EnumDeclarationElement {
-          "_expression": 263,
+          "_expression": NumberValueExpression {
+            "_value": 263,
+          },
           "_name": "SETSTRETCHBLTMODE",
         },
         EnumDeclarationElement {
-          "_expression": 264,
+          "_expression": NumberValueExpression {
+            "_value": 264,
+          },
           "_name": "SETTEXTCHAREXTRA",
         },
         EnumDeclarationElement {
-          "_expression": 295,
+          "_expression": NumberValueExpression {
+            "_value": 295,
+          },
           "_name": "RESTOREDC",
         },
         EnumDeclarationElement {
-          "_expression": 313,
+          "_expression": NumberValueExpression {
+            "_value": 313,
+          },
           "_name": "RESIZEPALETTE",
         },
         EnumDeclarationElement {
-          "_expression": 322,
+          "_expression": NumberValueExpression {
+            "_value": 322,
+          },
           "_name": "DIBCREATEPATTERNBRUSH",
         },
         EnumDeclarationElement {
-          "_expression": 329,
+          "_expression": NumberValueExpression {
+            "_value": 329,
+          },
           "_name": "SETLAYOUT",
         },
         EnumDeclarationElement {
-          "_expression": 513,
+          "_expression": NumberValueExpression {
+            "_value": 513,
+          },
           "_name": "SETBKCOLOR",
         },
         EnumDeclarationElement {
-          "_expression": 521,
+          "_expression": NumberValueExpression {
+            "_value": 521,
+          },
           "_name": "SETTEXTCOLOR",
         },
         EnumDeclarationElement {
-          "_expression": 529,
+          "_expression": NumberValueExpression {
+            "_value": 529,
+          },
           "_name": "OFFSETVIEWPORTORG",
         },
         EnumDeclarationElement {
-          "_expression": 531,
+          "_expression": NumberValueExpression {
+            "_value": 531,
+          },
           "_name": "LINETO",
         },
         EnumDeclarationElement {
-          "_expression": 532,
+          "_expression": NumberValueExpression {
+            "_value": 532,
+          },
           "_name": "MOVETO",
         },
         EnumDeclarationElement {
-          "_expression": 544,
+          "_expression": NumberValueExpression {
+            "_value": 544,
+          },
           "_name": "OFFSETCLIPRGN",
         },
         EnumDeclarationElement {
-          "_expression": 552,
+          "_expression": NumberValueExpression {
+            "_value": 552,
+          },
           "_name": "FILLREGION",
         },
         EnumDeclarationElement {
-          "_expression": 561,
+          "_expression": NumberValueExpression {
+            "_value": 561,
+          },
           "_name": "SETMAPPERFLAGS",
         },
         EnumDeclarationElement {
-          "_expression": 564,
+          "_expression": NumberValueExpression {
+            "_value": 564,
+          },
           "_name": "SELECTPALETTE",
         },
         EnumDeclarationElement {
-          "_expression": 804,
+          "_expression": NumberValueExpression {
+            "_value": 804,
+          },
           "_name": "POLYGON",
         },
         EnumDeclarationElement {
-          "_expression": 805,
+          "_expression": NumberValueExpression {
+            "_value": 805,
+          },
           "_name": "POLYLINE",
         },
         EnumDeclarationElement {
-          "_expression": 522,
+          "_expression": NumberValueExpression {
+            "_value": 522,
+          },
           "_name": "SETTEXTJUSTIFICATION",
         },
         EnumDeclarationElement {
-          "_expression": 523,
+          "_expression": NumberValueExpression {
+            "_value": 523,
+          },
           "_name": "SETWINDOWORG",
         },
         EnumDeclarationElement {
-          "_expression": 524,
+          "_expression": NumberValueExpression {
+            "_value": 524,
+          },
           "_name": "SETWINDOWEXT",
         },
         EnumDeclarationElement {
-          "_expression": 525,
+          "_expression": NumberValueExpression {
+            "_value": 525,
+          },
           "_name": "SETVIEWPORTORG",
         },
         EnumDeclarationElement {
-          "_expression": 526,
+          "_expression": NumberValueExpression {
+            "_value": 526,
+          },
           "_name": "SETVIEWPORTEXT",
         },
         EnumDeclarationElement {
-          "_expression": 527,
+          "_expression": NumberValueExpression {
+            "_value": 527,
+          },
           "_name": "OFFSETWINDOWORG",
         },
         EnumDeclarationElement {
-          "_expression": 1040,
+          "_expression": NumberValueExpression {
+            "_value": 1040,
+          },
           "_name": "SCALEWINDOWEXT",
         },
         EnumDeclarationElement {
-          "_expression": 1042,
+          "_expression": NumberValueExpression {
+            "_value": 1042,
+          },
           "_name": "SCALEVIEWPORTEXT",
         },
         EnumDeclarationElement {
-          "_expression": 1045,
+          "_expression": NumberValueExpression {
+            "_value": 1045,
+          },
           "_name": "EXCLUDECLIPRECT",
         },
         EnumDeclarationElement {
-          "_expression": 1046,
+          "_expression": NumberValueExpression {
+            "_value": 1046,
+          },
           "_name": "INTERSECTCLIPRECT",
         },
         EnumDeclarationElement {
-          "_expression": 1048,
+          "_expression": NumberValueExpression {
+            "_value": 1048,
+          },
           "_name": "ELLIPSE",
         },
         EnumDeclarationElement {
-          "_expression": 1049,
+          "_expression": NumberValueExpression {
+            "_value": 1049,
+          },
           "_name": "FLOODFILL",
         },
         EnumDeclarationElement {
-          "_expression": 1065,
+          "_expression": NumberValueExpression {
+            "_value": 1065,
+          },
           "_name": "FRAMEREGION",
         },
         EnumDeclarationElement {
-          "_expression": 1078,
+          "_expression": NumberValueExpression {
+            "_value": 1078,
+          },
           "_name": "ANIMATEPALETTE",
         },
         EnumDeclarationElement {
-          "_expression": 1313,
+          "_expression": NumberValueExpression {
+            "_value": 1313,
+          },
           "_name": "TEXTOUT",
         },
         EnumDeclarationElement {
-          "_expression": 1336,
+          "_expression": NumberValueExpression {
+            "_value": 1336,
+          },
           "_name": "POLYPOLYGON",
         },
         EnumDeclarationElement {
-          "_expression": 1352,
+          "_expression": NumberValueExpression {
+            "_value": 1352,
+          },
           "_name": "EXTFLOODFILL",
         },
         EnumDeclarationElement {
-          "_expression": 1051,
+          "_expression": NumberValueExpression {
+            "_value": 1051,
+          },
           "_name": "RECTANGLE",
         },
         EnumDeclarationElement {
-          "_expression": 1055,
+          "_expression": NumberValueExpression {
+            "_value": 1055,
+          },
           "_name": "SETPIXEL",
         },
         EnumDeclarationElement {
-          "_expression": 1564,
+          "_expression": NumberValueExpression {
+            "_value": 1564,
+          },
           "_name": "ROUNDRECT",
         },
         EnumDeclarationElement {
-          "_expression": 1565,
+          "_expression": NumberValueExpression {
+            "_value": 1565,
+          },
           "_name": "PATBLT",
         },
         EnumDeclarationElement {
-          "_expression": 30,
+          "_expression": NumberValueExpression {
+            "_value": 30,
+          },
           "_name": "SAVEDC",
         },
         EnumDeclarationElement {
-          "_expression": 2074,
+          "_expression": NumberValueExpression {
+            "_value": 2074,
+          },
           "_name": "PIE",
         },
         EnumDeclarationElement {
-          "_expression": 2851,
+          "_expression": NumberValueExpression {
+            "_value": 2851,
+          },
           "_name": "STRETCHBLT",
         },
         EnumDeclarationElement {
-          "_expression": 1574,
+          "_expression": NumberValueExpression {
+            "_value": 1574,
+          },
           "_name": "ESCAPE",
         },
         EnumDeclarationElement {
-          "_expression": 298,
+          "_expression": NumberValueExpression {
+            "_value": 298,
+          },
           "_name": "INVERTREGION",
         },
         EnumDeclarationElement {
-          "_expression": 299,
+          "_expression": NumberValueExpression {
+            "_value": 299,
+          },
           "_name": "PAINTREGION",
         },
         EnumDeclarationElement {
-          "_expression": 300,
+          "_expression": NumberValueExpression {
+            "_value": 300,
+          },
           "_name": "SELECTCLIPREGION",
         },
         EnumDeclarationElement {
-          "_expression": 301,
+          "_expression": NumberValueExpression {
+            "_value": 301,
+          },
           "_name": "SELECTOBJECT",
         },
         EnumDeclarationElement {
-          "_expression": 302,
+          "_expression": NumberValueExpression {
+            "_value": 302,
+          },
           "_name": "SETTEXTALIGN",
         },
         EnumDeclarationElement {
-          "_expression": 2071,
+          "_expression": NumberValueExpression {
+            "_value": 2071,
+          },
           "_name": "ARC",
         },
         EnumDeclarationElement {
-          "_expression": 2096,
+          "_expression": NumberValueExpression {
+            "_value": 2096,
+          },
           "_name": "CHORD",
         },
         EnumDeclarationElement {
-          "_expression": 2338,
+          "_expression": NumberValueExpression {
+            "_value": 2338,
+          },
           "_name": "BITBLT",
         },
         EnumDeclarationElement {
-          "_expression": 2610,
+          "_expression": NumberValueExpression {
+            "_value": 2610,
+          },
           "_name": "EXTTEXTOUT",
         },
         EnumDeclarationElement {
-          "_expression": 3379,
+          "_expression": NumberValueExpression {
+            "_value": 3379,
+          },
           "_name": "SETDIBTODEV",
         },
         EnumDeclarationElement {
-          "_expression": 2368,
+          "_expression": NumberValueExpression {
+            "_value": 2368,
+          },
           "_name": "DIBBITBLT",
         },
         EnumDeclarationElement {
-          "_expression": 2881,
+          "_expression": NumberValueExpression {
+            "_value": 2881,
+          },
           "_name": "DIBSTRETCHBLT",
         },
         EnumDeclarationElement {
-          "_expression": 3907,
+          "_expression": NumberValueExpression {
+            "_value": 3907,
+          },
           "_name": "STRETCHDIB",
         },
         EnumDeclarationElement {
-          "_expression": 496,
+          "_expression": NumberValueExpression {
+            "_value": 496,
+          },
           "_name": "DELETEOBJECT",
         },
         EnumDeclarationElement {
-          "_expression": 247,
+          "_expression": NumberValueExpression {
+            "_value": 247,
+          },
           "_name": "CREATEPALETTE",
         },
         EnumDeclarationElement {
-          "_expression": 505,
+          "_expression": NumberValueExpression {
+            "_value": 505,
+          },
           "_name": "CREATEPATTERNBRUSH",
         },
         EnumDeclarationElement {
-          "_expression": 762,
+          "_expression": NumberValueExpression {
+            "_value": 762,
+          },
           "_name": "CREATEPENINDIRECT",
         },
         EnumDeclarationElement {
-          "_expression": 763,
+          "_expression": NumberValueExpression {
+            "_value": 763,
+          },
           "_name": "CREATEFONTINDIRECT",
         },
         EnumDeclarationElement {
-          "_expression": 764,
+          "_expression": NumberValueExpression {
+            "_value": 764,
+          },
           "_name": "CREATEBRUSHINDIRECT",
         },
         EnumDeclarationElement {
-          "_expression": 1791,
+          "_expression": NumberValueExpression {
+            "_value": 1791,
+          },
           "_name": "CREATEREGION",
         },
       ],

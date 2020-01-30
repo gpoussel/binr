@@ -94,7 +94,7 @@ export function getVisitor(parser: CstParser) {
         const entries = times(enumCtx.IdentifierToken.length - 1, (i) => {
           const key = this.getIdentifierName(enumCtx.IdentifierToken[i + 1]);
           const value = this.visit(enumCtx.numberClause[i]);
-          return new EnumDeclarationElement(key, value);
+          return new EnumDeclarationElement(key, new NumberValueExpression(value));
         });
         const parentType = this.visit(enumCtx.typeReferenceClause);
         return new EnumDeclarationStatement(parentType, name, entries, annotations);
@@ -105,7 +105,7 @@ export function getVisitor(parser: CstParser) {
         const entries = times(bitmaskCtx.IdentifierToken.length - 1, (i) => {
           const key = this.getIdentifierName(bitmaskCtx.IdentifierToken[i + 1]);
           const value = this.visit(bitmaskCtx.numberClause[i]);
-          return new BitmaskDeclarationElement(key, value);
+          return new BitmaskDeclarationElement(key, new NumberValueExpression(value));
         });
         const parentType = this.visit(bitmaskCtx.typeReferenceClause);
         return new BitmaskDeclarationStatement(parentType, name, entries, annotations);

@@ -3,7 +3,7 @@ import { Expression } from "./expressions";
 import { Node } from "./node";
 
 export class BitmaskDeclarationElement extends Node {
-  public constructor(private _name: string, private _expression: Expression) {
+  public constructor(private _name: string, private _expression: Expression | undefined) {
     super();
   }
 
@@ -11,13 +11,13 @@ export class BitmaskDeclarationElement extends Node {
     return this._name;
   }
 
-  public get expression(): Expression {
+  public get expression(): Expression | undefined {
     return this._expression;
   }
 
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitBitmaskDeclarationElement(this)) {
-      this._expression.accept(visitor);
+      this._expression?.accept(visitor);
     }
     visitor.endVisitBitmaskDeclarationElement(this);
   }

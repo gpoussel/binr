@@ -1,5 +1,6 @@
 import * as fs from "fs";
 
+import { BaseAstVisitor } from "@binr/ast";
 import { each } from "lodash";
 
 import { BinrDefinitionImporter } from "../../lib/binr/binr-definition-importer";
@@ -33,6 +34,9 @@ describe("BinrDefinitionImporter, advanced", () => {
         const definition = importer.readInput(structure);
         expect(definition).toBeDefined();
         expect(definition).toMatchSnapshot();
+
+        // Use a visitor to improve test coverage
+        definition.accept(new BaseAstVisitor());
       });
     },
   );

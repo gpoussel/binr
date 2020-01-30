@@ -75,7 +75,9 @@ Definition {
       },
       "_declarations": Array [
         BitmaskDeclarationElement {
-          "_expression": 10,
+          "_expression": NumberValueExpression {
+            "_value": 10,
+          },
           "_name": "A",
         },
       ],
@@ -109,7 +111,9 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 10,
+          "_expression": NumberValueExpression {
+            "_value": 10,
+          },
           "_name": "A",
         },
       ],
