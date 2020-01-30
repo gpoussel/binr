@@ -1,3 +1,5 @@
+import { each } from "lodash";
+
 import {
   Annotation,
   BlockStatement,
@@ -27,21 +29,27 @@ describe("Visitor", () => {
       ],
       [new Annotation("key", new BooleanValueExpression(false))],
     );
-    const spyAnnotation = spyOn(baseVisitor, "visitAnnotation").and.returnValue(true);
-    const spyVariableDeclaration = spyOn(baseVisitor, "visitVariableDeclaration").and.returnValue(true);
-    const spyNamedType = spyOn(baseVisitor, "visitNamedType").and.returnValue(true);
-    const spyBlockStatement = spyOn(baseVisitor, "visitBlockStatement").and.returnValue(true);
-    const spyVariableDeclarationStatement = spyOn(
-      baseVisitor,
-      "visitVariableDeclarationStatement",
-    ).and.returnValue(true);
-    const spyDefinition = spyOn(baseVisitor, "visitDefinition").and.returnValue(true);
+    const types = [
+      { type: "Annotation", calls: 2 },
+      { type: "VariableDeclaration", calls: 1 },
+      { type: "NamedType", calls: 1 },
+      { type: "BlockStatement", calls: 1 },
+      { type: "VariableDeclarationStatement", calls: 1 },
+      { type: "Definition", calls: 1 },
+      { type: "IfStatement", calls: 0 },
+      { type: "EnumDeclarationStatement", calls: 0 },
+    ];
+    const spies: { [key: string]: { start: jasmine.Spy; end: jasmine.Spy } } = {};
+    each(types, ({ type }) => {
+      spies[type] = {
+        start: spyOn(baseVisitor, `visit${type}` as keyof BaseAstVisitor).and.returnValue(true),
+        end: spyOn(baseVisitor, `endVisit${type}` as keyof BaseAstVisitor),
+      };
+    });
     definition.accept(baseVisitor);
-    expect(spyAnnotation).toHaveBeenCalledTimes(2);
-    expect(spyVariableDeclaration).toHaveBeenCalledTimes(1);
-    expect(spyNamedType).toHaveBeenCalledTimes(1);
-    expect(spyBlockStatement).toHaveBeenCalledTimes(1);
-    expect(spyVariableDeclarationStatement).toHaveBeenCalledTimes(1);
-    expect(spyDefinition).toHaveBeenCalledTimes(1);
+    each(types, ({ type, calls }) => {
+      expect(spies[type].start).toHaveBeenCalledTimes(calls);
+      expect(spies[type].end).toHaveBeenCalledTimes(calls);
+    });
   });
 });
