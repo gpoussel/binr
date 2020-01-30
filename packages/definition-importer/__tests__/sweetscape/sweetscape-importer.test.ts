@@ -1,5 +1,5 @@
-import { SweetscapeDefinitionImporter } from "../lib/sweetscape/sweetscape-importer";
-import { AssetLoader } from "./utils/010-structures";
+import { SweetscapeDefinitionImporter } from "../../lib/sweetscape/sweetscape-definition-importer";
+import { AssetLoader } from "../utils/010-structures";
 
 describe("Sweetscape Importer", () => {
   const importer = new SweetscapeDefinitionImporter();

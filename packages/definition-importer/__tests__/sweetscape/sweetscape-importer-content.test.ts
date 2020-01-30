@@ -22,8 +22,8 @@ import {
 } from "@binr/ast";
 import { flatMap } from "lodash";
 
-import { SweetscapeDefinitionImporter } from "../lib/sweetscape/sweetscape-importer";
-import { AssetLoader } from "./utils/010-structures";
+import { SweetscapeDefinitionImporter } from "../../lib/sweetscape/sweetscape-definition-importer";
+import { AssetLoader } from "../utils/010-structures";
 
 function visit(node: Node): string[] {
   if (node instanceof Definition) {

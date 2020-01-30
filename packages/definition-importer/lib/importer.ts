@@ -2,6 +2,8 @@ import { Definition } from "@binr/ast";
 import { CstParser, IRecognitionException, Lexer } from "chevrotain";
 import { first, get, isEmpty, isString, join, map } from "lodash";
 
+import { DefinitionBuilder } from "./common/definition-builder";
+
 export class Importer {
   public readInput(input: string): Definition {
     if (!isString(input)) {
@@ -53,6 +55,11 @@ export class Importer {
     return this.getVisitor(parser).visit(parsingResult);
   }
 
+  public build(ast: Definition) {
+    const builder = new DefinitionBuilder();
+    return builder.build(ast);
+  }
+
   public getLexer(): Lexer {
     throw new Error("getLexer(): not yet implemented");
   }
@@ -63,9 +70,5 @@ export class Importer {
 
   public getVisitor(parser: CstParser): any {
     throw new Error(`getVisitor(): not yet implemented (parser = ${parser})`);
-  }
-
-  public build(ast: Definition): any {
-    throw new Error(`build(): not yet implemented (ast = ${ast})`);
   }
 }
