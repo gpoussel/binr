@@ -3,6 +3,7 @@
     "default": {
       "packages": [
         "package.json",
+        "packages/ast/package.json",
         "packages/binary-reader/package.json",
         "packages/definition-importer/package.json",
         "packages/definition-reader/package.json",
