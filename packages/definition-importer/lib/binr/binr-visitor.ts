@@ -2,15 +2,18 @@ import {
   BlockStatement,
   BooleanValue,
   CaseSwitchElement,
-  CommaExpression,
   Definition,
   EnumDeclarationElement,
   EnumDeclarationStatement,
   Expression,
+  IdentifierValue,
   IfElseStatement,
   IfStatement,
   NamedType,
   NumberValue,
+  Operator,
+  PostfixExpression,
+  PrefixExpression,
   RestrictedType,
   Statement,
   StringValue,
@@ -22,7 +25,7 @@ import {
   ValueSwitchLabel,
 } from "@binr/ast";
 import { CstParser } from "chevrotain";
-import { each, get, has, keys, map, size, times } from "lodash";
+import { get, has, keys, map, size, times } from "lodash";
 
 export function getVisitor(parser: CstParser) {
   class Visitor extends parser.getBaseCstVisitorConstructorWithDefaults() {
@@ -108,18 +111,78 @@ export function getVisitor(parser: CstParser) {
     }
 
     public BinaryExpression(ctx: any): Expression {
-      const result = [this.visit(ctx.UnaryExpression[0])];
-      each(ctx.ExpressionToken, (token, i) => {
+      const result = this.visit(ctx.UnaryExpression[0]);
+      // TODO iteration
+      /*each(ctx.ExpressionToken, (token, i) => {
         const tokenName = keys(token.children)[0];
         const tokenSymbol = token.children[tokenName][0].image;
         const childExpression = this.visit(ctx.UnaryExpression[i + 1]);
         result.push(get([], tokenSymbol, tokenSymbol));
         result.push(childExpression);
-      });
-      return new CommaExpression([]);
+      });*/
+      return result;
     }
 
-    // TODO UnaryExpression
+    public UnaryExpression(ctx: any): Expression {
+      if (has(ctx, "DoublePlusToken")) {
+        return new PrefixExpression(this.visit(ctx.UnaryExpression), Operator.DOUBLE_PLUS);
+      }
+      if (has(ctx, "DoubleMinusToken")) {
+        return new PrefixExpression(this.visit(ctx.UnaryExpression), Operator.DOUBLE_MINUS);
+      }
+      if (has(ctx, "PlusToken")) {
+        return new PrefixExpression(this.visit(ctx.UnaryExpression), Operator.PLUS);
+      }
+      if (has(ctx, "MinusToken")) {
+        return new PrefixExpression(this.visit(ctx.UnaryExpression), Operator.MINUS);
+      }
+      if (has(ctx, "TildaToken")) {
+        return new PrefixExpression(this.visit(ctx.UnaryExpression), Operator.TILDA);
+      }
+      if (has(ctx, "ExclamationToken")) {
+        return new PrefixExpression(this.visit(ctx.UnaryExpression), Operator.EXCLAMATION);
+      }
+      return this.visit(ctx.PostfixExpression);
+    }
+
+    public PostfixExpression(ctx: any): Expression {
+      const innerExpression = this.visit(ctx.MemberCallNewExpression);
+      if (has(ctx, "DoublePlusToken")) {
+        return new PostfixExpression(innerExpression, Operator.DOUBLE_PLUS);
+      }
+      if (has(ctx, "DoubleMinusToken")) {
+        return new PostfixExpression(innerExpression, Operator.DOUBLE_MINUS);
+      }
+      return innerExpression;
+    }
+
+    public MemberCallNewExpression(ctx: any): Expression {
+      const innerExpression = this.visit(ctx.PrimaryExpression);
+      // TODO MemberCallNewExpressionExtension
+      return innerExpression;
+    }
+
+    public PrimaryExpression(ctx: any): Expression {
+      if (has(ctx, "numberClause")) {
+        return this.visit(ctx.numberClause[0]);
+      }
+      if (has(ctx, "IdentifierToken")) {
+        return new IdentifierValue(this.getIdentifierName(ctx.IdentifierToken[0]));
+      }
+      if (has(ctx, "ParenthesisExpression")) {
+        // TODO ??
+        return this.visit(ctx.ParenthesisExpression);
+      }
+      if (has(ctx, "ArrayLiteral")) {
+        // TODO ??
+        return this.visit(ctx.ArrayLiteral);
+      }
+      if (has(ctx, "StringLiteralToken")) {
+        return new StringValue(ctx.StringLiteralToken[0].image);
+      }
+      throw new Error();
+    }
+
     // TODO ExpressionToken
 
     public valueClause(ctx: any): Value {
@@ -241,47 +304,6 @@ export function getVisitor(parser: CstParser) {
       return this.visit(ctx.Expression);
     }
 
-    public UnaryExpression(ctx: any) {
-      if (has(ctx, "PostfixExpression")) {
-        return this.visit(ctx.PostfixExpression);
-      }
-      if (has(ctx, "DoublePlusToken")) {
-        return `++${this.visit(ctx.UnaryExpression)}`;
-      }
-      if (has(ctx, "DoubleMinusToken")) {
-        return `--${this.visit(ctx.UnaryExpression)}`;
-      }
-      if (has(ctx, "PlusToken")) {
-        return `+${this.visit(ctx.UnaryExpression)}`;
-      }
-      if (has(ctx, "MinusToken")) {
-        return `-${this.visit(ctx.UnaryExpression)}`;
-      }
-      if (has(ctx, "TildaToken")) {
-        return `~${this.visit(ctx.UnaryExpression)}`;
-      }
-      if (has(ctx, "ExclamationToken")) {
-        return `!${this.visit(ctx.UnaryExpression)}`;
-      }
-    }
-
-    public PostfixExpression(ctx: any) {
-      if (has(ctx, "MemberCallNewExpression")) {
-        const plusPlusSuffix = has(ctx, "DoublePlusToken") ? "++" : "";
-        const minusMinusSuffix = has(ctx, "DoubleMinusToken") ? "--" : "";
-        return this.visit(ctx.MemberCallNewExpression) + plusPlusSuffix + minusMinusSuffix;
-      }
-    }
-
-    public MemberCallNewExpression(ctx: any) {
-      if (has(ctx, "PrimaryExpression")) {
-        return (
-          this.visit(ctx.PrimaryExpression) +
-          join(map(ctx.MemberCallNewExpressionExtension, this.visit.bind(this)), "")
-        );
-      }
-    }
-
     public MemberCallNewExpressionExtension(ctx: any) {
       if (has(ctx, "BoxMemberExpression")) {
         return this.visit(ctx.BoxMemberExpression);
@@ -301,24 +323,6 @@ export function getVisitor(parser: CstParser) {
     public DotMemberExpression(ctx: any) {
       if (has(ctx, "IdentifierToken")) {
         return `.${this.getIdentifierName(ctx.IdentifierToken[0])}`;
-      }
-    }
-
-    public PrimaryExpression(ctx: any) {
-      if (has(ctx, "numberClause")) {
-        return this.visit(ctx.numberClause[0]);
-      }
-      if (has(ctx, "IdentifierToken")) {
-        return this.getIdentifierName(ctx.IdentifierToken[0]);
-      }
-      if (has(ctx, "ParenthesisExpression")) {
-        return this.visit(ctx.ParenthesisExpression);
-      }
-      if (has(ctx, "ArrayLiteral")) {
-        return this.visit(ctx.ArrayLiteral);
-      }
-      if (has(ctx, "StringLiteralToken")) {
-        return ctx.StringLiteralToken[0].image;
       }
     }
 
