@@ -18,15 +18,23 @@ Definition {
                   "_innerExpression": BinaryExpression {
                     "_left": BinaryExpression {
                       "_left": BinaryExpression {
-                        "_left": 1,
+                        "_left": NumberValue {
+                          "_value": 1,
+                        },
                         "_operator": 8,
-                        "_right": 2,
+                        "_right": NumberValue {
+                          "_value": 2,
+                        },
                       },
                       "_operator": 5,
-                      "_right": 3,
+                      "_right": NumberValue {
+                        "_value": 3,
+                      },
                     },
                     "_operator": 8,
-                    "_right": 4,
+                    "_right": NumberValue {
+                      "_value": 4,
+                    },
                   },
                 },
                 "_bitfield": undefined,

@@ -15,7 +15,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -82,7 +84,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -444,7 +448,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -518,7 +524,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -540,7 +548,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -847,7 +857,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -921,7 +933,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -965,10 +979,14 @@ Definition {
                   "_name": "datalen",
                 },
                 "_operator": 17,
-                "_right": 2,
+                "_right": NumberValue {
+                  "_value": 2,
+                },
               },
               "_operator": 8,
-              "_right": 1,
+              "_right": NumberValue {
+                "_value": 1,
+              },
             },
             "_falseStatement": BlockStatement {
               "_content": Array [
@@ -1013,7 +1031,9 @@ Definition {
                             "_name": "datalen",
                           },
                           "_operator": 19,
-                          "_right": 1,
+                          "_right": NumberValue {
+                            "_value": 1,
+                          },
                         },
                       },
                       "_bitfield": undefined,
@@ -1048,7 +1068,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -1378,7 +1400,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -1584,7 +1608,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -1670,7 +1696,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 2,
+                  "_innerExpression": NumberValue {
+                    "_value": 2,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -1754,7 +1782,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 2,
+                  "_innerExpression": NumberValue {
+                    "_value": 2,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -2260,7 +2290,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 10,
+                  "_innerExpression": NumberValue {
+                    "_value": 10,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -2400,7 +2432,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -2494,7 +2528,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -2577,7 +2613,9 @@ Definition {
                       "_name": "familyNameSize",
                     },
                     "_operator": 7,
-                    "_right": 2,
+                    "_right": NumberValue {
+                      "_value": 2,
+                    },
                   },
                 },
                 "_bitfield": undefined,
@@ -2658,7 +2696,9 @@ Definition {
                       "_name": "styleNameSize",
                     },
                     "_operator": 7,
-                    "_right": 2,
+                    "_right": NumberValue {
+                      "_value": 2,
+                    },
                   },
                 },
                 "_bitfield": undefined,
@@ -2739,7 +2779,9 @@ Definition {
                       "_name": "versionNameSize",
                     },
                     "_operator": 7,
-                    "_right": 2,
+                    "_right": NumberValue {
+                      "_value": 2,
+                    },
                   },
                 },
                 "_bitfield": undefined,
@@ -2820,7 +2862,9 @@ Definition {
                       "_name": "fullNameSize",
                     },
                     "_operator": 7,
-                    "_right": 2,
+                    "_right": NumberValue {
+                      "_value": 2,
+                    },
                   },
                 },
                 "_bitfield": undefined,
@@ -2901,7 +2945,9 @@ Definition {
                       "_name": "rootStringSize",
                     },
                     "_operator": 7,
-                    "_right": 2,
+                    "_right": NumberValue {
+                      "_value": 2,
+                    },
                   },
                 },
                 "_bitfield": undefined,
@@ -3028,7 +3074,9 @@ Definition {
                       "_name": "signatureSize",
                     },
                     "_operator": 7,
-                    "_right": 2,
+                    "_right": NumberValue {
+                      "_value": 2,
+                    },
                   },
                 },
                 "_bitfield": undefined,
@@ -3171,7 +3219,24 @@ Definition {
                     "_callable": IdentifierValue {
                       "_name": "max",
                     },
-                    "_functionArguments": Array [],
+                    "_functionArguments": Array [
+                      NumberValue {
+                        "_value": 3,
+                      },
+                      FunctionCallExpression {
+                        "_callable": IdentifierValue {
+                          "_name": "min",
+                        },
+                        "_functionArguments": Array [
+                          NumberValue {
+                            "_value": 2,
+                          },
+                          NumberValue {
+                            "_value": 5,
+                          },
+                        ],
+                      },
+                    ],
                   },
                 },
                 "_bitfield": undefined,
@@ -3194,7 +3259,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 3,
+                  "_innerExpression": NumberValue {
+                    "_value": 3,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -3545,7 +3612,9 @@ Definition {
                 "_name": "globalColorTable",
               },
               "_operator": 8,
-              "_right": 1,
+              "_right": NumberValue {
+                "_value": 1,
+              },
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
@@ -3558,7 +3627,9 @@ Definition {
                       "_annotations": Array [],
                       "_arraySelector": ExpressionArraySelector {
                         "_innerExpression": BinaryExpression {
-                          "_left": 1,
+                          "_left": NumberValue {
+                            "_value": 1,
+                          },
                           "_operator": 20,
                           "_right": BinaryExpression {
                             "_left": PropertyAccessExpression {
@@ -3568,7 +3639,9 @@ Definition {
                               "_name": "globalColorTableSize",
                             },
                             "_operator": 19,
-                            "_right": 1,
+                            "_right": NumberValue {
+                              "_value": 1,
+                            },
                           },
                         },
                       },
@@ -4292,7 +4365,9 @@ Definition {
                     "_name": "bitCount",
                   },
                   "_operator": 6,
-                  "_right": 24,
+                  "_right": NumberValue {
+                    "_value": 24,
+                  },
                 },
                 "_operator": 4,
                 "_right": PropertyAccessExpression {
@@ -4303,7 +4378,9 @@ Definition {
                 },
               },
               "_operator": 6,
-              "_right": 32,
+              "_right": NumberValue {
+                "_value": 32,
+              },
             },
             "_trueStatement": BlockStatement {
               "_content": Array [
@@ -4316,7 +4393,9 @@ Definition {
                       "_name": "clrUsed",
                     },
                     "_operator": 13,
-                    "_right": 0,
+                    "_right": NumberValue {
+                      "_value": 0,
+                    },
                   },
                   "_falseStatement": BlockStatement {
                     "_content": Array [
@@ -4329,7 +4408,9 @@ Definition {
                             "_annotations": Array [],
                             "_arraySelector": ExpressionArraySelector {
                               "_innerExpression": BinaryExpression {
-                                "_left": 1,
+                                "_left": NumberValue {
+                                  "_value": 1,
+                                },
                                 "_operator": 20,
                                 "_right": PropertyAccessExpression {
                                   "_expression": IdentifierValue {
@@ -4397,7 +4478,9 @@ Definition {
                 "_name": "bitCount",
               },
               "_operator": 15,
-              "_right": 8,
+              "_right": NumberValue {
+                "_value": 8,
+              },
             },
             "_falseStatement": IfElseStatement {
               "_condition": BinaryExpression {
@@ -4408,7 +4491,9 @@ Definition {
                   "_name": "bitCount",
                 },
                 "_operator": 8,
-                "_right": 8,
+                "_right": NumberValue {
+                  "_value": 8,
+                },
               },
               "_falseStatement": IfElseStatement {
                 "_condition": BinaryExpression {
@@ -4419,7 +4504,9 @@ Definition {
                     "_name": "bitCount",
                   },
                   "_operator": 8,
-                  "_right": 24,
+                  "_right": NumberValue {
+                    "_value": 24,
+                  },
                 },
                 "_falseStatement": IfStatement {
                   "_condition": BinaryExpression {
@@ -4430,7 +4517,9 @@ Definition {
                       "_name": "bitCount",
                     },
                     "_operator": 8,
-                    "_right": 32,
+                    "_right": NumberValue {
+                      "_value": 32,
+                    },
                   },
                   "_trueStatement": BlockStatement {
                     "_content": Array [],
@@ -4534,7 +4623,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 1,
+                  "_innerExpression": NumberValue {
+                    "_value": 1,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -4808,7 +4899,9 @@ Definition {
                 VariableDeclaration {
                   "_annotations": Array [],
                   "_arraySelector": ExpressionArraySelector {
-                    "_innerExpression": 4,
+                    "_innerExpression": NumberValue {
+                      "_value": 4,
+                    },
                   },
                   "_bitfield": undefined,
                   "_initializationExpression": undefined,
@@ -5709,7 +5802,9 @@ Definition {
                       "_name": "constantPoolSize",
                     },
                     "_operator": 16,
-                    "_right": 1,
+                    "_right": NumberValue {
+                      "_value": 1,
+                    },
                   },
                 },
                 "_bitfield": undefined,
@@ -6290,7 +6385,9 @@ Definition {
                             "_name": "size",
                           },
                           "_operator": 16,
-                          "_right": 7,
+                          "_right": NumberValue {
+                            "_value": 7,
+                          },
                         },
                         "_operator": 16,
                         "_right": IdentifierValue {
@@ -6303,7 +6400,9 @@ Definition {
                       },
                     },
                     "_operator": 18,
-                    "_right": 2,
+                    "_right": NumberValue {
+                      "_value": 2,
+                    },
                   },
                 },
                 "_bitfield": undefined,
@@ -6857,7 +6956,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 7,
+                  "_innerExpression": NumberValue {
+                    "_value": 7,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -6899,7 +7000,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 1,
+                  "_innerExpression": NumberValue {
+                    "_value": 1,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -6937,7 +7040,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -7060,7 +7165,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -7390,7 +7497,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -7795,7 +7904,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -7942,7 +8053,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -8308,7 +8421,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 4,
+                  "_innerExpression": NumberValue {
+                    "_value": 4,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -8704,7 +8819,9 @@ Definition {
                       "_name": "size",
                     },
                     "_operator": 16,
-                    "_right": 12,
+                    "_right": NumberValue {
+                      "_value": 12,
+                    },
                   },
                 },
                 "_bitfield": undefined,
@@ -8889,7 +9006,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 8,
+                  "_innerExpression": NumberValue {
+                    "_value": 8,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -9162,7 +9281,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": 5,
+                  "_innerExpression": NumberValue {
+                    "_value": 5,
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -9620,13 +9741,19 @@ Definition {
                           "_name": "length",
                         },
                         "_operator": 16,
-                        "_right": 50,
+                        "_right": NumberValue {
+                          "_value": 50,
+                        },
                       },
                       "_operator": 18,
-                      "_right": 2,
+                      "_right": NumberValue {
+                        "_value": 2,
+                      },
                     },
                     "_operator": 7,
-                    "_right": 8,
+                    "_right": NumberValue {
+                      "_value": 8,
+                    },
                   },
                 },
                 "_bitfield": undefined,
@@ -10493,7 +10620,9 @@ Definition {
                       "_name": "size",
                     },
                     "_operator": 16,
-                    "_right": 3,
+                    "_right": NumberValue {
+                      "_value": 3,
+                    },
                   },
                 },
                 "_bitfield": undefined,

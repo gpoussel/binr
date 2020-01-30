@@ -226,18 +226,22 @@ export function getVisitor(parser: CstParser) {
           const indexExpression: Expression = new NumberValue(0);
           currentExpression = new ArrayIndexExpression(currentExpression, indexExpression);
         } else if (has(childrenCtx, "DotMemberExpression")) {
-          const propertyName = childrenCtx.DotMemberExpression[0].children.IdentifierToken[0].image;
+          const propertyName = this.getIdentifierName(
+            childrenCtx.DotMemberExpression[0].children.IdentifierToken[0],
+          );
           currentExpression = new PropertyAccessExpression(currentExpression, propertyName);
         } else if (has(childrenCtx, "Arguments")) {
-          // TODO Arguments
-          const functionArguments: Expression[] = [];
+          const functionArguments: Expression[] = this.visit(childrenCtx.Arguments[0]);
           currentExpression = new FunctionCallExpression(currentExpression, functionArguments);
         } else {
           throw new Error();
         }
       });
-      // TODO MemberCallNewExpressionExtension
       return currentExpression;
+    }
+
+    public Arguments(ctx: any): Expression[] {
+      return this.visitAll(ctx, "AssignmentExpression");
     }
 
     public BoxMemberExpression(ctx: any): ExpressionArraySelector {
@@ -249,7 +253,7 @@ export function getVisitor(parser: CstParser) {
 
     public PrimaryExpression(ctx: any): Expression {
       if (has(ctx, "numberClause")) {
-        return this.visit(ctx.numberClause[0]);
+        return new NumberValue(this.visit(ctx.numberClause[0]));
       }
       if (has(ctx, "IdentifierToken")) {
         return new IdentifierValue(this.getIdentifierName(ctx.IdentifierToken[0]));
@@ -375,28 +379,6 @@ export function getVisitor(parser: CstParser) {
         name,
         value,
       };
-    }
-
-    public MemberCallNewExpressionExtension(ctx: any) {
-      if (has(ctx, "BoxMemberExpression")) {
-        return this.visit(ctx.BoxMemberExpression);
-      }
-      if (has(ctx, "DotMemberExpression")) {
-        return this.visit(ctx.DotMemberExpression);
-      }
-      if (has(ctx, "Arguments")) {
-        return this.visit(ctx.Arguments);
-      }
-    }
-
-    public Arguments(ctx: any) {
-      return `(${join(map(ctx.AssignmentExpression, this.visit.bind(this)))})`;
-    }
-
-    public DotMemberExpression(ctx: any) {
-      if (has(ctx, "IdentifierToken")) {
-        return `.${this.getIdentifierName(ctx.IdentifierToken[0])}`;
-      }
     }
 
     */
