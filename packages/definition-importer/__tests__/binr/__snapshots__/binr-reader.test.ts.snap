@@ -14,7 +14,9 @@ Definition {
             "_variableDeclarations": Array [
               VariableDeclaration {
                 "_annotations": Array [],
-                "_arraySelector": undefined,
+                "_arraySelector": ExpressionArraySelector {
+                  "_innerExpression": 1,
+                },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
                 "_name": "foo",

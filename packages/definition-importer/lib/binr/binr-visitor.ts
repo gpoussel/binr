@@ -1,5 +1,6 @@
 import {
   Annotation,
+  ArraySelector,
   BlockStatement,
   BooleanValue,
   CaseSwitchElement,
@@ -7,6 +8,7 @@ import {
   EnumDeclarationElement,
   EnumDeclarationStatement,
   Expression,
+  ExpressionArraySelector,
   IdentifierValue,
   IfElseStatement,
   IfStatement,
@@ -84,20 +86,20 @@ export function getVisitor(parser: CstParser) {
 
     public fieldClause(ctx: any): VariableDeclarationStatement {
       /*const fieldResult = new FieldNode(type, name, annotations);
-      if (has(ctx, "BoxMemberExpression")) {
-        const boxMemberDefinition = this.visit(ctx.BoxMemberExpression[0]);
-        fieldResult.setArrayDefinition(boxMemberDefinition.substr(1, boxMemberDefinition.length - 2));
-      }
+      
       if (has(ctx, "BoxMemberUntilExpression")) {
         fieldResult.setArrayUntilDefinition(this.visit(ctx.BoxMemberUntilExpression[0]));
       }*/
       const type = this.visit(ctx.typeReferenceClause);
       const name = this.getIdentifierName(get(ctx.IdentifierToken, 0));
       const annotations: Annotation[] = this.visitAll(ctx, "annotationClause");
+      const arraySelector: ArraySelector | undefined = has(ctx, "BoxMemberExpression")
+        ? this.visit(ctx.BoxMemberExpression[0])
+        : undefined;
       const declaration: VariableDeclaration = new VariableDeclaration(
         name,
         undefined,
-        undefined,
+        arraySelector,
         [],
         undefined,
         [],
@@ -185,6 +187,10 @@ export function getVisitor(parser: CstParser) {
       const innerExpression = this.visit(ctx.PrimaryExpression);
       // TODO MemberCallNewExpressionExtension
       return innerExpression;
+    }
+
+    public BoxMemberExpression(ctx: any): ExpressionArraySelector {
+      return new ExpressionArraySelector(this.visit(ctx.Expression));
     }
 
     public PrimaryExpression(ctx: any): Expression {
@@ -299,10 +305,6 @@ export function getVisitor(parser: CstParser) {
         entries,
         parentType,
       };
-    }
-
-    public BoxMemberExpression(ctx: any) {
-      return `[${this.visit(ctx.Expression)}]`;
     }
 
     public BoxMemberUntilExpression(ctx: any) {
