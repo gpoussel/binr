@@ -12,6 +12,7 @@ export * from "./node";
 export * from "./operator";
 export * from "./parameter-declaration";
 export * from "./statements";
+export * from "./switch-label";
 export * from "./types";
 export * from "./types/type-modifier";
 export * from "./until-expression-array-selector";

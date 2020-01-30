@@ -1,20 +1,6 @@
-import { ValueExpression } from "./expressions";
 import { Node } from "./node";
 import { Statement } from "./statements";
-
-export abstract class SwitchLabel extends Node {}
-
-export class DefaultSwitchLabel extends SwitchLabel {}
-
-export class ValueSwitchLabel extends SwitchLabel {
-  public constructor(private _value: ValueExpression) {
-    super();
-  }
-
-  public get value(): ValueExpression {
-    return this._value;
-  }
-}
+import { SwitchLabel } from "./switch-label";
 
 export class CaseSwitchElement extends Node {
   public constructor(private _labels: SwitchLabel[], private _statements: Statement[]) {
