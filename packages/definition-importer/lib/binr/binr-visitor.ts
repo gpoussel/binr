@@ -222,8 +222,9 @@ export function getVisitor(parser: CstParser) {
       each(ctx.MemberCallNewExpressionExtension, (extension) => {
         const childrenCtx = extension.children;
         if (has(childrenCtx, "BoxMemberExpression")) {
-          // TODO indexExpression
-          const indexExpression: Expression = new NumberValue(0);
+          const indexExpression: Expression = this.visit(
+            childrenCtx.BoxMemberExpression[0].children.Expression,
+          );
           currentExpression = new ArrayIndexExpression(currentExpression, indexExpression);
         } else if (has(childrenCtx, "DotMemberExpression")) {
           const propertyName = this.getIdentifierName(

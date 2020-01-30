@@ -38,7 +38,7 @@ Definition {
                   "_name": "id",
                 },
                 "_indexExpression": NumberValue {
-                  "_value": 0,
+                  "_value": 3,
                 },
               },
               "_operator": 8,
