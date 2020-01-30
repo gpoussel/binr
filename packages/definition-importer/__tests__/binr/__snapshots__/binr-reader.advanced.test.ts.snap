@@ -1516,6 +1516,9 @@ Definition {
                 ],
               },
             ],
+            "_testExpression": IdentifierValue {
+              "_name": "type",
+            },
           },
         ],
       },
@@ -8365,6 +8368,9 @@ Definition {
                 ],
               },
             ],
+            "_testExpression": IdentifierValue {
+              "_name": "version",
+            },
           },
           VariableDeclarationStatement {
             "_annotations": Array [],

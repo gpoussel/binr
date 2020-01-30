@@ -295,7 +295,10 @@ export function getVisitor(parser: CstParser) {
     }
 
     public switchStatement(ctx: any): SwitchStatement {
-      return new SwitchStatement(this.visitAll(ctx, "switchBlockStatementGroup"));
+      return new SwitchStatement(
+        this.visit(ctx.parExpression),
+        this.visitAll(ctx, "switchBlockStatementGroup"),
+      );
     }
 
     public switchBlockStatementGroup(ctx: any): CaseSwitchElement {

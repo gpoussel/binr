@@ -96,11 +96,6 @@ export function getVisitor(parser: CstParser) {
     }
 
     public fieldClause(ctx: any): VariableDeclarationStatement {
-      /*const fieldResult = new FieldNode(type, name, annotations);
-      
-      if (has(ctx, "BoxMemberUntilExpression")) {
-        fieldResult.setArrayUntilDefinition(this.visit(ctx.BoxMemberUntilExpression[0]));
-      }*/
       const type = this.visit(ctx.typeReferenceClause);
       const name = this.getIdentifierName(get(ctx.IdentifierToken, 0));
       const annotations: Annotation[] = this.visitAll(ctx, "annotationClause");
@@ -126,9 +121,9 @@ export function getVisitor(parser: CstParser) {
     }
 
     public SwitchStatement(ctx: any): SwitchStatement {
-      // TODO const testExpression = this.visit(ctx.Expression[0]);
+      const testExpression = this.visit(ctx.Expression[0]);
       const switchElements = this.visitAll(ctx, "switchInnerClause");
-      return new SwitchStatement(switchElements);
+      return new SwitchStatement(testExpression, switchElements);
     }
 
     public switchInnerClause(ctx: any): CaseSwitchElement {
