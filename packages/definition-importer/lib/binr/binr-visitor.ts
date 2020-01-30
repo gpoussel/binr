@@ -1,6 +1,7 @@
 import {
   Annotation,
   ArraySelector,
+  ArrayValue,
   BitmaskDeclarationElement,
   BitmaskDeclarationStatement,
   BlockStatement,
@@ -213,17 +214,24 @@ export function getVisitor(parser: CstParser) {
         return new IdentifierValue(this.getIdentifierName(ctx.IdentifierToken[0]));
       }
       if (has(ctx, "ParenthesisExpression")) {
-        // TODO ??
         return this.visit(ctx.ParenthesisExpression);
       }
       if (has(ctx, "ArrayLiteral")) {
-        // TODO ??
         return this.visit(ctx.ArrayLiteral);
       }
       if (has(ctx, "StringLiteralToken")) {
         return new StringValue(ctx.StringLiteralToken[0].image);
       }
       throw new Error();
+    }
+
+    public ParenthesisExpression(ctx: any): Expression {
+      return this.visit(ctx.Expression);
+    }
+
+    public ArrayLiteral(ctx: any): ArrayValue {
+      console.log(ctx);
+      return new ArrayValue([]);
     }
 
     // TODO ExpressionToken
@@ -292,8 +300,6 @@ export function getVisitor(parser: CstParser) {
 
     /*
 
-    
-
     public headerClause(ctx: any) {
       const name = this.getIdentifierName(ctx.IdentifierToken[0]);
       const value = this.visit(ctx.valueClause[0]);
@@ -325,10 +331,6 @@ export function getVisitor(parser: CstParser) {
       }
     }
 
-    public ArrayLiteral(ctx: any) {
-      return `[${join(map(ctx.ArrayLiteralContent, this.visit.bind(this)), "")}]`;
-    }
-
     public ArrayLiteralContent(ctx: any) {
       if (has(ctx, "ElementList")) {
         return this.visit(ctx.ElementList);
@@ -336,6 +338,7 @@ export function getVisitor(parser: CstParser) {
       if (has(ctx, "Elision")) {
         return this.visit(ctx.Elision);
       }
+      throw new Error();
     }
 
     public ElementList(ctx: any) {
@@ -354,9 +357,6 @@ export function getVisitor(parser: CstParser) {
       return repeat(",", size(ctx.CommaToken));
     }
 
-    public ParenthesisExpression(ctx: any) {
-      return `(${this.visit(ctx.Expression)})`;
-    }
     */
   }
   return new Visitor();

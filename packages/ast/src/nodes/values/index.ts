@@ -1,3 +1,4 @@
+export * from "./array-value";
 export * from "./boolean-value";
 export * from "./identifier-value";
 export * from "./number-value";

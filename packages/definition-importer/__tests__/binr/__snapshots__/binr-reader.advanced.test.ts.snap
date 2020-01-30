@@ -6003,7 +6003,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": undefined,
+                  "_innerExpression": IdentifierValue {
+                    "_name": "size",
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
@@ -9281,7 +9283,9 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": undefined,
+                  "_innerExpression": IdentifierValue {
+                    "_name": "fileHeader",
+                  },
                 },
                 "_bitfield": undefined,
                 "_initializationExpression": undefined,
