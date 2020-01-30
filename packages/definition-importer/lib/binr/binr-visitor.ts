@@ -1,4 +1,5 @@
 import {
+  Annotation,
   BlockStatement,
   BooleanValue,
   CaseSwitchElement,
@@ -23,6 +24,8 @@ import {
   Type,
   Value,
   ValueSwitchLabel,
+  VariableDeclaration,
+  VariableDeclarationStatement,
 } from "@binr/ast";
 import { CstParser } from "chevrotain";
 import { get, has, keys, map, size, times } from "lodash";
@@ -78,7 +81,29 @@ export function getVisitor(parser: CstParser) {
       }
       return new IfStatement(condition, trueStatement);
     }
-    // TODO fieldClause
+
+    public fieldClause(ctx: any): VariableDeclarationStatement {
+      /*const fieldResult = new FieldNode(type, name, annotations);
+      if (has(ctx, "BoxMemberExpression")) {
+        const boxMemberDefinition = this.visit(ctx.BoxMemberExpression[0]);
+        fieldResult.setArrayDefinition(boxMemberDefinition.substr(1, boxMemberDefinition.length - 2));
+      }
+      if (has(ctx, "BoxMemberUntilExpression")) {
+        fieldResult.setArrayUntilDefinition(this.visit(ctx.BoxMemberUntilExpression[0]));
+      }*/
+      const type = this.visit(ctx.typeReferenceClause);
+      const name = this.getIdentifierName(get(ctx.IdentifierToken, 0));
+      const annotations: Annotation[] = this.visitAll(ctx, "annotationClause");
+      const declaration: VariableDeclaration = new VariableDeclaration(
+        name,
+        undefined,
+        undefined,
+        [],
+        undefined,
+        [],
+      );
+      return new VariableDeclarationStatement(type, [], undefined, [declaration], annotations);
+    }
 
     public BlockStatement(ctx: any): BlockStatement {
       return new BlockStatement(this.visitAll(ctx, "statementClause"));
@@ -222,6 +247,12 @@ export function getVisitor(parser: CstParser) {
       return baseType;
     }
 
+    public annotationClause(ctx: any): Annotation {
+      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
+      const value = this.visit(ctx.valueClause[0]);
+      return new Annotation(name, value);
+    }
+
     private visitAll(ctx: any, propertyName: string): any[] {
       return map(get(ctx, propertyName), this.visit.bind(this));
     }
@@ -254,15 +285,6 @@ export function getVisitor(parser: CstParser) {
       };
     }
 
-    public annotationClause(ctx: any) {
-      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
-      const value = this.visit(ctx.valueClause[0]);
-      return {
-        name,
-        value,
-      };
-    }
-
     
 
     public bitmaskClause(ctx: any) {
@@ -277,23 +299,6 @@ export function getVisitor(parser: CstParser) {
         entries,
         parentType,
       };
-    }
-    
-    
-
-    public fieldClause(ctx: any) {
-      const type = this.visit(ctx.typeReferenceClause);
-      const name = this.getIdentifierName(get(ctx.IdentifierToken, 0));
-      const annotations = map(ctx.annotationClause, this.visit.bind(this));
-      const fieldResult = new FieldNode(type, name, annotations);
-      if (has(ctx, "BoxMemberExpression")) {
-        const boxMemberDefinition = this.visit(ctx.BoxMemberExpression[0]);
-        fieldResult.setArrayDefinition(boxMemberDefinition.substr(1, boxMemberDefinition.length - 2));
-      }
-      if (has(ctx, "BoxMemberUntilExpression")) {
-        fieldResult.setArrayUntilDefinition(this.visit(ctx.BoxMemberUntilExpression[0]));
-      }
-      return fieldResult;
     }
 
     public BoxMemberExpression(ctx: any) {
