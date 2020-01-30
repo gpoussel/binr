@@ -27,7 +27,7 @@ import { AssetLoader } from "../utils/010-structures";
 
 function visit(node: Node): string[] {
   if (node instanceof Definition) {
-    return flatMap(node.content, visit);
+    return flatMap(node.statements, visit);
   } else if (node instanceof FunctionDeclarationStatement) {
     return [`function: ${node.name}`];
   } else if (node instanceof EnumDeclarationStatement) {

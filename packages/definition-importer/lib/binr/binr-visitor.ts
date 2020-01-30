@@ -72,7 +72,8 @@ export function getVisitor(parser: CstParser) {
 
     public definition(ctx: any): Definition {
       const statements = this.visitAll(ctx, "topLevelClause");
-      return new Definition(statements);
+      const annotations = this.visitAll(ctx, "headerClause");
+      return new Definition(statements, annotations);
     }
 
     public topLevelClause(ctx: any): Statement {
@@ -355,6 +356,12 @@ export function getVisitor(parser: CstParser) {
       return new Annotation(name, value);
     }
 
+    public headerClause(ctx: any): Annotation {
+      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
+      const value = this.visit(ctx.valueClause[0]);
+      return new Annotation(name, value);
+    }
+
     private visitAll(ctx: any, propertyName: string): any[] {
       return map(get(ctx, propertyName), this.visit.bind(this));
     }
@@ -373,19 +380,6 @@ export function getVisitor(parser: CstParser) {
     private getIdentifierName(identifier: any) {
       return identifier.image;
     }
-
-    /*
-
-    public headerClause(ctx: any) {
-      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
-      const value = this.visit(ctx.valueClause[0]);
-      return {
-        name,
-        value,
-      };
-    }
-
-    */
   }
   return new Visitor();
 }

@@ -2,7 +2,8 @@
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (avi.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -1723,7 +1724,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (bmp.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -2146,7 +2148,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (eot.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     BitmaskDeclarationStatement {
       "_annotations": Array [],
       "_baseType": RestrictedType {
@@ -3202,7 +3205,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (gif.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -3691,7 +3695,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (ico.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -4650,7 +4655,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (java_class.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     EnumDeclarationStatement {
       "_annotations": Array [],
       "_baseType": RestrictedType {
@@ -6087,7 +6093,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (manifest.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -6477,7 +6484,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (mft.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     EnumDeclarationStatement {
       "_annotations": Array [],
       "_baseType": RestrictedType {
@@ -6543,7 +6551,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (rar.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     EnumDeclarationStatement {
       "_annotations": Array [],
       "_baseType": RestrictedType {
@@ -7027,7 +7036,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (rm.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -8993,7 +9003,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (romfs.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -9231,7 +9242,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (shx.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [
         Annotation {
@@ -9779,7 +9791,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (torrent.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -9860,7 +9873,8 @@ Definition {
 
 exports[`BinrDefinitionImporter, advanced parses example format definition (wmf.binr) 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {

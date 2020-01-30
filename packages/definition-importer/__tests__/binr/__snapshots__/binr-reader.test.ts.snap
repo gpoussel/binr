@@ -2,7 +2,8 @@
 
 exports[`BinrDefinitionImporter accepts == and || 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     StructDeclarationStatement {
       "_annotations": Array [],
       "_body": BlockStatement {
@@ -60,7 +61,8 @@ Definition {
 
 exports[`BinrDefinitionImporter accepts bitmasks 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     BitmaskDeclarationStatement {
       "_annotations": Array [],
       "_baseType": RestrictedType {
@@ -93,7 +95,8 @@ Definition {
 
 exports[`BinrDefinitionImporter accepts enumerations 1`] = `
 Definition {
-  "_content": Array [
+  "_annotations": Array [],
+  "_statements": Array [
     EnumDeclarationStatement {
       "_annotations": Array [],
       "_baseType": RestrictedType {

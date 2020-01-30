@@ -182,7 +182,7 @@ export function getVisitor(parser: CstParser) {
     }
 
     public definition(ctx: any): Definition {
-      return new Definition(this.visitAll(ctx, "topLevelStatement"));
+      return new Definition(this.visitAll(ctx, "topLevelStatement"), []);
     }
 
     public topLevelStatement(ctx: any): Statement {
