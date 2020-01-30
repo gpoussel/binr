@@ -3,7 +3,16 @@
 exports[`BinrDefinitionImporter accepts == and || 1`] = `
 Definition {
   "_content": Array [
-    undefined,
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+        ],
+      },
+      "_name": "a",
+      "_parameters": Array [],
+    },
   ],
 }
 `;
@@ -12,7 +21,14 @@ exports[`BinrDefinitionImporter accepts bitmasks 1`] = `
 Definition {
   "_content": Array [
     undefined,
-    undefined,
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [],
+      },
+      "_name": "A",
+      "_parameters": Array [],
+    },
   ],
 }
 `;
@@ -38,7 +54,14 @@ Definition {
       ],
       "_name": "foo",
     },
-    undefined,
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [],
+      },
+      "_name": "A",
+      "_parameters": Array [],
+    },
   ],
 }
 `;

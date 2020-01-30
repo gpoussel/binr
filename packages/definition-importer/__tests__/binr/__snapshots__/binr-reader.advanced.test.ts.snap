@@ -3,9 +3,50 @@
 exports[`BinrDefinitionImporter, advanced parses example format definition 1`] = `
 Definition {
   "_content": Array [
-    undefined,
-    undefined,
-    undefined,
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "FileHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "InfoHeader",
+      "_parameters": Array [],
+    },
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+          undefined,
+        ],
+      },
+      "_name": "BmpFile",
+      "_parameters": Array [],
+    },
   ],
 }
 `;
@@ -43,7 +84,16 @@ Definition {
       ],
       "_name": "FileNameType",
     },
-    undefined,
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [
+          undefined,
+        ],
+      },
+      "_name": "FileEntry",
+      "_parameters": Array [],
+    },
   ],
 }
 `;

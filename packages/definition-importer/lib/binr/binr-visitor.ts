@@ -1,14 +1,21 @@
 import {
+  BlockStatement,
+  CaseSwitchElement,
   Definition,
   EnumDeclarationElement,
   EnumDeclarationStatement,
+  IfElseStatement,
+  IfStatement,
   NamedType,
   RestrictedType,
   Statement,
+  StructDeclarationStatement,
+  SwitchStatement,
   Type,
+  ValueSwitchLabel,
 } from "@binr/ast";
 import { CstParser } from "chevrotain";
-import { get, has, keys, map, times } from "lodash";
+import { get, has, keys, map, size, times } from "lodash";
 
 export function getVisitor(parser: CstParser) {
   class Visitor extends parser.getBaseCstVisitorConstructorWithDefaults() {
@@ -24,7 +31,16 @@ export function getVisitor(parser: CstParser) {
 
     public topLevelClause(ctx: any): Statement {
       // TODO annotationClause (array)
+      // TODO structureClause
+      // TODO bitmaskClause
       return this.visitFirst(ctx, "structureClause", "enumClause", "bitmaskClause");
+    }
+
+    public structureClause(ctx: any): StructDeclarationStatement {
+      // TODO "exported" flag (ExportToken)
+      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
+      const statements: Statement[] = this.visitAll(ctx, "statementClause");
+      return new StructDeclarationStatement(name, [], new BlockStatement(statements), []);
     }
 
     public enumClause(ctx: any): EnumDeclarationStatement {
@@ -38,6 +54,39 @@ export function getVisitor(parser: CstParser) {
       // TODO annotations
       return new EnumDeclarationStatement(parentType, name, entries, []);
     }
+
+    public statementClause(ctx: any): Statement {
+      return this.visitFirst(ctx, "fieldClause", "IfStatement", "BlockStatement", "SwitchStatement");
+    }
+
+    public IfStatement(ctx: any): IfElseStatement | IfStatement {
+      const condition = this.visit(ctx.Expression[0]);
+      const trueStatement = this.visit(ctx.statementClause[0]);
+      if (size(ctx.statementClause) > 1) {
+        const falseStatement = this.visit(get(ctx.statementClause, 1));
+        return new IfElseStatement(condition, trueStatement, falseStatement);
+      }
+      return new IfStatement(condition, trueStatement);
+    }
+    // TODO fieldClause
+
+    public BlockStatement(ctx: any): BlockStatement {
+      return new BlockStatement(this.visitAll(ctx, "statementClause"));
+    }
+
+    public SwitchStatement(ctx: any): SwitchStatement {
+      // TODO const testExpression = this.visit(ctx.Expression[0]);
+      const switchElements = this.visitAll(ctx, "switchInnerClause");
+      return new SwitchStatement(switchElements);
+    }
+
+    public switchInnerClause(ctx: any): CaseSwitchElement {
+      const value = this.visit(ctx.valueClause[0]);
+      const statement = this.visit(ctx.BlockStatement[0]);
+      return new CaseSwitchElement([new ValueSwitchLabel(value)], [statement]);
+    }
+    // TODO Expression
+    // TODO valueClause
 
     public numberClause(ctx: any): number {
       if (has(ctx, "NumberDecimalLiteralToken")) {
@@ -118,59 +167,8 @@ export function getVisitor(parser: CstParser) {
         parentType,
       };
     }
-
-    public structureClause(ctx: any) {
-      const exported = has(ctx, "ExportToken");
-      const name = this.getIdentifierName(ctx.IdentifierToken[0]);
-      const statements = map(ctx.statementClause, this.visit.bind(this));
-      return {
-        name,
-        exported,
-        statements,
-      };
-    }
-
-    public statementClause(ctx: any) {
-      if (has(ctx, "fieldClause")) {
-        return this.visit(ctx.fieldClause);
-      }
-      if (has(ctx, "IfStatement")) {
-        return this.visit(ctx.IfStatement);
-      }
-      if (has(ctx, "BlockStatement")) {
-        return this.visit(ctx.BlockStatement);
-      }
-      if (has(ctx, "SwitchStatement")) {
-        return this.visit(ctx.SwitchStatement);
-      }
-    }
-
-    public IfStatement(ctx: any) {
-      return new IfNode(
-        this.visit(ctx.Expression[0]),
-        this.visit(ctx.statementClause[0]),
-        size(ctx.statementClause) > 1 ? this.visit(get(ctx.statementClause, 1)) : undefined,
-      );
-    }
-
-    public BlockStatement(ctx: any) {
-      return new BlockNode(map(ctx.statementClause, this.visit.bind(this)));
-    }
-
-    public SwitchStatement(ctx: any) {
-      const testExpression = this.visit(ctx.Expression[0]);
-      const switchClauses = map(ctx.switchInnerClause, this.visit.bind(this));
-      return new SwitchNode(testExpression, switchClauses);
-    }
-
-    public switchInnerClause(ctx: any) {
-      const value = this.visit(ctx.valueClause[0]);
-      const statement = this.visit(ctx.BlockStatement[0]);
-      return {
-        value,
-        statement,
-      };
-    }
+    
+    
 
     public fieldClause(ctx: any) {
       const type = this.visit(ctx.typeReferenceClause);
