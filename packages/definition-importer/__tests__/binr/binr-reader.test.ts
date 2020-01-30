@@ -26,7 +26,9 @@ describe("BinrDefinitionImporter", () => {
       "struct a {} struct a {}",
       "struct a {int a; int a;}",
       "",
-      '#set "b" #set "b" struct a {}',
+      `#set "b"
+#set "b"
+struct a {}`,
       "struct int {}",
       "struct a { b b; }",
       "struct c { int:0 a; }",
@@ -40,13 +42,22 @@ describe("BinrDefinitionImporter", () => {
     },
   );
 
-  each(['#set "foo" struct a {}', "#set 32 struct b {}", "struct a {}"], (value: string) => {
-    test(`accepts minimal input (${value})`, () => {
-      const result = createAndCallParser(value)();
-      expect(result).toBeDefined();
-      expect(result).toMatchSnapshot();
-    });
-  });
+  each(
+    [
+      `#set "foo"
+struct a {}`,
+      `#set 32
+struct b {}`,
+      "struct a {}",
+    ],
+    (value: string) => {
+      test(`accepts minimal input (${value})`, () => {
+        const result = createAndCallParser(value)();
+        expect(result).toBeDefined();
+        expect(result).toMatchSnapshot();
+      });
+    },
+  );
 
   test("accepts field annotations", () => {
     const result = createAndCallParser("struct a { @ignore(false) int b; @ignore(true) int c; }")();

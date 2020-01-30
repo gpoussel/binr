@@ -198,17 +198,37 @@ Definition {
 }
 `;
 
-exports[`BinrDefinitionImporter accepts minimal input (#set "foo" struct a {}) 1`] = `
+exports[`BinrDefinitionImporter accepts minimal input (#set "foo"
+struct a {}) 1`] = `
 Definition {
   "_annotations": Array [],
-  "_statements": Array [],
+  "_statements": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [],
+      },
+      "_name": "a",
+      "_parameters": Array [],
+    },
+  ],
 }
 `;
 
-exports[`BinrDefinitionImporter accepts minimal input (#set 32 struct b {}) 1`] = `
+exports[`BinrDefinitionImporter accepts minimal input (#set 32
+struct b {}) 1`] = `
 Definition {
   "_annotations": Array [],
-  "_statements": Array [],
+  "_statements": Array [
+    StructDeclarationStatement {
+      "_annotations": Array [],
+      "_body": BlockStatement {
+        "_content": Array [],
+      },
+      "_name": "b",
+      "_parameters": Array [],
+    },
+  ],
 }
 `;
 
