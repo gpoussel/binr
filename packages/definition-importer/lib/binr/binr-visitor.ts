@@ -2,13 +2,13 @@ import {
   Annotation,
   ArrayIndexExpression,
   ArraySelector,
-  ArrayValue,
   ArrayValueElement,
+  ArrayValueExpression,
   BinaryExpression,
   BitmaskDeclarationElement,
   BitmaskDeclarationStatement,
   BlockStatement,
-  BooleanValue,
+  BooleanValueExpression,
   CaseSwitchElement,
   Definition,
   EnumDeclarationElement,
@@ -17,25 +17,25 @@ import {
   ExpressionArraySelector,
   ExpressionArrayValueElement,
   FunctionCallExpression,
-  IdentifierValue,
+  IdentifierValueExpression,
   IfElseStatement,
   IfStatement,
   NamedType,
-  NumberValue,
+  NumberValueExpression,
   Operator,
   PostfixExpression,
   PrefixExpression,
   PropertyAccessExpression,
   RestrictedType,
   Statement,
-  StringValue,
+  StringValueExpression,
   StructDeclarationStatement,
   SwitchStatement,
   TernaryExpression,
   Type,
   UndefinedArrayValueElement,
   UntilExpressionArraySelector,
-  Value,
+  ValueExpression,
   ValueSwitchLabel,
   VariableDeclaration,
   VariableDeclarationStatement,
@@ -82,7 +82,7 @@ export function getVisitor(parser: CstParser) {
         const structureCtx = ctx.structureClause[0].children;
         if (has(ctx, "ExportToken")) {
           // "export" is not part of the AST, so we are adding it as an annotation
-          annotations.push(new Annotation("export", new BooleanValue(true)));
+          annotations.push(new Annotation("export", new BooleanValueExpression(true)));
         }
         const name = this.getIdentifierName(structureCtx.IdentifierToken[0]);
         const statements: Statement[] = this.visitAll(structureCtx, "statementClause");
@@ -258,10 +258,10 @@ export function getVisitor(parser: CstParser) {
 
     public PrimaryExpression(ctx: any): Expression {
       if (has(ctx, "numberClause")) {
-        return new NumberValue(this.visit(ctx.numberClause[0]));
+        return new NumberValueExpression(this.visit(ctx.numberClause[0]));
       }
       if (has(ctx, "IdentifierToken")) {
-        return new IdentifierValue(this.getIdentifierName(ctx.IdentifierToken[0]));
+        return new IdentifierValueExpression(this.getIdentifierName(ctx.IdentifierToken[0]));
       }
       if (has(ctx, "ParenthesisExpression")) {
         return this.visit(ctx.ParenthesisExpression);
@@ -270,7 +270,7 @@ export function getVisitor(parser: CstParser) {
         return this.visit(ctx.ArrayLiteral);
       }
       if (has(ctx, "StringLiteralToken")) {
-        return new StringValue(ctx.StringLiteralToken[0].image);
+        return new StringValueExpression(ctx.StringLiteralToken[0].image);
       }
       throw new Error();
     }
@@ -279,8 +279,8 @@ export function getVisitor(parser: CstParser) {
       return this.visit(ctx.Expression);
     }
 
-    public ArrayLiteral(ctx: any): ArrayValue {
-      return new ArrayValue(flatMap(ctx.ArrayLiteralContent, this.visit.bind(this)));
+    public ArrayLiteral(ctx: any): ArrayValueExpression {
+      return new ArrayValueExpression(flatMap(ctx.ArrayLiteralContent, this.visit.bind(this)));
     }
 
     public ArrayLiteralContent(ctx: any): ArrayValueElement[] {
@@ -313,18 +313,18 @@ export function getVisitor(parser: CstParser) {
       return OPERATOR_MAPPING[tokenName];
     }
 
-    public valueClause(ctx: any): Value {
+    public valueClause(ctx: any): ValueExpression {
       if (has(ctx, "StringLiteralToken")) {
-        return new StringValue(JSON.parse(ctx.StringLiteralToken[0].image));
+        return new StringValueExpression(JSON.parse(ctx.StringLiteralToken[0].image));
       }
       if (has(ctx, "TrueToken")) {
-        return new BooleanValue(true);
+        return new BooleanValueExpression(true);
       }
       if (has(ctx, "FalseToken")) {
-        return new BooleanValue(false);
+        return new BooleanValueExpression(false);
       }
       // That's a number
-      return new NumberValue(this.visit(ctx.numberClause[0]));
+      return new NumberValueExpression(this.visit(ctx.numberClause[0]));
     }
 
     public numberClause(ctx: any): number {

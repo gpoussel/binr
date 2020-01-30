@@ -1,12 +1,12 @@
+import { ValueExpression } from "./expressions/values";
 import { SwitchLabel } from "./switch-label";
-import { Value } from "./values";
 
 export class ValueSwitchLabel extends SwitchLabel {
-  public constructor(private _value: Value) {
+  public constructor(private _value: ValueExpression) {
     super();
   }
 
-  public get value(): Value {
+  public get value(): ValueExpression {
     return this._value;
   }
 }

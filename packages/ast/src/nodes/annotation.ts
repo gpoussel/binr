@@ -1,8 +1,8 @@
+import { ValueExpression } from "./expressions/values";
 import { Node } from "./node";
-import { Value } from "./values";
 
 export class Annotation extends Node {
-  public constructor(private _key: string, private _value: Value) {
+  public constructor(private _key: string, private _value: ValueExpression) {
     super();
   }
 

@@ -7,7 +7,7 @@ import {
   AssignmentOperator,
   BinaryExpression,
   BlockStatement,
-  BooleanValue,
+  BooleanValueExpression,
   BreakStatement,
   CaseSwitchElement,
   CastExpression,
@@ -27,14 +27,14 @@ import {
   ForwardStructDeclarationStatement,
   FunctionCallExpression,
   FunctionDeclarationStatement,
-  IdentifierValue,
+  IdentifierValueExpression,
   IfElseStatement,
   IfStatement,
   InlineEnumDeclarationStatement,
   InlineStructDeclarationStatement,
   InlineUnionDeclarationStatement,
   NamedType,
-  NumberValue,
+  NumberValueExpression,
   Operator,
   ParameterDeclaration,
   PostfixExpression,
@@ -43,7 +43,7 @@ import {
   ReturnStatement,
   SizeofExpression,
   Statement,
-  StringValue,
+  StringValueExpression,
   StructDeclarationStatement,
   StructReferenceType,
   SwitchLabel,
@@ -54,7 +54,7 @@ import {
   TypedefStatement,
   UnaryExpression,
   UnionDeclarationStatement,
-  Value,
+  ValueExpression,
   ValueSwitchLabel,
   VariableDeclaration,
   VariableDeclarationStatement,
@@ -771,12 +771,12 @@ export function getVisitor(parser: CstParser) {
       return this.visitFirst(ctx, "assignmentExpression", "arrayInitializer");
     }
 
-    public simpleValue(ctx: any): Value {
+    public simpleValue(ctx: any): ValueExpression {
       return this.visitChoices(ctx, [
-        { name: "number", build: () => new NumberValue(this.visit(ctx.number)) },
-        { name: "boolean", build: () => new BooleanValue(this.visit(ctx.boolean)) },
-        { name: "Identifier", build: () => new IdentifierValue(getIdentifier(ctx.Identifier)) },
-        { name: "StringLiteral", build: () => new StringValue(getString(ctx.StringLiteral)) },
+        { name: "number", build: () => new NumberValueExpression(this.visit(ctx.number)) },
+        { name: "boolean", build: () => new BooleanValueExpression(this.visit(ctx.boolean)) },
+        { name: "Identifier", build: () => new IdentifierValueExpression(getIdentifier(ctx.Identifier)) },
+        { name: "StringLiteral", build: () => new StringValueExpression(getString(ctx.StringLiteral)) },
       ]);
     }
 

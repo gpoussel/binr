@@ -12,3 +12,4 @@ export * from "./property-access-expression";
 export * from "./sizeof-expression";
 export * from "./ternary-expression";
 export * from "./unary-expression";
+export * from "./values";

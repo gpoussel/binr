@@ -19,21 +19,21 @@ Definition {
                   "_innerExpression": BinaryExpression {
                     "_left": BinaryExpression {
                       "_left": BinaryExpression {
-                        "_left": NumberValue {
+                        "_left": NumberValueExpression {
                           "_value": 1,
                         },
                         "_operator": 8,
-                        "_right": NumberValue {
+                        "_right": NumberValueExpression {
                           "_value": 2,
                         },
                       },
                       "_operator": 5,
-                      "_right": NumberValue {
+                      "_right": NumberValueExpression {
                         "_value": 3,
                       },
                     },
                     "_operator": 8,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 4,
                     },
                   },
@@ -139,7 +139,7 @@ Definition {
             "_annotations": Array [
               Annotation {
                 "_key": "ignore",
-                "_value": BooleanValue {
+                "_value": BooleanValueExpression {
                   "_value": false,
                 },
               },
@@ -166,7 +166,7 @@ Definition {
             "_annotations": Array [
               Annotation {
                 "_key": "ignore",
-                "_value": BooleanValue {
+                "_value": BooleanValueExpression {
                   "_value": true,
                 },
               },
@@ -204,7 +204,7 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "set",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "foo",
       },
     },
@@ -228,7 +228,7 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "set",
-      "_value": NumberValue {
+      "_value": NumberValueExpression {
         "_value": 32,
       },
     },
