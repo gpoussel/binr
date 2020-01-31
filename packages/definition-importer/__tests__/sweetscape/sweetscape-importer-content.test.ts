@@ -38,14 +38,7 @@ class TopLevelElementVisitor extends BaseAstVisitor {
   }
 }
 
-class DebugVisitor extends BaseAstVisitor {
-  visitUnionDeclarationStatement(node: UnionDeclarationStatement): boolean {
-    if (!node.name) {
-      console.log(node);
-    }
-    return true;
-  }
-}
+class DebugVisitor extends BaseAstVisitor {}
 
 describe("Sweetscape Importer", () => {
   const importer = new SweetscapeDefinitionImporter();
@@ -64,7 +57,7 @@ describe("Sweetscape Importer", () => {
   });
 
   loader.iterateElements((categoryType, elementName, getter) => {
-    test(`reads ParameterDeclaration in ${categoryType} ${elementName}`, () => {
+    test.skip(`reads debug elements in ${categoryType} ${elementName}`, () => {
       const element = getter();
       const definition = importer.readInput(element.content);
       const visitor = new DebugVisitor();
