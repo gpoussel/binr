@@ -57,13 +57,10 @@ export class AstValidator extends BaseAstVisitor {
   }
 
   visitStructDeclarationStatement(node: StructDeclarationStatement): boolean {
-    const anonymous = isUndefined(node.name);
-    if (!anonymous) {
-      if (includes(this._structures, node.name)) {
-        throw new ValidationException(`Structure ${node.name} is already defined`);
-      }
-      this._structures.push(node.name as string);
+    if (includes(this._structures, node.name)) {
+      throw new ValidationException(`Structure ${node.name} is already defined`);
     }
+    this._structures.push(node.name as string);
     return true;
   }
 
