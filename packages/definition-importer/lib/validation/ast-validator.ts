@@ -3,10 +3,20 @@ import {
   BitmaskDeclarationStatement,
   Definition,
   EnumDeclarationStatement,
+  EnumReferenceType,
+  ForwardStructDeclarationStatement,
   FunctionCallExpression,
   FunctionDeclarationStatement,
   IdentifierValueExpression,
+  InlineStructDeclarationStatement,
+  NamedType,
+  RestrictedType,
   StructDeclarationStatement,
+  StructReferenceType,
+  Type,
+  TypedefStatement,
+  UnionDeclarationStatement,
+  VoidType,
 } from "@binr/ast";
 import { each, filter, includes, isUndefined } from "lodash";
 
@@ -18,7 +28,10 @@ export class AstValidator extends BaseAstVisitor {
   private _topLevelFunctions: string[] = [];
   private _enumerations: string[] = [];
   private _structures: string[] = [];
+  private _forwardStructures: string[] = [];
+  private _definedTypes: string[] = [];
   private _bitmasks: string[] = [];
+  private _unions: string[] = [];
 
   public constructor(private _format: Format) {
     super();
@@ -34,6 +47,11 @@ export class AstValidator extends BaseAstVisitor {
     return true;
   }
 
+  visitTypedefStatement(node: TypedefStatement): boolean {
+    this._definedTypes.push(node.alias);
+    return true;
+  }
+
   visitFunctionDeclarationStatement(node: FunctionDeclarationStatement): boolean {
     const forwardDeclaration = isUndefined(node.body);
     if (includes(this._functions, node.name)) {
@@ -44,7 +62,15 @@ export class AstValidator extends BaseAstVisitor {
     }
     if (!forwardDeclaration) {
       this._functions.push(node.name);
+      each(node.parameters, (parameter) => {
+        this.validateTypeExistence(parameter.type);
+      });
     }
+    return true;
+  }
+
+  visitForwardStructDeclarationStatement(node: ForwardStructDeclarationStatement): boolean {
+    this._forwardStructures.push(node.name);
     return true;
   }
 
@@ -56,11 +82,27 @@ export class AstValidator extends BaseAstVisitor {
     return true;
   }
 
+  visitInlineStructDeclarationStatement(node: InlineStructDeclarationStatement): boolean {
+    if (node.alias) {
+      // If inline structures are named, their type can be reused later
+      this._structures.push(node.alias);
+    }
+    return true;
+  }
+
   visitStructDeclarationStatement(node: StructDeclarationStatement): boolean {
     if (includes(this._structures, node.name)) {
       throw new ValidationException(`Structure ${node.name} is already defined`);
     }
-    this._structures.push(node.name as string);
+    this._structures.push(node.name);
+    return true;
+  }
+
+  visitUnionDeclarationStatement(node: UnionDeclarationStatement): boolean {
+    if (includes(this._unions, node.name)) {
+      throw new ValidationException(`Union ${node.name} is already defined`);
+    }
+    this._unions.push(node.name);
     return true;
   }
 
@@ -68,7 +110,7 @@ export class AstValidator extends BaseAstVisitor {
     if (includes(this._bitmasks, node.name)) {
       throw new ValidationException(`Bitmask ${node.name} is already defined`);
     }
-    this._bitmasks.push(node.name as string);
+    this._bitmasks.push(node.name);
     return true;
   }
 
@@ -86,5 +128,32 @@ export class AstValidator extends BaseAstVisitor {
       throw new ValidationException(`Unsupported callable type: ${JSON.stringify(node.callable)}`);
     }
     return true;
+  }
+
+  private validateTypeExistence(type: Type) {
+    if (type instanceof EnumReferenceType) {
+      if (!includes(this._enumerations, type.name)) {
+        throw new ValidationException(`Unknown enumeration: ${type.name}`);
+      }
+    } else if (type instanceof NamedType) {
+      if (
+        !includes(this._format.builtInTypes, type.name) &&
+        !includes(this._definedTypes, type.name) &&
+        !includes(this._structures, type.name) &&
+        !includes(this._enumerations, type.name) &&
+        !includes(this._forwardStructures, type.name) &&
+        !includes(this._unions, type.name)
+      ) {
+        throw new ValidationException(`Unsupported type name: ${type.name}`);
+      }
+    } else if (type instanceof RestrictedType) {
+      this.validateTypeExistence(type.baseType);
+    } else if (type instanceof StructReferenceType) {
+      if (!includes(this._structures, type.name) && !includes(this._forwardStructures, type.name)) {
+        throw new ValidationException(`Unknown structure: ${type.name}`);
+      }
+    } else if (type instanceof VoidType) {
+      // That's fine, nothing to do here
+    }
   }
 }
