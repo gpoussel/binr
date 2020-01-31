@@ -523,6 +523,14 @@ export class SweetscapeParser extends CstParser {
       },
       {
         ALT: () => {
+          this.CONSUME(tokens.Startof);
+          this.CONSUME3(tokens.ParenthesisOpen);
+          this.SUBRULE3(this.expressionOrTypeName);
+          this.CONSUME3(tokens.ParenthesisClose);
+        },
+      },
+      {
+        ALT: () => {
           this.CONSUME(tokens.Exists);
           this.CONSUME2(tokens.ParenthesisOpen);
           this.SUBRULE2(this.expressionOrTypeName);

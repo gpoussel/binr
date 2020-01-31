@@ -39,6 +39,7 @@ import {
   NumberValueExpression,
   Operator,
   ParameterDeclaration,
+  PositionReferenceExpression,
   PostfixExpression,
   PrefixExpression,
   PropertyAccessExpression,
@@ -702,6 +703,10 @@ export function getVisitor(parser: CstParser) {
         {
           name: "Sizeof",
           build: () => new SizeofExpression(this.visit(ctx.expressionOrTypeName)),
+        },
+        {
+          name: "Startof",
+          build: () => new PositionReferenceExpression(this.visit(ctx.expressionOrTypeName)),
         },
         {
           name: "Exists",

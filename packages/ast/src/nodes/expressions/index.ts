@@ -7,6 +7,7 @@ export * from "./comma-expression";
 export * from "./existence-check-expression";
 export * from "./expression";
 export * from "./function-call-expression";
+export * from "./position-reference-expression";
 export * from "./postfix-expression";
 export * from "./prefix-expression";
 export * from "./property-access-expression";

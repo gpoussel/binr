@@ -74,6 +74,7 @@ export enum TokenName {
   Signed = "Signed",
   Unsigned = "Unsigned",
   Sizeof = "Sizeof",
+  Startof = "Startof",
   Exists = "Exists",
   True = "True",
   False = "False",
@@ -247,6 +248,7 @@ each(
 
     // Special functions
     { name: TokenName.Sizeof, keyword: "sizeof" },
+    { name: TokenName.Startof, keyword: "startof" },
     { name: TokenName.Exists, keyword: "exists" },
   ],
   (keywordInfo) =>

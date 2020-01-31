@@ -41,6 +41,7 @@ import {
   Node,
   NumberValueExpression,
   ParameterDeclaration,
+  PositionReferenceExpression,
   PostfixExpression,
   PrefixExpression,
   PropertyAccessExpression,
@@ -232,6 +233,10 @@ export class BaseAstVisitor extends AstVisitor {
     return true;
   }
   endVisitParameterDeclaration(_node: ParameterDeclaration): void {}
+  visitPositionReferenceExpression(_node: PositionReferenceExpression): boolean {
+    return true;
+  }
+  endVisitPositionReferenceExpression(_node: PositionReferenceExpression): void {}
   visitPostfixExpression(_node: PostfixExpression): boolean {
     return true;
   }
