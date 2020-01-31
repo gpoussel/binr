@@ -39,7 +39,7 @@ class TopLevelElementVisitor extends BaseAstVisitor {
 }
 
 class DebugVisitor extends BaseAstVisitor {
-  visitStructDeclarationStatement(node: StructDeclarationStatement): boolean {
+  visitUnionDeclarationStatement(node: UnionDeclarationStatement): boolean {
     if (!node.name) {
       console.log(node);
     }
