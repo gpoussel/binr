@@ -9,7 +9,7 @@ import {
 import { SweetscapeDefinitionImporter } from "../..";
 import { AssetLoader } from "../utils/010-structures";
 
-class TestVisitor extends BaseAstVisitor {
+class TopLevelElementVisitor extends BaseAstVisitor {
   private _topLevelElements: string[] = [];
 
   visitFunctionDeclarationStatement(node: FunctionDeclarationStatement): boolean {
@@ -38,6 +38,15 @@ class TestVisitor extends BaseAstVisitor {
   }
 }
 
+class DebugVisitor extends BaseAstVisitor {
+  visitStructDeclarationStatement(node: StructDeclarationStatement): boolean {
+    if (!node.name) {
+      console.log(node);
+    }
+    return true;
+  }
+}
+
 describe("Sweetscape Importer", () => {
   const importer = new SweetscapeDefinitionImporter();
   const loader = new AssetLoader();
@@ -48,9 +57,18 @@ describe("Sweetscape Importer", () => {
     test(`reads top-level elements in ${categoryType} ${elementName}`, () => {
       const element = getter();
       const definition = importer.readInput(element.content);
-      const visitor = new TestVisitor();
+      const visitor = new TopLevelElementVisitor();
       definition.accept(visitor);
       expect(visitor.topLevelElements).toMatchSnapshot();
+    });
+  });
+
+  loader.iterateElements((categoryType, elementName, getter) => {
+    test(`reads ParameterDeclaration in ${categoryType} ${elementName}`, () => {
+      const element = getter();
+      const definition = importer.readInput(element.content);
+      const visitor = new DebugVisitor();
+      definition.accept(visitor);
     });
   });
 });

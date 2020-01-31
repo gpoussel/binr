@@ -6,7 +6,7 @@ import { Statement } from "./statement";
 
 export class StructDeclarationStatement extends Statement {
   public constructor(
-    private _name: string | undefined,
+    private _name: string,
     private _parameters: ParameterDeclaration[],
     private _body: BlockStatement,
     private _annotations: Annotation[] = [],
@@ -14,7 +14,7 @@ export class StructDeclarationStatement extends Statement {
     super();
   }
 
-  public get name(): string | undefined {
+  public get name(): string {
     return this._name;
   }
 
