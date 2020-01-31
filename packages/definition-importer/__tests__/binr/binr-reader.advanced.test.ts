@@ -3,7 +3,7 @@ import * as fs from "fs";
 import { BaseAstVisitor } from "@binr/ast";
 import { each } from "lodash";
 
-import { BinrDefinitionImporter } from "../../lib/binr/binr-definition-importer";
+import { BinrDefinitionImporter } from "../..";
 
 const pathToFixtures = `${__dirname}/../../__fixtures__/binr`;
 

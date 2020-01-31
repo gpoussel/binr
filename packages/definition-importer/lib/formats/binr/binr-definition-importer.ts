@@ -1,6 +1,6 @@
 import { CstParser } from "chevrotain";
 
-import { NoopPreprocessor, Preprocessor } from "../common/preprocessors";
+import { NoopPreprocessor, Preprocessor } from "../../common/preprocessors";
 import { Importer } from "../importer";
 import { BinrLexer } from "./binr-lexer";
 import { BinrParser } from "./binr-parser";

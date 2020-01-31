@@ -22,7 +22,7 @@ import {
 } from "@binr/ast";
 import { flatMap } from "lodash";
 
-import { SweetscapeDefinitionImporter } from "../../lib/sweetscape/sweetscape-definition-importer";
+import { SweetscapeDefinitionImporter } from "../..";
 import { AssetLoader } from "../utils/010-structures";
 
 function visit(node: Node): string[] {

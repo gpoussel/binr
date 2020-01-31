@@ -1,6 +1,6 @@
 import { BaseAstVisitor } from "@binr/ast";
 
-import { SweetscapeDefinitionImporter } from "../../lib/sweetscape/sweetscape-definition-importer";
+import { SweetscapeDefinitionImporter } from "../..";
 import { AssetLoader } from "../utils/010-structures";
 
 describe("Sweetscape Importer", () => {

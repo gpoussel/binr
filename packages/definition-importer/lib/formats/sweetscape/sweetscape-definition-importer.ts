@@ -1,6 +1,6 @@
 import { CstParser } from "chevrotain";
 
-import { CStylePreprocessor, Preprocessor } from "../common/preprocessors";
+import { CStylePreprocessor, Preprocessor } from "../../common/preprocessors";
 import { Importer } from "../importer";
 import { SweetscapeLexer } from "./sweetscape-lexer";
 import { SweetscapeParser } from "./sweetscape-parser";

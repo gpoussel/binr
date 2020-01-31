@@ -2,8 +2,8 @@ import { Definition } from "@binr/ast";
 import { CstParser, IRecognitionException, Lexer } from "chevrotain";
 import { first, get, isEmpty, isString, join, map } from "lodash";
 
-import { DefinitionBuilder } from "./common/definition-builder";
-import { Preprocessor } from "./common/preprocessors";
+import { DefinitionBuilder } from "../common/definition-builder";
+import { Preprocessor } from "../common/preprocessors";
 
 export abstract class Importer {
   public readInput(input: string): Definition {
