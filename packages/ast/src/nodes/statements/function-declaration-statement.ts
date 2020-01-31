@@ -9,7 +9,7 @@ export class FunctionDeclarationStatement extends Statement {
     private _returnType: Type,
     private _name: string,
     private _parameters: ParameterDeclaration[],
-    private _body: BlockStatement | undefined,
+    private _body: BlockStatement,
   ) {
     super();
   }
@@ -26,7 +26,7 @@ export class FunctionDeclarationStatement extends Statement {
     return this._parameters;
   }
 
-  public get body(): BlockStatement | undefined {
+  public get body(): BlockStatement {
     return this._body;
   }
 
