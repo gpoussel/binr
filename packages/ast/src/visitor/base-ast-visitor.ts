@@ -31,6 +31,7 @@ import {
   ForwardStructDeclarationStatement,
   FunctionCallExpression,
   FunctionDeclarationStatement,
+  FunctionExistenceCheckExpression,
   IdentifierValueExpression,
   IfElseStatement,
   IfStatement,
@@ -198,6 +199,10 @@ export class BaseAstVisitor extends AstVisitor {
     return true;
   }
   endVisitFunctionDeclarationStatement(_node: FunctionDeclarationStatement): void {}
+  visitFunctionExistenceCheckExpression(_node: FunctionExistenceCheckExpression): boolean {
+    return true;
+  }
+  endVisitFunctionExistenceCheckExpression(_node: FunctionExistenceCheckExpression): void {}
   visitIdentifierValueExpression(_node: IdentifierValueExpression): boolean {
     return true;
   }

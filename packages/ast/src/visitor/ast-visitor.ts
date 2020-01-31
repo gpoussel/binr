@@ -31,6 +31,7 @@ import {
   ForwardStructDeclarationStatement,
   FunctionCallExpression,
   FunctionDeclarationStatement,
+  FunctionExistenceCheckExpression,
   IdentifierValueExpression,
   IfElseStatement,
   IfStatement,
@@ -137,6 +138,8 @@ export abstract class AstVisitor {
   public abstract endVisitFunctionCallExpression(node: FunctionCallExpression): void;
   public abstract visitFunctionDeclarationStatement(node: FunctionDeclarationStatement): boolean;
   public abstract endVisitFunctionDeclarationStatement(node: FunctionDeclarationStatement): void;
+  public abstract visitFunctionExistenceCheckExpression(node: FunctionExistenceCheckExpression): boolean;
+  public abstract endVisitFunctionExistenceCheckExpression(node: FunctionExistenceCheckExpression): void;
   public abstract visitIdentifierValueExpression(node: IdentifierValueExpression): boolean;
   public abstract endVisitIdentifierValueExpression(node: IdentifierValueExpression): void;
   public abstract visitIfElseStatement(node: IfElseStatement): boolean;

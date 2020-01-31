@@ -29,6 +29,7 @@ import {
   ForwardStructDeclarationStatement,
   FunctionCallExpression,
   FunctionDeclarationStatement,
+  FunctionExistenceCheckExpression,
   IdentifierValueExpression,
   IfElseStatement,
   IfStatement,
@@ -716,6 +717,10 @@ export function getVisitor(parser: CstParser) {
         {
           name: "Exists",
           build: () => new ExistenceCheckExpression(this.visit(ctx.expressionOrTypeName)),
+        },
+        {
+          name: "FunctionExists",
+          build: () => new FunctionExistenceCheckExpression(getIdentifier(ctx.Identifier)),
         },
         { name: "parExpression", build: () => this.visit(ctx.parExpression) },
       ]);

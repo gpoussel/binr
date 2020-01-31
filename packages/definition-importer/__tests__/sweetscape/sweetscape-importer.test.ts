@@ -19,6 +19,8 @@ describe("Sweetscape Importer", () => {
     // This is definitely useful for regression test during refactoring
     const definition = importer.readInput(loader.getSingleStructure("misc-sample"));
     expect(definition).toBeDefined();
+    expect(definition).toMatchSnapshot();
+    definition.accept(new BaseAstVisitor());
   });
 
   loader.iterateElements((categoryType, elementName, getter) => {

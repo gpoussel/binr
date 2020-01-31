@@ -77,6 +77,7 @@ export enum TokenName {
   Startof = "Startof",
   Parentof = "Parentof",
   Exists = "Exists",
+  FunctionExists = "FunctionExists",
   True = "True",
   False = "False",
   Identifier = "Identifier",
@@ -252,6 +253,7 @@ each(
     { name: TokenName.Startof, keyword: "startof" },
     { name: TokenName.Parentof, keyword: "parentof" },
     { name: TokenName.Exists, keyword: "exists" },
+    { name: TokenName.FunctionExists, keyword: "function_exists" },
   ],
   (keywordInfo) =>
     tokenInfos.push({
