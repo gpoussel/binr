@@ -41,6 +41,7 @@ import {
   Node,
   NumberValueExpression,
   ParameterDeclaration,
+  ParentReferenceExpression,
   PositionReferenceExpression,
   PostfixExpression,
   PrefixExpression,
@@ -154,6 +155,8 @@ export abstract class AstVisitor {
   public abstract endVisitNumberValueExpression(node: NumberValueExpression): void;
   public abstract visitParameterDeclaration(node: ParameterDeclaration): boolean;
   public abstract endVisitParameterDeclaration(node: ParameterDeclaration): void;
+  public abstract visitParentReferenceExpression(node: ParentReferenceExpression): boolean;
+  public abstract endVisitParentReferenceExpression(node: ParentReferenceExpression): void;
   public abstract visitPositionReferenceExpression(node: PositionReferenceExpression): boolean;
   public abstract endVisitPositionReferenceExpression(node: PositionReferenceExpression): void;
   public abstract visitPostfixExpression(node: PostfixExpression): boolean;
