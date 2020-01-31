@@ -774,6 +774,7 @@ export class SweetscapeParser extends CstParser {
   private simpleValue = this.RULE("simpleValue", () => {
     this.OR([
       { ALT: () => this.CONSUME(tokens.Identifier) },
+      { ALT: () => this.CONSUME(tokens.This) },
       { ALT: () => this.SUBRULE(this.number) },
       { ALT: () => this.CONSUME(tokens.StringLiteral) },
       { ALT: () => this.SUBRULE(this.boolean) },

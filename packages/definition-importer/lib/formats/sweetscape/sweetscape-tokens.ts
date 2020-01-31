@@ -80,6 +80,7 @@ export enum TokenName {
   FunctionExists = "FunctionExists",
   True = "True",
   False = "False",
+  This = "This",
   Identifier = "Identifier",
   StringLiteral = "StringLiteral",
   NumberHexadecimalLiteral = "NumberHexadecimalLiteral",
@@ -247,6 +248,9 @@ each(
     // Booleans
     { name: TokenName.True, keyword: "true" },
     { name: TokenName.False, keyword: "false" },
+
+    // Special identifiers
+    { name: TokenName.This, keyword: "this" },
 
     // Special functions
     { name: TokenName.Sizeof, keyword: "sizeof" },

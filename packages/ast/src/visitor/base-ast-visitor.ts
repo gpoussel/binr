@@ -66,6 +66,7 @@ import {
   VoidType,
   WhileStatement,
 } from "../nodes";
+import { ThisValueExpression } from "../nodes/expressions/values/this-value-expression";
 import { AstVisitor } from "./ast-visitor";
 
 export class BaseAstVisitor extends AstVisitor {
@@ -291,6 +292,10 @@ export class BaseAstVisitor extends AstVisitor {
     return true;
   }
   endVisitTernaryExpression(_node: TernaryExpression): void {}
+  visitThisValueExpression(_node: ThisValueExpression): boolean {
+    return true;
+  }
+  endVisitThisValueExpression(_node: ThisValueExpression): void {}
   visitTypedefStatement(_node: TypedefStatement): boolean {
     return true;
   }

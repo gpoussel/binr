@@ -67,6 +67,7 @@ import {
   VoidType,
   WhileStatement,
 } from "@binr/ast";
+import { ThisValueExpression } from "@binr/ast/src/nodes/expressions/values/this-value-expression";
 import { CstParser } from "chevrotain";
 import { concat, each, first, get, has, isEmpty, isUndefined, keys, map, parseInt, size } from "lodash";
 
@@ -848,6 +849,7 @@ export function getVisitor(parser: CstParser) {
       return this.visitChoices(ctx, [
         { name: "number", build: () => new NumberValueExpression(this.visit(ctx.number)) },
         { name: "boolean", build: () => new BooleanValueExpression(this.visit(ctx.boolean)) },
+        { name: "This", build: () => new ThisValueExpression() },
         { name: "Identifier", build: () => new IdentifierValueExpression(getIdentifier(ctx.Identifier)) },
         { name: "StringLiteral", build: () => new StringValueExpression(getString(ctx.StringLiteral)) },
       ]);

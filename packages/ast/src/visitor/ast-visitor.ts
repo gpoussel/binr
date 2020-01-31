@@ -66,6 +66,7 @@ import {
   VoidType,
   WhileStatement,
 } from "../nodes";
+import { ThisValueExpression } from "../nodes/expressions/values/this-value-expression";
 
 export abstract class AstVisitor {
   public abstract preVisit(node: Node): void;
@@ -184,6 +185,8 @@ export abstract class AstVisitor {
   public abstract endVisitSwitchStatement(node: SwitchStatement): void;
   public abstract visitTernaryExpression(node: TernaryExpression): boolean;
   public abstract endVisitTernaryExpression(node: TernaryExpression): void;
+  public abstract visitThisValueExpression(node: ThisValueExpression): boolean;
+  public abstract endVisitThisValueExpression(node: ThisValueExpression): void;
   public abstract visitTypedefStatement(node: TypedefStatement): boolean;
   public abstract endVisitTypedefStatement(node: TypedefStatement): void;
   public abstract visitUnaryExpression(node: UnaryExpression): boolean;
