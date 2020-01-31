@@ -415,12 +415,60 @@ export function getVisitor(parser: CstParser) {
       return new ForwardStructDeclarationStatement(getIdentifier(ctx.Identifier));
     }
 
-    public inlineEnumStatement(ctx: any): InlineEnumDeclarationStatement {
+    public inlineEnumStatement(
+      ctx: any,
+    ): InlineEnumDeclarationStatement | EnumDeclarationStatement | BlockStatement {
       const typeName = this.visitIfPresent(ctx, "typeName");
-      const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
       const declarations = this.visitIfPresent(ctx, "enumDeclaration", []);
-      const variableDeclarations = this.visitIfPresent(ctx, "variableDeclarators", []);
-      return new InlineEnumDeclarationStatement(typeName, alias, declarations, variableDeclarations);
+      if (has(ctx, "variableDeclarators")) {
+        // This is at least one variable declaration, so this is actually an inline declaration
+        const variableDeclarations = this.visit(ctx.variableDeclarators);
+        const alias = has(ctx, "Identifier") ? getIdentifier(ctx.Identifier) : undefined;
+        return new InlineEnumDeclarationStatement(typeName, alias, declarations, variableDeclarations);
+      }
+      if (!has(ctx, "Identifier")) {
+        // In this format, that represents in fact a constant pool
+        // That is a weird way to declare them, though.
+        let previousExpression: Expression = new NumberValueExpression(-1);
+        return new BlockStatement(
+          map(declarations, (declaration: EnumDeclarationElement) => {
+            let type: Type;
+            if (typeName) {
+              type = typeName;
+            } else {
+              type = new NamedType("int", [TypeModifier.UNSIGNED], false);
+            }
+            let expression: Expression;
+            if (declaration.expression) {
+              expression = declaration.expression;
+            } else {
+              expression = new BinaryExpression(
+                previousExpression,
+                new NumberValueExpression(1),
+                Operator.PLUS,
+              );
+            }
+            previousExpression = expression;
+            const variableDeclaration = new VariableDeclaration(
+              declaration.name,
+              undefined,
+              undefined,
+              [],
+              expression,
+              [],
+            );
+            return new VariableDeclarationStatement(
+              type,
+              [VariableModifier.CONST],
+              undefined,
+              [variableDeclaration],
+              [],
+            );
+          }),
+        );
+      }
+      const name = getIdentifier(ctx.Identifier);
+      return new EnumDeclarationStatement(typeName, name, declarations, []);
     }
 
     public enumDeclarationStatement(ctx: any): EnumDeclarationStatement {
