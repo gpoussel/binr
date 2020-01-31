@@ -86,7 +86,7 @@ export class AstValidator extends BaseAstVisitor {
         throw new ValidationException(`Function ${name} does not exist`);
       }
     } else {
-      console.log(node.callable);
+      throw new ValidationException(`Unsupported callable type: ${JSON.stringify(node.callable)}`);
     }
     return true;
   }
