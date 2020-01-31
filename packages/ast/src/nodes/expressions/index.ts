@@ -4,6 +4,7 @@ export * from "./assignment-expression";
 export * from "./binary-expression";
 export * from "./cast-expression";
 export * from "./comma-expression";
+export * from "./existence-check-expression";
 export * from "./expression";
 export * from "./function-call-expression";
 export * from "./postfix-expression";

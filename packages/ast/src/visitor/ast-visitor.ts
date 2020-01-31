@@ -22,6 +22,7 @@ import {
   EnumDeclarationElement,
   EnumDeclarationStatement,
   EnumReferenceType,
+  ExistenceCheckExpression,
   ExpressionArraySelector,
   ExpressionArrayValueElement,
   ExpressionStatement,
@@ -112,6 +113,8 @@ export abstract class AstVisitor {
   public abstract endVisitEnumDeclarationStatement(node: EnumDeclarationStatement): void;
   public abstract visitEnumReferenceType(node: EnumReferenceType): boolean;
   public abstract endVisitEnumReferenceType(node: EnumReferenceType): void;
+  public abstract visitExistenceCheckExpression(node: ExistenceCheckExpression): boolean;
+  public abstract endVisitExistenceCheckExpression(node: ExistenceCheckExpression): void;
   public abstract visitExpressionArraySelector(node: ExpressionArraySelector): boolean;
   public abstract endVisitExpressionArraySelector(node: ExpressionArraySelector): void;
   public abstract visitExpressionArrayValueElement(node: ExpressionArrayValueElement): boolean;

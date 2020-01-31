@@ -22,6 +22,7 @@ import {
   EnumDeclarationElement,
   EnumDeclarationStatement,
   EnumReferenceType,
+  ExistenceCheckExpression,
   ExpressionArraySelector,
   ExpressionArrayValueElement,
   ExpressionStatement,
@@ -159,6 +160,10 @@ export class BaseAstVisitor extends AstVisitor {
     return true;
   }
   endVisitEnumReferenceType(_node: EnumReferenceType): void {}
+  visitExistenceCheckExpression(_node: ExistenceCheckExpression): boolean {
+    return true;
+  }
+  endVisitExistenceCheckExpression(_node: ExistenceCheckExpression): void {}
   visitExpressionArraySelector(_node: ExpressionArraySelector): boolean {
     return true;
   }

@@ -20,6 +20,7 @@ import {
   EnumDeclarationElement,
   EnumDeclarationStatement,
   EnumReferenceType,
+  ExistenceCheckExpression,
   Expression,
   ExpressionArraySelector,
   ExpressionStatement,
@@ -699,8 +700,12 @@ export function getVisitor(parser: CstParser) {
       return this.visitChoices(ctx, [
         { name: "simpleValue", build: () => this.visit(ctx.simpleValue) },
         {
-          name: "expressionOrTypeName",
+          name: "Sizeof",
           build: () => new SizeofExpression(this.visit(ctx.expressionOrTypeName)),
+        },
+        {
+          name: "Exists",
+          build: () => new ExistenceCheckExpression(this.visit(ctx.expressionOrTypeName)),
         },
         { name: "parExpression", build: () => this.visit(ctx.parExpression) },
       ]);

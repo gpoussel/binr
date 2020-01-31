@@ -3,7 +3,6 @@ import { Format } from "../format";
 export class SweetscapeFormat implements Format {
   builtInFunctions: string[] = [
     "startof", // TODO: This is a keyword, not a built-in function
-    "exists", // TODO: This is a keyword, not a built-in function
     "parentof", // TODO: This is a keyword, not a built-in function
     "Abs",
     "AddBookmark",
