@@ -24,6 +24,7 @@ import {
   ExpressionArraySelector,
   ExpressionStatement,
   ForStatement,
+  ForwardFunctionDeclarationStatement,
   ForwardStructDeclarationStatement,
   FunctionCallExpression,
   FunctionDeclarationStatement,
@@ -189,12 +190,17 @@ export function getVisitor(parser: CstParser) {
       return this.visitFirst(ctx, "statement", "functionDeclarationStatement");
     }
 
-    public functionDeclarationStatement(ctx: any): FunctionDeclarationStatement {
+    public functionDeclarationStatement(
+      ctx: any,
+    ): FunctionDeclarationStatement | ForwardFunctionDeclarationStatement {
       const returnType = this.visit(ctx.typeName);
       const name = getIdentifier(ctx.Identifier);
-      const body = this.visitIfPresent(ctx, "block");
       const parameters = this.visit(ctx.functionParameterDeclarationList);
-      return new FunctionDeclarationStatement(returnType, name, parameters, body);
+      if (has(ctx, "block")) {
+        const body = this.visitIfPresent(ctx, "block");
+        return new FunctionDeclarationStatement(returnType, name, parameters, body);
+      }
+      return new ForwardFunctionDeclarationStatement(returnType, name, parameters);
     }
 
     public typeName(ctx: any): Type {

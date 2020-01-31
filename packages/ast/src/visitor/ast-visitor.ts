@@ -26,6 +26,7 @@ import {
   ExpressionArrayValueElement,
   ExpressionStatement,
   ForStatement,
+  ForwardFunctionDeclarationStatement,
   ForwardStructDeclarationStatement,
   FunctionCallExpression,
   FunctionDeclarationStatement,
@@ -119,6 +120,12 @@ export abstract class AstVisitor {
   public abstract endVisitExpressionStatement(node: ExpressionStatement): void;
   public abstract visitForStatement(node: ForStatement): boolean;
   public abstract endVisitForStatement(node: ForStatement): void;
+  public abstract visitForwardFunctionDeclarationStatement(
+    node: ForwardFunctionDeclarationStatement,
+  ): boolean;
+  public abstract endVisitForwardFunctionDeclarationStatement(
+    node: ForwardFunctionDeclarationStatement,
+  ): void;
   public abstract visitForwardStructDeclarationStatement(node: ForwardStructDeclarationStatement): boolean;
   public abstract endVisitForwardStructDeclarationStatement(node: ForwardStructDeclarationStatement): void;
   public abstract visitFunctionCallExpression(node: FunctionCallExpression): boolean;

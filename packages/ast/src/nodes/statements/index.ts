@@ -6,6 +6,7 @@ export * from "./empty-statement";
 export * from "./enum-declaration-statement";
 export * from "./expression-statement";
 export * from "./for-statement";
+export * from "./forward-function-declaration-statement";
 export * from "./forward-struct-declaration-statement";
 export * from "./function-declaration-statement";
 export * from "./if-else-statement";

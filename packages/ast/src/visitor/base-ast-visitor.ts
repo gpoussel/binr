@@ -26,6 +26,7 @@ import {
   ExpressionArrayValueElement,
   ExpressionStatement,
   ForStatement,
+  ForwardFunctionDeclarationStatement,
   ForwardStructDeclarationStatement,
   FunctionCallExpression,
   FunctionDeclarationStatement,
@@ -174,6 +175,10 @@ export class BaseAstVisitor extends AstVisitor {
     return true;
   }
   endVisitForStatement(_node: ForStatement): void {}
+  visitForwardFunctionDeclarationStatement(_node: ForwardFunctionDeclarationStatement): boolean {
+    return true;
+  }
+  endVisitForwardFunctionDeclarationStatement(_node: ForwardFunctionDeclarationStatement): void {}
   visitForwardStructDeclarationStatement(_node: ForwardStructDeclarationStatement): boolean {
     return true;
   }

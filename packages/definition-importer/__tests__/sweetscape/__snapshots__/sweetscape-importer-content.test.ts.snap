@@ -949,18 +949,6 @@ Array [
   "enum: EXFAT_MEDIA_TYPE",
   "enum: EXFAT_CLUSTER_INFO",
   "enum: EXFAT_DIRENTRY_TYPE",
-  "function: ReadEXFAT_CLUSTER_INFO",
-  "function: ReadEXFAT_OEM_PARAMETER_TEMPLATE",
-  "function: ReadEXFAT_BOOT_CHECKSUM_SECTOR",
-  "function: ReadEXFAT_BOOT_REGION",
-  "function: ReadEXFAT_DIRENTRY_TYPE",
-  "function: GenerateChainedExtent",
-  "function: CalculateExpectedExfatBootRegionChecksumUsingStartPosition",
-  "function: CalculateExpectedExfatBootRegionChecksum",
-  "function: IsValidExfatBootExtendedSector",
-  "function: IsValidExfatBootSector",
-  "function: IsValidExfatBootRegion",
-  "function: IsValidClusterIndex",
   "function: IsDirectoryEntryUnused",
   "function: IsDirectoryEntryInUse",
   "function: IsDirectoryEntryPrimary",
@@ -2078,7 +2066,6 @@ exports[`Sweetscape Importer reads top-level elements in structure MifareUltrali
 
 exports[`Sweetscape Importer reads top-level elements in structure Modo.bt 1`] = `
 Array [
-  "function: readsubchunks",
   "struct: uv_t",
   "struct: IFFHEADER",
   "function: IFFHEADER_Read",
