@@ -1,4 +1,4 @@
-import { EvaluationContext, EvaluationInput } from "../../evaluation";
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
 import { AstVisitor } from "../../visitor";
 import { Annotation } from "../annotation";
 import { ParameterDeclaration } from "../parameter-declaration";
@@ -31,8 +31,9 @@ export class UnionDeclarationStatement extends Statement {
     return this._annotations;
   }
 
-  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
     // Nothing to do
+    return {};
   }
 
   protected accept0(visitor: AstVisitor): void {

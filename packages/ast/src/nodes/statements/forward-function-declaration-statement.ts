@@ -1,4 +1,4 @@
-import { EvaluationContext, EvaluationInput } from "../../evaluation";
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
 import { AstVisitor } from "../../visitor";
 import { ParameterDeclaration } from "../parameter-declaration";
 import { Type } from "../types";
@@ -25,8 +25,9 @@ export class ForwardFunctionDeclarationStatement extends Statement {
     return this._parameters;
   }
 
-  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
     // Nothing to do
+    return {};
   }
 
   protected accept0(visitor: AstVisitor): void {

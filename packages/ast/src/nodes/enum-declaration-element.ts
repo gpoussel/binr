@@ -1,4 +1,4 @@
-import { EvaluationContext, EvaluationInput } from "../evaluation";
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../evaluation";
 import { AstVisitor } from "../visitor";
 import { Expression } from "./expressions";
 import { Node } from "./node";
@@ -16,8 +16,9 @@ export class EnumDeclarationElement extends Node {
     return this._expression;
   }
 
-  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
     // Nothing to do
+    return {};
   }
 
   protected accept0(visitor: AstVisitor): void {
