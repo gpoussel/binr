@@ -32,6 +32,7 @@ export class StructDeclarationStatement extends Statement {
   }
 
   public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    console.log(this._name);
     // Nothing to do
     return {};
   }

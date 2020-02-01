@@ -10,5 +10,5 @@ export abstract class Node {
   }
 
   protected abstract accept0(visitor: AstVisitor): void;
-  protected abstract evaluate(context: EvaluationContext, input: EvaluationInput): EvaluationResult;
+  public abstract evaluate(context: EvaluationContext, input: EvaluationInput): EvaluationResult;
 }

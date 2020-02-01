@@ -1,3 +1,5 @@
+import { map } from "lodash";
+
 import { EvaluationContext, EvaluationInput, EvaluationResult } from "../evaluation";
 import { AstVisitor } from "../visitor";
 import { Annotation } from "./annotation";
@@ -17,8 +19,9 @@ export class Definition extends Node {
     return this._annotations;
   }
 
-  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
-    // Nothing to do
+  public evaluate(context: EvaluationContext, input: EvaluationInput): EvaluationResult {
+    map(this._statements, (statement) => statement.evaluate(context, input));
+    // TODO Return something useful
     return {};
   }
 
