@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../../evaluation";
+import { EvaluationContext, EvaluationInput } from "../../evaluation";
 import { AstVisitor } from "../../visitor";
 import { EnumDeclarationElement } from "../enum-declaration-element";
 import { Type } from "../types";
@@ -31,7 +31,7 @@ export class InlineEnumDeclarationStatement extends Statement {
     return this._variableDeclarations;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

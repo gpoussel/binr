@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../../evaluation";
+import { EvaluationContext, EvaluationInput } from "../../evaluation";
 import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
@@ -15,7 +15,7 @@ export class ArrayIndexExpression extends Expression {
     return this._indexExpression;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

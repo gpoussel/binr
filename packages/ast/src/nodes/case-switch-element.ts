@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../evaluation";
+import { EvaluationContext, EvaluationInput } from "../evaluation";
 import { AstVisitor } from "../visitor";
 import { Node } from "./node";
 import { Statement } from "./statements";
@@ -17,7 +17,7 @@ export class CaseSwitchElement extends Node {
     return this._statements;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

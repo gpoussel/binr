@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../../evaluation";
+import { EvaluationContext, EvaluationInput } from "../../evaluation";
 import { AstVisitor } from "../../visitor";
 import { Annotation } from "../annotation";
 import { ParameterDeclaration } from "../parameter-declaration";
@@ -31,7 +31,7 @@ export class StructDeclarationStatement extends Statement {
     return this._annotations;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

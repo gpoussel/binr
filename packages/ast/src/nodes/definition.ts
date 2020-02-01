@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../evaluation";
+import { EvaluationContext, EvaluationInput } from "../evaluation";
 import { AstVisitor } from "../visitor";
 import { Annotation } from "./annotation";
 import { Node } from "./node";
@@ -17,7 +17,7 @@ export class Definition extends Node {
     return this._annotations;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

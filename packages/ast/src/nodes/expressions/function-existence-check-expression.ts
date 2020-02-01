@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../../evaluation";
+import { EvaluationContext, EvaluationInput } from "../../evaluation";
 import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
@@ -11,7 +11,7 @@ export class FunctionExistenceCheckExpression extends Expression {
     return this._functionName;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

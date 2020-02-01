@@ -10,7 +10,7 @@ import {
   VariableDeclaration,
   VariableDeclarationStatement,
 } from "../src/nodes";
-import { BaseAstVisitor } from "../src/visitor/base-ast-visitor";
+import { BaseAstVisitor } from "../src/visitor";
 
 const definition = new Definition(
   [

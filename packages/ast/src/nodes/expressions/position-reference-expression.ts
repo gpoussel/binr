@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../../evaluation";
+import { EvaluationContext, EvaluationInput } from "../../evaluation";
 import { AstVisitor } from "../../visitor";
 import { Type } from "../types";
 import { Expression } from "./expression";
@@ -12,7 +12,7 @@ export class PositionReferenceExpression extends Expression {
     return this._innerExpression;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

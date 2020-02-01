@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../evaluation";
+import { EvaluationContext, EvaluationInput } from "../evaluation";
 import { AstVisitor } from "../visitor";
 import { ArraySelector } from "./array-selector";
 import { Node } from "./node";
@@ -36,7 +36,7 @@ export class ParameterDeclaration extends Node {
     return this._modifiers;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

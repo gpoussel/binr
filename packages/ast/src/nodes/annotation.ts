@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../evaluation";
+import { EvaluationContext, EvaluationInput } from "../evaluation";
 import { AstVisitor } from "../visitor";
 import { ValueExpression } from "./expressions/values";
 import { Node } from "./node";
@@ -16,7 +16,7 @@ export class Annotation extends Node {
     return this._value;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

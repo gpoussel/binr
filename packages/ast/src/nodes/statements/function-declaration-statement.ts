@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../../evaluation";
+import { EvaluationContext, EvaluationInput } from "../../evaluation";
 import { AstVisitor } from "../../visitor";
 import { ParameterDeclaration } from "../parameter-declaration";
 import { Type } from "../types";
@@ -31,7 +31,7 @@ export class FunctionDeclarationStatement extends Statement {
     return this._body;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../../evaluation";
+import { EvaluationContext, EvaluationInput } from "../../evaluation";
 import { AstVisitor } from "../../visitor";
 import { CaseSwitchElement } from "../case-switch-element";
 import { Expression } from "../expressions";
@@ -17,7 +17,7 @@ export class SwitchStatement extends Statement {
     return this._caseSwitchElements;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../../../evaluation";
+import { EvaluationContext, EvaluationInput } from "../../../evaluation";
 import { AstVisitor } from "../../../visitor";
 import { Node } from "../../node";
 import { ValueExpression } from "./value-expression";
@@ -15,7 +15,7 @@ export class ExpressionArrayValueElement extends ArrayValueElement {
     return this._expression;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 
@@ -28,7 +28,7 @@ export class ExpressionArrayValueElement extends ArrayValueElement {
 }
 
 export class UndefinedArrayValueElement extends ArrayValueElement {
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 
@@ -47,7 +47,7 @@ export class ArrayValueExpression extends ValueExpression {
     return this._elements;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 

@@ -1,4 +1,4 @@
-import { EvaluationContext } from "../../../evaluation";
+import { EvaluationContext, EvaluationInput } from "../../../evaluation";
 import { AstVisitor } from "../../../visitor";
 import { ValueExpression } from "./value-expression";
 
@@ -11,7 +11,7 @@ export class StringValueExpression extends ValueExpression {
     return this._value;
   }
 
-  public evaluate(_context: EvaluationContext): void {
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): void {
     // Nothing to do
   }
 
