@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
 export class CastExpression extends Expression {
@@ -12,6 +13,10 @@ export class CastExpression extends Expression {
 
   public get innerExpression() {
     return this._innerExpression;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

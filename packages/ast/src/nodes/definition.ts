@@ -1,4 +1,5 @@
-import { AstVisitor } from "../visitor/ast-visitor";
+import { EvaluationContext } from "../evaluation";
+import { AstVisitor } from "../visitor";
 import { Annotation } from "./annotation";
 import { Node } from "./node";
 import { Statement } from "./statements/statement";
@@ -14,6 +15,10 @@ export class Definition extends Node {
 
   public get annotations(): Annotation[] {
     return this._annotations;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

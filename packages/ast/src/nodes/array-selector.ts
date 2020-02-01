@@ -1,10 +1,15 @@
-import { AstVisitor } from "../visitor/ast-visitor";
+import { EvaluationContext } from "../evaluation";
+import { AstVisitor } from "../visitor";
 import { Expression } from "./expressions";
 import { Node } from "./node";
 
 export abstract class ArraySelector extends Node {}
 
 export class EmptyArraySelector extends ArraySelector {
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
+  }
+
   protected accept0(visitor: AstVisitor): void {
     visitor.visitEmptyArraySelector(this);
     visitor.endVisitEmptyArraySelector(this);
@@ -18,6 +23,10 @@ export class ExpressionArraySelector extends ArraySelector {
 
   public get innerExpression(): Expression {
     return this._innerExpression;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {
@@ -35,6 +44,10 @@ export class UntilExpressionArraySelector extends ArraySelector {
 
   public get innerExpression(): Expression {
     return this._innerExpression;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

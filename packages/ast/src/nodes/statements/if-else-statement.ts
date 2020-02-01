@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "../expressions";
 import { Statement } from "./statement";
 
@@ -21,6 +22,10 @@ export class IfElseStatement extends Statement {
 
   public get falseStatement(): Statement {
     return this._falseStatement;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

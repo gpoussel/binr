@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
 export class CommaExpression extends Expression {
@@ -8,6 +9,10 @@ export class CommaExpression extends Expression {
 
   public get expressions(): Expression[] {
     return this._expressions;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

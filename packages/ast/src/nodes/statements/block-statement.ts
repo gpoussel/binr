@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Statement } from "./statement";
 
 export class BlockStatement extends Statement {
@@ -8,6 +9,10 @@ export class BlockStatement extends Statement {
 
   public get content(): Statement[] {
     return this._content;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

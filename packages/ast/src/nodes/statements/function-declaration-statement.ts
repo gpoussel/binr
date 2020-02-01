@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { ParameterDeclaration } from "../parameter-declaration";
 import { Type } from "../types";
 import { BlockStatement } from "./block-statement";
@@ -28,6 +29,10 @@ export class FunctionDeclarationStatement extends Statement {
 
   public get body(): BlockStatement {
     return this._body;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
 export class ArrayIndexExpression extends Expression {
@@ -12,6 +13,10 @@ export class ArrayIndexExpression extends Expression {
 
   public get indexExpression(): Expression {
     return this._indexExpression;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

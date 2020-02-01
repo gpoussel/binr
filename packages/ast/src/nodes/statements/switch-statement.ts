@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { CaseSwitchElement } from "../case-switch-element";
 import { Expression } from "../expressions";
 import { Statement } from "./statement";
@@ -14,6 +15,10 @@ export class SwitchStatement extends Statement {
 
   public get caseSwitchElements(): CaseSwitchElement[] {
     return this._caseSwitchElements;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

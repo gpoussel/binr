@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Type } from "./type";
 import { TypeModifier } from "./type-modifier";
 
@@ -17,6 +18,10 @@ export class NamedType extends Type {
 
   public get array() {
     return this._array;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

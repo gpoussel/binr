@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../../visitor/ast-visitor";
+import { EvaluationContext } from "../../../evaluation";
+import { AstVisitor } from "../../../visitor";
 import { Node } from "../../node";
 import { ValueExpression } from "./value-expression";
 import { Expression } from "..";
@@ -14,6 +15,10 @@ export class ExpressionArrayValueElement extends ArrayValueElement {
     return this._expression;
   }
 
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
+  }
+
   protected accept0(visitor: AstVisitor): void {
     if (visitor.visitExpressionArrayValueElement(this)) {
       this._expression.accept(visitor);
@@ -23,6 +28,10 @@ export class ExpressionArrayValueElement extends ArrayValueElement {
 }
 
 export class UndefinedArrayValueElement extends ArrayValueElement {
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
+  }
+
   protected accept0(visitor: AstVisitor): void {
     visitor.visitUndefinedArrayValueElement(this);
     visitor.endVisitUndefinedArrayValueElement(this);
@@ -36,6 +45,10 @@ export class ArrayValueExpression extends ValueExpression {
 
   public get elements(): ArrayValueElement[] {
     return this._elements;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

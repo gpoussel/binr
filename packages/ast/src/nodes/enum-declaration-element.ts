@@ -1,4 +1,5 @@
-import { AstVisitor } from "../visitor/ast-visitor";
+import { EvaluationContext } from "../evaluation";
+import { AstVisitor } from "../visitor";
 import { Expression } from "./expressions";
 import { Node } from "./node";
 
@@ -13,6 +14,10 @@ export class EnumDeclarationElement extends Node {
 
   public get expression(): Expression | undefined {
     return this._expression;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

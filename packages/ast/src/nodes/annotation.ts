@@ -1,4 +1,5 @@
-import { AstVisitor } from "../visitor/ast-visitor";
+import { EvaluationContext } from "../evaluation";
+import { AstVisitor } from "../visitor";
 import { ValueExpression } from "./expressions/values";
 import { Node } from "./node";
 
@@ -13,6 +14,10 @@ export class Annotation extends Node {
 
   public get value() {
     return this._value;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

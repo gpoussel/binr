@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Statement } from "./statement";
 
 export class ForwardStructDeclarationStatement extends Statement {
@@ -8,6 +9,10 @@ export class ForwardStructDeclarationStatement extends Statement {
 
   public get name(): string {
     return this._name;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

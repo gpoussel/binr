@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../../visitor/ast-visitor";
+import { EvaluationContext } from "../../../evaluation";
+import { AstVisitor } from "../../../visitor";
 import { ValueExpression } from "./value-expression";
 
 export class BooleanValueExpression extends ValueExpression {
@@ -8,6 +9,10 @@ export class BooleanValueExpression extends ValueExpression {
 
   public get value() {
     return this._value;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

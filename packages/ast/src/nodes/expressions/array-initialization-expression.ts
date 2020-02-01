@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
 export class ArrayInitializationExpression extends Expression {
@@ -8,6 +9,10 @@ export class ArrayInitializationExpression extends Expression {
 
   public get elements(): Expression[] {
     return this._elements;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

@@ -1,4 +1,5 @@
-import { AstVisitor } from "../visitor/ast-visitor";
+import { EvaluationContext } from "../evaluation";
+import { AstVisitor } from "../visitor";
 
 export abstract class Node {
   public accept(visitor: AstVisitor): void {
@@ -9,4 +10,5 @@ export abstract class Node {
   }
 
   protected abstract accept0(visitor: AstVisitor): void;
+  protected abstract evaluate(context: EvaluationContext): void;
 }

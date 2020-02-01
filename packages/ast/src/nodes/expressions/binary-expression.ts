@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Operator } from "../operator";
 import { Expression } from "./expression";
 
@@ -17,6 +18,10 @@ export class BinaryExpression extends Expression {
 
   public get operator() {
     return this._operator;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

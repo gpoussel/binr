@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { EnumDeclarationElement } from "../enum-declaration-element";
 import { Type } from "../types";
 import { VariableDeclaration } from "../variable-declaration";
@@ -28,6 +29,10 @@ export class InlineEnumDeclarationStatement extends Statement {
 
   public get variableDeclarations(): VariableDeclaration[] {
     return this._variableDeclarations;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

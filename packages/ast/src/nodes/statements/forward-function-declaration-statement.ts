@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { ParameterDeclaration } from "../parameter-declaration";
 import { Type } from "../types";
 import { Statement } from "./statement";
@@ -22,6 +23,10 @@ export class ForwardFunctionDeclarationStatement extends Statement {
 
   public get parameters(): ParameterDeclaration[] {
     return this._parameters;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

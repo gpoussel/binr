@@ -1,4 +1,5 @@
-import { AstVisitor } from "../../visitor/ast-visitor";
+import { EvaluationContext } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
 export class FunctionExistenceCheckExpression extends Expression {
@@ -8,6 +9,10 @@ export class FunctionExistenceCheckExpression extends Expression {
 
   public get functionName(): string {
     return this._functionName;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {

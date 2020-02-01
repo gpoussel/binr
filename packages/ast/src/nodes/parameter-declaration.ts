@@ -1,4 +1,5 @@
-import { AstVisitor } from "../visitor/ast-visitor";
+import { EvaluationContext } from "../evaluation";
+import { AstVisitor } from "../visitor";
 import { ArraySelector } from "./array-selector";
 import { Node } from "./node";
 import { NamedType } from "./types/named-type";
@@ -33,6 +34,10 @@ export class ParameterDeclaration extends Node {
 
   public get modifiers(): VariableModifier[] {
     return this._modifiers;
+  }
+
+  public evaluate(_context: EvaluationContext): void {
+    // Nothing to do
   }
 
   protected accept0(visitor: AstVisitor): void {
