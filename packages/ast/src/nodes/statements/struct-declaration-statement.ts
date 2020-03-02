@@ -31,9 +31,12 @@ export class StructDeclarationStatement extends Statement {
     return this._annotations;
   }
 
-  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
-    console.log(this._name);
-    // Nothing to do
+  public evaluate(context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    context.declareStructure(this);
+    return {};
+  }
+
+  public read(_context: EvaluationContext, _input: EvaluationInput): any {
     return {};
   }
 

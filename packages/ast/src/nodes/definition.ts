@@ -1,4 +1,4 @@
-import { map } from "lodash";
+import { forEach } from "lodash";
 
 import { EvaluationContext, EvaluationInput, EvaluationResult } from "../evaluation";
 import { AstVisitor } from "../visitor";
@@ -20,7 +20,9 @@ export class Definition extends Node {
   }
 
   public evaluate(context: EvaluationContext, input: EvaluationInput): EvaluationResult {
-    map(this._statements, (statement) => statement.evaluate(context, input));
+    forEach(this._statements, (statement) => {
+      statement.evaluate(context, input);
+    });
     // TODO Return something useful
     return {};
   }

@@ -30,6 +30,7 @@ import {
   Statement,
   StringValueExpression,
   StructDeclarationStatement,
+  StructReferenceType,
   SwitchStatement,
   TernaryExpression,
   Type,
@@ -41,7 +42,7 @@ import {
   VariableDeclarationStatement,
 } from "@binr/ast";
 import { CstParser } from "chevrotain";
-import { concat, each, flatMap, get, has, keys, map, size, times } from "lodash";
+import { concat, each, filter, flatMap, get, has, keys, last, map, size, times } from "lodash";
 
 const OPERATOR_MAPPING: { [key: string]: Operator } = {
   BooleanOrToken: Operator.BOOLEAN_OR,
@@ -73,6 +74,27 @@ export function getVisitor(parser: CstParser) {
     public definition(ctx: any): Definition {
       const statements = this.visitAll(ctx, "topLevelClause");
       const annotations = this.visitAll(ctx, "headerClause");
+      // The last structure being defined represents the main structure and since
+      // the definition grammar does not define a way to create them, we have to
+      // add it manually.
+      const structureDeclarations = filter(
+        statements,
+        (statement) => statement instanceof StructDeclarationStatement,
+      );
+      if (structureDeclarations.length > 0) {
+        const lastStructureDeclaration: StructDeclarationStatement = last(
+          structureDeclarations,
+        ) as StructDeclarationStatement;
+        statements.push(
+          new VariableDeclarationStatement(
+            new StructReferenceType(lastStructureDeclaration.name),
+            [],
+            undefined,
+            [new VariableDeclaration("content", undefined, undefined, [], undefined, [])],
+            [],
+          ),
+        );
+      }
       return new Definition(statements, annotations);
     }
 

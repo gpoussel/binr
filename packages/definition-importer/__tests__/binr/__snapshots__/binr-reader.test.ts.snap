@@ -55,6 +55,24 @@ Definition {
       "_name": "a",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "a",
+      },
+    },
   ],
 }
 `;
@@ -91,6 +109,24 @@ Definition {
       "_name": "A",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "A",
+      },
+    },
   ],
 }
 `;
@@ -126,6 +162,24 @@ Definition {
       },
       "_name": "A",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "A",
+      },
     },
   ],
 }
@@ -198,6 +252,24 @@ Definition {
       "_name": "a",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "a",
+      },
+    },
   ],
 }
 `;
@@ -221,6 +293,24 @@ Definition {
       },
       "_name": "a",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "a",
+      },
     },
   ],
 }
@@ -246,6 +336,24 @@ Definition {
       "_name": "b",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "b",
+      },
+    },
   ],
 }
 `;
@@ -261,6 +369,24 @@ Definition {
       },
       "_name": "a",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "a",
+      },
     },
   ],
 }

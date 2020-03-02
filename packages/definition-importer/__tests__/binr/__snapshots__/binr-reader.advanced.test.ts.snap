@@ -1743,6 +1743,24 @@ Definition {
       "_name": "AviFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "AviFile",
+      },
+    },
   ],
 }
 `;
@@ -2179,6 +2197,24 @@ Definition {
       },
       "_name": "BmpFile",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "BmpFile",
+      },
     },
   ],
 }
@@ -3276,6 +3312,24 @@ Definition {
       "_name": "EotFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "EotFile",
+      },
+    },
   ],
 }
 `;
@@ -3790,6 +3844,24 @@ Definition {
       },
       "_name": "GifFile",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "GifFile",
+      },
     },
   ],
 }
@@ -4769,6 +4841,24 @@ Definition {
       },
       "_name": "IcoFile",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "IcoFile",
+      },
     },
   ],
 }
@@ -6273,6 +6363,24 @@ Definition {
       "_name": "JVMClass",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "JVMClass",
+      },
+    },
   ],
 }
 `;
@@ -6683,6 +6791,24 @@ Definition {
       "_name": "ManifestFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "ManifestFile",
+      },
+    },
   ],
 }
 `;
@@ -6770,6 +6896,24 @@ Definition {
       },
       "_name": "FileEntry",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "FileEntry",
+      },
     },
   ],
 }
@@ -7340,6 +7484,24 @@ Definition {
       },
       "_name": "RarFile",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "RarFile",
+      },
     },
   ],
 }
@@ -9327,6 +9489,24 @@ Definition {
       "_name": "RmFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "RmFile",
+      },
+    },
   ],
 }
 `;
@@ -9600,6 +9780,24 @@ Definition {
       },
       "_name": "RomfsFile",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "RomfsFile",
+      },
     },
   ],
 }
@@ -10191,6 +10389,24 @@ Definition {
       "_name": "ShxFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "ShxFile",
+      },
+    },
   ],
 }
 `;
@@ -10285,6 +10501,24 @@ Definition {
       },
       "_name": "TorrentFile",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "TorrentFile",
+      },
     },
   ],
 }
@@ -11319,6 +11553,24 @@ Definition {
       },
       "_name": "WmfFile",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "WmfFile",
+      },
     },
   ],
 }
