@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../evaluation";
+import { AstVisitor } from "../visitor";
 import { Annotation } from "./annotation";
 import { ArraySelector } from "./array-selector";
 import { Expression } from "./expressions";
@@ -37,5 +39,21 @@ export class VariableDeclaration extends Node {
 
   public get annotations(): Annotation[] {
     return this._annotations;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitVariableDeclaration(this)) {
+      this._bitfield?.accept(visitor);
+      this._arraySelector?.accept(visitor);
+      this._typeArguments.map((s) => s.accept(visitor));
+      this._initializationExpression?.accept(visitor);
+      this._annotations.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitVariableDeclaration(this);
   }
 }

@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Operator } from "../operator";
 import { Expression } from "./expression";
 
@@ -12,5 +14,17 @@ export class PrefixExpression extends Expression {
 
   public get operator() {
     return this._operator;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitPrefixExpression(this)) {
+      this._innerExpression.accept(visitor);
+    }
+    visitor.endVisitPrefixExpression(this);
   }
 }

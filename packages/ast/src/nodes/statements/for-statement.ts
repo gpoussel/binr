@@ -1,4 +1,6 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
 import { CommaExpression } from "../../nodes";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "../expressions";
 import { Statement } from "./statement";
 
@@ -26,5 +28,20 @@ export class ForStatement extends Statement {
 
   public get body(): Statement {
     return this._body;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitForStatement(this)) {
+      this._initialization.accept(visitor);
+      this._condition.accept(visitor);
+      this._increment.accept(visitor);
+      this._body.accept(visitor);
+    }
+    visitor.endVisitForStatement(this);
   }
 }

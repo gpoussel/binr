@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "../expressions";
 import { Statement } from "./statement";
 
@@ -12,5 +14,18 @@ export class IfStatement extends Statement {
 
   public get trueStatement(): Statement {
     return this._trueStatement;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitIfStatement(this)) {
+      this._condition.accept(visitor);
+      this._trueStatement.accept(visitor);
+    }
+    visitor.endVisitIfStatement(this);
   }
 }

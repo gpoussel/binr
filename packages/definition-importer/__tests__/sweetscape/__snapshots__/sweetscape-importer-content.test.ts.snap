@@ -329,6 +329,7 @@ Array [
   "function: to_uint64",
   "function: uint64_read",
   "function: ReadUInt64_",
+  "enum: NID_",
   "function: PeekNID",
   "function: RequireNID",
   "function: EffectiveEND",
@@ -359,6 +360,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure ADF.bt 1`] = `
 Array [
+  "enum: BLOCKINFO",
   "struct: BOOTBLOCK",
   "struct: ROOTBLOCK",
   "struct: BITMAPBLOCK",
@@ -506,6 +508,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure BPlist.bt 1`] = `
 Array [
+  "enum: EntryType",
   "struct: Trailer",
   "struct: Int",
   "struct: Real",
@@ -532,6 +535,7 @@ Array [
 exports[`Sweetscape Importer reads top-level elements in structure BSON.bt 1`] = `
 Array [
   "struct: CountedString",
+  "enum: Type",
   "struct: BinaryData",
   "struct: Document",
 ]
@@ -660,6 +664,12 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure CLASSAdv.bt 1`] = `
 Array [
+  "enum: Constant_pool",
+  "enum: access_property_flags",
+  "enum: enum_type",
+  "enum: enum_opcodes",
+  "enum: enum_array_type",
+  "enum: enum_opcodes_body_type",
   "struct: annotation",
   "struct: element_value",
   "struct: verification_type_info",
@@ -862,6 +872,7 @@ Array [
   "function: EncodedTypeAddrPairRead",
   "struct: encoded_array_item",
   "function: EncodedArrayItemRead",
+  "enum: TYPE_CODES",
   "enum: DBG_OPCODE",
   "struct: debug_opcode",
   "function: DebugOpcodeRead",
@@ -938,18 +949,6 @@ Array [
   "enum: EXFAT_MEDIA_TYPE",
   "enum: EXFAT_CLUSTER_INFO",
   "enum: EXFAT_DIRENTRY_TYPE",
-  "function: ReadEXFAT_CLUSTER_INFO",
-  "function: ReadEXFAT_OEM_PARAMETER_TEMPLATE",
-  "function: ReadEXFAT_BOOT_CHECKSUM_SECTOR",
-  "function: ReadEXFAT_BOOT_REGION",
-  "function: ReadEXFAT_DIRENTRY_TYPE",
-  "function: GenerateChainedExtent",
-  "function: CalculateExpectedExfatBootRegionChecksumUsingStartPosition",
-  "function: CalculateExpectedExfatBootRegionChecksum",
-  "function: IsValidExfatBootExtendedSector",
-  "function: IsValidExfatBootSector",
-  "function: IsValidExfatBootRegion",
-  "function: IsValidClusterIndex",
   "function: IsDirectoryEntryUnused",
   "function: IsDirectoryEntryInUse",
   "function: IsDirectoryEntryPrimary",
@@ -1172,6 +1171,10 @@ Array [
   "function: StringToEISAId",
   "struct: Timing",
   "function: TimingToString",
+  "enum: DescriptorType",
+  "enum: FormatCode",
+  "enum: BlockType",
+  "enum: SVDIndex",
   "struct: SVD",
   "function: SVDToString",
   "function: SPAToString",
@@ -1414,6 +1417,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure GGPK.bt 1`] = `
 Array [
+  "enum: Tag",
   "struct: GGPK",
   "struct: File",
   "struct: Directory",
@@ -1529,6 +1533,7 @@ exports[`Sweetscape Importer reads top-level elements in structure IGI2_WAV.bt 1
 
 exports[`Sweetscape Importer reads top-level elements in structure ISO.bt 1`] = `
 Array [
+  "enum: CharSetEnum",
   "function: RestoreEndian",
   "function: BlockPos",
   "function: ToCommaNumString",
@@ -1566,6 +1571,7 @@ Array [
   "function: ReadDirectoryRecord",
   "struct: PathTable",
   "function: ReadPathTable",
+  "enum: VolumeDescriptorTypeEnum",
   "struct: VolumeDescriptor_",
   "function: ReadVolumeDescriptor",
   "struct: BootRecordDescriptor_",
@@ -1614,6 +1620,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure JPG.bt 1`] = `
 Array [
+  "enum: IFD_dirtype",
   "function: Stack_push",
   "function: Stack_pop",
   "function: Stack_top",
@@ -1621,8 +1628,12 @@ Array [
   "function: ChangeColor",
   "enum: M_ID",
   "enum: ExifTag",
+  "enum: GeoTag",
   "enum: CasioTag2",
   "struct: CifDirEntry",
+  "enum: CIFFTagStg",
+  "enum: CIFFTagDataType",
+  "enum: CIFFTagType",
   "function: ReadCifDirEntry",
   "struct: CDIR",
   "enum: DataFormat",
@@ -1741,6 +1752,7 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure LZ4.bt 1`] = `
 Array [
+  "enum: LZ4F_Block_Max_Size",
   "struct: LZ4F_Header_Flags",
   "struct: LZ4F_Header_BlockDescriptor",
   "struct: LZ4F_Header",
@@ -1812,6 +1824,9 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure Luac.bt 1`] = `
 Array [
+  "enum: OpCode",
+  "enum: LUA_DATATYPE",
+  "enum: OpMode",
   "function: ISK",
   "function: INDEXK",
   "function: CC",
@@ -1895,10 +1910,16 @@ Array [
   "struct: ri",
   "function: checkpdfheader",
   "struct: PalmDatabaseFormat",
+  "enum: eCompression",
+  "enum: encryptionType",
+  "enum: TextEncoding",
+  "enum: MobiType",
   "struct: PalmDOCheader",
   "enum: MBHflags",
   "function: readMBHflags",
   "struct: MobiHeader",
+  "enum: TextToSpeach",
+  "enum: CreatorSoftware",
   "struct: EXTHrecord",
   "struct: ExthHeader",
   "struct: FLISRECORD",
@@ -1917,6 +1938,7 @@ exports[`Sweetscape Importer reads top-level elements in structure MP3.bt 1`] = 
 Array [
   "struct: synchsafe_integer",
   "function: read_synchsafe_integer",
+  "enum: ID3_GENRES",
   "struct: ID3v1_TAG",
   "struct: ID3v2_HEADER",
   "struct: ID3v2_EXTENDED_HEADER",
@@ -1930,6 +1952,8 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure MP4.bt 1`] = `
 Array [
+  "enum: qtlang",
+  "enum: qtgfxmode",
   "function: ContentSize",
   "function: BoxSize",
   "function: ReadFP16",
@@ -2042,7 +2066,6 @@ exports[`Sweetscape Importer reads top-level elements in structure MifareUltrali
 
 exports[`Sweetscape Importer reads top-level elements in structure Modo.bt 1`] = `
 Array [
-  "function: readsubchunks",
   "struct: uv_t",
   "struct: IFFHEADER",
   "function: IFFHEADER_Read",
@@ -2419,6 +2442,11 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure OrCAD_LIB.bt 1`] = `
 Array [
+  "enum: YesNo",
+  "enum: Vtype",
+  "enum: ptype",
+  "enum: pquad",
+  "enum: pside",
   "struct: sText",
   "struct: fTxt",
   "struct: Coord",
@@ -2435,6 +2463,17 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure OrCAD_SCH.bt 1`] = `
 Array [
+  "enum: fType",
+  "enum: YesNo",
+  "enum: paper",
+  "enum: rotate",
+  "enum: primT",
+  "enum: IOtype",
+  "enum: Pstyle",
+  "enum: side",
+  "enum: PStype",
+  "enum: align",
+  "enum: Btype",
   "struct: sText",
   "struct: fTxt",
   "struct: Coord",
@@ -2526,12 +2565,14 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure PCX.bt 1`] = `
 Array [
+  "enum: PCX_TYPE",
   "struct: PCX",
 ]
 `;
 
 exports[`Sweetscape Importer reads top-level elements in structure PDF.bt 1`] = `
 Array [
+  "enum: int",
   "struct: PDFObj",
   "function: ReadPDFObj",
   "struct: PDFHeader",
@@ -2617,7 +2658,10 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure PYC.bt 1`] = `
 Array [
+  "enum: MagicValue",
+  "enum: ObjType",
   "struct: Magic",
+  "enum: OpCode",
   "struct: Instruction",
   "struct: Code",
   "function: Opcode2Opname",
@@ -2682,11 +2726,16 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure RAR.bt 1`] = `
 Array [
+  "enum: RarBlockType",
+  "enum: OsType",
+  "enum: PackMethod",
+  "enum: SubType_OldStyle",
   "struct: UnixStyleAttrs",
   "struct: DosFileAttrs",
   "struct: WinFileAttrs",
   "struct: CommonBlockFlags",
   "struct: MainHeadFlags",
+  "enum: FileDictType",
   "struct: FileHeadFlags",
   "struct: RarBlock",
   "struct: FileHeadBlock",
@@ -2815,6 +2864,7 @@ Array [
 exports[`Sweetscape Importer reads top-level elements in structure SCP.bt 1`] = `
 Array [
   "function: ReadVersion",
+  "enum: DiskType",
   "function: ReadFlags",
   "struct: RevInfo",
   "struct: TrackHeader",
@@ -3109,6 +3159,9 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure TOC.bt 1`] = `
 Array [
+  "enum: type",
+  "enum: class",
+  "enum: stat",
   "struct: TOChdr",
   "struct: TOCmsg",
 ]
@@ -3267,6 +3320,8 @@ Array [
 
 exports[`Sweetscape Importer reads top-level elements in structure VHD.bt 1`] = `
 Array [
+  "enum: OS",
+  "enum: DISK",
   "struct: FOOTER",
   "function: statecheck",
   "function: feaRead",

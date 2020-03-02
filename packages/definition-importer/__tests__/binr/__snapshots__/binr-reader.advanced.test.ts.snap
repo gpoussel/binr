@@ -5,25 +5,25 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "AVI Format",
       },
     },
     Annotation {
       "_key": "comment",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "This structure is an example of the \\"AVI\\" format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".avi",
       },
     },
     Annotation {
       "_key": "endianness",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "little",
       },
     },
@@ -41,7 +41,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -60,15 +60,15 @@ Definition {
           IfElseStatement {
             "_condition": BinaryExpression {
               "_left": ArrayIndexExpression {
-                "_expression": IdentifierValue {
+                "_expression": IdentifierValueExpression {
                   "_name": "id",
                 },
-                "_indexExpression": NumberValue {
+                "_indexExpression": NumberValueExpression {
                   "_value": 3,
                 },
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"X\\"",
               },
             },
@@ -110,7 +110,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -474,7 +474,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -550,7 +550,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -574,7 +574,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -883,7 +883,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -959,7 +959,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -1001,16 +1001,16 @@ Definition {
           IfElseStatement {
             "_condition": BinaryExpression {
               "_left": BinaryExpression {
-                "_left": IdentifierValue {
+                "_left": IdentifierValueExpression {
                   "_name": "datalen",
                 },
                 "_operator": 17,
-                "_right": NumberValue {
+                "_right": NumberValueExpression {
                   "_value": 2,
                 },
               },
               "_operator": 8,
-              "_right": NumberValue {
+              "_right": NumberValueExpression {
                 "_value": 1,
               },
             },
@@ -1024,7 +1024,7 @@ Definition {
                     VariableDeclaration {
                       "_annotations": Array [],
                       "_arraySelector": ExpressionArraySelector {
-                        "_innerExpression": IdentifierValue {
+                        "_innerExpression": IdentifierValueExpression {
                           "_name": "datalen",
                         },
                       },
@@ -1053,11 +1053,11 @@ Definition {
                       "_annotations": Array [],
                       "_arraySelector": ExpressionArraySelector {
                         "_innerExpression": BinaryExpression {
-                          "_left": IdentifierValue {
+                          "_left": IdentifierValueExpression {
                             "_name": "datalen",
                           },
                           "_operator": 19,
-                          "_right": NumberValue {
+                          "_right": NumberValueExpression {
                             "_value": 1,
                           },
                         },
@@ -1094,7 +1094,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -1426,7 +1426,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -1447,7 +1447,7 @@ Definition {
               CaseSwitchElement {
                 "_labels": Array [
                   ValueSwitchLabel {
-                    "_value": StringValue {
+                    "_value": StringValueExpression {
                       "_value": "hdrl",
                     },
                   },
@@ -1482,7 +1482,7 @@ Definition {
               CaseSwitchElement {
                 "_labels": Array [
                   ValueSwitchLabel {
-                    "_value": StringValue {
+                    "_value": StringValueExpression {
                       "_value": "strl",
                     },
                   },
@@ -1514,7 +1514,7 @@ Definition {
                         "_condition": BinaryExpression {
                           "_left": PropertyAccessExpression {
                             "_expression": PropertyAccessExpression {
-                              "_expression": IdentifierValue {
+                              "_expression": IdentifierValueExpression {
                                 "_name": "strhHeader",
                               },
                               "_name": "data",
@@ -1522,7 +1522,7 @@ Definition {
                             "_name": "type",
                           },
                           "_operator": 8,
-                          "_right": StringValue {
+                          "_right": StringValueExpression {
                             "_value": "\\"vids\\"",
                           },
                         },
@@ -1530,7 +1530,7 @@ Definition {
                           "_condition": BinaryExpression {
                             "_left": PropertyAccessExpression {
                               "_expression": PropertyAccessExpression {
-                                "_expression": IdentifierValue {
+                                "_expression": IdentifierValueExpression {
                                   "_name": "strhHeader",
                                 },
                                 "_name": "data",
@@ -1538,7 +1538,7 @@ Definition {
                               "_name": "type",
                             },
                             "_operator": 8,
-                            "_right": StringValue {
+                            "_right": StringValueExpression {
                               "_value": "\\"auds\\"",
                             },
                           },
@@ -1601,7 +1601,7 @@ Definition {
               CaseSwitchElement {
                 "_labels": Array [
                   ValueSwitchLabel {
-                    "_value": StringValue {
+                    "_value": StringValueExpression {
                       "_value": "movi",
                     },
                   },
@@ -1613,7 +1613,7 @@ Definition {
                 ],
               },
             ],
-            "_testExpression": IdentifierValue {
+            "_testExpression": IdentifierValueExpression {
               "_name": "type",
             },
           },
@@ -1634,7 +1634,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -1652,11 +1652,11 @@ Definition {
           },
           IfStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "nheader",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"LIST\\"",
               },
             },
@@ -1722,7 +1722,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 2,
                   },
                 },
@@ -1743,6 +1743,24 @@ Definition {
       "_name": "AviFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "AviFile",
+      },
+    },
   ],
 }
 `;
@@ -1752,13 +1770,13 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "BMP Format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".bmp",
       },
     },
@@ -1822,7 +1840,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 2,
                   },
                 },
@@ -2180,6 +2198,24 @@ Definition {
       "_name": "BmpFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "BmpFile",
+      },
+    },
   ],
 }
 `;
@@ -2189,25 +2225,25 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "EOT Format",
       },
     },
     Annotation {
       "_key": "comment",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "This structure is an example of the \\"EOT\\" format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".eot",
       },
     },
     Annotation {
       "_key": "endianness",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "little",
       },
     },
@@ -2225,31 +2261,45 @@ Definition {
       },
       "_declarations": Array [
         BitmaskDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "TTEMBED_SUBSET",
         },
         BitmaskDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "TTEMBED_TTCOMPRESSED",
         },
         BitmaskDeclarationElement {
-          "_expression": 16,
+          "_expression": NumberValueExpression {
+            "_value": 16,
+          },
           "_name": "TTEMBED_FAILIFVARIATIONSIMULATED",
         },
         BitmaskDeclarationElement {
-          "_expression": 32,
+          "_expression": NumberValueExpression {
+            "_value": 32,
+          },
           "_name": "TTMBED_EMBEDEUDC",
         },
         BitmaskDeclarationElement {
-          "_expression": 64,
+          "_expression": NumberValueExpression {
+            "_value": 64,
+          },
           "_name": "TTEMBED_VALIDATIONTESTS",
         },
         BitmaskDeclarationElement {
-          "_expression": 128,
+          "_expression": NumberValueExpression {
+            "_value": 128,
+          },
           "_name": "TTEMBED_WEBOBJECT",
         },
         BitmaskDeclarationElement {
-          "_expression": 268435456,
+          "_expression": NumberValueExpression {
+            "_value": 268435456,
+          },
           "_name": "TTEMBED_XORENCRYPTDATA",
         },
       ],
@@ -2356,7 +2406,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 10,
                   },
                 },
@@ -2498,7 +2548,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -2594,7 +2644,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -2617,7 +2667,7 @@ Definition {
             "_annotations": Array [
               Annotation {
                 "_key": "ignore",
-                "_value": BooleanValue {
+                "_value": BooleanValueExpression {
                   "_value": true,
                 },
               },
@@ -2675,11 +2725,11 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": BinaryExpression {
-                    "_left": IdentifierValue {
+                    "_left": IdentifierValueExpression {
                       "_name": "familyNameSize",
                     },
                     "_operator": 7,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 2,
                     },
                   },
@@ -2700,7 +2750,7 @@ Definition {
             "_annotations": Array [
               Annotation {
                 "_key": "ignore",
-                "_value": BooleanValue {
+                "_value": BooleanValueExpression {
                   "_value": true,
                 },
               },
@@ -2758,11 +2808,11 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": BinaryExpression {
-                    "_left": IdentifierValue {
+                    "_left": IdentifierValueExpression {
                       "_name": "styleNameSize",
                     },
                     "_operator": 7,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 2,
                     },
                   },
@@ -2783,7 +2833,7 @@ Definition {
             "_annotations": Array [
               Annotation {
                 "_key": "ignore",
-                "_value": BooleanValue {
+                "_value": BooleanValueExpression {
                   "_value": true,
                 },
               },
@@ -2841,11 +2891,11 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": BinaryExpression {
-                    "_left": IdentifierValue {
+                    "_left": IdentifierValueExpression {
                       "_name": "versionNameSize",
                     },
                     "_operator": 7,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 2,
                     },
                   },
@@ -2866,7 +2916,7 @@ Definition {
             "_annotations": Array [
               Annotation {
                 "_key": "ignore",
-                "_value": BooleanValue {
+                "_value": BooleanValueExpression {
                   "_value": true,
                 },
               },
@@ -2924,11 +2974,11 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": BinaryExpression {
-                    "_left": IdentifierValue {
+                    "_left": IdentifierValueExpression {
                       "_name": "fullNameSize",
                     },
                     "_operator": 7,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 2,
                     },
                   },
@@ -2949,7 +2999,7 @@ Definition {
             "_annotations": Array [
               Annotation {
                 "_key": "ignore",
-                "_value": BooleanValue {
+                "_value": BooleanValueExpression {
                   "_value": true,
                 },
               },
@@ -3007,11 +3057,11 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": BinaryExpression {
-                    "_left": IdentifierValue {
+                    "_left": IdentifierValueExpression {
                       "_name": "rootStringSize",
                     },
                     "_operator": 7,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 2,
                     },
                   },
@@ -3078,7 +3128,7 @@ Definition {
             "_annotations": Array [
               Annotation {
                 "_key": "ignore",
-                "_value": BooleanValue {
+                "_value": BooleanValueExpression {
                   "_value": true,
                 },
               },
@@ -3136,11 +3186,11 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": BinaryExpression {
-                    "_left": IdentifierValue {
+                    "_left": IdentifierValueExpression {
                       "_name": "signatureSize",
                     },
                     "_operator": 7,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 2,
                     },
                   },
@@ -3211,7 +3261,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "eudcFontSize",
                   },
                 },
@@ -3238,7 +3288,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "fontDataSize",
                   },
                 },
@@ -3262,6 +3312,24 @@ Definition {
       "_name": "EotFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "EotFile",
+      },
+    },
   ],
 }
 `;
@@ -3271,25 +3339,25 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "GIF Format",
       },
     },
     Annotation {
       "_key": "comment",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "This structure is an example of the \\"GIF\\" format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".gif",
       },
     },
     Annotation {
       "_key": "endianness",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "little",
       },
     },
@@ -3308,22 +3376,22 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": FunctionCallExpression {
-                    "_callable": IdentifierValue {
+                    "_callable": IdentifierValueExpression {
                       "_name": "max",
                     },
                     "_functionArguments": Array [
-                      NumberValue {
+                      NumberValueExpression {
                         "_value": 3,
                       },
                       FunctionCallExpression {
-                        "_callable": IdentifierValue {
+                        "_callable": IdentifierValueExpression {
                           "_name": "min",
                         },
                         "_functionArguments": Array [
-                          NumberValue {
+                          NumberValueExpression {
                             "_value": 2,
                           },
-                          NumberValue {
+                          NumberValueExpression {
                             "_value": 5,
                           },
                         ],
@@ -3351,7 +3419,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 3,
                   },
                 },
@@ -3698,13 +3766,13 @@ Definition {
           IfStatement {
             "_condition": BinaryExpression {
               "_left": PropertyAccessExpression {
-                "_expression": IdentifierValue {
+                "_expression": IdentifierValueExpression {
                   "_name": "logicalScreen",
                 },
                 "_name": "globalColorTable",
               },
               "_operator": 8,
-              "_right": NumberValue {
+              "_right": NumberValueExpression {
                 "_value": 1,
               },
             },
@@ -3719,19 +3787,19 @@ Definition {
                       "_annotations": Array [],
                       "_arraySelector": ExpressionArraySelector {
                         "_innerExpression": BinaryExpression {
-                          "_left": NumberValue {
+                          "_left": NumberValueExpression {
                             "_value": 1,
                           },
                           "_operator": 20,
                           "_right": BinaryExpression {
                             "_left": PropertyAccessExpression {
-                              "_expression": IdentifierValue {
+                              "_expression": IdentifierValueExpression {
                                 "_name": "logicalScreen",
                               },
                               "_name": "globalColorTableSize",
                             },
                             "_operator": 19,
-                            "_right": NumberValue {
+                            "_right": NumberValueExpression {
                               "_value": 1,
                             },
                           },
@@ -3777,6 +3845,24 @@ Definition {
       "_name": "GifFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "GifFile",
+      },
+    },
   ],
 }
 `;
@@ -3786,19 +3872,19 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "ICO Format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".ico",
       },
     },
     Annotation {
       "_key": "endianness",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "little",
       },
     },
@@ -4078,7 +4164,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "count",
                   },
                 },
@@ -4471,26 +4557,26 @@ Definition {
               "_left": BinaryExpression {
                 "_left": BinaryExpression {
                   "_left": PropertyAccessExpression {
-                    "_expression": IdentifierValue {
+                    "_expression": IdentifierValueExpression {
                       "_name": "header",
                     },
                     "_name": "bitCount",
                   },
                   "_operator": 6,
-                  "_right": NumberValue {
+                  "_right": NumberValueExpression {
                     "_value": 24,
                   },
                 },
                 "_operator": 4,
                 "_right": PropertyAccessExpression {
-                  "_expression": IdentifierValue {
+                  "_expression": IdentifierValueExpression {
                     "_name": "header",
                   },
                   "_name": "bitCount",
                 },
               },
               "_operator": 6,
-              "_right": NumberValue {
+              "_right": NumberValueExpression {
                 "_value": 32,
               },
             },
@@ -4499,13 +4585,13 @@ Definition {
                 IfElseStatement {
                   "_condition": BinaryExpression {
                     "_left": PropertyAccessExpression {
-                      "_expression": IdentifierValue {
+                      "_expression": IdentifierValueExpression {
                         "_name": "header",
                       },
                       "_name": "clrUsed",
                     },
                     "_operator": 13,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 0,
                     },
                   },
@@ -4520,12 +4606,12 @@ Definition {
                             "_annotations": Array [],
                             "_arraySelector": ExpressionArraySelector {
                               "_innerExpression": BinaryExpression {
-                                "_left": NumberValue {
+                                "_left": NumberValueExpression {
                                   "_value": 1,
                                 },
                                 "_operator": 20,
                                 "_right": PropertyAccessExpression {
-                                  "_expression": IdentifierValue {
+                                  "_expression": IdentifierValueExpression {
                                     "_name": "header",
                                   },
                                   "_name": "bitCount",
@@ -4557,7 +4643,7 @@ Definition {
                             "_annotations": Array [],
                             "_arraySelector": ExpressionArraySelector {
                               "_innerExpression": PropertyAccessExpression {
-                                "_expression": IdentifierValue {
+                                "_expression": IdentifierValueExpression {
                                   "_name": "header",
                                 },
                                 "_name": "clrUsed",
@@ -4584,52 +4670,52 @@ Definition {
           IfElseStatement {
             "_condition": BinaryExpression {
               "_left": PropertyAccessExpression {
-                "_expression": IdentifierValue {
+                "_expression": IdentifierValueExpression {
                   "_name": "header",
                 },
                 "_name": "bitCount",
               },
               "_operator": 15,
-              "_right": NumberValue {
+              "_right": NumberValueExpression {
                 "_value": 8,
               },
             },
             "_falseStatement": IfElseStatement {
               "_condition": BinaryExpression {
                 "_left": PropertyAccessExpression {
-                  "_expression": IdentifierValue {
+                  "_expression": IdentifierValueExpression {
                     "_name": "header",
                   },
                   "_name": "bitCount",
                 },
                 "_operator": 8,
-                "_right": NumberValue {
+                "_right": NumberValueExpression {
                   "_value": 8,
                 },
               },
               "_falseStatement": IfElseStatement {
                 "_condition": BinaryExpression {
                   "_left": PropertyAccessExpression {
-                    "_expression": IdentifierValue {
+                    "_expression": IdentifierValueExpression {
                       "_name": "header",
                     },
                     "_name": "bitCount",
                   },
                   "_operator": 8,
-                  "_right": NumberValue {
+                  "_right": NumberValueExpression {
                     "_value": 24,
                   },
                 },
                 "_falseStatement": IfStatement {
                   "_condition": BinaryExpression {
                     "_left": PropertyAccessExpression {
-                      "_expression": IdentifierValue {
+                      "_expression": IdentifierValueExpression {
                         "_name": "header",
                       },
                       "_name": "bitCount",
                     },
                     "_operator": 8,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 32,
                     },
                   },
@@ -4735,7 +4821,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 1,
                   },
                 },
@@ -4756,6 +4842,24 @@ Definition {
       "_name": "IcoFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "IcoFile",
+      },
+    },
   ],
 }
 `;
@@ -4765,13 +4869,13 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "CLASS Format (Java Bytecode)",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".class",
       },
     },
@@ -4789,59 +4893,87 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "TAG_UTF8",
         },
         EnumDeclarationElement {
-          "_expression": 3,
+          "_expression": NumberValueExpression {
+            "_value": 3,
+          },
           "_name": "TAG_INTEGER",
         },
         EnumDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "TAG_FLOAT",
         },
         EnumDeclarationElement {
-          "_expression": 5,
+          "_expression": NumberValueExpression {
+            "_value": 5,
+          },
           "_name": "TAG_LONG",
         },
         EnumDeclarationElement {
-          "_expression": 6,
+          "_expression": NumberValueExpression {
+            "_value": 6,
+          },
           "_name": "TAG_DOUBLE",
         },
         EnumDeclarationElement {
-          "_expression": 7,
+          "_expression": NumberValueExpression {
+            "_value": 7,
+          },
           "_name": "TAG_CLASS",
         },
         EnumDeclarationElement {
-          "_expression": 8,
+          "_expression": NumberValueExpression {
+            "_value": 8,
+          },
           "_name": "TAG_STRING",
         },
         EnumDeclarationElement {
-          "_expression": 9,
+          "_expression": NumberValueExpression {
+            "_value": 9,
+          },
           "_name": "TAG_FIELDREF",
         },
         EnumDeclarationElement {
-          "_expression": 10,
+          "_expression": NumberValueExpression {
+            "_value": 10,
+          },
           "_name": "TAG_METHODREF",
         },
         EnumDeclarationElement {
-          "_expression": 11,
+          "_expression": NumberValueExpression {
+            "_value": 11,
+          },
           "_name": "TAG_INTERFACEMETHODREF",
         },
         EnumDeclarationElement {
-          "_expression": 12,
+          "_expression": NumberValueExpression {
+            "_value": 12,
+          },
           "_name": "TAG_NAMEANDTYPE",
         },
         EnumDeclarationElement {
-          "_expression": 15,
+          "_expression": NumberValueExpression {
+            "_value": 15,
+          },
           "_name": "TAG_METHODHANDLE_INFO",
         },
         EnumDeclarationElement {
-          "_expression": 16,
+          "_expression": NumberValueExpression {
+            "_value": 16,
+          },
           "_name": "TAG_METHODTYPE",
         },
         EnumDeclarationElement {
-          "_expression": 18,
+          "_expression": NumberValueExpression {
+            "_value": 18,
+          },
           "_name": "TAG_INVOKEDYNAMIC",
         },
       ],
@@ -4859,51 +4991,75 @@ Definition {
       },
       "_declarations": Array [
         BitmaskDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "ACC_PUBLIC",
         },
         BitmaskDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "ACC_PRIVATE",
         },
         BitmaskDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "ACC_PROTECTED",
         },
         BitmaskDeclarationElement {
-          "_expression": 8,
+          "_expression": NumberValueExpression {
+            "_value": 8,
+          },
           "_name": "ACC_STATIC",
         },
         BitmaskDeclarationElement {
-          "_expression": 16,
+          "_expression": NumberValueExpression {
+            "_value": 16,
+          },
           "_name": "ACC_FINAL",
         },
         BitmaskDeclarationElement {
-          "_expression": 32,
+          "_expression": NumberValueExpression {
+            "_value": 32,
+          },
           "_name": "ACC_SUPER",
         },
         BitmaskDeclarationElement {
-          "_expression": 64,
+          "_expression": NumberValueExpression {
+            "_value": 64,
+          },
           "_name": "ACC_VOLATILE",
         },
         BitmaskDeclarationElement {
-          "_expression": 128,
+          "_expression": NumberValueExpression {
+            "_value": 128,
+          },
           "_name": "ACC_TRANSIENT",
         },
         BitmaskDeclarationElement {
-          "_expression": 256,
+          "_expression": NumberValueExpression {
+            "_value": 256,
+          },
           "_name": "ACC_NATIVE",
         },
         BitmaskDeclarationElement {
-          "_expression": 512,
+          "_expression": NumberValueExpression {
+            "_value": 512,
+          },
           "_name": "ACC_INTERFACE",
         },
         BitmaskDeclarationElement {
-          "_expression": 1024,
+          "_expression": NumberValueExpression {
+            "_value": 1024,
+          },
           "_name": "ACC_ABSTRACT",
         },
         BitmaskDeclarationElement {
-          "_expression": 2048,
+          "_expression": NumberValueExpression {
+            "_value": 2048,
+          },
           "_name": "ACC_STRICT",
         },
       ],
@@ -4935,11 +5091,11 @@ Definition {
           },
           IfStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "tag",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"TAG_UTF8\\"",
               },
             },
@@ -4976,7 +5132,7 @@ Definition {
                     VariableDeclaration {
                       "_annotations": Array [],
                       "_arraySelector": ExpressionArraySelector {
-                        "_innerExpression": IdentifierValue {
+                        "_innerExpression": IdentifierValueExpression {
                           "_name": "length",
                         },
                       },
@@ -4999,21 +5155,21 @@ Definition {
             "_condition": BinaryExpression {
               "_left": BinaryExpression {
                 "_left": BinaryExpression {
-                  "_left": IdentifierValue {
+                  "_left": IdentifierValueExpression {
                     "_name": "tag",
                   },
                   "_operator": 8,
-                  "_right": StringValue {
+                  "_right": StringValueExpression {
                     "_value": "\\"TAG_INTEGER\\"",
                   },
                 },
                 "_operator": 5,
-                "_right": IdentifierValue {
+                "_right": IdentifierValueExpression {
                   "_name": "tag",
                 },
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"TAG_FLOAT\\"",
               },
             },
@@ -5025,7 +5181,7 @@ Definition {
                 VariableDeclaration {
                   "_annotations": Array [],
                   "_arraySelector": ExpressionArraySelector {
-                    "_innerExpression": NumberValue {
+                    "_innerExpression": NumberValueExpression {
                       "_value": 4,
                     },
                   },
@@ -5049,21 +5205,21 @@ Definition {
             "_condition": BinaryExpression {
               "_left": BinaryExpression {
                 "_left": BinaryExpression {
-                  "_left": IdentifierValue {
+                  "_left": IdentifierValueExpression {
                     "_name": "tag",
                   },
                   "_operator": 8,
-                  "_right": StringValue {
+                  "_right": StringValueExpression {
                     "_value": "\\"TAG_LONG\\"",
                   },
                 },
                 "_operator": 5,
-                "_right": IdentifierValue {
+                "_right": IdentifierValueExpression {
                   "_name": "tag",
                 },
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"TAG_DOUBLE\\"",
               },
             },
@@ -5120,11 +5276,11 @@ Definition {
           },
           IfStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "tag",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"TAG_CLASS\\"",
               },
             },
@@ -5154,11 +5310,11 @@ Definition {
           },
           IfStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "tag",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"TAG_STRING\\"",
               },
             },
@@ -5192,31 +5348,31 @@ Definition {
                 "_left": BinaryExpression {
                   "_left": BinaryExpression {
                     "_left": BinaryExpression {
-                      "_left": IdentifierValue {
+                      "_left": IdentifierValueExpression {
                         "_name": "tag",
                       },
                       "_operator": 8,
-                      "_right": StringValue {
+                      "_right": StringValueExpression {
                         "_value": "\\"TAG_FIELDREF\\"",
                       },
                     },
                     "_operator": 5,
-                    "_right": IdentifierValue {
+                    "_right": IdentifierValueExpression {
                       "_name": "tag",
                     },
                   },
                   "_operator": 8,
-                  "_right": StringValue {
+                  "_right": StringValueExpression {
                     "_value": "\\"TAG_METHODREF\\"",
                   },
                 },
                 "_operator": 5,
-                "_right": IdentifierValue {
+                "_right": IdentifierValueExpression {
                   "_name": "tag",
                 },
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"TAG_INTERFACEMETHODREF\\"",
               },
             },
@@ -5273,11 +5429,11 @@ Definition {
           },
           IfStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "tag",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"TAG_NAMEANDTYPE\\"",
               },
             },
@@ -5334,11 +5490,11 @@ Definition {
           },
           IfStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "tag",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"TAG_METHODHANDLE_INFO\\"",
               },
             },
@@ -5395,11 +5551,11 @@ Definition {
           },
           IfStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "tag",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"TAG_METHODTYPE\\"",
               },
             },
@@ -5429,11 +5585,11 @@ Definition {
           },
           IfStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "tag",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"TAG_INVOKEDYNAMIC\\"",
               },
             },
@@ -5594,7 +5750,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "attributesCount",
                   },
                 },
@@ -5716,7 +5872,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "attributesCount",
                   },
                 },
@@ -5795,7 +5951,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "attributeLength",
                   },
                 },
@@ -5924,11 +6080,11 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": BinaryExpression {
-                    "_left": IdentifierValue {
+                    "_left": IdentifierValueExpression {
                       "_name": "constantPoolSize",
                     },
                     "_operator": 16,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 1,
                     },
                   },
@@ -6042,7 +6198,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "interfacesCount",
                   },
                 },
@@ -6092,7 +6248,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "fieldsCount",
                   },
                 },
@@ -6139,7 +6295,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "methodsCount",
                   },
                 },
@@ -6186,7 +6342,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "attributesCount",
                   },
                 },
@@ -6207,6 +6363,24 @@ Definition {
       "_name": "JVMClass",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "JVMClass",
+      },
+    },
   ],
 }
 `;
@@ -6216,19 +6390,19 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "Android Manifest Format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".xml",
       },
     },
     Annotation {
       "_key": "endianness",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "little",
       },
     },
@@ -6389,7 +6563,7 @@ Definition {
             "_annotations": Array [
               Annotation {
                 "_key": "ignore",
-                "_value": BooleanValue {
+                "_value": BooleanValueExpression {
                   "_value": true,
                 },
               },
@@ -6469,7 +6643,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "stringCount",
                   },
                 },
@@ -6496,7 +6670,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "styleCount",
                   },
                 },
@@ -6527,26 +6701,26 @@ Definition {
                     "_left": BinaryExpression {
                       "_left": BinaryExpression {
                         "_left": BinaryExpression {
-                          "_left": IdentifierValue {
+                          "_left": IdentifierValueExpression {
                             "_name": "size",
                           },
                           "_operator": 16,
-                          "_right": NumberValue {
+                          "_right": NumberValueExpression {
                             "_value": 7,
                           },
                         },
                         "_operator": 16,
-                        "_right": IdentifierValue {
+                        "_right": IdentifierValueExpression {
                           "_name": "stringCount",
                         },
                       },
                       "_operator": 16,
-                      "_right": IdentifierValue {
+                      "_right": IdentifierValueExpression {
                         "_name": "styleCount",
                       },
                     },
                     "_operator": 18,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 2,
                     },
                   },
@@ -6617,6 +6791,24 @@ Definition {
       "_name": "ManifestFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "ManifestFile",
+      },
+    },
   ],
 }
 `;
@@ -6626,13 +6818,13 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "NTFS MFT FILE records",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".bin",
       },
     },
@@ -6650,19 +6842,27 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 0,
+          "_expression": NumberValueExpression {
+            "_value": 0,
+          },
           "_name": "Posix",
         },
         EnumDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "Windows",
         },
         EnumDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "Dos",
         },
         EnumDeclarationElement {
-          "_expression": 3,
+          "_expression": NumberValueExpression {
+            "_value": 3,
+          },
           "_name": "DosWindows",
         },
       ],
@@ -6697,6 +6897,24 @@ Definition {
       "_name": "FileEntry",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "FileEntry",
+      },
+    },
   ],
 }
 `;
@@ -6706,19 +6924,19 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "RAR Format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".rar",
       },
     },
     Annotation {
       "_key": "endianness",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "little",
       },
     },
@@ -6736,43 +6954,63 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 114,
+          "_expression": NumberValueExpression {
+            "_value": 114,
+          },
           "_name": "MARKER",
         },
         EnumDeclarationElement {
-          "_expression": 115,
+          "_expression": NumberValueExpression {
+            "_value": 115,
+          },
           "_name": "ARCHIVE",
         },
         EnumDeclarationElement {
-          "_expression": 116,
+          "_expression": NumberValueExpression {
+            "_value": 116,
+          },
           "_name": "FILE_OR_DIR",
         },
         EnumDeclarationElement {
-          "_expression": 117,
+          "_expression": NumberValueExpression {
+            "_value": 117,
+          },
           "_name": "COMMENT_OLD",
         },
         EnumDeclarationElement {
-          "_expression": 118,
+          "_expression": NumberValueExpression {
+            "_value": 118,
+          },
           "_name": "AV_OLD_1",
         },
         EnumDeclarationElement {
-          "_expression": 119,
+          "_expression": NumberValueExpression {
+            "_value": 119,
+          },
           "_name": "SUBBLOCK_OLD",
         },
         EnumDeclarationElement {
-          "_expression": 120,
+          "_expression": NumberValueExpression {
+            "_value": 120,
+          },
           "_name": "RR_OLD",
         },
         EnumDeclarationElement {
-          "_expression": 121,
+          "_expression": NumberValueExpression {
+            "_value": 121,
+          },
           "_name": "AV_OLD_2",
         },
         EnumDeclarationElement {
-          "_expression": 122,
+          "_expression": NumberValueExpression {
+            "_value": 122,
+          },
           "_name": "SUBBLOCK",
         },
         EnumDeclarationElement {
-          "_expression": 123,
+          "_expression": NumberValueExpression {
+            "_value": 123,
+          },
           "_name": "_END_",
         },
       ],
@@ -6790,47 +7028,69 @@ Definition {
       },
       "_declarations": Array [
         BitmaskDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "ARCHIVE_VOLUME",
         },
         BitmaskDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "ARCHIVE_COMMENT_PRESENT",
         },
         BitmaskDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "ARCHIVE_LOCKED",
         },
         BitmaskDeclarationElement {
-          "_expression": 8,
+          "_expression": NumberValueExpression {
+            "_value": 8,
+          },
           "_name": "ARCHIVE_SOLID",
         },
         BitmaskDeclarationElement {
-          "_expression": 16,
+          "_expression": NumberValueExpression {
+            "_value": 16,
+          },
           "_name": "NEW_VOLUME_NAMING",
         },
         BitmaskDeclarationElement {
-          "_expression": 32,
+          "_expression": NumberValueExpression {
+            "_value": 32,
+          },
           "_name": "AV_PRESENT",
         },
         BitmaskDeclarationElement {
-          "_expression": 64,
+          "_expression": NumberValueExpression {
+            "_value": 64,
+          },
           "_name": "RECOVERY_PRESENT",
         },
         BitmaskDeclarationElement {
-          "_expression": 128,
+          "_expression": NumberValueExpression {
+            "_value": 128,
+          },
           "_name": "BLOCK_HEADERS_ENCRYPTED",
         },
         BitmaskDeclarationElement {
-          "_expression": 256,
+          "_expression": NumberValueExpression {
+            "_value": 256,
+          },
           "_name": "IS_FIRST_VOLUME",
         },
         BitmaskDeclarationElement {
-          "_expression": 16384,
+          "_expression": NumberValueExpression {
+            "_value": 16384,
+          },
           "_name": "OLD_VERSION_IGNORE",
         },
         BitmaskDeclarationElement {
-          "_expression": 32768,
+          "_expression": NumberValueExpression {
+            "_value": 32768,
+          },
           "_name": "ADD_SIZE_PRESENT",
         },
       ],
@@ -6848,51 +7108,75 @@ Definition {
       },
       "_declarations": Array [
         BitmaskDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "from_PREV_VOLUME",
         },
         BitmaskDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "to_NEXT_VOLUME",
         },
         BitmaskDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "PASSWORD_ENCRYPTED",
         },
         BitmaskDeclarationElement {
-          "_expression": 8,
+          "_expression": NumberValueExpression {
+            "_value": 8,
+          },
           "_name": "FILE_COMMENT_PRESENT",
         },
         BitmaskDeclarationElement {
-          "_expression": 16,
+          "_expression": NumberValueExpression {
+            "_value": 16,
+          },
           "_name": "SOLID",
         },
         BitmaskDeclarationElement {
-          "_expression": 256,
+          "_expression": NumberValueExpression {
+            "_value": 256,
+          },
           "_name": "HIGH_SIZE",
         },
         BitmaskDeclarationElement {
-          "_expression": 512,
+          "_expression": NumberValueExpression {
+            "_value": 512,
+          },
           "_name": "has_UNICODE_FILENAME",
         },
         BitmaskDeclarationElement {
-          "_expression": 1024,
+          "_expression": NumberValueExpression {
+            "_value": 1024,
+          },
           "_name": "ENCRYPTION_SALT",
         },
         BitmaskDeclarationElement {
-          "_expression": 2048,
+          "_expression": NumberValueExpression {
+            "_value": 2048,
+          },
           "_name": "IS_OLD_FILE_VERSION",
         },
         BitmaskDeclarationElement {
-          "_expression": 4096,
+          "_expression": NumberValueExpression {
+            "_value": 4096,
+          },
           "_name": "EXTENDED_TIME_INFO",
         },
         BitmaskDeclarationElement {
-          "_expression": 16384,
+          "_expression": NumberValueExpression {
+            "_value": 16384,
+          },
           "_name": "OLD_VERSION_IGNORE",
         },
         BitmaskDeclarationElement {
-          "_expression": 32768,
+          "_expression": NumberValueExpression {
+            "_value": 32768,
+          },
           "_name": "ADD_SIZE_PRESENT",
         },
       ],
@@ -6947,21 +7231,21 @@ Definition {
           },
           IfElseStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "type",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"ARCHIVE\\"",
               },
             },
             "_falseStatement": IfElseStatement {
               "_condition": BinaryExpression {
-                "_left": IdentifierValue {
+                "_left": IdentifierValueExpression {
                   "_name": "type",
                 },
                 "_operator": 8,
-                "_right": StringValue {
+                "_right": StringValueExpression {
                   "_value": "\\"FILE_OR_DIR\\"",
                 },
               },
@@ -7043,11 +7327,11 @@ Definition {
           },
           IfElseStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "type",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"ARCHIVE\\"",
               },
             },
@@ -7060,7 +7344,7 @@ Definition {
                   "_annotations": Array [
                     Annotation {
                       "_key": "ignore",
-                      "_value": BooleanValue {
+                      "_value": BooleanValueExpression {
                         "_value": true,
                       },
                     },
@@ -7090,7 +7374,7 @@ Definition {
                   "_annotations": Array [
                     Annotation {
                       "_key": "ignore",
-                      "_value": BooleanValue {
+                      "_value": BooleanValueExpression {
                         "_value": true,
                       },
                     },
@@ -7136,7 +7420,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 7,
                   },
                 },
@@ -7180,7 +7464,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 1,
                   },
                 },
@@ -7201,6 +7485,24 @@ Definition {
       "_name": "RarFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "RarFile",
+      },
+    },
   ],
 }
 `;
@@ -7210,19 +7512,19 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "RM Format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".rm",
       },
     },
     Annotation {
       "_key": "endianness",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "big",
       },
     },
@@ -7240,7 +7542,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -7365,7 +7667,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -7697,7 +7999,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -7974,7 +8276,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "descriptionSize",
                   },
                 },
@@ -8021,7 +8323,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "streamMimeTypeSize",
                   },
                 },
@@ -8068,7 +8370,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "specificTypeDataSize",
                   },
                 },
@@ -8104,7 +8406,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -8220,7 +8522,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "numOfDataPackets",
                   },
                 },
@@ -8253,7 +8555,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -8346,7 +8648,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "titleLength",
                   },
                 },
@@ -8393,7 +8695,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "authorLength",
                   },
                 },
@@ -8440,7 +8742,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "copyrightLength",
                   },
                 },
@@ -8487,7 +8789,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "commentLength",
                   },
                 },
@@ -8621,7 +8923,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 4,
                   },
                 },
@@ -8760,7 +9062,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": IdentifierValue {
+                  "_innerExpression": IdentifierValueExpression {
                     "_name": "numberOfEntries",
                   },
                 },
@@ -8882,7 +9184,7 @@ Definition {
               CaseSwitchElement {
                 "_labels": Array [
                   ValueSwitchLabel {
-                    "_value": NumberValue {
+                    "_value": NumberValueExpression {
                       "_value": 0,
                     },
                   },
@@ -8943,7 +9245,7 @@ Definition {
               CaseSwitchElement {
                 "_labels": Array [
                   ValueSwitchLabel {
-                    "_value": NumberValue {
+                    "_value": NumberValueExpression {
                       "_value": 1,
                     },
                   },
@@ -9002,7 +9304,7 @@ Definition {
                 ],
               },
             ],
-            "_testExpression": IdentifierValue {
+            "_testExpression": IdentifierValueExpression {
               "_name": "version",
             },
           },
@@ -9015,11 +9317,11 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": BinaryExpression {
-                    "_left": IdentifierValue {
+                    "_left": IdentifierValueExpression {
                       "_name": "size",
                     },
                     "_operator": 16,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 12,
                     },
                   },
@@ -9097,7 +9399,7 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": PropertyAccessExpression {
-                    "_expression": IdentifierValue {
+                    "_expression": IdentifierValueExpression {
                       "_name": "properties",
                     },
                     "_name": "numberOfStreams",
@@ -9164,7 +9466,7 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": PropertyAccessExpression {
-                    "_expression": IdentifierValue {
+                    "_expression": IdentifierValueExpression {
                       "_name": "properties",
                     },
                     "_name": "numberOfStreams",
@@ -9187,6 +9489,24 @@ Definition {
       "_name": "RmFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "RmFile",
+      },
+    },
   ],
 }
 `;
@@ -9196,19 +9516,19 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "ROMFS Format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".romfs",
       },
     },
     Annotation {
       "_key": "endian",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "big",
       },
     },
@@ -9226,7 +9546,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 8,
                   },
                 },
@@ -9325,35 +9645,51 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 0,
+          "_expression": NumberValueExpression {
+            "_value": 0,
+          },
           "_name": "HARD_LINK",
         },
         EnumDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "DIRECTORY",
         },
         EnumDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "FILE",
         },
         EnumDeclarationElement {
-          "_expression": 3,
+          "_expression": NumberValueExpression {
+            "_value": 3,
+          },
           "_name": "SYMLINK",
         },
         EnumDeclarationElement {
-          "_expression": 4,
+          "_expression": NumberValueExpression {
+            "_value": 4,
+          },
           "_name": "BLOCK_DEV",
         },
         EnumDeclarationElement {
-          "_expression": 5,
+          "_expression": NumberValueExpression {
+            "_value": 5,
+          },
           "_name": "CHAR_DEV",
         },
         EnumDeclarationElement {
-          "_expression": 6,
+          "_expression": NumberValueExpression {
+            "_value": 6,
+          },
           "_name": "SOCKET",
         },
         EnumDeclarationElement {
-          "_expression": 7,
+          "_expression": NumberValueExpression {
+            "_value": 7,
+          },
           "_name": "FIFO",
         },
       ],
@@ -9445,6 +9781,24 @@ Definition {
       "_name": "RomfsFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "RomfsFile",
+      },
+    },
   ],
 }
 `;
@@ -9454,13 +9808,13 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "SHX Format (Shape)",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".shx",
       },
     },
@@ -9470,7 +9824,7 @@ Definition {
       "_annotations": Array [
         Annotation {
           "_key": "endianness",
-          "_value": StringValue {
+          "_value": StringValueExpression {
             "_value": "big",
           },
         },
@@ -9504,7 +9858,7 @@ Definition {
             "_annotations": Array [
               Annotation {
                 "_key": "ignore",
-                "_value": BooleanValue {
+                "_value": BooleanValueExpression {
                   "_value": true,
                 },
               },
@@ -9515,7 +9869,7 @@ Definition {
               VariableDeclaration {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
-                  "_innerExpression": NumberValue {
+                  "_innerExpression": NumberValueExpression {
                     "_value": 5,
                   },
                 },
@@ -9574,59 +9928,87 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 0,
+          "_expression": NumberValueExpression {
+            "_value": 0,
+          },
           "_name": "NULL",
         },
         EnumDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "POINT",
         },
         EnumDeclarationElement {
-          "_expression": 3,
+          "_expression": NumberValueExpression {
+            "_value": 3,
+          },
           "_name": "POLYLINE",
         },
         EnumDeclarationElement {
-          "_expression": 5,
+          "_expression": NumberValueExpression {
+            "_value": 5,
+          },
           "_name": "POLYGON",
         },
         EnumDeclarationElement {
-          "_expression": 8,
+          "_expression": NumberValueExpression {
+            "_value": 8,
+          },
           "_name": "MULTI_POINT",
         },
         EnumDeclarationElement {
-          "_expression": 11,
+          "_expression": NumberValueExpression {
+            "_value": 11,
+          },
           "_name": "POINT_Z",
         },
         EnumDeclarationElement {
-          "_expression": 13,
+          "_expression": NumberValueExpression {
+            "_value": 13,
+          },
           "_name": "POLYLINE_Z",
         },
         EnumDeclarationElement {
-          "_expression": 15,
+          "_expression": NumberValueExpression {
+            "_value": 15,
+          },
           "_name": "POLYGON_Z",
         },
         EnumDeclarationElement {
-          "_expression": 18,
+          "_expression": NumberValueExpression {
+            "_value": 18,
+          },
           "_name": "MULTI_POINT_Z",
         },
         EnumDeclarationElement {
-          "_expression": 21,
+          "_expression": NumberValueExpression {
+            "_value": 21,
+          },
           "_name": "POINT_M",
         },
         EnumDeclarationElement {
-          "_expression": 23,
+          "_expression": NumberValueExpression {
+            "_value": 23,
+          },
           "_name": "POLYLINE_M",
         },
         EnumDeclarationElement {
-          "_expression": 25,
+          "_expression": NumberValueExpression {
+            "_value": 25,
+          },
           "_name": "POLYGON_M",
         },
         EnumDeclarationElement {
-          "_expression": 28,
+          "_expression": NumberValueExpression {
+            "_value": 28,
+          },
           "_name": "MULTI_POINT_M",
         },
         EnumDeclarationElement {
-          "_expression": 31,
+          "_expression": NumberValueExpression {
+            "_value": 31,
+          },
           "_name": "MULTI_PATCH",
         },
       ],
@@ -9636,7 +10018,7 @@ Definition {
       "_annotations": Array [
         Annotation {
           "_key": "endianness",
-          "_value": StringValue {
+          "_value": StringValueExpression {
             "_value": "little",
           },
         },
@@ -9855,7 +10237,7 @@ Definition {
       "_annotations": Array [
         Annotation {
           "_key": "endianness",
-          "_value": StringValue {
+          "_value": StringValueExpression {
             "_value": "big",
           },
         },
@@ -9969,23 +10351,23 @@ Definition {
                     "_left": BinaryExpression {
                       "_left": BinaryExpression {
                         "_left": PropertyAccessExpression {
-                          "_expression": IdentifierValue {
+                          "_expression": IdentifierValueExpression {
                             "_name": "fileHeader",
                           },
                           "_name": "length",
                         },
                         "_operator": 16,
-                        "_right": NumberValue {
+                        "_right": NumberValueExpression {
                           "_value": 50,
                         },
                       },
                       "_operator": 18,
-                      "_right": NumberValue {
+                      "_right": NumberValueExpression {
                         "_value": 2,
                       },
                     },
                     "_operator": 7,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 8,
                     },
                   },
@@ -10007,6 +10389,24 @@ Definition {
       "_name": "ShxFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "ShxFile",
+      },
+    },
   ],
 }
 `;
@@ -10016,13 +10416,13 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "Torrent Format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".torrent",
       },
     },
@@ -10054,31 +10454,31 @@ Definition {
           },
           IfElseStatement {
             "_condition": BinaryExpression {
-              "_left": IdentifierValue {
+              "_left": IdentifierValueExpression {
                 "_name": "identifier",
               },
               "_operator": 8,
-              "_right": StringValue {
+              "_right": StringValueExpression {
                 "_value": "\\"i\\"",
               },
             },
             "_falseStatement": IfElseStatement {
               "_condition": BinaryExpression {
-                "_left": IdentifierValue {
+                "_left": IdentifierValueExpression {
                   "_name": "identifier",
                 },
                 "_operator": 8,
-                "_right": StringValue {
+                "_right": StringValueExpression {
                   "_value": "\\"l\\"",
                 },
               },
               "_falseStatement": IfElseStatement {
                 "_condition": BinaryExpression {
-                  "_left": IdentifierValue {
+                  "_left": IdentifierValueExpression {
                     "_name": "identifier",
                   },
                   "_operator": 8,
-                  "_right": StringValue {
+                  "_right": StringValueExpression {
                     "_value": "\\"d\\"",
                   },
                 },
@@ -10102,6 +10502,24 @@ Definition {
       "_name": "TorrentFile",
       "_parameters": Array [],
     },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "TorrentFile",
+      },
+    },
   ],
 }
 `;
@@ -10111,19 +10529,19 @@ Definition {
   "_annotations": Array [
     Annotation {
       "_key": "name",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "WMF Format",
       },
     },
     Annotation {
       "_key": "extension",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": ".wmf",
       },
     },
     Annotation {
       "_key": "endianness",
-      "_value": StringValue {
+      "_value": StringValueExpression {
         "_value": "little",
       },
     },
@@ -10357,11 +10775,15 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 1,
+          "_expression": NumberValueExpression {
+            "_value": 1,
+          },
           "_name": "MEMORY",
         },
         EnumDeclarationElement {
-          "_expression": 2,
+          "_expression": NumberValueExpression {
+            "_value": 2,
+          },
           "_name": "DISK",
         },
       ],
@@ -10546,283 +10968,423 @@ Definition {
       },
       "_declarations": Array [
         EnumDeclarationElement {
-          "_expression": 0,
+          "_expression": NumberValueExpression {
+            "_value": 0,
+          },
           "_name": "EOF",
         },
         EnumDeclarationElement {
-          "_expression": 53,
+          "_expression": NumberValueExpression {
+            "_value": 53,
+          },
           "_name": "REALIZEPALETTE",
         },
         EnumDeclarationElement {
-          "_expression": 55,
+          "_expression": NumberValueExpression {
+            "_value": 55,
+          },
           "_name": "SETPALENTRIES",
         },
         EnumDeclarationElement {
-          "_expression": 258,
+          "_expression": NumberValueExpression {
+            "_value": 258,
+          },
           "_name": "SETBKMODE",
         },
         EnumDeclarationElement {
-          "_expression": 259,
+          "_expression": NumberValueExpression {
+            "_value": 259,
+          },
           "_name": "SETMAPMODE",
         },
         EnumDeclarationElement {
-          "_expression": 260,
+          "_expression": NumberValueExpression {
+            "_value": 260,
+          },
           "_name": "SETROP2",
         },
         EnumDeclarationElement {
-          "_expression": 261,
+          "_expression": NumberValueExpression {
+            "_value": 261,
+          },
           "_name": "SETRELABS",
         },
         EnumDeclarationElement {
-          "_expression": 262,
+          "_expression": NumberValueExpression {
+            "_value": 262,
+          },
           "_name": "SETPOLYFILLMODE",
         },
         EnumDeclarationElement {
-          "_expression": 263,
+          "_expression": NumberValueExpression {
+            "_value": 263,
+          },
           "_name": "SETSTRETCHBLTMODE",
         },
         EnumDeclarationElement {
-          "_expression": 264,
+          "_expression": NumberValueExpression {
+            "_value": 264,
+          },
           "_name": "SETTEXTCHAREXTRA",
         },
         EnumDeclarationElement {
-          "_expression": 295,
+          "_expression": NumberValueExpression {
+            "_value": 295,
+          },
           "_name": "RESTOREDC",
         },
         EnumDeclarationElement {
-          "_expression": 313,
+          "_expression": NumberValueExpression {
+            "_value": 313,
+          },
           "_name": "RESIZEPALETTE",
         },
         EnumDeclarationElement {
-          "_expression": 322,
+          "_expression": NumberValueExpression {
+            "_value": 322,
+          },
           "_name": "DIBCREATEPATTERNBRUSH",
         },
         EnumDeclarationElement {
-          "_expression": 329,
+          "_expression": NumberValueExpression {
+            "_value": 329,
+          },
           "_name": "SETLAYOUT",
         },
         EnumDeclarationElement {
-          "_expression": 513,
+          "_expression": NumberValueExpression {
+            "_value": 513,
+          },
           "_name": "SETBKCOLOR",
         },
         EnumDeclarationElement {
-          "_expression": 521,
+          "_expression": NumberValueExpression {
+            "_value": 521,
+          },
           "_name": "SETTEXTCOLOR",
         },
         EnumDeclarationElement {
-          "_expression": 529,
+          "_expression": NumberValueExpression {
+            "_value": 529,
+          },
           "_name": "OFFSETVIEWPORTORG",
         },
         EnumDeclarationElement {
-          "_expression": 531,
+          "_expression": NumberValueExpression {
+            "_value": 531,
+          },
           "_name": "LINETO",
         },
         EnumDeclarationElement {
-          "_expression": 532,
+          "_expression": NumberValueExpression {
+            "_value": 532,
+          },
           "_name": "MOVETO",
         },
         EnumDeclarationElement {
-          "_expression": 544,
+          "_expression": NumberValueExpression {
+            "_value": 544,
+          },
           "_name": "OFFSETCLIPRGN",
         },
         EnumDeclarationElement {
-          "_expression": 552,
+          "_expression": NumberValueExpression {
+            "_value": 552,
+          },
           "_name": "FILLREGION",
         },
         EnumDeclarationElement {
-          "_expression": 561,
+          "_expression": NumberValueExpression {
+            "_value": 561,
+          },
           "_name": "SETMAPPERFLAGS",
         },
         EnumDeclarationElement {
-          "_expression": 564,
+          "_expression": NumberValueExpression {
+            "_value": 564,
+          },
           "_name": "SELECTPALETTE",
         },
         EnumDeclarationElement {
-          "_expression": 804,
+          "_expression": NumberValueExpression {
+            "_value": 804,
+          },
           "_name": "POLYGON",
         },
         EnumDeclarationElement {
-          "_expression": 805,
+          "_expression": NumberValueExpression {
+            "_value": 805,
+          },
           "_name": "POLYLINE",
         },
         EnumDeclarationElement {
-          "_expression": 522,
+          "_expression": NumberValueExpression {
+            "_value": 522,
+          },
           "_name": "SETTEXTJUSTIFICATION",
         },
         EnumDeclarationElement {
-          "_expression": 523,
+          "_expression": NumberValueExpression {
+            "_value": 523,
+          },
           "_name": "SETWINDOWORG",
         },
         EnumDeclarationElement {
-          "_expression": 524,
+          "_expression": NumberValueExpression {
+            "_value": 524,
+          },
           "_name": "SETWINDOWEXT",
         },
         EnumDeclarationElement {
-          "_expression": 525,
+          "_expression": NumberValueExpression {
+            "_value": 525,
+          },
           "_name": "SETVIEWPORTORG",
         },
         EnumDeclarationElement {
-          "_expression": 526,
+          "_expression": NumberValueExpression {
+            "_value": 526,
+          },
           "_name": "SETVIEWPORTEXT",
         },
         EnumDeclarationElement {
-          "_expression": 527,
+          "_expression": NumberValueExpression {
+            "_value": 527,
+          },
           "_name": "OFFSETWINDOWORG",
         },
         EnumDeclarationElement {
-          "_expression": 1040,
+          "_expression": NumberValueExpression {
+            "_value": 1040,
+          },
           "_name": "SCALEWINDOWEXT",
         },
         EnumDeclarationElement {
-          "_expression": 1042,
+          "_expression": NumberValueExpression {
+            "_value": 1042,
+          },
           "_name": "SCALEVIEWPORTEXT",
         },
         EnumDeclarationElement {
-          "_expression": 1045,
+          "_expression": NumberValueExpression {
+            "_value": 1045,
+          },
           "_name": "EXCLUDECLIPRECT",
         },
         EnumDeclarationElement {
-          "_expression": 1046,
+          "_expression": NumberValueExpression {
+            "_value": 1046,
+          },
           "_name": "INTERSECTCLIPRECT",
         },
         EnumDeclarationElement {
-          "_expression": 1048,
+          "_expression": NumberValueExpression {
+            "_value": 1048,
+          },
           "_name": "ELLIPSE",
         },
         EnumDeclarationElement {
-          "_expression": 1049,
+          "_expression": NumberValueExpression {
+            "_value": 1049,
+          },
           "_name": "FLOODFILL",
         },
         EnumDeclarationElement {
-          "_expression": 1065,
+          "_expression": NumberValueExpression {
+            "_value": 1065,
+          },
           "_name": "FRAMEREGION",
         },
         EnumDeclarationElement {
-          "_expression": 1078,
+          "_expression": NumberValueExpression {
+            "_value": 1078,
+          },
           "_name": "ANIMATEPALETTE",
         },
         EnumDeclarationElement {
-          "_expression": 1313,
+          "_expression": NumberValueExpression {
+            "_value": 1313,
+          },
           "_name": "TEXTOUT",
         },
         EnumDeclarationElement {
-          "_expression": 1336,
+          "_expression": NumberValueExpression {
+            "_value": 1336,
+          },
           "_name": "POLYPOLYGON",
         },
         EnumDeclarationElement {
-          "_expression": 1352,
+          "_expression": NumberValueExpression {
+            "_value": 1352,
+          },
           "_name": "EXTFLOODFILL",
         },
         EnumDeclarationElement {
-          "_expression": 1051,
+          "_expression": NumberValueExpression {
+            "_value": 1051,
+          },
           "_name": "RECTANGLE",
         },
         EnumDeclarationElement {
-          "_expression": 1055,
+          "_expression": NumberValueExpression {
+            "_value": 1055,
+          },
           "_name": "SETPIXEL",
         },
         EnumDeclarationElement {
-          "_expression": 1564,
+          "_expression": NumberValueExpression {
+            "_value": 1564,
+          },
           "_name": "ROUNDRECT",
         },
         EnumDeclarationElement {
-          "_expression": 1565,
+          "_expression": NumberValueExpression {
+            "_value": 1565,
+          },
           "_name": "PATBLT",
         },
         EnumDeclarationElement {
-          "_expression": 30,
+          "_expression": NumberValueExpression {
+            "_value": 30,
+          },
           "_name": "SAVEDC",
         },
         EnumDeclarationElement {
-          "_expression": 2074,
+          "_expression": NumberValueExpression {
+            "_value": 2074,
+          },
           "_name": "PIE",
         },
         EnumDeclarationElement {
-          "_expression": 2851,
+          "_expression": NumberValueExpression {
+            "_value": 2851,
+          },
           "_name": "STRETCHBLT",
         },
         EnumDeclarationElement {
-          "_expression": 1574,
+          "_expression": NumberValueExpression {
+            "_value": 1574,
+          },
           "_name": "ESCAPE",
         },
         EnumDeclarationElement {
-          "_expression": 298,
+          "_expression": NumberValueExpression {
+            "_value": 298,
+          },
           "_name": "INVERTREGION",
         },
         EnumDeclarationElement {
-          "_expression": 299,
+          "_expression": NumberValueExpression {
+            "_value": 299,
+          },
           "_name": "PAINTREGION",
         },
         EnumDeclarationElement {
-          "_expression": 300,
+          "_expression": NumberValueExpression {
+            "_value": 300,
+          },
           "_name": "SELECTCLIPREGION",
         },
         EnumDeclarationElement {
-          "_expression": 301,
+          "_expression": NumberValueExpression {
+            "_value": 301,
+          },
           "_name": "SELECTOBJECT",
         },
         EnumDeclarationElement {
-          "_expression": 302,
+          "_expression": NumberValueExpression {
+            "_value": 302,
+          },
           "_name": "SETTEXTALIGN",
         },
         EnumDeclarationElement {
-          "_expression": 2071,
+          "_expression": NumberValueExpression {
+            "_value": 2071,
+          },
           "_name": "ARC",
         },
         EnumDeclarationElement {
-          "_expression": 2096,
+          "_expression": NumberValueExpression {
+            "_value": 2096,
+          },
           "_name": "CHORD",
         },
         EnumDeclarationElement {
-          "_expression": 2338,
+          "_expression": NumberValueExpression {
+            "_value": 2338,
+          },
           "_name": "BITBLT",
         },
         EnumDeclarationElement {
-          "_expression": 2610,
+          "_expression": NumberValueExpression {
+            "_value": 2610,
+          },
           "_name": "EXTTEXTOUT",
         },
         EnumDeclarationElement {
-          "_expression": 3379,
+          "_expression": NumberValueExpression {
+            "_value": 3379,
+          },
           "_name": "SETDIBTODEV",
         },
         EnumDeclarationElement {
-          "_expression": 2368,
+          "_expression": NumberValueExpression {
+            "_value": 2368,
+          },
           "_name": "DIBBITBLT",
         },
         EnumDeclarationElement {
-          "_expression": 2881,
+          "_expression": NumberValueExpression {
+            "_value": 2881,
+          },
           "_name": "DIBSTRETCHBLT",
         },
         EnumDeclarationElement {
-          "_expression": 3907,
+          "_expression": NumberValueExpression {
+            "_value": 3907,
+          },
           "_name": "STRETCHDIB",
         },
         EnumDeclarationElement {
-          "_expression": 496,
+          "_expression": NumberValueExpression {
+            "_value": 496,
+          },
           "_name": "DELETEOBJECT",
         },
         EnumDeclarationElement {
-          "_expression": 247,
+          "_expression": NumberValueExpression {
+            "_value": 247,
+          },
           "_name": "CREATEPALETTE",
         },
         EnumDeclarationElement {
-          "_expression": 505,
+          "_expression": NumberValueExpression {
+            "_value": 505,
+          },
           "_name": "CREATEPATTERNBRUSH",
         },
         EnumDeclarationElement {
-          "_expression": 762,
+          "_expression": NumberValueExpression {
+            "_value": 762,
+          },
           "_name": "CREATEPENINDIRECT",
         },
         EnumDeclarationElement {
-          "_expression": 763,
+          "_expression": NumberValueExpression {
+            "_value": 763,
+          },
           "_name": "CREATEFONTINDIRECT",
         },
         EnumDeclarationElement {
-          "_expression": 764,
+          "_expression": NumberValueExpression {
+            "_value": 764,
+          },
           "_name": "CREATEBRUSHINDIRECT",
         },
         EnumDeclarationElement {
-          "_expression": 1791,
+          "_expression": NumberValueExpression {
+            "_value": 1791,
+          },
           "_name": "CREATEREGION",
         },
       ],
@@ -10884,11 +11446,11 @@ Definition {
                 "_annotations": Array [],
                 "_arraySelector": ExpressionArraySelector {
                   "_innerExpression": BinaryExpression {
-                    "_left": IdentifierValue {
+                    "_left": IdentifierValueExpression {
                       "_name": "size",
                     },
                     "_operator": 16,
-                    "_right": NumberValue {
+                    "_right": NumberValueExpression {
                       "_value": 3,
                     },
                   },
@@ -10967,7 +11529,7 @@ Definition {
                 "_arraySelector": UntilExpressionArraySelector {
                   "_innerExpression": FunctionCallExpression {
                     "_callable": PropertyAccessExpression {
-                      "_expression": IdentifierValue {
+                      "_expression": IdentifierValueExpression {
                         "_name": "_",
                       },
                       "_name": "eof",
@@ -10991,6 +11553,24 @@ Definition {
       },
       "_name": "WmfFile",
       "_parameters": Array [],
+    },
+    VariableDeclarationStatement {
+      "_annotations": Array [],
+      "_bitfield": undefined,
+      "_modifiers": Array [],
+      "_variableDeclarations": Array [
+        VariableDeclaration {
+          "_annotations": Array [],
+          "_arraySelector": undefined,
+          "_bitfield": undefined,
+          "_initializationExpression": undefined,
+          "_name": "content",
+          "_typeArguments": Array [],
+        },
+      ],
+      "_variableType": StructReferenceType {
+        "_name": "WmfFile",
+      },
     },
   ],
 }

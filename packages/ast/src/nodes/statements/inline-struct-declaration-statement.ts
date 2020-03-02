@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { ParameterDeclaration } from "../parameter-declaration";
 import { VariableDeclaration } from "../variable-declaration";
 import { BlockStatement } from "./block-statement";
@@ -27,5 +29,19 @@ export class InlineStructDeclarationStatement extends Statement {
 
   public get body(): BlockStatement {
     return this._body;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitInlineStructDeclarationStatement(this)) {
+      this._variableDeclaration.accept(visitor);
+      this._parameters.map((s) => s.accept(visitor));
+      this._body.accept(visitor);
+    }
+    visitor.endVisitInlineStructDeclarationStatement(this);
   }
 }

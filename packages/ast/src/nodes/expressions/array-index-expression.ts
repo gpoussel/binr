@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
 export class ArrayIndexExpression extends Expression {
@@ -11,5 +13,18 @@ export class ArrayIndexExpression extends Expression {
 
   public get indexExpression(): Expression {
     return this._indexExpression;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitArrayIndexExpression(this)) {
+      this._expression?.accept(visitor);
+      this._indexExpression?.accept(visitor);
+    }
+    visitor.endVisitArrayIndexExpression(this);
   }
 }

@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
 export class TernaryExpression extends Expression {
@@ -19,5 +21,19 @@ export class TernaryExpression extends Expression {
 
   public get falseExpression(): Expression {
     return this._falseExpression;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitTernaryExpression(this)) {
+      this._condition.accept(visitor);
+      this._trueExpression.accept(visitor);
+      this._falseExpression.accept(visitor);
+    }
+    visitor.endVisitTernaryExpression(this);
   }
 }

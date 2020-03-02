@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { CaseSwitchElement } from "../case-switch-element";
 import { Expression } from "../expressions";
 import { Statement } from "./statement";
@@ -13,5 +15,18 @@ export class SwitchStatement extends Statement {
 
   public get caseSwitchElements(): CaseSwitchElement[] {
     return this._caseSwitchElements;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitSwitchStatement(this)) {
+      this._testExpression.accept(visitor);
+      this._caseSwitchElements.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitSwitchStatement(this);
   }
 }

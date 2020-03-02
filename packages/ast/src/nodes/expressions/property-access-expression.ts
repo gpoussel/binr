@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
 export class PropertyAccessExpression extends Expression {
@@ -9,7 +11,19 @@ export class PropertyAccessExpression extends Expression {
     return this._expression;
   }
 
-  public get name(): Expression {
+  public get name(): string {
     return this._name;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitPropertyAccessExpression(this)) {
+      this._expression.accept(visitor);
+    }
+    visitor.endVisitPropertyAccessExpression(this);
   }
 }

@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
 export class ArrayInitializationExpression extends Expression {
@@ -7,5 +9,17 @@ export class ArrayInitializationExpression extends Expression {
 
   public get elements(): Expression[] {
     return this._elements;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitArrayInitializationExpression(this)) {
+      this._elements.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitArrayInitializationExpression(this);
   }
 }

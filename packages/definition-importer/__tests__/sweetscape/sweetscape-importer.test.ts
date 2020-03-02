@@ -1,4 +1,6 @@
-import { SweetscapeDefinitionImporter } from "../../lib/sweetscape/sweetscape-definition-importer";
+import { BaseAstVisitor } from "@binr/ast";
+
+import { SweetscapeDefinitionImporter } from "../..";
 import { AssetLoader } from "../utils/010-structures";
 
 describe("Sweetscape Importer", () => {
@@ -17,6 +19,8 @@ describe("Sweetscape Importer", () => {
     // This is definitely useful for regression test during refactoring
     const definition = importer.readInput(loader.getSingleStructure("misc-sample"));
     expect(definition).toBeDefined();
+    expect(definition).toMatchSnapshot();
+    definition.accept(new BaseAstVisitor());
   });
 
   loader.iterateElements((categoryType, elementName, getter) => {
@@ -25,6 +29,9 @@ describe("Sweetscape Importer", () => {
       const definition = importer.readInput(element.content);
       expect(definition).toBeDefined();
       expect(definition).toMatchSnapshot();
+
+      // Calling the visitor helps us getting a better coverage
+      definition.accept(new BaseAstVisitor());
     });
   });
 });

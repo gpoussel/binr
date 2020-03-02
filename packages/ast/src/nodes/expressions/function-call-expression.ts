@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Expression } from "./expression";
 
 export class FunctionCallExpression extends Expression {
@@ -11,5 +13,18 @@ export class FunctionCallExpression extends Expression {
 
   public get functionArguments(): Expression[] {
     return this._functionArguments;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitFunctionCallExpression(this)) {
+      this._callable.accept(visitor);
+      this._functionArguments.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitFunctionCallExpression(this);
   }
 }

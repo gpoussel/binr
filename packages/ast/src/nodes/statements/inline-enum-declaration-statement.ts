@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { EnumDeclarationElement } from "../enum-declaration-element";
 import { Type } from "../types";
 import { VariableDeclaration } from "../variable-declaration";
@@ -5,7 +7,7 @@ import { Statement } from "./statement";
 
 export class InlineEnumDeclarationStatement extends Statement {
   public constructor(
-    private _baseType: Type,
+    private _baseType: Type | undefined,
     private _alias: string | undefined,
     private _declarations: EnumDeclarationElement[],
     private _variableDeclarations: VariableDeclaration[],
@@ -13,7 +15,7 @@ export class InlineEnumDeclarationStatement extends Statement {
     super();
   }
 
-  public get baseType(): Type {
+  public get baseType(): Type | undefined {
     return this._baseType;
   }
 
@@ -27,5 +29,19 @@ export class InlineEnumDeclarationStatement extends Statement {
 
   public get variableDeclarations(): VariableDeclaration[] {
     return this._variableDeclarations;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    if (visitor.visitInlineEnumDeclarationStatement(this)) {
+      this._baseType?.accept(visitor);
+      this._declarations.map((s) => s.accept(visitor));
+      this._variableDeclarations.map((s) => s.accept(visitor));
+    }
+    visitor.endVisitInlineEnumDeclarationStatement(this);
   }
 }

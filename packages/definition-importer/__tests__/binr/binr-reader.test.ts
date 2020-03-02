@@ -1,7 +1,7 @@
 import { Definition } from "@binr/ast";
 import { each } from "lodash";
 
-import { BinrDefinitionImporter } from "../../lib/binr/binr-definition-importer";
+import { BinrDefinitionImporter } from "../..";
 
 function createAndCallParser(input: string): () => Definition {
   return () => {

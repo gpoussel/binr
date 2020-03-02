@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Type } from "./type";
 import { TypeModifier } from "./type-modifier";
 
@@ -16,5 +18,15 @@ export class NamedType extends Type {
 
   public get array() {
     return this._array;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    visitor.visitNamedType(this);
+    visitor.endVisitNamedType(this);
   }
 }

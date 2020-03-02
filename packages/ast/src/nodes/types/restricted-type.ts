@@ -1,3 +1,5 @@
+import { EvaluationContext, EvaluationInput, EvaluationResult } from "../../evaluation";
+import { AstVisitor } from "../../visitor";
 import { Type } from "./type";
 
 export class RestrictedType extends Type {
@@ -11,5 +13,15 @@ export class RestrictedType extends Type {
 
   public get size(): number {
     return this._size;
+  }
+
+  public evaluate(_context: EvaluationContext, _input: EvaluationInput): EvaluationResult {
+    // Nothing to do
+    return {};
+  }
+
+  protected accept0(visitor: AstVisitor): void {
+    visitor.visitRestrictedType(this);
+    visitor.endVisitRestrictedType(this);
   }
 }

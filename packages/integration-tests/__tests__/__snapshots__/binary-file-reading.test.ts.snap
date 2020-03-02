@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Binary file reading reads AVI file (MVI_3572.avi) 1`] = `Object {}`;
+
+exports[`Binary file reading reads Android Manifest file (AndroidManifest.xml) 1`] = `Object {}`;
+
+exports[`Binary file reading reads EOT file (roboto-regular-webfont.eot) 1`] = `Object {}`;
+
+exports[`Binary file reading reads GIF file (tree.gif) 1`] = `Object {}`;
+
+exports[`Binary file reading reads ICO file (bing.ico) 1`] = `Object {}`;
+
+exports[`Binary file reading reads Java Class file (CucumberModules.class) 1`] = `Object {}`;
+
+exports[`Binary file reading reads RAR file (sample.rar) 1`] = `Object {}`;
+
+exports[`Binary file reading reads RM video file (video.rm) 1`] = `Object {}`;
+
+exports[`Binary file reading reads ROMFS file (sample.romfs) 1`] = `Object {}`;
+
+exports[`Binary file reading reads SHX file (us_ski_areas.shx) 1`] = `Object {}`;
+
+exports[`Binary file reading reads WMF file (sample.wmf) 1`] = `Object {}`;
+
+exports[`Binary file reading reads torrent file (ubuntu.torrent) 1`] = `Object {}`;
