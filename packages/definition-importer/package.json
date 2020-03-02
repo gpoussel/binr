@@ -33,7 +33,7 @@
   "dependencies": {
     "@binr/ast": "^1.0.0",
     "@types/lodash": "^4.14.149",
-    "@types/tar-stream": "^1.6.1",
+    "@types/tar-stream": "^2.1.0",
     "chevrotain": "^6.5.0",
     "escape-string-regexp": "^2.0.0",
     "gunzip-maybe": "^1.4.1",
