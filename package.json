@@ -37,7 +37,7 @@
     "import-sort-style-module": "^6.0.0",
     "jest": "^25.1.0",
     "lerna": "^3.20.2",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.2",
     "prettier-plugin-import-sort": "^0.0.3",
     "ts-jest": "^25.0.0",
     "tslint": "^6.0.0",
